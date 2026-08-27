@@ -25,8 +25,8 @@ export default function HowItWorksPage() {
         crumb="How it works"
         actions={
           <>
-            <Button href="/contact" variant="outline" arrow={false} size="lg">
-              Watch Demo
+            <Button href="/modules" variant="outline" arrow={false} size="lg">
+              Browse modules
             </Button>
             <Button href="/contact" size="lg">
               Book a Demo
@@ -58,14 +58,14 @@ export default function HowItWorksPage() {
             <ol className="mt-10 space-y-6">
               {steps.map((s) => (
                 <Reveal as="li" key={s.n} y={14} className="flex gap-4">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-violet-500 font-display text-[13px] font-bold text-white">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-violet-500 font-display text-[13.5px] font-bold text-white">
                     {s.n}
                   </span>
                   <span>
                     <span className="block font-display text-[17px] font-bold text-violet-950">
                       {s.title}
                     </span>
-                    <span className="mt-1.5 block max-w-[44ch] text-[14.5px] leading-relaxed text-ink-soft">
+                    <span className="mt-1.5 block max-w-[44ch] text-[15.5px] leading-relaxed text-ink-soft">
                       {s.copy}
                     </span>
                   </span>
@@ -101,13 +101,13 @@ export default function HowItWorksPage() {
                 key={sc.key}
                 delay={i * 90}
                 y={20}
-                className="rounded-[26px] bg-violet-50/70 p-7 ring-1 ring-violet-100 sm:p-9"
+                className="rounded-[24px] bg-violet-50/70 p-7 ring-1 ring-violet-100 sm:p-9"
               >
                 <p className="font-display text-[14px] font-bold text-violet-600">{sc.kicker}</p>
                 <h3 className="mt-3 font-display text-[clamp(1.15rem,2.6vw,1.5rem)] font-bold leading-snug">
                   {sc.title}
                 </h3>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">{sc.copy}</p>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{sc.copy}</p>
                 <ul className="mt-6 space-y-3 border-t border-violet-200/70 pt-6">
                   {sc.points.map((p) => (
                     <li key={p} className="flex items-start gap-3">

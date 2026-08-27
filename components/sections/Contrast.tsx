@@ -79,7 +79,7 @@ function Card({
               {after ? <TickCircle /> : <CrossCircle />}
             </span>
             <span
-              className={`text-[14.5px] leading-relaxed ${
+              className={`text-[15.5px] leading-relaxed ${
                 after ? "font-medium text-violet-950" : "text-ink-soft"
               }`}
             >

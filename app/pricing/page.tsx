@@ -75,7 +75,7 @@ export default function PricingPage() {
             }
           />
 
-          <Reveal delay={140} className="mt-12 overflow-x-auto rounded-[26px] bg-white p-1 shadow-soft ring-1 ring-violet-100">
+          <Reveal delay={140} className="mt-12 overflow-x-auto rounded-[24px] bg-white p-1 shadow-soft ring-1 ring-violet-100">
             <table className="w-full min-w-[580px] border-collapse text-left">
               <caption className="sr-only">HRMagix plan comparison</caption>
               <thead>
@@ -120,7 +120,7 @@ export default function PricingPage() {
           </Reveal>
 
           <Reveal delay={180} className="mt-6 text-center">
-            <p className="text-[13px] text-ink-faint">
+            <p className="text-[13.5px] text-ink-faint">
               All {modules.length} modules live on one platform — your plan decides which are switched
               on.
             </p>

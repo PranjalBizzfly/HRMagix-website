@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { plans, site } from "@/lib/content";
 import { Button, Pill } from "./ui";
+import { useSpotlight } from "./motion";
 
 /** Published per-employee rates. Enterprise is quoted, so it has no rate. */
 const RATES: Record<string, number | null> = { Starter: 3, Growth: 6, Enterprise: null };
@@ -14,6 +15,7 @@ const RATES: Record<string, number | null> = { Starter: 3, Growth: 6, Enterprise
 export default function Calculator() {
   const [count, setCount] = useState(50);
   const [plan, setPlan] = useState("Growth");
+  const { ref: spotRef, spotlightProps } = useSpotlight<HTMLDivElement>();
 
   const rate = RATES[plan];
   const monthly = useMemo(() => (rate == null ? null : rate * count), [rate, count]);
@@ -22,7 +24,11 @@ export default function Calculator() {
     n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
   return (
-    <div className="panel bg-violet-950 p-6 text-white shadow-lift sm:p-9 lg:p-11">
+    <div
+      ref={spotRef}
+      {...spotlightProps}
+      className="spotlight panel bg-violet-950 p-6 text-white shadow-lift sm:p-9 lg:p-11"
+    >
       <div className="pointer-events-none absolute inset-0 dotted opacity-25" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-violet-500/35 blur-[90px]"
@@ -32,17 +38,17 @@ export default function Calculator() {
       <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
         <div>
           <Pill tone="dark">Cost calculator</Pill>
-          <h3 className="display mt-5 text-[clamp(1.6rem,4vw,2.5rem)] !text-white">
+          <h3 className="display display-md mt-5 !text-white">
             What would <strong>HRMagix cost</strong> your team?
           </h3>
-          <p className="mt-4 max-w-[42ch] text-[15px] leading-relaxed text-violet-200/85">
+          <p className="mt-4 max-w-[42ch] text-[16px] leading-relaxed text-violet-200/85">
             Pricing is per employee, per month. Move the slider and pick a plan — the number below is
             simply the published rate times your headcount.
           </p>
 
           <div className="mt-9">
             <div className="flex items-baseline justify-between">
-              <label htmlFor="headcount" className="text-[13px] font-semibold uppercase tracking-[0.14em] text-violet-300">
+              <label htmlFor="headcount" className="text-[13.5px] font-semibold uppercase tracking-[0.14em] text-violet-300">
                 Employees
               </label>
               <output htmlFor="headcount" className="font-display text-[22px] font-bold tabular-nums text-white">
@@ -66,7 +72,7 @@ export default function Calculator() {
           </div>
 
           <div className="mt-8">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-violet-300">Plan</p>
+            <p className="text-[13.5px] font-semibold uppercase tracking-[0.14em] text-violet-300">Plan</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {plans.map((p) => (
                 <button
@@ -87,24 +93,26 @@ export default function Calculator() {
           </div>
         </div>
 
-        <div className="rounded-[22px] bg-white/[0.07] p-6 ring-1 ring-inset ring-white/12 sm:p-8">
+        <div className="rounded-[24px] bg-white/[0.07] p-6 ring-1 ring-inset ring-white/12 sm:p-8">
           <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-violet-300">
             {plan} plan
           </p>
 
           {monthly == null ? (
             <>
-              <p className="display mt-4 text-[clamp(2.2rem,6vw,3.4rem)] !text-white">Custom</p>
-              <p className="mt-3 max-w-[34ch] text-[14px] leading-relaxed text-violet-200/85">
+              <p className="display mt-4 text-[clamp(2.2rem,6vw,3.4rem)] font-bold !text-white">Custom</p>
+              <p className="mt-3 max-w-[34ch] text-[15.5px] leading-relaxed text-violet-200/85">
                 Enterprise is quoted for large organisations and adds SSO &amp; advanced security,
                 succession &amp; lifecycle and a dedicated success manager.
               </p>
             </>
           ) : (
             <>
-              <p className="display mt-4 text-[clamp(2.2rem,6vw,3.4rem)] !text-white">
+              <p className="display mt-4 text-[clamp(2.2rem,6vw,3.4rem)] font-bold !text-white">
                 {money(monthly)}
-                <span className="ml-2 font-sans text-[15px] font-medium text-violet-300">/month</span>
+                <span className="ml-2.5 font-sans text-[15.5px] font-medium tracking-normal text-violet-300">
+                  /month
+                </span>
               </p>
               <dl className="mt-7 space-y-3.5 border-t border-white/10 pt-6 text-[14px]">
                 <Row label="Rate" value={`$${rate}/emp/mo`} />

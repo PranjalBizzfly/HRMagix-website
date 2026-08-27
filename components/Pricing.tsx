@@ -12,7 +12,7 @@ export default function Pricing() {
           return (
             <Reveal key={plan.name} delay={i * 100} y={22} className={featured ? "lg:-my-4" : ""}>
               <div
-                className={`flex h-full flex-col rounded-[26px] p-7 transition-all duration-500 sm:p-9 ${
+                className={`flex h-full flex-col rounded-[24px] p-7 transition-all duration-500 sm:p-9 ${
                   featured
                     ? "bg-violet-950 text-white shadow-lift"
                     : "bg-white shadow-soft ring-1 ring-violet-100 hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0"
@@ -85,7 +85,7 @@ export default function Pricing() {
       </div>
 
       <Reveal delay={180} className="mt-8 text-center">
-        <p className="text-[13px] text-ink-faint">{site.trial}</p>
+        <p className="text-[13.5px] text-ink-faint">{site.trial}</p>
       </Reveal>
     </div>
   );

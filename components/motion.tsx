@@ -237,17 +237,147 @@ export function Counter({
   );
 }
 
-/** Pointer-following highlight used on interactive panels. */
+/**
+ * Pointer-following highlight for panels. Writes --mx/--my (and --spot for the
+ * fade) which the `.spotlight` class in globals.css paints. Fine-pointer only —
+ * the CSS opts out under `pointer: coarse` and reduced motion, and the handlers
+ * below never run on touch because they are pointer-type gated.
+ */
 export function useSpotlight<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
+  const frame = useRef(0);
+
   const onPointerMove = useCallback((e: React.PointerEvent<T>) => {
+    if (e.pointerType !== "mouse") return;
     const el = ref.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    const { clientX, clientY } = e;
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${clientX - rect.left}px`);
+      el.style.setProperty("--my", `${clientY - rect.top}px`);
+    });
   }, []);
-  return { ref, onPointerMove };
+
+  const onPointerEnter = useCallback((e: React.PointerEvent<T>) => {
+    if (e.pointerType !== "mouse") return;
+    ref.current?.style.setProperty("--spot", "1");
+  }, []);
+
+  const onPointerLeave = useCallback(() => {
+    cancelAnimationFrame(frame.current);
+    ref.current?.style.setProperty("--spot", "0");
+  }, []);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  return { ref, spotlightProps: { onPointerMove, onPointerEnter, onPointerLeave } };
+}
+
+/**
+ * Drag-to-scroll for a horizontal track.
+ *
+ * Touch is left to the browser (native momentum + scroll-snap); this only adds
+ * mouse dragging, so desktop gets the same affordance without fighting inertia.
+ * Returns handlers plus a `dragging` flag so callers can suppress click-through.
+ */
+export function useDragScroll<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const state = useRef({ down: false, startX: 0, startLeft: 0, moved: 0 });
+  const [dragging, setDragging] = useState(false);
+
+  const onPointerDown = useCallback((e: React.PointerEvent<T>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    const el = ref.current;
+    if (!el || el.scrollWidth <= el.clientWidth) return;
+    state.current = { down: true, startX: e.clientX, startLeft: el.scrollLeft, moved: 0 };
+    setDragging(true);
+  }, []);
+
+  const onPointerMove = useCallback((e: React.PointerEvent<T>) => {
+    const el = ref.current;
+    if (!el || !state.current.down) return;
+    const dx = e.clientX - state.current.startX;
+    state.current.moved = Math.max(state.current.moved, Math.abs(dx));
+    el.scrollLeft = state.current.startLeft - dx;
+  }, []);
+
+  const end = useCallback(() => {
+    if (!state.current.down) return;
+    state.current.down = false;
+    setDragging(false);
+  }, []);
+
+  /** True right after a drag, so a click that ends a drag can be ignored. */
+  const didDrag = useCallback(() => state.current.moved > 6, []);
+
+  return {
+    ref,
+    dragging,
+    didDrag,
+    dragProps: {
+      onPointerDown,
+      onPointerMove,
+      onPointerUp: end,
+      onPointerLeave: end,
+      onPointerCancel: end,
+    },
+  };
+}
+
+/**
+ * Tracks which snap child of a scroll container is centred, so a track can
+ * drive dots and arrows without a carousel library.
+ */
+export function useSnapIndex<T extends HTMLElement>(count: number) {
+  const ref = useRef<T | null>(null);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let frame = 0;
+    const read = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const children = [...el.children] as HTMLElement[];
+        if (!children.length) return;
+        const mid = el.scrollLeft + el.clientWidth / 2;
+        let best = 0;
+        let bestDist = Infinity;
+        children.forEach((c, i) => {
+          const centre = c.offsetLeft + c.offsetWidth / 2;
+          const d = Math.abs(centre - mid);
+          if (d < bestDist) {
+            bestDist = d;
+            best = i;
+          }
+        });
+        setIndex((prev) => (prev === best ? prev : best));
+      });
+    };
+    el.addEventListener("scroll", read, { passive: true });
+    read();
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener("scroll", read);
+    };
+  }, [count]);
+
+  /** Scrolls the nth child into view, honouring reduced motion. */
+  const scrollTo = useCallback((i: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const child = el.children[i] as HTMLElement | undefined;
+    if (!child) return;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? ("auto" as const)
+      : ("smooth" as const);
+    el.scrollTo({ left: child.offsetLeft - (el.clientWidth - child.offsetWidth) / 2, behavior });
+  }, []);
+
+  return { ref, index, scrollTo };
 }
 
 /** Progress of the page, 0 → 1. Used by the nav scroll rail. */

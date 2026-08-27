@@ -4,6 +4,7 @@ import ClosingCta from "@/components/sections/ClosingCta";
 import ModuleExplorer from "@/components/ModuleExplorer";
 import AreaPanels from "@/components/AreaPanels";
 import { Button, SectionHead } from "@/components/ui";
+import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/motion";
 import { moduleGroups, modules } from "@/lib/content";
 
@@ -64,7 +65,7 @@ export default function ModulesPage() {
               if (!inGroup.length) return null;
               return (
                 <Reveal key={group} delay={gi * 60} y={20}>
-                  <div className="grid gap-6 rounded-[26px] bg-white p-6 shadow-soft ring-1 ring-violet-100 sm:p-8 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-12">
+                  <div className="grid gap-6 rounded-[24px] bg-white p-6 shadow-soft ring-1 ring-violet-100 sm:p-8 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-12">
                     <div>
                       <p className="font-display text-[12px] font-bold tabular-nums text-violet-400">
                         {String(gi + 1).padStart(2, "0")}
@@ -72,7 +73,7 @@ export default function ModulesPage() {
                       <h3 className="mt-1.5 font-display text-[clamp(1.3rem,3vw,1.9rem)] font-bold leading-tight">
                         {group}
                       </h3>
-                      <p className="mt-2 text-[13px] text-ink-faint">
+                      <p className="mt-2 text-[13.5px] text-ink-faint">
                         {inGroup.length} {inGroup.length === 1 ? "module" : "modules"}
                       </p>
                     </div>
@@ -80,9 +81,7 @@ export default function ModulesPage() {
                     <ul className="flex flex-wrap gap-2.5">
                       {inGroup.map((m) => (
                         <li key={m.name} className="chip !bg-violet-50 !ring-violet-100">
-                          <span aria-hidden="true" className="text-[15px]">
-                            {m.glyph}
-                          </span>
+                          <Icon name={m.icon} className="h-4 w-4 text-violet-500" />
                           {m.name}
                         </li>
                       ))}

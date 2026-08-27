@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import Faq from "@/components/Faq";
 import { Pill, SectionHead, Stars } from "@/components/ui";
+import { IconTile, type IconName } from "@/components/icons";
 import { Reveal, Words } from "@/components/motion";
 import { plans, site } from "@/lib/content";
 
@@ -12,15 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const channels = [
-    { label: "Email us", value: site.contact.email, href: `mailto:${site.contact.email}`, glyph: "✉" },
+  const channels: { label: string; value: string; href: string; icon: IconName }[] = [
+    { label: "Email us", value: site.contact.email, href: `mailto:${site.contact.email}`, icon: "mail" },
     {
       label: "Call us",
       value: site.contact.phone,
       href: `tel:${site.contact.phone.replace(/[^+\d]/g, "")}`,
-      glyph: "☎",
+      icon: "phone",
     },
-    { label: "Visit us", value: site.contact.location, href: "", glyph: "⌖" },
+    { label: "Visit us", value: site.contact.location, href: "", icon: "pin" },
   ];
 
   return (
@@ -40,14 +41,12 @@ export default function ContactPage() {
                 Get in touch
               </Pill>
             </Reveal>
-            <h1 className="display mx-auto mt-7 max-w-[18ch] text-[clamp(2.1rem,6vw,3.6rem)]">
+            <h1 className="display display-xl mx-auto mt-7 max-w-[16ch]">
               <Words as="span" text="Talk to the" />{" "}
               <Words as="span" text="HRMagix team" className="font-bold" delay={140} />
             </h1>
-            <Reveal delay={240} className="mx-auto mt-6 max-w-2xl">
-              <p className="text-[clamp(0.98rem,2.2vw,1.15rem)] leading-relaxed text-ink-soft">
-                {site.contact.blurb}
-              </p>
+            <Reveal delay={240} className="mx-auto mt-[38px] max-w-2xl">
+              <p className="lede">{site.contact.blurb}</p>
             </Reveal>
           </div>
 
@@ -67,14 +66,9 @@ export default function ContactPage() {
                   <ul className="mt-8 space-y-6">
                     {channels.map((c, i) => (
                       <Reveal as="li" key={c.label} delay={i * 90} y={12} className="flex items-start gap-4">
-                        <span
-                          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/[0.08] text-[16px] ring-1 ring-inset ring-white/12"
-                          aria-hidden="true"
-                        >
-                          {c.glyph}
-                        </span>
+                        <IconTile name={c.icon} tone="dark" className="rounded-2xl" />
                         <span>
-                          <span className="block text-[11px] font-bold uppercase tracking-[0.16em] text-violet-400">
+                          <span className="block text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-400">
                             {c.label}
                           </span>
                           {c.href ? (
@@ -102,7 +96,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="mt-8 border-t border-white/10 pt-7">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-violet-400">
+                    <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-400">
                       Plans
                     </p>
                     <ul className="mt-4 space-y-2.5">

@@ -6,6 +6,8 @@ import type { Config } from "tailwindcss";
  * deep indigo ink range and a soft lavender surface range.
  */
 const config: Config = {
+  // Stops :hover styles sticking after a tap on touch devices.
+  future: { hoverOnlyWhenSupported: true },
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     extend: {

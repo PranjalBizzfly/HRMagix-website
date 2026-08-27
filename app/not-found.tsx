@@ -21,7 +21,7 @@ export default function NotFound() {
         <h1 className="display mt-2 text-[clamp(1.4rem,3.6vw,2.2rem)]">
           This page has <strong>moved on</strong>
         </h1>
-        <p className="mx-auto mt-5 max-w-md text-[15px] text-ink-soft">
+        <p className="mx-auto mt-5 max-w-md text-[15.5px] text-ink-soft">
           The link you followed is not part of the HRMagix site. Try one of these instead.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">

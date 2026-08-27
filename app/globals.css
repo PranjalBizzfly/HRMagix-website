@@ -22,6 +22,14 @@
   body {
     @apply bg-white text-ink antialiased;
     overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @screen sm {
+    body {
+      font-size: 16.5px;
+    }
   }
 
   ::selection {
@@ -55,11 +63,111 @@
   }
 
   /*
-   * Display headline: light weight by default, with `<strong>` words carrying
-   * the emphasis. Mixed weight inside one sentence is the core type device.
+   * Headings run at 500 — confident rather than fashion-thin — with <strong>
+   * carrying the emphasis at 700. The pairing is the site's core type device.
    */
   .display {
-    @apply font-display font-light leading-[1.06] tracking-[-0.035em] text-violet-950;
+    @apply font-display font-medium leading-[1.06] tracking-[-0.032em] text-violet-950;
+  }
+
+  /* The one oversized moment per page. */
+  .display-xl {
+    font-size: clamp(2.5rem, 7.2vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  /* Section heading. */
+  .display-lg {
+    font-size: clamp(1.95rem, 4.6vw, 3rem);
+  }
+
+  /* Sub-section heading — the missing 32–36px tier. */
+  .display-md {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.12;
+  }
+
+  /* Supporting copy under a section heading. */
+  .lede {
+    @apply text-ink-soft;
+    font-size: clamp(1.05rem, 2vw, 1.185rem);
+    line-height: 1.65;
+  }
+
+  /*
+   * Pointer-following highlight. --mx/--my come from useSpotlight; --spot fades
+   * the layer in on enter. Painted behind content, so text contrast is
+   * untouched, and skipped entirely on touch and under reduced motion.
+   */
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: var(--spot, 0);
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(124, 92, 255, 0.16),
+      transparent 68%
+    );
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+  }
+
+  .spotlight > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .spotlight::before {
+      display: none;
+    }
+  }
+
+  /* Cross-route fade — short enough to read as responsiveness, not animation. */
+  .route-fade {
+    animation: route-fade 0.22s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route-fade {
+      animation: none;
+    }
+  }
+
+  /* Horizontal snap track: native momentum on touch, drag-to-scroll on mouse. */
+  .track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .track > * {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  .track-start > * {
+    scroll-snap-align: start;
+  }
+
+  .track-grab {
+    cursor: grab;
+  }
+
+  .track-grabbing {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
   }
 
   .display strong,
@@ -69,7 +177,7 @@
 
   /* Soft tinted panel — the site's main container shape. */
   .panel {
-    @apply relative overflow-hidden rounded-[26px] sm:rounded-[32px];
+    @apply relative overflow-hidden rounded-[24px] sm:rounded-[32px];
   }
 
   /* White feature pill used under "Included modules". */
@@ -144,6 +252,17 @@
   }
   to {
     transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes route-fade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

@@ -15,7 +15,7 @@ export default function Faq({ limit }: { limit?: number }) {
         return (
           <div
             key={item.q}
-            className={`overflow-hidden rounded-[20px] bg-white transition-all duration-400 ${
+            className={`overflow-hidden rounded-[20px] bg-white transition-all duration-300 ${
               isOpen ? "shadow-lift ring-2 ring-violet-300" : "shadow-soft ring-1 ring-violet-100"
             }`}
           >
@@ -45,7 +45,7 @@ export default function Faq({ limit }: { limit?: number }) {
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr", opacity: isOpen ? 1 : 0 }}
             >
               <div className="overflow-hidden">
-                <p className="max-w-[70ch] px-5 pb-6 text-[14.5px] leading-relaxed text-ink-soft sm:px-7 sm:pb-7">
+                <p className="max-w-[70ch] px-5 pb-6 text-[15.5px] leading-relaxed text-ink-soft sm:px-7 sm:pb-7">
                   {item.a}
                 </p>
               </div>

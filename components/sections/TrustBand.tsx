@@ -23,7 +23,7 @@ export default function TrustBand() {
               <dd className="display text-[clamp(2rem,4.6vw,2.9rem)] font-bold">
                 <Counter to={s.value} suffix={s.suffix} />
               </dd>
-              <dt className="mt-2 text-[13px] text-ink-faint">{s.label}</dt>
+              <dt className="mt-2 text-[13.5px] text-ink-faint">{s.label}</dt>
             </Reveal>
           ))}
         </dl>

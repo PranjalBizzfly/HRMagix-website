@@ -7,7 +7,14 @@ import { useInView } from "./motion";
  * Light product visual of the HRMagix workspace, built from the figures
  * published on hrmagix.com. Used as the hero centrepiece.
  */
-export default function Workspace({ compact = false }: { compact?: boolean }) {
+export default function Workspace({
+  compact = false,
+  chrome = true,
+}: {
+  compact?: boolean;
+  /** Off when the caller supplies its own frame (see components/Frames.tsx). */
+  chrome?: boolean;
+}) {
   const { ref, shown } = useInView<HTMLDivElement>("0px");
 
   return (
@@ -16,17 +23,22 @@ export default function Workspace({ compact = false }: { compact?: boolean }) {
       data-shown={shown}
       role="img"
       aria-label="HRMagix workspace preview"
-      className="relative w-full select-none overflow-hidden rounded-[20px] bg-white shadow-[0_40px_90px_-40px_rgba(31,17,71,0.45)] ring-1 ring-violet-100 sm:rounded-[24px]"
+      className={`relative w-full select-none overflow-hidden ${
+        chrome
+          ? "rounded-[20px] bg-white shadow-[0_40px_90px_-40px_rgba(31,17,71,0.45)] ring-1 ring-violet-100 sm:rounded-[24px]"
+          : "bg-white"
+      }`}
     >
-      {/* window chrome */}
-      <div className="flex items-center gap-2 border-b border-violet-100 bg-violet-50/70 px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff6058]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-3 hidden rounded-md bg-white px-2.5 py-1 text-[10.5px] font-medium text-ink-faint ring-1 ring-violet-100 sm:block">
-          app.hrmagix — Overview
-        </span>
-      </div>
+      {chrome && (
+        <div className="flex items-center gap-2 border-b border-violet-100 bg-violet-50/70 px-4 py-3">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ff6058]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+          <span className="ml-3 hidden rounded-md bg-white px-2.5 py-1 text-[10.5px] font-medium text-ink-faint ring-1 ring-violet-100 sm:block">
+            app.hrmagix.com — Overview
+          </span>
+        </div>
+      )}
 
       <div className={`grid grid-cols-1 ${compact ? "" : "sm:grid-cols-[136px_1fr]"}`}>
         {!compact && (
@@ -43,7 +55,7 @@ export default function Workspace({ compact = false }: { compact?: boolean }) {
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "none" : "translateX(-8px)",
-                  transition: "opacity .5s ease, transform .6s cubic-bezier(.22,1,.36,1)",
+                  transition: "opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1)",
                   transitionDelay: `${140 + i * 40}ms`,
                 }}
               >
@@ -57,10 +69,10 @@ export default function Workspace({ compact = false }: { compact?: boolean }) {
         <div className="p-4 sm:p-5">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="font-display text-[15px] font-bold text-violet-950">Welcome Back!</p>
+              <p className="font-display text-[15.5px] font-bold text-violet-950">Welcome Back!</p>
               <p className="text-[11.5px] text-ink-faint">Your people snapshot for today</p>
             </div>
-            <span className="rounded-full bg-violet-500 px-3 py-1.5 text-[11px] font-semibold text-white">
+            <span className="rounded-full bg-violet-500 px-3 py-1.5 text-[11.5px] font-semibold text-white">
               + Hire
             </span>
           </div>
@@ -73,11 +85,11 @@ export default function Workspace({ compact = false }: { compact?: boolean }) {
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "none" : "translateY(12px)",
-                  transition: "opacity .55s ease, transform .7s cubic-bezier(.22,1,.36,1)",
+                  transition: "opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1)",
                   transitionDelay: `${220 + i * 55}ms`,
                 }}
               >
-                <p className="text-[9.5px] font-semibold uppercase tracking-[0.1em] text-violet-400">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-violet-400">
                   {s.label}
                 </p>
                 <p className="mt-1 font-display text-[17px] font-bold tabular-nums text-violet-950 sm:text-[19px]">
@@ -89,11 +101,11 @@ export default function Workspace({ compact = false }: { compact?: boolean }) {
 
           <div className="mt-3 grid gap-2.5 sm:grid-cols-[1.25fr_1fr]">
             <div className="rounded-xl bg-white p-3 ring-1 ring-violet-100">
-              <p className="text-[11px] font-semibold text-ink-soft">Attendance trend</p>
+              <p className="text-[11.5px] font-semibold text-ink-soft">Attendance trend</p>
               <TrendChart shown={shown} />
             </div>
             <div className="rounded-xl bg-white p-3 ring-1 ring-violet-100">
-              <p className="text-[11px] font-semibold text-ink-soft">Task queue</p>
+              <p className="text-[11.5px] font-semibold text-ink-soft">Task queue</p>
               <ul className="mt-2 space-y-1.5">
                 {workspace.queue.map((q, i) => (
                   <li

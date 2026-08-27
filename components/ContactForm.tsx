@@ -95,7 +95,7 @@ export default function ContactForm() {
 
       <div className="flex flex-wrap items-center gap-4">
         <SubmitButton>Send message</SubmitButton>
-        <p aria-live="polite" className="text-[13px] text-ink-faint">
+        <p aria-live="polite" className="text-[13.5px] text-ink-faint">
           {sent
             ? `Opening your mail app — we'll reply from ${site.contact.email}.`
             : "Our team usually replies within a few hours."}
@@ -106,7 +106,7 @@ export default function ContactForm() {
 }
 
 function inputClass(invalid: boolean) {
-  return `h-[56px] w-full rounded-2xl border bg-white px-5 text-[15px] text-violet-950 outline-none transition-all duration-200 placeholder:text-violet-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/15 ${
+  return `h-[56px] w-full rounded-2xl border bg-white px-5 text-[15.5px] text-violet-950 outline-none transition-all duration-200 placeholder:text-violet-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/15 ${
     invalid ? "border-red-300" : "border-violet-200"
   }`;
 }
@@ -126,7 +126,7 @@ function Field({
     <label className="block">
       <span className="mb-2 flex items-baseline gap-2 text-[12px] font-bold uppercase tracking-[0.14em] text-violet-500">
         {label}
-        {optional && <span className="text-[11px] font-normal normal-case tracking-normal">optional</span>}
+        {optional && <span className="text-[11.5px] font-normal normal-case tracking-normal">optional</span>}
       </span>
       {children}
       {error && <span className="mt-1.5 block text-[12.5px] text-red-500">{error}</span>}

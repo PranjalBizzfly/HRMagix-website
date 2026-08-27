@@ -70,7 +70,7 @@ export default function StepTrail() {
               {s.n}
             </span>
             <h3 className="mt-6 font-display text-[20px] font-bold sm:text-[22px]">{s.title}</h3>
-            <p className="mt-2.5 text-[14.5px] leading-relaxed text-ink-soft">{s.copy}</p>
+            <p className="mt-2.5 text-[15.5px] leading-relaxed text-ink-soft">{s.copy}</p>
           </li>
         );
       })}

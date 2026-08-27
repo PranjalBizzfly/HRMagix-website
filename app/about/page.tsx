@@ -4,6 +4,7 @@ import ClosingCta from "@/components/sections/ClosingCta";
 import Contrast from "@/components/sections/Contrast";
 import TestimonialDeck from "@/components/TestimonialDeck";
 import { Button, SectionHead } from "@/components/ui";
+import { IconTile } from "@/components/icons";
 import { Counter, Reveal, Words } from "@/components/motion";
 import { assurances, features, modules, site, stats } from "@/lib/content";
 
@@ -47,13 +48,13 @@ export default function AboutPage() {
             <Words text="all in one workspace." className="font-bold" delay={180} />
           </p>
           <Reveal delay={280} className="mx-auto mt-10 grid max-w-4xl gap-8 border-t border-violet-100 pt-10 text-left sm:grid-cols-3">
-            <p className="text-[15px] leading-relaxed text-ink-soft sm:col-span-2">
+            <p className="text-[16px] leading-relaxed text-ink-soft sm:col-span-2">
               {site.name} replaces the spreadsheet-and-inbox routine with a single workspace:{" "}
               {modules.length} modules covering attendance, leaves, payroll, performance, recognition
               and the whole employee lifecycle — switched on to match your policies, no code
               required.
             </p>
-            <p className="text-[15px] leading-relaxed text-ink-soft">{site.footNote}</p>
+            <p className="text-[16px] leading-relaxed text-ink-soft">{site.footNote}</p>
           </Reveal>
         </div>
       </section>
@@ -77,7 +78,7 @@ export default function AboutPage() {
                 <dd className="display text-[clamp(2rem,5vw,3rem)] font-bold !text-white">
                   <Counter to={s.value} suffix={s.suffix} />
                 </dd>
-                <dt className="mt-3 text-[13px] text-violet-300/80">{s.label}</dt>
+                <dt className="mt-3 text-[13.5px] text-violet-300/80">{s.label}</dt>
               </Reveal>
             ))}
           </dl>
@@ -106,11 +107,9 @@ export default function AboutPage() {
                 y={18}
                 className="rounded-[24px] bg-violet-50/70 p-7 ring-1 ring-violet-100"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-white text-[19px] shadow-soft ring-1 ring-violet-100" aria-hidden="true">
-                  {f.glyph}
-                </span>
+                <IconTile name={f.icon} className="!bg-white shadow-soft" />
                 <h3 className="mt-5 font-display text-[17px] font-bold">{f.title}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">{f.copy}</p>
+                <p className="mt-2 text-[15.5px] leading-relaxed text-ink-soft">{f.copy}</p>
               </Reveal>
             ))}
           </ul>
@@ -160,7 +159,7 @@ export default function AboutPage() {
               y={14}
               className="rounded-[24px] bg-violet-50/70 p-7 ring-1 ring-violet-100"
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-400">
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">
                 {c.label}
               </p>
               {c.href ? (

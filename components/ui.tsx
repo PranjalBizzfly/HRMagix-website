@@ -1,13 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function Logo({ compact = false, light = false }: { compact?: boolean; light?: boolean }) {
   return (
     <span className="inline-flex items-center gap-2.5">
-      <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-[12px] bg-gradient-to-br from-violet-500 to-violet-700 text-[12.5px] font-bold text-white">
-        <span className="absolute -left-6 top-0 h-full w-6 rotate-12 bg-white/25 blur-[2px]" />
-        HR
-      </span>
+      {/* HRMagix's own product mark, taken from app.hrmagix.com/favicon.svg */}
+      <Image
+        src="/hrmagix-mark.svg"
+        alt=""
+        width={36}
+        height={36}
+        unoptimized
+        priority
+        className="h-9 w-9 shrink-0 rounded-[11px]"
+      />
       {!compact && (
         <span
           className={`font-display text-[20px] font-bold tracking-[-0.04em] ${
@@ -200,6 +207,7 @@ export function SectionHead({
   sub,
   align = "center",
   tone = "dark",
+  size = "lg",
   className = "",
 }: {
   eyebrow?: string;
@@ -207,13 +215,15 @@ export function SectionHead({
   sub?: ReactNode;
   align?: "center" | "left";
   tone?: "dark" | "light";
+  /** "md" is the 32–36px sub-section tier. */
+  size?: "lg" | "md";
   className?: string;
 }) {
   return (
     <div className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"} ${className}`}>
       {eyebrow && (
         <p
-          className={`mb-4 text-[12px] font-bold uppercase tracking-[0.2em] ${
+          className={`mb-5 text-[12px] font-bold uppercase tracking-[0.2em] ${
             tone === "light" ? "text-violet-300" : "text-violet-500"
           }`}
         >
@@ -221,15 +231,17 @@ export function SectionHead({
         </p>
       )}
       <h2
-        className={`display text-[clamp(1.9rem,5vw,3.2rem)] ${tone === "light" ? "!text-white" : ""}`}
+        className={`display ${size === "lg" ? "display-lg" : "display-md"} ${
+          tone === "light" ? "!text-white" : ""
+        }`}
       >
         {title}
       </h2>
       {sub && (
         <p
-          className={`mt-5 text-[clamp(0.98rem,2vw,1.12rem)] leading-relaxed ${
-            tone === "light" ? "text-violet-200/85" : "text-ink-soft"
-          } ${align === "center" ? "mx-auto max-w-2xl" : ""}`}
+          className={`lede mt-[38px] ${tone === "light" ? "!text-violet-200/85" : ""} ${
+            align === "center" ? "mx-auto max-w-2xl" : ""
+          }`}
         >
           {sub}
         </p>
@@ -238,10 +250,39 @@ export function SectionHead({
   );
 }
 
-export function Stars({ className = "" }: { className?: string }) {
+/** Five-star rating drawn as SVG so it renders identically everywhere. */
+/**
+ * Small status badge. Only ever carries a fact HRMagix publishes — the platform
+ * version or the trial length — never decoration.
+ */
+export function Badge({
+  children,
+  tone = "solid",
+}: {
+  children: ReactNode;
+  tone?: "solid" | "outline";
+}) {
+  const skins = {
+    solid: "bg-violet-100 text-violet-700",
+    outline: "bg-white text-violet-600 ring-1 ring-inset ring-violet-200",
+  };
   return (
-    <span className={`text-[13px] tracking-[0.16em] text-amber-400 ${className}`} aria-label="5 out of 5">
-      ★★★★★
+    <span
+      className={`inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.08em] ${skins[tone]}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+export function Stars({ className = "", size = "h-3.5 w-3.5" }: { className?: string; size?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-0.5 text-amber-400 ${className}`} role="img" aria-label="Rated 5 out of 5">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} viewBox="0 0 24 24" className={size} fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="m12 3.4 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9-5.3-2.9-5.3 2.9 1.1-5.9L3.5 9.6l5.9-.8L12 3.4Z" />
+        </svg>
+      ))}
     </span>
   );
 }

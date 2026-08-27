@@ -4,13 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { features, modules, moduleGroups } from "@/lib/content";
-import { Arrow, Button, Logo, Pill } from "./ui";
+import { Arrow, Badge, Button, Logo, Pill } from "./ui";
+import { Icon, IconTile } from "./icons";
 
 type MenuKey = "platform" | "company" | null;
 
-const COMPANY = [
+/** `badge` is only set where HRMagix publishes the fact behind it. */
+const COMPANY: { label: string; href: string; note: string; badge?: string }[] = [
   { label: "About", href: "/about", note: "Modern HR, from hire to retire" },
-  { label: "Pricing", href: "/pricing", note: "Simple, transparent pricing" },
+  { label: "Pricing", href: "/pricing", note: "Simple, transparent pricing", badge: "14-day trial" },
   { label: "FAQ", href: "/faq", note: "Answers before you ask" },
   { label: "Contact", href: "/contact", note: "Talk to the HRMagix team" },
 ];
@@ -37,6 +39,7 @@ export default function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    window.dispatchEvent(new CustomEvent("hrmagix:nav", { detail: { open } }));
     return () => {
       document.body.style.overflow = "";
     };
@@ -62,8 +65,9 @@ export default function Nav() {
     closeTimer.current = setTimeout(() => setMenu(null), 160);
   };
 
+  /** No display utility here — callers pick `flex` or `hidden xl:flex`. */
   const linkClass = (active: boolean) =>
-    `flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[14.5px] font-medium transition-colors duration-200 ${
+    `items-center gap-1.5 rounded-full px-3.5 py-2 text-[14.5px] font-medium transition-colors duration-200 ${
       active ? "text-violet-600" : "text-ink hover:text-violet-600"
     }`;
 
@@ -81,25 +85,29 @@ export default function Nav() {
           <Logo />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
           <button
             type="button"
             aria-expanded={menu === "platform"}
             onMouseEnter={() => hoverOpen("platform")}
             onClick={() => setMenu(menu === "platform" ? null : "platform")}
-            className={linkClass(menu === "platform")}
+            className={`flex ${linkClass(menu === "platform")}`}
           >
             Platform
             <Chevron open={menu === "platform"} />
           </button>
 
-          <Link href="/features" className={linkClass(pathname === "/features")}>
+          <Link href="/features" className={`flex ${linkClass(pathname === "/features")}`}>
             Features
           </Link>
-          <Link href="/how-it-works" className={linkClass(pathname === "/how-it-works")}>
+          {/* Reachable from the Platform menu at lg; shown inline once there is room. */}
+          <Link
+            href="/how-it-works"
+            className={`hidden xl:flex ${linkClass(pathname === "/how-it-works")}`}
+          >
             How it works
           </Link>
-          <Link href="/pricing" className={linkClass(pathname === "/pricing")}>
+          <Link href="/pricing" className={`flex ${linkClass(pathname === "/pricing")}`}>
             Pricing
           </Link>
 
@@ -108,17 +116,17 @@ export default function Nav() {
             aria-expanded={menu === "company"}
             onMouseEnter={() => hoverOpen("company")}
             onClick={() => setMenu(menu === "company" ? null : "company")}
-            className={linkClass(menu === "company")}
+            className={`flex ${linkClass(menu === "company")}`}
           >
             Company
             <Chevron open={menu === "company"} />
           </button>
         </nav>
 
-        <div className="hidden items-center gap-2.5 xl:flex">
+        <div className="hidden items-center gap-2.5 lg:flex">
           <Link
             href="/contact"
-            className="text-[14.5px] font-medium text-ink transition-colors hover:text-violet-600"
+            className="hidden text-[14.5px] font-medium text-ink transition-colors hover:text-violet-600 xl:inline"
           >
             Contact Sales
           </Link>
@@ -138,7 +146,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="relative grid h-11 w-11 place-items-center rounded-full ring-1 ring-violet-200 transition-colors hover:bg-violet-50 xl:hidden"
+          className="relative grid h-11 w-11 place-items-center rounded-full ring-1 ring-violet-200 transition-colors hover:bg-violet-50 lg:hidden"
         >
           <span className="relative block h-3 w-5">
             <span
@@ -162,7 +170,7 @@ export default function Nav() {
 
       {/* ---- Desktop megamenu ---- */}
       <div
-        className={`absolute inset-x-0 top-[76px] hidden origin-top px-4 transition-all duration-300 ease-out xl:block ${
+        className={`absolute inset-x-0 top-[76px] hidden origin-top px-4 transition-all duration-300 ease-out lg:block ${
           menu
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none invisible -translate-y-2 opacity-0"
@@ -181,9 +189,7 @@ export default function Nav() {
                         href="/features"
                         className="group flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-violet-50"
                       >
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-violet-50 text-[15px] ring-1 ring-violet-100">
-                          {f.glyph}
-                        </span>
+                        <IconTile name={f.icon} size="sm" className="h-8 w-8" />
                         <span className="min-w-0">
                           <span className="block text-[13.5px] font-semibold text-violet-950">
                             {f.title}
@@ -206,7 +212,7 @@ export default function Nav() {
                     if (!items.length) return null;
                     return (
                       <div key={g}>
-                        <p className="px-2 text-[11px] font-bold uppercase tracking-[0.14em] text-violet-400">
+                        <p className="px-2 text-[11.5px] font-bold uppercase tracking-[0.14em] text-violet-400">
                           {g}
                         </p>
                         <ul className="mt-1.5">
@@ -214,9 +220,9 @@ export default function Nav() {
                             <li key={m.name}>
                               <Link
                                 href="/modules"
-                                className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[13px] text-ink-soft transition-colors hover:bg-violet-50 hover:text-violet-700"
+                                className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[13.5px] text-ink-soft transition-colors hover:bg-violet-50 hover:text-violet-700"
                               >
-                                <span aria-hidden="true">{m.glyph}</span>
+                                <Icon name={m.icon} className="h-4 w-4 text-violet-400" />
                                 {m.name}
                               </Link>
                             </li>
@@ -229,13 +235,16 @@ export default function Nav() {
               </div>
 
               <div className="rounded-[20px] bg-violet-50 p-6">
-                <Pill tone="solid">All 12 included</Pill>
+                <span className="flex flex-wrap items-center gap-2">
+                  <Pill tone="solid">All 12 included</Pill>
+                  <Badge tone="outline">v2.0</Badge>
+                </span>
                 <p className="mt-4 font-display text-[19px] font-bold leading-snug text-violet-950">
                   One platform.
                   <br />
                   Every HR workflow.
                 </p>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-ink-soft">
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink-soft">
                   Switch on the modules your policies need — no code, no implementation project.
                 </p>
                 <Link
@@ -258,8 +267,9 @@ export default function Nav() {
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-300 transition-colors group-hover:bg-violet-500" />
                   <span>
-                    <span className="flex items-center gap-1.5 text-[14px] font-semibold text-violet-950">
+                    <span className="flex items-center gap-2 text-[14px] font-semibold text-violet-950">
                       {c.label}
+                      {c.badge && <Badge>{c.badge}</Badge>}
                       <Arrow className="opacity-0 transition-opacity group-hover:opacity-100" />
                     </span>
                     <span className="mt-0.5 block text-[12px] text-ink-faint">{c.note}</span>
@@ -273,7 +283,9 @@ export default function Nav() {
 
       {/* ---- Mobile sheet ---- */}
       <div
-        className={`fixed inset-0 z-40 xl:hidden ${open ? "" : "pointer-events-none invisible"}`}
+        className={`fixed inset-0 z-40 overflow-hidden lg:hidden ${
+          open ? "" : "pointer-events-none invisible"
+        }`}
         aria-hidden={!open}
       >
         <div
@@ -311,7 +323,7 @@ export default function Nav() {
                     <li
                       key={f.key}
                       style={{
-                        transition: "opacity .4s ease, transform .5s cubic-bezier(.22,1,.36,1)",
+                        transition: "opacity .3s ease, transform .5s cubic-bezier(.22,1,.36,1)",
                         transitionDelay: open ? `${120 + i * 40}ms` : "0ms",
                         opacity: open ? 1 : 0,
                         transform: open ? "none" : "translateY(10px)",
@@ -321,9 +333,7 @@ export default function Nav() {
                         href="/features"
                         className="flex items-center gap-3 rounded-2xl px-3 py-3 transition-colors hover:bg-violet-50"
                       >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet-50 text-[16px] ring-1 ring-violet-100">
-                          {f.glyph}
-                        </span>
+                        <IconTile name={f.icon} size="sm" />
                         <span className="text-[15.5px] font-semibold text-violet-950">{f.title}</span>
                       </Link>
                     </li>
@@ -334,7 +344,7 @@ export default function Nav() {
                   <div className="mask-fade-x -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-2">
                     {modules.map((m) => (
                       <Link key={m.name} href="/modules" className="chip shrink-0">
-                        <span aria-hidden="true">{m.glyph}</span>
+                        <Icon name={m.icon} className="h-4 w-4 text-violet-500" />
                         {m.name}
                       </Link>
                     ))}
@@ -347,7 +357,7 @@ export default function Nav() {
                   <li
                     key={c.href}
                     style={{
-                      transition: "opacity .4s ease, transform .5s cubic-bezier(.22,1,.36,1)",
+                      transition: "opacity .3s ease, transform .5s cubic-bezier(.22,1,.36,1)",
                       transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
                       opacity: open ? 1 : 0,
                       transform: open ? "none" : "translateY(10px)",
@@ -358,7 +368,10 @@ export default function Nav() {
                       className="flex items-center justify-between rounded-2xl px-3 py-3.5 transition-colors hover:bg-violet-50"
                     >
                       <span>
-                        <span className="block text-[17px] font-semibold text-violet-950">{c.label}</span>
+                        <span className="flex items-center gap-2 text-[17px] font-semibold text-violet-950">
+                          {c.label}
+                          {c.badge && <Badge>{c.badge}</Badge>}
+                        </span>
                         <span className="mt-0.5 block text-[12.5px] text-ink-faint">{c.note}</span>
                       </span>
                       <Arrow className="text-violet-400" />
@@ -385,22 +398,15 @@ export default function Nav() {
 
 function Chevron({ open }: { open: boolean }) {
   return (
-    <svg
-      viewBox="0 0 10 6"
-      aria-hidden="true"
-      className={`h-[6px] w-2.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-    >
-      <path d="M1 1l4 4 4-4" />
-    </svg>
+    <Icon
+      name="chevronDown"
+      className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+    />
   );
 }
 
 function MenuHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="px-2 text-[11px] font-bold uppercase tracking-[0.18em] text-violet-400">{children}</p>
+    <p className="px-2 text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">{children}</p>
   );
 }

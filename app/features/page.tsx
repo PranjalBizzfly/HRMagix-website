@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Capabilities from "@/components/sections/Capabilities";
 import Pillars from "@/components/sections/Pillars";
+import ProductGallery from "@/components/sections/ProductGallery";
 import ClosingCta from "@/components/sections/ClosingCta";
 import AreaPanels from "@/components/AreaPanels";
 import Marquee from "@/components/Marquee";
 import { Button, SectionHead } from "@/components/ui";
+import { Icon, IconTile } from "@/components/icons";
 import { Counter, Reveal } from "@/components/motion";
 import { features, modules, stats } from "@/lib/content";
 
@@ -36,8 +38,8 @@ export default function FeaturesPage() {
         crumb="Features"
         actions={
           <>
-            <Button href="/contact" variant="outline" arrow={false} size="lg">
-              Watch Demo
+            <Button href="/how-it-works" variant="outline" arrow={false} size="lg">
+              See how it works
             </Button>
             <Button href="/contact" size="lg">
               Get Started
@@ -54,7 +56,7 @@ export default function FeaturesPage() {
               <p className="display text-[clamp(1.8rem,4vw,2.6rem)] font-bold">
                 <Counter to={s.value} suffix={s.suffix} />
               </p>
-              <p className="mt-1.5 text-[13px] text-ink-faint">{s.label}</p>
+              <p className="mt-1.5 text-[13.5px] text-ink-faint">{s.label}</p>
             </Reveal>
           ))}
         </div>
@@ -78,12 +80,7 @@ export default function FeaturesPage() {
               <Reveal key={f.key} delay={i * 60} y={18}>
                 <article className="grid gap-5 rounded-[24px] bg-violet-50/70 p-6 ring-1 ring-violet-100 sm:p-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] lg:items-center lg:gap-12">
                   <div className="flex items-center gap-4">
-                    <span
-                      className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white text-[24px] shadow-soft ring-1 ring-violet-100"
-                      aria-hidden="true"
-                    >
-                      {f.glyph}
-                    </span>
+                    <IconTile name={f.icon} size="lg" className="!bg-white shadow-soft" />
                     <div>
                       <p className="font-display text-[12px] font-bold tabular-nums text-violet-400">
                         {String(i + 1).padStart(2, "0")}
@@ -95,13 +92,13 @@ export default function FeaturesPage() {
                   </div>
 
                   <div>
-                    <p className="text-[15px] leading-relaxed text-ink-soft">{f.copy}</p>
+                    <p className="text-[16px] leading-relaxed text-ink-soft">{f.copy}</p>
                     <ul className="mt-5 flex flex-wrap gap-2.5">
                       {modules
                         .filter((m) => relatedModules[f.key].includes(m.name))
                         .map((m) => (
                           <li key={m.name} className="chip">
-                            <span aria-hidden="true">{m.glyph}</span>
+                            <Icon name={m.icon} className="h-4 w-4 text-violet-500" />
                             {m.name}
                           </li>
                         ))}
@@ -115,6 +112,22 @@ export default function FeaturesPage() {
       </section>
 
       <Pillars />
+
+      <section className="bg-white pb-20 sm:pb-24">
+        <div className="shell">
+          <SectionHead
+            eyebrow="Inside the product"
+            title={
+              <>
+                See the workspace <strong>screen by screen</strong>
+              </>
+            }
+          />
+          <div className="mt-14">
+            <ProductGallery />
+          </div>
+        </div>
+      </section>
 
       <section className="bg-violet-50/70 py-20 sm:py-24">
         <div className="shell">

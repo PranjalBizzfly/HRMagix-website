@@ -1,11 +1,15 @@
 import { site, workspace } from "@/lib/content";
 import { Button, Pill, Stars } from "@/components/ui";
+import { Icon, type IconName } from "@/components/icons";
 import { Parallax, Reveal, Words } from "@/components/motion";
 import Workspace from "@/components/Workspace";
+import Media from "@/components/Media";
+import { BrowserFrame } from "@/components/Frames";
+import { PunchInPhone } from "@/components/ProductVisuals";
 
 /**
- * Centered hero: trust pills, an oversized mixed-weight headline, two pill
- * CTAs, then a collage of the product with small floating cards around it.
+ * Centered hero: trust pills, the page's one oversized type moment, two pill
+ * CTAs, then the workspace flanked by the phone view and small live callouts.
  */
 export default function Hero() {
   return (
@@ -19,29 +23,30 @@ export default function Hero() {
       <div className="shell relative">
         <Reveal y={12} className="flex flex-wrap items-center justify-center gap-2.5">
           <Pill>
-            <Stars className="text-[11px]" />
+            <Stars size="h-3 w-3" />
             <span className="text-ink-soft">Loved by {site.proof.companies}</span>
           </Pill>
           <Pill>
-            <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
+            <Icon name="sparkle" className="h-3.5 w-3.5 text-violet-500" />
             {site.hero.eyebrow}
           </Pill>
         </Reveal>
 
-        <h1 className="display mx-auto mt-8 max-w-[16ch] text-center text-[clamp(2.35rem,7vw,4.6rem)]">
+        <h1 className="display display-xl mx-auto mt-8 max-w-[15ch] text-center">
           <Words as="span" text="Smart HR for" className="block" />
           <Words as="span" text="modern teams" className="block font-bold" delay={160} />
         </h1>
 
-        <Reveal delay={260} className="mx-auto mt-6 max-w-2xl text-center">
-          <p className="text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed text-ink-soft">
-            {site.hero.lede}
-          </p>
+        <Reveal delay={260} className="mx-auto mt-[38px] max-w-2xl text-center">
+          <p className="lede">{site.hero.lede}</p>
         </Reveal>
 
-        <Reveal delay={360} className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <Button href="/contact" variant="outline" size="lg" arrow={false}>
-            Watch Demo
+        <Reveal delay={360} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {/* HRMagix publishes no demo video — this points at the walkthrough,
+              which is where its own "Watch Demo" button goes. */}
+          <Button href="/how-it-works" variant="outline" size="lg" arrow={false}>
+            <Icon name="play" className="h-3 w-3 text-violet-500" />
+            See how it works
           </Button>
           <Button href="/contact" size="lg">
             Get Started
@@ -49,77 +54,55 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={440} className="mt-6 text-center">
-          <p className="text-[13px] text-ink-faint">{site.trial}</p>
+          <p className="text-[13.5px] text-ink-faint">{site.trial}</p>
         </Reveal>
 
-        {/* Product collage — the panel is centred, the callouts live in the gutters */}
-        <div className="relative mx-auto mt-14 max-w-5xl sm:mt-16">
+        {/* Product collage — panel centred, phone and callouts in the gutters */}
+        <div className="relative mx-auto mt-16 max-w-5xl xl:max-w-6xl">
           <div className="mx-auto max-w-3xl lg:max-w-[46rem]">
             <Parallax speed={0.028}>
               <Reveal y={34} scale={0.97} delay={120}>
-                <Workspace />
+                <BrowserFrame>
+                  <Media
+                    slot="hero"
+                    rounded="rounded-none"
+                    hover={false}
+                    sizes="(max-width: 1024px) 100vw, 736px"
+                  >
+                    <Workspace chrome={false} />
+                  </Media>
+                </BrowserFrame>
               </Reveal>
             </Parallax>
           </div>
 
-          <FloatCard
-            className="left-0 top-[22%] hidden lg:flex xl:-left-6"
-            delay={700}
-            duration={7.5}
+          {/* The mobile view sits alongside the desktop one from lg up */}
+          <Parallax
+            speed={0.055}
+            className="pointer-events-none absolute -bottom-8 -right-2 hidden w-[196px] lg:block xl:right-0 xl:w-[212px]"
           >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-[16px] ring-1 ring-violet-100">
-              🕒
+            <Reveal y={30} scale={0.94} delay={520}>
+              <PunchInPhone />
+            </Reveal>
+          </Parallax>
+
+          <FloatCard className="left-0 top-[20%] hidden lg:flex" delay={700} duration={7.5} icon="users">
+            <span className="block font-display text-[15.5px] font-bold leading-none text-violet-950">
+              {workspace.attendance[0].value}
             </span>
-            <span>
-              <span className="block font-display text-[15px] font-bold leading-none text-violet-950">
-                {workspace.attendance[0].value}
-              </span>
-              <span className="mt-1 block text-[11px] text-ink-faint">Present today</span>
-            </span>
+            <span className="mt-1 block text-[11.5px] text-ink-faint">Present today</span>
           </FloatCard>
 
-          <FloatCard
-            className="right-0 top-[6%] hidden lg:flex xl:-right-6"
-            delay={840}
-            duration={8.5}
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-[16px] ring-1 ring-violet-100">
-              🎉
-            </span>
-            <span>
-              <span className="block text-[12.5px] font-semibold text-violet-950">New kudos</span>
-              <span className="block text-[11px] text-ink-faint">Priya → Rohan</span>
-            </span>
+          <FloatCard className="left-0 top-[56%] hidden lg:flex" delay={860} duration={9} icon="wallet">
+            <span className="block text-[12.5px] font-semibold text-violet-950">Payroll run</span>
+            <span className="block text-[11.5px] text-ink-faint">Done in 2 min</span>
           </FloatCard>
 
-          <FloatCard
-            className="bottom-[12%] left-0 hidden lg:flex xl:-left-10"
-            delay={960}
-            duration={9}
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-[16px] ring-1 ring-violet-100">
-              💰
+          <FloatCard className="right-0 top-[2%] hidden lg:flex" delay={980} duration={8} icon="target">
+            <span className="block font-display text-[15.5px] font-bold leading-none text-violet-950">
+              {workspace.okrs[0].pct}%
             </span>
-            <span>
-              <span className="block text-[12.5px] font-semibold text-violet-950">Payroll run</span>
-              <span className="block text-[11px] text-ink-faint">Done in 2 min</span>
-            </span>
-          </FloatCard>
-
-          <FloatCard
-            className="bottom-[26%] right-0 hidden lg:flex xl:-right-10"
-            delay={1080}
-            duration={7}
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-[16px] ring-1 ring-violet-100">
-              🎯
-            </span>
-            <span>
-              <span className="block font-display text-[15px] font-bold leading-none text-violet-950">
-                {workspace.okrs[0].pct}%
-              </span>
-              <span className="mt-1 block text-[11px] text-ink-faint">Time-to-hire OKR</span>
-            </span>
+            <span className="mt-1 block text-[11.5px] text-ink-faint">Time-to-hire OKR</span>
           </FloatCard>
         </div>
       </div>
@@ -132,24 +115,29 @@ function FloatCard({
   className = "",
   delay,
   duration,
+  icon,
 }: {
   children: React.ReactNode;
   className?: string;
   delay: number;
   duration: number;
+  icon: IconName;
 }) {
   return (
     <Reveal
       delay={delay}
       y={18}
       scale={0.92}
-      className={`absolute z-[1] items-center gap-3 rounded-2xl bg-white px-3.5 py-3 shadow-lift ring-1 ring-violet-100 ${className}`}
+      className={`absolute z-[1] rounded-2xl bg-white px-3.5 py-3 shadow-lift ring-1 ring-violet-100 ${className}`}
     >
       <span
         className="flex animate-float items-center gap-3"
         style={{ "--float-duration": `${duration}s` } as React.CSSProperties}
       >
-        {children}
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600 ring-1 ring-violet-100">
+          <Icon name={icon} className="h-[18px] w-[18px]" />
+        </span>
+        <span>{children}</span>
       </span>
     </Reveal>
   );

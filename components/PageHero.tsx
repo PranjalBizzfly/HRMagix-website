@@ -41,7 +41,7 @@ export default function PageHero({
           </Pill>
         </Reveal>
 
-        <h1 className="display mx-auto mt-7 max-w-[20ch] text-[clamp(2.1rem,6vw,3.9rem)]">
+        <h1 className="display display-xl mx-auto mt-7 max-w-[18ch]">
           <Words as="span" text={light} />
           {bold && (
             <>
@@ -51,8 +51,8 @@ export default function PageHero({
           )}
         </h1>
 
-        <Reveal delay={240} className="mx-auto mt-6 max-w-2xl">
-          <p className="text-[clamp(0.98rem,2.2vw,1.15rem)] leading-relaxed text-ink-soft">{lede}</p>
+        <Reveal delay={240} className="mx-auto mt-[38px] max-w-2xl">
+          <p className="lede">{lede}</p>
         </Reveal>
 
         {actions && (

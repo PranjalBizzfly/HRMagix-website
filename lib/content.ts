@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/icons";
+
 /**
  * Single source of truth for HRMagix site copy.
  * Every value here comes from hrmagix.com — nothing is invented.
@@ -36,7 +38,7 @@ export type Feature = {
   key: string;
   title: string;
   copy: string;
-  glyph: string;
+  icon: IconName;
 };
 
 export const features: Feature[] = [
@@ -44,55 +46,55 @@ export const features: Feature[] = [
     key: "attendance",
     title: "Smart attendance",
     copy: "Punch-in, shifts and geo-aware tracking with real-time presence dashboards.",
-    glyph: "🕒",
+    icon: "fingerprint",
   },
   {
     key: "leaves",
     title: "Leaves & holidays",
     copy: "Flexible policies, instant approvals and a clear team calendar everyone trusts.",
-    glyph: "🏖️",
+    icon: "calendar",
   },
   {
     key: "payroll",
     title: "Automated payroll",
     copy: "Run accurate payroll in minutes with payslips, taxes and compliance built in.",
-    glyph: "💰",
+    icon: "wallet",
   },
   {
     key: "performance",
     title: "Performance & OKRs",
     copy: "OKRs, KRAs, 9-box, PIPs and reviews that actually drive growth.",
-    glyph: "🎯",
+    icon: "target",
   },
   {
     key: "recognition",
     title: "Recognition & rewards",
     copy: "Celebrate wins with kudos, badges and a culture wall your team loves.",
-    glyph: "🏆",
+    icon: "trophy",
   },
   {
     key: "lifecycle",
     title: "Lifecycle & onboarding",
     copy: "Delightful onboarding, smooth offboarding and everything in between.",
-    glyph: "🚀",
+    icon: "rocket",
   },
 ];
 
-export type Module = { name: string; glyph: string; group: string };
+export type Module = { name: string; icon: IconName; group: string };
 
 export const modules: Module[] = [
-  { name: "Attendance & Shifts", glyph: "🕒", group: "Time & Work" },
-  { name: "Leaves & Holidays", glyph: "🏖️", group: "Time & Work" },
-  { name: "Payroll", glyph: "💰", group: "Payroll" },
-  { name: "Objectives & OKRs", glyph: "🎯", group: "Performance" },
-  { name: "KRA & 9-Box", glyph: "📊", group: "Performance" },
-  { name: "PIPs & Growth", glyph: "🌱", group: "Performance" },
-  { name: "Recognition", glyph: "🏆", group: "Engagement" },
-  { name: "1-on-1s & Meetings", glyph: "🤝", group: "Engagement" },
-  { name: "Onboarding", glyph: "🚀", group: "People" },
-  { name: "Documents", glyph: "📁", group: "People" },
-  { name: "Succession", glyph: "🧭", group: "People" },
-  { name: "Analytics", glyph: "📈", group: "System" },
+  { name: "Attendance & Shifts", icon: "clock", group: "Time & Work" },
+  { name: "Leaves & Holidays", icon: "calendar", group: "Time & Work" },
+  { name: "Payroll", icon: "wallet", group: "Payroll" },
+  { name: "Objectives & OKRs", icon: "target", group: "Performance" },
+  { name: "KRA & 9-Box", icon: "grid", group: "Performance" },
+  { name: "PIPs & Growth", icon: "sprout", group: "Performance" },
+  { name: "Recognition", icon: "trophy", group: "Engagement" },
+  { name: "1-on-1s & Meetings", icon: "chat", group: "Engagement" },
+  { name: "Onboarding", icon: "rocket", group: "People" },
+  { name: "Documents", icon: "folder", group: "People" },
+  { name: "Succession", icon: "compass", group: "People" },
+  { name: "Analytics", icon: "chart", group: "System" },
 ];
 
 export const moduleGroups = [
@@ -108,7 +110,7 @@ export const moduleGroups = [
 export const showcases = [
   {
     key: "time",
-    kicker: "🕒 Time & Attendance",
+    kicker: "Time & Attendance",
     title: "Real-time presence, zero spreadsheets",
     copy: "See who's in, on leave, or remote at a glance. Geo-aware punch-in, smart shifts and live dashboards keep everyone in sync — automatically.",
     points: [
@@ -119,7 +121,7 @@ export const showcases = [
   },
   {
     key: "growth",
-    kicker: "🎯 Performance & Growth",
+    kicker: "Performance & Growth",
     title: "Goals, reviews and growth — connected",
     copy: "Set OKRs and KRAs, run lightweight reviews, track 9-box and PIPs, and celebrate wins with recognition. Everything that grows your people, in one flow.",
     points: [

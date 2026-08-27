@@ -52,7 +52,7 @@ export default function FaqPage() {
             <Reveal delay={180} className="mt-7 space-y-3">
               <a
                 href={`mailto:${site.contact.email}`}
-                className="group flex items-center gap-2 text-[15px] font-semibold text-violet-600"
+                className="group flex items-center gap-2 text-[15.5px] font-semibold text-violet-600"
               >
                 {site.contact.email} <Arrow />
               </a>

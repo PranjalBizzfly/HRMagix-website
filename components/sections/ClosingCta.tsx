@@ -13,13 +13,13 @@ export default function ClosingCta() {
       />
 
       <div className="shell relative text-center">
-        <h2 className="display mx-auto max-w-[18ch] text-[clamp(2rem,6vw,3.8rem)] !text-white">
+        <h2 className="display display-xl mx-auto max-w-[16ch] !text-white">
           <Words text="Ready to delight" className="block" />
           <Words text="your team?" className="block font-bold" delay={140} />
         </h2>
 
-        <Reveal delay={220} className="mx-auto mt-6 max-w-xl">
-          <p className="text-[clamp(0.98rem,2vw,1.12rem)] leading-relaxed text-violet-200/85">
+        <Reveal delay={220} className="mx-auto mt-[38px] max-w-xl">
+          <p className="lede !text-violet-200/85">
             Join {site.proof.companies} already running modern HR on {site.name} — from hire to retire.
           </p>
         </Reveal>
