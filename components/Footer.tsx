@@ -31,13 +31,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-violet-100 bg-violet-50/60">
+    <footer className="border-t border-line bg-surface-sunken/60">
       {/* CTA panel */}
       <div className="shell pt-16 sm:pt-20">
         <div className="relative overflow-hidden rounded-[24px] bg-violet-950 p-8 text-white sm:p-10">
           <div className="pointer-events-none absolute inset-0 dotted opacity-25" aria-hidden="true" />
           <div
-            className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-violet-500/35 blur-[90px]"
+            className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand/35 blur-[90px]"
             aria-hidden="true"
           />
           <div className="relative flex flex-col items-start justify-between gap-7 lg:flex-row lg:items-center">
@@ -67,17 +67,17 @@ export default function Footer() {
 
       {/* Trust strip — published figures only */}
       <div className="shell mt-12">
-        <ul className="grid gap-x-8 gap-y-6 border-y border-violet-200/70 py-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-x-8 gap-y-6 border-y border-line-strong/70 py-8 sm:grid-cols-2 lg:grid-cols-4">
           {trust.map((t) => (
             <li key={t.label} className="flex items-center gap-3.5">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-violet-600 ring-1 ring-violet-100">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-surface text-accent ring-1 ring-line">
                 <Icon name={t.icon} className="h-[18px] w-[18px]" />
               </span>
               <span>
-                <span className="block font-display text-[17px] font-bold leading-none text-violet-950">
+                <span className="block font-display text-[17px] font-bold leading-none text-heading">
                   {t.value}
                 </span>
-                <span className="mt-1.5 block text-[12.5px] text-ink-faint">{t.label}</span>
+                <span className="mt-1.5 block text-[12.5px] text-subtle">{t.label}</span>
               </span>
             </li>
           ))}
@@ -89,30 +89,30 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2.6fr]">
           <div className="max-w-sm">
             <Logo />
-            <p className="mt-5 text-[15.5px] leading-relaxed text-ink-soft">
+            <p className="mt-5 text-[15.5px] leading-relaxed text-muted">
               Modern HR, from hire to retire. Everything your people team needs, in one delightful
               platform.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <Stars size="h-3.5 w-3.5" />
-              <span className="text-[12.5px] text-ink-faint">{site.proof.trustline}</span>
+              <span className="text-[12.5px] text-subtle">{site.proof.trustline}</span>
             </div>
 
             <address className="mt-8 space-y-3 not-italic">
               {contact.map((c) => (
                 <div key={c.value} className="flex items-center gap-3">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white text-violet-500 ring-1 ring-violet-100">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-surface text-accent-soft ring-1 ring-line">
                     <Icon name={c.icon} className="h-4 w-4" />
                   </span>
                   {c.href ? (
                     <a
                       href={c.href}
-                      className="text-[14.5px] font-medium text-violet-700 transition-colors hover:text-violet-500"
+                      className="text-[14.5px] font-medium text-accent-strong transition-colors hover:text-accent-soft"
                     >
                       {c.value}
                     </a>
                   ) : (
-                    <span className="text-[14.5px] text-ink-soft">{c.value}</span>
+                    <span className="text-[14.5px] text-muted">{c.value}</span>
                   )}
                 </div>
               ))}
@@ -122,7 +122,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {footerNav.map((col) => (
               <div key={col.heading}>
-                <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">
+                <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-label">
                   {col.heading}
                 </h3>
                 <ul className="mt-4 space-y-2.5">
@@ -135,7 +135,7 @@ export default function Footer() {
               </div>
             ))}
             <div>
-              <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">
+              <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-label">
                 Capabilities
               </h3>
               <ul className="mt-4 space-y-2.5">
@@ -150,8 +150,8 @@ export default function Footer() {
         </div>
 
         {/* Module index */}
-        <div className="mt-14 border-t border-violet-100 pt-8">
-          <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">
+        <div className="mt-14 border-t border-line pt-8">
+          <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-label">
             All modules
           </h3>
           <ul className="mt-4 flex flex-wrap gap-x-2.5 gap-y-2">
@@ -159,9 +159,9 @@ export default function Footer() {
               <li key={m.name}>
                 <Link
                   href="/modules"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[12.5px] text-ink-soft ring-1 ring-violet-100 transition-all duration-300 hover:-translate-y-0.5 hover:text-violet-700 hover:ring-violet-300 motion-reduce:hover:translate-y-0"
+                  className="inline-flex items-center gap-2 rounded-full bg-surface px-3 py-1.5 text-[12.5px] text-muted ring-1 ring-line transition-all duration-300 hover:-translate-y-0.5 hover:text-accent-strong hover:ring-line-accent motion-reduce:hover:translate-y-0"
                 >
-                  <Icon name={m.icon} className="h-3.5 w-3.5 text-violet-400" />
+                  <Icon name={m.icon} className="h-3.5 w-3.5 text-label" />
                   {m.name}
                 </Link>
               </li>
@@ -169,7 +169,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-violet-100 pt-7 text-[13.5px] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-7 text-[13.5px] text-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {site.name}. All rights reserved.</p>
           <p>{site.footNote}</p>
         </div>
@@ -182,7 +182,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="group relative inline-block text-[14px] text-ink-soft transition-colors hover:text-violet-700"
+      className="group relative inline-block text-[14px] text-muted transition-colors hover:text-accent-strong"
     >
       {children}
       <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-violet-400 transition-all duration-300 group-hover:w-full" />

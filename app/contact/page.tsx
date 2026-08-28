@@ -3,13 +3,14 @@ import ContactForm from "@/components/ContactForm";
 import Faq from "@/components/Faq";
 import { Pill, SectionHead, Stars } from "@/components/ui";
 import { IconTile, type IconName } from "@/components/icons";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Reveal, Words } from "@/components/motion";
 import { plans, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to the HRMagix team — email hello@hrmagix.com, call +91 98765 43210, or send a message for a personalised demo.",
+    "Talk to the HRMagix team in Pune & Mumbai — email hello@hrmagix.com, call +91 900 600 7955, or send a message for a personalised demo.",
 };
 
 export default function ContactPage() {
@@ -29,7 +30,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden wash pb-20 pt-[112px] sm:pt-[136px]">
         <div className="pointer-events-none absolute inset-0 dotted opacity-60" aria-hidden="true" />
         <div
-          className="pointer-events-none absolute left-1/2 top-[-30%] h-[420px] w-[760px] max-w-[130vw] -translate-x-1/2 rounded-full bg-violet-300/25 blur-[110px]"
+          className="pointer-events-none absolute left-1/2 top-[-30%] h-[420px] w-[760px] max-w-[130vw] -translate-x-1/2 rounded-full bg-glow/25 blur-[110px]"
           aria-hidden="true"
         />
 
@@ -37,7 +38,7 @@ export default function ContactPage() {
           <div className="text-center">
             <Reveal y={10} className="flex justify-center">
               <Pill>
-                <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" />
                 Get in touch
               </Pill>
             </Reveal>
@@ -48,6 +49,10 @@ export default function ContactPage() {
             <Reveal delay={240} className="mx-auto mt-[38px] max-w-2xl">
               <p className="lede">{site.contact.blurb}</p>
             </Reveal>
+
+            <Reveal delay={320} className="mt-8 flex justify-center">
+              <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
+            </Reveal>
           </div>
 
           <div className="mt-14 grid gap-4 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.3fr)] lg:gap-5">
@@ -56,7 +61,7 @@ export default function ContactPage() {
               <div className="panel h-full bg-violet-950 p-7 text-white sm:p-9">
                 <div className="pointer-events-none absolute inset-0 dotted opacity-25" aria-hidden="true" />
                 <div
-                  className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-violet-500/35 blur-[90px]"
+                  className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-brand/35 blur-[90px]"
                   aria-hidden="true"
                 />
                 <div className="relative">
@@ -68,7 +73,7 @@ export default function ContactPage() {
                       <Reveal as="li" key={c.label} delay={i * 90} y={12} className="flex items-start gap-4">
                         <IconTile name={c.icon} tone="dark" className="rounded-2xl" />
                         <span>
-                          <span className="block text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-400">
+                          <span className="block text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-300">
                             {c.label}
                           </span>
                           {c.href ? (
@@ -96,7 +101,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="mt-8 border-t border-white/10 pt-7">
-                    <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-400">
+                    <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-300">
                       Plans
                     </p>
                     <ul className="mt-4 space-y-2.5">
@@ -120,9 +125,9 @@ export default function ContactPage() {
 
             {/* Form */}
             <Reveal y={22} delay={120}>
-              <div className="panel h-full bg-white p-7 shadow-soft ring-1 ring-violet-100 sm:p-10">
+              <div className="panel h-full bg-surface p-7 shadow-soft ring-1 ring-line sm:p-10">
                 <h2 className="font-display text-[22px] font-bold">Send us a message</h2>
-                <p className="mt-1.5 text-[14px] text-ink-faint">
+                <p className="mt-1.5 text-[14px] text-subtle">
                   Tell us about your team and what you would like to see.
                 </p>
                 <div className="mt-8">
@@ -134,7 +139,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)] lg:gap-16">
           <div className="lg:sticky lg:top-[110px] lg:self-start">
             <SectionHead

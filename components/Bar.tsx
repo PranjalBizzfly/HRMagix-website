@@ -22,7 +22,7 @@ export default function Bar({
       aria-valuemax={100}
       className={`block h-full rounded-full ${
         tone === "light"
-          ? "bg-gradient-to-r from-violet-400 to-violet-200"
+          ? "bg-gradient-to-r from-violet-400 to-surface-strong"
           : "bg-gradient-to-r from-violet-500 to-violet-400"
       }`}
       style={{

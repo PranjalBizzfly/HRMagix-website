@@ -15,18 +15,18 @@ export default function Pricing() {
                 className={`flex h-full flex-col rounded-[24px] p-7 transition-all duration-500 sm:p-9 ${
                   featured
                     ? "bg-violet-950 text-white shadow-lift"
-                    : "bg-white shadow-soft ring-1 ring-violet-100 hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0"
+                    : "bg-surface shadow-soft ring-1 ring-line hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0"
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
                   <h3
-                    className={`font-display text-[20px] font-bold ${featured ? "text-white" : "text-violet-950"}`}
+                    className={`font-display text-[20px] font-bold ${featured ? "text-white" : "text-heading"}`}
                   >
                     {plan.name}
                   </h3>
                   {featured && <Pill tone="dark">Most Popular</Pill>}
                 </div>
-                <p className={`mt-2 text-[13.5px] ${featured ? "text-violet-300/85" : "text-ink-faint"}`}>
+                <p className={`mt-2 text-[13.5px] ${featured ? "text-violet-300/85" : "text-subtle"}`}>
                   {plan.blurb}
                 </p>
 
@@ -39,7 +39,7 @@ export default function Pricing() {
                     {plan.price}
                   </span>
                   {plan.unit && (
-                    <span className={`text-[14px] ${featured ? "text-violet-300/85" : "text-ink-faint"}`}>
+                    <span className={`text-[14px] ${featured ? "text-violet-300/85" : "text-subtle"}`}>
                       {plan.unit}
                     </span>
                   )}
@@ -47,20 +47,20 @@ export default function Pricing() {
 
                 <ul
                   className={`mt-8 flex-1 space-y-3.5 border-t pt-7 ${
-                    featured ? "border-white/10" : "border-violet-100"
+                    featured ? "border-white/10" : "border-line"
                   }`}
                 >
                   {plan.includes.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span
                         className={`mt-[3px] grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full ${
-                          featured ? "bg-violet-500 text-white" : "bg-violet-100 text-violet-700"
+                          featured ? "bg-brand text-white" : "bg-surface-raised text-accent-strong"
                         }`}
                       >
                         <Check className="h-2.5 w-2.5" />
                       </span>
                       <span
-                        className={`text-[14px] leading-snug ${featured ? "text-violet-100" : "text-ink-soft"}`}
+                        className={`text-[14px] leading-snug ${featured ? "text-violet-100" : "text-muted"}`}
                       >
                         {item}
                       </span>
@@ -85,7 +85,7 @@ export default function Pricing() {
       </div>
 
       <Reveal delay={180} className="mt-8 text-center">
-        <p className="text-[13.5px] text-ink-faint">{site.trial}</p>
+        <p className="text-[13.5px] text-subtle">{site.trial}</p>
       </Reveal>
     </div>
   );

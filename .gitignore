@@ -97,3 +97,13 @@ $RECYCLE.BIN/
 *.tgz
 tmp/
 temp/
+
+# Documentation
+docs/
+
+
+# Isolated verification build
+.next-verify
+
+# Theme audit screenshots
+.theme-shots/

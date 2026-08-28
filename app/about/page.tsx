@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ClosingCta from "@/components/sections/ClosingCta";
@@ -40,21 +41,49 @@ export default function AboutPage() {
         }
       />
 
+      {/* Mission & Pune Origin Showcase */}
+      <section className="bg-surface py-12">
+        <div className="shell">
+          <Reveal y={20} className="overflow-hidden rounded-[32px] bg-gradient-to-br from-violet-950 via-violet-900 to-indigo-950 p-8 text-white shadow-lift sm:p-12 lg:p-16">
+            <div className="max-w-3xl">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-[12px] font-bold text-violet-200 backdrop-blur-md ring-1 ring-white/20">
+                Origin Story & Engineering Principles
+              </span>
+              <h2 className="display display-lg mt-5 !text-white">
+                Built in Pune. Trusted across Indian enterprise ecosystems.
+              </h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-violet-200/90 sm:text-[18px]">
+                HRMagix was created with a single mission: to eliminate the administrative exhaustion that plagues Indian People Operations teams. By unifying biometric time-tracking, statutory payroll compliance, continuous OKR meritocracy, and authentic employee recognition into a single cloud platform, we give leaders their working weeks back.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href="/contact" variant="light" size="md">
+                  Visit Our Pune Headquarters
+                </Button>
+                <Button href="/features" variant="outline" size="md" className="!bg-transparent !text-white !ring-white/30 hover:!ring-white/70">
+                  Explore Platform Philosophy
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Statement */}
-      <section className="bg-white py-20 sm:py-24 lg:py-28">
+      <section className="bg-surface py-16 sm:py-20">
         <div className="shell text-center">
           <p className="display mx-auto max-w-[20ch] text-[clamp(1.9rem,5.4vw,3.4rem)]">
             <Words text="People, performance, and payroll —" />{" "}
             <Words text="all in one workspace." className="font-bold" delay={180} />
           </p>
-          <Reveal delay={280} className="mx-auto mt-10 grid max-w-4xl gap-8 border-t border-violet-100 pt-10 text-left sm:grid-cols-3">
-            <p className="text-[16px] leading-relaxed text-ink-soft sm:col-span-2">
+          <Reveal delay={280} className="mx-auto mt-10 grid max-w-4xl gap-8 border-t border-line pt-10 text-left sm:grid-cols-3">
+            <p className="text-[16px] leading-relaxed text-muted sm:col-span-2">
               {site.name} replaces the spreadsheet-and-inbox routine with a single workspace:{" "}
               {modules.length} modules covering attendance, leaves, payroll, performance, recognition
               and the whole employee lifecycle — switched on to match your policies, no code
               required.
             </p>
-            <p className="text-[16px] leading-relaxed text-ink-soft">{site.footNote}</p>
+            <p className="text-[16px] leading-relaxed text-muted">{site.footNote}</p>
           </Reveal>
         </div>
       </section>
@@ -88,7 +117,7 @@ export default function AboutPage() {
       <Contrast />
 
       {/* What the platform covers */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="The platform"
@@ -105,11 +134,11 @@ export default function AboutPage() {
                 key={f.key}
                 delay={i * 60}
                 y={18}
-                className="rounded-[24px] bg-violet-50/70 p-7 ring-1 ring-violet-100"
+                className="rounded-[24px] bg-surface-sunken/70 p-7 ring-1 ring-line"
               >
-                <IconTile name={f.icon} className="!bg-white shadow-soft" />
+                <IconTile name={f.icon} className="!bg-surface shadow-soft" />
                 <h3 className="mt-5 font-display text-[17px] font-bold">{f.title}</h3>
-                <p className="mt-2 text-[15.5px] leading-relaxed text-ink-soft">{f.copy}</p>
+                <p className="mt-2 text-[15.5px] leading-relaxed text-muted">{f.copy}</p>
               </Reveal>
             ))}
           </ul>
@@ -121,10 +150,10 @@ export default function AboutPage() {
                 key={a.title}
                 delay={i * 70}
                 y={16}
-                className="rounded-[24px] bg-white p-6 shadow-soft ring-1 ring-violet-100"
+                className="rounded-[24px] bg-surface p-6 shadow-soft ring-1 ring-line"
               >
                 <h3 className="font-display text-[15.5px] font-bold">{a.title}</h3>
-                <p className="mt-2 text-[13.5px] leading-relaxed text-ink-soft">{a.copy}</p>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{a.copy}</p>
               </Reveal>
             ))}
           </ul>
@@ -132,7 +161,7 @@ export default function AboutPage() {
       </section>
 
       {/* Voices */}
-      <section className="bg-violet-50/70 py-20 sm:py-24">
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="Customer voices"
@@ -150,27 +179,27 @@ export default function AboutPage() {
       </section>
 
       {/* Contact strip */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-surface py-16 sm:py-20">
         <div className="shell grid gap-4 sm:grid-cols-3">
           {channels.map((c, i) => (
             <Reveal
               key={c.label}
               delay={i * 80}
               y={14}
-              className="rounded-[24px] bg-violet-50/70 p-7 ring-1 ring-violet-100"
+              className="rounded-[24px] bg-surface-sunken/70 p-7 ring-1 ring-line"
             >
-              <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet-400">
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-label">
                 {c.label}
               </p>
               {c.href ? (
                 <a
                   href={c.href}
-                  className="mt-2.5 block font-display text-[17px] font-bold text-violet-950 transition-colors hover:text-violet-600"
+                  className="mt-2.5 block font-display text-[17px] font-bold text-heading transition-colors hover:text-accent"
                 >
                   {c.value}
                 </a>
               ) : (
-                <p className="mt-2.5 font-display text-[17px] font-bold text-violet-950">{c.value}</p>
+                <p className="mt-2.5 font-display text-[17px] font-bold text-heading">{c.value}</p>
               )}
             </Reveal>
           ))}

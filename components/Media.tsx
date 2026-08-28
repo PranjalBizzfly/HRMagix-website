@@ -59,7 +59,7 @@ export default function Media({
         loading={media.priority ? undefined : "lazy"}
         className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"} transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
           shown ? "scale-100 opacity-100 blur-0" : "scale-[1.04] opacity-0 blur-sm"
-        } ${hover ? "group-hover/media:scale-[1.03]" : ""} motion-reduce:!scale-100 motion-reduce:!opacity-100 motion-reduce:!blur-0 motion-reduce:transition-none ${imgClassName}`}
+        } ${hover ? "group-hover/media:scale-[1.03]" : ""} media-tone motion-reduce:!scale-100 motion-reduce:!opacity-100 motion-reduce:!blur-0 motion-reduce:transition-none ${imgClassName}`}
       />
     </div>
   );

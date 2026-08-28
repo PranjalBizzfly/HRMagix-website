@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { Pill } from "./ui";
+import Breadcrumbs from "./Breadcrumbs";
 import { Reveal, Words } from "./motion";
 
 /** Centered interior-page opener on the soft wash used by the homepage hero. */
@@ -29,14 +29,14 @@ export default function PageHero({
     <section className="relative overflow-hidden wash pb-16 pt-[112px] sm:pb-20 sm:pt-[136px]">
       <div className="pointer-events-none absolute inset-0 dotted opacity-60" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/2 top-[-30%] h-[420px] w-[760px] max-w-[130vw] -translate-x-1/2 rounded-full bg-violet-300/25 blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-[-30%] h-[420px] w-[760px] max-w-[130vw] -translate-x-1/2 rounded-full bg-glow/25 blur-[110px]"
         aria-hidden="true"
       />
 
       <div className="shell relative text-center">
         <Reveal y={10} className="flex justify-center">
           <Pill>
-            <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
+            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
             {eyebrow}
           </Pill>
         </Reveal>
@@ -62,13 +62,8 @@ export default function PageHero({
         )}
 
         {crumb && (
-          <Reveal delay={420} className="mt-8">
-            <p className="text-[12.5px] text-ink-faint">
-              <Link href="/" className="transition-colors hover:text-violet-600">
-                Home
-              </Link>{" "}
-              <span aria-hidden="true">/</span> {crumb}
-            </p>
+          <Reveal delay={420} className="mt-8 flex justify-center">
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: crumb }]} />
           </Reveal>
         )}
       </div>

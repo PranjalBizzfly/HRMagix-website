@@ -109,8 +109,8 @@ export default function TabRail({
             }}
             className={`shrink-0 rounded-full px-5 py-2.5 text-[13.5px] font-semibold transition-all duration-300 ${
               on
-                ? "bg-violet-500 text-white shadow-glow"
-                : "bg-white text-ink-soft ring-1 ring-inset ring-violet-200 hover:-translate-y-0.5 hover:ring-violet-400 motion-reduce:hover:translate-y-0"
+                ? "bg-brand text-white shadow-glow"
+                : "bg-surface text-muted ring-1 ring-inset ring-line-strong hover:-translate-y-0.5 hover:ring-line-accent motion-reduce:hover:translate-y-0"
             }`}
           >
             {item}

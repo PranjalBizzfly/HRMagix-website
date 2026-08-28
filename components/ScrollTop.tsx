@@ -48,7 +48,7 @@ export default function ScrollTop() {
       tabIndex={shown ? 0 : -1}
       aria-hidden={!shown}
       aria-label="Back to top"
-      className={`group fixed right-4 z-40 grid h-11 w-11 place-items-center rounded-full border border-violet-100 bg-white/95 text-violet-700 shadow-lift backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-500 active:scale-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100 sm:right-6 sm:h-12 sm:w-12 ${
+      className={`group fixed right-4 z-40 grid h-11 w-11 place-items-center rounded-full border border-line bg-surface/95 text-accent-strong shadow-lift backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-accent hover:text-accent-soft active:scale-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100 sm:right-6 sm:h-12 sm:w-12 ${
         shown ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       } ${barUp ? "bottom-[calc(5.5rem+env(safe-area-inset-bottom))]" : "bottom-[calc(1rem+env(safe-area-inset-bottom))] sm:bottom-6"}`}
     >

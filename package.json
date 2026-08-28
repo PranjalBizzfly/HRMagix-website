@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "theme:audit": "node scripts/theme_audit.mjs",
+    "theme:behavior": "node scripts/theme_behavior.mjs",
+    "theme:shots": "node scripts/theme_shots.mjs"
   },
   "dependencies": {
     "next": "15.1.6",

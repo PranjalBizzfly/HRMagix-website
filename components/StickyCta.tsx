@@ -76,15 +76,15 @@ export default function StickyCta() {
       aria-hidden={!shown}
     >
       <div
-        className={`mx-3 mb-3 flex items-center gap-3 rounded-full border border-violet-100 bg-white/95 py-2.5 pl-4 pr-2.5 shadow-lift backdrop-blur-md transition-all duration-300 ease-out ${
+        className={`mx-3 mb-3 flex items-center gap-3 rounded-full border border-line bg-surface/95 py-2.5 pl-4 pr-2.5 shadow-lift backdrop-blur-md transition-all duration-300 ease-out ${
           shown ? "translate-y-0 opacity-100" : "translate-y-[130%] opacity-0"
         } motion-reduce:transition-none`}
       >
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-[13.5px] font-bold text-violet-950">
+          <span className="block truncate text-[13.5px] font-bold text-heading">
             Start free today
           </span>
-          <span className="block truncate text-[11.5px] text-ink-faint">
+          <span className="block truncate text-[11.5px] text-subtle">
             No credit card required
           </span>
         </span>
@@ -92,7 +92,7 @@ export default function StickyCta() {
         <Link
           href="/contact"
           tabIndex={shown ? 0 : -1}
-          className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-violet-500 pl-4 pr-1.5 text-[13.5px] font-semibold text-white shadow-glow transition-colors hover:bg-violet-600"
+          className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-brand pl-4 pr-1.5 text-[13.5px] font-semibold text-white shadow-glow transition-colors hover:bg-brand-hover"
         >
           Get Started
           <span className="grid h-7 w-7 place-items-center rounded-full bg-violet-800/95 transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0">
@@ -105,7 +105,7 @@ export default function StickyCta() {
           onClick={dismiss}
           tabIndex={shown ? 0 : -1}
           aria-label="Dismiss this banner"
-          className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-ink-faint transition-colors hover:bg-violet-50 hover:text-violet-700"
+          className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-subtle transition-colors hover:bg-surface-sunken hover:text-accent-strong"
         >
           <Icon name="cross" className="h-3.5 w-3.5" />
         </button>

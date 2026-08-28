@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import ClosingCta from "@/components/sections/ClosingCta";
 import ModuleExplorer from "@/components/ModuleExplorer";
 import AreaPanels from "@/components/AreaPanels";
+import ProductGallery from "@/components/sections/ProductGallery";
 import { Button, SectionHead } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/motion";
@@ -31,7 +32,7 @@ export default function ModulesPage() {
       />
 
       {/* Filterable wall */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="Filter by area"
@@ -48,7 +49,7 @@ export default function ModulesPage() {
       </section>
 
       {/* Grouped map */}
-      <section className="bg-violet-50/70 py-20 sm:py-24">
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="The module map"
@@ -65,23 +66,23 @@ export default function ModulesPage() {
               if (!inGroup.length) return null;
               return (
                 <Reveal key={group} delay={gi * 60} y={20}>
-                  <div className="grid gap-6 rounded-[24px] bg-white p-6 shadow-soft ring-1 ring-violet-100 sm:p-8 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-12">
+                  <div className="grid gap-6 rounded-[24px] bg-surface p-6 shadow-soft ring-1 ring-line sm:p-8 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-12">
                     <div>
-                      <p className="font-display text-[12px] font-bold tabular-nums text-violet-400">
+                      <p className="font-display text-[12px] font-bold tabular-nums text-label">
                         {String(gi + 1).padStart(2, "0")}
                       </p>
                       <h3 className="mt-1.5 font-display text-[clamp(1.3rem,3vw,1.9rem)] font-bold leading-tight">
                         {group}
                       </h3>
-                      <p className="mt-2 text-[13.5px] text-ink-faint">
+                      <p className="mt-2 text-[13.5px] text-subtle">
                         {inGroup.length} {inGroup.length === 1 ? "module" : "modules"}
                       </p>
                     </div>
 
                     <ul className="flex flex-wrap gap-2.5">
                       {inGroup.map((m) => (
-                        <li key={m.name} className="chip !bg-violet-50 !ring-violet-100">
-                          <Icon name={m.icon} className="h-4 w-4 text-violet-500" />
+                        <li key={m.name} className="chip !bg-surface-sunken !ring-line">
+                          <Icon name={m.icon} className="h-4 w-4 text-accent-soft" />
                           {m.name}
                         </li>
                       ))}
@@ -94,7 +95,25 @@ export default function ModulesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      {/* Screen by Screen Product Showcase */}
+      <section className="bg-surface py-20 sm:py-24">
+        <div className="shell">
+          <SectionHead
+            eyebrow="Inside the product"
+            title={
+              <>
+                See the workspace <strong>screen by screen</strong>
+              </>
+            }
+            sub="Explore authentic UI workflows for attendance, OKRs, automated payroll, recognition, onboarding, and people analytics."
+          />
+          <div className="mt-14">
+            <ProductGallery />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="In the workspace"

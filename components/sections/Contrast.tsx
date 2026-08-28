@@ -8,7 +8,7 @@ import { Reveal } from "@/components/motion";
  */
 export default function Contrast() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-violet-600 to-violet-500 py-16 sm:py-20 lg:py-24">
+    <section className="contrast-band relative overflow-hidden py-16 sm:py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 dotted opacity-30" aria-hidden="true" />
       <div className="shell relative">
         <SectionHead
@@ -51,14 +51,14 @@ function Card({
   const after = tone === "after";
   return (
     <div
-      className={`panel h-full bg-white p-6 shadow-lift sm:p-8 ${
-        after ? "ring-2 ring-violet-300" : ""
+      className={`panel h-full bg-surface p-6 shadow-lift sm:p-8 ${
+        after ? "ring-2 ring-line-accent" : ""
       }`}
     >
       <div className="flex items-center gap-3">
         <span
           className={`grid h-9 w-9 place-items-center rounded-full ${
-            after ? "bg-violet-500 text-white" : "bg-violet-50 text-ink-faint"
+            after ? "bg-brand text-white" : "bg-surface-sunken text-subtle"
           }`}
         >
           {after ? <TickCircle className="h-5 w-5" /> : <CrossCircle className="h-5 w-5" />}
@@ -73,14 +73,14 @@ function Card({
             key={p}
             delay={i * 70}
             y={10}
-            className="flex items-start gap-3 border-b border-violet-100 pb-4 last:border-b-0 last:pb-0"
+            className="flex items-start gap-3 border-b border-line pb-4 last:border-b-0 last:pb-0"
           >
-            <span className={after ? "text-violet-500" : "text-ink-faint/60"}>
+            <span className={after ? "text-accent-soft" : "text-subtle/60"}>
               {after ? <TickCircle /> : <CrossCircle />}
             </span>
             <span
               className={`text-[15.5px] leading-relaxed ${
-                after ? "font-medium text-violet-950" : "text-ink-soft"
+                after ? "font-medium text-heading" : "text-muted"
               }`}
             >
               {p}

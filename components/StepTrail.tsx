@@ -37,7 +37,7 @@ export default function StepTrail() {
   return (
     <ol ref={ref} className="relative grid gap-4 lg:grid-cols-3 lg:gap-5">
       <div
-        className="pointer-events-none absolute left-[38px] top-6 hidden h-[calc(100%-3rem)] w-px overflow-hidden bg-violet-100 sm:block lg:hidden"
+        className="pointer-events-none absolute left-[38px] top-6 hidden h-[calc(100%-3rem)] w-px overflow-hidden bg-surface-raised sm:block lg:hidden"
         aria-hidden="true"
       >
         <div
@@ -46,7 +46,7 @@ export default function StepTrail() {
         />
       </div>
       <div
-        className="pointer-events-none absolute left-0 top-[62px] hidden h-px w-full overflow-hidden bg-violet-100 lg:block"
+        className="pointer-events-none absolute left-0 top-[62px] hidden h-px w-full overflow-hidden bg-surface-raised lg:block"
         aria-hidden="true"
       >
         <div
@@ -60,17 +60,17 @@ export default function StepTrail() {
         return (
           <li
             key={s.n}
-            className="relative rounded-[24px] bg-white p-7 shadow-soft ring-1 ring-violet-100 transition-all duration-500 hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0 sm:p-8"
+            className="relative rounded-[24px] bg-surface p-7 shadow-soft ring-1 ring-line transition-all duration-500 hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0 sm:p-8"
           >
             <span
               className={`relative z-[1] grid h-14 w-14 place-items-center rounded-2xl font-display text-[20px] font-bold transition-all duration-500 ${
-                reached ? "bg-violet-500 text-white shadow-glow" : "bg-violet-50 text-violet-300"
+                reached ? "bg-brand text-white shadow-glow" : "bg-surface-sunken text-subtle ring-1 ring-inset ring-line-strong"
               }`}
             >
               {s.n}
             </span>
             <h3 className="mt-6 font-display text-[20px] font-bold sm:text-[22px]">{s.title}</h3>
-            <p className="mt-2.5 text-[15.5px] leading-relaxed text-ink-soft">{s.copy}</p>
+            <p className="mt-2.5 text-[15.5px] leading-relaxed text-muted">{s.copy}</p>
           </li>
         );
       })}

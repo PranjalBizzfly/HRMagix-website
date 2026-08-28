@@ -14,7 +14,7 @@ export default function QuoteBand({ index = 0 }: { index?: number }) {
     <section className="relative overflow-hidden bg-violet-950 py-14 text-white sm:py-16">
       <div className="pointer-events-none absolute inset-0 dotted opacity-20" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[900px] max-w-[140vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/25 blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[900px] max-w-[140vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/25 blur-[110px]"
         aria-hidden="true"
       />
 

@@ -251,8 +251,8 @@ export function IconTile({
   }[size];
   const glyph = { sm: "h-4 w-4", md: "h-[18px] w-[18px]", lg: "h-6 w-6" }[size];
   const skin = {
-    light: "bg-violet-50 text-violet-600 ring-1 ring-violet-100",
-    solid: "bg-violet-500 text-white",
+    light: "bg-surface-sunken text-accent ring-1 ring-line",
+    solid: "bg-brand text-white",
     dark: "bg-white/10 text-violet-200 ring-1 ring-inset ring-white/15",
   }[tone];
 

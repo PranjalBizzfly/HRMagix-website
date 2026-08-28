@@ -36,7 +36,7 @@ export default function FaqPage() {
         crumb="FAQ"
       />
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.55fr)] lg:gap-16">
           <div className="lg:sticky lg:top-[110px] lg:self-start">
             <SectionHead
@@ -52,7 +52,7 @@ export default function FaqPage() {
             <Reveal delay={180} className="mt-7 space-y-3">
               <a
                 href={`mailto:${site.contact.email}`}
-                className="group flex items-center gap-2 text-[15.5px] font-semibold text-violet-600"
+                className="group flex items-center gap-2 text-[15.5px] font-semibold text-accent"
               >
                 {site.contact.email} <Arrow />
               </a>
@@ -66,14 +66,14 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <section className="bg-violet-50/70 py-14">
+      <section className="bg-surface-sunken/70 py-14">
         <div className="shell flex flex-col items-center gap-5 text-center sm:flex-row sm:justify-between sm:text-left">
           <h2 className="display text-[clamp(1.3rem,3vw,1.9rem)]">
             Ready to <strong>see it live?</strong>
           </h2>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 text-[14.5px] font-semibold text-violet-600"
+            className="group inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
           >
             Book a demo <Arrow />
           </Link>

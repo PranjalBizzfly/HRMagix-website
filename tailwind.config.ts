@@ -2,10 +2,24 @@ import type { Config } from "tailwindcss";
 
 /**
  * HRMagix brand system.
- * Palette lifted from the HRMagix brand: violet primary (#7c5cff) with a
- * deep indigo ink range and a soft lavender surface range.
+ *
+ * Two layers of colour live here:
+ *
+ * 1. **Literal brand ramps** (`violet`, `ink`) — fixed hex. These are used
+ *    where a surface is dark in *both* themes (the violet-950 hero panels, the
+ *    nav utility bar) so their contrast pairing never changes.
+ * 2. **Semantic tokens** (`surface`, `line`, `heading`, `accent`, …) — resolved
+ *    from CSS custom properties defined in `app/globals.css`. These flip with
+ *    the theme, so `bg-surface text-heading ring-line` renders a correct card
+ *    in light *and* dark without a single `dark:` variant at the call site.
+ *
+ * Tokens are stored as bare `R G B` triplets so Tailwind's opacity modifiers
+ * (`bg-surface/70`, `ring-line/60`) keep working.
  */
+const token = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
+
 const config: Config = {
+  darkMode: "class",
   // Stops :hover styles sticking after a tap on touch devices.
   future: { hoverOnlyWhenSupported: true },
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
@@ -30,6 +44,55 @@ const config: Config = {
           soft: "#4a4568",
           faint: "#726d90",
         },
+
+        /* ---- Semantic, theme-aware ---- */
+
+        // Elevation ramp. canvas < sunken < surface < raised < raised-2
+        canvas: token("canvas"),
+        surface: {
+          DEFAULT: token("surface"),
+          sunken: token("surface-sunken"),
+          raised: token("surface-raised"),
+          strong: token("surface-strong"),
+          field: token("field"),
+        },
+        // Hairlines, in ascending weight.
+        line: {
+          DEFAULT: token("line"),
+          strong: token("line-strong"),
+          accent: token("line-accent"),
+        },
+        // Type ramp, descending emphasis.
+        glow: token("glow"),
+        brand: { DEFAULT: token("brand"), hover: token("brand-hover") },
+        heading: token("heading"),
+        body: token("body"),
+        muted: token("muted"),
+        subtle: token("subtle"),
+        label: token("label"),
+        // Brand-tinted text/icon ramp, ascending emphasis.
+        accent: {
+          soft: token("accent-soft"),
+          DEFAULT: token("accent"),
+          strong: token("accent-strong"),
+          deep: token("accent-deep"),
+        },
+        // Status.
+        ok: {
+          DEFAULT: token("ok"),
+          strong: token("ok-strong"),
+          soft: token("ok-soft"),
+          line: token("ok-line"),
+          dot: token("ok-dot"),
+        },
+        warn: { DEFAULT: token("warn"), soft: token("warn-soft") },
+        info: { DEFAULT: token("info"), soft: token("info-soft") },
+        danger: {
+          DEFAULT: token("danger"),
+          strong: token("danger-strong"),
+          soft: token("danger-soft"),
+          line: token("danger-line"),
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
@@ -38,10 +101,16 @@ const config: Config = {
       maxWidth: {
         shell: "1240px",
       },
+      /**
+       * Shadows are theme-aware too: in light they are soft violet drop
+       * shadows, in dark they deepen and pick up a controlled brand glow
+       * (pure black shadows read as dirt on a dark surface).
+       */
       boxShadow: {
-        lift: "0 24px 60px -28px rgba(31,17,71,0.28)",
-        soft: "0 2px 6px rgba(31,17,71,0.06), 0 18px 40px -26px rgba(31,17,71,0.3)",
-        glow: "0 14px 34px -14px rgba(124,92,255,0.6)",
+        lift: "var(--sh-lift)",
+        soft: "var(--sh-soft)",
+        glow: "var(--sh-glow)",
+        float: "var(--sh-float)",
       },
       animation: {
         marquee: "marquee var(--marquee-duration,44s) linear infinite",

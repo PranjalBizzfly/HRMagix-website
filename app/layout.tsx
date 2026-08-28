@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import StickyCta from "@/components/StickyCta";
 import ScrollTop from "@/components/ScrollTop";
 import RouteTransition from "@/components/RouteTransition";
+import { ThemeProvider, themeScript } from "@/components/theme";
 import "./globals.css";
 
 const interTight = Inter_Tight({
@@ -59,28 +60,44 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#7c5cff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#080716" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${interTight.variable} ${montserrat.variable}`}>
+    <html
+      lang="en"
+      className={`${interTight.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/*
+          Sets the theme class before first paint. Must stay inline and
+          render-blocking — a deferred script would let the wrong theme flash.
+        */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-violet-500 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
         >
           Skip to content
         </a>
-        <Nav />
-        <main id="main" tabIndex={-1} className="outline-none">
-          <RouteTransition>{children}</RouteTransition>
-        </main>
-        <Footer />
-        <StickyCta />
-        <ScrollTop />
+        <ThemeProvider>
+          <Nav />
+          <main id="main" tabIndex={-1} className="outline-none">
+            <RouteTransition>{children}</RouteTransition>
+          </main>
+          <Footer />
+          <StickyCta />
+          <ScrollTop />
+        </ThemeProvider>
       </body>
     </html>
   );

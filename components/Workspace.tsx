@@ -25,16 +25,16 @@ export default function Workspace({
       aria-label="HRMagix workspace preview"
       className={`relative w-full select-none overflow-hidden ${
         chrome
-          ? "rounded-[20px] bg-white shadow-[0_40px_90px_-40px_rgba(31,17,71,0.45)] ring-1 ring-violet-100 sm:rounded-[24px]"
-          : "bg-white"
+          ? "rounded-[20px] bg-surface shadow-float ring-1 ring-line sm:rounded-[24px]"
+          : "bg-surface"
       }`}
     >
       {chrome && (
-        <div className="flex items-center gap-2 border-b border-violet-100 bg-violet-50/70 px-4 py-3">
+        <div className="flex items-center gap-2 border-b border-line bg-surface-sunken/70 px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-[#ff6058]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-3 hidden rounded-md bg-white px-2.5 py-1 text-[10.5px] font-medium text-ink-faint ring-1 ring-violet-100 sm:block">
+          <span className="ml-3 hidden rounded-md bg-surface px-2.5 py-1 text-[10.5px] font-medium text-subtle ring-1 ring-line sm:block">
             app.hrmagix.com — Overview
           </span>
         </div>
@@ -42,15 +42,15 @@ export default function Workspace({
 
       <div className={`grid grid-cols-1 ${compact ? "" : "sm:grid-cols-[136px_1fr]"}`}>
         {!compact && (
-          <nav className="hidden flex-col gap-0.5 border-r border-violet-100 bg-violet-50/40 p-3 sm:flex">
-            <p className="px-2 pb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-violet-400">
+          <nav className="hidden flex-col gap-0.5 border-r border-line bg-surface-sunken/40 p-3 sm:flex">
+            <p className="px-2 pb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-label">
               HRMagix
             </p>
             {workspaceNav.map((item, i) => (
               <span
                 key={item}
                 className={`flex items-center gap-2 rounded-lg px-2 py-[7px] text-[11.5px] font-medium ${
-                  i === 0 ? "bg-violet-500 text-white" : "text-ink-soft"
+                  i === 0 ? "bg-brand text-white" : "text-muted"
                 }`}
                 style={{
                   opacity: shown ? 1 : 0,
@@ -69,10 +69,10 @@ export default function Workspace({
         <div className="p-4 sm:p-5">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="font-display text-[15.5px] font-bold text-violet-950">Welcome Back!</p>
-              <p className="text-[11.5px] text-ink-faint">Your people snapshot for today</p>
+              <p className="font-display text-[15.5px] font-bold text-heading">Welcome Back!</p>
+              <p className="text-[11.5px] text-subtle">Your people snapshot for today</p>
             </div>
-            <span className="rounded-full bg-violet-500 px-3 py-1.5 text-[11.5px] font-semibold text-white">
+            <span className="rounded-full bg-brand px-3 py-1.5 text-[11.5px] font-semibold text-white">
               + Hire
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function Workspace({
             {workspace.snapshot.map((s, i) => (
               <div
                 key={s.label}
-                className="rounded-xl bg-violet-50 px-2.5 py-2.5 ring-1 ring-violet-100"
+                className="rounded-xl bg-surface-sunken px-2.5 py-2.5 ring-1 ring-line"
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "none" : "translateY(12px)",
@@ -89,10 +89,10 @@ export default function Workspace({
                   transitionDelay: `${220 + i * 55}ms`,
                 }}
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-violet-400">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-label">
                   {s.label}
                 </p>
-                <p className="mt-1 font-display text-[17px] font-bold tabular-nums text-violet-950 sm:text-[19px]">
+                <p className="mt-1 font-display text-[17px] font-bold tabular-nums text-heading sm:text-[19px]">
                   {s.value}
                 </p>
               </div>
@@ -100,17 +100,17 @@ export default function Workspace({
           </div>
 
           <div className="mt-3 grid gap-2.5 sm:grid-cols-[1.25fr_1fr]">
-            <div className="rounded-xl bg-white p-3 ring-1 ring-violet-100">
-              <p className="text-[11.5px] font-semibold text-ink-soft">Attendance trend</p>
+            <div className="rounded-xl bg-surface p-3 ring-1 ring-line">
+              <p className="text-[11.5px] font-semibold text-muted">Attendance trend</p>
               <TrendChart shown={shown} />
             </div>
-            <div className="rounded-xl bg-white p-3 ring-1 ring-violet-100">
-              <p className="text-[11.5px] font-semibold text-ink-soft">Task queue</p>
+            <div className="rounded-xl bg-surface p-3 ring-1 ring-line">
+              <p className="text-[11.5px] font-semibold text-muted">Task queue</p>
               <ul className="mt-2 space-y-1.5">
                 {workspace.queue.map((q, i) => (
                   <li
                     key={q}
-                    className="flex items-center gap-2 text-[11.5px] text-ink-soft"
+                    className="flex items-center gap-2 text-[11.5px] text-muted"
                     style={{
                       opacity: shown ? 1 : 0,
                       transition: "opacity .5s ease",

@@ -31,7 +31,7 @@ export default function Calculator() {
     >
       <div className="pointer-events-none absolute inset-0 dotted opacity-25" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-violet-500/35 blur-[90px]"
+        className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand/35 blur-[90px]"
         aria-hidden="true"
       />
 

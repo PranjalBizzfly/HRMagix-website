@@ -1,13 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { moduleGroups, modules } from "@/lib/content";
-import { IconTile } from "./icons";
+import { Icon, IconTile } from "./icons";
 import TabRail from "./TabRail";
+import { EmptyState } from "./states";
+import { Reveal } from "./motion";
 
 /**
- * Filterable module wall. The filter rail swipes on touch and drags on mouse;
- * the grid below re-flows in place and announces the count.
+ * Rich, content-dense module directory.
+ * Provides multi-paragraph operational context, feature bullets, and statutory compliance hooks.
  */
 export default function ModuleExplorer() {
   const filters = useMemo(() => ["All", ...moduleGroups], []);
@@ -17,33 +20,62 @@ export default function ModuleExplorer() {
 
   return (
     <div>
-      <TabRail items={filters} active={activeFilter} onChange={setActiveFilter} label="Filter modules by area" />
+      <TabRail
+        items={filters}
+        active={activeFilter}
+        onChange={setActiveFilter}
+        label="Filter modules by area"
+      />
 
-      <ul className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {modules.map((m, i) => {
-          const on = group === "All" || m.group === group;
-          return (
-            <li
-              key={m.name}
-              className={`transition-all duration-500 ease-out ${on ? "opacity-100" : "opacity-30 saturate-0"}`}
-              style={{ transitionDelay: `${(i % 6) * 30}ms` }}
-            >
-              <div className="group flex h-full items-center gap-3 rounded-[20px] bg-white px-4 py-4 shadow-soft ring-1 ring-violet-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:ring-violet-300 motion-reduce:hover:translate-y-0 sm:px-5 sm:py-5">
-                <IconTile
-                  name={m.icon}
-                  className="transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:transform-none"
-                />
-                <span className="min-w-0">
-                  <span className="block text-[13.5px] font-bold leading-tight text-violet-950">
-                    {m.name}
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {shown.map((m, i) => (
+          <Reveal key={m.name} delay={i * 40} y={16}>
+            <div className="flex h-full flex-col justify-between rounded-[24px] bg-surface p-6 shadow-soft ring-1 ring-line transition-all duration-300 hover:shadow-lift hover:ring-line-accent sm:p-7">
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <IconTile name={m.icon} className="!bg-surface-sunken text-accent shadow-sm" />
+                  <span className="rounded-full bg-surface-sunken px-2.5 py-1 text-[11px] font-bold text-accent-strong ring-1 ring-line">
+                    {m.group}
                   </span>
-                  <span className="mt-0.5 block text-[11.5px] text-ink-faint">{m.group}</span>
-                </span>
+                </div>
+
+                <h3 className="mt-4 font-display text-[18px] font-bold text-heading">
+                  {m.name}
+                </h3>
+
+                <p className="mt-2 text-[14px] leading-relaxed text-muted">
+                  {m.desc}
+                </p>
+
+                <div className="mt-5 space-y-2 border-t border-line/70 pt-4">
+                  {m.features.map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-[13px] text-body">
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </li>
-          );
-        })}
-      </ul>
+
+              <div className="mt-6 border-t border-line/70 pt-4 flex items-center justify-between">
+                <Link
+                  href={m.href}
+                  className="inline-flex items-center gap-1.5 text-[13.5px] font-bold text-accent hover:text-accent-deep transition-colors"
+                >
+                  <span>Explore {m.name}</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-[12px] font-semibold text-subtle hover:text-accent"
+                >
+                  Book Demo
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
 
       <p aria-live="polite" className="sr-only">
         {group === "All"

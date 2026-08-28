@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { site } from "@/lib/content";
 import { SubmitButton } from "./ui";
+import { SuccessState } from "./states";
 
 type Fields = { name: string; email: string; company: string; message: string };
 
@@ -46,6 +47,38 @@ export default function ContactForm() {
     )}&body=${encodeURIComponent(body)}`;
     setSent(true);
   };
+
+  if (sent) {
+    return (
+      <SuccessState
+        title="Your message is ready to send"
+        body={
+          <>
+            We handed it to your mail app, addressed to{" "}
+            <a
+              href={`mailto:${site.contact.email}`}
+              className="font-semibold text-accent underline-offset-2 hover:underline"
+            >
+              {site.contact.email}
+            </a>
+            . Our team usually replies within a few hours.
+          </>
+        }
+        action={
+          <button
+            type="button"
+            onClick={() => {
+              setSent(false);
+              setFields(empty);
+            }}
+            className="inline-flex h-11 items-center rounded-full bg-surface px-5 text-[14px] font-semibold text-accent-strong ring-1 ring-inset ring-line-strong transition-all duration-300 hover:-translate-y-0.5 hover:ring-line-accent motion-reduce:hover:translate-y-0"
+          >
+            Write another message
+          </button>
+        }
+      />
+    );
+  }
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5">
@@ -95,10 +128,8 @@ export default function ContactForm() {
 
       <div className="flex flex-wrap items-center gap-4">
         <SubmitButton>Send message</SubmitButton>
-        <p aria-live="polite" className="text-[13.5px] text-ink-faint">
-          {sent
-            ? `Opening your mail app — we'll reply from ${site.contact.email}.`
-            : "Our team usually replies within a few hours."}
+        <p aria-live="polite" className="text-[13.5px] text-subtle">
+          Our team usually replies within a few hours.
         </p>
       </div>
     </form>
@@ -106,8 +137,8 @@ export default function ContactForm() {
 }
 
 function inputClass(invalid: boolean) {
-  return `h-[56px] w-full rounded-2xl border bg-white px-5 text-[15.5px] text-violet-950 outline-none transition-all duration-200 placeholder:text-violet-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/15 ${
-    invalid ? "border-red-300" : "border-violet-200"
+  return `h-[56px] w-full rounded-2xl border bg-surface-field px-5 text-[15.5px] text-heading outline-none transition-all duration-200 placeholder:text-subtle/70 focus:border-line-accent focus:ring-4 focus:ring-violet-500/15 dark:focus:ring-violet-500/25 ${
+    invalid ? "border-danger" : "border-line-strong"
   }`;
 }
 
@@ -124,12 +155,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 flex items-baseline gap-2 text-[12px] font-bold uppercase tracking-[0.14em] text-violet-500">
+      <span className="mb-2 flex items-baseline gap-2 text-[12px] font-bold uppercase tracking-[0.14em] text-accent-soft">
         {label}
         {optional && <span className="text-[11.5px] font-normal normal-case tracking-normal">optional</span>}
       </span>
       {children}
-      {error && <span className="mt-1.5 block text-[12.5px] text-red-500">{error}</span>}
+      {error && <span className="mt-1.5 block text-[12.5px] text-danger">{error}</span>}
     </label>
   );
 }

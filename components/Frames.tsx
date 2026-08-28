@@ -25,12 +25,12 @@ export function BrowserFrame({
       className={`overflow-hidden rounded-[20px] ${
         dark
           ? "bg-violet-900 ring-1 ring-white/10"
-          : "bg-white shadow-[0_40px_90px_-40px_rgba(31,17,71,0.45)] ring-1 ring-violet-100"
+          : "bg-surface shadow-float ring-1 ring-line"
       } sm:rounded-[24px] ${className}`}
     >
       <div
         className={`flex items-center gap-2 border-b px-4 py-3 ${
-          dark ? "border-white/10 bg-white/[0.04]" : "border-violet-100 bg-violet-50/70"
+          dark ? "border-white/10 bg-white/[0.04]" : "border-line bg-surface-sunken/70"
         }`}
       >
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff6058]" />
@@ -40,7 +40,7 @@ export function BrowserFrame({
           className={`ml-3 hidden truncate rounded-md px-2.5 py-1 text-[10.5px] font-medium sm:block ${
             dark
               ? "bg-white/10 text-violet-200"
-              : "bg-white text-ink-faint ring-1 ring-violet-100"
+              : "bg-surface text-subtle ring-1 ring-line"
           }`}
         >
           {url}
@@ -63,7 +63,7 @@ export function TabletFrame({
     <div
       className={`rounded-[26px] bg-violet-950 p-2.5 shadow-[0_40px_90px_-40px_rgba(31,17,71,0.55)] sm:rounded-[30px] sm:p-3 ${className}`}
     >
-      <div className="overflow-hidden rounded-[18px] bg-white sm:rounded-[20px]">{children}</div>
+      <div className="overflow-hidden rounded-[18px] bg-surface sm:rounded-[20px]">{children}</div>
     </div>
   );
 }

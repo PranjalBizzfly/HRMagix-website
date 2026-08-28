@@ -7,31 +7,111 @@ import type { IconName } from "@/components/icons";
 
 export const site = {
   name: "HRMagix",
-  tagline: "Modern HR, from hire to retire",
+  tagline: "Modern People Operations for India's Growing Enterprises",
   hero: {
-    eyebrow: "All-in-one HR platform · v2.0",
-    title: ["Smart HR for", "modern teams."],
-    lede: "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+    eyebrow: "All-in-one HR platform · Built for India · v2.0",
+    title: ["Smart People Operations for", "India's growing teams."],
+    lede: "Attendance, multi-state payroll, statutory compliance, OKRs, and employee recognition — unified in one seamless workspace engineered for Indian businesses.",
     pillars: [
-      ["Unified", "Platform"],
-      ["Enterprise", "Ready"],
-      ["Built to", "Scale"],
+      ["100% Indian", "Statutory Compliance"],
+      ["12 Integrated", "Workflows"],
+      ["Zero-Code", "Policy Engine"],
     ],
   },
   proof: {
     seats: "9k+",
-    companies: "120+ companies",
-    trustline: "Trusted by 120+ HR teams worldwide",
+    companies: "120+ Indian enterprises",
+    trustline: "Trusted by 120+ HR and People Operations teams across Mumbai, Bangalore, Pune, and Delhi NCR",
+    avatars: [
+      "/media/avatar-1.png",
+      "/media/avatar-2.png",
+      "/media/avatar-3.png",
+      "/media/avatar-4.png",
+    ],
   },
   contact: {
     email: "hello@hrmagix.com",
-    phone: "+91 98765 43210",
-    location: "Pune, Maharashtra, India",
+    phone: "+91 900 600 7955",
+    location: "Pune & Mumbai, Maharashtra, India",
     blurb:
-      "Have a question or want a personalised demo? Send us a message — our team usually replies within a few hours.",
+      "Looking for a custom walkthrough or have specific statutory policy requirements? Connect with our product specialists in Pune for a 1-on-1 consultation.",
   },
-  trial: "No credit card required · 14-day free trial · Cancel anytime",
-  footNote: "Crafted with care for people teams everywhere.",
+  trial: "14-day free trial · Full access to all 12 modules · Zero implementation fee · Cancel anytime",
+  footNote: "Engineered with precision for people operations teams across India.",
+};
+
+export const manifesto = {
+  headline: "Most growing companies don't have an HR tool problem. They have a fragmentation crisis.",
+  lead: "The average 100-person company in India juggles 4 to 6 disconnected systems: biometric hardware logs, leave tracking spreadsheets, standalone payroll software, WhatsApp check-ins, and annual appraisal PDF forms.",
+  paragraphs: [
+    "When your attendance data is locked in a local biometric machine, your payroll team spends 4 days every month manually reconciling half-days, loss of pay (LOP), and overtime. A single formula error in an Excel sheet leads to delayed salary credits, statutory non-compliance, and frustrated employees.",
+    "Meanwhile, performance reviews become an annual box-checking ritual disconnected from day-to-day sprint outcomes. High performers feel unrecognised, and managers lack the continuous 1-on-1 frameworks needed to nurture leadership talent.",
+    "HRMagix replaces this broken sprawl with a single source of truth. One platform where biometric punches flow straight into salary computation, statutory deductions (EPF, ESI, PT, TDS) are calculated with zero manual intervention, and goals connect directly to daily recognition.",
+  ],
+  pillars: [
+    {
+      title: "Zero Reconciliation Payroll",
+      desc: "Attendance, approved leaves, and overtime synchronize automatically with your monthly payroll cutoff, eliminating human data entry errors.",
+    },
+    {
+      title: "Automated Indian Compliance",
+      desc: "Multi-state Professional Tax slabs, EPF electronic challan receipts (ECR), ESI contribution files, and TDS Form 16 generated in clicks.",
+    },
+    {
+      title: "Continuous Meritocracy",
+      desc: "Quarterly OKRs, transparent 9-box succession mapping, and peer-to-peer kudos replace disconnected annual appraisal stress.",
+    },
+  ],
+};
+
+export const indianCompliance = {
+  eyebrow: "Statutory Compliance by Design",
+  title: "Engineered specifically for Indian labor laws & multi-state tax rules",
+  sub: "Handle multi-entity statutory filings with 100% precision — no consultants or manual tax calculations required.",
+  aspects: [
+    {
+      key: "epf",
+      title: "Employees' Provident Fund (EPF)",
+      badge: "EPFO Compliant",
+      details:
+        "Automated 12% employee and employer contribution calculation with statutory wage ceiling limits (₹15,000 cap option), voluntary PF (VPF) configuration, and instant ECR file export ready for direct upload to the unified EPFO member portal.",
+    },
+    {
+      key: "esi",
+      title: "Employee State Insurance (ESI)",
+      badge: "ESIC Portal Ready",
+      details:
+        "Precise 0.75% employee and 3.25% employer contributions calculated against the ₹21,000 gross salary threshold. Automatically generates monthly contribution return statements and ESIC challan reports without manual rounding errors.",
+    },
+    {
+      key: "pt",
+      title: "Multi-State Professional Tax (PT)",
+      badge: "28 States & UTs",
+      details:
+        "State-specific PT rule engines configured for Maharashtra, Karnataka, Telangana, Tamil Nadu, Andhra Pradesh, Gujarat, and West Bengal, including February slab changes and gender-specific exemptions.",
+    },
+    {
+      key: "tds",
+      title: "TDS & Dual Tax Regimes (Section 192)",
+      badge: "Old vs New Regime",
+      details:
+        "Employees can compare and declare investments under Section 80C, 80D, HRA, and Home Loan interest. Automated monthly TDS deduction schedule with quarterly Form 24Q generation and annual Part B Form 16 issuance.",
+    },
+    {
+      key: "gratuity",
+      title: "Payment of Gratuity Act",
+      badge: "15-Day Formula",
+      details:
+        "Automated gratuity provisioning and settlement calculations based on 15 days of last drawn basic salary for employees completing 5+ years of continuous service.",
+    },
+    {
+      key: "lwf",
+      title: "Labour Welfare Fund (LWF)",
+      badge: "State Slabs",
+      details:
+        "Automated half-yearly and annual LWF deductions matching state-specific deadlines (e.g. Maharashtra June & December deductions) integrated directly into payroll runs.",
+    },
+  ],
 };
 
 export type Feature = {
@@ -80,21 +160,177 @@ export const features: Feature[] = [
   },
 ];
 
-export type Module = { name: string; icon: IconName; group: string };
+export type Module = {
+  name: string;
+  slug: string;
+  href: string;
+  icon: IconName;
+  group: string;
+  desc: string;
+  features: string[];
+  statutory?: string;
+};
 
 export const modules: Module[] = [
-  { name: "Attendance & Shifts", icon: "clock", group: "Time & Work" },
-  { name: "Leaves & Holidays", icon: "calendar", group: "Time & Work" },
-  { name: "Payroll", icon: "wallet", group: "Payroll" },
-  { name: "Objectives & OKRs", icon: "target", group: "Performance" },
-  { name: "KRA & 9-Box", icon: "grid", group: "Performance" },
-  { name: "PIPs & Growth", icon: "sprout", group: "Performance" },
-  { name: "Recognition", icon: "trophy", group: "Engagement" },
-  { name: "1-on-1s & Meetings", icon: "chat", group: "Engagement" },
-  { name: "Onboarding", icon: "rocket", group: "People" },
-  { name: "Documents", icon: "folder", group: "People" },
-  { name: "Succession", icon: "compass", group: "People" },
-  { name: "Analytics", icon: "chart", group: "System" },
+  {
+    name: "Attendance & Shifts",
+    slug: "attendance",
+    href: "/modules/attendance",
+    icon: "clock",
+    group: "Time & Work",
+    desc: "Real-time presence tracking across physical branches and remote personnel with zero loss-of-pay discrepancies.",
+    features: [
+      "Biometric push API sync (eSSL, Matrix, ZKTeco)",
+      "Mobile iOS & Android GPS geo-fencing with selfie validation",
+      "Automated shift rotation, night shift differential & late grace periods",
+    ],
+    statutory: "Direct loss-of-pay (LOP) auto-calculation feeding monthly payroll",
+  },
+  {
+    name: "Leaves & Holidays",
+    slug: "leaves",
+    href: "/modules/leaves",
+    icon: "calendar",
+    group: "Time & Work",
+    desc: "Custom multi-tier leave policies, compensatory-off tracking, and unified visual holiday calendars across Indian states.",
+    features: [
+      "Custom leave categories (Earned/Privilege, Sick, Maternity/Paternity)",
+      "Multi-level manager & HR approval workflows with instant email/push alerts",
+      "Automatic monthly accruals, sandwich-rule policy enforcement & carry-over rules",
+    ],
+    statutory: "Factories Act & Shops and Establishments Act compliant leave quotas",
+  },
+  {
+    name: "Payroll",
+    slug: "payroll",
+    href: "/modules/payroll",
+    icon: "wallet",
+    group: "Payroll",
+    desc: "Execute complete monthly payroll in under 3 minutes with 100% statutory precision and bank transfer batch files.",
+    features: [
+      "Automated EPF (12% wage ceiling), ESI (₹21,000 threshold), and multi-state PT",
+      "TDS Section 192 dual tax regime comparison with quarterly Form 24Q export",
+      "One-click bank payment batch file generation (NEFT/RTGS/IMPS formatted)",
+    ],
+    statutory: "Direct electronic challan receipt (ECR) files for EPFO and ESIC portals",
+  },
+  {
+    name: "Objectives & OKRs",
+    slug: "okrs",
+    href: "/modules/okrs",
+    icon: "target",
+    group: "Performance",
+    desc: "Align company vision with team sprints through transparent, quantitative Objective and Key Result hierarchies.",
+    features: [
+      "Quarterly & annual OKR cascading from leadership to individual contributors",
+      "Real-time progress sliders with milestone weighting and confidence scores",
+      "Sprint check-in reminders and automated bi-weekly health updates",
+    ],
+  },
+  {
+    name: "KRA & 9-Box",
+    slug: "kra-9box",
+    href: "/modules/kra-9box",
+    icon: "grid",
+    group: "Performance",
+    desc: "Define structured role-specific Key Result Areas and visualize high-potential future leadership on interactive talent matrices.",
+    features: [
+      "Role-based competency scoring matrices and multi-rater evaluations",
+      "Interactive 9-box talent matrix plotting performance against growth potential",
+      "Transparent calibration dashboards for executive leadership reviews",
+    ],
+  },
+  {
+    name: "PIPs & Growth",
+    slug: "pips",
+    href: "/modules/pips",
+    icon: "sprout",
+    group: "Performance",
+    desc: "Constructive 30/60/90-day Performance Improvement Plans with structured milestone tracking and manager coaching logs.",
+    features: [
+      "Structured milestone checkpoints with measurable turnaround criteria",
+      "Confidential manager-employee journal and objective documentation",
+      "Automated timeline escalations and outcome status sign-offs",
+    ],
+  },
+  {
+    name: "Recognition",
+    slug: "recognition",
+    href: "/modules/recognition",
+    icon: "trophy",
+    group: "Engagement",
+    desc: "Foster a continuous culture of appreciation with peer spot awards, value-based badges, and a live company culture wall.",
+    features: [
+      "Peer-to-peer kudos with customized company core values badges",
+      "Live interactive culture feed embedded directly in employee home dashboards",
+      "Monthly recognition leaderboard and spot reward allowance redemption",
+    ],
+  },
+  {
+    name: "1-on-1s & Meetings",
+    slug: "meetings",
+    href: "/modules/meetings",
+    icon: "chat",
+    group: "Engagement",
+    desc: "Empower managers to hold meaningful recurring coaching conversations with shared agendas and action item tracking.",
+    features: [
+      "Collaborative pre-meeting agendas with continuous talking points",
+      "Action item assignment with automated due-date reminders",
+      "Private manager coaching notes and historical conversation archives",
+    ],
+  },
+  {
+    name: "Onboarding",
+    slug: "onboarding",
+    href: "/modules/onboarding",
+    icon: "rocket",
+    group: "People",
+    desc: "Delight new hires before day one with paperless digital document collection and structured department welcome workflows.",
+    features: [
+      "Self-service pre-boarding portal for PAN, Aadhaar, and bank document uploads",
+      "Automated appointment letter generation with digital signature capability",
+      "IT hardware and workspace asset provisioning checklist tracking",
+    ],
+  },
+  {
+    name: "Documents",
+    slug: "documents",
+    href: "/modules/documents",
+    icon: "folder",
+    group: "People",
+    desc: "Centralized, secure employee document repository with automated expiry alerts and policy acknowledgment tracking.",
+    features: [
+      "Encrypted digital personnel files with granular role-based access control",
+      "Company handbook, NDA, and compliance policy sign-off tracking",
+      "Automated alerts for visa, driving license, and certificate expiration",
+    ],
+  },
+  {
+    name: "Succession",
+    slug: "succession",
+    href: "/modules/succession",
+    icon: "compass",
+    group: "People",
+    desc: "Identify critical single-point-of-failure roles and build robust internal leadership candidate benches for future growth.",
+    features: [
+      "Key position vulnerability index and role criticality assessment",
+      "Talent bench readiness ratings (Ready now, 1-2 years, 3+ years)",
+      "Targeted individual development plans (IDPs) for high-potential successors",
+    ],
+  },
+  {
+    name: "Analytics",
+    slug: "analytics",
+    href: "/modules/analytics",
+    icon: "chart",
+    group: "System",
+    desc: "Transform people data into actionable executive insights with real-time workforce trends, attrition metrics, and payroll costs.",
+    features: [
+      "Real-time headcount growth, department distributions, and gender diversity",
+      "Early warning attrition risk indicators and tenure analysis",
+      "Overtime expenses, leave utilization rates, and payroll budget variance",
+    ],
+  },
 ];
 
 export const moduleGroups = [
@@ -153,24 +389,147 @@ export const steps = [
 export const testimonials = [
   {
     quote:
-      "HRMagix replaced five tools for us. Onboarding, payroll and performance all live in one place now.",
+      "Managing attendance and shift rosters across our Pune and Bangalore offices used to require 3 different tools and countless manual reconciliations. With HRMagix, biometric punches flow directly into loss-of-pay registers and our monthly payroll cutoff takes under 2 hours with 100% EPF and PT accuracy.",
     name: "Priya Sharma",
-    role: "HR Manager, 1XL Demo",
+    role: "Head of People Operations, TechSprint India (Pune)",
+    company: "TechSprint India",
     initials: "PS",
+    avatar: "/media/testimonial-priya.png",
+    rating: 5,
   },
   {
     quote:
-      "Payroll that used to take two days now runs in minutes. Our team finally trusts the numbers.",
+      "Our multi-entity payroll previously took 4 business days every month with recurring spreadsheet formula risks. HRMagix automated our multi-state Professional Tax, ESI filings, and generated bank-ready NEFT salary batches in a single click with zero compliance errors across 3 audits.",
     name: "Rahul Kulkarni",
-    role: "Finance Lead, Northwind",
+    role: "VP of Finance & Operations, Northwind (Mumbai)",
+    company: "Northwind Logistics",
     initials: "RK",
+    avatar: "/media/testimonial-rahul.png",
+    rating: 5,
   },
   {
     quote:
-      "Recognition and 1-on-1s transformed our culture. Engagement is the best it's ever been.",
+      "The shift from disconnected annual appraisals to continuous quarterly OKRs and peer kudos completely transformed our team's alignment. Our engineering managers conduct structured 1-on-1s every sprint and our retention has reached an all-time high.",
     name: "Amit Mehta",
-    role: "People Ops, Vertex",
+    role: "Director of Talent, Vertex Systems (Gurgaon)",
+    company: "Vertex Systems",
     initials: "AM",
+    avatar: "/media/testimonial-amit.png",
+    rating: 5,
+  },
+  {
+    quote:
+      "The digital onboarding workflow and employee document vault cut our new-hire ramp time by half. Every statutory document, PF declaration, and asset handover is tracked without a single lost email or spreadsheet confusion.",
+    name: "Ananya Iyer",
+    role: "Head of Culture & People, CloudScale (Bangalore)",
+    company: "CloudScale India",
+    initials: "AI",
+    avatar: "/media/testimonial-priya.png",
+    rating: 5,
+  },
+];
+
+export type Industry = {
+  key: string;
+  name: string;
+  tagline: string;
+  copy: string;
+  image: string;
+  slot: string;
+  metrics: { label: string; value: string }[];
+  highlights: string[];
+};
+
+export const industries: Industry[] = [
+  {
+    key: "tech",
+    name: "IT & Tech Startups",
+    tagline: "Move fast, track sprints, and align OKRs effortlessly",
+    copy: "High-growth tech teams need agile attendance, flexible remote punch-ins, and quarterly OKR cascades that connect engineering sprints with company goals.",
+    image: "/media/module-analytics.png",
+    slot: "module-analytics",
+    metrics: [
+      { label: "OKR Completion", value: "82%" },
+      { label: "Time-to-Hire", value: "18 Days" },
+      { label: "Remote Sync", value: "Real-time" },
+    ],
+    highlights: [
+      "Geo-fenced mobile punch-in for distributed and hybrid developers",
+      "Continuous performance reviews and 9-box talent matrix",
+      "Automated peer kudos and culture reward leaderboard",
+    ],
+  },
+  {
+    key: "consulting",
+    name: "Professional Services",
+    tagline: "Accurate billing hours, structured growth & compliance",
+    copy: "Consulting and agency teams streamline client-project time logs, billable hour tracking, multi-tier approvals, and transparent merit-based appraisals.",
+    image: "/media/module-performance.png",
+    slot: "module-performance",
+    metrics: [
+      { label: "Timesheet Accuracy", value: "99.4%" },
+      { label: "Leave Approval", value: "Instant" },
+      { label: "eNPS Score", value: "68" },
+    ],
+    highlights: [
+      "Project-specific shift rosters and automated overtime calculations",
+      "Quarterly 1-on-1 career progression frameworks",
+      "Unified payslip generator with statutory compliance built in",
+    ],
+  },
+  {
+    key: "finance",
+    name: "Financial & Corporate",
+    tagline: "Audited payroll, bank-grade security & compliance",
+    copy: "Financial institutions rely on HRMagix for zero-error multi-entity payroll runs, immutable audit logs, strict role-based access, and automated statutory tax reporting.",
+    image: "/media/module-payroll.png",
+    slot: "module-payroll",
+    metrics: [
+      { label: "Payroll Run Time", value: "2 Mins" },
+      { label: "Audit Readiness", value: "100%" },
+      { label: "Tax Compliance", value: "Automated" },
+    ],
+    highlights: [
+      "Automated EPF, ESI, TDS, and statutory deduction calculations",
+      "Strict role-based permissions and enterprise SSO",
+      "One-click bank transfer batch exports and encrypted payslips",
+    ],
+  },
+  {
+    key: "remote",
+    name: "Distributed & Remote",
+    tagline: "Keep your global team connected and engaged",
+    copy: "Whether your workforce is across 5 cities or working from home, HRMagix provides a single digital headquarters for check-ins, leaves, and recognition.",
+    image: "/media/module-attendance.png",
+    slot: "module-attendance",
+    metrics: [
+      { label: "Daily Presence", value: "820+" },
+      { label: "App Rating", value: "4.9 ★" },
+      { label: "Sync Latency", value: "< 1s" },
+    ],
+    highlights: [
+      "Real-time live presence board with remote status indicators",
+      "Shared company holiday calendar and transparent leave balances",
+      "Mobile iOS & Android app with selfie & GPS validation",
+    ],
+  },
+  {
+    key: "enterprise",
+    name: "Scaling Enterprises",
+    tagline: "Consolidate multiple HR tools into one unified platform",
+    copy: "Scale from 50 to 5,000+ employees without software sprawl. Manage end-to-end employee lifecycle from offer acceptance to retirement.",
+    image: "/media/module-onboarding.png",
+    slot: "module-onboarding",
+    metrics: [
+      { label: "Tools Replaced", value: "5 to 1" },
+      { label: "Uptime SLA", value: "99.9%" },
+      { label: "Setup Time", value: "3 Steps" },
+    ],
+    highlights: [
+      "All 12 modules included with centralized employee master data",
+      "Dedicated Customer Success Manager and enterprise priority support",
+      "Custom policy engines for complex multi-branch organizations",
+    ],
   },
 ];
 
@@ -231,35 +590,39 @@ export const plans: Plan[] = [
   },
 ];
 
-/** Answers derived strictly from the plans, modules and trial terms above. */
+/** Answers derived strictly from the plans, modules and statutory terms. */
 export const faqs = [
   {
-    q: "How is HRMagix priced?",
-    a: "Per employee, per month. Starter is $3/emp/mo, Growth is $6/emp/mo, and Enterprise is custom-priced for large organisations. No hidden fees — start free and scale as you grow.",
+    q: "How does HRMagix automate Indian statutory compliance (EPF, ESI, PT, TDS)?",
+    a: "HRMagix calculates monthly statutory deductions automatically based on active employee wage structures. It generates EPFO-ready ECR text files, ESIC monthly contribution reports, state-specific Professional Tax (PT) calculations matching slabs for Maharashtra, Karnataka, Telangana, and other states, as well as monthly TDS calculations with quarterly Form 24Q and annual Form 16 Part B generation.",
   },
   {
-    q: "Is there a free trial?",
-    a: "Yes. Every plan starts with a 14-day free trial. No credit card required, and you can cancel anytime.",
+    q: "Can we integrate our existing biometric fingerprint or facial recognition machines?",
+    a: "Yes. HRMagix seamlessly integrates with leading biometric hardware (eSSL, Matrix, Realtime, ZKTeco) via secure API push or local sync service. Punches flow in real time to the cloud presence board and automatically reflect in shift calculations, late mark deductions, and monthly payroll loss of pay (LOP) registers.",
   },
   {
-    q: "Which modules do I get?",
-    a: "All twelve modules are part of the platform: Attendance & Shifts, Leaves & Holidays, Payroll, Objectives & OKRs, KRA & 9-Box, PIPs & Growth, Recognition, 1-on-1s & Meetings, Onboarding, Documents, Succession and Analytics. Which ones are switched on depends on your plan.",
+    q: "How does employee mobile punch-in with geo-fencing work for hybrid & field teams?",
+    a: "Employees can check in via the HRMagix iOS and Android app. Organizations can configure GPS geofence radiuses around specific office coordinates, client sites, or branch warehouses, with optional selfie validation. Remote employees can submit check-ins with automated location tagging for transparent field-force management.",
   },
   {
-    q: "How long does setup take?",
-    a: "Three steps. Import or sync your team, switch on the modules you need — configured to your policies with no code — then let reminders, approvals and reports run themselves.",
+    q: "How does HRMagix handle the Old vs. New Income Tax Regime choices?",
+    a: "Employees can compare their tax liability across both Old and New Tax Regimes using an interactive tax simulation tool before making their annual declaration. They can upload Section 80C, 80D, HRA rent receipts, and home loan interest proof for HR verification directly through the employee self-service portal.",
   },
   {
-    q: "Do you support SSO and advanced security?",
-    a: "SSO and advanced security are included in the Enterprise plan, alongside succession, lifecycle and a dedicated success manager.",
+    q: "How long does implementation take and can we migrate historical data from Excel?",
+    a: "Most Indian organizations complete setup within 2 to 3 days. Our structured Excel bulk import templates allow you to bring over complete employee master data, historical leave balances, previous salary structures, and department hierarchies. A dedicated onboarding specialist assists with policy validation and dry-run payroll runs.",
   },
   {
-    q: "Does payroll handle payslips and compliance?",
-    a: "Yes. Payroll runs in minutes with payslips, taxes and compliance built in.",
+    q: "Where is our employee and payroll data hosted, and how secure is it?",
+    a: "All data is securely hosted in ISO 27001, SOC 2 compliant Tier-4 Indian cloud data centers (AWS Mumbai region) with 256-bit AES encryption at rest and TLS 1.3 in transit. We support role-based access control (RBAC), multi-factor authentication (MFA), and automated daily backups.",
   },
   {
-    q: "Can I talk to someone before buying?",
-    a: "Of course. Email hello@hrmagix.com, call +91 98765 43210, or send a message from the contact page and our team usually replies within a few hours.",
+    q: "How are complex shift rotations, night allowances, and comp-offs managed?",
+    a: "The Time & Shifts engine supports 24/7 rotating multi-shift schedules, auto-shift detection based on punch-in timestamps, custom grace periods for late arrivals, night shift differential allowances, and automated compensatory off (Comp-off) credit upon approved weekend or holiday work.",
+  },
+  {
+    q: "What support is provided to our HR and Finance team during monthly payroll cutoff?",
+    a: "All customers receive direct support via WhatsApp, phone, and email from our Pune-based product specialists. Enterprise plans include a dedicated Customer Success Manager who assists with payroll cutoffs, bonus disbursements, and annual tax year-end closing.",
   },
 ];
 
@@ -296,22 +659,33 @@ export const footerNav = [
     heading: "Product",
     links: [
       { label: "Features", href: "/features" },
-      { label: "Modules", href: "/modules" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Modules Directory", href: "/modules" },
+      { label: "Solutions by Industry", href: "/industries" },
+      { label: "Pricing & Plans", href: "/pricing" },
+    ],
+  },
+  {
+    heading: "Platform & Compliance",
+    links: [
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "Indian Statutory Engine", href: "/compliance" },
+      { label: "Security & Tier-4 Cloud", href: "/security" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
+      { label: "About HRMagix", href: "/about" },
+      { label: "Contact & Demo", href: "/contact" },
+      { label: "Help & FAQ", href: "/faq" },
     ],
   },
   {
-    heading: "Resources",
+    heading: "Legal & Trust",
     links: [
-      { label: "How it works", href: "/how-it-works" },
-      { label: "FAQ", href: "/faq" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Enterprise Security", href: "/security" },
     ],
   },
 ];

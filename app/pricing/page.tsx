@@ -40,13 +40,13 @@ export default function PricingPage() {
         crumb="Pricing"
       />
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell">
           <Pricing />
         </div>
       </section>
 
-      <section className="bg-violet-50/70 py-20 sm:py-24">
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="Cost calculator"
@@ -64,7 +64,7 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison table */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="Compare plans"
@@ -75,20 +75,20 @@ export default function PricingPage() {
             }
           />
 
-          <Reveal delay={140} className="mt-12 overflow-x-auto rounded-[24px] bg-white p-1 shadow-soft ring-1 ring-violet-100">
+          <Reveal delay={140} className="mt-12 overflow-x-auto rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
             <table className="w-full min-w-[580px] border-collapse text-left">
               <caption className="sr-only">HRMagix plan comparison</caption>
               <thead>
-                <tr className="border-b border-violet-100">
-                  <th scope="col" className="px-5 py-5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-violet-400">
+                <tr className="border-b border-line">
+                  <th scope="col" className="px-5 py-5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-label">
                     Included
                   </th>
                   {plans.map((p) => (
                     <th key={p.name} scope="col" className="px-5 py-5">
-                      <span className="block font-display text-[14.5px] font-bold text-violet-950">
+                      <span className="block font-display text-[14.5px] font-bold text-heading">
                         {p.name}
                       </span>
-                      <span className="mt-0.5 block text-[12px] font-normal text-ink-faint">
+                      <span className="mt-0.5 block text-[12px] font-normal text-subtle">
                         {p.price}
                         {p.unit ?? ""}
                       </span>
@@ -98,18 +98,18 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {comparison.map((row) => (
-                  <tr key={row.label} className="border-b border-violet-50 last:border-b-0 hover:bg-violet-50/60">
-                    <th scope="row" className="px-5 py-4 text-[14px] font-medium text-ink">
+                  <tr key={row.label} className="border-b border-line last:border-b-0 hover:bg-surface-sunken/60">
+                    <th scope="row" className="px-5 py-4 text-[14px] font-medium text-body">
                       {row.label}
                     </th>
                     {row.plans.map((on, i) => (
                       <td key={i} className="px-5 py-4">
                         {on ? (
-                          <span className="grid h-5 w-5 place-items-center rounded-full bg-violet-500 text-white">
+                          <span className="grid h-5 w-5 place-items-center rounded-full bg-brand text-white">
                             <Check className="h-3 w-3" />
                           </span>
                         ) : (
-                          <span className="block h-px w-4 bg-violet-200" aria-label="Not included" />
+                          <span className="block h-px w-4 bg-surface-strong" aria-label="Not included" />
                         )}
                       </td>
                     ))}
@@ -120,7 +120,7 @@ export default function PricingPage() {
           </Reveal>
 
           <Reveal delay={180} className="mt-6 text-center">
-            <p className="text-[13.5px] text-ink-faint">
+            <p className="text-[13.5px] text-subtle">
               All {modules.length} modules live on one platform — your plan decides which are switched
               on.
             </p>
@@ -128,7 +128,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="bg-violet-50/70 py-20 sm:py-24">
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)] lg:gap-16">
           <div className="lg:sticky lg:top-[110px] lg:self-start">
             <SectionHead

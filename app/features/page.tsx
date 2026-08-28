@@ -49,14 +49,14 @@ export default function FeaturesPage() {
       />
 
       {/* Counters */}
-      <section className="border-b border-violet-100 bg-white">
+      <section className="border-b border-line bg-surface">
         <div className="shell grid grid-cols-2 gap-y-8 py-10 sm:grid-cols-4 sm:py-12">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 80} y={12} className="text-center">
               <p className="display text-[clamp(1.8rem,4vw,2.6rem)] font-bold">
                 <Counter to={s.value} suffix={s.suffix} />
               </p>
-              <p className="mt-1.5 text-[13.5px] text-ink-faint">{s.label}</p>
+              <p className="mt-1.5 text-[13.5px] text-subtle">{s.label}</p>
             </Reveal>
           ))}
         </div>
@@ -65,7 +65,7 @@ export default function FeaturesPage() {
       <Capabilities />
 
       {/* Capability detail — tinted rows with module chips */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-surface py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="In detail"
@@ -78,11 +78,11 @@ export default function FeaturesPage() {
           <div className="mt-14 space-y-3">
             {features.map((f, i) => (
               <Reveal key={f.key} delay={i * 60} y={18}>
-                <article className="grid gap-5 rounded-[24px] bg-violet-50/70 p-6 ring-1 ring-violet-100 sm:p-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] lg:items-center lg:gap-12">
+                <article className="grid gap-5 rounded-[24px] bg-surface-sunken/70 p-6 ring-1 ring-line sm:p-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] lg:items-center lg:gap-12">
                   <div className="flex items-center gap-4">
-                    <IconTile name={f.icon} size="lg" className="!bg-white shadow-soft" />
+                    <IconTile name={f.icon} size="lg" className="!bg-surface shadow-soft" />
                     <div>
-                      <p className="font-display text-[12px] font-bold tabular-nums text-violet-400">
+                      <p className="font-display text-[12px] font-bold tabular-nums text-label">
                         {String(i + 1).padStart(2, "0")}
                       </p>
                       <h3 className="font-display text-[clamp(1.15rem,2.6vw,1.6rem)] font-bold leading-tight">
@@ -92,13 +92,13 @@ export default function FeaturesPage() {
                   </div>
 
                   <div>
-                    <p className="text-[16px] leading-relaxed text-ink-soft">{f.copy}</p>
+                    <p className="text-[16px] leading-relaxed text-muted">{f.copy}</p>
                     <ul className="mt-5 flex flex-wrap gap-2.5">
                       {modules
                         .filter((m) => relatedModules[f.key].includes(m.name))
                         .map((m) => (
                           <li key={m.name} className="chip">
-                            <Icon name={m.icon} className="h-4 w-4 text-violet-500" />
+                            <Icon name={m.icon} className="h-4 w-4 text-accent-soft" />
                             {m.name}
                           </li>
                         ))}
@@ -113,7 +113,7 @@ export default function FeaturesPage() {
 
       <Pillars />
 
-      <section className="bg-white pb-20 sm:pb-24">
+      <section className="bg-surface pb-20 sm:pb-24">
         <div className="shell">
           <SectionHead
             eyebrow="Inside the product"
@@ -129,7 +129,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="bg-violet-50/70 py-20 sm:py-24">
+      <section className="bg-surface-sunken/70 py-20 sm:py-24">
         <div className="shell">
           <SectionHead
             eyebrow="By workspace area"
@@ -145,7 +145,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-surface py-16">
         <Marquee items={modules.map((m) => m.name)} duration={48} />
       </section>
 

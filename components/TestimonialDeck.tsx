@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { testimonials } from "@/lib/content";
 import { Stars } from "./ui";
@@ -123,7 +124,7 @@ export default function TestimonialDeck() {
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous testimonial"
-            className="grid h-11 w-11 place-items-center rounded-full bg-white text-violet-700 ring-1 ring-violet-200 transition-all duration-300 hover:-translate-y-0.5 hover:ring-violet-400 motion-reduce:hover:translate-y-0"
+            className="grid h-11 w-11 place-items-center rounded-full bg-surface text-accent-strong ring-1 ring-line-strong transition-all duration-300 hover:-translate-y-0.5 hover:ring-line-accent motion-reduce:hover:translate-y-0"
           >
             <Icon name="arrowRight" className="h-4 w-4 rotate-180" />
           </button>
@@ -137,7 +138,7 @@ export default function TestimonialDeck() {
                 aria-label={`Show testimonial from ${t.name}`}
                 aria-current={i === index}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  i === index ? "w-7 bg-violet-500" : "w-2 bg-violet-200 hover:bg-violet-300"
+                  i === index ? "w-7 bg-brand" : "w-2 bg-surface-strong hover:bg-violet-300"
                 }`}
               />
             ))}
@@ -147,7 +148,7 @@ export default function TestimonialDeck() {
             type="button"
             onClick={() => go(1)}
             aria-label="Next testimonial"
-            className="grid h-11 w-11 place-items-center rounded-full bg-white text-violet-700 ring-1 ring-violet-200 transition-all duration-300 hover:-translate-y-0.5 hover:ring-violet-400 motion-reduce:hover:translate-y-0"
+            className="grid h-11 w-11 place-items-center rounded-full bg-surface text-accent-strong ring-1 ring-line-strong transition-all duration-300 hover:-translate-y-0.5 hover:ring-line-accent motion-reduce:hover:translate-y-0"
           >
             <Icon name="arrowRight" className="h-4 w-4" />
           </button>
@@ -173,27 +174,45 @@ function Card({
   return (
     <figure
       onClickCapture={onClickCapture}
-      className={`flex h-full select-none flex-col rounded-[24px] bg-white p-7 transition-all duration-500 sm:p-8 ${
-        raised ? "shadow-lift ring-2 ring-violet-300" : "shadow-soft ring-1 ring-violet-100"
+      className={`flex h-full select-none flex-col rounded-[24px] bg-surface p-7 transition-all duration-500 sm:p-8 ${
+        raised ? "shadow-lift ring-2 ring-line-accent" : "shadow-soft ring-1 ring-line"
       }`}
     >
-      <span
-        className="font-display text-[44px] font-bold leading-[0.6] text-violet-200"
-        aria-hidden="true"
-      >
-        &ldquo;
-      </span>
-      <blockquote className="mt-4 flex-1 text-[16.5px] leading-relaxed text-ink">{t.quote}</blockquote>
-      <Stars className="mt-6" />
-      <figcaption className="mt-4 flex items-center gap-3 border-t border-violet-100 pt-5">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-violet-700 text-[13.5px] font-bold text-white">
-          {t.initials}
+      <div className="flex items-center justify-between">
+        <span
+          className="font-display text-[44px] font-bold leading-[0.6] text-violet-200"
+          aria-hidden="true"
+        >
+          &ldquo;
         </span>
+        <span className="inline-flex items-center gap-1 rounded-full bg-ok-soft px-2.5 py-0.5 text-[11px] font-bold text-ok ring-1 ring-ok-line/60">
+          <Icon name="check" className="h-3 w-3 text-ok" />
+          Verified Customer
+        </span>
+      </div>
+      <blockquote className="mt-4 flex-1 text-[16.5px] leading-relaxed text-body">{t.quote}</blockquote>
+      <Stars className="mt-6" />
+      <figcaption className="mt-4 flex items-center gap-3.5 border-t border-line pt-5">
+        {t.avatar ? (
+          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-line-strong shadow-sm">
+            <Image
+              src={t.avatar}
+              alt={t.name}
+              width={48}
+              height={48}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        ) : (
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-violet-700 text-[13.5px] font-bold text-white">
+            {t.initials}
+          </span>
+        )}
         <span className="min-w-0">
-          <span className="block truncate font-display text-[14.5px] font-bold text-violet-950">
+          <span className="block truncate font-display text-[15px] font-bold text-heading">
             {t.name}
           </span>
-          <span className="block truncate text-[12.5px] text-ink-faint">{t.role}</span>
+          <span className="block truncate text-[12.5px] font-medium text-muted">{t.role}</span>
         </span>
       </figcaption>
     </figure>

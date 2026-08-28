@@ -45,17 +45,31 @@ const views: View[] = [
   },
   {
     slot: "payroll",
-    label: "Payroll",
+    label: "Payroll & Compliance",
     icon: "wallet",
     caption: "Payslips, taxes and compliance, run in minutes.",
     render: () => <PayslipCard />,
   },
   {
     slot: "recognition",
-    label: "Recognition",
+    label: "Recognition & Kudos",
     icon: "trophy",
     caption: "Kudos, badges and a culture wall your team loves.",
     render: () => <KudosWall />,
+  },
+  {
+    slot: "onboarding",
+    label: "Onboarding & Lifecycle",
+    icon: "rocket",
+    caption: "Automated candidate journey from offer to 30-day check-in.",
+    render: () => <PresenceBoard />,
+  },
+  {
+    slot: "analytics",
+    label: "People Analytics",
+    icon: "chart",
+    caption: "Executive insights, headcount growth, and retention metrics.",
+    render: () => <GoalsBoard />,
   },
 ];
 
@@ -107,13 +121,13 @@ export default function ProductGallery() {
                   }}
                   className={`group flex w-full items-start gap-4 border-l-2 py-4 pl-5 pr-3 text-left transition-all duration-300 ${
                     on
-                      ? "border-violet-500 bg-violet-50/70"
-                      : "border-violet-100 hover:border-violet-300 hover:bg-violet-50/40"
+                      ? "border-violet-500 bg-surface-sunken/70"
+                      : "border-line hover:border-line-accent hover:bg-surface-sunken/40"
                   }`}
                 >
                   <span
                     className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors duration-300 ${
-                      on ? "bg-violet-500 text-white" : "bg-white text-violet-500 ring-1 ring-violet-100"
+                      on ? "bg-brand text-white" : "bg-surface text-accent-soft ring-1 ring-line"
                     }`}
                   >
                     <Icon name={v.icon} className="h-[18px] w-[18px]" />
@@ -121,12 +135,12 @@ export default function ProductGallery() {
                   <span className="min-w-0">
                     <span
                       className={`block font-display text-[15.5px] font-bold transition-colors ${
-                        on ? "text-violet-950" : "text-ink"
+                        on ? "text-heading" : "text-body"
                       }`}
                     >
                       {v.label}
                     </span>
-                    <span className="mt-1 block text-[13.5px] leading-snug text-ink-faint">
+                    <span className="mt-1 block text-[13.5px] leading-snug text-subtle">
                       {v.caption}
                     </span>
                   </span>
@@ -141,23 +155,19 @@ export default function ProductGallery() {
       <Reveal y={26} scale={0.98} className="min-w-0">
         <div id="gallery-panel" role="tabpanel" aria-labelledby={`gallery-tab-${active}`}>
           <TabletFrame>
-            <div key={view.slot} className="route-fade bg-violet-50/40 p-4 sm:p-6">
-              <Media
-                slot={view.slot}
-                rounded="rounded-[16px]"
-                sizes="(max-width: 1024px) 100vw, 720px"
-              >
+            <div key={view.slot} className="route-fade bg-surface-sunken/40 p-4 sm:p-6">
+              <div className="overflow-hidden rounded-[16px]">
                 {view.render()}
-              </Media>
+              </div>
             </div>
           </TabletFrame>
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
-            <p className="flex items-center gap-2.5 text-[13.5px] text-ink-soft">
-              {mod && <Icon name={mod.icon} className="h-4 w-4 text-violet-500" />}
+            <p className="flex items-center gap-2.5 text-[13.5px] text-muted">
+              {mod && <Icon name={mod.icon} className="h-4 w-4 text-accent-soft" />}
               {view.caption}
             </p>
-            <p className="text-[12.5px] font-semibold text-violet-400">
+            <p className="text-[12.5px] font-semibold text-label">
               {active + 1} / {views.length}
             </p>
           </div>

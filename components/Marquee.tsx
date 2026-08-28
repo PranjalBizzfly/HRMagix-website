@@ -33,7 +33,7 @@ export default function Marquee({
             className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-[13.5px] font-medium ${
               tone === "dark"
                 ? "bg-white/[0.06] text-violet-100 ring-1 ring-inset ring-white/10"
-                : "bg-white text-ink-soft ring-1 ring-inset ring-violet-100"
+                : "bg-surface text-muted ring-1 ring-inset ring-line"
             }`}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
