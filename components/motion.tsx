@@ -68,6 +68,8 @@ type RevealProps = {
   scale?: number;
   blur?: number;
   style?: CSSProperties;
+  /** Anchor target, for revealed sections that are linked to directly. */
+  id?: string;
 };
 
 /** Staggered scroll reveal. Styling lives in globals.css so SSR output is stable. */
@@ -80,12 +82,14 @@ export function Reveal({
   scale = 1,
   blur = 6,
   style,
+  id,
 }: RevealProps) {
   const { ref, shown } = useInView<HTMLElement>();
   return createElement(
     as,
     {
       ref,
+      id,
       "data-shown": shown ? "true" : "false",
       className: `reveal ${className}`,
       style: {

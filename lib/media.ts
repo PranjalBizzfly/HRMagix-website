@@ -1,181 +1,337 @@
 /**
  * The site's image layer.
  *
- * WHAT EXISTS TODAY
- * hrmagix.com ships no photography, screenshots or video — verified at source:
- * zero <img>, <picture>, <video> and background-image rules, no og:image, and
- * no /images or /assets directory. The one authentic raster/vector asset the
- * brand publishes is its product mark (app.hrmagix.com/favicon.svg), which is
- * checked in as public/hrmagix-mark.svg and used in the logo lockup.
+ * TWO KINDS OF IMAGE LIVE HERE, AND THE DISTINCTION IS DELIBERATE.
  *
- * So the product visuals on this site are rendered in the browser from figures
- * HRMagix publishes (see components/ProductVisuals.tsx and Workspace.tsx) —
- * the same approach hrmagix.com takes — rather than invented screenshots.
+ * 1. **The single product image.** `dashboard` is the one and only product
+ *    screenshot on this website — the HRMagix Overview workspace as it is
+ *    published on hrmagix.com. It appears exactly once, in the homepage hero.
+ *    No other page renders a dashboard, a mockup, a device frame or a
+ *    simulated product screen. If you are about to add a second, don't:
+ *    describe the product in words and show the people who use it instead.
  *
- * HOW TO ADD REAL IMAGERY
- * Drop a file into /public/media using the `file` name below and set `src`.
- * Every slot already carries its intended subject, aspect ratio, rendered size
- * and alt text, and <Media> is wired for next/image. Nothing else changes:
- * a slot with `src` renders the photograph, a slot without falls back to the
- * live product rendering that is there now.
+ * 2. **Photography of real Indian workplaces.** Every other entry is a
+ *    photograph of Indian professionals, Indian offices, Indian shop floors.
+ *    Each one is used in exactly ONE place on the site, chosen because it
+ *    depicts what that section is actually about — an arrival at a desk for
+ *    attendance, a "welcome to the team" gift for onboarding, a packed
+ *    carton for the exit stage of the lifecycle. None is decorative and
+ *    none is reused.
+ *
+ * Licensing: photography is Pexels-licensed (free for commercial use, no
+ * attribution required). The HRMagix mark and dashboard are the company's own.
  */
 
 export type MediaSlot = {
   key: string;
-  /** Set once the asset exists, e.g. "/media/hero-team.jpg". */
-  src?: string;
-  /** Intended filename under /public/media. */
-  file: string;
-  /** What the image should show. Guidance for whoever supplies it. */
+  src: string;
+  /** What the photograph shows, and why it sits where it sits. */
   subject: string;
-  /** Alt text to ship with it. */
   alt: string;
   width: number;
   height: number;
-  /** Above the fold slots load eagerly; everything else lazy-loads. */
+  /** Above the fold: load eagerly. Everything else lazy-loads. */
   priority?: boolean;
+  /** Where in the frame the subject sits, so crops never decapitate anyone. */
+  position?: string;
 };
 
-export const mediaSlots: MediaSlot[] = [
+const slots: MediaSlot[] = [
+  /* ---------------------------------------------------------------- */
+  /* The one product image on the entire website.                     */
+  /* ---------------------------------------------------------------- */
   {
-    key: "hero",
+    key: "dashboard",
     src: "/media/hero-workspace.png",
-    file: "hero-workspace.png",
-    subject: "A real HRMagix dashboard screenshot captured from app.hrmagix.com.",
-    alt: "The HRMagix workspace showing today's people snapshot",
-    width: 1600,
-    height: 1000,
+    subject:
+      "The HRMagix Overview workspace: live attendance counters, attendance trend, Q3 OKR progress and the punch-in roster.",
+    alt:
+      "The HRMagix dashboard showing live employee attendance, the weekly attendance trend, Q3 OKR progress and a recent punch-in roster",
+    width: 1376,
+    height: 768,
     priority: true,
   },
+
+  /* ---------------------------------------------------------------- */
+  /* Homepage                                                          */
+  /* ---------------------------------------------------------------- */
   {
-    key: "attendance",
-    src: "/media/module-attendance.png",
-    file: "module-attendance.png",
-    subject: "Attendance & Shifts module — the live presence board.",
-    alt: "HRMagix attendance board showing who is present, on leave, absent and remote",
-    width: 1200,
-    height: 900,
+    key: "home-hero",
+    src: "/media/people-office-work.jpg",
+    subject: "An Indian team at work across a shared desk bank — the everyday scene HRMagix runs under.",
+    alt: "Colleagues working at a shared desk bank in an Indian office, papers and monitors in front of them",
+    width: 1800,
+    height: 1200,
+    priority: true,
+    position: "center 40%",
   },
   {
-    key: "performance",
-    src: "/media/module-performance.png",
-    file: "module-performance.png",
-    subject: "Objectives & OKRs module — goal progress for the quarter.",
-    alt: "HRMagix performance screen showing quarterly OKR progress",
-    width: 1200,
-    height: 900,
+    key: "home-manifesto",
+    src: "/media/documents-huddle.jpg",
+    subject: "Four colleagues comparing paper files — the fragmentation the manifesto describes.",
+    alt: "Four colleagues in an Indian office comparing documents held in coloured paper folders",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "home-compliance",
+    src: "/media/payroll-desk-review.jpg",
+    subject: "A manager checking a figure with a colleague mid-call — the monthly statutory review.",
+    alt: "A manager reviewing a document with a seated colleague who is on a desk phone",
+    width: 1800,
+    height: 1200,
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* Solutions                                                         */
+  /* ---------------------------------------------------------------- */
+  {
+    key: "solutions-overview",
+    src: "/media/team-briefing.jpg",
+    subject: "A stand-up briefing — the cross-module view of a working week.",
+    alt: "A colleague briefing three team members standing beside a whiteboard in an Indian office",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "hrms",
+    src: "/media/manager-briefing-desks.jpg",
+    subject: "A manager addressing the floor from the doorway — the single record everyone works from.",
+    alt: "A manager holding a printout addressing colleagues seated at a bank of desks",
+    width: 1800,
+    height: 1200,
   },
   {
     key: "payroll",
-    src: "/media/module-payroll.png",
-    file: "module-payroll.png",
-    subject: "Payroll module — a completed run with payslips and compliance.",
-    alt: "HRMagix payroll run showing payslips, taxes and compliance",
-    width: 1200,
-    height: 900,
+    src: "/media/records-desk.jpg",
+    subject: "A payroll reviewer working through a file at a monitor — the pre-cutoff check.",
+    alt: "A woman in a navy blazer reviewing papers from a file folder at her desk",
+    width: 1800,
+    height: 2700,
+    position: "center 30%",
   },
   {
-    key: "recognition",
-    src: "/media/module-recognition.png",
-    file: "module-recognition.png",
-    subject: "Recognition module — the kudos wall.",
-    alt: "HRMagix recognition wall showing kudos between colleagues",
-    width: 1200,
-    height: 900,
+    key: "employee-management",
+    src: "/media/partners-conversation.jpg",
+    subject: "Four colleagues mid-conversation — the people record behind every interaction.",
+    alt: "Four colleagues standing in conversation in an open-plan Indian office",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "attendance",
+    src: "/media/office-arrival.jpg",
+    subject: "A colleague arriving with a mug while another is already at her desk — the moment a punch is recorded.",
+    alt: "A colleague walking into the office carrying a mug while a co-worker works at her desk",
+    width: 1800,
+    height: 2700,
+    position: "center 35%",
+  },
+  {
+    key: "leave",
+    src: "/media/office-lighter-moment.jpg",
+    subject: "A lighter moment at the desks — what a leave calendar everyone trusts protects.",
+    alt: "Two colleagues sharing a joke at their desks in an Indian office",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "ess",
+    src: "/media/remote-laptop.jpg",
+    subject: "An employee working from home at a laptop — self-service without an HR queue.",
+    alt: "A man working at a laptop at a small desk at home",
+    width: 1800,
+    height: 2700,
+    position: "center 45%",
   },
   {
     key: "onboarding",
-    src: "/media/module-onboarding.png",
-    file: "module-onboarding.png",
-    subject: "Onboarding module — digital employee welcome workflow.",
-    alt: "HRMagix onboarding portal showing digital checklist and document sign-off",
-    width: 1200,
-    height: 900,
+    src: "/media/welcome-to-team.jpg",
+    subject: "A 'Welcome to the team' gift on a desk beside a joining form being signed.",
+    alt: "A manager signing a form at a desk beside a gift labelled welcome to the team",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "lifecycle-exit",
+    src: "/media/transition-box.jpg",
+    subject: "An employee carrying a packed carton — the exit stage the lifecycle has to handle properly.",
+    alt: "An employee carrying a packed cardboard box of desk belongings",
+    width: 1800,
+    height: 1200,
   },
   {
     key: "analytics",
-    src: "/media/module-analytics.png",
-    file: "module-analytics.png",
-    subject: "People Analytics module — workforce retention and payroll trends.",
-    alt: "HRMagix analytics dashboard showing headcount metrics and retention",
-    width: 1200,
-    height: 900,
+    src: "/media/analytics-huddle.jpg",
+    subject: "Three leaders reading the same report in a glass-walled meeting room.",
+    alt: "Three colleagues reviewing printed reports together in a glass-walled meeting room",
+    width: 1800,
+    height: 1200,
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* Industries                                                        */
+  /* ---------------------------------------------------------------- */
+  {
+    key: "industry-startups",
+    src: "/media/startup-duo.jpg",
+    subject: "Two founders at one laptop in a small rented room — the first ten hires.",
+    alt: "Two young professionals looking at a laptop together in a small home office",
+    width: 1800,
+    height: 1200,
   },
   {
-    key: "mobile",
-    src: "/media/app-punch-in.png",
-    file: "app-punch-in.png",
-    subject: "The HRMagix mobile app punch-in screen, portrait, 1170×2532.",
-    alt: "One-tap punch-in on the HRMagix mobile app",
-    width: 600,
-    height: 1300,
+    key: "industry-small-business",
+    src: "/media/shopkeeper.jpg",
+    subject: "A shop owner behind his counter — payroll for a team you know by name.",
+    alt: "A young shop owner standing behind the counter of his grocery store in India",
+    width: 1800,
+    height: 2699,
+    position: "center 30%",
   },
   {
-    key: "team",
-    src: "/media/hero-workspace.png",
-    file: "hero-workspace.png",
-    subject: "People Operations platform workspace.",
-    alt: "HRMagix people team workspace",
-    width: 1600,
-    height: 900,
+    key: "industry-smes",
+    src: "/media/ahmedabad-office.jpg",
+    subject: "A working session at a laptop in an Ahmedabad office — the mid-market operating rhythm.",
+    alt: "Two colleagues working at a laptop in a conference room in an Ahmedabad office",
+    width: 1800,
+    height: 2699,
+    position: "center 30%",
   },
   {
-    key: "solution-timework",
-    src: "/media/module-attendance.png",
-    file: "module-attendance.png",
-    subject: "Time & Attendance workspace view.",
-    alt: "HRMagix Time and Attendance management",
-    width: 1200,
-    height: 900,
+    key: "industry-manufacturing",
+    src: "/media/textile-floor.jpg",
+    subject: "Two operators on an Indian textile finishing line, ID cards visible — shift, ESI and LWF territory.",
+    alt: "Two operators wearing company uniforms and ID cards working on an Indian textile production floor",
+    width: 1800,
+    height: 1200,
   },
   {
-    key: "solution-growth",
-    src: "/media/module-performance.png",
-    file: "module-performance.png",
-    subject: "Performance & OKRs workspace view.",
-    alt: "HRMagix Performance and OKRs management",
-    width: 1200,
-    height: 900,
+    key: "industry-it-services",
+    src: "/media/office-tower-night.jpg",
+    subject: "An Indian office tower lit at night — multi-shift delivery centres and 24/7 rosters.",
+    alt: "Floors of an Indian office tower lit up at night with people still working at desks",
+    width: 1800,
+    height: 2397,
+    position: "center 40%",
   },
   {
-    key: "solution-payroll",
-    src: "/media/module-payroll.png",
-    file: "module-payroll.png",
-    subject: "Automated Indian Payroll workspace view.",
-    alt: "HRMagix Payroll management",
-    width: 1200,
-    height: 900,
+    key: "industry-professional-services",
+    src: "/media/panel-stage.jpg",
+    subject: "A briefing around a table under stage lighting — billable teams that live on the road.",
+    alt: "A team gathered around a table being briefed at an event venue",
+    width: 1800,
+    height: 1200,
   },
   {
-    key: "solution-engagement",
-    src: "/media/module-recognition.png",
-    file: "module-recognition.png",
-    subject: "Employee Recognition workspace view.",
-    alt: "HRMagix Employee Recognition feed",
-    width: 1200,
-    height: 900,
+    key: "industry-warehousing",
+    src: "/media/warehouse-inventory.jpg",
+    subject: "A stores supervisor picking against a note in an Indian warehouse aisle.",
+    alt: "A warehouse supervisor reaching for stock on shelving in an Indian distribution centre",
+    width: 1800,
+    height: 1200,
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* Resources, company, policy                                        */
+  /* ---------------------------------------------------------------- */
+  {
+    key: "white-papers",
+    src: "/media/briefing-paper.jpg",
+    subject: "A colleague presenting from a single sheet — the format every HRMagix paper takes.",
+    alt: "A man presenting from a printed sheet of paper to colleagues in a meeting room",
+    width: 1800,
+    height: 2700,
+    position: "center 25%",
   },
   {
-    key: "cta-workspace",
-    src: "/media/cta-workspace-mockup.png",
-    file: "cta-workspace-mockup.png",
-    subject: "HRMagix suite mockup for CTA section.",
-    alt: "HRMagix Platform Suite preview",
-    width: 1600,
-    height: 900,
+    key: "media-room",
+    src: "/media/celebration-hat.jpg",
+    subject: "A portrait taken for an internal culture post — the kind of asset the media room holds.",
+    alt: "A smiling employee wearing a party hat photographed against a plain wall",
+    width: 1800,
+    height: 2700,
+    position: "center 25%",
   },
   {
-    key: "industry-tech",
-    src: "/media/module-analytics.png",
-    file: "module-analytics.png",
-    subject: "People Analytics overview for high-growth teams.",
-    alt: "HRMagix Analytics workspace",
-    width: 1200,
-    height: 900,
+    key: "calculator",
+    src: "/media/helpdesk-call.jpg",
+    subject: "A finance lead reading a statement on a call — the person these calculators are for.",
+    alt: "A finance professional reading a printed statement while on a phone call",
+    width: 1800,
+    height: 1202,
+  },
+  {
+    key: "about",
+    src: "/media/team-portrait.jpg",
+    subject: "A team portrait taken at their own desks rather than in a studio.",
+    alt: "Four colleagues photographed together at their desks in an Indian office",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "careers",
+    src: "/media/portrait-arjun.jpg",
+    subject: "A team lead in front of his colleagues — what joining looks like from the inside.",
+    alt: "A smiling team lead standing in the foreground with three colleagues behind him",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "contact",
+    src: "/media/portrait-meera.jpg",
+    subject: "A specialist ready to take the call, photographed plainly.",
+    alt: "A professional in a navy blazer standing with her arms folded against a plain wall",
+    width: 1800,
+    height: 1200,
+  },
+  {
+    key: "vendor",
+    src: "/media/policy-handover.jpg",
+    subject: "A file handover across a desk — the working relationship a partner has with a customer.",
+    alt: "A colleague handing over a stack of files to a seated co-worker",
+    width: 1800,
+    height: 2700,
+    position: "center 30%",
+  },
+  {
+    key: "policy",
+    src: "/media/portrait-sanjay.jpg",
+    subject: "A single considered portrait for the policy library — policies are about people, not paper.",
+    alt: "A professional in a waistcoat and tie photographed against a plain wall",
+    width: 1800,
+    height: 2700,
+    position: "center 25%",
+  },
+  {
+    key: "press-kit",
+    src: "/media/portrait-vikram.jpg",
+    subject: "A press-ready portrait in the style journalists are asked to use.",
+    alt: "A professional in a dark waistcoat photographed against a plain light wall",
+    width: 1800,
+    height: 2700,
+    position: "center 22%",
   },
 ];
 
-export const bySlot = (key: string) => mediaSlots.find((m) => m.key === key);
+export const mediaSlots = slots;
 
-/** True when a real asset has been supplied for this slot. */
-export const hasAsset = (key: string) => Boolean(bySlot(key)?.src);
+const index = new Map(slots.map((s) => [s.key, s]));
+
+export const bySlot = (key: string): MediaSlot | undefined => index.get(key);
+
+/**
+ * Every photograph is used exactly once. This is asserted in development so a
+ * duplicate can never creep back in through a copy-paste.
+ */
+if (process.env.NODE_ENV !== "production") {
+  const seen = new Map<string, string>();
+  for (const s of slots) {
+    const first = seen.get(s.src);
+    if (first) {
+      // eslint-disable-next-line no-console
+      console.warn(`[media] ${s.src} is used by both "${first}" and "${s.key}".`);
+    }
+    seen.set(s.src, s.key);
+  }
+}

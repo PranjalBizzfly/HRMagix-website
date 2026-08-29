@@ -10,7 +10,11 @@
     "typecheck": "tsc --noEmit",
     "theme:audit": "node scripts/theme_audit.mjs",
     "theme:behavior": "node scripts/theme_behavior.mjs",
-    "theme:shots": "node scripts/theme_shots.mjs"
+    "theme:shots": "node scripts/theme_shots.mjs",
+    "audit:site": "node scripts/audit_site.mjs",
+    "audit:nav": "node scripts/audit_nav.mjs",
+    "audit:all": "node scripts/audit_site.mjs && node scripts/theme_audit.mjs && node scripts/theme_behavior.mjs && node scripts/audit_nav.mjs",
+    "shots": "node scripts/shots.mjs"
   },
   "dependencies": {
     "next": "15.1.6",

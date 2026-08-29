@@ -1,117 +1,166 @@
-# HRMagix — Site Architecture
+# HRMagix website — architecture
 
-Deliverable for `docs/…/02-page-structure.md`: sitemap, page hierarchy, URL map,
-navigation model, page states and the reusable template strategy.
-
-Scope note: this file documents the **UI/UX architecture**. Commerce, auth,
-admin and legal surfaces are recorded as out of scope rather than invented.
+Next.js 15 App Router, React 19, Tailwind 3, TypeScript. Fully static: every
+route prerenders at build time.
 
 ---
 
-## 1. Sitemap
+## 1. Where content lives
 
-```
-/                         Home
-├── /features             Capabilities (service-equivalent)
-├── /modules              Modules (product-equivalent)
-├── /how-it-works         Onboarding walkthrough
-├── /pricing              Plans + cost calculator
-├── /about                Company
-├── /faq                  Questions
-└── /contact              Contact + enquiry form
+Content is data, not JSX. Pages compose it; they do not contain it. This is what
+keeps thirty-nine pages from drifting into thirty-nine copies of each other.
 
-System routes
-├── not-found             404 (app/not-found.tsx)
-├── error                 Route error boundary (app/error.tsx)
-├── global-error          Root-layout boundary (app/global-error.tsx)
-└── loading               Route loading skeleton (app/loading.tsx)
-```
-
-## 2. Page hierarchy
-
-| Depth | Pages | Role |
-| --- | --- | --- |
-| 0 | `/` | Entry. Carries the full story: hero → proof → contrast → capabilities → pillars → product gallery → areas → modules → steps → recognition → calculator → testimonials → assurances → FAQ → CTA. |
-| 1 — Platform | `/features`, `/modules`, `/how-it-works` | What the product does, in increasing detail. |
-| 1 — Company | `/about`, `/pricing`, `/faq`, `/contact` | Who we are, what it costs, objections, conversion. |
-
-Depth never exceeds one level; every page is reachable from the header in at
-most two interactions.
-
-## 3. URL map
-
-| URL | Template | Primary CTA | Status |
-| --- | --- | --- | --- |
-| `/` | Home composition (bespoke) | Get Started | live |
-| `/features` | Interior + capability spreads | Get Started | live |
-| `/modules` | Interior + module map | Get Started | live |
-| `/how-it-works` | Interior + step trail | Book a Demo | live |
-| `/pricing` | Interior + plan ladder | Start Free Trial | live |
-| `/about` | Interior + statement | Talk to the team | live |
-| `/faq` | Interior + accordion | Book a demo | live |
-| `/contact` | Split hero + form | Send message | live |
-
-All URLs are lowercase, hyphenated, extensionless and stable. **No URL has
-changed**, so no redirects are required. If one must change later, add a 301 in
-`next.config.mjs` via `redirects()` — do not silently repoint links.
-
-### Deliberately absent
-
-| Surface | Why |
+| Module | Holds |
 | --- | --- |
-| Blog / content pages | HRMagix publishes none; inventing articles would fabricate content. |
-| Location pages | One published location (Pune). A page per location needs more than one. |
-| Login / account | Lives on `app.hrmagix.com`; the marketing site links out. |
-| Checkout / payment | Pricing is display-only; no commerce layer exists. |
-| Policy pages | Legal copy must come from the business, not be drafted here. |
-| Admin | No CMS or backend in this project. |
+| `lib/content.ts` | Product facts published by HRMagix: the twelve modules, statutory engine, plans, testimonials, manifesto, general FAQs |
+| `lib/solutions.ts` | The eight solution pages — opening argument, passages, mechanics, ledgers, capabilities, page-specific questions |
+| `lib/industries.ts` | The six industry pages — situation, pressures, priority order, closing, questions |
+| `lib/resources.ts` | White papers, careers, press kit, media room, partners |
+| `lib/policies.ts` | HRMagix's own legal pages, and the workplace policy register |
+| `lib/nav.ts` | The information architecture. Header, footer and 404 all read it |
+| `lib/media.ts` | Every image, with subject, alt text, dimensions and focal point |
 
-## 4. Navigation model
+### Sourcing rules these modules enforce
 
-| Layer | Where | Contents |
-| --- | --- | --- |
-| Primary | Header (`lg`+) | Platform (mega-menu), Features, How it works, Pricing, Company. `Contact Sales` and `How it works` appear inline from `xl`. |
-| Secondary | Mega-menu panels | Capabilities list, modules grouped by workspace area, promo card. |
-| Mobile | Full-screen sheet (`< lg`) | Platform / Company toggle, capability list, module chip rail, CTAs. |
-| Breadcrumbs | Every interior page | `components/Breadcrumbs.tsx` — `<nav aria-label="Breadcrumb">` + `<ol>`, current page marked `aria-current="page"`. |
-| Footer | All pages | CTA panel, trust strip, Product / Company / Resources / Capabilities columns, full module index, contact block. |
-| Contextual | In-page | Every section ends in a relevant onward link rather than a dead end. |
+hrmagix.com is a single-page site. It publishes the product, twelve modules,
+three pricing tiers, contact details and customer voices — and nothing else. No
+careers page, no partner programme, no press archive, no certification list, no
+downloadable papers.
 
-## 5. Page states
+So the content modules observe three rules, and each file documents its own
+application of them:
 
-| State | Implementation | Applied to |
-| --- | --- | --- |
-| Loading | `app/loading.tsx` → `PageSkeleton` | Route transitions |
-| Empty | `EmptyState` in `components/states.tsx` | Module wall when a filter matches nothing |
-| Error | `app/error.tsx` → `ErrorState` with retry + digest | Any route failure |
-| Root error | `app/global-error.tsx` (self-contained markup) | Root layout failure |
-| Success | `SuccessState` | Contact form after submit |
-| Not found | `app/not-found.tsx` | Unknown URLs |
-| Unauthorized | N/A | No auth layer in this project |
-| Maintenance | N/A | Belongs to hosting, not the app |
+1. **Product claims** come from what HRMagix publishes.
+2. **Statutory facts** — the EPF ceiling, the ESI threshold, the Gratuity Act
+   formula — are provisions of Indian law, cited as such rather than as product
+   features.
+3. **Where the company has published nothing**, the page says so and gives the
+   reader the real route instead. `/company/careers`, `/vendor`,
+   `/resources/media` and `/company/press-kit` each carry an explicit section
+   listing what they deliberately do not claim.
 
-All four states share one visual language via `StatePanel`: icon tile, headline,
-body, action.
+No customer names, headcounts, benchmarks, awards, certifications or coverage
+appear anywhere beyond what is already published.
 
-## 6. Template strategy
+---
 
-Pages are compositions, not a repeated shell. Three reusable openers plus a
-shared section vocabulary:
+## 2. The design vocabulary
 
-**Openers**
-- `PageHero` — centred eyebrow → display headline → lede → actions → breadcrumbs. Used by six interior pages.
-- Home `Hero` — bespoke: trust pills, oversized type, product collage.
-- Contact — bespoke split: dark channel rail beside the form.
+`components/editorial.tsx` holds compositions, not cards:
 
-**Section vocabulary** (mixed per page so no two pages read alike)
-`SectionHead` · `Contrast` · `Capabilities` · `Pillars` · `ProductGallery` ·
-`AreaPanels` · `ModuleExplorer` · `StepTrail` · `Calculator` ·
-`TestimonialDeck` · `QuoteBand` · `Faq` · `ClosingCta` · `Marquee`
+| Component | For |
+| --- | --- |
+| `ArticleOpener` | Asymmetric opener — headline beside a photograph bleeding off the edge |
+| `Opening` | The opening argument, set at a larger measure against a rule |
+| `Passages` | Long-form sections, heading left and body right |
+| `Ledger` | Ruled reference rows — statutory heads, record fields |
+| `Mechanics` | An ordered sequence with a line running through it |
+| `CapabilityIndex` | Three plain lists, never nine boxes |
+| `NumberedNarrative` | Arguments and pressures, indexed rather than sequenced |
+| `SplitPassage` | Text against a load-bearing photograph |
+| `Statement` | One sentence given a whole band |
+| `Onward` | Three routes onward with a reason attached to each |
+| `Band` | Section wrapper with alternating grounds and a padding scale |
 
-**Rhythm rule** — a page must not repeat the same ground or block height twice
-in a row. Grounds available: `wash`, white, `violet-50/70`, `violet-100/60`,
-brand gradient, `violet-950`. Section padding scale: 56 / 80 / 96 / 112 / 128.
+**The rule that prevents template feel:** a page picks three or four of these,
+never all of them, and never two adjacent sections from the same one.
 
-**Media** — every visual position is a slot in `lib/media.ts` rendered through
-`components/Media.tsx` (next/image, intrinsic dimensions, responsive `sizes`,
-lazy below the fold). Device framing comes from `components/Frames.tsx`.
+`app/solutions/[slug]/page.tsx` takes this furthest. A `recipes` map fixes, per
+page, the block order and the ground each sits on — so payroll leads with its
+mechanism and closes with its statutory table, while the HRMS page leads with
+the record itself. Eight pages, one template, eight different reading
+experiences.
+
+---
+
+## 3. Images
+
+`lib/media.ts` is the single registry. Two kinds of entry:
+
+- **One product image.** `dashboard` is the only product screenshot on the
+  entire website, rendered once in the homepage hero. No other page shows a
+  dashboard, mockup, device frame or simulated UI.
+- **Photography.** Twenty-nine photographs of Indian workplaces, each used in
+  exactly one place, chosen for what it depicts — an arrival at a desk for
+  attendance, a "welcome to the team" gift for onboarding, a packed carton for
+  the exit stage.
+
+A development-time assertion in `lib/media.ts` warns if any file is registered
+to two slots. `components/Photo.tsx` is the only way an image reaches a page: it
+enforces intrinsic dimensions, focal point, lazy loading and one reveal
+treatment.
+
+---
+
+## 4. Theme
+
+Two colour layers, defined in `app/globals.css` and mapped in
+`tailwind.config.ts`:
+
+- **Literal brand ramps** (`violet`, `ink`) for surfaces that are dark in both
+  themes, so their contrast pairing never changes.
+- **Semantic tokens** (`surface`, `line`, `heading`, `accent`, …) resolved from
+  CSS custom properties, so `bg-surface text-heading ring-line` renders
+  correctly in both themes without a single `dark:` variant at the call site.
+
+Dark mode is a re-designed palette, not an inversion. An inline blocking script
+in `app/layout.tsx` sets the theme before first paint.
+
+---
+
+## 5. Verification
+
+Four audits, all driving headless Chrome over the real production build.
+
+```bash
+npm run build
+npx next start -p 3111       # in another shell
+npm run audit:all
+```
+
+| Script | Checks |
+| --- | --- |
+| `audit:site` | Broken internal links, placeholder `href="#"`, orphan routes, horizontal overflow at 320–1920px, console errors |
+| `theme:audit` | Computed colour of every text node against the background actually painted behind it, in both themes |
+| `theme:behavior` | System preference, persistence, no flash, survival across navigation, keyboard operability |
+| `audit:nav` | Mega panel opens on real pointer input and closes on Escape; mobile sheet opens, switches section, locks and restores scroll |
+
+`npm run shots -- <width> <theme> <route…>` captures viewport screenshots into
+`.shots/` for visual review, forcing reveal animations on first.
+
+### Last full run
+
+- Site audit: 36 routes, 0 broken links, 0 placeholders, 0 orphans, 0 overflow
+  at ten breakpoints, 0 console errors
+- Theme audit: 0 contrast failures across 36 routes in both themes
+- Theme behaviour: 17/17
+- Navigation: 13/13
+
+---
+
+## 6. Routes
+
+```
+/                                  home
+/solutions                         hub + full twelve-module reference
+/solutions/{hrms,payroll,employee-management,attendance,
+            leave-management,ess,onboarding,hr-analytics}
+/industries                        hub
+/industries/{startups,small-business,smes,manufacturing,
+             it-services,professional-services}
+/resources                         hub
+/resources/{white-papers,media,calculator,faqs}
+/company/{about,careers,press-kit,contact}
+/vendor
+/policy                            hub
+/policy/{privacy,terms,security,cookies,workplace-policies}
+/pricing
+/how-it-works
+```
+
+Old URLs (`/about`, `/faq`, `/modules/*`, `/features`, `/compliance`, …) are
+permanently redirected in `next.config.mjs` to the page that now carries their
+content — never to the homepage as a catch-all.
+
+`app/sitemap.ts` generates from the same content modules the pages read, so it
+cannot drift.

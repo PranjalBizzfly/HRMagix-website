@@ -1,176 +1,142 @@
 import type { Metadata } from "next";
-import PageHero from "@/components/PageHero";
-import ClosingCta from "@/components/sections/ClosingCta";
-import IndustryShowcase from "@/components/sections/IndustryShowcase";
-import { Button, SectionHead } from "@/components/ui";
-import { Icon } from "@/components/icons";
+import Link from "next/link";
+import { industries } from "@/lib/industries";
+import { Band, Opening, Statement } from "@/components/editorial";
+import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
-import { industries, site } from "@/lib/content";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Solutions by Industry",
+  title: "Industries — HR & Payroll by Company Type",
   description:
-    "Tailored HRMagix workflows for IT & tech startups, professional services, corporate finance, distributed teams, and high-growth Indian enterprises.",
+    "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services — the same platform, matched to how each workforce is actually paid.",
+  keywords: [
+    "HR software for companies",
+    "HRMS for small business",
+    "payroll software for SMEs",
+    "HR software for manufacturing companies",
+    "HR software for startups",
+  ],
+  alternates: { canonical: "/industries" },
 };
 
-const industryDeepDives = [
-  {
-    key: "tech",
-    name: "IT, SaaS & High-Growth Startups",
-    kicker: "Agile Sprints & Remote Synchronization",
-    lede: "In fast-paced engineering teams across Bangalore, Pune, and Hyderabad, rigid 9-to-5 rules fail. Developers need flexible check-in windows, sprint-aligned OKRs, and instant leave requests integrated directly into their daily workflow.",
-    challenges: [
-      "Fragmented sprint tracking disconnected from quarterly performance reviews",
-      "Manual shift calculations for round-the-clock DevOps and support shifts",
-      "High competition for senior engineering talent requiring continuous meritocracy",
-    ],
-    solutions: [
-      "Quarterly & Sprint OKRs: Cascading objectives directly linked to individual key result areas (KRAs) with live progress sliders.",
-      "Mobile Geo-Fencing: iOS & Android GPS check-in with selfie validation for hybrid developers working from home or co-working spaces.",
-      "Instant Kudos & Spot Awards: Real-time peer recognition wall embedded in the workspace to celebrate sprint deliverables and customer wins.",
-    ],
-  },
-  {
-    key: "services",
-    name: "Professional Services & Consulting Agencies",
-    kicker: "Billable Accuracy & Multi-Tier Approvals",
-    lede: "Consulting firms, legal practices, and digital agencies thrive on accurate time allocation. HRMagix eliminates time leakage with project-tagged attendance rosters and automated manager approvals.",
-    challenges: [
-      "Discrepancies between client billable logs and internal employee timesheets",
-      "Complex multi-tier client manager and internal HR approval bottlenecks",
-      "High employee turnover due to opaque promotion and bonus appraisal cycles",
-    ],
-    solutions: [
-      "Project-Specific Timesheet Accruals: Auto-calculate overtime and weekend comp-off credits based on client-approved project hours.",
-      "9-Box Talent Matrix: Calibrate high-performing consultants and map future practice leadership during quarterly reviews.",
-      "Centralized Document Vault: Securely store client non-disclosure agreements, offer letters, and statutory compliance certifications.",
-    ],
-  },
-  {
-    key: "finance",
-    name: "Financial Services, BFSI & Corporate Enterprises",
-    kicker: "Bank-Grade Security & 100% Statutory Compliance",
-    lede: "Financial institutions and corporate headquarters require zero-error multi-entity payroll runs, immutable audit trails, and strict role-based access control.",
-    challenges: [
-      "Heavy compliance penalties from EPF, ESI, or PT calculation discrepancies across multiple Indian states",
-      "Lengthy 3-day payroll reconciliation cycles prone to human spreadsheet errors",
-      "Strict data sovereignty requirements requiring Tier-4 Indian cloud infrastructure",
-    ],
-    solutions: [
-      "Automated Statutory Calculations: Pre-configured rules for EPFO wage ceilings, ESIC gross limits, and state-specific Professional Tax slabs.",
-      "One-Click Bank Batch Files: Export bank-formatted NEFT, RTGS, and IMPS payment files directly to ICICI, HDFC, Axis, and SBI portals.",
-      "Dual Tax Regime Support: Automatically compute monthly TDS under Section 192 comparing Old vs. New tax regimes with Form 24Q quarterly exports.",
-    ],
-  },
-  {
-    key: "remote",
-    name: "Distributed, Hybrid & Multi-City Workforces",
-    kicker: "Single Digital Headquarters Across India",
-    lede: "Managing teams across Mumbai, Delhi NCR, Pune, Kolkata, and tier-2 tech hubs requires a centralized platform where attendance, leave balances, and company culture remain unified.",
-    challenges: [
-      "Uncertainty around employee attendance status across remote home locations",
-      "Varying state holiday calendars causing communication mismatches",
-      "Disconnection from company values and reduced team engagement in remote settings",
-    ],
-    solutions: [
-      "Multi-State Holiday Calendars: Assign localized state holiday lists (e.g. Maharashtra Day, Gudi Padwa, Pongal, Durga Puja) to specific office locations.",
-      "Live Presence Board: Real-time visibility into who is active, on leave, remote, or traveling without intrusive micromanagement.",
-      "Interactive 1-on-1 Framework: Shared agendas and private manager coaching notes to ensure remote team members receive continuous mentorship.",
-    ],
-  },
-];
-
-export default function IndustriesPage() {
+/**
+ * The industries hub.
+ *
+ * A stacked editorial index rather than a grid: each entry is a full-width row
+ * with its own photograph, so the six read as six different kinds of company
+ * rather than six identical tiles. The rows alternate image side, which is what
+ * stops the stack becoming a rhythm of its own.
+ */
+export default function IndustriesHub() {
   return (
     <>
-      <PageHero
-        eyebrow="Solutions by Industry"
-        title="Engineered for your sector's operational rhythm"
-        boldFrom={3}
-        lede="From fast-moving IT startups to compliance-intensive financial corporations, explore how HRMagix adapts to your team's specific workforce dynamics."
-        crumb="Industries"
-        actions={
-          <Button href="/contact" size="lg">
-            Schedule Industry Walkthrough
-          </Button>
-        }
-      />
+      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[132px]">
+        <div className="shell">
+          <Reveal y={8}>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Industries" }]} />
+          </Reveal>
+          <h1 className="display display-xl mt-8 max-w-[17ch] text-balance">
+            The same platform. <strong>A different first move.</strong>
+          </h1>
+          <p className="mt-8 max-w-2xl text-[18px] leading-[1.65] text-body sm:text-[19.5px]">
+            Every company on this page has the same statutory obligations. What differs is where the
+            difficulty sits — and therefore which module is worth switching on first.
+          </p>
+        </div>
+      </header>
 
-      {/* Interactive Showcase */}
-      <IndustryShowcase />
+      <Band ground="surface" size="lg">
+        <Opening
+          label="Why this page exists"
+          paragraphs={[
+            "Software companies usually publish industry pages to widen a keyword net, and the pages end up identical apart from a noun. That is not useful to anybody choosing a system.",
+            "So each of the six below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.",
+          ]}
+        />
+      </Band>
 
-      {/* Deep Editorial Industry Workflows */}
-      <section className="bg-surface-sunken/70 py-24 sm:py-28">
-        <div className="shell space-y-16">
-          <SectionHead
-            eyebrow="Operational Deep Dives"
-            title={
-              <>
-                How HRMagix solves <strong>sector-specific bottlenecks</strong>
-              </>
-            }
-            sub="Explore the exact challenges and architectural solutions we deploy for Indian enterprises across diverse operational domains."
-          />
+      {/* ---- The six, as alternating editorial rows ---- */}
+      <div className="bg-surface-sunken">
+        <div className="shell divide-y divide-line">
+          {industries.map((industry, i) => (
+            <Reveal
+              key={industry.slug}
+              y={18}
+              className="grid items-center gap-8 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16"
+            >
+              <div className={i % 2 ? "lg:order-2" : ""}>
+                <Link href={industry.href} className="group block">
+                  <Photo
+                    slot={industry.image}
+                    ratio="16 / 10"
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                  />
+                </Link>
+              </div>
 
-          <div className="space-y-10">
-            {industryDeepDives.map((ind, idx) => (
-              <Reveal key={ind.key} delay={idx * 60} y={20}>
-                <article className="overflow-hidden rounded-[28px] bg-surface p-8 shadow-soft ring-1 ring-line sm:p-10 lg:p-12">
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
-                    <div>
-                      <span className="text-[12px] font-bold uppercase tracking-wider text-accent">
-                        {ind.kicker}
-                      </span>
-                      <h3 className="display display-md mt-1 text-heading">
-                        {ind.name}
-                      </h3>
-                    </div>
-                    <Button href="/contact" variant="outline" size="sm">
-                      Discuss This Workflow
-                    </Button>
-                  </div>
+              <div className={i % 2 ? "lg:order-1" : ""}>
+                <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent-soft">
+                  {industry.audience}
+                </p>
+                <h2 className="mt-4 font-display text-[26px] font-bold leading-[1.2] tracking-[-0.025em] text-heading sm:text-[30px]">
+                  <Link
+                    href={industry.href}
+                    className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                  >
+                    {industry.name}
+                  </Link>
+                </h2>
+                <p className="mt-4 max-w-xl text-[16.5px] leading-[1.7] text-muted">
+                  {industry.standfirst}
+                </p>
 
-                  <p className="mt-6 text-[16.5px] leading-relaxed text-muted sm:text-[18px]">
-                    {ind.lede}
-                  </p>
+                <p className="mt-6 text-[13px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                  Start with
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-body">
+                  <span className="font-semibold text-heading">{industry.priority[0].module}</span>{" "}
+                  — {industry.priority[0].why}
+                </p>
 
-                  <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    <div className="rounded-2xl bg-danger-soft/50 p-6 ring-1 ring-danger-line">
-                      <p className="font-display text-[14px] font-bold uppercase tracking-wider text-danger-strong">
-                        The Core Operational Bottlenecks
-                      </p>
-                      <ul className="mt-4 space-y-3">
-                        {ind.challenges.map((c, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-[14px] text-body">
-                            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-danger" />
-                            <span>{c}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <Link
+                  href={industry.href}
+                  className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent transition-colors hover:text-accent-strong"
+                >
+                  Read the {industry.name.toLowerCase()} page <Arrow />
+                </Link>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
 
-                    <div className="rounded-2xl bg-surface-sunken/70 p-6 ring-1 ring-line-strong">
-                      <p className="font-display text-[14px] font-bold uppercase tracking-wider text-accent-deep">
-                        The HRMagix Platform Resolution
-                      </p>
-                      <ul className="mt-4 space-y-3">
-                        {ind.solutions.map((s, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-[14px] text-body">
-                            <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                            <span>{s}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+      <Statement tone="dark" attribution="The only claim this site makes about outcomes">
+        Every company here runs the same statutory rules. What changes is how much of the work a
+        person still has to remember to do.
+      </Statement>
+
+      <Band ground="surface" size="lg">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
+          <div>
+            <h2 className="display display-md max-w-[18ch]">
+              Not on this list, or somewhere between two of them?
+            </h2>
+            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
+              Most companies are. The configuration questions that matter — how many states, how
+              many entities, whether any part of the workforce runs shifts — cut across sectors
+              entirely. A short conversation settles it faster than another page would.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button href="/company/contact">Talk to the team</Button>
+            <Button href="/solutions" variant="outline">
+              Browse solutions
+            </Button>
           </div>
         </div>
-      </section>
-
-      <ClosingCta />
+      </Band>
     </>
   );
 }

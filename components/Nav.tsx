@@ -2,545 +2,440 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { features, modules, moduleGroups } from "@/lib/content";
-import { Arrow, Badge, Button, Logo, Pill } from "./ui";
-import { Icon, IconTile } from "./icons";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Logo, Button, Arrow } from "./ui";
+import { Icon } from "./icons";
 import ThemeToggle from "./ThemeToggle";
+import { primaryNav, policyNav, type NavSection } from "@/lib/nav";
+import { site } from "@/lib/content";
 
-type MenuKey = "platform" | "company" | null;
-
-/** `badge` is only set where HRMagix publishes the fact behind it. */
-const COMPANY: { label: string; href: string; note: string; badge?: string }[] = [
-  { label: "About", href: "/about", note: "Our mission, Pune origin & engineering philosophy" },
-  { label: "Compliance", href: "/compliance", note: "100% Indian Statutory & Labor Law Engine", badge: "EPF · ESI · TDS" },
-  { label: "Security", href: "/security", note: "AWS Mumbai Tier-4, SOC 2 & ISO 27001 data protection" },
-  { label: "FAQ", href: "/faq", note: "Detailed answers before you onboard" },
-  { label: "Contact", href: "/contact", note: "Talk to our product specialists in Pune" },
-];
-
-type MobileGroup = "platform" | "company";
+/**
+ * The header.
+ *
+ * Five items on the bar and everything else inside a panel. The constraint that
+ * shapes this component is that every link in every panel goes to a real page
+ * with its own URL — there is not a single in-page anchor in here, so the menu
+ * is a map of the site rather than a shortcut to the homepage.
+ *
+ * Interaction rules, in order of how often they bite:
+ *  - Pointer opens a panel on hover with a small close delay, so crossing a
+ *    gap between the trigger and the panel does not dismiss it.
+ *  - Keyboard opens it on focus and Enter, and Escape closes it and returns
+ *    focus to the trigger.
+ *  - Touch never hovers: on coarse pointers the bar item is a link to the hub
+ *    page and the panel is not used at all — the full-screen sheet is.
+ *  - A route change always closes everything.
+ */
 
 export default function Nav() {
   const pathname = usePathname();
+  const [open, setOpen] = useState<string | null>(null);
+  const [sheet, setSheet] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<MenuKey>(null);
-  const [mobileGroup, setMobileGroup] = useState<MobileGroup>("platform");
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
 
+  /* Close everything whenever the route changes. */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-    setMenu(null);
+    setOpen(null);
+    setSheet(false);
   }, [pathname]);
 
+  /* Solid plate once the page has moved at all. */
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    window.dispatchEvent(new CustomEvent("hrmagix:nav", { detail: { open } }));
-    return () => {
-      document.body.style.overflow = "";
+    let frame = 0;
+    const read = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setScrolled(window.scrollY > 8));
     };
-  }, [open]);
+    window.addEventListener("scroll", read, { passive: true });
+    read();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", read);
+    };
+  }, []);
 
+  /* The sheet owns the scroll position while it is open. */
+  useEffect(() => {
+    if (!sheet) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [sheet]);
+
+  /* Escape closes whichever layer is open. */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        setMenu(null);
-      }
+      if (e.key !== "Escape") return;
+      if (sheet) setSheet(false);
+      else if (open) setOpen(null);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, [open, sheet]);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
-  const hoverOpen = (key: MenuKey) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setMenu(key);
-  };
-  const hoverClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMenu(null), 160);
-  };
+  const scheduleClose = useCallback(() => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(null), 140);
+  }, [cancelClose]);
 
-  /** Link styling helper */
-  const linkClass = (active: boolean) =>
-    `items-center gap-1.5 rounded-full px-3.5 py-2 text-[14.5px] font-medium transition-colors duration-200 ${
-      active ? "text-accent font-semibold" : "text-body hover:text-accent"
-    }`;
+  useEffect(() => () => cancelClose(), [cancelClose]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+
+  /** A bar item is "current" when the route sits anywhere under its section. */
+  const sectionActive = (section: NavSection) =>
+    section.columns.some((c) => c.links.some((l) => isActive(l.href))) || isActive(section.href);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || menu || open
-          ? "nav-plate backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-      onMouseLeave={hoverClose}
-    >
-      {/* Top enterprise contact & compliance bar */}
-      <div className="panel-fixed-dark hidden border-b border-violet-900/40 bg-violet-950 px-4 py-1.5 text-[12px] text-violet-200 sm:block">
-        <div className="shell flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <a href="tel:+919006007955" className="flex items-center gap-1.5 text-violet-100 hover:text-white transition-colors">
-              <Icon name="phone" className="h-3 w-3 text-emerald-400" />
-              <span>+91 900 600 7955</span>
-            </a>
-            <span aria-hidden="true" className="text-violet-400/80">|</span>
-            <span className="flex items-center gap-1.5 text-violet-300">
-              <Icon name="pin" className="h-3 w-3 text-violet-400" />
-              <span>Pune & Mumbai, India</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/compliance" className="hidden lg:inline text-violet-300 hover:text-white font-medium transition-colors">
-              100% Indian Statutory Compliance (EPF · ESI · Multi-State PT · TDS)
-            </Link>
-            <Link href="/contact" className="font-bold text-white underline underline-offset-2 hover:text-violet-200">
-              Book a Free Walkthrough &rarr;
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="shell relative z-[60] flex h-[72px] items-center justify-between gap-4">
-        <Link href="/" aria-label="HRMagix home" className="shrink-0">
-          <Logo />
-        </Link>
-
-        {/* Clean, minimalist primary navigation */}
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          <Link href="/" className={`flex ${linkClass(pathname === "/")}`}>
-            Home
-          </Link>
-
-          <button
-            type="button"
-            aria-expanded={menu === "platform"}
-            onMouseEnter={() => hoverOpen("platform")}
-            onClick={() => setMenu(menu === "platform" ? null : "platform")}
-            className={`flex ${linkClass(menu === "platform" || pathname === "/modules" || pathname === "/how-it-works" || pathname === "/industries" || pathname === "/compliance")}`}
-          >
-            Platform
-            <Chevron open={menu === "platform"} />
-          </button>
-
-          <Link href="/features" className={`flex ${linkClass(pathname === "/features")}`}>
-            Features
-          </Link>
-
-          <Link href="/pricing" className={`flex ${linkClass(pathname === "/pricing")}`}>
-            Pricing
-          </Link>
-
-          <button
-            type="button"
-            aria-expanded={menu === "company"}
-            onMouseEnter={() => hoverOpen("company")}
-            onClick={() => setMenu(menu === "company" ? null : "company")}
-            className={`flex ${linkClass(menu === "company" || pathname.startsWith("/about") || pathname.startsWith("/contact") || pathname.startsWith("/faq") || pathname.startsWith("/security"))}`}
-          >
-            Company
-            <Chevron open={menu === "company"} />
-          </button>
-        </nav>
-
-        <div className="hidden items-center gap-2.5 lg:flex">
-          <Link
-            href="/contact"
-            className="hidden text-[14.5px] font-medium text-body transition-colors hover:text-accent xl:inline"
-          >
-            Contact Sales
-          </Link>
-          <ThemeToggle size="sm" />
-          <Link
-            href="/contact"
-            className="inline-flex h-10 items-center rounded-full bg-surface px-5 text-[14px] font-semibold text-heading ring-1 ring-inset ring-line-strong transition-all duration-300 hover:-translate-y-0.5 hover:ring-line-accent motion-reduce:hover:translate-y-0"
-          >
-            Sign in
-          </Link>
-          <Button href="/contact" size="sm">
-            Get Started
-          </Button>
-        </div>
-
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle />
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="relative grid h-11 w-11 place-items-center rounded-full ring-1 ring-line-strong transition-colors hover:bg-surface-sunken lg:hidden"
-        >
-          <span className="relative block h-3 w-5">
-            <span
-              className={`absolute left-0 block h-[2px] w-5 rounded-full bg-heading transition-transform duration-300 ${
-                open ? "top-[5px] rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[5px] block h-[2px] rounded-full bg-heading transition-all duration-300 ${
-                open ? "w-0 opacity-0" : "w-3.5 opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 block h-[2px] w-5 rounded-full bg-heading transition-transform duration-300 ${
-                open ? "top-[5px] -rotate-45" : "top-[11px]"
-              }`}
-            />
-          </span>
-        </button>
-        </div>
-      </div>
-
-      {/* ---- Desktop megamenu ---- */}
-      <div
-        className={`absolute inset-x-0 top-[76px] hidden origin-top px-4 transition-all duration-300 ease-out lg:block ${
-          menu
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none invisible -translate-y-2 opacity-0"
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-300 ${
+          scrolled ? "nav-plate shadow-soft" : "bg-transparent"
         }`}
-        onMouseEnter={() => hoverOpen(menu)}
+        onMouseLeave={scheduleClose}
       >
-        <div className="mx-auto w-full max-w-shell overflow-hidden rounded-[24px] border border-line bg-surface shadow-lift dark:bg-surface-raised">
-          {menu === "platform" && (
-            <div className="grid gap-8 p-7 lg:grid-cols-[1.15fr_1.35fr_0.9fr]">
-              {/* Column 1: Capabilities & Solutions */}
-              <div>
-                <MenuHeading>Platform Core</MenuHeading>
-                <ul className="mt-3 space-y-1">
-                  <li>
-                    <Link
-                      href="/features"
-                      className="group flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-surface-sunken"
+        <div ref={barRef} className="shell">
+          <div className="flex h-[68px] items-center justify-between gap-4 sm:h-[76px]">
+            <Link
+              href="/"
+              className="shrink-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+              aria-label="HRMagix home"
+            >
+              <Logo />
+            </Link>
+
+            {/* ---- Desktop bar ---- */}
+            <nav aria-label="Primary" className="hidden lg:block">
+              <ul className="flex items-center gap-1">
+                {primaryNav.map((section) => {
+                  const isOpen = open === section.label;
+                  return (
+                    <li
+                      key={section.label}
+                      onMouseEnter={() => {
+                        cancelClose();
+                        setOpen(section.label);
+                      }}
                     >
-                      <IconTile name="sparkle" size="sm" className="h-8 w-8" />
-                      <span className="min-w-0">
-                        <span className="block text-[13.5px] font-semibold text-heading">
-                          Features Overview
-                        </span>
-                        <span className="mt-0.5 block truncate text-[11.5px] leading-snug text-subtle">
-                          Explore all 6 core platform capabilities
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      href="/how-it-works"
-                      className="group flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-surface-sunken"
-                    >
-                      <IconTile name="rocket" size="sm" className="h-8 w-8" />
-                      <span className="min-w-0">
-                        <span className="block text-[13.5px] font-semibold text-heading">
-                          How it works
-                        </span>
-                        <span className="mt-0.5 block truncate text-[11.5px] leading-snug text-subtle">
-                          3-step setup & autonomous workflows
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      href="/industries"
-                      className="group flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-surface-sunken"
-                    >
-                      <IconTile name="layers" size="sm" className="h-8 w-8" />
-                      <span className="min-w-0">
-                        <span className="block text-[13.5px] font-semibold text-heading">
-                          Solutions by Industry
-                        </span>
-                        <span className="mt-0.5 block truncate text-[11.5px] leading-snug text-subtle">
-                          IT, Services, Finance & Remote teams
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      href="/compliance"
-                      className="group flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-surface-sunken"
-                    >
-                      <IconTile name="shield" size="sm" className="h-8 w-8" />
-                      <span className="min-w-0">
-                        <span className="block text-[13.5px] font-semibold text-heading">
-                          Indian Statutory Engine
-                        </span>
-                        <span className="mt-0.5 block truncate text-[11.5px] leading-snug text-subtle">
-                          EPF, ESI, Multi-State PT & TDS 192
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 2: Modules Directory */}
-              <div>
-                <div className="flex items-center justify-between px-2">
-                  <MenuHeading>All 12 Modules</MenuHeading>
-                  <Link href="/modules" className="text-[11.5px] font-bold text-accent hover:underline">
-                    View All &rarr;
-                  </Link>
-                </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4">
-                  {moduleGroups.map((g) => {
-                    const items = modules.filter((m) => m.group === g);
-                    if (!items.length) return null;
-                    return (
-                      <div key={g}>
-                        <p className="px-2 text-[11px] font-bold uppercase tracking-[0.14em] text-label">
-                          {g}
-                        </p>
-                        <ul className="mt-1">
-                          {items.map((m) => (
-                            <li key={m.name}>
-                              <Link
-                                href={m.href}
-                                className="flex items-center gap-1.5 rounded-lg px-2 py-1 text-[13px] text-muted transition-colors hover:bg-surface-sunken hover:text-accent-strong"
-                              >
-                                <Icon name={m.icon} className="h-3.5 w-3.5 text-label" />
-                                {m.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Column 3: Platform Highlight */}
-              <div className="rounded-[20px] bg-surface-sunken p-6 flex flex-col justify-between">
-                <div>
-                  <span className="flex flex-wrap items-center gap-2">
-                    <Pill tone="solid">All 12 included</Pill>
-                    <Badge tone="outline">v2.0</Badge>
-                  </span>
-                  <p className="mt-4 font-display text-[18px] font-bold leading-snug text-heading">
-                    One platform.
-                    <br />
-                    Every HR workflow.
-                  </p>
-                  <p className="mt-2 text-[13px] leading-relaxed text-muted">
-                    100% Indian Statutory compliance pre-configured. Switch on the modules your team needs with zero code.
-                  </p>
-                </div>
-                <div className="mt-5 pt-4 border-t border-line flex flex-col gap-2">
-                  <Link
-                    href="/modules"
-                    className="group inline-flex items-center gap-2 text-[13.5px] font-semibold text-accent hover:text-accent-deep"
-                  >
-                    Browse module directory <Arrow />
-                  </Link>
-                  <Link
-                    href="/compliance"
-                    className="group inline-flex items-center gap-2 text-[13.5px] font-semibold text-accent hover:text-accent-deep"
-                  >
-                    Explore compliance engine <Arrow />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {menu === "company" && (
-            <div className="grid gap-2 p-5 sm:grid-cols-2">
-              {COMPANY.map((c) => (
-                <Link
-                  key={c.href}
-                  href={c.href}
-                  className="group flex items-start gap-3 rounded-2xl px-4 py-3.5 transition-colors hover:bg-surface-sunken"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-line-accent transition-colors group-hover:bg-accent-soft" />
-                  <span>
-                    <span className="flex items-center gap-2 text-[14px] font-semibold text-heading">
-                      {c.label}
-                      {c.badge && <Badge>{c.badge}</Badge>}
-                      <Arrow className="opacity-0 transition-opacity group-hover:opacity-100" />
-                    </span>
-                    <span className="mt-0.5 block text-[12px] text-subtle">{c.note}</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* ---- Mobile sheet ---- */}
-      <div
-        className={`fixed inset-0 z-40 overflow-hidden lg:hidden ${
-          open ? "" : "pointer-events-none invisible"
-        }`}
-        aria-hidden={!open}
-      >
-        <div
-          className={`absolute inset-0 bg-violet-950/35 backdrop-blur-sm transition-opacity duration-300 dark:bg-black/70 ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setOpen(false)}
-        />
-        <div
-          className={`absolute inset-x-0 top-0 max-h-[100dvh] overflow-y-auto overscroll-contain bg-surface pb-10 pt-[88px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            open ? "translate-y-0" : "-translate-y-full"
-          }`}
-        >
-          <div className="shell">
-            <div className="flex gap-2 rounded-full bg-surface-sunken p-1.5">
-              {(["platform", "company"] as const).map((k) => (
-                <button
-                  key={k}
-                  type="button"
-                  onClick={() => setMobileGroup(k)}
-                  className={`flex-1 rounded-full py-2.5 text-[13.5px] font-semibold capitalize transition-all duration-300 ${
-                    mobileGroup === k ? "bg-surface text-accent-strong shadow-soft dark:bg-surface-raised" : "text-subtle hover:text-body"
-                  }`}
-                >
-                  {k}
-                </button>
-              ))}
-            </div>
-
-            {/* Quick Home link */}
-            <div className="mt-3.5">
-              <Link
-                href="/"
-                className="flex items-center justify-between rounded-2xl bg-surface-sunken/70 px-4 py-3 text-[15px] font-bold text-heading transition-colors hover:bg-surface-raised"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Icon name="sparkle" className="h-4 w-4 text-accent" />
-                  <span>Home</span>
-                </div>
-                <Arrow className="text-label" />
-              </Link>
-            </div>
-
-            {mobileGroup === "platform" ? (
-              <div className="mt-5">
-                <MenuHeading>Platform Core</MenuHeading>
-                <div className="mt-2.5 grid grid-cols-2 gap-2">
-                  <Link
-                    href="/features"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
-                  >
-                    <Icon name="sparkle" className="h-4 w-4 text-accent" />
-                    <span>Features</span>
-                  </Link>
-                  <Link
-                    href="/how-it-works"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
-                  >
-                    <Icon name="rocket" className="h-4 w-4 text-accent" />
-                    <span>How it works</span>
-                  </Link>
-                  <Link
-                    href="/industries"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
-                  >
-                    <Icon name="layers" className="h-4 w-4 text-accent" />
-                    <span>Industries</span>
-                  </Link>
-                  <Link
-                    href="/compliance"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
-                  >
-                    <Icon name="shield" className="h-4 w-4 text-accent" />
-                    <span>Compliance</span>
-                  </Link>
-                  <Link
-                    href="/modules"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
-                  >
-                    <Icon name="grid" className="h-4 w-4 text-accent" />
-                    <span>All 12 Modules</span>
-                  </Link>
+                      <Link
+                        href={section.href}
+                        aria-expanded={isOpen}
+                        aria-current={sectionActive(section) ? "page" : undefined}
+                        onFocus={() => setOpen(section.label)}
+                        className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+                          sectionActive(section)
+                            ? "text-accent"
+                            : "text-body hover:text-accent"
+                        }`}
+                      >
+                        {section.label}
+                        <Icon
+                          name="chevronDown"
+                          className={`h-3 w-3 transition-transform duration-300 ${
+                            isOpen ? "-rotate-180" : ""
+                          }`}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+                <li>
                   <Link
                     href="/pricing"
-                    className="flex items-center gap-2 rounded-xl bg-surface-sunken/60 p-3 text-[13.5px] font-bold text-heading"
+                    aria-current={isActive("/pricing") ? "page" : undefined}
+                    className={`inline-flex items-center rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+                      isActive("/pricing") ? "text-accent" : "text-body hover:text-accent"
+                    }`}
+                    onMouseEnter={scheduleClose}
                   >
-                    <Icon name="wallet" className="h-4 w-4 text-accent" />
-                    <span>Pricing Plans</span>
+                    Pricing
                   </Link>
-                </div>
+                </li>
+              </ul>
+            </nav>
 
-                <div className="mt-5 border-t border-line pt-4">
-                  <div className="flex items-center justify-between">
-                    <MenuHeading>Modules Directory</MenuHeading>
-                    <Link href="/modules" className="text-[11.5px] font-bold text-accent">
-                      View All &rarr;
-                    </Link>
-                  </div>
-                  <div className="mask-fade-x -mx-5 mt-2.5 flex gap-2 overflow-x-auto px-5 pb-2">
-                    {modules.map((m) => (
-                      <Link key={m.name} href={m.href} className="chip shrink-0">
-                        <Icon name={m.icon} className="h-4 w-4 text-accent-soft" />
-                        {m.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <ul className="mt-5 grid gap-1.5">
-                {COMPANY.map((c) => (
-                  <li key={c.href}>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <ThemeToggle />
+              <Link
+                href="https://app.hrmagix.com/login"
+                className="hidden rounded-full px-3 py-2 text-[14px] font-semibold text-body transition-colors hover:text-accent md:inline-flex"
+              >
+                Sign in
+              </Link>
+              <span className="hidden sm:inline-flex">
+                <Button href="/company/contact" size="sm">
+                  Book a demo
+                </Button>
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setSheet((s) => !s)}
+                aria-expanded={sheet}
+                aria-controls="mobile-menu"
+                aria-label={sheet ? "Close menu" : "Open menu"}
+                className="grid h-11 w-11 place-items-center rounded-full text-heading ring-1 ring-line transition-colors hover:bg-surface-raised lg:hidden"
+              >
+                <span className="relative block h-[14px] w-[18px]" aria-hidden="true">
+                  <span
+                    className={`absolute left-0 block h-[2px] w-full rounded bg-current transition-all duration-300 ${
+                      sheet ? "top-1.5 rotate-45" : "top-0"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-1.5 block h-[2px] w-full rounded bg-current transition-opacity duration-200 ${
+                      sheet ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 block h-[2px] w-full rounded bg-current transition-all duration-300 ${
+                      sheet ? "top-1.5 -rotate-45" : "top-3"
+                    }`}
+                  />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ---- Desktop panel ---- */}
+        {primaryNav.map((section) => (
+          <MegaPanel
+            key={section.label}
+            section={section}
+            open={open === section.label}
+            onEnter={cancelClose}
+            onLeave={scheduleClose}
+            isActive={isActive}
+          />
+        ))}
+      </header>
+
+      {/* ---- Mobile sheet ---- */}
+      <MobileSheet open={sheet} onClose={() => setSheet(false)} isActive={isActive} />
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+function MegaPanel({
+  section,
+  open,
+  onEnter,
+  onLeave,
+  isActive,
+}: {
+  section: NavSection;
+  open: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+  isActive: (href: string) => boolean;
+}) {
+  return (
+    /*
+     * Visibility is driven by classes, not the `hidden` attribute. `[hidden]`
+     * sets display:none from the UA stylesheet, which a utility like `lg:block`
+     * silently overrides — the panel then renders open over the page on desktop.
+     * `aria-hidden` keeps it out of the accessibility tree either way.
+     */
+    <div
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      aria-hidden={!open}
+      className={`nav-plate absolute inset-x-0 top-full border-t border-line shadow-lift ${
+        open ? "hidden lg:block" : "hidden"
+      }`}
+    >
+      <div className="shell py-9">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,17rem)] lg:gap-14">
+          {section.columns.map((col) => (
+            <div key={col.heading}>
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                {col.heading}
+              </p>
+              {col.blurb && (
+                <p className="mt-2 max-w-[24ch] text-[13px] leading-relaxed text-subtle">
+                  {col.blurb}
+                </p>
+              )}
+              <ul className="mt-5 space-y-1">
+                {col.links.map((link) => (
+                  <li key={link.href}>
                     <Link
-                      href={c.href}
-                      className="flex items-center justify-between rounded-2xl px-3.5 py-3 transition-colors hover:bg-surface-sunken"
+                      href={link.href}
+                      aria-current={isActive(link.href) ? "page" : undefined}
+                      className={`group block rounded-xl px-3 py-2.5 transition-colors ${
+                        isActive(link.href)
+                          ? "bg-surface-raised/70"
+                          : "hover:bg-surface-raised/60"
+                      }`}
                     >
-                      <span>
-                        <span className="flex items-center gap-2 text-[15.5px] font-semibold text-heading">
-                          {c.label}
-                          {c.badge && <Badge>{c.badge}</Badge>}
+                      <span className="flex items-center gap-2 font-display text-[15px] font-bold text-heading">
+                        {link.label}
+                        <span className="translate-x-0 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
+                          <Arrow />
                         </span>
-                        <span className="mt-0.5 block text-[12px] text-subtle">{c.note}</span>
                       </span>
-                      <Arrow className="text-label" />
+                      <span className="mt-0.5 block text-[13px] leading-snug text-muted">
+                        {link.note}
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
-            )}
-
-            <div className="mt-7 grid gap-3">
-              <Button href="/contact" size="lg" className="w-full">
-                Get Started
-              </Button>
-              <Button href="/contact" variant="outline" size="lg" arrow={false} className="w-full">
-                Sign in
-              </Button>
             </div>
-          </div>
+          ))}
+
+          {section.footer && (
+            <div className="rounded-2xl bg-surface-sunken p-6 ring-1 ring-line">
+              <p className="text-[14px] leading-relaxed text-muted">{section.footer.note}</p>
+              <Link
+                href={section.footer.href}
+                className="group mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-accent"
+              >
+                {section.footer.label} <Arrow />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
-    </header>
+    </div>
   );
 }
 
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <Icon
-      name="chevronDown"
-      className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-    />
-  );
-}
+/* ------------------------------------------------------------------ */
 
-function MenuHeading({ children }: { children: React.ReactNode }) {
+function MobileSheet({
+  open,
+  onClose,
+  isActive,
+}: {
+  open: boolean;
+  onClose: () => void;
+  isActive: (href: string) => boolean;
+}) {
+  const [section, setSection] = useState<string>(primaryNav[0].label);
+
   return (
-    <p className="px-2 text-[11.5px] font-bold uppercase tracking-[0.18em] text-label">{children}</p>
+    <div
+      id="mobile-menu"
+      aria-hidden={!open}
+      className={`fixed inset-0 z-40 bg-canvas lg:hidden ${open ? "block" : "hidden"}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+    >
+      <div className="flex h-full flex-col overflow-y-auto overscroll-contain pt-[68px] sm:pt-[76px]">
+        {/* Section switcher — a rail, so the sheet never becomes one long list. */}
+        <div className="sticky top-0 z-10 border-b border-line bg-canvas/95 backdrop-blur">
+          <div className="track mask-fade-x flex gap-2 px-5 py-3.5">
+            {primaryNav.map((s) => (
+              <button
+                key={s.label}
+                type="button"
+                onClick={() => setSection(s.label)}
+                aria-pressed={section === s.label}
+                className={`shrink-0 rounded-full px-4 py-2 text-[13.5px] font-semibold transition-colors ${
+                  section === s.label
+                    ? "bg-brand text-white"
+                    : "bg-surface-sunken text-body ring-1 ring-line"
+                }`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex-1 px-5 pb-10 pt-6">
+          {primaryNav
+            .filter((s) => s.label === section)
+            .map((s) => (
+              <div key={s.label}>
+                {s.columns.map((col) => (
+                  <div key={col.heading} className="mb-8">
+                    <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                      {col.heading}
+                    </p>
+                    <ul className="mt-3 divide-y divide-line border-y border-line">
+                      {col.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            onClick={onClose}
+                            aria-current={isActive(link.href) ? "page" : undefined}
+                            className="flex items-center justify-between gap-4 py-3.5"
+                          >
+                            <span className="min-w-0">
+                              <span
+                                className={`block font-display text-[16px] font-bold ${
+                                  isActive(link.href) ? "text-accent" : "text-heading"
+                                }`}
+                              >
+                                {link.label}
+                              </span>
+                              <span className="mt-0.5 block text-[13px] leading-snug text-muted">
+                                {link.note}
+                              </span>
+                            </span>
+                            <span className="shrink-0 text-accent">
+                              <Arrow />
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ))}
+
+          <div className="mb-8">
+            <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+              Policy centre
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {policyNav.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={p.href}
+                    onClick={onClose}
+                    className="inline-flex rounded-full bg-surface-sunken px-3.5 py-2 text-[13px] font-semibold text-body ring-1 ring-line"
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <Button href="/company/contact" className="w-full">
+              Book a demo
+            </Button>
+            <Link
+              href="https://app.hrmagix.com/login"
+              className="flex h-12 w-full items-center justify-center rounded-full text-[14.5px] font-semibold text-body ring-1 ring-inset ring-line-strong"
+            >
+              Sign in
+            </Link>
+          </div>
+
+          <p className="mt-8 text-[13px] leading-relaxed text-subtle">
+            {site.contact.location} · {site.contact.email}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

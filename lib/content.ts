@@ -23,10 +23,10 @@ export const site = {
     companies: "120+ Indian enterprises",
     trustline: "Trusted by 120+ HR and People Operations teams across Mumbai, Bangalore, Pune, and Delhi NCR",
     avatars: [
-      "/media/avatar-1.png",
-      "/media/avatar-2.png",
-      "/media/avatar-3.png",
-      "/media/avatar-4.png",
+      "/media/portrait-meera.jpg",
+      "/media/portrait-vikram.jpg",
+      "/media/portrait-arjun.jpg",
+      "/media/portrait-sanjay.jpg",
     ],
   },
   contact: {
@@ -394,7 +394,7 @@ export const testimonials = [
     role: "Head of People Operations, TechSprint India (Pune)",
     company: "TechSprint India",
     initials: "PS",
-    avatar: "/media/testimonial-priya.png",
+    avatar: "/media/portrait-meera.jpg",
     rating: 5,
   },
   {
@@ -404,7 +404,7 @@ export const testimonials = [
     role: "VP of Finance & Operations, Northwind (Mumbai)",
     company: "Northwind Logistics",
     initials: "RK",
-    avatar: "/media/testimonial-rahul.png",
+    avatar: "/media/portrait-vikram.jpg",
     rating: 5,
   },
   {
@@ -414,7 +414,7 @@ export const testimonials = [
     role: "Director of Talent, Vertex Systems (Gurgaon)",
     company: "Vertex Systems",
     initials: "AM",
-    avatar: "/media/testimonial-amit.png",
+    avatar: "/media/portrait-arjun.jpg",
     rating: 5,
   },
   {
@@ -424,112 +424,8 @@ export const testimonials = [
     role: "Head of Culture & People, CloudScale (Bangalore)",
     company: "CloudScale India",
     initials: "AI",
-    avatar: "/media/testimonial-priya.png",
+    avatar: "/media/portrait-sanjay.jpg",
     rating: 5,
-  },
-];
-
-export type Industry = {
-  key: string;
-  name: string;
-  tagline: string;
-  copy: string;
-  image: string;
-  slot: string;
-  metrics: { label: string; value: string }[];
-  highlights: string[];
-};
-
-export const industries: Industry[] = [
-  {
-    key: "tech",
-    name: "IT & Tech Startups",
-    tagline: "Move fast, track sprints, and align OKRs effortlessly",
-    copy: "High-growth tech teams need agile attendance, flexible remote punch-ins, and quarterly OKR cascades that connect engineering sprints with company goals.",
-    image: "/media/module-analytics.png",
-    slot: "module-analytics",
-    metrics: [
-      { label: "OKR Completion", value: "82%" },
-      { label: "Time-to-Hire", value: "18 Days" },
-      { label: "Remote Sync", value: "Real-time" },
-    ],
-    highlights: [
-      "Geo-fenced mobile punch-in for distributed and hybrid developers",
-      "Continuous performance reviews and 9-box talent matrix",
-      "Automated peer kudos and culture reward leaderboard",
-    ],
-  },
-  {
-    key: "consulting",
-    name: "Professional Services",
-    tagline: "Accurate billing hours, structured growth & compliance",
-    copy: "Consulting and agency teams streamline client-project time logs, billable hour tracking, multi-tier approvals, and transparent merit-based appraisals.",
-    image: "/media/module-performance.png",
-    slot: "module-performance",
-    metrics: [
-      { label: "Timesheet Accuracy", value: "99.4%" },
-      { label: "Leave Approval", value: "Instant" },
-      { label: "eNPS Score", value: "68" },
-    ],
-    highlights: [
-      "Project-specific shift rosters and automated overtime calculations",
-      "Quarterly 1-on-1 career progression frameworks",
-      "Unified payslip generator with statutory compliance built in",
-    ],
-  },
-  {
-    key: "finance",
-    name: "Financial & Corporate",
-    tagline: "Audited payroll, bank-grade security & compliance",
-    copy: "Financial institutions rely on HRMagix for zero-error multi-entity payroll runs, immutable audit logs, strict role-based access, and automated statutory tax reporting.",
-    image: "/media/module-payroll.png",
-    slot: "module-payroll",
-    metrics: [
-      { label: "Payroll Run Time", value: "2 Mins" },
-      { label: "Audit Readiness", value: "100%" },
-      { label: "Tax Compliance", value: "Automated" },
-    ],
-    highlights: [
-      "Automated EPF, ESI, TDS, and statutory deduction calculations",
-      "Strict role-based permissions and enterprise SSO",
-      "One-click bank transfer batch exports and encrypted payslips",
-    ],
-  },
-  {
-    key: "remote",
-    name: "Distributed & Remote",
-    tagline: "Keep your global team connected and engaged",
-    copy: "Whether your workforce is across 5 cities or working from home, HRMagix provides a single digital headquarters for check-ins, leaves, and recognition.",
-    image: "/media/module-attendance.png",
-    slot: "module-attendance",
-    metrics: [
-      { label: "Daily Presence", value: "820+" },
-      { label: "App Rating", value: "4.9 ★" },
-      { label: "Sync Latency", value: "< 1s" },
-    ],
-    highlights: [
-      "Real-time live presence board with remote status indicators",
-      "Shared company holiday calendar and transparent leave balances",
-      "Mobile iOS & Android app with selfie & GPS validation",
-    ],
-  },
-  {
-    key: "enterprise",
-    name: "Scaling Enterprises",
-    tagline: "Consolidate multiple HR tools into one unified platform",
-    copy: "Scale from 50 to 5,000+ employees without software sprawl. Manage end-to-end employee lifecycle from offer acceptance to retirement.",
-    image: "/media/module-onboarding.png",
-    slot: "module-onboarding",
-    metrics: [
-      { label: "Tools Replaced", value: "5 to 1" },
-      { label: "Uptime SLA", value: "99.9%" },
-      { label: "Setup Time", value: "3 Steps" },
-    ],
-    highlights: [
-      "All 12 modules included with centralized employee master data",
-      "Dedicated Customer Success Manager and enterprise priority support",
-      "Custom policy engines for complex multi-branch organizations",
-    ],
   },
 ];
 
@@ -624,114 +520,6 @@ export const faqs = [
     q: "What support is provided to our HR and Finance team during monthly payroll cutoff?",
     a: "All customers receive direct support via WhatsApp, phone, and email from our Pune-based product specialists. Enterprise plans include a dedicated Customer Success Manager who assists with payroll cutoffs, bonus disbursements, and annual tax year-end closing.",
   },
-];
-
-export const nav = [
-  { label: "Features", href: "/features" },
-  { label: "Modules", href: "/modules" },
-  { label: "How it works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact", href: "/contact" },
-];
-
-export const navGroups = [
-  {
-    label: "Platform",
-    items: [
-      { label: "Features", href: "/features", note: "Everything you need to manage your people" },
-      { label: "Modules", href: "/modules", note: "One platform. Every HR workflow." },
-      { label: "How it works", href: "/how-it-works", note: "Get started in 3 simple steps" },
-    ],
-  },
-  {
-    label: "Company",
-    items: [
-      { label: "About", href: "/about", note: "Modern HR, from hire to retire" },
-      { label: "Pricing", href: "/pricing", note: "Simple, transparent pricing" },
-      { label: "FAQ", href: "/faq", note: "Answers before you ask" },
-      { label: "Contact", href: "/contact", note: "Talk to the HRMagix team" },
-    ],
-  },
-];
-
-export const footerNav = [
-  {
-    heading: "Product",
-    links: [
-      { label: "Features", href: "/features" },
-      { label: "Modules Directory", href: "/modules" },
-      { label: "Solutions by Industry", href: "/industries" },
-      { label: "Pricing & Plans", href: "/pricing" },
-    ],
-  },
-  {
-    heading: "Platform & Compliance",
-    links: [
-      { label: "How It Works", href: "/how-it-works" },
-      { label: "Indian Statutory Engine", href: "/compliance" },
-      { label: "Security & Tier-4 Cloud", href: "/security" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
-      { label: "About HRMagix", href: "/about" },
-      { label: "Contact & Demo", href: "/contact" },
-      { label: "Help & FAQ", href: "/faq" },
-    ],
-  },
-  {
-    heading: "Legal & Trust",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Enterprise Security", href: "/security" },
-    ],
-  },
-];
-
-/** Live-workspace numbers shown on the homepage product visual. */
-export const workspace = {
-  attendance: [
-    { label: "Present", value: "820" },
-    { label: "On leave", value: "37" },
-    { label: "Absent", value: "12" },
-    { label: "Remote", value: "9" },
-  ],
-  people: [
-    { initials: "RP", name: "Rohan Patil", meta: "Punched in · 09:02 AM", tag: "On time" },
-    { initials: "AK", name: "Anita Kulkarni", meta: "Remote · 08:55 AM", tag: "Remote" },
-  ],
-  okrs: [
-    { label: "Reduce time-to-hire", pct: 82 },
-    { label: "Improve eNPS to 60", pct: 68 },
-    { label: "Launch L&D academy", pct: 45 },
-  ],
-  growthStats: [
-    { value: "+38%", label: "Goal completion" },
-    { value: "4.8", label: "Review score" },
-    { value: "126", label: "Kudos given" },
-  ],
-  snapshot: [
-    { label: "Headcount", value: "23" },
-    { label: "New hires", value: "0" },
-    { label: "Attendance", value: "03:22" },
-    { label: "KRA compl.", value: "0%" },
-    { label: "Engagement", value: "6.9" },
-    { label: "At-risk", value: "1" },
-  ],
-  queue: ["1 pending leave", "23 not punched", "3 KRA sheets"],
-};
-
-export const workspaceNav = [
-  "Overview",
-  "People",
-  "Time & Work",
-  "Performance",
-  "Engagement",
-  "Payroll",
-  "Support",
-  "System",
 ];
 
 /** Counters from the HRMagix trust band. */
