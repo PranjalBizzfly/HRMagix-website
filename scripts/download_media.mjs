@@ -21,9 +21,9 @@ const mediaItems = [
   {
     key: 'home-manifesto',
     file: 'documents-huddle.jpg',
-    id: 'photo-1551836022-deb4988cc6c0',
-    subject: 'Colleagues analyzing reports and spreadsheets across laptops in a sunlit open office.',
-    alt: 'Colleagues collaborating over documents and laptop data in a modern office',
+    id: 'photo-1542744173-8e7e53415bb0',
+    subject: 'A team of professionals collaborating over reports, laptop figures and folders around a conference table.',
+    alt: 'Colleagues collaborating over documents, folders and laptop spreadsheets in an office meeting',
     pos: 'center 40%'
   },
   {

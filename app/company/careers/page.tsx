@@ -48,7 +48,7 @@ export default function CareersPage() {
           />
         </div>
 
-        <div className="shell relative pb-16 pt-[128px] sm:pb-20 sm:pt-[164px]">
+        <div className="shell relative pb-12 pt-[104px] sm:pb-16 sm:pt-[140px] lg:pb-20 lg:pt-[164px]">
           <Reveal y={8}>
             <Breadcrumbs
               tone="light"

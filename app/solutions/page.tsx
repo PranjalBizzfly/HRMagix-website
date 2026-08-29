@@ -40,17 +40,27 @@ export default function SolutionsHub() {
 
       {/* ---- Opener: a wide statement over a single band, deliberately unlike
              the asymmetric opener the eight detail pages use. ---- */}
-      <header className="relative overflow-hidden wash pb-14 pt-[104px] sm:pb-20 sm:pt-[132px]">
-        <div className="pointer-events-none absolute inset-0 dotted opacity-50" aria-hidden="true" />
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Editorial glowing ambient wash */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[-25%] h-[380px] w-[720px] max-w-[130vw] -translate-x-1/2 rounded-full bg-glow/20 blur-[120px]"
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
           aria-hidden="true"
         />
         <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Solutions" }]} />
           </Reveal>
-          <h1 className="display display-xl mt-8 max-w-[16ch] text-balance">
+          <Reveal y={10} className="mt-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+              Unified Modular Platform
+            </span>
+          </Reveal>
+          <h1 className="display display-xl mt-5 max-w-[16ch] text-balance">
             Twelve modules. <strong>One employee record.</strong>
           </h1>
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-end lg:gap-16">

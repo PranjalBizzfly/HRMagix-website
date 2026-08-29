@@ -1,7 +1,10 @@
 "use client";
 
 import {
+  Children,
+  cloneElement,
   createElement,
+  isValidElement,
   useCallback,
   useEffect,
   useRef,
@@ -101,6 +104,60 @@ export function Reveal({
       } as CSSProperties,
     },
     children,
+  );
+}
+
+/**
+ * Gives its direct children a reveal cadence.
+ *
+ * The site previously hand-tuned a `delay` on every Reveal, which meant the
+ * rhythm of a section was a set of magic numbers spread across its markup and
+ * drifted between pages. Here the sequence is a property of the container: the
+ * children arrive in document order — heading, then supporting text, then the
+ * image, then the action — which is the order that reads as one thought rather
+ * than as several elements appearing at once.
+ *
+ * The delay itself is applied in CSS from `--i`, so nothing is computed at
+ * runtime and the server output is stable.
+ */
+export function Stagger({
+  children,
+  as = "div",
+  className = "",
+  /** Milliseconds between children. */
+  step = 90,
+  /** Milliseconds before the first child. */
+  from = 0,
+  style,
+  id,
+}: {
+  children: ReactNode;
+  as?: ElementType;
+  className?: string;
+  step?: number;
+  from?: number;
+  style?: CSSProperties;
+  id?: string;
+}) {
+  const items = Children.toArray(children);
+  return createElement(
+    as,
+    {
+      id,
+      className: `stagger ${className}`,
+      style: {
+        ...style,
+        "--stagger-step": `${step}ms`,
+        "--stagger-from": `${from}ms`,
+      } as CSSProperties,
+    },
+    items.map((child, i) =>
+      isValidElement<{ style?: CSSProperties }>(child)
+        ? cloneElement(child, {
+            style: { ...(child.props.style ?? {}), ["--i" as string]: i } as CSSProperties,
+          })
+        : child,
+    ),
   );
 }
 

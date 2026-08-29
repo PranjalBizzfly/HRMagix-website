@@ -124,6 +124,12 @@ export function useTheme() {
  * Runs before first paint, so the correct theme is on <html> by the time the
  * browser has anything to show. Inlined in <head> — never a module, or the
  * wrong theme flashes while it downloads.
+ *
+ * It also sets data-anim="on", which is what arms the scroll-reveal system.
+ * Those styles hide an element until it scrolls into view, so they must only
+ * apply when JavaScript is demonstrably running: if this script never executes
+ * — a bundle blocked, a browser with scripting off, an earlier throw — every
+ * revealed element must still render, rather than the page arriving blank.
  */
 export const themeScript = `(function(){try{
 var k=${JSON.stringify(THEME_KEY)};var s=localStorage.getItem(k);

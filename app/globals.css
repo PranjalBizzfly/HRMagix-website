@@ -227,6 +227,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--nav-h) + 16px);
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -280,22 +281,25 @@
     @apply font-display font-medium leading-[1.06] tracking-[-0.032em] text-heading;
   }
 
-  /* The one oversized moment per page. */
+  /* The one oversized moment per page. Proportional from 320px mobile to 1920px+ */
   .display-xl {
-    font-size: clamp(2.5rem, 7.2vw, 5rem);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    font-size: clamp(2.15rem, 5.8vw, 4.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.038em;
   }
 
   /* Section heading. */
   .display-lg {
-    font-size: clamp(1.95rem, 4.6vw, 3rem);
+    font-size: clamp(1.75rem, 4.2vw, 2.85rem);
+    line-height: 1.08;
+    letter-spacing: -0.032em;
   }
 
   /* Sub-section heading — the missing 32–36px tier. */
   .display-md {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    line-height: 1.12;
+    font-size: clamp(1.35rem, 2.8vw, 2.15rem);
+    line-height: 1.14;
+    letter-spacing: -0.028em;
   }
 
   /* Supporting copy under a section heading. */
@@ -402,19 +406,46 @@
   }
 
   /* Scroll reveal primitive — see components/motion.tsx */
+  /*
+   * The hidden state. The no-JavaScript failsafe is a <noscript> override in
+   * app/layout.tsx rather than a flag set on <html>: React 19 treats an
+   * unexpected attribute on the root element as a hydration mismatch and bails
+   * out of hydrating the whole tree, which silently unbinds every event
+   * handler on the site. That is a far worse failure than the one it guards.
+   */
   .reveal {
     opacity: 0;
     transform: translate3d(0, var(--reveal-y, 26px), 0) scale(var(--reveal-s, 1));
+    filter: blur(var(--reveal-b, 0px));
     transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--reveal-d, 0ms);
     will-change: opacity, transform;
   }
 
+  /*
+   * Settled state also drops the compositing hint: holding a layer for every
+   * revealed element for the life of the page costs more than it saved.
+   */
   .reveal[data-shown="true"] {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+    will-change: auto;
+  }
+
+  /*
+   * STAGGER.
+   *
+   * A section reads as a sequence — heading, then supporting text, then image,
+   * then action — when its parts arrive in that order. `.stagger` assigns the
+   * cadence to its own direct children, so the rhythm is a property of the
+   * section rather than a delay hand-tuned at every call site.
+   */
+  .stagger > * {
+    --reveal-d: calc(var(--stagger-step, 90ms) * var(--i, 0) + var(--stagger-from, 0ms));
   }
 
   .word {
@@ -528,6 +559,8 @@
   .word {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+    transition: none !important;
   }
 }
 

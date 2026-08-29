@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 export default function PressKitPage() {
   return (
     <>
-      <header className="border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="border-b border-line bg-surface-sunken pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs

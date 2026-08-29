@@ -14,7 +14,7 @@ import { solutions } from "@/lib/solutions";
 import { industries } from "@/lib/industries";
 import { Band, Opening, Statement, Onward } from "@/components/editorial";
 import { Button, Arrow, Pill, TickCircle } from "@/components/ui";
-import { Reveal, Words, Counter } from "@/components/motion";
+import { Reveal, Words, Counter, Stagger } from "@/components/motion";
 import { Icon } from "@/components/icons";
 import Photo from "@/components/Photo";
 import TestimonialDeck from "@/components/TestimonialDeck";
@@ -66,7 +66,7 @@ export default function HomePage() {
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
       {/* ================= 1. Hero ================= */}
-      <header className="relative overflow-hidden wash pb-16 pt-[100px] sm:pb-20 sm:pt-[128px] lg:pb-24">
+      <header className="relative overflow-hidden wash pb-14 pt-[92px] sm:pb-20 sm:pt-[128px] lg:pb-28 lg:pt-[148px]">
         <div className="pointer-events-none absolute inset-0 dotted opacity-50" aria-hidden="true" />
         <div
           className="pointer-events-none absolute -left-32 top-[-15%] h-[460px] w-[680px] rounded-full bg-glow/20 blur-[130px]"
@@ -74,8 +74,10 @@ export default function HomePage() {
         />
 
         <div className="shell relative">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-14">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:items-center lg:gap-16 xl:gap-20">
+            {/* The entrance is orchestrated by the container: eyebrow, headline,
+                lede, actions, figures. */}
+            <Stagger step={110} from={60}>
               <Reveal y={10}>
                 <Pill>
                   <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -83,18 +85,18 @@ export default function HomePage() {
                 </Pill>
               </Reveal>
 
-              <h1 className="display display-xl mt-7 max-w-[15ch] text-balance">
+              <h1 className="display display-xl mt-6 max-w-[14ch] text-balance">
                 <Words as="span" text="Modern people operations for" />{" "}
                 <Words as="span" text="India's growing teams." className="font-bold" delay={160} />
               </h1>
 
-              <Reveal delay={280} className="mt-8 max-w-xl">
-                <p className="text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
+              <Reveal y={16} className="mt-7 max-w-[46ch]">
+                <p className="text-[17.5px] leading-[1.62] text-body sm:text-[19.5px] sm:leading-[1.58]">
                   {site.hero.lede}
                 </p>
               </Reveal>
 
-              <Reveal delay={360} className="mt-9 flex flex-wrap gap-3">
+              <Reveal y={16} className="mt-8 flex flex-wrap gap-3">
                 <Button href="/company/contact" size="lg">
                   Book a demo
                 </Button>
@@ -103,27 +105,30 @@ export default function HomePage() {
                 </Button>
               </Reveal>
 
-              <Reveal delay={440} className="mt-10">
-                <dl className="flex flex-wrap gap-x-9 gap-y-5 border-t border-line pt-7">
+              {/* The only numbers in the hero, given the weight of numbers. */}
+              <Reveal y={16} className="mt-10">
+                <dl className="flex flex-wrap gap-x-12 gap-y-5 border-t border-line pt-6">
                   {site.hero.pillars.map(([value, label]) => (
-                    <div key={label}>
+                    <div key={label} className="min-w-0">
                       <dt className="sr-only">{label}</dt>
                       <dd>
-                        <span className="block font-display text-[16px] font-bold text-heading">
+                        <span className="block font-display text-[26px] font-bold leading-none tracking-[-0.03em] text-heading sm:text-[30px]">
                           {value}
                         </span>
-                        <span className="mt-0.5 block text-[13px] text-muted">{label}</span>
+                        <span className="mt-2.5 block text-[12.5px] font-semibold uppercase tracking-[0.12em] text-subtle">
+                          {label}
+                        </span>
                       </dd>
                     </div>
                   ))}
                 </dl>
               </Reveal>
-            </div>
+            </Stagger>
 
             {/* The photograph and the one dashboard, deliberately overlapped so
                 the product is shown in the context of the people using it
                 rather than floating on a gradient. */}
-            <Reveal delay={200} y={24} className="relative">
+            <Reveal delay={200} y={24} className="relative mt-4 lg:mt-0">
               <Photo
                 slot="home-hero"
                 ratio="4 / 3"
@@ -132,7 +137,7 @@ export default function HomePage() {
                 className="shadow-lift"
               />
 
-              <figure className="relative z-10 -mt-16 ml-4 mr-[-4px] sm:-mt-24 sm:ml-10 lg:-mt-20 lg:ml-16 lg:mr-[-40px]">
+              <figure className="relative z-10 -mt-12 ml-3 mr-0 sm:-mt-20 sm:ml-8 lg:-mt-20 lg:ml-12 lg:-mr-4 xl:-mr-8">
                 <div className="overflow-hidden rounded-[16px] bg-surface p-1.5 shadow-float ring-1 ring-line">
                   <Image
                     src="/media/hero-workspace.jpg"
@@ -155,7 +160,7 @@ export default function HomePage() {
       </header>
 
       {/* ================= 2. Trust band ================= */}
-      <section className="border-y border-line bg-surface py-11 sm:py-14">
+      <section className="border-y border-line bg-surface py-8 sm:py-12 lg:py-14">
         <div className="shell">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-16">
             <p className="max-w-2xl text-[15.5px] leading-[1.65] text-muted">

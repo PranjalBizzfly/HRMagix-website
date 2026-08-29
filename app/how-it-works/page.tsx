@@ -29,12 +29,27 @@ export default function HowItWorksPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line wash pb-14 pt-[104px] sm:pb-16 sm:pt-[132px]">
-        <div className="shell">
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Subtle glowing ambient wash */}
+        <div
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "How it works" }]} />
           </Reveal>
-          <h1 className="display display-lg mt-8 max-w-[17ch] text-balance">
+          <Reveal y={10} className="mt-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+              Onboarding & Implementation
+            </span>
+          </Reveal>
+          <h1 className="display display-lg mt-5 max-w-[17ch] text-balance">
             Two to three days, <strong>and a dry run before anything is real</strong>
           </h1>
           <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
@@ -64,7 +79,9 @@ export default function HowItWorksPage() {
       <Band ground="sunken" size="lg">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal y={20}>
-            <Photo slot="lifecycle-exit" ratio="3 / 2" sizes="(max-width: 1024px) 100vw, 560px" />
+            <div className="relative overflow-hidden rounded-[24px] shadow-lift">
+              <Photo slot="how-it-works" ratio="3 / 2" sizes="(max-width: 1024px) 100vw, 560px" />
+            </div>
           </Reveal>
           <div>
             <Reveal y={10}>

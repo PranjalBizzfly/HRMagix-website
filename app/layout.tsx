@@ -81,6 +81,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           render-blocking — a deferred script would let the wrong theme flash.
         */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+
+        {/*
+          Scroll-reveal failsafe.
+
+          Revealed elements start at opacity 0 and are shown by an
+          IntersectionObserver. With scripting off that observer never runs, so
+          the page would be structurally complete and entirely invisible. This
+          resets them to their final state instead.
+
+          It is deliberately a <noscript> rather than a flag set on <html> by
+          the inline script above: React 19 treats an unexpected attribute on
+          the root element as a hydration mismatch, abandons hydration of the
+          whole tree, and leaves every event handler on the site unbound.
+        */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                ".reveal,.word{opacity:1!important;transform:none!important;filter:none!important}",
+            }}
+          />
+        </noscript>
       </head>
       <body>
         <a

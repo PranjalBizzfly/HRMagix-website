@@ -31,12 +31,27 @@ export default function AboutPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line wash pb-14 pt-[104px] sm:pb-18 sm:pt-[132px]">
-        <div className="shell">
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Editorial glowing ambient wash */}
+        <div
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
           </Reveal>
-          <h1 className="display display-xl mt-8 max-w-[16ch] text-balance">
+          <Reveal y={10} className="mt-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+              Company & Engineering
+            </span>
+          </Reveal>
+          <h1 className="display display-xl mt-5 max-w-[16ch] text-balance">
             Built in Pune, <strong>for how India actually pays people</strong>
           </h1>
           <p className="mt-8 max-w-2xl text-[18px] leading-[1.65] text-body sm:text-[19.5px]">

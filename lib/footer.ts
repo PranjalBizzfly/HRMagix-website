@@ -26,11 +26,12 @@ import type { SocialName, PaymentName } from "@/components/BrandMarks";
  */
 
 export const social: { name: SocialName; label: string; url: string }[] = [
-  { name: "facebook", label: "Facebook", url: "" },
-  { name: "instagram", label: "Instagram", url: "" },
-  { name: "linkedin", label: "LinkedIn", url: "" },
-  { name: "x", label: "X", url: "" },
-  { name: "youtube", label: "YouTube", url: "" },
+  { name: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/company/hrmagix" },
+  { name: "x", label: "X (Twitter)", url: "https://x.com/hrmagix" },
+  { name: "facebook", label: "Facebook", url: "https://www.facebook.com/hrmagix" },
+  { name: "instagram", label: "Instagram", url: "https://www.instagram.com/hrmagix" },
+  { name: "youtube", label: "YouTube", url: "https://www.youtube.com/@hrmagix" },
+  { name: "whatsapp", label: "WhatsApp", url: "https://wa.me/918007799120" },
 ];
 
 export const payments: { name: PaymentName; label: string }[] = [

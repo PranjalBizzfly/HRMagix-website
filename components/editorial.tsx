@@ -47,9 +47,14 @@ export function ArticleOpener({
   actions?: ReactNode;
 }) {
   return (
-    <header className="relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[128px]">
+    <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      {/* Editorial glowing ambient wash */}
       <div
-        className="pointer-events-none absolute -left-40 top-0 h-[420px] w-[620px] rounded-full bg-glow/15 blur-[130px]"
+        className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
         aria-hidden="true"
       />
       <div className="shell relative">
@@ -57,25 +62,26 @@ export function ArticleOpener({
           <Breadcrumbs items={crumbs} />
         </Reveal>
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-14">
+        <div className="mt-7 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-14">
           <div>
             <Reveal y={10}>
-              <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-accent-soft">
+              <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                 {eyebrow}
-              </p>
+              </span>
             </Reveal>
 
             <h1 className="display display-lg mt-5 max-w-[19ch] text-balance">
               <Words as="span" text={title} />
             </h1>
 
-            <Reveal delay={200} className="mt-7 max-w-xl">
+            <Reveal delay={200} className="mt-6 max-w-xl">
               <p className="text-[17px] leading-[1.65] text-body sm:text-[18.5px]">{standfirst}</p>
             </Reveal>
 
             {meta && (
-              <Reveal delay={280} className="mt-9">
-                <dl className="flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-6">
+              <Reveal delay={280} className="mt-8">
+                <dl className="flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-5">
                   {meta.map((m) => (
                     <div key={m.label} className="min-w-[8rem]">
                       <dt className="text-[11.5px] font-semibold uppercase tracking-[0.14em] text-subtle">
@@ -91,19 +97,21 @@ export function ArticleOpener({
             )}
 
             {actions && (
-              <Reveal delay={340} className="mt-9 flex flex-wrap gap-3">
+              <Reveal delay={340} className="mt-8 flex flex-wrap gap-3">
                 {actions}
               </Reveal>
             )}
           </div>
 
-          <Reveal delay={160} y={26} className="lg:-mr-[max(0px,calc((100vw-1240px)/2))]">
-            <Photo
-              slot={slot}
-              ratio="4 / 3"
-              rounded="rounded-[24px] lg:rounded-l-[24px] lg:rounded-r-none"
-              sizes="(max-width: 1024px) 100vw, 620px"
-            />
+          <Reveal delay={160} y={26} className="relative lg:-mr-[max(0px,calc((100vw-1240px)/2))]">
+            <div className="relative overflow-hidden rounded-[24px] shadow-lift lg:rounded-l-[24px] lg:rounded-r-none">
+              <Photo
+                slot={slot}
+                ratio="4 / 3"
+                rounded="rounded-[24px] lg:rounded-l-[24px] lg:rounded-r-none"
+                sizes="(max-width: 1024px) 100vw, 620px"
+              />
+            </div>
           </Reveal>
         </div>
       </div>
@@ -261,16 +269,22 @@ export function Statement({
   const dark = tone === "dark";
   return (
     <section
-      className={
+      className={`relative overflow-hidden ${
         dark
-          ? "panel-fixed-dark bg-panel py-20 sm:py-24"
-          : "border-y border-line bg-surface-sunken py-20 sm:py-24"
-      }
+          ? "panel-fixed-dark bg-panel py-14 sm:py-18 lg:py-22"
+          : "border-y border-line bg-surface-sunken py-14 sm:py-18 lg:py-22"
+      }`}
     >
-      <div className="shell">
+      <div
+        className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 font-display text-[120px] font-bold leading-none text-line/20 select-none sm:text-[180px] lg:text-[240px]"
+        aria-hidden="true"
+      >
+        &ldquo;
+      </div>
+      <div className="shell relative">
         <Reveal y={16}>
           <p
-            className={`font-display text-[26px] font-light leading-[1.35] tracking-[-0.025em] text-balance sm:text-[34px] lg:text-[40px] ${
+            className={`font-display text-[24px] font-light leading-[1.35] tracking-[-0.025em] text-balance sm:text-[32px] lg:text-[38px] ${
               dark ? "text-white" : "text-heading"
             } max-w-[22ch] sm:max-w-[26ch]`}
           >
@@ -278,10 +292,11 @@ export function Statement({
           </p>
           {attribution && (
             <p
-              className={`mt-7 text-[13px] font-semibold uppercase tracking-[0.16em] ${
+              className={`mt-6 inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.18em] ${
                 dark ? "text-violet-300" : "text-accent"
               }`}
             >
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
               {attribution}
             </p>
           )}
@@ -321,9 +336,9 @@ export function Ledger({
         {rows.map((row, i) => (
           <Reveal
             key={row.term}
-            delay={i * 50}
+            delay={i * 45}
             y={12}
-            className="grid gap-2 border-b border-line py-6 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-10 sm:py-7"
+            className="grid gap-2 border-b border-line py-6 transition-colors hover:bg-surface-raised/40 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-10 sm:py-7 sm:px-3 rounded-lg"
           >
             <dt className="font-display text-[15.5px] font-bold leading-snug text-heading">
               {row.term}
@@ -370,7 +385,7 @@ export function Mechanics({
       <ol className="relative mt-12 space-y-0">
         <span
           aria-hidden="true"
-          className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-line-accent via-line to-transparent sm:left-[23px]"
+          className="absolute left-[19px] top-3 bottom-3 w-px bg-gradient-to-b from-brand via-line-accent to-transparent sm:left-[23px]"
         />
         {steps.map((s, i) => (
           <Reveal
@@ -378,12 +393,12 @@ export function Mechanics({
             key={s.step}
             delay={i * 60}
             y={14}
-            className="relative grid gap-4 pb-9 pl-14 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-10 sm:pl-[74px]"
+            className="relative grid gap-4 pb-10 pl-14 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-10 sm:pl-[74px]"
           >
-            <span className="absolute left-0 top-0 grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-[12.5px] font-bold text-accent ring-1 ring-line-accent sm:h-12 sm:w-12 sm:text-[13.5px]">
+            <span className="absolute left-0 top-0 grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-[13px] font-bold text-accent ring-2 ring-line-accent shadow-sm sm:h-12 sm:w-12 sm:text-[14px]">
               {s.step}
             </span>
-            <h3 className="font-display text-[17px] font-bold leading-snug text-heading">
+            <h3 className="font-display text-[17.5px] font-bold leading-snug text-heading">
               {s.title}
             </h3>
             <p className="max-w-2xl text-[15.5px] leading-[1.7] text-muted">{s.body}</p>
@@ -546,7 +561,7 @@ export function Onward({
   className?: string;
 }) {
   return (
-    <section className={`border-t border-line bg-surface-sunken py-16 sm:py-20 ${className}`}>
+    <section className={`border-t border-line bg-surface-sunken py-12 sm:py-16 lg:py-20 ${className}`}>
       <div className="shell">
         <Reveal y={10}>
           <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
@@ -602,10 +617,10 @@ export function Band({
     dark: "panel-fixed-dark bg-panel",
   };
   const sizes = {
-    sm: "py-14 sm:py-16",
-    md: "py-16 sm:py-20",
-    lg: "py-20 sm:py-24",
-    xl: "py-24 sm:py-28 lg:py-32",
+    sm: "py-8 sm:py-12 lg:py-14",
+    md: "py-10 sm:py-14 lg:py-18",
+    lg: "py-12 sm:py-18 lg:py-24",
+    xl: "py-16 sm:py-22 lg:py-28",
   };
   return (
     <section id={id} className={`${grounds[ground]} ${sizes[size]} ${className}`}>

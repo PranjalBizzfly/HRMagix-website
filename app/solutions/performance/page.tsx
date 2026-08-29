@@ -175,8 +175,17 @@ export default function PerformancePage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
+        {/* Editorial glowing ambient wash */}
+        <div
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
@@ -186,10 +195,11 @@ export default function PerformancePage() {
               ]}
             />
           </Reveal>
-          <Reveal y={10} className="mt-8">
-            <p className="text-[12.5px] font-bold uppercase tracking-[0.16em] text-accent">
-              Goals, reviews and growth
-            </p>
+          <Reveal y={10} className="mt-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+              Goals, Reviews & Talent Matrices
+            </span>
             <h1 className="display display-lg mt-5 max-w-[19ch] text-balance">
               A performance year, and the five modules that run inside it
             </h1>

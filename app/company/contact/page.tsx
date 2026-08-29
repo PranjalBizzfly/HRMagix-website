@@ -49,15 +49,30 @@ export default function ContactPage() {
   return (
     <>
       {/* ---- Split opener: dark channel rail beside the page ---- */}
-      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Editorial glowing ambient wash */}
+        <div
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
           </Reveal>
 
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
             <div>
-              <h1 className="display display-lg max-w-[16ch] text-balance">
+              <Reveal y={10}>
+                <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+                  Product Specialists in Pune
+                </span>
+              </Reveal>
+              <h1 className="display display-lg mt-5 max-w-[16ch] text-balance">
                 Talk to the people who <strong>built the compliance engine</strong>
               </h1>
               <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
@@ -65,7 +80,9 @@ export default function ContactPage() {
               </p>
             </div>
             <Reveal delay={140} y={20}>
-              <Photo slot="contact" ratio="4 / 3" sizes="(max-width: 1024px) 100vw, 420px" />
+              <div className="overflow-hidden rounded-[24px] shadow-lift">
+                <Photo slot="contact" ratio="4 / 3" rounded="rounded-[24px]" sizes="(max-width: 1024px) 100vw, 420px" />
+              </div>
             </Reveal>
           </div>
         </div>

@@ -25,12 +25,27 @@ export const metadata: Metadata = {
 export default function PolicyHub() {
   return (
     <>
-      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Editorial glowing ambient wash */}
+        <div
+          className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-20 h-[340px] w-[500px] rounded-full bg-violet-400/8 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Policy" }]} />
           </Reveal>
-          <h1 className="display display-lg mt-8 max-w-[15ch] text-balance">
+          <Reveal y={10} className="mt-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
+              Governance & Frameworks
+            </span>
+          </Reveal>
+          <h1 className="display display-lg mt-5 max-w-[15ch] text-balance">
             Two kinds of policy, <strong>kept apart on purpose</strong>
           </h1>
           <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
