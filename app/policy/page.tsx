@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Policy Centre",
   description:
-    "HRMagix privacy, terms, security and cookie policies, plus the workplace policy library of twenty-six HR policy templates shipped for acknowledgement tracking.",
+    "HRMagix privacy, terms, security and cookie policies, plus the workplace policy library of twenty-five HR policy templates shipped for acknowledgement tracking.",
   alternates: { canonical: "/policy" },
 };
 

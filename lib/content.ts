@@ -21,7 +21,7 @@ export const site = {
   proof: {
     seats: "9k+",
     companies: "120+ Indian enterprises",
-    trustline: "Trusted by 120+ HR and People Operations teams across Mumbai, Bangalore, Pune, and Delhi NCR",
+    trustline: "Loved by 120+ companies",
     avatars: [
       "/media/portrait-meera.jpg",
       "/media/portrait-vikram.jpg",
@@ -389,42 +389,29 @@ export const steps = [
 export const testimonials = [
   {
     quote:
-      "Managing attendance and shift rosters across our Pune and Bangalore offices used to require 3 different tools and countless manual reconciliations. With HRMagix, biometric punches flow directly into loss-of-pay registers and our monthly payroll cutoff takes under 2 hours with 100% EPF and PT accuracy.",
+      "HRMagix replaced five tools for us. Onboarding, payroll and performance all live in one place now.",
     name: "Priya Sharma",
-    role: "Head of People Operations, TechSprint India (Pune)",
-    company: "TechSprint India",
-    initials: "PS",
+    role: "HR Manager, 1XL Demo",
+    company: "1XL Demo",
     avatar: "/media/portrait-meera.jpg",
     rating: 5,
   },
   {
     quote:
-      "Our multi-entity payroll previously took 4 business days every month with recurring spreadsheet formula risks. HRMagix automated our multi-state Professional Tax, ESI filings, and generated bank-ready NEFT salary batches in a single click with zero compliance errors across 3 audits.",
+      "Payroll that used to take two days now runs in minutes. Our team finally trusts the numbers.",
     name: "Rahul Kulkarni",
-    role: "VP of Finance & Operations, Northwind (Mumbai)",
-    company: "Northwind Logistics",
-    initials: "RK",
+    role: "Finance Lead, Northwind",
+    company: "Northwind",
     avatar: "/media/portrait-vikram.jpg",
     rating: 5,
   },
   {
     quote:
-      "The shift from disconnected annual appraisals to continuous quarterly OKRs and peer kudos completely transformed our team's alignment. Our engineering managers conduct structured 1-on-1s every sprint and our retention has reached an all-time high.",
+      "Recognition and 1-on-1s transformed our culture. Engagement is the best it's ever been.",
     name: "Amit Mehta",
-    role: "Director of Talent, Vertex Systems (Gurgaon)",
-    company: "Vertex Systems",
-    initials: "AM",
+    role: "People Ops, Vertex",
+    company: "Vertex",
     avatar: "/media/portrait-arjun.jpg",
-    rating: 5,
-  },
-  {
-    quote:
-      "The digital onboarding workflow and employee document vault cut our new-hire ramp time by half. Every statutory document, PF declaration, and asset handover is tracked without a single lost email or spreadsheet confusion.",
-    name: "Ananya Iyer",
-    role: "Head of Culture & People, CloudScale (Bangalore)",
-    company: "CloudScale India",
-    initials: "AI",
-    avatar: "/media/portrait-sanjay.jpg",
     rating: 5,
   },
 ];
@@ -510,7 +497,7 @@ export const faqs = [
   },
   {
     q: "Where is our employee and payroll data hosted, and how secure is it?",
-    a: "All data is securely hosted in ISO 27001, SOC 2 compliant Tier-4 Indian cloud data centers (AWS Mumbai region) with 256-bit AES encryption at rest and TLS 1.3 in transit. We support role-based access control (RBAC), multi-factor authentication (MFA), and automated daily backups.",
+    a: "Platform data is hosted in Indian cloud data centres, encrypted in transit between your browser or app and the platform, and encrypted at rest in storage. Access is governed by role-based permissions, with multi-factor authentication available and single sign-on on the Enterprise plan, and automated backups run daily. HRMagix does not claim ISO, SOC or comparable certification of its own — certifications held by the underlying infrastructure providers belong to those providers and should be attributed to them. If a procurement process needs specific assurance documentation, ask the team and you will get an honest answer about what exists.",
   },
   {
     q: "How are complex shift rotations, night allowances, and comp-offs managed?",

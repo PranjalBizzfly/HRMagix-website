@@ -1,0 +1,216 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { sorted, featured, categories, byCategory } from "@/lib/blog";
+import { Band, Opening } from "@/components/editorial";
+import { Arrow, Button } from "@/components/ui";
+import { Reveal } from "@/components/motion";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Photo from "@/components/Photo";
+
+export const metadata: Metadata = {
+  title: "Insights — Indian Payroll & People Operations",
+  description:
+    "Long-form writing on Indian payroll and people operations: ESI against a moving wage base, multi-state Professional Tax, comp-off, the sandwich rule, and reading a payslip line by line.",
+  keywords: [
+    "payroll compliance",
+    "HRMS software",
+    "leave management system",
+    "attendance management system",
+    "employee self service portal",
+  ],
+  alternates: { canonical: "/blog" },
+};
+
+/**
+ * Insights — the listing.
+ *
+ * Three deliberately different treatments down one page, because a uniform grid
+ * of article cards is exactly the pattern this site avoids:
+ *
+ *   1. The lead piece gets a full editorial spread with its photograph.
+ *   2. The rest of the archive is a ruled index — title, reader, length — with
+ *      no thumbnails at all, because a reader scanning eight technical pieces
+ *      is reading titles, not looking at pictures.
+ *   3. Categories are a written directory with a real description each, not a
+ *      row of filter pills.
+ */
+export default function BlogIndex() {
+  const rest = sorted.filter((a) => a.slug !== featured.slug);
+
+  return (
+    <>
+      <header className="border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+        <div className="shell">
+          <Reveal y={8}>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />
+          </Reveal>
+          <h1 className="display display-xl mt-8 max-w-[15ch] text-balance">
+            Insights on <strong>the work itself</strong>
+          </h1>
+          <p className="mt-8 max-w-2xl text-[18px] leading-[1.65] text-body sm:text-[19.5px]">
+            Writing about Indian payroll and people operations for the person doing the job —
+            the payroll lead closing a cutoff, the plant head with three shift patterns, the founder
+            who has not written a leave policy yet.
+          </p>
+        </div>
+      </header>
+
+      {/* ---- Lead piece: full editorial spread ---- */}
+      <Band ground="surface" size="lg">
+        <Reveal y={10}>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent-soft">
+            Latest
+          </p>
+        </Reveal>
+
+        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-16">
+          <div>
+            <Reveal y={12}>
+              <p className="text-[13px] font-semibold text-accent">{featured.category}</p>
+              <h2 className="display display-md mt-4 max-w-[18ch]">
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                >
+                  {featured.title}
+                </Link>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-6 max-w-xl text-[17px] leading-[1.7] text-muted">
+                {featured.standfirst}
+              </p>
+            </Reveal>
+            <Reveal delay={180}>
+              <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6">
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                    Written for
+                  </dt>
+                  <dd className="mt-1.5 max-w-[28ch] text-[14.5px] text-heading">
+                    {featured.reader}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                    Length
+                  </dt>
+                  <dd className="mt-1.5 text-[14.5px] text-heading">{featured.minutes} min read</dd>
+                </div>
+              </dl>
+            </Reveal>
+            <Reveal delay={240}>
+              <Link
+                href={`/blog/${featured.slug}`}
+                className="group mt-8 inline-flex items-center gap-2 text-[15px] font-semibold text-accent transition-colors hover:text-accent-strong"
+              >
+                Read the article <Arrow />
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={140} y={22}>
+            <Link href={`/blog/${featured.slug}`} className="group block">
+              <Photo slot={featured.image} ratio="4 / 3" sizes="(max-width: 1024px) 100vw, 560px" />
+            </Link>
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* ---- The archive: a ruled index, no thumbnails ---- */}
+      <Band ground="sunken" size="lg">
+        <Reveal y={12} className="max-w-2xl">
+          <h2 className="display display-md">Everything else</h2>
+          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+            Set as an index rather than a wall of cards — when the subjects are this close together,
+            titles and readers tell you more than thumbnails do.
+          </p>
+        </Reveal>
+
+        <ol className="mt-12 divide-y divide-line border-y border-line">
+          {rest.map((a, i) => (
+            <Reveal as="li" key={a.slug} delay={i * 45} y={12}>
+              <Link
+                href={`/blog/${a.slug}`}
+                className="group grid gap-3 py-7 lg:grid-cols-[minmax(0,11rem)_minmax(0,1fr)_auto] lg:items-baseline lg:gap-10"
+              >
+                <span className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent">
+                  {a.category}
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-[19px] font-bold leading-snug text-heading transition-colors group-hover:text-accent">
+                    {a.title}
+                  </span>
+                  <span className="mt-2 block max-w-2xl text-[15px] leading-[1.65] text-muted">
+                    {a.standfirst}
+                  </span>
+                  <span className="mt-3 block text-[13px] text-subtle">
+                    Written for {a.reader.toLowerCase()}
+                  </span>
+                </span>
+                <span className="flex shrink-0 items-center gap-4 whitespace-nowrap text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">
+                  {a.minutes} min
+                  <span className="text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <Arrow />
+                  </span>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </ol>
+      </Band>
+
+      {/* ---- Categories as a written directory ---- */}
+      <Band ground="surface" size="lg">
+        <Reveal y={12} className="max-w-2xl">
+          <h2 className="display display-md">By subject</h2>
+        </Reveal>
+
+        <div className="mt-12 grid gap-x-14 gap-y-10 lg:grid-cols-2">
+          {categories.map((c, i) => {
+            const items = byCategory(c.name);
+            if (!items.length) return null;
+            return (
+              <Reveal key={c.name} delay={i * 60} y={12} className="border-t border-line pt-6">
+                <h3 className="font-display text-[18px] font-bold text-heading">{c.name}</h3>
+                <p className="mt-2.5 max-w-lg text-[15px] leading-[1.68] text-muted">{c.blurb}</p>
+                <ul className="mt-5 space-y-2.5">
+                  {items.map((a) => (
+                    <li key={a.slug}>
+                      <Link
+                        href={`/blog/${a.slug}`}
+                        className="group flex gap-3 text-[15px] leading-[1.6] text-muted transition-colors hover:text-accent"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-soft"
+                        />
+                        {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            );
+          })}
+        </div>
+      </Band>
+
+      <Band ground="raised" size="md">
+        <Opening
+          label="On sourcing"
+          paragraphs={[
+            "Everything in this section draws on one of three things: a provision of Indian law, a published HRMagix product capability, or the structural logic of the problem being described. Each is labelled as such where it appears.",
+            "There is no research programme behind this writing and it does not pretend there is. You will not find survey data, industry benchmarks, percentage improvements or customer anecdotes here, because HRMagix has published none and estimating them would make the rest of the writing worth less.",
+          ]}
+        />
+        <Reveal delay={180} className="mt-9 flex flex-wrap gap-3">
+          <Button href="/resources/white-papers">Read the white papers</Button>
+          <Button href="/resources/calculator" variant="outline">
+            Use the calculators
+          </Button>
+        </Reveal>
+      </Band>
+    </>
+  );
+}

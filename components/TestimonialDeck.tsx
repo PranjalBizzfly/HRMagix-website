@@ -205,7 +205,13 @@ function Card({
           </div>
         ) : (
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-violet-700 text-[13.5px] font-bold text-white">
-            {t.initials}
+            {/* Derived rather than stored, so a testimonial only ever carries
+                the attribution its source actually published. */}
+            {t.name
+              .split(" ")
+              .map((part) => part[0])
+              .slice(0, 2)
+              .join("")}
           </span>
         )}
         <span className="min-w-0">

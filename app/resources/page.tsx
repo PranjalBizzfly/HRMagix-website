@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { whitePapers } from "@/lib/resources";
+import { whitePapers } from "@/lib/papers";
+import { sorted as articles } from "@/lib/blog";
 import { resourcesNav } from "@/lib/nav";
 import { Band, Opening } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
@@ -86,7 +87,7 @@ export default function ResourcesHub() {
               </span>
               <span className="min-w-0">
                 <Link
-                  href={`/resources/white-papers#${paper.slug}`}
+                  href={`/resources/white-papers/${paper.slug}`}
                   className="group inline-flex items-center gap-2 font-display text-[18px] font-bold text-heading transition-colors hover:text-accent"
                 >
                   {paper.title}
@@ -106,7 +107,48 @@ export default function ResourcesHub() {
         </ol>
       </Band>
 
-      <Band ground="surface" size="md">
+      {/* ---- Latest from Insights: titles only, so the hub stays an index ---- */}
+      <Band ground="surface" size="lg">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
+          <Reveal y={12}>
+            <h2 className="display display-md max-w-[18ch]">Latest from Insights</h2>
+            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
+              Shorter than the papers and written as arguments rather than references — on ESI
+              against a moving wage base, multi-state Professional Tax, comp-off and the sandwich
+              rule.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <Link
+              href="/blog"
+              className="group inline-flex items-center gap-2 text-[15px] font-semibold text-accent"
+            >
+              All {articles.length} articles <Arrow />
+            </Link>
+          </Reveal>
+        </div>
+
+        <ul className="mt-10 divide-y divide-line border-y border-line">
+          {articles.slice(0, 4).map((a, i) => (
+            <Reveal as="li" key={a.slug} delay={i * 45} y={10}>
+              <Link
+                href={`/blog/${a.slug}`}
+                className="group grid gap-2 py-5 lg:grid-cols-[minmax(0,11rem)_minmax(0,1fr)_auto] lg:items-baseline lg:gap-8"
+              >
+                <span className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent">
+                  {a.category}
+                </span>
+                <span className="font-display text-[16.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent">
+                  {a.title}
+                </span>
+                <span className="whitespace-nowrap text-[13px] text-subtle">{a.minutes} min</span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </Band>
+
+      <Band ground="raised" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>
             <h2 className="display display-md max-w-[18ch]">

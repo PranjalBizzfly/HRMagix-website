@@ -13,7 +13,8 @@
  *
  * SOURCE AND ADAPTATION OF THE REGISTER
  * The register is adapted from a supplied HR policy schedule of twenty-five
- * policies plus a code of conduct. The adaptation does three things and
+ * rows — a code of conduct and twenty-four policies. The adaptation does three
+ * things and
  * nothing else: it renumbers the codes to the HRMAGIX series, it removes the
  * originating company's name throughout, and it states in neutral terms what
  * subject each policy governs.
@@ -246,7 +247,7 @@ export const policyCount = policyRegister.reduce((n, g) => n + g.entries.length,
 /** How the register is meant to be used, stated on the page itself. */
 export const registerNotes = {
   what: [
-    "These twenty-five policies plus the code of conduct are templates, not HRMagix's own staff handbook. They ship inside the Documents module so that a customer can issue them to their own employees, collect acknowledgement, and prove later that it was collected.",
+    "These twenty-five templates — a code of conduct and twenty-four policies — are templates, not HRMagix's own staff handbook. They ship inside the Documents module so that a customer can issue them to their own employees, collect acknowledgement, and prove later that it was collected.",
     "Each employer writes the operative rules into their own copy — the notice period length, the grace window, the increment cycle. This page describes only what subject each policy governs, because publishing a specific rule here would be putting words into an employer's mouth.",
   ],
   how: [

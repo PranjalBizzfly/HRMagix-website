@@ -7,6 +7,7 @@ import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import EnquiryForm from "@/components/EnquiryForm";
 
 export const metadata: Metadata = {
   title: "Partners & Vendors",
@@ -98,12 +99,70 @@ export default function VendorPage() {
                 </p>
               </Reveal>
             ))}
-            <Reveal delay={200} className="mt-7">
-              <Button href={`mailto:${site.contact.email}?subject=Partner%20or%20supplier%20enquiry`}>
-                Write with a specific proposal
-              </Button>
-            </Reveal>
           </div>
+        </div>
+      </Band>
+
+      {/* ---- A real enquiry route, without inventing a programme ---- */}
+      <Band ground="sunken" size="lg" id="enquiry">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">Start a conversation</h2>
+            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
+              There is no programme to apply to, so this is not an application. It routes a specific
+              proposal to the team in Pune, who arrange each relationship individually.
+            </p>
+            <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
+              Who writes to us
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {vendor.enquiryKinds.map((k) => (
+                <li key={k} className="flex gap-3 text-[14.5px] leading-[1.6] text-muted">
+                  <span aria-hidden="true" className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-soft" />
+                  {k}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <EnquiryForm
+            subject="Partner or supplier enquiry"
+            submitLabel="Send the proposal"
+            successTitle="Your proposal is ready to send"
+            intro="Write with a specific proposal rather than a capability deck. What you do, who you already do it for, and your commercial terms."
+            fields={[
+              { name: "name", label: "Your name", required: true, half: true },
+              { name: "company", label: "Company", required: true, half: true },
+              { name: "email", label: "Email", type: "email", required: true, half: true },
+              {
+                name: "kind",
+                label: "Which of the above describes you",
+                required: true,
+                half: true,
+                placeholder: "e.g. Biometric hardware reseller",
+              },
+              {
+                name: "proposal",
+                label: "The proposal",
+                type: "textarea",
+                required: true,
+                hint: "What you supply or advise on, and how it relates to HRMagix customers.",
+              },
+              {
+                name: "clients",
+                label: "Who you already work with",
+                type: "textarea",
+                hint: "Kinds of company rather than named clients, if confidentiality applies.",
+              },
+              {
+                name: "terms",
+                label: "Your commercial terms",
+                type: "textarea",
+                hint: "We do not publish a commission schedule, so tell us how you normally work.",
+              },
+              { name: "site", label: "Website", type: "url", placeholder: "https://", half: true },
+            ]}
+          />
         </div>
       </Band>
 

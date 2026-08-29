@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { solutions } from "@/lib/solutions";
 import { industries } from "@/lib/industries";
 import { legalPages } from "@/lib/policies";
+import { articles } from "@/lib/blog";
+import { whitePapers } from "@/lib/papers";
+import { policyDetails } from "@/lib/policyDetail";
+import { calculators } from "@/lib/calculators";
 
 const BASE = "https://hrmagix.com";
 
@@ -23,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/pricing", 0.9, "monthly"],
     ["/how-it-works", 0.7, "monthly"],
     ["/resources", 0.6, "monthly"],
+    ["/blog", 0.8, "weekly"],
     ["/resources/white-papers", 0.7, "monthly"],
     ["/resources/calculator", 0.8, "monthly"],
     ["/resources/faqs", 0.7, "monthly"],
@@ -54,6 +59,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...articles.map((a) => ({
+      url: `${BASE}/blog/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+    })),
+    ...whitePapers.map((p) => ({
+      url: `${BASE}/resources/white-papers/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+    })),
+    ...calculators.map((c) => ({
+      url: `${BASE}/calculators/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...policyDetails.map((d) => ({
+      url: `${BASE}/policy/workplace-policies/${d.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
     })),
     ...legalPages.map((p) => ({
       url: `${BASE}${p.href}`,

@@ -130,31 +130,38 @@ export const industriesNav: NavColumn[] = [
 export const resourcesNav: NavColumn[] = [
   {
     heading: "Read",
+    blurb: "Writing on Indian payroll and people operations, none of it behind a form.",
     links: [
+      {
+        label: "Blogs",
+        href: "/blog",
+        note: "Insights on payroll, attendance, leave and lifecycle",
+      },
       {
         label: "White Papers",
         href: "/resources/white-papers",
-        note: "Long-form guides to Indian payroll and people ops",
-      },
-      {
-        label: "Media Room",
-        href: "/resources/media",
-        note: "Company facts, coverage guidance and contacts",
+        note: "Technical briefings, readable in full on the site",
       },
     ],
   },
   {
     heading: "Use",
+    blurb: "Tools that compute rather than estimate.",
     links: [
       {
-        label: "Salary & Compliance Calculators",
+        label: "Calculator",
         href: "/resources/calculator",
-        note: "CTC breakup, EPF, ESI, gratuity and plan cost",
+        note: "Salary, PF, ESI, gratuity and payroll cost",
       },
       {
         label: "Questions & Answers",
         href: "/resources/faqs",
         note: "Everything asked before a first demo",
+      },
+      {
+        label: "Media Room",
+        href: "/resources/media",
+        note: "Company facts, coverage guidance and contacts",
       },
     ],
   },
@@ -173,7 +180,7 @@ export const companyNav: NavColumn[] = [
   {
     heading: "Working with us",
     links: [
-      { label: "Partners & Vendors", href: "/vendor", note: "Implementation, referral and supplier terms" },
+      { label: "Vendor & Partners", href: "/vendor", note: "How we work with consultants and suppliers" },
       { label: "Pricing", href: "/pricing", note: "Three published plans, per employee, per month" },
       { label: "Policy Centre", href: "/policy", note: "Privacy, terms, security and HR policy library" },
     ],
@@ -245,6 +252,7 @@ export const allRoutes: string[] = [
   "/industries",
   ...industriesNav.flatMap((c) => c.links.map((l) => l.href)),
   "/resources",
+  "/blog",
   ...resourcesNav.flatMap((c) => c.links.map((l) => l.href)),
   "/company/about",
   "/company/careers",

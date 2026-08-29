@@ -18,144 +18,10 @@
  *   3. They do not invent openings, partner tiers, commission structures,
  *      award mentions, customer logos, download counts or press coverage.
  *
- * The white papers below are therefore published as web briefings — the text is
- * on this site, readable without a form — rather than as gated PDFs that do not
- * exist.
+ * White papers live in `lib/papers.ts` with their full document bodies. They are
+ * published as readable web documents — the text is on this site, without a
+ * form in front of it — rather than as gated PDFs that do not exist.
  */
-
-/* ------------------------------------------------------------------ */
-/* White papers                                                        */
-/* ------------------------------------------------------------------ */
-
-export type WhitePaper = {
-  slug: string;
-  number: string;
-  title: string;
-  /** Who this is written for, stated bluntly. */
-  reader: string;
-  /** Two paragraphs of genuine abstract, not marketing. */
-  abstract: string[];
-  /** The argument, section by section. */
-  contents: { heading: string; summary: string }[];
-  /** Where the full treatment of this subject lives on the site. */
-  readOn: { label: string; href: string }[];
-  minutes: number;
-};
-
-export const whitePapers: WhitePaper[] = [
-  {
-    slug: "chain-of-custody",
-    number: "01",
-    title: "Payroll as a chain of custody",
-    reader: "Finance and payroll leads who close a monthly cutoff in India",
-    abstract: [
-      "The time an Indian payroll takes is almost never spent on arithmetic. It is spent establishing what happened — reconciling a biometric log against leave applications, comp-offs, regularisations and a manager's recollection — before a single calculation can begin.",
-      "This briefing sets out payroll as a sequence of eight custody handovers rather than a computation, identifies which of the eight can be eliminated entirely by integration, and specifies exactly what each statutory head requires as input and produces as output.",
-    ],
-    contents: [
-      { heading: "Why establishing payable days costs more than calculating pay", summary: "The four sources of truth that disagree, and why they disagree." },
-      { heading: "The eight handovers of a monthly run", summary: "From attendance close to filing, with the four that require no human step." },
-      { heading: "Statutory heads as rules, not columns", summary: "EPF ceiling, ESI threshold and contribution periods, state PT, LWF cycles, Section 192." },
-      { heading: "What has to leave the building", summary: "ECR file, ESIC return, PT working, Form 24Q, bank batch file, payslips." },
-      { heading: "Reconstructing a run six months later", summary: "Why effective-dating the salary structure is what makes a payroll auditable." },
-    ],
-    readOn: [
-      { label: "Payroll", href: "/solutions/payroll" },
-      { label: "Salary & compliance calculators", href: "/resources/calculator" },
-    ],
-    minutes: 11,
-  },
-  {
-    slug: "state-by-state",
-    number: "02",
-    title: "One company, several compliance positions",
-    reader: "HR and finance leaders in multi-branch, multi-state businesses",
-    abstract: [
-      "A business with offices in three states experiences itself as one organisation and is treated by statute as several. Professional Tax is a state subject. Leave entitlements sit under state Shops and Establishments Acts. Labour Welfare Fund runs on state calendars that ignore your payroll cycle.",
-      "This briefing works through where state divergence actually bites in a mid-market Indian company, and sets out the configuration model — per-entity, per-location, per-grade — that lets consolidated reporting and correct state-level filing coexist rather than compete.",
-    ],
-    contents: [
-      { heading: "The three axes: entity, location, grade", summary: "What belongs on each, and what breaks when they are collapsed." },
-      { heading: "Professional Tax across seven states", summary: "Slabs, the February treatment in Maharashtra, gender-specific exemptions." },
-      { heading: "Leave under state establishment law", summary: "Why a single national leave scheme is usually non-compliant somewhere." },
-      { heading: "Labour Welfare Fund calendars", summary: "Half-yearly and annual cycles, and why they are missed." },
-      { heading: "Consolidated view, distinct filings", summary: "Reporting across entities without merging the runs that must stay separate." },
-    ],
-    readOn: [
-      { label: "SMEs", href: "/industries/smes" },
-      { label: "Payroll", href: "/solutions/payroll" },
-    ],
-    minutes: 9,
-  },
-  {
-    slug: "exceptions-engine",
-    number: "03",
-    title: "The shop floor is an exceptions engine",
-    reader: "Plant heads, HR managers and payroll teams in manufacturing",
-    abstract: [
-      "Office attendance is close to binary. Production attendance is not: a punch at 22:40 belongs to yesterday's shift, a Sunday worked creates a comp-off with an expiry, and an hour past shift end is either overtime or a handover depending on a rule nobody wrote down.",
-      "This briefing catalogues the exceptions a manufacturing payroll actually produces, and shows how each becomes a configured rule rather than a monthly manual adjustment — including the interaction between overtime, the moving wage base and ESI applicability.",
-    ],
-    contents: [
-      { heading: "Auto shift detection across midnight", summary: "Inferring the shift from the timestamp instead of asking anyone." },
-      { heading: "Overtime and night differentials as contested figures", summary: "Making them defensible by deriving them from the shift definition." },
-      { heading: "ESI and a wage base that moves", summary: "The ₹21,000 threshold, contribution periods, and why a naive monthly test is wrong." },
-      { heading: "Comp-off with expiry and consumption rules", summary: "Turning goodwill into a tracked entitlement." },
-      { heading: "Three plants, three rule sets, one filing", summary: "Per-location configuration under a single organisation." },
-    ],
-    readOn: [
-      { label: "Manufacturing", href: "/industries/manufacturing" },
-      { label: "Attendance & Shifts", href: "/solutions/attendance" },
-    ],
-    minutes: 10,
-  },
-  {
-    slug: "policy-vacuum",
-    number: "04",
-    title: "The policy vacuum, and how it closes",
-    reader: "Founders and first HR hires between ten and a hundred people",
-    abstract: [
-      "Early-stage companies do not fail at HR because their tools are poor. They fail because nothing has been decided, and every undecided rule becomes a precedent the first time somebody asks a question the founder answers generously.",
-      "This briefing sets out the minimum set of written positions a growing Indian company needs — statutory registrations, leave scheme, notice period, probation, work-from-home — the order to decide them in, and how policy acknowledgement turns a document into an obligation both sides can rely on.",
-    ],
-    contents: [
-      { heading: "The questions that become precedents", summary: "Leave, notice, probation, remote work, and the improvised answers that stick." },
-      { heading: "Statutory obligations start earlier than founders expect", summary: "EPF, ESI, PT registration and Section 192 from employee one." },
-      { heading: "Writing a leave scheme you can live with", summary: "Accrual, carry-forward, the sandwich rule, and applying it identically." },
-      { heading: "Acknowledgement as evidence", summary: "Per employee, per policy version — and what happens when the text changes." },
-      { heading: "What to leave undecided", summary: "The policies a fifty-person company genuinely does not need yet." },
-    ],
-    readOn: [
-      { label: "Startups", href: "/industries/startups" },
-      { label: "Workplace Policy Library", href: "/policy/workplace-policies" },
-    ],
-    minutes: 8,
-  },
-  {
-    slug: "self-service-arithmetic",
-    number: "05",
-    title: "The arithmetic of self-service",
-    reader: "HR leaders deciding whether an ESS rollout is worth the change management",
-    abstract: [
-      "Most of what an HR team is asked in a week requires access rather than judgement: a balance, a payslip, a UAN, the status of a regularisation. Each is a two-minute answer, which is exactly why the cost of answering them is invisible.",
-      "This briefing separates the HR requests that are genuinely lookups from the ones that need a person, and works through what changes when the first category moves behind the employee's own login — on a desktop for office staff and on a phone for everybody else.",
-    ],
-    contents: [
-      { heading: "Sorting requests into lookups and judgements", summary: "A simple audit any HR team can run over one week of its own inbox." },
-      { heading: "What an employee can finish alone", summary: "Leave, balances, regularisation, payslips, documents, declarations." },
-      { heading: "The manager's half of the portal", summary: "Approvals, presence, 1-on-1s and goal updates in the same place." },
-      { heading: "Mobile is not the secondary channel", summary: "Field staff, operators and drivers for whom the phone is the only channel." },
-      { heading: "Year-end without a queue", summary: "Regime comparison, declarations, proof upload and Form 16 Part B." },
-    ],
-    readOn: [
-      { label: "Employee Self-Service", href: "/solutions/ess" },
-      { label: "Employee Management", href: "/solutions/employee-management" },
-    ],
-    minutes: 7,
-  },
-];
-
-export const paperBySlug = (slug: string) => whitePapers.find((p) => p.slug === slug);
 
 /* ------------------------------------------------------------------ */
 /* Careers                                                             */
@@ -196,6 +62,24 @@ export const careers = {
     "There is no application portal and no job board listing to respond to. Write to the team directly, tell us what you would want to work on and what you have built before, and attach whatever best represents your work.",
     "If there is a fit, the conversation continues with the people you would actually work with. If there is not, we will say so rather than leave it open.",
   ],
+  /**
+   * Verified open roles. HRMagix publishes no vacancy list, so this is empty
+   * and the page renders its empty state rather than inventing positions.
+   *
+   * To publish a role, add an entry here — the listing, the detail page at
+   * /company/careers/<slug> and the application form all follow automatically.
+   * Every field must come from a real, approved requisition.
+   */
+  openings: [] as {
+    slug: string;
+    title: string;
+    team: string;
+    location: string;
+    type: string;
+    summary: string;
+    responsibilities: string[];
+    looking: string[];
+  }[],
   honesty: {
     heading: "What this page deliberately does not claim",
     points: [
@@ -346,6 +230,13 @@ export const vendor = {
   procurement: [
     "If you are a supplier approaching HRMagix rather than a partner working with our customers, write with a specific proposal rather than a capability deck. Include what you supply, who you already supply it to, and your commercial terms.",
     "We do not run an open vendor registration portal, and we do not maintain a pre-qualified supplier list that can be joined by submitting a form.",
+  ],
+  /** Routes an enquiry to the right relationship without inventing a programme. */
+  enquiryKinds: [
+    "Accounting or compliance firm advising Indian employers",
+    "HR or implementation consultant working with mid-market companies",
+    "Biometric hardware vendor, reseller or installer",
+    "Supplier with a proposal for HRMagix itself",
   ],
   honesty: {
     heading: "What is deliberately absent from this page",

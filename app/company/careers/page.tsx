@@ -7,6 +7,8 @@ import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import EnquiryForm from "@/components/EnquiryForm";
+import { EmptyState } from "@/components/states";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -83,6 +85,53 @@ export default function CareersPage() {
         compliance problem that has to be expressed as software.
       </Statement>
 
+      {/* ---- Open roles: a real listing, or a real empty state ---- */}
+      <Band ground="surface" size="lg" id="openings">
+        <Reveal y={12} className="max-w-2xl">
+          <h2 className="display display-md">Open roles</h2>
+        </Reveal>
+
+        {careers.openings.length === 0 ? (
+          <Reveal delay={100} y={12} className="mt-10 max-w-3xl">
+            <EmptyState
+              title="No roles are published right now"
+              body={
+                <>
+                  This is a genuine empty state, not a page waiting for content. HRMagix has not
+                  published a vacancy list, so none is shown — inventing roles would waste the time
+                  of the people this page most wants to reach.
+                  <span className="mt-4 block">
+                    The form below still goes somewhere. If what you would want to work on matches
+                    something we need, the conversation starts there rather than through a listing.
+                  </span>
+                </>
+              }
+            />
+          </Reveal>
+        ) : (
+          <ul className="mt-10 divide-y divide-line border-y border-line">
+            {careers.openings.map((role) => (
+              <Reveal as="li" key={role.slug} y={12}>
+                <Link
+                  href={`/company/careers/${role.slug}`}
+                  className="group grid gap-2 py-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,16rem)_auto] lg:items-baseline lg:gap-8"
+                >
+                  <span className="font-display text-[18px] font-bold text-heading transition-colors group-hover:text-accent">
+                    {role.title}
+                  </span>
+                  <span className="text-[14.5px] text-muted">
+                    {role.team} · {role.location} · {role.type}
+                  </span>
+                  <span className="text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                    <Arrow />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        )}
+      </Band>
+
       {/* ---- How to apply ---- */}
       <Band ground="surface" size="lg">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-16">
@@ -93,13 +142,40 @@ export default function CareersPage() {
                 <p className="mt-5 max-w-2xl text-[16.5px] leading-[1.72] text-muted">{p}</p>
               </Reveal>
             ))}
-            <Reveal delay={200} className="mt-8 flex flex-wrap gap-3">
-              <Button href={`mailto:${site.contact.email}?subject=Working%20at%20HRMagix`}>
-                Write to the team
-              </Button>
-              <Button href="/company/about" variant="outline">
-                Read about the company
-              </Button>
+            <Reveal delay={200} className="mt-9">
+              <EnquiryForm
+                subject="Working at HRMagix"
+                submitLabel="Send your introduction"
+                successTitle="Your introduction is ready to send"
+                intro="There is no application portal behind this. Tell us what you would want to work on and what you have built — that is more useful to us than a form with twelve required fields."
+                fields={[
+                  { name: "name", label: "Your name", required: true, half: true },
+                  { name: "email", label: "Email", type: "email", required: true, half: true },
+                  {
+                    name: "work",
+                    label: "What you would want to work on",
+                    type: "textarea",
+                    required: true,
+                    placeholder: "The part of this product that interests you, and why.",
+                  },
+                  {
+                    name: "built",
+                    label: "What you have built before",
+                    type: "textarea",
+                    required: true,
+                    hint: "Whatever best represents your work. Depth on one thing beats a list of ten.",
+                  },
+                  {
+                    name: "link",
+                    label: "A link to your work",
+                    type: "url",
+                    placeholder: "https://",
+                    hint: "Portfolio, repository, writing — anything we can actually look at.",
+                    half: true,
+                  },
+                  { name: "location", label: "Where you are based", half: true },
+                ]}
+              />
             </Reveal>
           </div>
 

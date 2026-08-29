@@ -1,0 +1,250 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { whitePapers, paperBySlug } from "@/lib/papers";
+import { Band, Onward } from "@/components/editorial";
+import { Arrow, Button } from "@/components/ui";
+import { Reveal } from "@/components/motion";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Prose, { headingId, type ProseBlock } from "@/components/Prose";
+
+export function generateStaticParams() {
+  return whitePapers.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const p = paperBySlug(slug);
+  if (!p) return {};
+  return {
+    title: p.seo.title,
+    description: p.seo.description,
+    keywords: p.seo.keywords,
+    alternates: { canonical: `/resources/white-papers/${p.slug}` },
+    openGraph: {
+      title: `${p.seo.title} · HRMagix`,
+      description: p.seo.description,
+      url: `/resources/white-papers/${p.slug}`,
+      type: "article",
+      siteName: "HRMagix",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+    },
+  };
+}
+
+/**
+ * A white paper, rendered as a document rather than as a page.
+ *
+ * Numbered sections, a persistent contents rail, no photography and no
+ * marketing furniture inside the body. The distinction from an Insights article
+ * is deliberate and visible: an article argues, a paper is referred to.
+ */
+export default async function PaperPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const paper = paperBySlug(slug);
+  if (!paper) notFound();
+
+  const others = whitePapers.filter((p) => p.slug !== slug).slice(0, 3);
+
+  return (
+    <>
+      <article>
+        {/* ---- Title page ---- */}
+        <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+          <div className="shell">
+            <Reveal y={8}>
+              <Breadcrumbs
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Resources", href: "/resources" },
+                  { label: "White Papers", href: "/resources/white-papers" },
+                  { label: `Paper ${paper.number}` },
+                ]}
+              />
+            </Reveal>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,4rem)_minmax(0,1fr)] lg:gap-10">
+              <Reveal y={10}>
+                <span
+                  aria-hidden="true"
+                  className="font-display text-[52px] font-light leading-none text-line-accent"
+                >
+                  {paper.number}
+                </span>
+              </Reveal>
+
+              <div className="max-w-3xl">
+                <h1 className="display display-lg text-balance">{paper.title}</h1>
+                <Reveal delay={120}>
+                  <p className="mt-4 text-[18px] italic leading-snug text-muted sm:text-[20px]">
+                    {paper.subtitle}
+                  </p>
+                </Reveal>
+
+                <Reveal delay={180}>
+                  <dl className="mt-9 flex flex-wrap gap-x-12 gap-y-5 border-t border-line pt-7">
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                        Written for
+                      </dt>
+                      <dd className="mt-1.5 max-w-[34ch] text-[14.5px] text-heading">
+                        {paper.reader}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                        Length
+                      </dt>
+                      <dd className="mt-1.5 text-[14.5px] text-heading">
+                        {paper.minutes} minute read
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                        Format
+                      </dt>
+                      <dd className="mt-1.5 text-[14.5px] text-heading">
+                        {paper.document ? `PDF · ${paper.document.pages} pages` : "Web document"}
+                      </dd>
+                    </div>
+                  </dl>
+                </Reveal>
+
+                {/* A download control appears only when a real document exists. */}
+                {paper.document && (
+                  <Reveal delay={240} className="mt-8">
+                    <Button href={paper.document.path}>Download the PDF</Button>
+                  </Reveal>
+                )}
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <Band ground="surface" size="md">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-16">
+            {/* ---- Contents rail ---- */}
+            <nav aria-label="Contents" className="lg:sticky lg:top-[110px] lg:self-start">
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                Contents
+              </p>
+              <ol className="mt-4 space-y-3 border-l border-line pl-4">
+                {paper.sections.map((s, i) => (
+                  <li key={s.heading}>
+                    <a
+                      href={`#${headingId(s.heading)}`}
+                      className="group block text-[14px] leading-snug text-muted transition-colors hover:text-accent"
+                    >
+                      <span className="mr-2 font-display text-[12px] font-bold tabular-nums text-subtle">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {s.heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-9 border-t border-line pt-6">
+                <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                  Read next
+                </p>
+                <ul className="mt-4 space-y-2.5">
+                  {paper.readOn.map((r) => (
+                    <li key={r.href}>
+                      <Link
+                        href={r.href}
+                        className="text-[14px] leading-snug text-muted transition-colors hover:text-accent"
+                      >
+                        {r.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </nav>
+
+            {/* ---- Document body ---- */}
+            <div className="min-w-0">
+              <Reveal y={12} className="mb-12 border-l-2 border-line-accent pl-6">
+                <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-accent">
+                  Abstract
+                </p>
+                {paper.abstract.map((p, i) => (
+                  <p key={i} className="mt-4 max-w-[68ch] text-[17px] leading-[1.72] text-body">
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+
+              {paper.sections.map((section, i) => (
+                <section key={section.heading} className="mt-14 first:mt-0">
+                  <Reveal y={12} id={headingId(section.heading)} className="scroll-mt-28">
+                    <div className="border-t border-line pt-8">
+                      <p className="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
+                        Section {String(i + 1).padStart(2, "0")}
+                      </p>
+                      <h2 className="mt-3 max-w-[24ch] font-display text-[25px] font-bold leading-[1.22] tracking-[-0.025em] text-heading sm:text-[28px]">
+                        {section.heading}
+                      </h2>
+                    </div>
+                  </Reveal>
+                  <Prose blocks={section.blocks as ProseBlock[]} className="mt-6" />
+                </section>
+              ))}
+
+              <Reveal y={12} className="mt-16 rounded-2xl bg-surface-sunken p-7 ring-1 ring-line">
+                <p className="font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
+                  About this paper
+                </p>
+                <p className="mt-4 text-[15.5px] leading-[1.72] text-muted">
+                  Everything above draws on one of three things: a provision of Indian law, a
+                  published HRMagix product capability, or the structural logic of the problem
+                  described. There is no survey, benchmark or commissioned research behind it, and
+                  none is implied — where a figure appears it is either statutory or a published
+                  HRMagix price.
+                </p>
+                <p className="mt-4 text-[15.5px] leading-[1.72] text-muted">
+                  Nothing here is legal or tax advice. Statutory positions should be confirmed
+                  against the current notification or with your own advisers before you act on them.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </Band>
+      </article>
+
+      <Band ground="sunken" size="md">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
+          <div>
+            <h2 className="display display-md max-w-[20ch]">
+              Talk it through against your own configuration
+            </h2>
+            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
+              A paper describes the general case. How a statutory head behaves for your entities,
+              locations and grades is a shorter conversation than a longer document.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button href="/company/contact">Ask the team</Button>
+            <Button href="/resources/white-papers" variant="outline">
+              All papers
+            </Button>
+          </div>
+        </div>
+      </Band>
+
+      <Onward
+        title="Other papers"
+        links={others.map((p) => ({
+          label: p.title,
+          href: `/resources/white-papers/${p.slug}`,
+          note: p.subtitle,
+        }))}
+      />
+    </>
+  );
+}

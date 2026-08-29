@@ -26,7 +26,14 @@ export async function generateMetadata({
     description: i.seo.description,
     keywords: i.seo.keywords,
     alternates: { canonical: i.href },
-    openGraph: { title: `${i.seo.title} · HRMagix`, description: i.seo.description, url: i.href },
+    openGraph: {
+      title: `${i.seo.title} · HRMagix`,
+      description: i.seo.description,
+      url: i.href,
+      siteName: "HRMagix",
+      type: "website",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+    },
   };
 }
 

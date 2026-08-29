@@ -108,3 +108,5 @@ docs/
 # Theme audit screenshots
 .theme-shots/
 .shots
+
+.vercel
