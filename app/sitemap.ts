@@ -6,6 +6,7 @@ import { articles } from "@/lib/blog";
 import { whitePapers } from "@/lib/papers";
 import { policyDetails } from "@/lib/policyDetail";
 import { calculators } from "@/lib/calculators";
+import { guides } from "@/lib/guides";
 
 const BASE = "https://hrmagix.com";
 
@@ -39,6 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/vendor", 0.4, "yearly"],
     ["/policy", 0.4, "yearly"],
     ["/policy/workplace-policies", 0.6, "yearly"],
+    // The two module pages that are their own routes rather than entries in
+    // lib/solutions.ts, because each carries a bespoke layout.
+    ["/solutions/performance", 0.9, "monthly"],
+    ["/solutions/compliance", 0.9, "monthly"],
+    ["/resources/guides", 0.7, "monthly"],
+    ["/resources/glossary", 0.6, "monthly"],
+    ["/resources/hrms-comparison", 0.7, "monthly"],
+    ["/resources/payroll", 0.7, "monthly"],
   ];
 
   return [
@@ -53,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    ...guides.map((g) => ({
+      url: `${BASE}/resources/guides/${g.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
     ...industries.map((i) => ({
       url: `${BASE}${i.href}`,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { industries, industryBySlug } from "@/lib/industries";
-import { Band, Opening, NumberedNarrative, Onward } from "@/components/editorial";
+import { Band, Opening, NumberedNarrative, Passages, Onward } from "@/components/editorial";
 import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -73,11 +73,11 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             the photograph is brightest.
           */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-violet-950/97 via-violet-950/88 to-violet-950/55"
+            className="absolute inset-0 bg-gradient-to-r from-panel/97 via-panel/88 to-panel/55"
             aria-hidden="true"
           />
           <div
-            className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-violet-950/85 to-transparent"
+            className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-panel/85 to-transparent"
             aria-hidden="true"
           />
         </div>
@@ -175,6 +175,18 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </ol>
         </div>
       </Band>
+
+      {/* ---- The longer discussion, written for this reader only ---- */}
+      {industry.deepDive && (
+        <Band ground="sunken" size="lg">
+          <Reveal y={12} className="max-w-2xl">
+            <h2 className="display display-md">
+              What this means in practice for {industry.name.toLowerCase()}
+            </h2>
+          </Reveal>
+          <Passages items={industry.deepDive} className="mt-11" />
+        </Band>
+      )}
 
       {/* ---- Closing argument, set as a quiet full-width note ---- */}
       <Band ground="raised" size="md">

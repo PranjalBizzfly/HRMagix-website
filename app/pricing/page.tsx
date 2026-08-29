@@ -7,13 +7,21 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Pricing from "@/components/Pricing";
 import Calculator from "@/components/Calculator";
+import Accordion from "@/components/Accordion";
 import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Three published plans, priced per employee per month: Starter $3, Growth $6, Enterprise custom. Fourteen-day trial, no setup fee, and every module on one platform.",
-  keywords: ["HRMS software", "payroll software", "HR SaaS platform"],
+  keywords: [
+    "HRMS software",
+    "payroll software",
+    "HRMS and payroll software",
+    "HR software for small business",
+    "payroll software for startups",
+    "HR SaaS platform",
+  ],
   alternates: { canonical: "/pricing" },
 };
 
@@ -55,7 +63,16 @@ export default function PricingPage() {
       </header>
 
       <Band ground="surface" size="lg">
-        <Pricing />
+        <Reveal y={12} className="max-w-2xl">
+          <h2 className="display display-md">Three plans, one platform</h2>
+          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+            Priced per employee, per month. The difference between them is which modules are
+            switched on, not which product you are using.
+          </p>
+        </Reveal>
+        <div className="mt-12">
+          <Pricing />
+        </div>
       </Band>
 
       {/* ---- Comparison ---- */}
@@ -132,6 +149,85 @@ export default function PricingPage() {
         </Reveal>
       </Band>
 
+      {/* ---- Which plan, and on what basis ---- */}
+      <Band ground="surface" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">Which plan you actually need</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              The dividing line between the plans is not company size. It is whether you are
+              running payroll inside the platform, which is the point at which an HRMS stops being
+              a record and starts being a system of consequence.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Starter, if the problem is the record
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Attendance, leave, the employee directory and documents. This is the right
+                starting point for a company whose payroll is small enough to be handled elsewhere
+                but whose attendance and leave data has stopped being trustworthy — typically the
+                point at which a spreadsheet has grown a second spreadsheet to explain it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                It is also the sensible plan for a young company that wants the history to exist
+                before the statutory thresholds arrive. Attendance and leave records accumulate
+                from the day you start; they cannot be created retrospectively.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Growth, if the problem is the month end
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Everything in Starter, plus payroll, performance, OKRs, KRAs, 9-box, recognition
+                and analytics. The reason payroll and analytics sit on the same plan is that they
+                are the same data read twice — the cost figures in a report are the figures the
+                run produced.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Most companies move here for one of two reasons: statutory filing has become a
+                monthly event they cannot afford to get wrong, or the appraisal cycle has outgrown
+                the spreadsheet it was run on. Either alone is sufficient.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Enterprise, if the problem is structural
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Everything in Growth, plus single sign-on and advanced security, succession and
+                lifecycle, and a dedicated success manager. The trigger is usually organisational
+                rather than numerical: several legal entities, an identity provider that every
+                internal system is expected to sit behind, or a governance requirement that names
+                succession planning explicitly.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                This is the plan that is quoted rather than published, because those requirements
+                differ enough between companies that a single figure would be misleading.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Moving between plans
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Every module lives on one platform, so a change of plan switches modules on rather
+                than migrating you onto a different product. The data you have already accumulated
+                stays where it is — which is why starting on Starter does not cost you the
+                attendance history you will want when payroll is switched on.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       {/* ---- Estimator ---- */}
       <Band ground="surface" size="lg">
         <Reveal y={12} className="max-w-2xl">
@@ -171,7 +267,63 @@ export default function PricingPage() {
         </Reveal>
       </Band>
 
-      <Band ground="surface" size="md">
+      {/* ---- Billing questions ---- */}
+      <Band ground="surface" size="lg">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">Questions about the price</h2>
+            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
+              Billing, counting and what happens at the edges. Product questions are answered on
+              the module pages and in the full FAQ.
+            </p>
+            <Link
+              href="/resources/faqs"
+              className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
+            >
+              Every question, in one place <Arrow />
+            </Link>
+          </Reveal>
+
+          <Accordion
+            items={[
+              {
+                q: "What does per employee, per month actually count?",
+                a: "Active employee records in the month. Somebody who joins mid-month and somebody serving notice are both active, so both count; an exited record that has been retained for statutory purposes is not active and does not.",
+              },
+              {
+                q: "Is there a setup or implementation fee?",
+                a: "No. The setup, the Excel import templates, the policy validation and the dry-run payroll are part of getting started rather than a separately priced engagement.",
+              },
+              {
+                q: "What does the free trial include?",
+                a: "Full access to every module for fourteen days, with no credit card required. It is deliberately not a restricted version, because a payroll product cannot be evaluated honestly with payroll switched off.",
+              },
+              {
+                q: "Can we cancel, and what happens to our data?",
+                a: "You can cancel at any time. Export what you need while you can still log in — payroll, attendance and leave history are records you may be required to produce long after you stop using the software that generated them.",
+              },
+              {
+                q: "Can we switch plans later?",
+                a: "Yes. Every module is on one platform, so changing plan switches modules on or off rather than moving you to a different product. Data already accumulated is unaffected.",
+              },
+              {
+                q: "Why is Enterprise priced on request?",
+                a: "Because what it covers varies: the number of legal entities, which modules are in scope, whether single sign-on is required, and whether a dedicated success manager is part of the arrangement. A single published figure would be wrong for most companies asking.",
+              },
+              {
+                q: "Do we pay for employees who have left?",
+                a: "No. Their records are retained — gratuity, Form 16 reissues and inspections all reach backwards — but a retained record is not an active one and is not billed.",
+              },
+              {
+                q: "Is support included on every plan?",
+                a: "Email support is included on Starter. Growth adds priority support, and Enterprise adds a dedicated success manager. Support is not sold separately from the plan.",
+              },
+            ]}
+          />
+        </div>
+      </Band>
+
+      <Band ground="sunken" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>
             <h2 className="display display-md max-w-[17ch]">

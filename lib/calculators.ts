@@ -86,6 +86,11 @@ export type Result = {
 };
 
 export type Calculator = {
+  /**
+   * The one-line framing above the worked method. Written per calculator so
+   * the six pages do not open the same section with the same sentence.
+   */
+  methodIntro: string;
   slug: string;
   /** Menu and card label. */
   name: string;
@@ -128,6 +133,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "salary",
+    methodIntro:
+      "Every line of a CTC breakdown, in the order a payslip presents it. The arithmetic is ordinary; the part worth reading is which components sit inside which base.",
     name: "Salary Calculator",
     title: "Salary breakup calculator",
     standfirst:
@@ -284,6 +291,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "pf",
+    methodIntro:
+      "The wage base first, because that is where PF calculations actually go wrong, and then the split between the employee's contribution and the employer's two.",
     name: "PF Calculator",
     title: "EPF and pension contribution calculator",
     standfirst:
@@ -435,6 +444,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "esi",
+    methodIntro:
+      "The contribution rates are the easy half. The eligibility test — and the fact that it is fixed for a contribution period rather than checked monthly — is the half that costs employers money.",
     name: "ESI Calculator",
     title: "ESI eligibility and contribution calculator",
     standfirst:
@@ -568,6 +579,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "gratuity",
+    methodIntro:
+      "The statutory formula under the Payment of Gratuity Act, then each term in it: what counts as continuous service, what counts as last drawn wages, and how part-years are rounded.",
     name: "Gratuity Calculator",
     title: "Gratuity calculator",
     standfirst:
@@ -689,6 +702,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "payroll-cost",
+    methodIntro:
+      "Gross pay is where an employer's cost starts, not where it ends. This works upward from the salary to the total the company actually commits to.",
     name: "Payroll Cost Calculator",
     title: "Monthly payroll cost calculator",
     standfirst:
@@ -837,6 +852,8 @@ export const calculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "plan-cost",
+    methodIntro:
+      "Published rate times headcount, and nothing else. No modelled savings, no projected return — the arithmetic is deliberately trivial so the number is checkable.",
     name: "HRMagix Plan Cost",
     title: "HRMagix subscription cost calculator",
     standfirst:

@@ -56,6 +56,13 @@ const config: Config = {
           strong: token("surface-strong"),
           field: token("field"),
         },
+        /*
+         * The inverse panel: the site's one near-black brand block. Violet-950
+         * on a light page, a lifted charcoal plane in dark, so call sites can
+         * name the role instead of hard-coding a colour that is only right in
+         * one of the two themes.
+         */
+        panel: { DEFAULT: token("panel"), line: token("panel-line") },
         // Hairlines, in ascending weight.
         line: {
           DEFAULT: token("line"),

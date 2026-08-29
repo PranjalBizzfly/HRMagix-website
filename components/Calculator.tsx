@@ -27,11 +27,11 @@ export default function Calculator() {
     <div
       ref={spotRef}
       {...spotlightProps}
-      className="spotlight panel bg-violet-950 p-6 text-white shadow-lift sm:p-9 lg:p-11"
+      className="spotlight panel bg-panel p-6 text-white shadow-lift sm:p-9 lg:p-11"
     >
       <div className="pointer-events-none absolute inset-0 dotted opacity-25" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand/35 blur-[90px]"
+        className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full panel-bloom blur-[90px]"
         aria-hidden="true"
       />
 

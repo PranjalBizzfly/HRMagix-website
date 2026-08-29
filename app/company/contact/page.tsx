@@ -89,10 +89,10 @@ export default function ContactPage() {
 
           {/* ---- Channels ---- */}
           <Reveal delay={120} y={16}>
-            <div className="panel-fixed-dark relative overflow-hidden rounded-3xl bg-violet-950 p-7 text-white sm:p-9">
+            <div className="panel-fixed-dark relative overflow-hidden rounded-3xl bg-panel p-7 text-white sm:p-9">
               <div className="pointer-events-none absolute inset-0 dotted opacity-20" aria-hidden="true" />
               <div
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/35 blur-[80px]"
+                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full panel-bloom blur-[80px]"
                 aria-hidden="true"
               />
               <div className="relative">
@@ -159,6 +159,71 @@ export default function ContactPage() {
       </Band>
 
       {/* ---- What to expect ---- */}
+      {/* ---- What to expect, and what to bring ---- */}
+      <Band ground="raised" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">What a demo actually looks like</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Worth saying plainly, because the word covers everything from a slide deck to a
+              two-hour workshop.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                It is your payroll month, not ours
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The useful version of this conversation runs against your own numbers: your salary
+                structure, your leave scheme, your shift pattern, your states. A demonstration on
+                sample data proves that the software runs. It does not tell you whether it handles
+                the specific thing that goes wrong in your month, which is the only question worth
+                an hour of your time.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What helps to have ready
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Nothing is required, but four things make the conversation concrete: a sample
+                salary structure for one grade, your leave policy as it currently stands, the
+                states you employ in, and the thing that most recently went wrong at month end.
+                The last of those is usually the most informative.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Questions we would rather you asked
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                How a mid-year migration handles year-to-date figures for Form 16. What happens to
+                a night shift that crosses midnight. How a backdated increment is treated in a
+                month that has already been filed. What an employee can and cannot do in
+                self-service. These are the places HRMS and payroll software differ from one
+                another, and none of them show up in a feature list.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                If you would rather not talk to anyone yet
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The rates are published, the calculators run on your own figures without an email
+                address, and the module pages describe what each part of the platform does in
+                plain language. The trial gives full access to every module for fourteen days
+                without a credit card, which is a more honest evaluation than any call.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="sunken" size="lg">
         <Reveal y={12} className="max-w-2xl">
           <h2 className="display display-md">Four reasons people write</h2>

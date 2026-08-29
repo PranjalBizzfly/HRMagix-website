@@ -39,11 +39,11 @@ export default function CareersPage() {
         <div className="absolute inset-0 -z-10">
           <Photo slot="careers" cover rounded="rounded-none" hover={false} sizes="100vw" />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-violet-950/97 via-violet-950/88 to-violet-950/58"
+            className="absolute inset-0 bg-gradient-to-r from-panel/97 via-panel/88 to-panel/58"
             aria-hidden="true"
           />
           <div
-            className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-violet-950/85 to-transparent"
+            className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-panel/85 to-transparent"
             aria-hidden="true"
           />
         </div>

@@ -30,6 +30,13 @@ export type Industry = {
   pressures: { title: string; body: string }[];
   /** What this reader should switch on first, and why that order. */
   priority: { order: string; module: string; href: string; why: string }[];
+  /**
+   * Two or three longer sections written only for this reader. The subjects
+   * differ by industry on purpose -- a startup needs to hear about founding
+   * policy, a manufacturer about shop-floor wage law -- so no two industry
+   * pages carry the same discussion.
+   */
+  deepDive?: { heading: string; body: string[] }[];
   /** A closing argument written for this reader alone. */
   closing: string;
   questions: IndustryQuestion[];
@@ -57,7 +64,7 @@ export const industries: Industry[] = [
       ],
     },
     situation: [
-      "At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised — how much notice do I owe, does a Friday off cost me two days, when does my leave reset — and discovers that the answer depends on who they asked and when.",
+      "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised — how much notice do I owe, does a Friday off cost me two days, when does my leave reset — and discovers that the answer depends on who they asked and when.",
       "By then the decision has already been made, badly, several times. Founders usually reach for HR software at this point believing they need a tool. What they actually need is for the rules to exist somewhere other than in their head, applied identically to everyone, from the day they are written.",
     ],
     pressures: [
@@ -104,6 +111,32 @@ export const industries: Industry[] = [
         why: "Because goal-setting frameworks only help once there are enough people that alignment cannot happen by proximity.",
       },
     ],
+    deepDive: [
+      {
+        heading: "The five decisions to make before the tenth hire",
+        body: [
+          "Almost every HR problem a young company hits in its second year traces back to a decision that was never made in its first. Five are worth settling deliberately, because each becomes a precedent the moment somebody asks.",
+          "How much leave, of which kinds, accruing on what basis. What the notice period is, and whether it differs by seniority. How long probation runs, and what confirmation requires. Whether work from home is a right, an arrangement or an exception. And what the salary structure looks like — specifically the split between basic and allowances, because that decides the PF cost of every offer you make afterwards.",
+          "None of these needs to be generous or elaborate. They need to exist in writing and be applied identically, which is exactly what founders find hardest when the person asking is sitting three feet away.",
+        ],
+      },
+      {
+        heading: "Statutory registration, roughly in the order it arrives",
+        body: [
+          "Professional Tax registration is a state matter and often applies from the first employee, which surprises founders more than any other obligation. TDS under Section 192 applies as soon as anyone's projected annual income crosses the exemption limit, which in most funded startups is the first engineer.",
+          "ESI applicability generally begins at ten employees in a covered establishment, and EPF at twenty, though voluntary coverage before those thresholds is common and sometimes contractual. Each brings a registration, a monthly return and a payment date that does not move because the company is busy.",
+          "The reason to configure payroll software for startups with these in place from the first run is not diligence for its own sake. It is that retrofitting eighteen months of contributions, interest and damages across a workforce that has since doubled is a genuine project, and it always lands in the same quarter as a fundraise.",
+        ],
+      },
+      {
+        heading: "What due diligence asks for, and why it is usually painful",
+        body: [
+          "The people section of a diligence request is narrow and specific: a headcount reconciliation, appointment letters and signed contracts, evidence of statutory registration and filing, salary and ESOP records, and confirmation that policies were communicated.",
+          "It is rarely painful because the company did something wrong. It is painful because the evidence lives in a founder's inbox, three shared drives and a payroll spreadsheet that has been edited in place, so nothing can be shown as it stood at the time it mattered.",
+          "Effective-dated records and per-version policy acknowledgement are the whole answer to this. They cost nothing to maintain while the company is small, and they are impossible to reconstruct once it is not.",
+        ],
+      },
+    ],
     closing:
       "The Starter plan is deliberately narrow — attendance, leaves, directory and documents — because a fifteen-person company genuinely does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
     questions: [
@@ -118,6 +151,22 @@ export const industries: Industry[] = [
       {
         q: "Can we import what we already have in spreadsheets?",
         a: "Yes — employee master data, historical leave balances, previous salary structures and department hierarchies come in through structured Excel templates, with a dry-run payroll before the first live cutoff.",
+      },
+      {
+        q: "We are eight people. Is it too early for HRMS software?",
+        a: "The tools are optional at eight; the statutory obligations may not be. Professional Tax registration is often due from the first employee and TDS from the first salary above the exemption limit. Starting with attendance, leave and the employee record on the Starter plan costs little and means the history exists when ESI and EPF thresholds arrive.",
+      },
+      {
+        q: "Can we start with only part of the platform and add payroll later?",
+        a: "Yes, and it is the usual sequence. Attendance, leave and the employee directory come first because they establish the record; payroll is switched on when you are ready to move it, ideally at the start of a financial year or with one month run in parallel.",
+      },
+      {
+        q: "How should we decide the basic-to-allowance split in our salary structure?",
+        a: "It is a cost decision as much as a compensation one, because basic pay drives the PF wage and therefore the employer's contribution on every offer. Decide it once per grade rather than per offer, so two people hired a year apart on the same band are not paid under different arithmetic.",
+      },
+      {
+        q: "What do investors typically ask for in a people diligence?",
+        a: "A headcount reconciliation, appointment letters, evidence of statutory registration and filings, salary and ESOP records, and confirmation that policies were issued and acknowledged. The difficulty is almost never the answer; it is showing the position as it stood at a past date, which is what effective-dated records exist for.",
       },
     ],
   },
@@ -190,6 +239,32 @@ export const industries: Industry[] = [
         why: "Worth it the moment you notice you are the person people ask for their payslips.",
       },
     ],
+    deepDive: [
+      {
+        heading: "When the person doing HR is also doing three other jobs",
+        body: [
+          "In most businesses under fifty people there is no HR department. There is an office manager, an accountant or a founder's spouse who does HR among other things, and the work reaches them in interruptions rather than as a job with a start and an end. That is the fact any HRMS for small business has to be designed around.",
+          "That shapes what HR software for small business actually has to do. It is not primarily about capability; it is about removing the interruptions. A payslip request, a leave balance question, a salary certificate for a bank, a Form 16 reissue — each takes minutes, and together they are most of the week.",
+          "The measure worth applying to any system here is simple: how many of the questions people currently ask a person can they answer themselves. Not because the person is a bottleneck by temperament, but because they were only ever doing this alongside something else.",
+        ],
+      },
+      {
+        heading: "The cost of getting statutory filing slightly wrong",
+        body: [
+          "Small employers rarely fail compliance dramatically. They fail it in small, compounding ways: a PF contribution calculated on the wrong wage base, an ESI deduction continued after an employee crossed the threshold mid-year, a professional tax slab that changed and was not picked up.",
+          "Each is minor in a month and material across a year, and all three share a cause — the rate or the rule lived in somebody's memory or in a spreadsheet formula rather than in the system that produces the payslip.",
+          "Deriving statutory deductions from the salary structure on the record, rather than entering them, is what removes the class of error rather than the instance of it. The monthly return is then produced from the run that generated the figures, so the two cannot disagree.",
+        ],
+      },
+      {
+        heading: "Paper records, and the day somebody asks to see them",
+        body: [
+          "Attendance registers, wage registers and muster rolls are still kept on paper in a great many small establishments, and they are perfectly legal that way. The difficulty is not their format; it is that they are the only copy, they are held at one location, and reconstructing a specific person's specific day from them is slow.",
+          "A digital attendance ledger changes what can be answered rather than what has to be kept. The original punch, the correction, the reason and the approver are all retrievable for a date two years ago, which is the form an inspector's question actually takes.",
+          "That matters most at exactly the moment a small employer is least equipped to deal with it: an inspection, a labour dispute, or a former employee's claim about hours worked.",
+        ],
+      },
+    ],
     closing:
       "Nothing here requires an implementation project. Employee data comes in through Excel templates, the statutory rules are configuration rather than customisation, and most organisations of this size complete setup within two to three days including a dry-run payroll.",
     questions: [
@@ -204,6 +279,22 @@ export const industries: Industry[] = [
       {
         q: "We have a biometric machine already. Can we keep it?",
         a: "In most cases yes. HRMagix syncs with eSSL, Matrix, Realtime and ZKTeco devices over a secure API push or a local sync service.",
+      },
+      {
+        q: "We have fewer than twenty employees. Which statutory heads apply to us?",
+        a: "It depends on your state and establishment type rather than on headcount alone. Professional Tax registration commonly applies from the first employee; ESI generally from ten in a covered establishment; EPF generally from twenty, though voluntary coverage is common. TDS applies from the first salary above the exemption limit. The platform holds the registrations you tell it you have and derives the deductions from them.",
+      },
+      {
+        q: "Can we keep paper attendance registers as well?",
+        a: "Yes — the digital ledger does not replace whatever record-keeping obligation applies to you, it makes the same information retrievable. Most small employers keep both for a period and find the paper copy is consulted less and less.",
+      },
+      {
+        q: "How much of HR can a small business realistically move to self-service?",
+        a: "Most of the volume, and almost none of the judgement. Payslips, balances, Form 16, salary certificates, address changes and leave applications move well. Grievances, exceptions and policy decisions still need a person, and should.",
+      },
+      {
+        q: "What happens if we only pay some staff through the platform?",
+        a: "Running part of the workforce inside payroll software and part outside it reintroduces exactly the reconciliation problem the system exists to remove, and statutory totals will not tie back to the returns. It is far better to bring everyone onto one run, even where their pay structures differ substantially.",
       },
     ],
   },
@@ -278,6 +369,32 @@ export const industries: Industry[] = [
         why: "Because consolidated reporting is the reason to have done all of the above in one platform.",
       },
     ],
+    deepDive: [
+      {
+        heading: "One company on the letterhead, several on the returns",
+        body: [
+          "The defining administrative fact about a mid-market Indian business is that it is usually more than one legal entity. A manufacturing arm and a services arm. A holding company and an operating company. A subsidiary created for a specific client or a specific state.",
+          "Each entity carries its own PF and ESI registrations, its own professional tax registrations in the states where it employs people, and its own payroll run and returns. Employees, meanwhile, move between them — on promotion, on transfer, or because the group reorganised.",
+          "The requirement that follows is precise: entity has to be an attribute of the employee record rather than a separate installation of the system. Otherwise a transfer means recreating the person, and recreating the person breaks continuity of service, which is what gratuity eligibility and leave accrual are both computed from.",
+        ],
+      },
+      {
+        heading: "Approval chains that survive contact with reality",
+        body: [
+          "At forty people an approval is whoever is nearest. At four hundred it is a chain, and the chain has to keep working when a link is on leave, has moved department or has left the company.",
+          "Three properties do most of the work here. Routing reads the current reporting line on the record, so a request never arrives with someone who has left. A delegate can be named for a period, so approvals do not stall during a holiday. And a threshold can require a second approver — for leave beyond a number of days, or for an expense above an amount — without requiring a second approver for everything.",
+          "What this replaces is the informal escalation that mid-market companies otherwise depend on, where a stuck request is resolved by walking to somebody's desk. That works until the person is in another building.",
+        ],
+      },
+      {
+        heading: "Growing without adding administrative headcount",
+        body: [
+          "The uncomfortable arithmetic of the mid-market is that HR administration scales roughly with headcount unless something changes, so a company that doubles adds an HR person to do the same work twice.",
+          "The parts that scale linearly are the ones worth attacking: answering lookup questions, chasing documents and approvals, assembling reports, and re-keying between systems. Each of these is removed by a different mechanism — self-service, automated reminders, reporting that reads the live record, and integration by architecture rather than by export.",
+          "What does not scale away is judgement: policy exceptions, grievances, appraisal calibration, difficult conversations. A useful test when evaluating an HR management system at this size is whether it reduces the first list without pretending to reduce the second.",
+        ],
+      },
+    ],
     closing:
       "Multi-entity and multi-location structures sit under a single login, with role-based permissions deciding who sees which entity. The Enterprise plan adds single sign-on and advanced security, along with succession and lifecycle modules and a dedicated success manager.",
     questions: [
@@ -292,6 +409,22 @@ export const industries: Industry[] = [
       {
         q: "How is Professional Tax handled across states?",
         a: "State-specific rule sets are configured for Maharashtra, Karnataka, Telangana, Tamil Nadu, Andhra Pradesh, Gujarat and West Bengal, including the February slab change and gender-specific exemptions where a state provides them. Applicability follows the employee's work location on the record.",
+      },
+      {
+        q: "Can one platform run payroll for several legal entities?",
+        a: "Yes. Each entity keeps its own PF and ESI registrations, its own professional tax registrations by state, and its own payroll run and returns. What is shared is the employee record, which is what allows somebody to move between entities without being recreated.",
+      },
+      {
+        q: "What happens to continuity of service when an employee transfers between entities?",
+        a: "It is preserved, because the transfer is a dated change on the existing record rather than a new record. This matters concretely: gratuity eligibility and leave accrual are both computed from the original date of joining, and an employee who is recreated has, on paper, started again.",
+      },
+      {
+        q: "How are approvals handled when a manager is on leave?",
+        a: "A delegate can be named for a period, and routing reads the current reporting line rather than a fixed list, so requests do not stall or arrive with someone who has left. Thresholds can require a second approver for larger requests without adding one to every request.",
+      },
+      {
+        q: "Do different locations need different leave and holiday rules?",
+        a: "Usually yes, and they should have them. Holiday calendars are defined per location and attach to the employee record; leave quotas can vary by location, grade or entity. What stays common is the ledger the balances are held in, so reporting still works across the group.",
       },
     ],
   },
@@ -368,6 +501,32 @@ export const industries: Industry[] = [
         why: "Overtime expense by shift and department is usually the first number a plant head wants and the hardest to get manually.",
       },
     ],
+    deepDive: [
+      {
+        heading: "Two workforces, one payroll run",
+        body: [
+          "A manufacturing company generally pays two populations under different logic. Staff are salaried monthly, largely present during fixed hours, and their pay barely varies. Workmen are on shifts, their pay moves with attendance and overtime, and a substantial share of the monthly cost is decided by what happened on the shop floor that month.",
+          "The temptation is to run them as two systems, and it is usually a mistake. The statutory obligations are shared — the same PF and ESI registrations, the same returns, the same wage registers — and separating the populations means reconciling them again before every filing.",
+          "What actually differs is the rules, not the machinery: different shift patterns, different overtime treatment, different attendance capture. Holding those as configuration against one payroll run is what keeps the statutory output whole.",
+        ],
+      },
+      {
+        heading: "Shift patterns, rotation and the night that crosses midnight",
+        body: [
+          "Continuous operations bring three problems that office attendance systems never encounter. Shifts rotate, so an individual's expected hours change week to week and the roster is the only thing that knows. Shifts cross midnight, and a system that splits them at the date boundary produces two short days and an overtime figure that is simply wrong.",
+          "And weekly offs move with the rotation rather than falling on Sunday, which changes the rate at which a day's work is compensated — a day worked on a rotated weekly off is not the same as a day worked on an ordinary weekday.",
+          "The design answer is to treat the shift rather than the calendar day as the unit of attendance, attribute it to the day it began, and hold the rotation as a pattern the roster generates rather than a spreadsheet somebody retypes each week.",
+        ],
+      },
+      {
+        heading: "Wage registers, muster rolls and what an inspection asks",
+        body: [
+          "The record-keeping obligations on a factory or covered establishment are specific and long-standing: registers of wages, attendance, overtime and leave, maintained in prescribed form and produced on demand.",
+          "An inspection does not usually test the total. It tests a particular person on a particular date — why was this worker marked absent, what overtime was paid for this shift, when was this leave approved and by whom. Answering that requires the original capture, any correction, the reason and the approver, all still retrievable.",
+          "This is the practical reason an attendance ledger should never be editable in place. A record that can be changed to match the answer currently needed is not evidence, and on the shop floor it is exactly the record most likely to be questioned.",
+        ],
+      },
+    ],
     closing:
       "The biometric hardware most plants already run — eSSL, Matrix, Realtime, ZKTeco — pushes into HRMagix over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
     questions: [
@@ -382,6 +541,22 @@ export const industries: Industry[] = [
       {
         q: "Do different plants need different configurations?",
         a: "They can have them. Shift patterns, grace periods, weekly offs, holiday calendars and leave schemes are configured per location, while the organisation continues to report and file as one.",
+      },
+      {
+        q: "How are night shifts that cross midnight handled?",
+        a: "The shift is treated as a single unit attributed to the day it began, rather than split at the date boundary. Splitting it produces two short days and an incorrect overtime calculation, and it is the most common cause of an attendance report disagreeing with a payroll run.",
+      },
+      {
+        q: "Can staff and workmen be paid under different rules in the same run?",
+        a: "Yes, and they should be. Shift patterns, overtime treatment and attendance capture differ by population; the PF and ESI registrations, the returns and the wage registers do not. Keeping both in one run is what stops the statutory output needing reconciliation before every filing.",
+      },
+      {
+        q: "How is overtime on a weekly off or public holiday treated differently?",
+        a: "By rate, according to the rule configured for that day type. A day worked on a rotated weekly off is not compensated as an ordinary weekday, and where the employer grants compensatory time off instead, the same hours become a comp-off entitlement with an expiry rather than a payment.",
+      },
+      {
+        q: "Can attendance be captured at a factory gate without a device per worker?",
+        a: "Yes. A shared kiosk at the gate handles a shift changeover far faster than individual devices, and biometric readers remain appropriate where a controlled entry point already exists. Capture method is a property of the location, and all methods write to the same attendance ledger.",
       },
     ],
   },
@@ -455,6 +630,32 @@ export const industries: Industry[] = [
         why: "Attrition risk and tenure analysis are the numbers technology leadership asks about most often.",
       },
     ],
+    deepDive: [
+      {
+        heading: "Billable time and payroll time are different measurements",
+        body: [
+          "Services companies run two clocks. One records effort against a client, a project and a rate; the other records presence against an employment contract. They are frequently confused, and they answer different questions.",
+          "Timesheet data tells you what a project cost and what can be invoiced. Attendance data tells you whether somebody was at work, whether they were late, whether they took leave, and what they should be paid. An employee can bill six hours on a day they were present for nine, and both figures are correct.",
+          "The mistake worth avoiding is deriving payroll from timesheets. Payroll obligations are contractual and statutory, and they follow presence and approved leave rather than utilisation. What is genuinely useful is having both readable against the same employee record, so a utilisation question and a leave question can be asked of the same person without exporting anything.",
+        ],
+      },
+      {
+        heading: "Distributed teams, and what attendance means without an office",
+        body: [
+          "For an IT services company the workforce is frequently split across a home office, a client site and a company floor, sometimes within the same week. Presence stops being a building and becomes a claim, which changes what an attendance management system is actually for.",
+          "The useful design is to record the claim honestly rather than to police it. A geo-fenced mobile punch establishes that somebody was at the client site when they said they were, which matters for a billing dispute. A home-working day is recorded as a home-working day rather than as an absence, so it is visible in the ledger without being penalised.",
+          "What this buys is a defensible record for the two moments that matter: the client asking who was on site, and the exit interview where somebody disputes their leave balance.",
+        ],
+      },
+      {
+        heading: "Attrition, notice periods and the bench",
+        body: [
+          "Services businesses feel attrition more sharply than most, because a resignation is simultaneously a staffing problem, a client-commitment problem and a revenue problem — and the notice period is the only window in which all three can be addressed.",
+          "The administrative half of that window is the part software can carry: the resignation recorded with its date, the notice obligation computed from the contract, clearance and asset return routed to the people responsible, knowledge-transfer tasks tracked, and the final settlement assembled from the leave ledger and the payroll record rather than agreed by email.",
+          "The judgement half — whether to counter-offer, how to reassign, what to tell the client — is not a software problem, and no HR platform should claim otherwise. What it can do is make sure the administrative half never becomes the reason an exit is messy.",
+        ],
+      },
+    ],
     closing:
       "OKRs, KRAs, the 9-box talent matrix, PIPs, 1-on-1s and recognition all sit on the Growth plan alongside payroll and analytics, which is usually the right starting plan for a technology company of any size.",
     questions: [
@@ -469,6 +670,22 @@ export const industries: Industry[] = [
       {
         q: "Do you support single sign-on?",
         a: "SSO and advanced security ship with the Enterprise plan.",
+      },
+      {
+        q: "Does HRMagix replace our project timesheet tool?",
+        a: "No, and it should not. Timesheets measure effort against a client and a rate; attendance measures presence against an employment contract. Payroll follows presence and approved leave rather than utilisation, and deriving one from the other is a common and expensive mistake.",
+      },
+      {
+        q: "How is attendance recorded for employees working from home or at a client site?",
+        a: "A home-working day is recorded as such rather than as an absence, so it appears in the ledger without being penalised. Client-site presence can be captured with a geo-fenced mobile punch, which is what makes the record useful if a billing question arises later.",
+      },
+      {
+        q: "How is the notice period handled when someone resigns?",
+        a: "The resignation is recorded with its date, the notice obligation is computed from the contract, and clearance, asset return and knowledge-transfer tasks route to whoever is responsible for each. The final settlement is then assembled from the leave ledger and payroll record rather than negotiated by email.",
+      },
+      {
+        q: "Can we see attrition risk by project or department?",
+        a: "Analytics reports attrition-risk indicators by department, grade and location from signals the platform already holds — tenure, leave pattern, goal completion, time since last review. It is an early-warning flag intended to prompt a conversation, not a prediction of who will resign.",
       },
     ],
   },
@@ -541,6 +758,32 @@ export const industries: Industry[] = [
         why: "Firms of this kind hire in cohorts, and pre-boarding is where cohort hiring either works or does not.",
       },
     ],
+    deepDive: [
+      {
+        heading: "A firm where the partners are also the employer",
+        body: [
+          "Professional firms have an organisational shape that HR software rarely anticipates. Partners are owners rather than employees, and are usually paid through drawings rather than payroll. Associates and staff are employees in the ordinary sense. Articled clerks, trainees and interns are a third category with their own stipend and statutory treatment.",
+          "The consequence is that a single payroll run has to accommodate populations whose relationship to the firm is legally different, and a single employee record has to be honest about which is which — because it determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual.",
+          "The point is not that the software decides these questions. It is that the category has to be a field on the record rather than an understanding held by the person who runs payroll, because that person eventually goes on leave.",
+        ],
+      },
+      {
+        heading: "Seasonality, and the months that are not like the others",
+        body: [
+          "Accounting, audit, legal and consulting firms have compressed periods where the ordinary rules of working time stop applying: statutory audit season, tax filing deadlines, a case going to hearing, a transaction closing.",
+          "Two administrative facts follow. Overtime and late working concentrate into a few weeks, which makes the overtime and comp-off policy far more consequential than its usage across the year suggests. And leave becomes contested — applications cluster immediately after the peak, and a team calendar showing the overlap at the point of approval is worth more than a policy document.",
+          "Where the firm compensates the peak with time off rather than payment, the comp-off entitlement and its expiry are the mechanism that decides whether that promise is honoured or quietly forgotten.",
+        ],
+      },
+      {
+        heading: "Confidentiality is a permissions problem before it is a policy problem",
+        body: [
+          "Professional firms hold client confidences as a professional obligation, and they hold employee confidences as an employer. The two are separate, and the second is the one HR systems are responsible for.",
+          "In a small firm the practical risk is not a breach from outside. It is that salary, disciplinary records or a grievance become visible to a colleague because access was granted informally and never withdrawn — the partner's assistant who was given the payroll folder once, the manager who kept access to a team they no longer lead.",
+          "Access granted by role against the record, withdrawn when the role changes, and recorded when a restricted field is opened, is what turns a confidentiality clause into something that can actually be demonstrated.",
+        ],
+      },
+    ],
     closing:
       "Everything here runs from the same employee record and the same attendance ledger — which is what allows a firm whose people are almost never in one place to still close a month on time.",
     questions: [
@@ -555,6 +798,22 @@ export const industries: Industry[] = [
       {
         q: "Do you track billable hours against clients?",
         a: "HRMagix captures attendance and location, including project-specific rosters and overtime. It is not a billing or invoicing system, and does not claim to be one — what it provides is the accurate time record that billing depends on.",
+      },
+      {
+        q: "How are partners, employees and articled trainees handled differently?",
+        a: "As distinct categories on the employee record, because the category determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual. Partners paid through drawings sit outside payroll; trainees on a stipend have their own treatment. The important thing is that the distinction is a recorded field rather than knowledge held by whoever runs payroll.",
+      },
+      {
+        q: "How do we manage leave during audit or filing season?",
+        a: "Through the team calendar at the point of approval rather than through policy alone. Applications cluster immediately after a peak, and an approver seeing the overlap while deciding is making a staffing decision rather than approving four requests in sequence. Blackout or restricted periods can be configured where the firm needs them.",
+      },
+      {
+        q: "Can we compensate peak-season overtime with time off instead of payment?",
+        a: "Yes. Compensatory off is earned from the attendance ledger — a day worked that was not a working day — and carries the expiry the policy sets, so it lapses on a date rather than when someone forgets. That expiry is usually what determines whether the promise is honoured.",
+      },
+      {
+        q: "How do we stop salary and disciplinary records being visible to the wrong colleague?",
+        a: "Access is granted by role against the record rather than informally, and it changes when the role changes. Views of restricted fields are recorded. In small firms the realistic risk is not an external breach but access that was granted once for a reason and never withdrawn.",
       },
     ],
   },

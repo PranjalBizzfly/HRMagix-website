@@ -14,7 +14,7 @@ export default function Pricing() {
               <div
                 className={`flex h-full flex-col rounded-[24px] p-7 transition-all duration-500 sm:p-9 ${
                   featured
-                    ? "bg-violet-950 text-white shadow-lift"
+                    ? "bg-panel text-white shadow-lift ring-1 ring-panel-line/45"
                     : "bg-surface shadow-soft ring-1 ring-line hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0"
                 }`}
               >

@@ -34,6 +34,11 @@ export type Block =
   | { kind: "note"; title: string; text: string };
 
 export type Article = {
+  /**
+   * The closing invitation, written for this article's subject. Deliberately
+   * per-post: nine identical sign-offs would be nine copies of an advert.
+   */
+  closing: { title: string; body: string };
   slug: string;
   title: string;
   /** Shown in listings; never repeated as the opening line of the body. */
@@ -83,6 +88,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "why-payroll-takes-four-days",
+    closing: {
+      title: "Find out which four days you would get back",
+      body:
+        "The four days go somewhere specific in every company, and it is rarely the same place twice. Walk through your own month with us and we will tell you where yours are going.",
+    },
     title: "Your payroll does not take four days. Your reconciliation does.",
     standfirst:
       "Multiplying a per-day rate by a number of days takes seconds. Establishing that number is what consumes the week — and it is a different problem with a different fix.",
@@ -207,6 +217,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "esi-threshold-moving-wage-base",
+    closing: {
+      title: "Check your own contribution periods",
+      body:
+        "If you have employees near the ESI wage threshold, the question is whether your current process fixes eligibility for the contribution period or re-tests it monthly. That is worth checking against real payslips rather than in principle.",
+    },
     title: "The ESI threshold is not a monthly test, and treating it as one costs money",
     standfirst:
       "Overtime moves the wage base. The wage base moves ESI applicability. But an employee does not simply drop out of ESI the month they cross ₹21,000 — and a system that assumes they do will be wrong in both directions.",
@@ -309,6 +324,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "professional-tax-february",
+    closing: {
+      title: "Run it against the states you employ in",
+      body:
+        "Professional tax is a different slab, a different return and a different due date in every state. Bring the list of states you operate in and we will show you how the run handles each.",
+    },
     title: "One company, several compliance positions: Professional Tax across states",
     standfirst:
       "A business with offices in three states experiences itself as one organisation. Professional Tax does not. This is where multi-state payroll quietly goes wrong.",
@@ -402,6 +422,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "reading-an-indian-payslip",
+    closing: {
+      title: "See your own payslip generated line by line",
+      body:
+        "The interesting part of a payslip is which components sit inside which base. Bring one grade's salary structure and we will show you what the run produces from it, component by component.",
+    },
     title: "Reading an Indian payslip, line by line",
     standfirst:
       "Most employees have never had a payslip explained to them. Most HR teams answer the same five questions about it every month. Here is the whole document, in order.",
@@ -532,6 +557,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "old-vs-new-regime",
+    closing: {
+      title: "Show your employees the comparison on their own numbers",
+      body:
+        "A regime decision made against a generic calculator is a guess. See how the declaration and the comparison appear to an employee inside the self-service portal, on their actual salary.",
+    },
     title: "The declaration that decides twelve months of TDS",
     standfirst:
       "An employee's choice between the old and new tax regimes changes their monthly deduction from April. Made late or changed midway, it produces a painful correction in February.",
@@ -637,6 +667,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "comp-off-entitlement",
+    closing: {
+      title: "Look at how your comp-offs would expire",
+      body:
+        "Compensatory off is usually promised informally and tracked nowhere, which is how it quietly lapses. Bring your policy and we will walk through how the entitlement, the approval and the expiry are recorded.",
+    },
     title: "Compensatory off is an entitlement. Most companies track it like a favour.",
     standfirst:
       "A Sunday worked creates an obligation. Where that obligation lives in a spreadsheet, in a manager's memory or in nothing at all, it turns into a grievance about six weeks later.",
@@ -738,6 +773,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "shift-detection-across-midnight",
+    closing: {
+      title: "Test it against your own night shift",
+      body:
+        "If your attendance report and your payroll run disagree, a shift crossing midnight is the first place to look. Bring one week of a real rotation and we will run it.",
+    },
     title: "A punch at 22:40 belongs to yesterday's shift",
     standfirst:
       "Every attendance system works on a nine-to-five floor. The ones that work on a production floor are the ones that can infer which shift a punch belongs to without asking anybody.",
@@ -832,6 +872,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "sandwich-rule",
+    closing: {
+      title: "Decide your sandwich rule deliberately, not by precedent",
+      body:
+        "Most companies discover their sandwich rule when somebody disputes it. Bring your leave policy as it stands and we will show you what the system would do with it.",
+    },
     title: "The sandwich rule is not unfair. Applying it inconsistently is.",
     standfirst:
       "A policy that costs an employee two extra days is survivable. A policy that costs one employee two extra days and not another is not, and it is the second that generates the resentment.",
@@ -927,6 +972,11 @@ export const articles: Article[] = [
   /* ================================================================ */
   {
     slug: "full-and-final-settlement",
+    closing: {
+      title: "See a settlement assembled rather than negotiated",
+      body:
+        "A final settlement reads from attendance, leave, payroll and the resignation record at once. Walk through a real exit with us and see which of those four you currently collect by email.",
+    },
     title: "What a full-and-final settlement actually has to include",
     standfirst:
       "An exit generates more obligations than a joining, and unlike a joining it happens under time pressure with goodwill already thin. This is the complete list.",

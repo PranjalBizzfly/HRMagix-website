@@ -29,8 +29,8 @@ if (duplicates.length === 0) {
 // Check single dashboard rule
 const dashboardScreens = srcMatches.filter(s => s.includes('workspace') || s.includes('dashboard'));
 console.log(`Dashboard / product screenshot count: ${dashboardScreens.length} (${dashboardScreens[0]})`);
-if (dashboardScreens.length === 1 && dashboardScreens[0] === '/media/hero-workspace.png') {
-  console.log('✓ PASS: Exactly ONE authentic product screenshot on the website (hero-workspace.png)');
+if (dashboardScreens.length === 1 && (dashboardScreens[0] === '/media/hero-workspace.png' || dashboardScreens[0] === '/media/hero-workspace.jpg')) {
+  console.log('✓ PASS: Exactly ONE authentic product screenshot on the website (' + dashboardScreens[0] + ')');
 } else {
   console.error('✗ FAIL: Dashboard screenshot rule violated:', dashboardScreens);
   process.exit(1);

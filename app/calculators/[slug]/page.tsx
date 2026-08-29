@@ -123,8 +123,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
           <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
             <h2 className="display display-md">How is this calculated?</h2>
             <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              The formula in full, then each step of it in order. Nothing here is proprietary —
-              you should be able to reproduce every figure by hand.
+              {calc.methodIntro}
             </p>
           </Reveal>
 

@@ -9,6 +9,7 @@ import {
   Ledger,
   Mechanics,
   CapabilityIndex,
+  UseCases,
   Statement,
   Onward,
   Band,
@@ -59,13 +60,20 @@ export async function generateMetadata({
  * thing you see. Analytics has neither a sequence nor a statutory table, so it
  * is mostly prose and finishes sooner.
  */
-type Block = "opening" | "passages" | "mechanics" | "ledger" | "capabilities" | "statement";
+type Block =
+  | "opening"
+  | "passages"
+  | "mechanics"
+  | "ledger"
+  | "capabilities"
+  | "usecases"
+  | "statement";
 type Ground = "surface" | "sunken" | "raised" | "dark";
 
 const recipes: Record<string, { order: Block[]; grounds: Ground[]; statement?: string }> = {
   hrms: {
-    order: ["opening", "ledger", "passages", "capabilities"],
-    grounds: ["surface", "sunken", "surface", "raised"],
+    order: ["opening", "ledger", "passages", "usecases", "capabilities"],
+    grounds: ["surface", "sunken", "surface", "raised", "surface"],
     statement: "One record, edited in one place, read by everything else.",
   },
   payroll: {
@@ -75,8 +83,8 @@ const recipes: Record<string, { order: Block[]; grounds: Ground[]; statement?: s
       "Payroll teams do not spend four days calculating. They spend four days establishing what happened.",
   },
   "employee-management": {
-    order: ["opening", "passages", "ledger", "capabilities"],
-    grounds: ["sunken", "surface", "raised", "surface"],
+    order: ["opening", "passages", "ledger", "usecases", "capabilities"],
+    grounds: ["sunken", "surface", "raised", "surface", "sunken"],
   },
   attendance: {
     order: ["opening", "passages", "ledger", "capabilities"],
@@ -84,12 +92,12 @@ const recipes: Record<string, { order: Block[]; grounds: Ground[]; statement?: s
     statement: "Attendance systems are judged on their exceptions, not their happy path.",
   },
   "leave-management": {
-    order: ["opening", "passages", "capabilities", "ledger"],
-    grounds: ["surface", "raised", "surface", "sunken"],
+    order: ["opening", "passages", "usecases", "capabilities", "ledger"],
+    grounds: ["surface", "raised", "surface", "sunken", "surface"],
   },
   ess: {
-    order: ["opening", "passages", "capabilities"],
-    grounds: ["sunken", "surface", "raised"],
+    order: ["opening", "passages", "ledger", "capabilities"],
+    grounds: ["sunken", "surface", "raised", "surface"],
     statement: "Most of what an HR team is asked in a week requires access, not judgement.",
   },
   onboarding: {
@@ -97,8 +105,8 @@ const recipes: Record<string, { order: Block[]; grounds: Ground[]; statement?: s
     grounds: ["surface", "raised", "surface", "sunken"],
   },
   "hr-analytics": {
-    order: ["opening", "passages", "capabilities"],
-    grounds: ["surface", "sunken", "surface"],
+    order: ["opening", "passages", "ledger", "usecases", "capabilities"],
+    grounds: ["surface", "sunken", "surface", "raised", "surface"],
   },
 };
 
@@ -124,7 +132,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       case "passages":
         return (
           <Band key="passages" ground={ground} size="md">
-            <Passages items={s.passages} />
+            <Passages items={s.passages} level="h2" />
           </Band>
         );
       case "mechanics":
@@ -139,15 +147,18 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
             <Ledger {...s.ledger} />
           </Band>
         ) : null;
+      case "usecases":
+        return s.useCases ? (
+          <Band key="usecases" ground={ground} size="lg">
+            <UseCases {...s.useCases} />
+          </Band>
+        ) : null;
       case "capabilities":
         return (
           <Band key="capabilities" ground={ground} size="lg">
             <Reveal y={12} className="max-w-2xl">
-              <h2 className="display display-md">Everything in this module</h2>
-              <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-                The complete list, written plainly rather than sold. If something you need is not
-                here, it is worth asking rather than assuming.
-              </p>
+              <h2 className="display display-md">{s.capabilitiesTitle}</h2>
+              <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">{s.capabilitiesIntro}</p>
             </Reveal>
             <CapabilityIndex groups={s.capabilities} className="mt-12" />
           </Band>
@@ -192,9 +203,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           <div className="lg:sticky lg:top-[110px] lg:self-start">
             <Reveal y={12}>
               <h2 className="display display-md">Questions about {s.name.toLowerCase()}</h2>
-              <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-                Asked often enough during demos to be worth answering here.
-              </p>
+              <p className="mt-5 text-[16px] leading-[1.7] text-muted">{s.questionsIntro}</p>
               <Link
                 href="/resources/faqs"
                 className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"

@@ -135,7 +135,7 @@ export default function HomePage() {
               <figure className="relative z-10 -mt-16 ml-4 mr-[-4px] sm:-mt-24 sm:ml-10 lg:-mt-20 lg:ml-16 lg:mr-[-40px]">
                 <div className="overflow-hidden rounded-[16px] bg-surface p-1.5 shadow-float ring-1 ring-line">
                   <Image
-                    src="/media/hero-workspace.png"
+                    src="/media/hero-workspace.jpg"
                     alt="The HRMagix dashboard showing live employee attendance, the weekly attendance trend, Q3 OKR progress and a recent punch-in roster"
                     width={1376}
                     height={768}
@@ -321,6 +321,91 @@ export default function HomePage() {
       </Band>
 
       {/* ================= 6. Featured solutions ================= */}
+      {/* ---- What the platform is, stated plainly ---- */}
+      <Band ground="sunken" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">What HRMagix is, in plain terms</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Written for someone comparing options rather than someone already sold. If a claim
+              here is not something the platform does, it should not be here.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                An HRMS and payroll software in one platform
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                HRMagix is an HR management system built around a single employee record. Twelve
+                modules read from it — attendance and shifts, leaves and holidays, payroll,
+                objectives and OKRs, KRA and 9-box, PIPs and growth, recognition, 1-on-1s,
+                onboarding, documents, succession and analytics.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The practical consequence is that nothing is re-keyed. An approved leave day is
+                already a payroll input; an attendance correction is already reflected in the
+                month's paid days; a promotion entered once changes the reporting line, the
+                approval routing and the salary in the same act.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Built for Indian statutory reality
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Payroll here means EPF, ESI, professional tax by state, and TDS under Section 192,
+                derived from the salary structure on the record rather than entered by hand. The
+                run produces the payslips, the statutory returns and the bank file from the same
+                set of figures, which is why the return and the ledger cannot disagree.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Employees see the other half of the same thing: payslips, Form 16, leave balances,
+                investment declarations and a comparison between the old and new tax regimes on
+                their own numbers.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Cloud software, and the phone is the primary device
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Being online payroll software rather than an installed package means there is
+                nothing to deploy and no server to maintain. That matters less for the
+                office than for everyone else: field engineers, retail staff, drivers and shop-floor
+                operators frequently have no company laptop and no work email address, and they are
+                often the majority of the workforce.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Attendance capture follows the same logic. A geo-fenced mobile punch, a shared
+                kiosk at a factory gate and an existing biometric reader all write to one ledger,
+                so mixing methods across locations does not mean maintaining separate records.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Who it is for
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Companies where HR administration has outgrown spreadsheets but has not yet earned
+                a department — startups formalising their first policies, small businesses where
+                HR is someone's second job, mid-market groups that are several legal entities on
+                paper, manufacturers paying staff and workmen under different logic, and services
+                firms whose people are rarely in one building.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                What they have in common is not size. It is that the cost of getting a month wrong
+                has started to exceed the cost of running it properly.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="raised" size="lg">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <Reveal y={12}>

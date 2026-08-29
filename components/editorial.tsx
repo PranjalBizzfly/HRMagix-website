@@ -160,10 +160,19 @@ export function Opening({
 export function Passages({
   items,
   className = "",
+  level = "h3",
 }: {
   items: { heading: string; body: string[] }[];
   className?: string;
+  /**
+   * The level these headings sit at. h3 is right when the block sits under a
+   * band that already has its own h2; h2 when the passages are the section.
+   * Getting this wrong skips a heading level, which assistive technology and
+   * search crawlers both read as a structural error.
+   */
+  level?: "h2" | "h3";
 }) {
+  const H = level;
   return (
     <div className={className}>
       {items.map((item, i) => (
@@ -176,9 +185,9 @@ export function Passages({
             i === items.length - 1 ? "border-b" : ""
           }`}
         >
-          <h3 className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading lg:sticky lg:top-[100px] lg:self-start lg:text-[22px]">
+          <H className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading lg:sticky lg:top-[100px] lg:self-start lg:text-[22px]">
             {item.heading}
-          </h3>
+          </H>
           <div className="max-w-2xl">
             {item.body.map((p, j) => (
               <p key={j} className={`text-[16.5px] leading-[1.72] text-muted ${j ? "mt-5" : ""}`}>
@@ -188,6 +197,53 @@ export function Passages({
           </div>
         </Reveal>
       ))}
+    </div>
+  );
+}
+
+/**
+ * Worked use cases: who has the problem, what the situation actually looks
+ * like, and how it resolves.
+ *
+ * Deliberately not a card grid. Each case is a short piece of prose under a
+ * role, because the useful part is the situation rather than the label — a
+ * three-word feature tile would say less than the sentence it replaced.
+ */
+export function UseCases({
+  title,
+  intro,
+  items,
+  className = "",
+}: {
+  title: string;
+  intro?: string;
+  items: { role: string; situation: string; resolution: string }[];
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <Reveal y={12} className="max-w-2xl">
+        <h2 className="display display-md">{title}</h2>
+        {intro && <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">{intro}</p>}
+      </Reveal>
+
+      <div className="mt-11 grid gap-x-14 gap-y-10 lg:grid-cols-2">
+        {items.map((item, i) => (
+          <Reveal
+            key={item.role}
+            delay={i * 45}
+            y={14}
+            as="section"
+            className="min-w-0 border-t border-line-strong pt-6"
+          >
+            <h3 className="font-display text-[13px] font-bold uppercase tracking-[0.14em] text-accent">
+              {item.role}
+            </h3>
+            <p className="mt-4 text-[16.5px] leading-[1.72] text-body">{item.situation}</p>
+            <p className="mt-4 text-[15.5px] leading-[1.72] text-muted">{item.resolution}</p>
+          </Reveal>
+        ))}
+      </div>
     </div>
   );
 }
@@ -207,7 +263,7 @@ export function Statement({
     <section
       className={
         dark
-          ? "panel-fixed-dark bg-violet-950 py-20 sm:py-24"
+          ? "panel-fixed-dark bg-panel py-20 sm:py-24"
           : "border-y border-line bg-surface-sunken py-20 sm:py-24"
       }
     >
@@ -543,7 +599,7 @@ export function Band({
     surface: "bg-surface",
     sunken: "bg-surface-sunken",
     raised: "bg-surface-raised/45",
-    dark: "panel-fixed-dark bg-violet-950",
+    dark: "panel-fixed-dark bg-panel",
   };
   const sizes = {
     sm: "py-14 sm:py-16",

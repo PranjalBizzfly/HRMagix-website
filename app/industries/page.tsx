@@ -120,6 +120,79 @@ export default function IndustriesHub() {
         person still has to remember to do.
       </Statement>
 
+      {/* ---- What is common, and what genuinely differs ---- */}
+      <Band ground="sunken" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">The same platform, different pressure points</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              These are not six products. The HRMS, payroll, attendance and leave modules are
+              identical in every case; what changes is which of them carries the weight, and which
+              statutory obligations arrive first.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What every Indian employer shares
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                HR software for companies of any kind has to start from the same statutory floor,
+                because it does not vary by sector. EPF and ESI applicability, professional
+                tax registration in each state you employ in, TDS under Section 192, gratuity on
+                completion of five years of continuous service, and maternity benefit as a statutory
+                entitlement rather than a company policy. A startup and a foundry answer to the same
+                legislation.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                So does the record-keeping. Attendance and wage registers, evidence that a policy
+                was issued and received, and the ability to reconstruct a specific person's specific
+                day are requirements of the employment relationship, not of an industry.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What changes is where the difficulty sits
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                For a startup, the hard part is that no policy exists yet, so every decision becomes
+                a precedent. For a small business, it is that the person doing HR is doing three
+                other jobs. For a mid-market group, it is that one company on the letterhead is
+                several on the returns.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                For a manufacturer, it is that the shop floor and the office are paid on different
+                logic from the same run. For an IT services firm, it is that billable time and
+                payroll time are separate measurements that get confused. For a professional firm,
+                it is that partners, employees and trainees are three legal categories in one
+                office.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Which module to switch on first
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                That difference is the whole reason these pages recommend a different starting
+                order. A manufacturer begins with attendance and shifts, because that is where the
+                monthly cost is decided. A services firm begins with the employee record and
+                self-service, because the administrative load is queries rather than hours. A
+                multi-entity group begins with the record, because entity structure has to be right
+                before payroll can be.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                If none of the six pages describes your company, the sensible order is almost always
+                the record first, then whichever of attendance or payroll is currently costing you
+                the most time.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="surface" size="lg">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>

@@ -122,6 +122,88 @@ export default function MediaPage() {
         </div>
       </Band>
 
+      {/* ---- A short factual profile a writer can quote ---- */}
+      <Band ground="raised" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">The product, described neutrally</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Written so it can be quoted or paraphrased without checking back. Everything here is
+              also stated somewhere else on this site, which is the test we apply before putting it
+              on this page.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                In one sentence
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                HRMagix is HRMS and payroll software for Indian companies: twelve modules —
+                attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRA and
+                9-box, PIPs and growth, recognition, 1-on-1s and meetings, onboarding, documents,
+                succession and analytics — running on one employee record.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What distinguishes it
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Statutory calculation is part of the payroll run rather than a downstream export:
+                EPF, ESI, professional tax by state and TDS under Section 192 are derived from the
+                salary structure on the record, and the run produces the payslips, the returns and
+                the bank file from the same figures.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The second distinguishing property is that history is not overwritten. An
+                attendance correction sits alongside the original capture, a backdated increment
+                produces an arrear rather than a restatement, and a revised policy re-opens
+                acknowledgement instead of inheriting the old one.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Who uses it
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Indian employers whose HR administration has outgrown spreadsheets: startups,
+                owner-managed small businesses, multi-entity mid-market groups, manufacturers
+                paying staff and workmen under different logic, IT services firms and professional
+                practices. Company sizes and customer names are not published, so please do not
+                attribute any.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Commercial facts
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Three published plans priced per employee per month — Starter at $3, Growth at $6,
+                and Enterprise quoted on request. Fourteen-day free trial with full access to every
+                module and no credit card. No setup or implementation fee. Based in Pune,
+                Maharashtra.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Writing the name
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                HRMagix, one word, capital H, R and M. Not HR Magix, HRmagix or Hrmagix. The
+                product is referred to as a platform rather than a suite, and as HRMS and payroll
+                software rather than an HRIS.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="surface" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-16">
           <div>

@@ -134,6 +134,54 @@ export default function AboutPage() {
       </Band>
 
       {/* ---- Assurances, phrased as commitments ---- */}
+      {/* ---- The refusals ---- */}
+      <Band ground="sunken" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">What we have chosen not to do</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              A product is defined as much by its refusals as by its features. Three of ours are worth stating, because they explain a good deal about how the platform behaves.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                We do not calculate statutory figures a customer cannot check
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                PF, ESI, professional tax and TDS are derived from the salary structure on the record and the registrations you hold, and every figure can be traced back to the component and the rule that produced it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The alternative — a number that appears correct and cannot be explained — is worse than a manual calculation, because it fails silently. A payroll figure that nobody can defend is a liability rather than an output.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                We do not overwrite history to make the present tidy
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                A regularised attendance record sits alongside the original punch rather than replacing it. A backdated increment produces an arrear in the current month rather than a restatement of payslips already issued. A revised policy re-opens acknowledgement rather than assuming the earlier one still covers it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Each of these makes the current view slightly messier and the historical record defensible. That trade is the right way round, and it is the one most often made the wrong way.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                We do not publish numbers we have not measured
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                You will not find an implementation time saved, a percentage reduction in payroll effort, or a customer outcome anywhere on this site, because no such study has been run.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                What is published is what the platform does, what Indian statute requires, and what the plans cost. Where a figure would be useful and we do not have it, the page says so rather than estimating.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="raised" size="md">
         <Reveal y={12} className="max-w-2xl">
           <h2 className="display display-md">What we hold ourselves to</h2>

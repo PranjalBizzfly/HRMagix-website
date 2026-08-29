@@ -6,7 +6,7 @@ which the homepage hero renders directly.
 
 ## The one product image
 
-`hero-workspace.png` — the HRMagix Overview workspace. This is the **only**
+`hero-workspace.jpg` — the HRMagix Overview workspace. This is the **only**
 product screenshot on the entire website, and it appears exactly once, in the
 homepage hero.
 

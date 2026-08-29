@@ -480,30 +480,48 @@ export const legalPages: LegalPage[] = [
     name: "Cookie Policy",
     title: "What this website stores in your browser",
     standfirst:
-      "This is a short page because there is little to say. This marketing website stores one preference, and nothing that follows you elsewhere.",
+      "This site sets no cookies at all. It stores three things in your browser, all of them local to your device, and this page names every one of them so you can check.",
     seo: {
       title: "Cookie Policy",
       description:
-        "What hrmagix.com stores in your browser: a theme preference held locally, and no advertising or cross-site tracking cookies.",
+        "What hrmagix.com stores in your browser, named in full: a theme preference, a dismissed-banner flag and any policy PDFs you add yourself. No cookies, no analytics, no cross-site tracking.",
     },
     sections: [
       {
-        heading: "The theme preference",
+        heading: "Cookies, and why this page is not really about them",
         body: [
-          "If you switch this site between its light and dark appearance, that choice is stored locally in your browser so the page does not flash the wrong theme the next time you arrive. It identifies nothing about you and is not transmitted anywhere.",
-          "Clearing your browser's site data removes it, and the site falls back to following your operating system's appearance setting.",
+          "A cookie is data a site asks your browser to store and then sends back to the server with every subsequent request. That last part is what makes cookies useful for tracking, and it is also what this website does not do.",
+          "The three things this site stores are held in your browser's local and session storage instead. The distinction matters: local and session storage are readable only by pages from this same origin, and are never attached to a network request. Nothing stored here is transmitted to us, and nothing is available to another website.",
+          "This page names all three, because a policy that says \"we use cookies to improve your experience\" tells you nothing you could verify.",
         ],
       },
       {
-        heading: "What is not set",
+        heading: "The three things stored, by name",
         body: [
-          "No advertising cookies, no cross-site tracking, and no third-party profiling scripts are used on this marketing site.",
+          "hrmagix-theme, in local storage. Set only if you use the theme control to choose light or dark rather than leaving it to follow your device. It holds the word light or dark and nothing else. Without it the site follows your operating system's appearance setting, which is the default.",
+          "hrmagix:sticky-cta-dismissed, in session storage. Set if you close the call-to-action bar that appears as you scroll, so it does not reappear on every page for the rest of the visit. Session storage is discarded when you close the tab, so the value does not survive a return visit.",
+          "hrmagix-policies, an IndexedDB database. Created only if you use the Add Custom Policy control in the policy library to add a PDF of your own. The file is stored in your own browser so that you can view and download it, and it is not uploaded anywhere. Removing the entry in the library deletes it.",
+        ],
+      },
+      {
+        heading: "What is deliberately absent",
+        body: [
+          "There are no advertising cookies, no cross-site tracking, no third-party analytics or tag-manager scripts, no social media pixels, and no fingerprinting. No profile of you is built, and nothing about your visit is shared with another party.",
+          "This is a matter of what the site loads rather than a promise about how data is handled afterwards. You can confirm it: open your browser's developer tools, look at the network requests this page makes and the storage it holds, and compare them against the three entries named above.",
+        ],
+      },
+      {
+        heading: "How to remove any of it",
+        body: [
+          "Clearing site data for this domain removes all three, and the site continues to work — it simply reverts to following your system appearance and shows the call-to-action bar again. No functionality depends on any of these values existing.",
+          "If you have added custom policy PDFs and clear site data, those files are deleted along with everything else, because your browser is the only place they were ever held.",
         ],
       },
       {
         heading: "The product application is separate",
         body: [
           "app.hrmagix.com is the product rather than this website, and necessarily uses a session cookie to keep you signed in. That is a functional requirement of being logged into an application, not a tracking mechanism.",
+          "Everything described on this page concerns this marketing site alone. What the product stores while you are using it, and on what basis, is covered by the privacy policy rather than here.",
         ],
       },
     ],

@@ -151,6 +151,65 @@ export default function ResourcesHub() {
         </ul>
       </Band>
 
+      {/* ---- Which resource for which moment ---- */}
+      <Band ground="sunken" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">How to use this library</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Four kinds of material, written for four different moments. Knowing which one you are in saves reading the wrong thing.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Calculators, when you need a number today
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Salary breakdown, PF, ESI, gratuity, payroll cost and plan cost, each on its own page with its inputs, its arithmetic shown, and an explanation of how the figure is arrived at.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                They run entirely in your browser on figures you type in. Nothing is submitted, and no email address is asked for, because a calculator that collects a lead before it shows a number is not really a calculator.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Insights, when a specific statutory head is behaving oddly
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Short pieces on the things that actually go wrong in an Indian payroll month: why a shift crossing midnight breaks an attendance report, how the sandwich rule interacts with a leave policy, what happens when an employee crosses the ESI wage threshold mid-year, how to read a payslip line by line.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Each one is about a mechanism rather than a product. They are useful whether or not you ever use HRMagix, which is the test we apply before publishing one.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                White papers, when you are making a decision rather than fixing a problem
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Longer arguments about how HR and payroll systems should be structured — the chain of custody from a punch to a payslip, what self-service actually removes from an HR team's week, why a policy vacuum is more expensive than a bad policy.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                These are position papers rather than research. They contain no survey data, no benchmarks and no customer outcomes, because none have been gathered. What they contain is reasoning you can disagree with.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                The policy library, when you need the document itself
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Twenty-five workplace policy documents as issued, each available to view or download as a PDF, alongside a page explaining what the policy is for and what the platform records against it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Those explanatory pages deliberately state no rules. A notice period or a leave quota written there would be an invented figure attributed to a real employer's document, so the questions are set out instead of the answers.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="raised" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>

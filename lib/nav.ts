@@ -80,6 +80,16 @@ export const solutionsNav: NavColumn[] = [
         href: "/solutions/hr-analytics",
         note: "Headcount, attrition, overtime and payroll cost",
       },
+      {
+        label: "Performance & OKRs",
+        href: "/solutions/performance",
+        note: "Objectives, KRAs, 9-box, PIPs, 1-on-1s and recognition",
+      },
+      {
+        label: "Compliance",
+        href: "/solutions/compliance",
+        note: "EPF, ESI, PT, LWF and TDS, derived inside the run",
+      },
     ],
   },
 ];
@@ -142,6 +152,16 @@ export const resourcesNav: NavColumn[] = [
         href: "/resources/white-papers",
         note: "Technical briefings, readable in full on the site",
       },
+      {
+        label: "HR Guides",
+        href: "/resources/guides",
+        note: "Chaptered, practical guides that end in a checklist",
+      },
+      {
+        label: "HR Glossary",
+        href: "/resources/glossary",
+        note: "Indian HR and payroll terms, defined plainly",
+      },
     ],
   },
   {
@@ -157,6 +177,16 @@ export const resourcesNav: NavColumn[] = [
         label: "Questions & Answers",
         href: "/resources/faqs",
         note: "Everything asked before a first demo",
+      },
+      {
+        label: "Payroll Resources",
+        href: "/resources/payroll",
+        note: "Payroll material indexed by what you are trying to do",
+      },
+      {
+        label: "HRMS Comparison",
+        href: "/resources/hrms-comparison",
+        note: "Spreadsheets, point tools or one integrated system",
       },
       {
         label: "Media Room",

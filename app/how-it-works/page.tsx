@@ -146,6 +146,132 @@ export default function HowItWorksPage() {
       </Band>
 
       {/* ---- Support ---- */}
+      {/* ---- What each step involves in detail ---- */}
+      <Band ground="sunken" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">What each step involves</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Three steps is an accurate summary and a useless plan. This is the same sequence
+              with the work in it — including the parts that are yours rather than ours.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Getting your people in
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Employee master data comes first, because every other module references it: names,
+                statutory identifiers, dates of joining, departments, reporting lines and salary
+                structures. It arrives as a spreadsheet you already have, mapped against an import
+                template rather than retyped.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Validation happens on import rather than at the first payroll run. Records that
+                fail — a malformed identifier, a missing date of joining, a salary structure that
+                does not add up — are reported individually, because the failure mode to avoid is
+                somebody being quietly absent from the first run.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Two things reliably surface here, and neither is caused by the migration: duplicate
+                records for people who were rehired or moved between entities, and salary
+                structures that were described one way in an offer letter and calculated another
+                way in practice. This is simply the first exercise that compares them.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Turning your policies into rules
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                This is the step that takes the thinking, and it is mostly yours. Leave types and
+                accrual basis. Carry-forward and encashment caps. Shift patterns, grace windows and
+                the point at which lateness becomes a half day. Notice periods by grade. Probation
+                length. Approval routing and the thresholds that require a second approver.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Most companies discover during this step that one or two of their policies have
+                never actually been decided — they have been improvised consistently enough to
+                feel settled. Writing them down is the real work, and it is worth doing before the
+                system applies them to four hundred people at once.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Configuration is a setting rather than a customisation, so a rule can be changed
+                later. Policies carry effective dates, which means a change applies from the date
+                it takes effect rather than rewriting the months already calculated under the old
+                one.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Switching payroll on
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Payroll is the module with a deadline attached, so it is the one worth sequencing
+                carefully. Statutory registrations go in first — PF and ESI codes, professional
+                tax registrations for each state you employ in, TAN for TDS — because the
+                deductions are derived from them rather than entered.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                If you are moving mid-financial-year, year-to-date figures come across as well.
+                They are not optional: Form 16 has to reconcile across the whole year regardless of
+                which system produced each month of it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                A start at the beginning of a financial year is simpler, but rarely available.
+                Where it is not, the dry run below is what replaces it.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What the automation actually automates
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                HR automation software is an unhelpfully broad phrase, so it is worth being
+                specific about which work disappears. Three kinds do. Recurring calculation:
+                accrual, statutory deduction, overtime, arrears. Routing: an application reaching
+                the right approver and returning with an outcome attached. And prompting: a
+                probation confirmation, an expiring document, an unapproved regularisation before
+                the run closes.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Payroll automation software is the same idea applied to the month end, and its
+                real contribution is not the arithmetic — which was never the slow part — but
+                removing the reconciliation between systems that used to precede it.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                What does not automate is judgement. Approving an exception, calibrating an
+                appraisal, deciding whether a policy should change. Any system claiming otherwise
+                is describing a workflow, not a decision.
+              </p>
+            </section>
+
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Bringing employees in last, on purpose
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Self-service is opened once the records are right, not before. An employee who logs
+                in and finds their leave balance wrong forms a view of the system that is difficult
+                to undo, and the balance is usually wrong because it was migrated mid-cycle rather
+                than because anything is broken.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                The rollout that works is narrow and specific: employees are told what they can now
+                do themselves — payslips, balances, leave applications, address changes,
+                investment declarations — and managers are told what is now routed to them. Both
+                lists are short, which is the point.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="raised" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>

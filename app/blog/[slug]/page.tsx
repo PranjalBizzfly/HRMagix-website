@@ -38,6 +38,18 @@ export async function generateMetadata({
   };
 }
 
+/** The sidebar prompt, worded for the kind of question this category attracts. */
+const askNote: Record<string, string> = {
+  "Payroll & statutory":
+    "Statutory heads behave differently depending on your wage structure and the states you file in. That is a question worth asking against your own numbers.",
+  "Attendance & time":
+    "Shift patterns and exception rules vary enough between companies that the general answer is rarely the useful one. Bring your rota.",
+  "Leave & policy":
+    "How a leave rule behaves depends on the policy you have actually written, which is usually more specific than it first appears.",
+  "People operations":
+    "Process questions are easier to answer against a real situation than in the abstract. Tell us what happened and we will tell you how it would be recorded.",
+};
+
 /**
  * An Insights article.
  *
@@ -125,8 +137,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     Have a question this did not answer?
                   </p>
                   <p className="mt-2.5 text-[14px] leading-[1.65] text-muted">
-                    Questions about how a statutory head behaves in your own situation are better
-                    asked than searched for.
+                    {askNote[article.category] ??
+                      "A question about your own situation is better asked than searched for."}
                   </p>
                   <Link
                     href="/company/contact"
@@ -145,11 +157,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <Band ground="sunken" size="md">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>
-            <h2 className="display display-md max-w-[18ch]">
-              See this running against your own payroll month
-            </h2>
+            <h2 className="display display-md max-w-[18ch]">{article.closing.title}</h2>
             <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              {site.contact.blurb}
+              {article.closing.body}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

@@ -8,7 +8,7 @@
      --------------------------------------------------------------------------
      Stored as bare `R G B` triplets so Tailwind opacity modifiers work
      (`bg-surface/70`). Light is the authored baseline; `.dark` is a separately
-     designed system — a layered indigo-violet elevation ramp, not an inversion.
+     designed system — a neutral charcoal elevation ramp, not an inversion.
      ========================================================================== */
 
   :root {
@@ -26,6 +26,10 @@
     --c-surface-strong: 233 229 255;
     /* Form fields read as flush on a light page. */
     --c-field: 255 255 255;
+
+    /* The inverse panel — the site's one near-black brand block on a light page. */
+    --c-panel: 46 16 101;
+    --c-panel-line: 139 116 248;
 
     /* Hairlines. Deep enough to survive the /60 and /70 alpha modifiers the
      * site applies to them. */
@@ -97,85 +101,122 @@
     color-scheme: dark;
 
     /*
-     * Five distinct planes, each ~4-6% lighter than the last, all carrying a
-     * blue-violet cast so the theme reads as HRMagix at night rather than as
-     * generic grey chrome.
+     * A NEUTRAL CHARCOAL RAMP, NOT AN INVERTED VIOLET ONE.
+     *
+     * Five planes, each a few percent lighter than the last, all at the same
+     * cool hue with saturation kept near the floor (roughly 8-12%). That is
+     * low enough that the eye reads them as grey rather than as purple, but
+     * not so low that the theme goes flat neutral and loses its temperature.
+     *
+     * Violet does not appear in this ramp at all. It is spent on the brand
+     * button, on links, on focus, and on a hairline where a panel needs an
+     * edge — and nowhere else. The ground stays quiet so those few violet
+     * moments actually register.
      */
-    --c-canvas: 8 7 22;
-    --c-surface-sunken: 13 11 32;
-    --c-surface: 24 21 51;
-    --c-surface-raised: 36 31 71;
-    --c-surface-strong: 47 41 87;
-    /* …and as recessed on a dark one, or they vanish into the card. */
-    --c-field: 11 9 27;
-
-    /* Borders lift with the surface they sit on rather than dropping to black. */
-    --c-line: 42 37 78;
-    --c-line-strong: 58 50 102;
-    --c-line-accent: 124 92 255;
-    --c-glow: 124 92 255;
-
-    /* Hover *lifts* on a dark page — deepening would make the button recede.
-     * The resting fill matches light so white button labels keep the same
-     * 5.1:1 in both themes. */
-    --c-brand: 113 80 240;
-    --c-brand-hover: 143 116 255;
-
-    /* Never pure white — 244/242/255 keeps the violet cast and cuts halation. */
-    --c-heading: 244 242 255;
-    --c-body: 221 217 245;
-    --c-muted: 170 164 205;
-    --c-subtle: 143 136 182;
-    --c-label: 169 156 224;
-
-    /* The accent ramp inverts direction: deeper = lighter on a dark ground. */
-    --c-accent-soft: 167 139 255;
-    --c-accent: 179 161 255;
-    --c-accent-strong: 199 186 255;
-    --c-accent-deep: 222 214 255;
-
-    --c-ok: 52 211 153;
-    --c-ok-strong: 110 231 183;
-    --c-ok-soft: 8 43 34;
-    --c-ok-line: 21 94 71;
-    --c-ok-dot: 52 211 153;
-    --c-warn: 252 211 77;
-    --c-warn-soft: 47 33 8;
-    --c-info: 125 211 252;
-    --c-info-soft: 8 33 51;
-    --c-danger: 253 164 175;
-    --c-danger-strong: 254 205 211;
-    --c-danger-soft: 51 12 24;
-    --c-danger-line: 92 25 45;
+    --c-canvas: 14 15 18;
+    --c-surface-sunken: 18 19 23;
+    --c-surface: 23 24 29;
+    --c-surface-raised: 29 31 37;
+    --c-surface-strong: 38 40 48;
+    /* Inputs read as recessed on a dark page, or they vanish into the card. */
+    --c-field: 16 17 21;
 
     /*
-     * Dark elevation is carried by a black drop shadow *plus* a 1px top
-     * highlight-toned glow; a pure black shadow alone reads as smudge.
+     * The inverse panel: what bg-violet-950 is on a light page. On a dark one
+     * a saturated violet slab reads as a light-mode section pasted in, so this
+     * becomes a *lifted* charcoal plane instead — same job in the hierarchy,
+     * correct luminance for the theme.
      */
-    --sh-soft: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 2px 8px rgba(0, 0, 0, 0.5),
-      0 18px 40px -26px rgba(0, 0, 0, 0.85);
-    --sh-lift: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 60px -24px rgba(0, 0, 0, 0.9);
-    --sh-glow: 0 14px 40px -12px rgba(124, 92, 255, 0.55), 0 0 0 1px rgba(140, 112, 255, 0.28);
-    --sh-float: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 40px 90px -40px rgba(0, 0, 0, 0.95),
-      0 0 70px -30px rgba(124, 92, 255, 0.4);
+    --c-panel: 26 28 34;
+    --c-panel-line: 124 106 224;
 
-    --wash-1: #1b1546;
-    --wash-2: #100d28;
-    --wash-3: #080716;
-    --dot: rgba(150, 124, 255, 0.22);
-    --spot-tint: rgba(140, 110, 255, 0.22);
-    --selection-bg: #4c29b4;
-    --selection-fg: #f4f2ff;
-    --focus-ring: #a78bff;
-    --grad-a: #b3a1ff;
-    --grad-b: #7c5cff;
-    --chip-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 2px 8px rgba(0, 0, 0, 0.45);
+    /* Borders: two neutral weights, plus one violet for genuine emphasis. */
+    --c-line: 38 40 47;
+    --c-line-strong: 52 55 64;
+    --c-line-accent: 108 92 196;
+    /*
+     * The ambient bloom behind hero sections. On a light page this is brand
+     * violet at low alpha; on a dark one a violet blob 130px-blurred across
+     * 680px is the difference between "premium" and "gaming rig", so dark
+     * gets a desaturated violet-grey that lifts luminance and barely reads as
+     * a hue at all.
+     */
+    --c-glow: 132 128 172;
+
+    /* Hover lifts on a dark page — deepening would make the button recede. */
+    --c-brand: 116 84 242;
+    --c-brand-hover: 138 110 255;
+
+    /*
+     * Type is neutral, not violet-tinted. Headings sit just under pure white
+     * to cut halation; body is a step softer so the hierarchy is legible
+     * without dropping either into low-contrast grey. Against the canvas,
+     * heading clears 15:1, body 12:1, muted 7:1 and subtle 4.9:1.
+     */
+    --c-heading: 244 245 247;
+    --c-body: 209 212 219;
+    --c-muted: 163 168 179;
+    --c-subtle: 144 150 162;
+    --c-label: 173 160 234;
+
+    /* The accent ramp inverts direction: deeper = lighter on a dark ground. */
+    --c-accent-soft: 166 152 246;
+    --c-accent: 181 169 250;
+    --c-accent-strong: 201 192 253;
+    --c-accent-deep: 224 219 255;
+
+    --c-ok: 74 213 158;
+    --c-ok-strong: 125 231 186;
+    --c-ok-soft: 13 32 26;
+    --c-ok-line: 26 76 60;
+    --c-ok-dot: 74 213 158;
+    --c-warn: 240 199 106;
+    --c-warn-soft: 36 29 15;
+    --c-info: 124 194 239;
+    --c-info-soft: 13 28 38;
+    --c-danger: 246 158 168;
+    --c-danger-strong: 251 200 208;
+    --c-danger-soft: 41 19 24;
+    --c-danger-line: 78 33 42;
+
+    /*
+     * Elevation is carried by a black drop shadow and a 1px top highlight.
+     * No coloured bloom: a violet halo under every card is the single thing
+     * that makes a dark interface look like a gaming skin.
+     */
+    --sh-soft: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 1px 3px rgba(0, 0, 0, 0.5),
+      0 12px 28px -20px rgba(0, 0, 0, 0.8);
+    --sh-lift: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 44px -24px rgba(0, 0, 0, 0.85);
+    /* The one place violet is allowed into a shadow: the primary button. */
+    --sh-glow: 0 10px 26px -14px rgba(116, 84, 242, 0.55);
+    --sh-float: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 32px 70px -40px rgba(0, 0, 0, 0.9);
+
+    /*
+     * The page wash. Three charcoal stops a few percent apart — enough that
+     * the top of a page is not one flat rectangle, far too little to read as
+     * a gradient.
+     */
+    --wash-1: #1c1e24;
+    --wash-2: #15161b;
+    --wash-3: #0e0f12;
+    --dot: rgba(255, 255, 255, 0.07);
+    --spot-tint: rgba(148, 128, 245, 0.07);
+    --selection-bg: #3b2f6e;
+    --selection-fg: #f4f5f7;
+    --focus-ring: #9d86ff;
+    --grad-a: #b6a8ff;
+    --grad-b: #8a6cff;
+    --chip-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 1px 3px rgba(0, 0, 0, 0.4);
     --chip-shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
-      0 12px 26px -12px rgba(124, 92, 255, 0.45);
-    --scroll-thumb: #322b5e;
-    --scroll-thumb-hover: #453b85;
-    /* Photographs are authored for a white page; ease them down at night. */
-    --media-filter: brightness(0.86) contrast(1.04) saturate(0.96);
+      0 10px 22px -14px rgba(0, 0, 0, 0.7);
+    --scroll-thumb: #34373f;
+    --scroll-thumb-hover: #454952;
+    /*
+     * Photographs are authored for a white page. Easing brightness and lifting
+     * contrast settles them onto charcoal; saturation is left almost untouched
+     * so skin tones stay true and nothing acquires a purple cast.
+     */
+    --media-filter: brightness(0.88) contrast(1.05) saturate(0.98);
   }
 
   * {
@@ -422,12 +463,13 @@
   }
 
   /*
-   * Dark mode gets a second, off-centre bloom so the top of a page has depth
-   * instead of reading as one flat rectangle of near-black.
+   * Dark mode gets a second, off-centre lift so the top of a page has depth
+   * rather than reading as one flat rectangle. It is a white wash at 3%, not
+   * a coloured bloom — the depth should come from luminance, not from hue.
    */
   .dark .wash {
     background:
-      radial-gradient(90% 60% at 82% -6%, rgba(124, 92, 255, 0.16) 0%, transparent 60%),
+      radial-gradient(85% 55% at 80% -8%, rgba(255, 255, 255, 0.03) 0%, transparent 62%),
       radial-gradient(120% 90% at 50% -10%, var(--wash-1) 0%, var(--wash-2) 45%, var(--wash-3) 100%);
   }
 
@@ -565,15 +607,37 @@ html.theme-switching *::after {
   box-shadow: 0 1px 0 rgba(31, 17, 71, 0.07);
 }
 
+/*
+ * Dark needs more opacity than light does. The light plate sits white-on-white,
+ * so 0.95 hides whatever is behind it; the dark plate sits over hero type and
+ * photography, and at 0.9 the headline read straight through the open mega
+ * menu. Near-opaque plus a real backdrop blur, so nothing bleeds through.
+ */
 .dark .nav-plate {
-  background: rgba(16, 14, 38, 0.88);
+  background: rgba(20, 21, 26, 0.97);
+  backdrop-filter: blur(20px);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.07),
-    0 18px 40px -30px rgba(0, 0, 0, 0.9);
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 36px -30px rgba(0, 0, 0, 0.85);
 }
 
 .dark .panel-fixed-dark {
-  box-shadow: 0 0 0 1px rgba(140, 112, 255, 0.14);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+/*
+ * The bloom inside an inverse panel. On the light theme the panel is deep
+ * violet and the bloom is what gives it life. On the dark theme the panel is
+ * charcoal, and the same bloom at the same strength is a purple haze sitting
+ * in the corner of a card — so it drops to a tenth of the alpha and becomes a
+ * hint of warmth rather than a colour.
+ */
+.panel-bloom {
+  background: rgb(var(--c-brand) / 0.35);
+}
+
+.dark .panel-bloom {
+  background: rgb(var(--c-brand) / 0.1);
 }
 
 /*
@@ -586,14 +650,20 @@ html.theme-switching *::after {
   background: linear-gradient(to bottom, #5a36d6, #7c5cff);
 }
 
+/*
+ * In dark mode the same band cannot be the saturated violet block it is on a
+ * light page — that reads as a light-mode section pasted in. It becomes a
+ * lifted charcoal plane instead, with a single violet hairline along the top
+ * edge to keep it identifiable as the brand moment.
+ */
 .dark .contrast-band {
-  background:
-    radial-gradient(80% 120% at 50% -20%, rgba(124, 92, 255, 0.5) 0%, transparent 65%),
-    linear-gradient(to bottom, #241a5c, #150e3a);
-  box-shadow: inset 0 1px 0 rgba(150, 124, 255, 0.22), inset 0 -1px 0 rgba(150, 124, 255, 0.14);
+  background: linear-gradient(to bottom, #212329, #191a1f);
+  box-shadow:
+    inset 0 1px 0 rgba(148, 128, 245, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* On a near-black canvas a violet-900/40 rule is invisible; lift it. */
+/* On a charcoal canvas a violet-900/40 rule is invisible; lift it, neutrally. */
 .dark .panel-fixed-dark {
-  border-bottom-color: rgba(150, 124, 255, 0.28);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }

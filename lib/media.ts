@@ -42,7 +42,7 @@ const slots: MediaSlot[] = [
   /* ---------------------------------------------------------------- */
   {
     key: "dashboard",
-    src: "/media/hero-workspace.png",
+    src: "/media/hero-workspace.jpg",
     subject:
       "The HRMagix Overview workspace: live attendance counters, attendance trend, Q3 OKR progress and the punch-in roster.",
     alt:

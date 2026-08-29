@@ -4,6 +4,8 @@ import { Icon } from "./icons";
 import { Reveal } from "./motion";
 import { site } from "@/lib/content";
 import { solutionsNav, industriesNav, resourcesNav, companyNav, policyNav } from "@/lib/nav";
+import { activeSocial, payments } from "@/lib/footer";
+import { SocialMark, PaymentMark, socialColor } from "./BrandMarks";
 
 /**
  * The footer doubles as the site index. Every page reachable from the header is
@@ -83,6 +85,31 @@ export default function Footer() {
                 {site.contact.location}
               </li>
             </ul>
+
+            {/* Rendered only for profiles that have a real URL — see lib/footer.ts. */}
+            {activeSocial().length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                  Follow
+                </h3>
+                <ul className="mt-4 flex flex-wrap gap-2.5">
+                  {activeSocial().map((s) => (
+                    <li key={s.name}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`HRMagix on ${s.label}`}
+                        style={{ color: socialColor[s.name] }}
+                        className="grid h-10 w-10 place-items-center rounded-full bg-surface ring-1 ring-line-strong transition-all duration-300 hover:-translate-y-0.5 hover:ring-line-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand motion-reduce:hover:translate-y-0"
+                      >
+                        <SocialMark name={s.name} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <nav aria-label="Footer" className="grid gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
@@ -125,6 +152,30 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* ---- Accepted payments ---- */}
+        <div className="mt-10 border-t border-line pt-7">
+          <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+            Accepted payments
+          </h3>
+          <ul className="mt-4 flex flex-wrap items-center gap-2.5">
+            {payments.map((p) => (
+              <li
+                key={p.name}
+                title={p.label}
+                /* A light tile in both themes: card marks are defined against a
+                   light ground, and a Visa blue on near-black loses the mark. */
+                className="grid h-[34px] w-[54px] place-items-center rounded-lg bg-white px-2 shadow-sm ring-1 ring-black/10"
+              >
+                <PaymentMark name={p.name} className="h-full w-full" />
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3.5 text-[12.5px] text-subtle">
+            Card and wallet payments are handled by our payment provider. HRMagix does not store
+            your card details.
+          </p>
         </div>
 
         {/* ---- Baseline ---- */}

@@ -170,6 +170,65 @@ export default function VendorPage() {
       </Band>
 
       {/* ---- What is absent, and why ---- */}
+      {/* ---- Procurement questions ---- */}
+      <Band ground="surface" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
+          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
+            <h2 className="display display-md">What a procurement team usually needs to establish</h2>
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
+              Most vendor assessments ask the same questions in a different order. These are the ones we can answer here; the rest depend on your requirements and are better handled in writing.
+            </p>
+          </Reveal>
+
+          <div className="min-w-0">
+            <section className="border-t border-line-strong pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Where the data sits, and who can reach it
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Employee records, attendance, payroll and documents are held in the platform under role-based access, and views of restricted fields are recorded. An employee sees their own record; a manager sees their team's attendance, leave and goals; salary components are visible only to roles with payroll access.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Specific hosting, retention and sub-processor questions belong in a written response against your own template rather than on a marketing page, because the answers have to be precise enough to sign.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What the platform produces for audit and inspection
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Attendance records with the original capture, any correction, the reason and the approver. Payroll runs that lock once processed, with corrections carried as identified adjustments rather than edits. Statutory outputs generated from the run that produced the figures. Policy acknowledgement recorded per person, per version.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Those four together are what allow a past period to be reconstructed as it stood, which is the substance of most inspection and diligence questions.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                Commercial terms, stated plainly
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Rates are published per employee per month across three plans, with Enterprise quoted because its scope varies. There is no setup or implementation fee. The trial is fourteen days with full access to every module and no credit card.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Cancellation is available at any time. We recommend exporting payroll, attendance and leave history before access ends — those are records you may be required to produce long after you stop using the software that created them.
+              </p>
+            </section>
+            <section className="mt-9 border-t border-line pt-7">
+              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+                What this page does not claim
+              </h3>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                No certification, accreditation, audit standard or compliance attestation is asserted anywhere on this site, because none has been published. If your assessment requires one, ask directly rather than inferring it from the absence of a claim.
+              </p>
+              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+                Nor are there customer references, case studies or named logos here. Where you need them, they are a conversation rather than a page.
+              </p>
+            </section>
+          </div>
+        </div>
+      </Band>
+
       <Band ground="raised" size="md">
         <Reveal y={12} className="mx-auto max-w-3xl">
           <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
