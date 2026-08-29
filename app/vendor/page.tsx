@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import EnquiryForm from "@/components/EnquiryForm";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Partners & Vendors",
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
 export default function VendorPage() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>

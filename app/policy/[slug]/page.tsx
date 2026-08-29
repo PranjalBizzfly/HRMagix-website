@@ -6,6 +6,7 @@ import { Band, Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import OnThisPage from "@/components/OnThisPage";
 
 export function generateStaticParams() {
   return legalPages.map((p) => ({ slug: p.slug }));
@@ -35,6 +36,8 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       {/* Legal pages get the plainest opener on the site. They are read for
           content, and a photograph here would be decoration. */}
       <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">

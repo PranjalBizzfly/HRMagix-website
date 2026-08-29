@@ -151,7 +151,8 @@ export default function PolicyLibrary({
       {/* ---- The official register ---- */}
       {groups.map((group) => (
         <section key={group} className="mt-14">
-          <h3 className="border-b border-line-strong pb-3 font-display text-[18px] font-bold tracking-[-0.02em] text-heading">
+          {/* Sticky so the group stays visible while its policies scroll. */}
+          <h3 className="sticky top-[112px] z-10 -mx-1 border-b border-line-strong bg-surface/95 px-1 pb-3 pt-3 font-display text-[18px] font-bold tracking-[-0.02em] text-heading backdrop-blur supports-[backdrop-filter]:bg-surface/80">
             {group}
           </h3>
           <ul className="divide-y divide-line">

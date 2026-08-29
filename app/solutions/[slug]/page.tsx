@@ -16,6 +16,7 @@ import {
 import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Accordion from "@/components/Accordion";
+import OnThisPage from "@/components/OnThisPage";
 
 export function generateStaticParams() {
   return solutions.map((s) => ({ slug: s.slug }));
@@ -158,6 +159,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <ArticleOpener
         eyebrow={s.kicker}
         title={s.title}

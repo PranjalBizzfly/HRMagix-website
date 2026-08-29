@@ -6,6 +6,7 @@ import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "White Papers on Indian Payroll & People Operations",
@@ -33,6 +34,8 @@ export const metadata: Metadata = {
 export default function WhitePapersPage() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>

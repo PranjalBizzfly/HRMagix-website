@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { policyDetails, detailBySlug, detailByCode } from "@/lib/policyDetail";
 import { policyRegister } from "@/lib/policies";
+import { pdfPath, suppliedCodes } from "@/lib/policyAssets";
 import { Band, Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
@@ -49,8 +50,9 @@ export async function generateMetadata({
  * FOR (ours to explain), what the employer DEFINES (theirs to decide, so it is
  * set out as open questions), and what the platform RECORDS (verifiable).
  *
- * There is no section stating rules, because the source schedule contains none
- * and inventing one would attribute a decision to an employer who never made it.
+ * The approved PDF is the authority on the rules themselves; it is linked from
+ * the rail, to view or download. This page does not restate its contents, so it
+ * can never drift from the document it points at.
  */
 export default async function PolicyDetailPage({
   params,
@@ -62,6 +64,10 @@ export default async function PolicyDetailPage({
   if (!detail) notFound();
   const entry = entryByCode(detail.code);
   if (!entry) notFound();
+
+  // The approved document, if it is on disk. Never render a link to a 404.
+  const hasPdf = suppliedCodes().includes(entry.code.toUpperCase());
+  const pdf = pdfPath(entry.code);
 
   const seeAlso = (detail.seeAlso ?? [])
     .map((code) => {
@@ -185,13 +191,31 @@ export default async function PolicyDetailPage({
 
               <Reveal y={12} className="mt-12 rounded-2xl bg-surface-sunken p-6 ring-1 ring-line sm:p-7">
                 <p className="font-display text-[13px] font-bold uppercase tracking-[0.14em] text-subtle">
-                  What this page deliberately omits
+                  Where the rules themselves live
                 </p>
                 <p className="mt-3.5 text-[15.5px] leading-[1.72] text-muted">
-                  No duration, threshold, quota or cycle appears above. The supplied policy schedule
-                  lists policy names and codes; it does not contain the body of any policy. Stating a
-                  specific rule here would attribute a decision to an employer who never made it —
-                  so the section above asks the questions instead of answering them.
+                  {hasPdf ? (
+                    <>
+                      No duration, threshold, quota or cycle appears above, because the approved{" "}
+                      <a
+                        href={pdf}
+                        target="_blank"
+                        rel="noopener"
+                        className="font-semibold text-accent underline-offset-2 hover:underline"
+                      >
+                        {entry.code} document
+                      </a>{" "}
+                      is the authority on those. This page explains what the policy is for and what
+                      the platform records against it; paraphrasing the document here would only
+                      create a second version to keep in step.
+                    </>
+                  ) : (
+                    <>
+                      No duration, threshold, quota or cycle appears above. Stating a specific rule
+                      here would attribute a decision to an employer who never made it — so the
+                      section above asks the questions instead of answering them.
+                    </>
+                  )}
                 </p>
               </Reveal>
             </div>
@@ -199,6 +223,40 @@ export default async function PolicyDetailPage({
             {/* ---- Rail ---- */}
             <aside>
               <div className="lg:sticky lg:top-[110px]">
+                {hasPdf && (
+                  <div className="mb-8 rounded-2xl bg-surface-sunken p-6 ring-1 ring-line-accent">
+                    <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
+                      The approved document
+                    </p>
+                    <p className="mt-3 font-display text-[16px] font-bold leading-snug text-heading">
+                      {entry.code} &middot; {entry.name}
+                    </p>
+                    <p className="mt-2.5 text-[14px] leading-[1.65] text-muted">
+                      The signed policy as issued, in PDF.
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2.5">
+                      <a
+                        href={pdf}
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex h-10 items-center gap-2 rounded-full bg-brand px-4 text-[13.5px] font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                      >
+                        <Icon name="folder" className="h-3.5 w-3.5 text-accent" />
+                        View PDF
+                        <span className="sr-only">(opens in a new tab)</span>
+                      </a>
+                      <a
+                        href={pdf}
+                        download={`${entry.code}-${entry.name.replace(/\s+/g, "-")}.pdf`}
+                        className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-[13.5px] font-semibold text-accent ring-1 ring-line-strong transition-colors hover:ring-line-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                      >
+                        <Icon name="arrowRight" className="h-3.5 w-3.5 rotate-90" />
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 {entry.enforcedBy && (
                   <div className="rounded-2xl bg-surface-sunken p-6 ring-1 ring-line">
                     <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import Accordion from "@/components/Accordion";
+import OnThisPage from "@/components/OnThisPage";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -59,6 +60,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       {/* ---- Immersive opener ---- */}
       <header className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">

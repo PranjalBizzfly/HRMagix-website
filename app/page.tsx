@@ -18,6 +18,7 @@ import { Reveal, Words, Counter } from "@/components/motion";
 import { Icon } from "@/components/icons";
 import Photo from "@/components/Photo";
 import TestimonialDeck from "@/components/TestimonialDeck";
+import OnThisPage from "@/components/OnThisPage";
 import { faqs } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -62,6 +63,8 @@ export default function HomePage() {
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       {/* ================= 1. Hero ================= */}
       <header className="relative overflow-hidden wash pb-16 pt-[100px] sm:pb-20 sm:pt-[128px] lg:pb-24">
         <div className="pointer-events-none absolute inset-0 dotted opacity-50" aria-hidden="true" />

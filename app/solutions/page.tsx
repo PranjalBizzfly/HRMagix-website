@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import { Icon } from "@/components/icons";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Solutions — HRMS, Payroll, Attendance & ESS",
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
 export default function SolutionsHub() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       {/* ---- Opener: a wide statement over a single band, deliberately unlike
              the asymmetric opener the eight detail pages use. ---- */}
       <header className="relative overflow-hidden wash pb-14 pt-[104px] sm:pb-20 sm:pt-[132px]">
@@ -196,7 +199,8 @@ export default function SolutionsHub() {
             if (!inGroup.length) return null;
             return (
               <section key={group}>
-                <h3 className="border-b border-line-strong pb-3 font-display text-[13px] font-bold uppercase tracking-[0.18em] text-accent">
+                {/* Sticky so the category stays visible while its rows scroll. */}
+                <h3 className="sticky top-[112px] z-10 -mx-1 border-b border-line-strong bg-surface-raised/95 px-1 pb-3 pt-3 font-display text-[13px] font-bold uppercase tracking-[0.18em] text-accent backdrop-blur supports-[backdrop-filter]:bg-surface-raised/80">
                   {group}
                 </h3>
                 <div className="divide-y divide-line">

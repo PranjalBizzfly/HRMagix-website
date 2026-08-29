@@ -9,6 +9,7 @@ import { Icon } from "@/components/icons";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Accordion from "@/components/Accordion";
 import CalculatorRunner from "@/components/CalculatorRunner";
+import OnThisPage from "@/components/OnThisPage";
 
 export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
@@ -61,6 +62,8 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       {/* ---- 1. What this calculates ---- */}
       <header className="border-b border-line bg-surface-sunken pb-10 pt-[104px] sm:pb-12 sm:pt-[128px]">
         <div className="shell">

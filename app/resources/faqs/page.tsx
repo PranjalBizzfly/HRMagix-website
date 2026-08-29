@@ -8,6 +8,7 @@ import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Accordion from "@/components/Accordion";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Questions & Answers",
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
 export default function FaqsPage() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>

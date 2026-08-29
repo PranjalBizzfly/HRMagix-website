@@ -12,7 +12,7 @@ import { site } from "@/lib/content";
 /**
  * The header.
  *
- * Five items on the bar and everything else inside a panel. The constraint that
+ * Six items on the bar and everything else inside a panel. The constraint that
  * shapes this component is that every link in every panel goes to a real page
  * with its own URL — there is not a single in-page anchor in here, so the menu
  * is a map of the site rather than a shortcut to the homepage.
@@ -116,6 +116,22 @@ export default function Nav() {
             {/* ---- Desktop bar ---- */}
             <nav aria-label="Primary" className="hidden lg:block">
               <ul className="flex items-center gap-1">
+                {/*
+                  Home and Pricing are plain links rather than panel triggers, so
+                  they carry no chevron and close any open panel on hover.
+                */}
+                <li>
+                  <Link
+                    href="/"
+                    aria-current={isActive("/") ? "page" : undefined}
+                    className={`inline-flex items-center rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+                      isActive("/") ? "text-accent" : "text-body hover:text-accent"
+                    }`}
+                    onMouseEnter={scheduleClose}
+                  >
+                    Home
+                  </Link>
+                </li>
                 {primaryNav.map((section) => {
                   const isOpen = open === section.label;
                   return (
@@ -358,6 +374,33 @@ function MobileSheet({
         </div>
 
         <div className="flex-1 px-5 pb-10 pt-6">
+          {/*
+            Home is a destination, not a section, so it sits above the section
+            columns rather than in the rail — which switches sections and does
+            not navigate.
+          */}
+          <ul className="mb-8 divide-y divide-line border-y border-line">
+            <li>
+              <Link
+                href="/"
+                onClick={onClose}
+                aria-current={isActive("/") ? "page" : undefined}
+                className="flex items-center justify-between gap-4 py-3.5"
+              >
+                <span
+                  className={`font-display text-[16px] font-bold ${
+                    isActive("/") ? "text-accent" : "text-heading"
+                  }`}
+                >
+                  Home
+                </span>
+                <span className="shrink-0 text-accent">
+                  <Arrow />
+                </span>
+              </Link>
+            </li>
+          </ul>
+
           {primaryNav
             .filter((s) => s.label === section)
             .map((s) => (

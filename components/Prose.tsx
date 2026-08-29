@@ -122,13 +122,20 @@ function Block({ block }: { block: ProseBlock }) {
       );
 
     case "table":
+      /*
+       * Two presentations of one table. On a phone a five-column comparison
+       * that scrolls sideways is effectively unreadable — you lose the header
+       * the moment you scroll — so below `sm` each row becomes a small stacked
+       * block with its column name printed against each value. Above `sm` it is
+       * an ordinary table. The markup is a real <table> in both cases, so it
+       * stays a table to assistive technology.
+       */
       return (
         <Reveal y={12} as="figure" className="my-9 min-w-0">
-          {/* Wide tables scroll inside their own container so the page never does. */}
-          <div className="overflow-x-auto rounded-2xl ring-1 ring-line">
-            <table className="w-full min-w-[520px] border-collapse text-left">
+          <div className="overflow-hidden rounded-2xl ring-1 ring-line sm:overflow-x-auto">
+            <table className="w-full border-collapse text-left">
               <caption className="sr-only">{block.caption}</caption>
-              <thead>
+              <thead className="hidden sm:table-header-group">
                 <tr className="bg-surface-sunken">
                   {block.head.map((h) => (
                     <th
@@ -141,16 +148,25 @@ function Block({ block }: { block: ProseBlock }) {
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="block sm:table-row-group">
                 {block.rows.map((row, r) => (
-                  <tr key={r} className="border-b border-line last:border-b-0">
+                  <tr
+                    key={r}
+                    className="block border-b border-line last:border-b-0 sm:table-row"
+                  >
                     {row.map((cell, c) => (
                       <td
                         key={c}
-                        className={`px-5 py-4 align-top text-[14.5px] leading-[1.6] ${
-                          c === 0 ? "font-semibold text-heading" : "text-muted"
+                        className={`block px-5 py-2 align-top text-[14.5px] leading-[1.6] first:pt-4 last:pb-4 sm:table-cell sm:py-4 sm:first:pt-4 sm:last:pb-4 ${
+                          c === 0
+                            ? "font-semibold text-heading sm:font-semibold"
+                            : "text-muted"
                         }`}
                       >
+                        {/* The column name travels with the value on a phone. */}
+                        <span className="mb-1 block text-[10.5px] font-bold uppercase tracking-[0.12em] text-subtle sm:hidden">
+                          {block.head[c]}
+                        </span>
                         {cell}
                       </td>
                     ))}

@@ -9,6 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import EnquiryForm from "@/components/EnquiryForm";
 import { EmptyState } from "@/components/states";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -32,6 +33,8 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Photo slot="careers" cover rounded="rounded-none" hover={false} sizes="100vw" />

@@ -1,8 +1,10 @@
 # Policy documents
 
-Drop the approved policy PDFs here. Nothing else needs editing — the library
-reads this directory at build time and activates each row's **View PDF** and
-**Download** controls when the matching file appears.
+The twenty-five approved policy documents, as supplied by the client from the
+source Drive folder. The library reads this directory at build time and
+activates each row's **View PDF** and **Download** controls for every file it
+finds, so adding a policy is a matter of dropping the PDF in under the right
+name and adding its row to `policyRegister` in `lib/policies.ts`.
 
 ## Naming
 
@@ -36,16 +38,38 @@ One file per policy, named for its code, lower-cased:
 | `hrmagix023.pdf` | Work From Home Monitoring Policy |
 | `hrmagix024.pdf` | Work From Home Employee Exclusivity Policy |
 
-These map to the source schedule's `BIZZFLY*` codes in the same order — row 1 is
-the code of conduct, rows 2 to 25 are policies 001 to 024.
+These map to the source schedule's codes in the same order — row 1 is the code
+of conduct, rows 2 to 25 are policies 001 to 024.
 
-## Why this directory is empty
+## What was changed in these files, and what was not
 
-The supplied schedule listed the PDF **filenames** but the documents themselves
-were never provided. No PDF has been generated to fill the gap: writing policy
-text would mean inventing the operative rules — notice periods, grace windows,
-increment cycles — and attributing them to an employer who never approved them.
+Each PDF is the client's own document. One edit was applied and no other:
 
-Until a file is added, that policy's row shows a plainly-labelled
-"Document not supplied" state and links to its explanatory page instead of to a
-broken PDF.
+**The former company name was replaced with HR Magix.** 272 occurrences across
+the 25 files, in three forms so the result stays valid in context:
+
+| Context | Result |
+| --- | --- |
+| Document code — the name followed by its number or letter code | `HRMAGIX011`, `HRMAGIXCOC` |
+| Inside a URL or email address, where a space would break the link | `www.hrmagix.Com`, `hr@hrmagix.com` |
+| Running prose | `HR Magix` |
+
+The header logo artwork carried the old lockup as an embedded image; those 99
+image objects were replaced with the HRMagix lockup, composed from the site's
+own `public/hrmagix-mark.svg` at the exact dimensions and position the original
+occupied, so nothing on any page moved.
+
+**Nothing else was touched.** No policy was rewritten, summarised or
+restructured; no section removed; no rule, entitlement, threshold, timeline,
+version number, effective date or reviewer name altered. Any other company or
+entity named inside a document is the client's own text and is left as written.
+
+## Regenerating
+
+The documents are checked in, so a rebuild needs nothing. If the client
+supplies revised originals, the rebrand is reproducible: redact each span
+containing the old name and redraw it in place at the original baseline, fitted
+to the original rectangle. A byte-level replacement is not possible — these are
+Canva exports whose text is set in subset-embedded Identity-H fonts, so the
+content streams hold glyph indices rather than characters, and the subsets
+rarely contain the glyphs the new name needs.

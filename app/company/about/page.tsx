@@ -6,6 +6,7 @@ import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import TestimonialDeck from "@/components/TestimonialDeck";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "About HRMagix",
@@ -28,6 +29,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line wash pb-14 pt-[104px] sm:pb-18 sm:pt-[132px]">
         <div className="shell">
           <Reveal y={8}>

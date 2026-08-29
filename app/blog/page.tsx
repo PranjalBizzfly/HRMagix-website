@@ -6,6 +6,7 @@ import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Insights — Indian Payroll & People Operations",
@@ -39,6 +40,8 @@ export default function BlogIndex() {
 
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>

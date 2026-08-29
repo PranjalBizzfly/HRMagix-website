@@ -6,14 +6,14 @@ import { join } from "node:path";
  *
  * WHY THIS IS A DIRECTORY READ RATHER THAN A HARD-CODED LIST.
  *
- * The supplied policy schedule names twenty-five PDFs but the files themselves
- * were never provided. Rather than hard-code a list that would lie the moment
- * someone drops a file in, this reads `public/policies` at build time and
- * reports what is genuinely there.
+ * All twenty-five documents named in the supplied policy schedule are present
+ * in `public/policies`. Reading the directory at build time rather than
+ * hard-coding the list keeps the two from drifting: the library reports what
+ * is genuinely on disk, so a row can never link to a file that is not there.
  *
- * The consequence is that the library is self-maintaining: drop
- * `HRMAGIX003.pdf` into `public/policies`, rebuild, and the Leave Policy row
- * gains working View and Download controls. Nothing else needs editing.
+ * The same property makes it self-maintaining in the other direction: drop
+ * `hrmagix025.pdf` into `public/policies`, add its row to `policyRegister`,
+ * rebuild, and the row gains working View and Download controls.
  *
  * NAMING. One file per policy, named for its code, lower-cased:
  *

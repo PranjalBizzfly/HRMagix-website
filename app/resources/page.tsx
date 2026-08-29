@@ -7,6 +7,7 @@ import { Band, Opening } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Resources — Papers, Calculators & Answers",
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
 export default function ResourcesHub() {
   return (
     <>
+      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
+
       <header className="border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[132px]">
         <div className="shell">
           <Reveal y={8}>
