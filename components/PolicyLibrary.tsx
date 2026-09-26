@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Icon } from "./icons";
 import { Reveal } from "./motion";
 import { SubmitButton } from "./ui";
+import PdfDownloadButton from "./PdfDownloadButton";
 import {
   addCustomPolicy,
   getCustomPolicyUrl,
@@ -150,7 +151,7 @@ export default function PolicyLibrary({
 
       {/* ---- The official register ---- */}
       {groups.map((group) => (
-        <section key={group} className="mt-14">
+        <section key={group} className="mt-10">
           {/* Sticky so the group stays visible while its policies scroll. */}
           <h3 className="sticky top-[112px] z-10 -mx-1 border-b border-line-strong bg-surface/95 px-1 pb-3 pt-3 font-display text-[18px] font-bold tracking-[-0.02em] text-heading backdrop-blur supports-[backdrop-filter]:bg-surface/80">
             {group}
@@ -222,15 +223,18 @@ function PolicyRowItem({ row, hasPdf, delay }: { row: PolicyRow; hasPdf: boolean
                 View PDF
                 <span className="sr-only">— {row.name}, opens in a new tab</span>
               </a>
-              <a
+              {/* Gated: opens the lead form, then downloads this row's own PDF. */}
+              <PdfDownloadButton
+                title={row.name}
                 href={row.pdf}
-                download={`${row.code}-${row.name.replace(/\s+/g, "-")}.pdf`}
+                fileName={`${row.code}-${row.name.replace(/\s+/g, "-")}.pdf`}
+                source="Workplace policy library"
                 className="inline-flex h-10 items-center gap-2 rounded-full bg-brand px-4 text-[13.5px] font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
               >
                 <Icon name="arrowRight" className="h-3.5 w-3.5 rotate-90" />
                 Download
                 <span className="sr-only">— {row.name} as PDF</span>
-              </a>
+              </PdfDownloadButton>
             </>
           ) : (
             <span className="text-[13px] leading-snug text-subtle lg:max-w-[15rem] lg:text-right">

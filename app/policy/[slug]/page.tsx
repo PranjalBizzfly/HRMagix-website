@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { legalPages, legalBySlug } from "@/lib/policies";
-import { Band, Onward } from "@/components/editorial";
-import { Arrow } from "@/components/ui";
+import { Onward } from "@/components/editorial";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import OnThisPage from "@/components/OnThisPage";
@@ -40,7 +39,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
 
       {/* Legal pages get the plainest opener on the site. They are read for
           content, and a photograph here would be decoration. */}
-      <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -56,8 +55,10 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-16">
+      <SiteStats />
+
+      <Block ground="canvas">
+        <div className="card grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-16 lg:p-10">
           {/* Contents rail — legal pages are scanned, not read start to finish. */}
           <nav aria-label="On this page" className="lg:sticky lg:top-[110px] lg:self-start">
             <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
@@ -114,7 +115,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
             ))}
           </div>
         </div>
-      </Band>
+      </Block>
 
       <Onward
         title="Other policies"

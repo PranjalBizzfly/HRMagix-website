@@ -39,13 +39,23 @@ export default function Accordion({
     });
 
   return (
-    <ul className={`border-t border-line ${className}`}>
+    <ul className={`grid gap-3 ${className}`}>
       {items.map((item, i) => {
         const isOpen = open.has(i);
         const panelId = `${uid}-panel-${i}`;
         const buttonId = `${uid}-button-${i}`;
         return (
-          <Reveal as="li" key={item.q} delay={i * 40} y={10} className="border-b border-line">
+          <Reveal
+            as="li"
+            key={item.q}
+            delay={i * 40}
+            y={10}
+            className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${
+              isOpen
+                ? "border-line-accent bg-surface shadow-soft"
+                : "border-line bg-surface/80 hover:border-line-accent"
+            }`}
+          >
             <h3>
               <button
                 type="button"
@@ -53,14 +63,14 @@ export default function Accordion({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggle(i)}
-                className="group flex w-full items-start justify-between gap-6 py-5 text-left transition-colors hover:text-accent sm:py-6"
+                className="group flex w-full items-center justify-between gap-6 px-5 py-5 text-left transition-colors sm:px-6"
               >
                 <span className="font-display text-[16px] font-bold leading-snug text-heading transition-colors group-hover:text-accent sm:text-[17.5px]">
                   {item.q}
                 </span>
                 <span
                   aria-hidden="true"
-                  className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full ring-1 transition-all duration-300 ${
+                  className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ring-1 transition-all duration-300 ${
                     isOpen
                       ? "rotate-180 bg-brand text-white ring-brand"
                       : "text-accent ring-line group-hover:ring-line-accent"
@@ -74,10 +84,15 @@ export default function Accordion({
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
-              hidden={!isOpen}
-              className="pb-6 pr-10"
+              data-open={isOpen}
+              inert={!isOpen}
+              className="accordion-panel"
             >
-              <p className="max-w-3xl text-[15.5px] leading-[1.75] text-muted">{item.a}</p>
+              <div>
+                <div className="mx-5 border-t border-line pb-6 pt-4 sm:mx-6">
+                  <p className="max-w-3xl text-[15.5px] leading-[1.75] text-muted">{item.a}</p>
+                </div>
+              </div>
             </div>
           </Reveal>
         );

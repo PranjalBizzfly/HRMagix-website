@@ -1,26 +1,22 @@
 import type { Metadata } from "next";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
 import Link from "next/link";
 import { modules, plans, site } from "@/lib/content";
-import { Band, Opening, Onward } from "@/components/editorial";
+import { pricingSummary } from "@/lib/pricing";
+import { Opening, Onward } from "@/components/editorial";
 import { Check, Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Pricing from "@/components/Pricing";
 import Calculator from "@/components/Calculator";
-import Accordion from "@/components/Accordion";
 import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Three published plans, priced per employee per month: Starter $3, Growth $6, Enterprise custom. Fourteen-day trial, no setup fee, and every module on one platform.",
+    `Affordable payroll software for small business and growing companies: three published plans, priced per employee per month — ${pricingSummary()}. Fourteen-day trial, no setup fee, and every module on one platform.`,
   keywords: [
-    "HRMS software",
-    "payroll software",
-    "HRMS and payroll software",
-    "HR software for small business",
-    "payroll software for startups",
-    "HR SaaS platform",
+    "affordable payroll software for small business",
   ],
   alternates: { canonical: "/pricing" },
 };
@@ -45,7 +41,7 @@ export default function PricingPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -77,30 +73,25 @@ export default function PricingPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Three plans, one platform</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Priced per employee, per month. The difference between them is which modules are
-            switched on, not which product you are using.
-          </p>
-        </Reveal>
-        <div className="mt-12">
-          <Pricing />
-        </div>
-      </Band>
+      <SiteStats />
+
+      <Block
+        eyebrow="Plans"
+        title="Three plans, one platform"
+        intro="Priced per employee, per month. The difference between them is which modules are switched on, not which product you are using."
+        ground="canvas"
+      >
+        <Pricing />
+      </Block>
 
       {/* ---- Comparison ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">What is included where</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Exactly what each published plan lists — no asterisks, and nothing that appears only
-            after a sales call.
-          </p>
-        </Reveal>
-
-        <Reveal delay={140} className="mt-12 overflow-x-auto rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
+      <Block
+        eyebrow="Compare"
+        title="What is included where"
+        intro="Exactly what each published plan lists — no asterisks, and nothing that appears only after a sales call."
+        ground="sunken"
+      >
+        <Reveal delay={140} className="overflow-x-auto rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
           <table className="w-full min-w-[580px] border-collapse text-left">
             <caption className="sr-only">HRMagix plan comparison</caption>
             <thead>
@@ -162,22 +153,17 @@ export default function PricingPage() {
             .
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       {/* ---- Which plan, and on what basis ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Which plan you actually need</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              The dividing line between the plans is not company size. It is whether you are
-              running payroll inside the platform, which is the point at which an HRMS stops being
-              a record and starts being a system of consequence.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
+      <Block
+        eyebrow="Choosing"
+        title="Which plan you actually need"
+        intro="The dividing line between the plans is not company size. It is whether you are running payroll inside the platform, which is the point at which an HRMS stops being a record and starts being a system of consequence."
+        ground="canvas"
+      >
+          <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Starter, if the problem is the record
               </h3>
@@ -194,7 +180,7 @@ export default function PricingPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Growth, if the problem is the month end
               </h3>
@@ -211,7 +197,7 @@ export default function PricingPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Enterprise, if the problem is structural
               </h3>
@@ -228,7 +214,7 @@ export default function PricingPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Moving between plans
               </h3>
@@ -240,25 +226,20 @@ export default function PricingPage() {
               </p>
             </section>
           </div>
-        </div>
-      </Band>
+      </Block>
 
       {/* ---- Estimator ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Work out your monthly number</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Published rate times headcount. Nothing modelled, no projected savings, no ROI
-            calculation dressed up as arithmetic.
-          </p>
-        </Reveal>
-        <div className="mt-12">
-          <Calculator />
-        </div>
-      </Band>
+      <Block
+        eyebrow="Estimate"
+        title="Work out your monthly number"
+        intro="Published rate times headcount. Nothing modelled, no projected savings, no ROI calculation dressed up as arithmetic."
+        ground="sunken"
+      >
+        <Calculator />
+      </Block>
 
       {/* ---- What the price does and does not include ---- */}
-      <Band ground="raised" size="md">
+      <Block ground="canvas">
         <Opening
           label="On the price"
           paragraphs={[
@@ -280,26 +261,26 @@ export default function PricingPage() {
             What setup involves <Arrow />
           </Link>
         </Reveal>
-      </Band>
+      </Block>
+
+      <Block eyebrow="Enterprise" title="Enterprise pricing is quoted, not hidden" ground="sunken">
+        <div className="card mx-auto flex max-w-3xl flex-col items-center p-6 text-center sm:p-8">
+          <p className="text-[16.5px] leading-[1.7] text-muted">
+            It is quoted because it depends on entity count, module scope and whether single
+            sign-on and a dedicated success manager are required — not because there is a number
+            we would rather you did not see until later.
+          </p>
+          <div className="mt-6">
+            <Button href="/company/contact">Get a quote</Button>
+          </div>
+        </div>
+      </Block>
 
       {/* ---- Billing questions ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Questions about the price</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              Billing, counting and what happens at the edges. Product questions are answered on
-              the module pages and in the full FAQ.
-            </p>
-            <Link
-              href="/resources/faqs"
-              className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
-            >
-              Every question, in one place <Arrow />
-            </Link>
-          </Reveal>
-
-          <Accordion
+      <FaqSection
+        title="Questions about the price"
+        intro="Billing, counting and what happens at the edges. Product questions are answered on the module pages and in the full FAQ."
+        ground="canvas"
             items={[
               {
                 q: "What does per employee, per month actually count?",
@@ -334,25 +315,7 @@ export default function PricingPage() {
                 a: "Email support is included on Starter. Growth adds priority support, and Enterprise adds a dedicated success manager. Support is not sold separately from the plan.",
               },
             ]}
-          />
-        </div>
-      </Band>
-
-      <Band ground="sunken" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[17ch]">
-              Enterprise pricing is quoted, not hidden
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              It is quoted because it depends on entity count, module scope and whether single
-              sign-on and a dedicated success manager are required — not because there is a number
-              we would rather you did not see until later.
-            </p>
-          </div>
-          <Button href="/company/contact">Get a quote</Button>
-        </div>
-      </Band>
+      />
 
       <Onward
         links={[

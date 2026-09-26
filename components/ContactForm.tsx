@@ -54,14 +54,15 @@ export default function ContactForm() {
         title="Your message is ready to send"
         body={
           <>
-            We handed it to your mail app, addressed to{" "}
+            We opened it in your mail app, addressed to{" "}
             <a
               href={`mailto:${site.contact.email}`}
               className="font-semibold text-accent underline-offset-2 hover:underline"
             >
               {site.contact.email}
             </a>
-            . Our team usually replies within a few hours.
+            . It is only sent once you press send there. If no mail app opened, email that address
+            directly or call {site.contact.phone}.
           </>
         }
         action={

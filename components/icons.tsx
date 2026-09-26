@@ -41,7 +41,8 @@ export type IconName =
   | "check"
   | "cross"
   | "arrowRight"
-  | "chevronDown";
+  | "chevronDown"
+  | "search";
 
 type Props = SVGProps<SVGSVGElement> & {
   name: IconName;
@@ -198,6 +199,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <path d="M12 3.6 13.7 9l5.4 1.7-5.4 1.7L12 17.8l-1.7-5.4-5.4-1.7L10.3 9 12 3.6Z" />
   ),
   equals: <path d="M5.5 9.6h13M5.5 14.4h13" />,
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6.4" />
+      <path d="m15.8 15.8 4.4 4.4" />
+    </>
+  ),
   check: <path d="M4.8 12.6 9.6 17 19.2 7" />,
   cross: <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />,
   arrowRight: <path d="M4.5 12h15M13 5.5l6.5 6.5-6.5 6.5" />,

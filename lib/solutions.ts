@@ -37,7 +37,7 @@ export type Solution = {
   image: string;
   icon: IconName;
   /** SEO. Each page owns its own keyword cluster; none of them overlap. */
-  seo: { title: string; description: string; keywords: string[] };
+  seo: { title: string; description: string; keywords: string[]; focus?: string };
   /** The opening argument: why this problem is hard before software. */
   opening: string[];
   /** Long-form sections. Length and count vary by subject on purpose. */
@@ -62,6 +62,11 @@ export type Solution = {
    * every page would produce eight versions of the same four roles.
    */
   useCases?: { title: string; intro: string; items: UseCase[] };
+  /**
+   * The person who usually buys this, their day, and the events that make
+   * them look. A buyer situation, not a product claim.
+   */
+  buyer?: { role: string; reality: string; signals: string[] };
   /** Page-specific questions. No question appears on two pages. */
   questions: Question[];
   /** Where a reader should go next, and why. */
@@ -81,20 +86,14 @@ export const solutions: Solution[] = [
     image: "hrms",
     icon: "layers",
     seo: {
-      title: "HRMS Software for Indian Companies",
+      title: "Cloud Based HRMS Software for Indian Companies",
       description:
-        "HRMagix is an HRMS and payroll software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules.",
+        "Cloud based HRMS software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules — cloud HR software your whole company can use.",
       keywords: [
-        "HRMS software",
-        "HR software",
-        "HRMS and payroll software",
-        "HR management system",
-        "HRMS system",
-        "HR platform for companies",
         "cloud HR software",
-        "HR SaaS platform",
-        "HRMS tools for companies",
+        "cloud based HRMS software",
       ],
+      focus: "Cloud based HRMS software",
     },
     opening: [
       "Most companies do not buy an HRMS system because they want one. They buy one because the fourth spreadsheet has stopped agreeing with the third, and nobody can say which is right.",
@@ -254,6 +253,15 @@ export const solutions: Solution[] = [
       "Grouped by what it is for rather than by which screen it appears on. If a field you rely on is missing from this list, it is worth raising before a migration rather than after one.",
     questionsIntro:
       "The questions that come up when a company is deciding whether to consolidate onto one record.",
+    buyer: {
+      role: "HR managers and heads of people",
+      reality: "Several disconnected tools, a monthly headcount report built by hand, and a leadership team asking questions the data cannot answer.",
+      signals: [
+        "The incumbent system's renewal date is approaching.",
+        "Leadership asks for a number — headcount, attrition, cost — and producing it takes days.",
+        "A new entity or acquisition doubles the records that have to be reconciled.",
+      ],
+    },
     questions: [
       {
         q: "What is the difference between an HRMS and payroll software?",
@@ -321,22 +329,17 @@ export const solutions: Solution[] = [
     seo: {
       title: "Payroll Software with PF, ESI, PT and TDS Built In",
       description:
-        "Online payroll software for India: automated EPF, ESI, Professional Tax and TDS on salary, payslip generation, Form 16 and bank-ready NEFT files in a single monthly run.",
+        "Payroll processing software for India: automated EPF, ESI, Professional Tax and TDS on salary, payslips, Form 16 and bank-ready NEFT files — a payroll automation system and salary management system in one monthly run.",
       keywords: [
-        "payroll software",
-        "online payroll software",
-        "payroll management system",
-        "payroll processing software",
         "payroll automation software",
         "employee payroll system",
-        "salary calculation software",
-        "payslip generator",
-        "payroll compliance",
-        "PF calculation",
-        "ESI calculation",
-        "TDS on salary calculation",
-        "Form 16 download",
+        "payroll processing software",
+        "salary management system",
+        "payroll automation system",
+        "payroll processing system",
+        "payroll software with PF ESI TDS",
       ],
+      focus: "Payroll processing software",
     },
     opening: [
       "The reason payroll takes days in most Indian companies has almost nothing to do with arithmetic. Multiplying a per-day rate by a number of days is trivial. Establishing the number of days is not.",
@@ -514,6 +517,16 @@ export const solutions: Solution[] = [
       "The whole run, from the inputs it reads to the files it produces. Statutory items are named as the statute names them, so you can check each against your own obligations.",
     questionsIntro:
       "Asked most often by finance leads and payroll managers part-way through an evaluation.",
+    buyer: {
+      role: "Finance leads and payroll controllers",
+      reality: "They own the number but not the people. Payroll errors land on their desk, and statutory filings carry personal risk.",
+      signals: [
+        "A payroll error reaches employees before anyone catches it.",
+        "Audit season arrives and the evidence is spread across files and inboxes.",
+        "A statutory rate or threshold changes mid-year.",
+        "The month-end close keeps slipping because payroll is late.",
+      ],
+    },
     questions: [
       {
         q: "How does HRMagix calculate PF and ESI?",
@@ -583,16 +596,15 @@ export const solutions: Solution[] = [
     image: "employee-management",
     icon: "users",
     seo: {
-      title: "Employee Management System & Employee Database Software",
+      title: "Employee Database Software & Employee Record Management System",
       description:
-        "An employee management system for Indian companies: a versioned employee database, document vault with expiry alerts, org structure, and policy acknowledgement tracking.",
+        "Employee database software for Indian companies: a versioned employee record management system with a document vault, expiry alerts, org structure and policy acknowledgement — an HR employee management system on one record.",
       keywords: [
-        "employee management system",
         "employee database software",
         "employee record management system",
         "HR employee management system",
-        "employee lifecycle management",
       ],
+      focus: "Employee database software",
     },
     opening: [
       "Ask an HR team what takes their time and very few will say strategy. They will describe chasing: a bank detail that was never updated, a driving licence that expired three weeks ago, an appointment letter somebody needs for a visa application by Friday.",
@@ -785,13 +797,16 @@ export const solutions: Solution[] = [
     seo: {
       title: "Attendance Management System with Biometric & Mobile Punch-In",
       description:
-        "Attendance management system for Indian companies: biometric device sync, GPS geo-fenced mobile punch-in with selfie validation, shift rotation, overtime and automatic loss-of-pay.",
+        "Attendance management system for Indian companies: biometric attendance system software, GPS geo-fenced mobile punch-in, shift rotation, overtime and automatic loss-of-pay — an employee attendance and payroll system on one record.",
       keywords: [
         "attendance management system",
         "employee attendance software",
         "biometric attendance system software",
         "attendance tracking software",
+        "HR software with attendance and payroll",
+        "employee attendance and payroll system",
       ],
+      focus: "Attendance management system",
     },
     opening: [
       "There is a specific kind of dispute that only happens in companies with good attendance hardware and no attendance system. The machine says a person entered at 09:47. The person says they were at a client site from 08:30. Both are true. Neither is in the payroll input.",
@@ -891,6 +906,15 @@ export const solutions: Solution[] = [
       "Read in that order. How presence gets in, what the rules do with it, and where the result ends up — because the third is what makes the first two worth configuring properly.",
     questionsIntro:
       "The questions that separate an attendance system that survives a real shop floor from one that does not.",
+    buyer: {
+      role: "Multi-site and shift operators",
+      reality: "Several branches, paper registers, buddy punching, overtime nobody approved and a roster built in a messaging group.",
+      signals: [
+        "Opening another branch multiplies the registers to reconcile.",
+        "Overtime cost spikes with no approval trail behind it.",
+        "A seasonal surge brings in staff faster than attendance can be set up for them.",
+      ],
+    },
     questions: [
       {
         q: "Will HRMagix work with the biometric machines we already have?",
@@ -953,6 +977,7 @@ export const solutions: Solution[] = [
         "employee leave management",
         "leave management software India",
       ],
+      focus: "Leave management system",
     },
     opening: [
       "Leave is the only part of HR that every single employee interacts with, which is why a bad leave process does disproportionate damage. It is not the policy that irritates people. It is the uncertainty: not knowing the balance, not knowing whether the request was seen, not knowing whether a Friday and a Monday will cost two days or four.",
@@ -1145,13 +1170,16 @@ export const solutions: Solution[] = [
     seo: {
       title: "Employee Self Service Portal (ESS) for HR & Payroll",
       description:
-        "An ESS portal for Indian employees: payslips, leave balances and applications, attendance regularisation, tax declarations, Form 16 and personal documents on web and mobile.",
+        "An employee self service portal for Indian companies: payslips, leave balances, attendance regularisation, tax declarations and Form 16 download on web and mobile — an HRMS with ESS portal built in.",
       keywords: [
+        "Form 16 download",
         "employee self service portal",
         "ESS portal HR",
         "employee login HR system",
         "HR employee portal",
+        "HRMS with ESS portal",
       ],
+      focus: "Employee self service portal",
     },
     opening: [
       "Count the questions an HR team answers in a week and a pattern appears immediately. How many leaves do I have left. Can you send me my March payslip. What is my UAN. Has my regularisation been approved. Almost none of these require judgement. They require access.",
@@ -1349,14 +1377,15 @@ export const solutions: Solution[] = [
     seo: {
       title: "Employee Onboarding Software & Lifecycle Management",
       description:
-        "Digital onboarding and employee lifecycle management: pre-boarding document collection, appointment letters, asset provisioning, confirmation, transfer and full-and-final exit.",
+        "Employee onboarding software for India: a digital onboarding platform for pre-boarding documents, appointment letters and assets, then confirmation, transfer and exit — employee lifecycle management on one HR onboarding system.",
       keywords: [
+        "employee lifecycle management",
         "employee onboarding software",
         "HR onboarding system",
         "digital onboarding platform",
         "employee onboarding process software",
-        "employee lifecycle management",
       ],
+      focus: "Employee onboarding software",
     },
     opening: [
       "A new joiner's first day is usually spent doing data entry. They fill in a joining form with information the company already has from their offer, photocopy a PAN card, sign a policy pack they will not read, and wait for a laptop that was requested that morning.",
@@ -1537,13 +1566,14 @@ export const solutions: Solution[] = [
     seo: {
       title: "HR Analytics Software & Workforce Reporting",
       description:
-        "HR analytics and workforce reporting: real-time headcount and department distribution, attrition risk indicators, tenure analysis, overtime expense and payroll budget variance.",
+        "HR analytics software for Indian companies: workforce analytics tools and HR reporting software for real-time headcount, attrition risk, tenure, overtime expense and payroll budget variance on an employee analytics dashboard.",
       keywords: [
         "HR analytics software",
         "workforce analytics tools",
         "HR reporting software",
         "employee analytics dashboard",
       ],
+      focus: "HR analytics software",
     },
     opening: [
       "Most HR reporting is not analysis. It is collation — pulling headcount from one place, resignations from another, overtime from a third, and reconciling the three before anyone can look at them. HR analytics software earns its place by removing that step rather than by drawing better charts.",

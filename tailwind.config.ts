@@ -3,6 +3,10 @@ import type { Config } from "tailwindcss";
 /**
  * HRMagix brand system.
  *
+ * The palette is drawn from the logo mark (public/hrmagix-mark.svg): its
+ * lavender gradient #B9A4E8 → #A18CD1 → #8A6BC5 sets the violet ramp, and its
+ * gold dot #F5A301 is the single secondary accent.
+ *
  * Two layers of colour live here:
  *
  * 1. **Literal brand ramps** (`violet`, `ink`) — fixed hex. These are used
@@ -27,22 +31,22 @@ const config: Config = {
     extend: {
       colors: {
         violet: {
-          50: "#f7f5ff",
-          100: "#efeaff",
-          200: "#e9e5ff",
-          300: "#ddd6ff",
-          400: "#b7a6ff",
-          500: "#7c5cff",
-          600: "#5a36d6",
-          700: "#4c29b4",
-          800: "#2a1a5e",
-          900: "#1f1147",
-          950: "#160b3a",
+          50: "#f8f5fd",
+          100: "#f0eafa",
+          200: "#e5dcf6",
+          300: "#d4c6f0",
+          400: "#b9a4e8",
+          500: "#8a6bc5",
+          600: "#6b4bb0",
+          700: "#583c96",
+          800: "#2e1f55",
+          900: "#231844",
+          950: "#1a1233",
         },
         ink: {
-          DEFAULT: "#1e1b3a",
-          soft: "#4a4568",
-          faint: "#726d90",
+          DEFAULT: "#211d38",
+          soft: "#4c4664",
+          faint: "#6e6888",
         },
 
         /* ---- Semantic, theme-aware ---- */
@@ -71,6 +75,12 @@ const config: Config = {
         },
         // Type ramp, descending emphasis.
         glow: token("glow"),
+        // The logo's gold dot — accent fills only, never body text on white.
+        gold: {
+          DEFAULT: token("gold"),
+          soft: token("gold-soft"),
+          ink: token("gold-ink"),
+        },
         brand: { DEFAULT: token("brand"), hover: token("brand-hover") },
         heading: token("heading"),
         body: token("body"),

@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { solutions, bySlug } from "@/lib/solutions";
-import {
-  ArticleOpener,
-  Opening,
-  Passages,
-  Ledger,
-  Mechanics,
-  CapabilityIndex,
-  UseCases,
-  Statement,
-  Onward,
-  Band,
-} from "@/components/editorial";
-import { Button, Arrow } from "@/components/ui";
+import { Passages, Ledger, UseCases, CapabilityIndex } from "@/components/editorial";
 import { Reveal } from "@/components/motion";
-import Accordion from "@/components/Accordion";
-import OnThisPage from "@/components/OnThisPage";
+import {
+  PageHero,
+  GlanceCard,
+  StatsStrip,
+  Block,
+  ProcessTimeline,
+  FaqSection,
+  EnquirySection,
+  CtaBand,
+  RelatedCards,
+} from "@/components/sky9";
+import FeatureMap from "@/components/FeatureMap";
+
+/** Which areas of the app (lib/appFeatures.ts) each solution page covers. */
+const appAreasFor: Record<string, string[]> = {
+  hrms: ["overview", "people", "time", "performance", "engagement", "payroll", "system"],
+  "employee-management": ["people"],
+  onboarding: ["people"],
+  ess: ["overview", "system"],
+  payroll: ["payroll", "time"],
+  attendance: ["time"],
+  "leave-management": ["time"],
+  "hr-analytics": ["overview"],
+};
 
 export function generateStaticParams() {
   return solutions.map((s) => ({ slug: s.slug }));
@@ -48,66 +57,21 @@ export async function generateMetadata({
 }
 
 /**
- * LAYOUT RECIPES
+ * One solution page, laid out in the site's standard page order:
  *
- * All eight solution pages draw on the same vocabulary, but no two arrange it
- * the same way. The recipe below is the whole reason for that: it fixes, per
- * page, the order of the blocks and the ground each one sits on.
+ *   hero → stats strip → overview → capabilities → highlight → the long-form
+ *   sections → how it runs → reference → who uses it → in the app → FAQs →
+ *   enquiry → CTA → related.
  *
- * The variation is not decoration. It follows the subject. Payroll is a
- * sequence, so its mechanism comes early and its reference table late. The
- * HRMS page is an argument about structure, so the record itself is the second
- * thing you see. Analytics has neither a sequence nor a statutory table, so it
- * is mostly prose and finishes sooner.
+ * Every word comes from lib/solutions.ts; the per-page highlight lines below
+ * are the ones these pages have always carried.
  */
-type Block =
-  | "opening"
-  | "passages"
-  | "mechanics"
-  | "ledger"
-  | "capabilities"
-  | "usecases"
-  | "statement";
-type Ground = "surface" | "sunken" | "raised" | "dark";
-
-const recipes: Record<string, { order: Block[]; grounds: Ground[]; statement?: string }> = {
-  hrms: {
-    order: ["opening", "ledger", "passages", "usecases", "capabilities"],
-    grounds: ["surface", "sunken", "surface", "raised", "surface"],
-    statement: "One record, edited in one place, read by everything else.",
-  },
-  payroll: {
-    order: ["opening", "mechanics", "passages", "ledger", "capabilities"],
-    grounds: ["surface", "sunken", "surface", "raised", "surface"],
-    statement:
-      "Payroll teams do not spend four days calculating. They spend four days establishing what happened.",
-  },
-  "employee-management": {
-    order: ["opening", "passages", "ledger", "usecases", "capabilities"],
-    grounds: ["sunken", "surface", "raised", "surface", "sunken"],
-  },
-  attendance: {
-    order: ["opening", "passages", "ledger", "capabilities"],
-    grounds: ["surface", "sunken", "surface", "raised"],
-    statement: "Attendance systems are judged on their exceptions, not their happy path.",
-  },
-  "leave-management": {
-    order: ["opening", "passages", "usecases", "capabilities", "ledger"],
-    grounds: ["surface", "raised", "surface", "sunken", "surface"],
-  },
-  ess: {
-    order: ["opening", "passages", "ledger", "capabilities"],
-    grounds: ["sunken", "surface", "raised", "surface"],
-    statement: "Most of what an HR team is asked in a week requires access, not judgement.",
-  },
-  onboarding: {
-    order: ["opening", "mechanics", "passages", "capabilities"],
-    grounds: ["surface", "raised", "surface", "sunken"],
-  },
-  "hr-analytics": {
-    order: ["opening", "passages", "ledger", "usecases", "capabilities"],
-    grounds: ["surface", "sunken", "surface", "raised", "surface"],
-  },
+const highlights: Record<string, string> = {
+  hrms: "One record, edited in one place, read by everything else.",
+  payroll:
+    "Payroll teams do not spend four days calculating. They spend four days establishing what happened.",
+  attendance: "Attendance systems are judged on their exceptions, not their happy path.",
+  ess: "Most of what an HR team is asked in a week requires access, not judgement.",
 };
 
 export default async function SolutionPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -115,108 +79,150 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
   const s = bySlug(slug);
   if (!s) notFound();
 
-  const recipe = recipes[s.slug] ?? {
-    order: ["opening", "passages", "capabilities"] as Block[],
-    grounds: ["surface", "sunken", "surface"] as Ground[],
-  };
-
-  const render = (block: Block, i: number) => {
-    const ground = recipe.grounds[i] ?? "surface";
-    switch (block) {
-      case "opening":
-        return (
-          <Band key="opening" ground={ground} size="lg">
-            <Opening label={s.kicker} paragraphs={s.opening} />
-          </Band>
-        );
-      case "passages":
-        return (
-          <Band key="passages" ground={ground} size="md">
-            <Passages items={s.passages} level="h2" />
-          </Band>
-        );
-      case "mechanics":
-        return s.mechanics ? (
-          <Band key="mechanics" ground={ground} size="lg">
-            <Mechanics {...s.mechanics} />
-          </Band>
-        ) : null;
-      case "ledger":
-        return s.ledger ? (
-          <Band key="ledger" ground={ground} size="lg">
-            <Ledger {...s.ledger} />
-          </Band>
-        ) : null;
-      case "usecases":
-        return s.useCases ? (
-          <Band key="usecases" ground={ground} size="lg">
-            <UseCases {...s.useCases} />
-          </Band>
-        ) : null;
-      case "capabilities":
-        return (
-          <Band key="capabilities" ground={ground} size="lg">
-            <Reveal y={12} className="max-w-2xl">
-              <h2 className="display display-md">{s.capabilitiesTitle}</h2>
-              <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">{s.capabilitiesIntro}</p>
-            </Reveal>
-            <CapabilityIndex groups={s.capabilities} className="mt-12" />
-          </Band>
-        );
-      default:
-        return null;
-    }
-  };
+  const capabilityCount = s.capabilities.reduce((n, g) => n + g.items.length, 0);
+  const areas = appAreasFor[s.slug] ?? [];
 
   return (
     <>
-      <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
-
-      <ArticleOpener
-        eyebrow={s.kicker}
-        title={s.title}
-        standfirst={s.standfirst}
-        slot={s.image}
+      <PageHero
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Solutions", href: "/solutions" },
           { label: s.name },
         ]}
-        actions={
-          <>
-            <Button href="/company/contact">Book a demo</Button>
-            <Button href="/pricing" variant="outline">
-              See pricing
-            </Button>
-          </>
+        badge={s.kicker}
+        title={s.title}
+        typed
+        standfirst={s.standfirst}
+        chips={s.capabilities.slice(0, 3).map((g) => ({ icon: s.icon, label: g.group }))}
+        primary={{ label: "Book a demo", href: "/company/contact" }}
+        secondary={{ label: "See what it does", href: "#capabilities" }}
+        aside={
+          <GlanceCard
+            title={`${s.name} at a glance`}
+            items={[
+              { label: "Capabilities", value: `${capabilityCount}` },
+              { label: "Capability groups", value: `${s.capabilities.length}` },
+              ...(s.mechanics ? [{ label: "Steps in the process", value: `${s.mechanics.steps.length}` }] : []),
+              { label: "Questions answered", value: `${s.questions.length}` },
+              { label: "Free trial", value: "14 days" },
+            ]}
+          />
         }
       />
 
-      {recipe.order.map(render)}
+      <StatsStrip
+        items={[
+          { value: `${capabilityCount}`, label: "Capabilities on this page", icon: s.icon },
+          { value: `${s.passages.length}`, label: "Topics covered in depth", icon: "folder" },
+          { value: `${s.questions.length}`, label: "Questions answered", icon: "chat" },
+          { value: "12", label: "Modules on one record", icon: "layers" },
+        ]}
+      />
 
-      {recipe.statement && <Statement tone="dark">{recipe.statement}</Statement>}
+      {/* ---- Overview ---- */}
+      <Block eyebrow="Overview" title={s.seo.focus ?? s.name}>
+        <div className="mx-auto grid max-w-4xl gap-5">
+          {s.opening.map((p, i) => (
+            <Reveal key={i} delay={i * 60} y={12}>
+              <p className={`text-center leading-[1.75] ${i === 0 ? "text-[18px] text-heading sm:text-[19.5px]" : "text-[16.5px] text-muted"}`}>
+                {p}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+      </Block>
 
-      {/* Questions. Every question on this page is specific to this module —
-          none is repeated on another solution page. */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <div className="lg:sticky lg:top-[110px] lg:self-start">
-            <Reveal y={12}>
-              <h2 className="display display-md">Questions about {s.name.toLowerCase()}</h2>
-              <p className="mt-5 text-[16px] leading-[1.7] text-muted">{s.questionsIntro}</p>
-              <Link
-                href="/resources/faqs"
-                className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
-              >
-                Every question, in one place <Arrow />
-              </Link>
+      {/* ---- Who reaches for it ---- */}
+      {s.buyer && (
+        <Block eyebrow="Who it is for" title={s.buyer.role} intro={s.buyer.reality} ground="sunken">
+          <div className="mx-auto max-w-4xl">
+            <p className="mb-5 text-center text-[13px] font-bold uppercase tracking-[0.14em] text-label">
+              The moments that usually start the search
+            </p>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+              {s.buyer.signals.map((sig, i) => (
+                <Reveal as="li" key={sig} delay={i * 60} y={12} className="card card-hover flex gap-4 p-5">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/10 font-display text-[15px] font-bold text-accent">
+                    {i + 1}
+                  </span>
+                  <p className="text-[15px] leading-[1.65] text-body">{sig}</p>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </Block>
+      )}
+
+      {/* ---- Capabilities ---- */}
+      <Block id="capabilities" eyebrow="Capabilities" title={s.capabilitiesTitle} intro={s.capabilitiesIntro} ground="sunken">
+        <CapabilityIndex groups={s.capabilities} />
+      </Block>
+
+      {highlights[s.slug] && (
+        <section className="bg-canvas py-10 sm:py-12">
+          <div className="shell">
+            <Reveal y={14} className="relative mx-auto max-w-4xl overflow-hidden rounded-[24px] bg-panel px-6 py-10 text-center sm:px-12">
+              <span className="border-beam" aria-hidden="true" />
+              <p className="font-display text-[22px] font-semibold leading-snug text-white sm:text-[28px]">
+                &ldquo;{highlights[s.slug]}&rdquo;
+              </p>
             </Reveal>
           </div>
-          <Accordion items={s.questions.map((q) => ({ q: q.q, a: q.a }))} />
-        </div>
-      </Band>
+        </section>
+      )}
 
-      <Onward links={s.onward} />
+      {/* ---- In depth ---- */}
+      <Block eyebrow="In depth" title={`How ${s.name.toLowerCase()} works in practice`}>
+        <Passages items={s.passages} />
+      </Block>
+
+      {/* ---- Process ---- */}
+      {s.mechanics && (
+        <Block eyebrow="The process" title={s.mechanics.title} intro={s.mechanics.intro} ground="sunken">
+          <ProcessTimeline steps={s.mechanics.steps.map((m) => ({ title: m.title, body: m.body }))} />
+        </Block>
+      )}
+
+      {/* ---- Reference ---- */}
+      {s.ledger && (
+        <Block eyebrow="Reference" title={s.ledger.title} intro={s.ledger.intro}>
+          <Ledger title="" rows={s.ledger.rows} className="[&>div:first-child]:hidden [&>dl]:mt-0" />
+        </Block>
+      )}
+
+      {/* ---- Who uses it ---- */}
+      {s.useCases && (
+        <Block eyebrow="Who uses it" title={s.useCases.title} intro={s.useCases.intro} ground="sunken">
+          <UseCases title="" items={s.useCases.items} className="[&>div:first-child]:hidden [&>div:last-child]:mt-0" />
+        </Block>
+      )}
+
+      {/* ---- In the app ---- */}
+      {areas.length > 0 && (
+        <Block eyebrow="In the HRMagix app" title={`Where ${s.name.toLowerCase()} lives in the app`}>
+          <FeatureMap areas={areas} dashboard={s.slug === "ess" || s.slug === "hrms"} />
+        </Block>
+      )}
+
+      <FaqSection
+        title={`Questions about ${s.name.toLowerCase()}`}
+        intro={s.questionsIntro}
+        items={s.questions.map((q) => ({ q: q.q, a: q.a }))}
+        ground="sunken"
+      />
+
+      <EnquirySection topic={s.name} />
+
+      <CtaBand
+        title={<>See {s.name.toLowerCase()} run on <strong>your own data</strong></>}
+        body="A walkthrough against your own policies, with a dry-run before the first live cutoff."
+      />
+
+      <RelatedCards
+        title="Related solutions and resources"
+        items={s.onward.map((o) => ({ label: o.label, href: o.href, note: o.note }))}
+      />
     </>
   );
 }

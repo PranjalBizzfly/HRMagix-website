@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/icons";
+import { priceLabel, PRICE_UNIT, type PlanName } from "@/lib/pricing";
 
 /**
  * Single source of truth for HRMagix site copy.
@@ -9,9 +10,11 @@ export const site = {
   name: "HRMagix",
   tagline: "Modern People Operations for India's Growing Enterprises",
   hero: {
-    eyebrow: "All-in-one HR platform · Built for India · v2.0",
-    title: ["Smart People Operations for", "India's growing teams."],
-    lede: "Attendance, multi-state payroll, statutory compliance, OKRs, and employee recognition — unified in one seamless workspace engineered for Indian businesses.",
+    // Word for word from the hrmagix.com hero. Do not rewrite.
+    eyebrow: "All-in-one HR platform · v2.0",
+    title: ["Smart HR for", "modern teams."],
+    lede: "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+    highlights: ["Unified Platform", "Enterprise Ready", "Built to Scale"],
     pillars: [
       ["100% Indian", "Statutory Compliance"],
       ["12 Integrated", "Workflows"],
@@ -32,7 +35,10 @@ export const site = {
   contact: {
     email: "hello@hrmagix.com",
     phone: "+91 900 600 7955",
-    location: "Pune & Mumbai, Maharashtra, India",
+    // Verified against hrmagix.com ("Pune, Maharashtra, India"). The phone
+    // number below conflicts with the live site's (+91 98765 43210, which looks
+    // like a placeholder) — confirm the real number with the client.
+    location: "Pune, Maharashtra, India",
     blurb:
       "Looking for a custom walkthrough or have specific statutory policy requirements? Connect with our product specialists in Pune for a 1-on-1 consultation.",
   },
@@ -175,7 +181,7 @@ export const modules: Module[] = [
   {
     name: "Attendance & Shifts",
     slug: "attendance",
-    href: "/modules/attendance",
+    href: "/features/attendance",
     icon: "clock",
     group: "Time & Work",
     desc: "Real-time presence tracking across physical branches and remote personnel with zero loss-of-pay discrepancies.",
@@ -189,7 +195,7 @@ export const modules: Module[] = [
   {
     name: "Leaves & Holidays",
     slug: "leaves",
-    href: "/modules/leaves",
+    href: "/features/leaves",
     icon: "calendar",
     group: "Time & Work",
     desc: "Custom multi-tier leave policies, compensatory-off tracking, and unified visual holiday calendars across Indian states.",
@@ -203,7 +209,7 @@ export const modules: Module[] = [
   {
     name: "Payroll",
     slug: "payroll",
-    href: "/modules/payroll",
+    href: "/features/payroll",
     icon: "wallet",
     group: "Payroll",
     desc: "Execute complete monthly payroll in under 3 minutes with 100% statutory precision and bank transfer batch files.",
@@ -217,7 +223,7 @@ export const modules: Module[] = [
   {
     name: "Objectives & OKRs",
     slug: "okrs",
-    href: "/modules/okrs",
+    href: "/features/okrs",
     icon: "target",
     group: "Performance",
     desc: "Align company vision with team sprints through transparent, quantitative Objective and Key Result hierarchies.",
@@ -230,7 +236,7 @@ export const modules: Module[] = [
   {
     name: "KRA & 9-Box",
     slug: "kra-9box",
-    href: "/modules/kra-9box",
+    href: "/features/kra-9box",
     icon: "grid",
     group: "Performance",
     desc: "Define structured role-specific Key Result Areas and visualize high-potential future leadership on interactive talent matrices.",
@@ -243,7 +249,7 @@ export const modules: Module[] = [
   {
     name: "PIPs & Growth",
     slug: "pips",
-    href: "/modules/pips",
+    href: "/features/pips",
     icon: "sprout",
     group: "Performance",
     desc: "Constructive 30/60/90-day Performance Improvement Plans with structured milestone tracking and manager coaching logs.",
@@ -256,7 +262,7 @@ export const modules: Module[] = [
   {
     name: "Recognition",
     slug: "recognition",
-    href: "/modules/recognition",
+    href: "/features/recognition",
     icon: "trophy",
     group: "Engagement",
     desc: "Foster a continuous culture of appreciation with peer spot awards, value-based badges, and a live company culture wall.",
@@ -269,7 +275,7 @@ export const modules: Module[] = [
   {
     name: "1-on-1s & Meetings",
     slug: "meetings",
-    href: "/modules/meetings",
+    href: "/features/meetings",
     icon: "chat",
     group: "Engagement",
     desc: "Empower managers to hold meaningful recurring coaching conversations with shared agendas and action item tracking.",
@@ -282,7 +288,7 @@ export const modules: Module[] = [
   {
     name: "Onboarding",
     slug: "onboarding",
-    href: "/modules/onboarding",
+    href: "/features/onboarding",
     icon: "rocket",
     group: "People",
     desc: "Delight new hires before day one with paperless digital document collection and structured department welcome workflows.",
@@ -295,7 +301,7 @@ export const modules: Module[] = [
   {
     name: "Documents",
     slug: "documents",
-    href: "/modules/documents",
+    href: "/features/documents",
     icon: "folder",
     group: "People",
     desc: "Centralized, secure employee document repository with automated expiry alerts and policy acknowledgment tracking.",
@@ -308,7 +314,7 @@ export const modules: Module[] = [
   {
     name: "Succession",
     slug: "succession",
-    href: "/modules/succession",
+    href: "/features/succession",
     icon: "compass",
     group: "People",
     desc: "Identify critical single-point-of-failure roles and build robust internal leadership candidate benches for future growth.",
@@ -321,7 +327,7 @@ export const modules: Module[] = [
   {
     name: "Analytics",
     slug: "analytics",
-    href: "/modules/analytics",
+    href: "/features/analytics",
     icon: "chart",
     group: "System",
     desc: "Transform people data into actionable executive insights with real-time workforce trends, attrition metrics, and payroll costs.",
@@ -417,7 +423,7 @@ export const testimonials = [
 ];
 
 export type Plan = {
-  name: string;
+  name: PlanName;
   blurb: string;
   price: string;
   unit?: string;
@@ -431,8 +437,8 @@ export const plans: Plan[] = [
   {
     name: "Starter",
     blurb: "For small teams getting started",
-    price: "$3",
-    unit: "/emp/mo",
+    price: priceLabel("Starter"),
+    unit: PRICE_UNIT,
     includes: [
       "Attendance & leaves",
       "Employee directory",
@@ -440,13 +446,13 @@ export const plans: Plan[] = [
       "Email support",
     ],
     cta: "Get Started Free",
-    href: "/contact",
+    href: "/company/contact",
   },
   {
     name: "Growth",
     blurb: "For scaling companies",
-    price: "$6",
-    unit: "/emp/mo",
+    price: priceLabel("Growth"),
+    unit: PRICE_UNIT,
     featured: true,
     includes: [
       "Everything in Starter",
@@ -456,12 +462,12 @@ export const plans: Plan[] = [
       "Priority support",
     ],
     cta: "Start Free Trial",
-    href: "/contact",
+    href: "/company/contact",
   },
   {
     name: "Enterprise",
     blurb: "For large organisations",
-    price: "Custom",
+    price: priceLabel("Enterprise"),
     includes: [
       "Everything in Growth",
       "SSO & advanced security",
@@ -469,7 +475,7 @@ export const plans: Plan[] = [
       "Dedicated success manager",
     ],
     cta: "Contact Sales",
-    href: "/contact",
+    href: "/company/contact",
   },
 ];
 

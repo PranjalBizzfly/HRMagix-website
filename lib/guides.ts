@@ -66,12 +66,7 @@ export const guides: Guide[] = [
       title: "Guide: Running Your First Payroll in a New System",
       description:
         "A step-by-step guide to moving payroll into a payroll processing system: what data must be ready, why year-to-date figures matter for Form 16, and how to run a parallel month.",
-      keywords: [
-        "payroll processing system",
-        "payroll software",
-        "online payroll software",
-        "HRMS and payroll software",
-      ],
+      keywords: [],
     },
     opening: [
       "The hard part of a first payroll run is almost never the calculation. It is establishing what is true — which salary structure a person is actually on, which identifiers are correct, and what the previous system has already reported to the government on your behalf.",
@@ -195,12 +190,7 @@ export const guides: Guide[] = [
       title: "Guide: Writing a Leave Policy for an Indian Company",
       description:
         "The decisions a leave policy is made of — accrual basis, leave types, approval routing, carry-forward, encashment, the sandwich rule and statutory leave — and how each behaves in a leave management system.",
-      keywords: [
-        "leave management system",
-        "HR software for small business",
-        "employee management system",
-        "HR management system",
-      ],
+      keywords: [],
     },
     opening: [
       "A leave policy is not a document. It is a set of decisions that a document records, and most policies that cause trouble were never actually decided — they were improvised consistently enough to feel settled, and then written down afterwards in language vague enough to keep everyone comfortable.",
@@ -320,12 +310,7 @@ export const guides: Guide[] = [
       title: "Guide: Attendance for Shift and Field Workforces",
       description:
         "How to configure an attendance management system for shop-floor, field and multi-site teams: capture methods, rotating shifts, midnight crossings, overtime rules and the records an inspection tests.",
-      keywords: [
-        "attendance management system",
-        "employee attendance software",
-        "HR software for companies",
-        "HRMS software",
-      ],
+      keywords: [],
     },
     opening: [
       "Attendance software written for an office assumes a desk, a device and a network. A large part of the Indian workforce has none of the three, and configuring a system as though they do is the reason attendance projects fail on the shop floor while working perfectly in head office.",

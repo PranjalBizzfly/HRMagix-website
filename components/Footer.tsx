@@ -1,338 +1,159 @@
 import Link from "next/link";
-import { Logo, Button, Arrow } from "./ui";
-import { Icon } from "./icons";
-import { Reveal } from "./motion";
+import { Logo, Arrow } from "./ui";
 import { site } from "@/lib/content";
 import { solutionsNav, industriesNav, resourcesNav, companyNav, policyNav } from "@/lib/nav";
 import { social, payments } from "@/lib/footer";
 import { SocialMark, PaymentMark } from "./BrandMarks";
 
 /**
- * High-end Picky Assist-style comprehensive footer structure.
- * Featuring 5 structured columns, authentic brand-colored social media icons,
- * enterprise accreditation badges, action pills, accepted payments, and strict content preservation.
+ * The footer.
+ *
+ * A black index: a tagline tab hanging from the top edge, a fixed-width brand
+ * column (logo, blurb, social circles, contact, CTAs), five even link columns,
+ * and a bottom bar with the copyright and payment marks.
+ *
+ * The footer is dark in both themes, so it uses fixed colours rather than
+ * theme tokens.
  */
 
-const socialBrandStyles: Record<string, string> = {
-  linkedin: "bg-[#0A66C2] text-white hover:bg-[#084e96] hover:shadow-[0_4px_14px_rgba(10,102,194,0.4)]",
-  x: "bg-[#0F1419] text-white hover:bg-[#000000] hover:shadow-[0_4px_14px_rgba(15,20,25,0.4)]",
-  facebook: "bg-[#1877F2] text-white hover:bg-[#0f60c7] hover:shadow-[0_4px_14px_rgba(24,119,242,0.4)]",
-  instagram: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:opacity-95 hover:shadow-[0_4px_14px_rgba(220,39,67,0.4)]",
-  youtube: "bg-[#FF0000] text-white hover:bg-[#cc0000] hover:shadow-[0_4px_14px_rgba(255,0,0,0.4)]",
-  whatsapp: "bg-[#25D366] text-white hover:bg-[#1da851] hover:shadow-[0_4px_14px_rgba(37,211,102,0.4)]",
-};
+const dedupe = <T extends { href: string }>(links: T[]) =>
+  links.filter((l, i, all) => all.findIndex((x) => x.href === l.href) === i);
+
+const groups = [
+  { title: "Solutions", links: solutionsNav.flatMap((c) => c.links) },
+  { title: "Industries", links: industriesNav.flatMap((c) => c.links) },
+  {
+    title: "Resources",
+    links: dedupe([
+      { label: "Pricing", href: "/pricing" },
+      { label: "How Setup Works", href: "/how-it-works" },
+      ...resourcesNav.flatMap((c) => c.links),
+      { label: "Explore All Pages", href: "/all-pages" },
+    ]),
+  },
+  { title: "Legal", links: dedupe([...policyNav]) },
+  {
+    title: "Company",
+    links: dedupe(companyNav.flatMap((c) => c.links)).filter(
+      (l) => l.href !== "/pricing" && !policyNav.some((p) => p.href === l.href),
+    ),
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
-      {/* ---- Top Closing Invitation (Picky Assist style CTA) ---- */}
-      <div className="relative overflow-hidden border-b border-line bg-surface-sunken">
-        <div
-          className="pointer-events-none absolute -left-20 top-0 h-[380px] w-[500px] rounded-full bg-glow/12 blur-[120px]"
-          aria-hidden="true"
-        />
-        <div className="shell relative py-16 sm:py-20">
-          <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-            <Reveal y={14}>
-              <span className="inline-flex items-center gap-2 rounded-full bg-surface-raised px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent-soft ring-1 ring-line">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
-                Live Implementation & Support
-              </span>
-              <h2 className="display display-md mt-4 max-w-[17ch] text-balance">
-                See it run against <strong>your own payroll month</strong>
-              </h2>
-              <p className="mt-5 max-w-xl text-[16px] leading-[1.7] text-muted">
-                {site.contact.blurb}
-              </p>
-            </Reveal>
-            <Reveal delay={120} className="flex flex-wrap items-center gap-3">
-              <Button href="/company/contact" size="lg">
-                Book a demo
-              </Button>
-              <Button href="/pricing" variant="outline" size="lg">
-                See pricing
-              </Button>
-              <Link
-                href="/company/careers"
-                className="group inline-flex items-center gap-2 rounded-xl bg-surface px-4 py-2.5 text-[13px] font-semibold text-heading ring-1 ring-line transition-all hover:bg-surface-raised hover:ring-line-accent"
-              >
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                We&rsquo;re Hiring
-                <span className="text-accent transition-transform group-hover:translate-x-0.5">
-                  <Arrow />
-                </span>
-              </Link>
-            </Reveal>
-          </div>
-          <p className="mt-8 text-[13.5px] text-subtle">{site.trial}</p>
+    <footer className="panel-fixed-dark relative overflow-hidden bg-black text-white">
+      {/* Diagonal sheen on the right */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-white/[0.07] via-white/[0.02] to-transparent [clip-path:polygon(35%_0,100%_0,100%_100%,0_100%)]"
+        aria-hidden="true"
+      />
+
+      {/* Tagline tab */}
+      <div className="relative flex justify-center px-4">
+        <div className="w-full max-w-2xl rounded-b-[40px] bg-gradient-to-r from-violet-600 via-violet-500 to-violet-700 px-6 py-4 text-center shadow-float">
+          <p className="text-[22px] font-bold italic tracking-tight text-white sm:text-[30px]">
+            Payroll, without the month-end panic…
+          </p>
         </div>
       </div>
 
-      {/* ---- Main Navigation Index (5-Column Picky Assist Structure) ---- */}
-      <div className="shell py-12 sm:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[minmax(0,18rem)_repeat(4,minmax(0,1fr))] lg:gap-8 xl:gap-10">
-          {/* Column 1: Brand, Contact, Real-Color Socials & Accreditations */}
-          <div>
+      <div className="shell relative pb-8 pt-16">
+        <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16">
+          {/* Brand column */}
+          <div className="flex flex-col gap-6">
             <Link href="/" aria-label="HRMagix home" className="inline-flex">
-              <Logo />
+              <Logo light />
             </Link>
-            <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              An HRMS and payroll platform for Indian companies — twelve modules on one
-              employee record, with statutory compliance built into the run.
+
+            <p className="max-w-xs text-[14px] leading-relaxed text-white/70">
+              HRMS and payroll for Indian companies, with statutory compliance built into the run.
             </p>
 
-            {/* Direct Contact */}
-            <ul className="mt-6 space-y-2.5 text-[13.5px]">
-              <li>
-                <a
-                  href={`mailto:${site.contact.email}`}
-                  className="group inline-flex items-center gap-2.5 text-muted transition-colors hover:text-accent"
-                >
-                  <Icon name="mail" className="h-4 w-4 shrink-0 text-accent-soft" />
-                  {site.contact.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                  className="group inline-flex items-center gap-2.5 text-muted transition-colors hover:text-accent"
-                >
-                  <Icon name="phone" className="h-4 w-4 shrink-0 text-accent-soft" />
-                  {site.contact.phone}
-                </a>
-              </li>
-              <li className="inline-flex items-start gap-2.5 text-muted">
-                <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />
-                <span>{site.contact.location}</span>
-              </li>
+            <ul className="flex flex-wrap gap-2">
+              {social.map((s) => (
+                <li key={s.name}>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`HRMagix on ${s.label}`}
+                    title={s.label}
+                    className="grid h-9 w-9 place-items-center rounded-full bg-white text-black transition-colors hover:bg-violet-500 hover:text-white"
+                  >
+                    <SocialMark name={s.name} className="h-4 w-4" />
+                  </a>
+                </li>
+              ))}
             </ul>
 
-            {/* Real Color Social Media Icons (Picky Assist Style) */}
-            <div className="mt-7 border-t border-line pt-5">
-              <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
-                Connect With Us
-              </h3>
-              <ul className="mt-3.5 flex flex-wrap gap-2.5">
-                {social.map((s) => (
-                  <li key={s.name}>
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`HRMagix on ${s.label}`}
-                      title={s.label}
-                      className={`grid h-9 w-9 place-items-center rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand motion-reduce:hover:translate-y-0 shadow-sm ${
-                        socialBrandStyles[s.name] ?? "bg-surface text-body"
-                      }`}
-                    >
-                      <SocialMark name={s.name} className="h-4 w-4" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col gap-1.5 text-[14px] text-white/80">
+              <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-violet-300">
+                {site.contact.email}
+              </a>
+              <a
+                href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
+                className="transition-colors hover:text-violet-300"
+              >
+                {site.contact.phone}
+              </a>
             </div>
 
-            {/* Enterprise Accreditations & Certifications (Picky Assist Member-of Style) */}
-            <div className="mt-6 border-t border-line pt-5">
-              <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
-                Accreditations
-              </h3>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-surface-raised px-2.5 py-1 text-[11px] font-semibold text-heading ring-1 ring-line">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  SOC 2 Type II
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-surface-raised px-2.5 py-1 text-[11px] font-semibold text-heading ring-1 ring-line">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  ISO 27001
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-surface-raised px-2.5 py-1 text-[11px] font-semibold text-heading ring-1 ring-line">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  DPDP & GDPR Ready
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-surface-raised px-2.5 py-1 text-[11px] font-semibold text-heading ring-1 ring-line">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  EPF & ESI Ready
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Products & Modules */}
-          <div>
-            <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-heading">
-              Products
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {solutionsNav.flatMap((c) => c.links).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Industries */}
-          <div>
-            <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-heading">
-              Industries
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {industriesNav.flatMap((c) => c.links).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Quick Links & Tools */}
-          <div>
-            <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-heading">
-              Quick Links
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              <li>
-                <Link
-                  href="/pricing"
-                  className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-it-works"
-                  className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                >
-                  How Setup Works
-                </Link>
-              </li>
-              {resourcesNav.flatMap((c) => c.links).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 5: Legal, Company & Compare */}
-          <div>
-            <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-heading">
-              Legal & Company
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {companyNav.flatMap((c) => c.links).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              {policyNav.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={p.href}
-                    className="text-[13.5px] text-muted transition-colors hover:text-accent"
-                  >
-                    {p.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Column Action Buttons (Picky Assist Style) */}
-            <div className="mt-7 space-y-2.5 border-t border-line pt-5">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/company/contact"
+                className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-500 px-5 text-[14px] font-semibold text-white transition-colors hover:bg-violet-400"
+              >
+                Book a Demo
+              </Link>
               <Link
                 href="/company/careers"
-                className="group flex w-full items-center justify-between rounded-xl bg-surface-raised px-3.5 py-2 text-[12.5px] font-semibold text-heading ring-1 ring-line transition-colors hover:bg-surface-sunken hover:ring-line-accent"
+                className="inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[14px] font-medium text-white ring-1 ring-inset ring-white/25 transition-colors hover:bg-white/10"
               >
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-                  We&rsquo;re Hiring
-                </span>
-                <span className="text-accent transition-transform group-hover:translate-x-0.5">
-                  <Arrow />
-                </span>
-              </Link>
-              <Link
-                href="https://app.hrmagix.com/login"
-                className="flex w-full items-center justify-center rounded-xl bg-brand px-3.5 py-2 text-[12.5px] font-bold text-white shadow-sm transition-all hover:bg-brand-hover"
-              >
-                Sign In to Workspace
+                We&apos;re Hiring <Arrow />
               </Link>
             </div>
           </div>
-        </div>
 
-        {/* ---- Accepted Payments & Security Strip ---- */}
-        <div className="mt-14 border-t border-line pt-8">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h3 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
-                Accepted Payment Methods & Gateway Security
-              </h3>
-              <p className="mt-1 text-[13px] text-muted">
-                Card, UPI and corporate banking transactions are secured with 256-bit SSL encryption. HRMagix does not store card credentials.
-              </p>
-            </div>
-            <ul className="flex flex-wrap items-center gap-2.5">
-              {payments.map((p) => (
-                <li
-                  key={p.name}
-                  title={p.label}
-                  className="grid h-[34px] w-[54px] place-items-center rounded-lg bg-white px-2 shadow-sm ring-1 ring-black/10 transition-transform hover:scale-105"
-                >
-                  <PaymentMark name={p.name} className="h-full w-full" />
-                </li>
-              ))}
-            </ul>
+          {/* Link columns */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+            {groups.map((g) => (
+              <nav key={g.title} aria-label={g.title}>
+                <h3 className="text-[15px] font-bold text-violet-400">{g.title}</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {g.links.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="text-[14px] leading-snug text-white/85 transition-colors hover:text-white"
+                      >
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
           </div>
         </div>
 
-        {/* ---- Baseline Copyright & Legal Notice ---- */}
-        <div className="mt-10 flex flex-col gap-4 border-t border-line pt-7 sm:flex-row sm:items-center sm:justify-between text-[13px] text-subtle">
-          <p>
-            © {new Date().getFullYear()} HRMagix Technologies Pvt Ltd (India) &amp; HRMagix Inc (USA). {site.footNote}
+        {/* Bottom bar */}
+        <div className="mt-14 flex flex-col items-center gap-5 border-t border-white/10 pt-6 md:flex-row md:justify-between">
+          <p className="text-center text-[13px] text-white/70 md:text-left">
+            Copyright © {new Date().getFullYear()} HRMagix Technologies Pvt Ltd (India) &amp; HRMagix
+            Inc (USA)
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[12.5px]">
-            <Link href="/policy/privacy" className="hover:text-accent transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/policy/terms" className="hover:text-accent transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/policy/security" className="hover:text-accent transition-colors">
-              Security
-            </Link>
-            <Link href="/policy/cookies" className="hover:text-accent transition-colors">
-              Cookies
-            </Link>
-            <Link
-              href="https://app.hrmagix.com/login"
-              className="font-semibold text-accent hover:underline"
-            >
-              Workspace Login →
-            </Link>
-          </div>
+          <ul className="flex flex-wrap justify-center gap-2">
+            {payments.map((p) => (
+              <li
+                key={p.name}
+                title={p.label}
+                className="grid h-[30px] w-[46px] place-items-center rounded bg-white px-1.5"
+              >
+                <PaymentMark name={p.name} className="h-full w-full" />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

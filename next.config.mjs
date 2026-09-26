@@ -31,24 +31,23 @@ const redirects = [
   ["/media", "/resources/media"],
   ["/calculator", "/resources/calculator"],
 
-  // Platform. The old /features and /modules pages are superseded by the
-  // solutions hub, which carries the full twelve-module reference.
-  ["/features", "/solutions"],
-  ["/modules", "/solutions"],
+  // Platform. /features is a real page again; the old /modules URLs go to the
+  // feature page for the same module.
+  ["/modules", "/features"],
 
   // The twelve module pages map onto the solution page that treats each subject.
-  ["/modules/attendance", "/solutions/attendance"],
-  ["/modules/leaves", "/solutions/leave-management"],
-  ["/modules/payroll", "/solutions/payroll"],
-  ["/modules/onboarding", "/solutions/onboarding"],
-  ["/modules/documents", "/solutions/employee-management"],
-  ["/modules/succession", "/solutions/employee-management"],
-  ["/modules/analytics", "/solutions/hr-analytics"],
-  ["/modules/okrs", "/solutions/hr-analytics"],
-  ["/modules/kra-9box", "/solutions/hr-analytics"],
-  ["/modules/pips", "/solutions/hr-analytics"],
-  ["/modules/meetings", "/solutions/ess"],
-  ["/modules/recognition", "/solutions/ess"],
+  ["/modules/attendance", "/features/attendance"],
+  ["/modules/leaves", "/features/leaves"],
+  ["/modules/payroll", "/features/payroll"],
+  ["/modules/onboarding", "/features/onboarding"],
+  ["/modules/documents", "/features/documents"],
+  ["/modules/succession", "/features/succession"],
+  ["/modules/analytics", "/features/analytics"],
+  ["/modules/okrs", "/features/okrs"],
+  ["/modules/kra-9box", "/features/kra-9box"],
+  ["/modules/pips", "/features/pips"],
+  ["/modules/meetings", "/features/meetings"],
+  ["/modules/recognition", "/features/recognition"],
 
   // The statutory engine now lives inside the payroll page.
   ["/compliance", "/solutions/payroll"],

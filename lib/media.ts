@@ -3,12 +3,9 @@
  *
  * TWO KINDS OF IMAGE LIVE HERE, AND THE DISTINCTION IS DELIBERATE.
  *
- * 1. **The single product image.** `dashboard` is the one and only product
- *    screenshot on this website — the HRMagix Overview workspace as it is
- *    published on hrmagix.com. It appears exactly once, in the homepage hero.
- *    No other page renders a dashboard, a mockup, a device frame or a
- *    simulated product screen. If you are about to add a second, don't:
- *    describe the product in words and show the people who use it instead.
+ * 1. **No product images.** The website shows no dashboard screenshots,
+ *    mockups, device frames or simulated product screens. The product is
+ *    described in words (lib/appFeatures.ts). Do not add one.
  *
  * 2. **Photography of real Indian workplaces.** Every other entry is a
  *    photograph of Indian professionals, Indian offices, Indian shop floors.
@@ -19,7 +16,7 @@
  *    none is reused.
  *
  * Licensing: photography is Pexels-licensed (free for commercial use, no
- * attribution required). The HRMagix mark and dashboard are the company's own.
+ * attribution required). The HRMagix mark is the company's own.
  */
 
 export type MediaSlot = {
@@ -37,20 +34,6 @@ export type MediaSlot = {
 };
 
 const slots: MediaSlot[] = [
-  /* ---------------------------------------------------------------- */
-  /* The one product image on the entire website.                     */
-  /* ---------------------------------------------------------------- */
-  {
-    key: "dashboard",
-    src: "/media/hero-workspace.jpg",
-    subject:
-      "The HRMagix Overview workspace: live attendance counters, attendance trend, Q3 OKR progress and the punch-in roster.",
-    alt:
-      "The HRMagix dashboard showing live employee attendance, the weekly attendance trend, Q3 OKR progress and a recent punch-in roster",
-    width: 1376,
-    height: 768,
-    priority: true,
-  },
 
   /* ---------------------------------------------------------------- */
   /* Homepage                                                          */

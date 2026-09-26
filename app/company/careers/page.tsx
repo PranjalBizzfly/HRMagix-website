@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { careers } from "@/lib/resources";
 import { site } from "@/lib/content";
-import { Band, Opening, NumberedNarrative, Statement, Onward } from "@/components/editorial";
-import { Arrow, Button } from "@/components/ui";
+import { Opening, NumberedNarrative, Statement, Onward } from "@/components/editorial";
+import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
@@ -35,7 +36,7 @@ export default function CareersPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="relative isolate overflow-hidden">
+      <header className="page-hero relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Photo slot="careers" cover rounded="rounded-none" hover={false} sizes="100vw" />
           <div
@@ -68,20 +69,20 @@ export default function CareersPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <Opening label="What HRMagix is" paragraphs={careers.situation} />
-      </Band>
+      <SiteStats />
 
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">What the work is actually like</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Four things about building this particular product that are worth knowing before you
-            decide whether it appeals to you.
-          </p>
-        </Reveal>
-        <NumberedNarrative items={careers.whatTheWorkIs} className="mt-14" />
-      </Band>
+      <Block ground="canvas">
+        <Opening label="What HRMagix is" paragraphs={careers.situation} />
+      </Block>
+
+      <Block
+        eyebrow="The work"
+        title="What the work is actually like"
+        intro="Four things about building this particular product that are worth knowing before you decide whether it appeals to you."
+        ground="sunken"
+      >
+        <NumberedNarrative items={careers.whatTheWorkIs} />
+      </Block>
 
       <Statement tone="light" attribution="The nature of the problem">
         Building payroll for India is not a design problem with a compliance appendix. It is a
@@ -89,13 +90,9 @@ export default function CareersPage() {
       </Statement>
 
       {/* ---- Open roles: a real listing, or a real empty state ---- */}
-      <Band ground="surface" size="lg" id="openings">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Open roles</h2>
-        </Reveal>
-
+      <Block id="openings" eyebrow="Roles" title="Open roles" ground="canvas">
         {careers.openings.length === 0 ? (
-          <Reveal delay={100} y={12} className="mt-10 max-w-3xl">
+          <Reveal delay={100} y={12} className="mx-auto max-w-3xl">
             <EmptyState
               title="No roles are published right now"
               body={
@@ -112,12 +109,12 @@ export default function CareersPage() {
             />
           </Reveal>
         ) : (
-          <ul className="mt-10 divide-y divide-line border-y border-line">
+          <ul className="grid gap-4 lg:gap-5">
             {careers.openings.map((role) => (
               <Reveal as="li" key={role.slug} y={12}>
                 <Link
                   href={`/company/careers/${role.slug}`}
-                  className="group grid gap-2 py-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,16rem)_auto] lg:items-baseline lg:gap-8"
+                  className="card card-hover group grid gap-2 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,16rem)_auto] lg:items-baseline lg:gap-8"
                 >
                   <span className="font-display text-[18px] font-bold text-heading transition-colors group-hover:text-accent">
                     {role.title}
@@ -133,19 +130,20 @@ export default function CareersPage() {
             ))}
           </ul>
         )}
-      </Band>
+      </Block>
 
       {/* ---- How to apply ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[16ch]">How to approach us</h2>
-            {careers.howToApply.map((p, i) => (
-              <Reveal key={i} delay={i * 80} y={12}>
-                <p className="mt-5 max-w-2xl text-[16.5px] leading-[1.72] text-muted">{p}</p>
-              </Reveal>
-            ))}
-            <Reveal delay={200} className="mt-9">
+      <Block eyebrow="Apply" title="How to approach us" ground="sunken">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          {careers.howToApply.map((p, i) => (
+            <Reveal key={i} delay={i * 80} y={12}>
+              <p className="mt-5 text-[16.5px] leading-[1.72] text-muted">{p}</p>
+            </Reveal>
+          ))}
+        </div>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-10">
+          <div className="card p-5 sm:p-8">
+            <Reveal delay={200}>
               <EnquiryForm
                 subject="Working at HRMagix"
                 submitLabel="Send your introduction"
@@ -182,7 +180,7 @@ export default function CareersPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={140} y={14} className="rounded-2xl bg-surface-sunken p-6 ring-1 ring-line sm:p-7">
+          <Reveal delay={140} y={14} className="card self-start p-6 sm:p-7">
             <h3 className="font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
               Where we are
             </h3>
@@ -217,15 +215,12 @@ export default function CareersPage() {
             </dl>
           </Reveal>
         </div>
-      </Band>
+      </Block>
 
       {/* ---- The honesty section ---- */}
-      <Band ground="raised" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
-            {careers.honesty.heading}
-          </h2>
-          <ul className="mt-6 space-y-3.5">
+      <Block eyebrow="Transparency" title={careers.honesty.heading} ground="canvas">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <ul className="space-y-3.5">
             {careers.honesty.points.map((p) => (
               <li key={p} className="flex gap-3.5 text-[15.5px] leading-[1.7] text-muted">
                 <span aria-hidden="true" className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-subtle/60" />
@@ -238,7 +233,7 @@ export default function CareersPage() {
             If that changes and there are positions to publish, they will appear here.
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

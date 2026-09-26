@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, CtaBand, Block } from "@/components/sky9";
 import Link from "next/link";
 import { sorted, featured, categories, byCategory } from "@/lib/blog";
-import { Band, Opening } from "@/components/editorial";
+import { Opening } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -13,11 +14,7 @@ export const metadata: Metadata = {
   description:
     "Long-form writing on Indian payroll and people operations: ESI against a moving wage base, multi-state Professional Tax, comp-off, the sandwich rule, and reading a payslip line by line.",
   keywords: [
-    "payroll compliance",
-    "HRMS software",
-    "leave management system",
-    "attendance management system",
-    "employee self service portal",
+
   ],
   alternates: { canonical: "/blog" },
 };
@@ -42,7 +39,7 @@ export default function BlogIndex() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -73,26 +70,21 @@ export default function BlogIndex() {
         </div>
       </header>
 
-      {/* ---- Lead piece: full editorial spread ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={10}>
-          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent-soft">
-            Latest
-          </p>
-        </Reveal>
+      <SiteStats />
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-16">
+      {/* ---- Lead piece: full editorial spread ---- */}
+      <Block eyebrow="Latest" title={featured.category}>
+        <div className="card grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-16">
           <div>
             <Reveal y={12}>
-              <p className="text-[13px] font-semibold text-accent">{featured.category}</p>
-              <h2 className="display display-md mt-4 max-w-[18ch]">
+              <h3 className="display display-md max-w-[18ch]">
                 <Link
                   href={`/blog/${featured.slug}`}
                   className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                 >
                   {featured.title}
                 </Link>
-              </h2>
+              </h3>
             </Reveal>
             <Reveal delay={120}>
               <p className="mt-6 max-w-xl text-[17px] leading-[1.7] text-muted">
@@ -133,19 +125,16 @@ export default function BlogIndex() {
             </Link>
           </Reveal>
         </div>
-      </Band>
+      </Block>
 
       {/* ---- The archive: a ruled index, no thumbnails ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Everything else</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Set as an index rather than a wall of cards — when the subjects are this close together,
-            titles and readers tell you more than thumbnails do.
-          </p>
-        </Reveal>
-
-        <ol className="mt-12 divide-y divide-line border-y border-line">
+      <Block
+        eyebrow="Archive"
+        title="Everything else"
+        intro="Set as an index rather than a wall of cards — when the subjects are this close together, titles and readers tell you more than thumbnails do."
+        ground="sunken"
+      >
+        <ol className="card divide-y divide-line px-6 sm:px-8">
           {rest.map((a, i) => (
             <Reveal as="li" key={a.slug} delay={i * 45} y={12}>
               <Link
@@ -176,21 +165,24 @@ export default function BlogIndex() {
             </Reveal>
           ))}
         </ol>
-      </Band>
+      </Block>
 
       {/* ---- Categories as a written directory ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">By subject</h2>
-        </Reveal>
-
-        <div className="mt-12 grid gap-x-14 gap-y-10 lg:grid-cols-2">
+      <Block eyebrow="Subjects" title="By subject">
+        <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {categories.map((c, i) => {
             const items = byCategory(c.name);
             if (!items.length) return null;
             return (
-              <Reveal key={c.name} delay={i * 60} y={12} className="border-t border-line pt-6">
-                <h3 className="font-display text-[18px] font-bold text-heading">{c.name}</h3>
+              <Reveal key={c.name} delay={i * 60} y={12} className="card card-hover p-6">
+                <h3 className="font-display text-[18px] font-bold text-heading">
+                  <Link
+                    href={`/blog/category/${c.name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+                    className="transition-colors hover:text-accent"
+                  >
+                    {c.name}
+                  </Link>
+                </h3>
                 <p className="mt-2.5 max-w-lg text-[15px] leading-[1.68] text-muted">{c.blurb}</p>
                 <ul className="mt-5 space-y-2.5">
                   {items.map((a) => (
@@ -212,9 +204,9 @@ export default function BlogIndex() {
             );
           })}
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="raised" size="md">
+      <Block ground="sunken">
         <Opening
           label="On sourcing"
           paragraphs={[
@@ -222,13 +214,14 @@ export default function BlogIndex() {
             "There is no research programme behind this writing and it does not pretend there is. You will not find survey data, industry benchmarks, percentage improvements or customer anecdotes here, because HRMagix has published none and estimating them would make the rest of the writing worth less.",
           ]}
         />
-        <Reveal delay={180} className="mt-9 flex flex-wrap gap-3">
+        <Reveal delay={180} className="mt-9 flex flex-wrap justify-center gap-3">
           <Button href="/resources/white-papers">Read the white papers</Button>
           <Button href="/resources/calculator" variant="outline">
             Use the calculators
           </Button>
         </Reveal>
-      </Band>
+      </Block>
+      <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
     </>
   );
 }

@@ -34,6 +34,7 @@
  */
 
 import type { IconName } from "@/components/icons";
+import { formatPrice, rateOf } from "@/lib/pricing";
 
 /* ---------------- Statutory constants ---------------- */
 
@@ -46,12 +47,14 @@ export const ESI_THRESHOLD = 21000;
 export const GRATUITY_DAYS = 15;
 export const GRATUITY_DIVISOR = 26;
 export const GRATUITY_MIN_YEARS = 5;
+/** Factories Act, 1948: overtime at twice the ordinary rate of wages. */
+export const OVERTIME_MULTIPLIER = 2;
 
 /** Published per-employee monthly rates. Enterprise is quoted, so it has none. */
 export const PLAN_RATES: { name: string; rate: number | null; blurb: string }[] = [
-  { name: "Starter", rate: 3, blurb: "Attendance, leaves, directory and documents" },
-  { name: "Growth", rate: 6, blurb: "Adds payroll, performance, OKRs, recognition and analytics" },
-  { name: "Enterprise", rate: null, blurb: "Adds SSO, succession, lifecycle and a success manager" },
+  { name: "Starter", rate: rateOf("Starter"), blurb: "Attendance, leaves, directory and documents" },
+  { name: "Growth", rate: rateOf("Growth"), blurb: "Adds payroll, performance, OKRs, recognition and analytics" },
+  { name: "Enterprise", rate: rateOf("Enterprise"), blurb: "Adds SSO, succession, lifecycle and a success manager" },
 ];
 
 /* ---------------- Types ---------------- */
@@ -120,8 +123,7 @@ export type Calculator = {
 const inr = (n: number) =>
   n.toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 
-const usd = (n: number) =>
-  n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+const usd = formatPrice;
 
 const num = (v: unknown) => (typeof v === "number" ? v : Number(v));
 
@@ -278,8 +280,8 @@ export const calculators: Calculator[] = [
       description:
         "Free salary calculator for India: enter a monthly gross to see basic, employee and employer provident fund, ESI, take-home before income tax and total cost to employer.",
       keywords: [
-        "employee salary calculator",
         "salary calculation software",
+        "employee salary calculator",
         "take home salary calculator",
         "CTC calculator",
         "salary breakup calculator",
@@ -436,7 +438,12 @@ export const calculators: Calculator[] = [
       title: "EPF Calculator — Provident Fund and Pension Contributions",
       description:
         "PF calculation for Indian payroll: employee and employer provident fund at 12%, the 8.33% pension split, the ₹15,000 wage ceiling and voluntary provident fund.",
-      keywords: ["PF calculation", "EPF calculator", "provident fund calculator", "EPS calculation", "payroll compliance"],
+      keywords: [
+        "PF calculation",
+        "EPF calculator",
+        "provident fund calculator",
+        "EPS calculation",
+      ],
     },
     related: ["salary", "gratuity", "esi"],
   },
@@ -571,7 +578,11 @@ export const calculators: Calculator[] = [
       title: "ESI Calculator — Eligibility and Contribution",
       description:
         "ESI calculation for Indian payroll: test the ₹21,000 gross wage threshold, compute 0.75% employee and 3.25% employer contributions, and see when overtime moves the wage base.",
-      keywords: ["ESI calculation", "ESIC contribution calculator", "payroll compliance", "employee state insurance"],
+      keywords: [
+        "ESI calculation",
+        "ESIC contribution calculator",
+        "employee state insurance",
+      ],
     },
     related: ["salary", "pf", "payroll-cost"],
   },
@@ -694,7 +705,12 @@ export const calculators: Calculator[] = [
       title: "Gratuity Calculator — Payment of Gratuity Act Formula",
       description:
         "Gratuity calculator for India: fifteen days' wages per completed year on a 26-day divisor, with the five-year continuous service rule and per-year accrual shown.",
-      keywords: ["gratuity calculator", "payment of gratuity act", "employee gratuity calculation", "full and final settlement"],
+      keywords: [
+        "gratuity calculator",
+        "payment of gratuity act",
+        "employee gratuity calculation",
+        "full and final settlement",
+      ],
     },
     related: ["salary", "pf", "payroll-cost"],
   },
@@ -844,7 +860,11 @@ export const calculators: Calculator[] = [
       title: "Payroll Cost Calculator — Total Monthly Employer Cost",
       description:
         "Calculate total monthly payroll cost for a team in India: salary bill plus employer provident fund, pension and ESI contributions, per employee and annualised.",
-      keywords: ["payroll cost calculator", "employer cost calculator", "payroll management system", "salary budget calculator"],
+      keywords: [
+        "payroll cost calculator",
+        "employer cost calculator",
+        "salary budget calculator",
+      ],
     },
     related: ["salary", "esi", "plan-cost"],
   },
@@ -973,9 +993,289 @@ export const calculators: Calculator[] = [
       title: "HRMagix Plan Cost Calculator — Per Employee Pricing",
       description:
         "Work out your HRMagix subscription cost: published per-employee monthly rates across the Starter, Growth and Enterprise plans, multiplied by your headcount.",
-      keywords: ["HRMS pricing", "HR software cost calculator", "payroll software pricing", "HR SaaS platform"],
+      keywords: [
+        "HRMS pricing",
+        "HR software cost calculator",
+        "payroll software pricing",
+      ],
     },
     related: ["payroll-cost", "salary", "gratuity"],
+  },
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "overtime",
+    methodIntro:
+      "The statutory multiplier is fixed; the hourly rate it multiplies is not. So the working is shown in that order — the rate you supply, then the doubling the Act requires.",
+    name: "Overtime Calculator",
+    title: "Overtime pay calculator",
+    standfirst:
+      "Overtime at twice the ordinary rate of wages — the Factories Act rule for work beyond nine hours in a day or forty-eight in a week.",
+    intro: [
+      "Under the Factories Act, a worker who works more than nine hours in a day or more than forty-eight hours in a week is entitled to wages for the extra time at twice the ordinary rate of wages. The multiplier is set by statute. How the hourly rate is derived from a monthly wage is not uniform, so this calculator asks you for the basis instead of assuming one.",
+      "Establishments outside the Factories Act — shops, offices and commercial establishments — are governed by the Shops and Establishments Act of their state, whose overtime provisions vary. Check which applies before relying on the figure.",
+    ],
+    icon: "clock",
+    fields: [
+      {
+        name: "wage",
+        label: "Monthly ordinary rate of wages",
+        unit: "inr",
+        initial: "24000",
+        min: 1,
+        max: 10_000_000,
+        hint: "Basic and allowances that count as ordinary wages — not bonus, and not earlier overtime.",
+      },
+      {
+        name: "days",
+        label: "Working days used to derive a daily rate",
+        unit: "count",
+        initial: "26",
+        min: 1,
+        max: 31,
+        integer: true,
+        hint: "The divisor your establishment applies. Many use 26; confirm yours.",
+      },
+      {
+        name: "hours",
+        label: "Normal working hours per day",
+        unit: "count",
+        initial: "8",
+        min: 1,
+        max: 12,
+        hint: "Used to turn the daily rate into an hourly one.",
+      },
+      {
+        name: "ot",
+        label: "Overtime hours in the month",
+        unit: "count",
+        initial: "10",
+        min: 0,
+        max: 300,
+        hint: "Hours beyond nine in a day or forty-eight in a week.",
+      },
+    ],
+    compute: (v) => {
+      const wage = num(v.wage);
+      const days = num(v.days);
+      const hours = num(v.hours);
+      const ot = num(v.ot);
+      const daily = wage / days;
+      const hourly = daily / hours;
+      const otRate = hourly * OVERTIME_MULTIPLIER;
+      const pay = Math.round(otRate * ot);
+      return {
+        summary: `${ot} overtime ${ot === 1 ? "hour" : "hours"} at twice an ordinary hourly rate of ${inr(Math.round(hourly))}, derived from ${inr(wage)} over ${days} days of ${hours} hours.`,
+        cards: [
+          { label: "Overtime pay for the month", value: inr(pay), primary: true, note: "At twice the ordinary rate" },
+          { label: "Overtime rate per hour", value: inr(Math.round(otRate)), note: `${OVERTIME_MULTIPLIER} × ordinary hourly rate` },
+          { label: "Ordinary hourly rate", value: inr(Math.round(hourly)), note: `${inr(wage)} ÷ ${days} ÷ ${hours}` },
+        ],
+        lines: [
+          {
+            heading: "Working",
+            rows: [
+              { term: "Daily rate", value: inr(Math.round(daily)), note: `${inr(wage)} ÷ ${days} days` },
+              { term: "Ordinary hourly rate", value: inr(Math.round(hourly)), note: `Daily rate ÷ ${hours} hours` },
+              { term: "Overtime rate", value: inr(Math.round(otRate)), note: "Twice the ordinary rate" },
+              { term: `× ${ot} overtime hours`, value: inr(pay), total: true },
+            ],
+          },
+        ],
+      };
+    },
+    method: {
+      formula: "Overtime pay = 2 × (Monthly ordinary wages ÷ Working days ÷ Normal hours) × Overtime hours",
+      steps: [
+        { label: "Confirm the hours are overtime", text: "Under the Factories Act, overtime is work beyond nine hours in a day or forty-eight hours in a week." },
+        { label: "Establish the ordinary rate of wages", text: "Basic wages plus the allowances that count as ordinary wages. Bonus and wages for earlier overtime are excluded." },
+        { label: "Derive an hourly rate", text: "Divide by the working days and normal hours your establishment applies. This basis is an input here rather than an assumption, because it is not uniform." },
+        { label: "Apply the statutory multiplier", text: "Twice the ordinary hourly rate, for each overtime hour." },
+      ],
+      notes: [
+        "Only the multiplier and the nine-hour and forty-eight-hour limits come from the Factories Act. The divisor for the hourly rate is yours to supply.",
+        "Shops and commercial establishments are governed by their state's Shops and Establishments Act, whose overtime rules differ from state to state.",
+        "Statutory limits on the total overtime a worker may do in a quarter are not checked here.",
+      ],
+    },
+    faqs: [
+      {
+        q: "When does overtime start under the Factories Act?",
+        a: "After nine hours of work in a day or forty-eight hours in a week. Hours beyond either limit are paid at twice the ordinary rate of wages.",
+      },
+      {
+        q: "Why does the calculator ask for working days and hours?",
+        a: "Because the Act fixes the multiplier, but a single divisor for converting a monthly wage into an hourly one is not something this calculator can assume for every establishment. Entering your own basis keeps the arithmetic honest and checkable.",
+      },
+      {
+        q: "Does this apply to office staff?",
+        a: "Not necessarily. Offices and shops fall under the Shops and Establishments Act of their state, which sets its own overtime rules. The Factories Act rule shown here applies to workers in factories.",
+      },
+    ],
+    seo: {
+      title: "Overtime Calculator India — Factories Act Twice the Ordinary Rate",
+      description:
+        "Overtime pay calculator for India: twice the ordinary rate of wages for work beyond nine hours a day or 48 a week under the Factories Act, on your own hourly basis.",
+      keywords: [
+        "overtime calculator",
+        "factories act overtime",
+        "overtime pay india",
+        "double wages overtime",
+      ],
+    },
+    related: ["salary", "payroll-cost", "ctc"],
+  },
+
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "ctc",
+    methodIntro:
+      "CTC is the gross salary plus what the employer pays on top of it. Each addition is shown on its own line, so a CTC figure can be traced back to the salary it came from.",
+    name: "CTC Calculator",
+    title: "CTC (cost to company) calculator",
+    standfirst:
+      "From a monthly gross salary to an annual cost to company: employer provident fund, employer ESI where it applies, a gratuity provision and any annual bonus.",
+    intro: [
+      "Cost to company is not a statutory term. It is the convention of quoting a salary as everything the employer spends on the employee in a year, which is why two offers with the same CTC can mean different take-home pay.",
+      "This calculator builds a CTC upward from a monthly gross using the statutory contribution rates for provident fund and ESI, and optionally a gratuity provision on the Payment of Gratuity Act formula and an annual bonus you enter.",
+    ],
+    icon: "wallet",
+    fields: [
+      {
+        name: "gross",
+        label: "Monthly gross salary",
+        unit: "inr",
+        initial: "40000",
+        min: 1,
+        max: 10_000_000,
+      },
+      {
+        name: "basicPct",
+        label: "Basic as a share of gross",
+        unit: "percent",
+        initial: "50",
+        min: 1,
+        max: 100,
+        hint: "Provident fund and gratuity are both computed on basic.",
+      },
+      {
+        name: "ceiling",
+        label: "Apply the ₹15,000 EPF wage ceiling",
+        unit: "count",
+        initial: "1",
+        min: 0,
+        max: 1,
+        toggle: true,
+      },
+      {
+        name: "gratuity",
+        label: "Include a gratuity provision",
+        unit: "count",
+        initial: "1",
+        min: 0,
+        max: 1,
+        toggle: true,
+        hint: "Common practice when quoting CTC, not a statutory requirement.",
+      },
+      {
+        name: "bonus",
+        label: "Annual bonus or variable pay",
+        unit: "inr",
+        initial: "0",
+        min: 0,
+        max: 100_000_000,
+      },
+    ],
+    compute: (v) => {
+      const gross = num(v.gross);
+      const basic = Math.round((gross * num(v.basicPct)) / 100);
+      const pfBase = Boolean(v.ceiling) ? Math.min(basic, EPF_CEILING) : basic;
+      const erPf = Math.round(pfBase * EPF_RATE);
+      const esiApplies = gross <= ESI_THRESHOLD;
+      const erEsi = esiApplies ? Math.round(gross * ESI_EMPLOYER) : 0;
+      const grat = Boolean(v.gratuity) ? Math.round((basic * GRATUITY_DAYS) / GRATUITY_DIVISOR / 12) : 0;
+      const bonus = num(v.bonus);
+      const monthly = gross + erPf + erEsi + grat;
+      const annual = monthly * 12 + bonus;
+      return {
+        summary: `Monthly gross of ${inr(gross)} plus employer PF${esiApplies ? ", employer ESI" : ""}${grat ? ", a gratuity provision" : ""}${bonus ? " and annual bonus" : ""}.`,
+        cards: [
+          { label: "Annual CTC", value: inr(annual), primary: true, note: `${inr(Math.round(annual / 12))} a month on average` },
+          { label: "Annual gross salary", value: inr(gross * 12) },
+          { label: "Employer additions a year", value: inr((erPf + erEsi + grat) * 12 + bonus), note: "Above the gross salary" },
+        ],
+        lines: [
+          {
+            heading: "Monthly",
+            rows: [
+              { term: "Gross salary", value: inr(gross) },
+              { term: "Employer provident fund", value: inr(erPf), note: `12% of ${inr(pfBase)}` },
+              {
+                term: "Employer ESI",
+                value: esiApplies ? inr(erEsi) : "Not applicable",
+                note: esiApplies ? "3.25% of gross" : `Gross is above ${inr(ESI_THRESHOLD)}`,
+                muted: !esiApplies,
+              },
+              {
+                term: "Gratuity provision",
+                value: grat ? inr(grat) : "Not included",
+                note: grat ? "15 ÷ 26 of basic, spread over 12 months" : undefined,
+                muted: !grat,
+              },
+              { term: "Monthly cost", value: inr(monthly), total: true },
+            ],
+          },
+          {
+            heading: "Annual",
+            rows: [
+              { term: "Monthly cost × 12", value: inr(monthly * 12) },
+              { term: "Annual bonus or variable pay", value: inr(bonus), muted: !bonus },
+              { term: "Annual CTC", value: inr(annual), total: true },
+            ],
+          },
+        ],
+      };
+    },
+    method: {
+      formula: "CTC = 12 × (Gross + Employer PF + Employer ESI + Gratuity provision) + Annual bonus",
+      steps: [
+        { label: "Start from gross", text: "The monthly gross salary — basic plus allowances — before any deduction." },
+        { label: "Add employer provident fund", text: "Twelve per cent of the PF wage, with the ₹15,000 ceiling applied if you choose it. The split between EPF and EPS does not change the total." },
+        { label: "Add employer ESI where it applies", text: "3.25% of gross when gross is within the ₹21,000 threshold; nothing above it." },
+        { label: "Add a gratuity provision", text: "Fifteen twenty-sixths of monthly basic per year of service, spread across twelve months — the amount an employer sets aside each month against the eventual liability." },
+        { label: "Annualise and add bonus", text: "Twelve months of the monthly cost plus any annual bonus or variable pay you enter." },
+      ],
+      notes: [
+        "CTC is a convention, not a statutory definition. Employers differ in what they include — insurance premiums, meal cards and reimbursements are common additions not modelled here.",
+        "EPF administration and EDLI charges payable by the employer are not included.",
+        "The gratuity provision is an accounting convention for spreading a future liability; gratuity itself is only payable after five years of continuous service.",
+      ],
+    },
+    faqs: [
+      {
+        q: "Why is my in-hand salary so much lower than my CTC?",
+        a: "Because CTC includes amounts the employer pays that never reach your account in the month — its own provident fund and ESI contributions, a gratuity provision and any variable pay — and your own deductions come off gross before you are paid. The salary calculator shows the take-home side.",
+      },
+      {
+        q: "Is gratuity always part of CTC?",
+        a: "No. Including a gratuity provision in a quoted CTC is a common practice rather than a rule, which is why the calculator lets you switch it off.",
+      },
+      {
+        q: "Does a higher basic change the CTC?",
+        a: "It can. Provident fund and gratuity are both computed on basic, so a larger basic raises the employer's contributions — unless the EPF wage ceiling caps the provident fund side.",
+      },
+    ],
+    seo: {
+      title: "CTC Calculator India — Cost to Company from Gross Salary",
+      description:
+        "CTC calculator for India: build annual cost to company from monthly gross with employer PF, employer ESI, a gratuity provision and bonus, every line shown.",
+      keywords: [
+        "ctc calculator",
+        "cost to company calculator",
+        "ctc to gross",
+        "salary ctc india",
+      ],
+    },
+    related: ["salary", "pf", "gratuity"],
   },
 ];
 

@@ -2,11 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { plans, site } from "@/lib/content";
+import { formatPrice, rateOf, PRICE_UNIT, type PlanName } from "@/lib/pricing";
 import { Button, Pill } from "./ui";
 import { useSpotlight } from "./motion";
-
-/** Published per-employee rates. Enterprise is quoted, so it has no rate. */
-const RATES: Record<string, number | null> = { Starter: 3, Growth: 6, Enterprise: null };
 
 /**
  * Cost calculator. Pure arithmetic on the per-employee prices HRMagix
@@ -14,14 +12,13 @@ const RATES: Record<string, number | null> = { Starter: 3, Growth: 6, Enterprise
  */
 export default function Calculator() {
   const [count, setCount] = useState(50);
-  const [plan, setPlan] = useState("Growth");
+  const [plan, setPlan] = useState<PlanName>("Growth");
   const { ref: spotRef, spotlightProps } = useSpotlight<HTMLDivElement>();
 
-  const rate = RATES[plan];
+  const rate = rateOf(plan);
   const monthly = useMemo(() => (rate == null ? null : rate * count), [rate, count]);
 
-  const money = (n: number) =>
-    n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  const money = formatPrice;
 
   return (
     <div
@@ -115,7 +112,7 @@ export default function Calculator() {
                 </span>
               </p>
               <dl className="mt-7 space-y-3.5 border-t border-white/10 pt-6 text-[14px]">
-                <Row label="Rate" value={`$${rate}/emp/mo`} />
+                <Row label="Rate" value={`${formatPrice(rate ?? 0)}${PRICE_UNIT}`} />
                 <Row label="Employees" value={count.toLocaleString("en-US")} />
                 <Row label="Billed yearly" value={money(monthly * 12)} />
               </dl>
@@ -134,7 +131,7 @@ export default function Calculator() {
           </ul>
 
           <div className="mt-8">
-            <Button href="/contact" variant="light" size="md" className="w-full">
+            <Button href="/company/contact" variant="light" size="md" className="w-full">
               {monthly == null ? "Contact Sales" : "Start Free Trial"}
             </Button>
             <p className="mt-4 text-center text-[11.5px] text-violet-300/70">{site.trial}</p>

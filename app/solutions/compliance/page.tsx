@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Band, Onward } from "@/components/editorial";
-import { Button, Arrow } from "@/components/ui";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Accordion from "@/components/Accordion";
+import { Icon } from "@/components/icons";
 import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
@@ -12,11 +12,7 @@ export const metadata: Metadata = {
   description:
     "How HRMagix derives EPF, ESI, Professional Tax, Labour Welfare Fund and TDS inside the payroll run, and produces the ECR file, ESIC return, PT working, Form 24Q and Form 16 Part B from the same figures.",
   keywords: [
-    "payroll software with PF ESI TDS",
-    "payroll processing system",
-    "payroll management system",
-    "HRMS and payroll software",
-    "HR software for companies",
+    "payroll compliance",
   ],
   alternates: { canonical: "/solutions/compliance" },
   openGraph: {
@@ -171,7 +167,7 @@ export default function CompliancePage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -215,88 +211,79 @@ export default function CompliancePage() {
         </div>
       </header>
 
-      {/* ---- The register: reference table first ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">The register of heads</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Each head with the condition that brings it into play, the basis it is computed on, and
-            the artefact the run produces. Rates are stated only where central statute fixes them.
-          </p>
-        </Reveal>
+      <SiteStats />
 
-        <div className="mt-11 space-y-px overflow-hidden rounded-2xl ring-1 ring-line">
+      {/* ---- The register: reference first ---- */}
+      <Block
+        eyebrow="Reference"
+        title="The register of heads"
+        intro="Each head with the condition that brings it into play, the basis it is computed on, and the artefact the run produces. Rates are stated only where central statute fixes them."
+        ground="canvas"
+      >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {register.map((row, i) => (
-            <Reveal
-              key={row.head}
-              delay={i * 45}
-              y={10}
-              className="bg-surface p-6 sm:p-7 lg:grid lg:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] lg:gap-10"
-            >
-              <div className="min-w-0">
-                <p className="font-display text-[22px] font-bold tracking-[-0.02em] text-heading">
-                  {row.head}
-                </p>
-                <p className="mt-1 text-[13px] leading-snug text-subtle">{row.full}</p>
+            <Reveal key={row.head} delay={i * 45} y={10} className="card card-hover flex h-full flex-col p-6">
+              <div className="flex items-start gap-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-accent">
+                  <Icon name="scale" className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <p className="font-display text-[22px] font-bold tracking-[-0.02em] text-heading">
+                    {row.head}
+                  </p>
+                  <p className="mt-1 text-[13px] leading-snug text-subtle">{row.full}</p>
+                </div>
               </div>
-              <div className="mt-4 min-w-0 lg:mt-0">
-                <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-subtle">
-                  Applies
-                </p>
-                <p className="mt-1.5 text-[15.5px] leading-[1.7] text-muted">{row.applies}</p>
+              <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.12em] text-subtle">
+                Applies
+              </p>
+              <p className="mt-1.5 text-[15px] leading-[1.7] text-muted">{row.applies}</p>
 
-                <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.12em] text-subtle">
-                  Basis
-                </p>
-                <p className="mt-1.5 text-[15.5px] leading-[1.7] text-muted">{row.basis}</p>
+              <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.12em] text-subtle">
+                Basis
+              </p>
+              <p className="mt-1.5 flex-1 text-[15px] leading-[1.7] text-muted">{row.basis}</p>
 
-                <p className="mt-5 inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-accent">
-                  <span aria-hidden="true" className="h-px w-5 bg-line-accent" />
-                  {row.output}
-                </p>
-              </div>
+              <p className="mt-5 inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-accent">
+                <span aria-hidden="true" className="h-px w-5 bg-line-accent" />
+                {row.output}
+              </p>
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
       {/* ---- The rhythm ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">When each thing happens</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Compliance is a calendar problem as much as an arithmetic one. This is the order the
-            month runs in, and what each step exists for.
-          </p>
-        </Reveal>
-
-        <div className="mt-11 max-w-4xl">
+      <Block
+        eyebrow="Process"
+        title="When each thing happens"
+        intro="Compliance is a calendar problem as much as an arithmetic one. This is the order the month runs in, and what each step exists for."
+        ground="sunken"
+      >
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {calendar.map((step, i) => (
-            <Reveal
-              key={step.what}
-              delay={i * 50}
-              y={12}
-              className="grid gap-3 border-t border-line py-7 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] sm:gap-9"
-            >
-              <p className="text-[13px] font-bold uppercase tracking-[0.13em] text-accent">
-                {step.when}
-              </p>
-              <div>
-                <p className="font-display text-[17px] font-bold leading-snug text-heading">
-                  {step.what}
+            <Reveal as="li" key={step.what} delay={i * 50} y={12} className="card card-hover p-6">
+              <div className="flex items-center gap-3">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 font-display text-[17px] font-bold text-accent">
+                  {i + 1}
+                </span>
+                <p className="text-[13px] font-bold uppercase tracking-[0.13em] text-accent">
+                  {step.when}
                 </p>
-                <p className="mt-2.5 text-[15.5px] leading-[1.7] text-muted">{step.why}</p>
               </div>
+              <p className="mt-5 font-display text-[17px] font-bold leading-snug text-heading">
+                {step.what}
+              </p>
+              <p className="mt-2.5 text-[15px] leading-[1.7] text-muted">{step.why}</p>
             </Reveal>
           ))}
-        </div>
-      </Band>
+        </ol>
+      </Block>
 
       {/* ---- The boundary ---- */}
-      <Band ground="raised" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="display display-md">Where the engine stops</h2>
-          <p className="mt-6 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Boundaries" title="Where the engine stops" ground="canvas">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             It computes and produces. It does not submit on your behalf, and it does not hold
             professional opinions. Filing stays with you, which also means every figure can be
             checked before anything goes out under your registration.
@@ -313,26 +300,16 @@ export default function CompliancePage() {
             single slab for them would be wrong for most employers reading this.
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       {/* ---- Questions ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Questions on the statutory heads</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              The ones that decide whether a payroll month closes cleanly.
-            </p>
-            <Link
-              href="/resources/payroll"
-              className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
-            >
-              All payroll resources <Arrow />
-            </Link>
-          </Reveal>
-          <Accordion items={faqs} />
-        </div>
-      </Band>
+      <FaqSection
+        title="Questions on the statutory heads"
+        intro="The ones that decide whether a payroll month closes cleanly."
+        items={faqs}
+        ground="sunken"
+        more={{ label: "All payroll resources", href: "/resources/payroll" }}
+      />
 
       <Onward
         links={[

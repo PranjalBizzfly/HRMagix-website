@@ -52,7 +52,7 @@ export default function StickyCta() {
   }, []);
 
   // The contact page is the destination — no point nagging there.
-  const suppressed = pathname === "/contact" || dismissed || navOpen;
+  const suppressed = pathname === "/company/contact" || dismissed || navOpen;
   const shown = past && !suppressed;
 
   // Let the back-to-top button know how much room it has.
@@ -90,7 +90,7 @@ export default function StickyCta() {
         </span>
 
         <Link
-          href="/contact"
+          href="/company/contact"
           tabIndex={shown ? 0 : -1}
           className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-brand pl-4 pr-1.5 text-[13.5px] font-semibold text-white shadow-glow transition-colors hover:bg-brand-hover"
         >
@@ -105,7 +105,7 @@ export default function StickyCta() {
           onClick={dismiss}
           tabIndex={shown ? 0 : -1}
           aria-label="Dismiss this banner"
-          className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-subtle transition-colors hover:bg-surface-sunken hover:text-accent-strong"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-subtle transition-colors hover:bg-surface-sunken hover:text-accent-strong"
         >
           <Icon name="cross" className="h-3.5 w-3.5" />
         </button>

@@ -105,12 +105,7 @@ export const articles: Article[] = [
       title: "Why Payroll Takes Four Days — And What Actually Fixes It",
       description:
         "Indian payroll is slow because establishing payable days is slow, not because the arithmetic is hard. A breakdown of the four disagreeing sources and how integration removes the reconciliation step.",
-      keywords: [
-        "payroll processing software",
-        "payroll management system",
-        "payroll automation software",
-        "payroll compliance",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -234,12 +229,7 @@ export const articles: Article[] = [
       title: "ESI Applicability When Overtime Moves the Wage Base",
       description:
         "How the ₹21,000 ESI gross wage threshold interacts with overtime and allowances, why contribution periods matter, and why a naive month-by-month test produces both over- and under-deduction.",
-      keywords: [
-        "ESI calculation",
-        "payroll compliance",
-        "payroll management system",
-        "HR software for manufacturing companies",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -341,12 +331,7 @@ export const articles: Article[] = [
       title: "Professional Tax Across Indian States — Multi-State Payroll",
       description:
         "Why Professional Tax is a state subject, how slabs and periodicity differ between states, and how to configure multi-state payroll so consolidated reporting and correct state filing coexist.",
-      keywords: [
-        "payroll compliance",
-        "payroll software for SMEs",
-        "payroll management system",
-        "HRMS for 100 employees company",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -439,12 +424,7 @@ export const articles: Article[] = [
       title: "How to Read an Indian Payslip — Every Line Explained",
       description:
         "A complete walkthrough of an Indian salary slip: basic, HRA and allowances, employee PF and ESI deductions, Professional Tax, TDS, and the difference between gross, net and cost to company.",
-      keywords: [
-        "payslip generator",
-        "employee salary calculator",
-        "salary calculation software",
-        "employee self service portal",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -574,12 +554,7 @@ export const articles: Article[] = [
       title: "Old vs New Tax Regime — Employee Declarations and Monthly TDS",
       description:
         "How the employee's regime election drives the monthly TDS schedule under Section 192, why late declarations cause February corrections, and how proof verification fits the payroll cycle.",
-      keywords: [
-        "TDS on salary calculation",
-        "Form 16 download",
-        "payroll compliance",
-        "employee self service portal",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -684,12 +659,7 @@ export const articles: Article[] = [
       title: "Compensatory Off — Tracking Comp-Off as a Real Entitlement",
       description:
         "Why comp-off needs credit rules, expiry and consumption tracking like any other leave type, and how weekend and holiday work should flow automatically into a leave balance.",
-      keywords: [
-        "leave management system",
-        "attendance management system",
-        "employee attendance software",
-        "leave tracking software",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -790,12 +760,7 @@ export const articles: Article[] = [
       title: "Auto Shift Detection for Rotating and Night Shifts",
       description:
         "Why night-shift attendance breaks calendar-day assumptions, how auto shift detection assigns a punch across midnight, and what grace periods and differentials depend on getting it right.",
-      keywords: [
-        "attendance management system",
-        "biometric attendance system software",
-        "attendance tracking software",
-        "HR software for manufacturing companies",
-      ],
+      keywords: [],
     },
     body: [
       {
@@ -889,12 +854,7 @@ export const articles: Article[] = [
       title: "The Sandwich Rule in Indian Leave Policy",
       description:
         "How the sandwich rule works, why inconsistent application rather than the rule itself causes grievances, and what a leave policy needs to state so employees see the cost before applying.",
-      keywords: [
-        "leave management system",
-        "leave tracking software",
-        "employee leave management",
-        "HRMS software",
-      ],
+      keywords: ["employee leave management"],
     },
     body: [
       {
@@ -989,12 +949,7 @@ export const articles: Article[] = [
       title: "Full and Final Settlement — The Complete Checklist",
       description:
         "Everything a full-and-final settlement must cover: notice period, leave encashment, gratuity eligibility, recoveries, statutory deductions, document issue and record retention.",
-      keywords: [
-        "employee lifecycle management",
-        "payroll processing software",
-        "employee management system",
-        "HR onboarding system",
-      ],
+      keywords: [],
     },
     body: [
       {

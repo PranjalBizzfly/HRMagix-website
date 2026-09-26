@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Band, Onward } from "@/components/editorial";
-import { Button, Arrow } from "@/components/ui";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Accordion from "@/components/Accordion";
 import OnThisPage from "@/components/OnThisPage";
+import FeatureMap from "@/components/FeatureMap";
 
 export const metadata: Metadata = {
   title: "Performance Management, OKRs and KRAs",
   description:
     "The HRMagix performance modules: objectives and OKRs, KRA and 9-box talent matrices, 30/60/90 PIPs, recurring 1-on-1s and peer recognition — running on the same employee record as attendance and payroll.",
   keywords: [
-    "HR management system",
-    "employee management system",
-    "HRMS software",
-    "HR analytics software",
-    "HR software for companies",
+
   ],
   alternates: { canonical: "/solutions/performance" },
   openGraph: {
@@ -175,7 +171,7 @@ export default function PerformancePage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -219,85 +215,61 @@ export default function PerformancePage() {
         </div>
       </header>
 
-      {/* ---- The cycle, as a year rather than a feature list ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">How a performance year runs</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Read in order. Each stage explains what happens, and why that particular thing is worth
-            doing rather than assumed.
-          </p>
-        </Reveal>
+      <SiteStats />
 
-        <ol className="mt-14 border-l border-line-strong">
+      {/* ---- The cycle, as a year rather than a feature list ---- */}
+      <Block
+        eyebrow="Process"
+        title="How a performance year runs"
+        intro="Read in order. Each stage explains what happens, and why that particular thing is worth doing rather than assumed."
+        ground="canvas"
+      >
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {cycle.map((stage, i) => (
-            <Reveal
-              as="li"
-              key={stage.title}
-              delay={i * 60}
-              y={14}
-              className="relative grid gap-4 pb-12 pl-7 last:pb-0 sm:pl-10 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12"
-            >
-              <span
-                aria-hidden="true"
-                className="absolute -left-[5px] top-[7px] h-2.5 w-2.5 rounded-full bg-brand ring-4 ring-canvas"
-              />
-              <div className="lg:sticky lg:top-[110px] lg:self-start">
-                <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-subtle">
-                  {stage.marker}
+            <Reveal as="li" key={stage.title} delay={i * 60} y={14} className="card card-hover p-6">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 font-display text-[17px] font-bold text-accent">
+                {i + 1}
+              </span>
+              <p className="mt-5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-subtle">
+                {stage.marker}
+              </p>
+              <h3 className="mt-2.5 font-display text-[19px] font-bold leading-snug tracking-[-0.02em] text-heading">
+                {stage.title}
+              </h3>
+              {stage.body.map((p, j) => (
+                <p key={j} className="mt-3 text-[15px] leading-[1.7] text-muted">
+                  {p}
                 </p>
-                <h3 className="mt-2.5 font-display text-[19px] font-bold leading-snug tracking-[-0.02em] text-heading">
-                  {stage.title}
-                </h3>
-              </div>
-              <div className="max-w-2xl">
-                {stage.body.map((p, j) => (
-                  <p
-                    key={j}
-                    className={`text-[16.5px] leading-[1.72] text-muted ${j ? "mt-4" : ""}`}
-                  >
-                    {p}
-                  </p>
-                ))}
-              </div>
+              ))}
             </Reveal>
           ))}
         </ol>
-      </Band>
+      </Block>
 
       {/* ---- The vocabulary register ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">The words, used precisely</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Most disagreements about performance management are disagreements about vocabulary.
-            These are the definitions the platform uses.
-          </p>
-        </Reveal>
-
-        <dl className="mt-11 border-t border-line-strong">
+      <Block
+        eyebrow="Glossary"
+        title="The words, used precisely"
+        intro="Most disagreements about performance management are disagreements about vocabulary. These are the definitions the platform uses."
+        ground="sunken"
+      >
+        <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {register.map((row, i) => (
-            <Reveal
-              key={row.term}
-              delay={i * 40}
-              y={12}
-              className="grid gap-2 border-b border-line py-6 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-10"
-            >
-              <dt className="font-display text-[15.5px] font-bold text-heading">{row.term}</dt>
-              <dd>
-                <p className="text-[15.5px] leading-[1.7] text-body">{row.say}</p>
-                <p className="mt-2 text-[14.5px] leading-[1.65] text-subtle">{row.note}</p>
+            <Reveal key={row.term} delay={i * 40} y={12} className="card p-6">
+              <dt className="font-display text-[16.5px] font-bold text-heading">{row.term}</dt>
+              <dd className="mt-3">
+                <p className="text-[15px] leading-[1.7] text-body">{row.say}</p>
+                <p className="mt-2 text-[14px] leading-[1.65] text-subtle">{row.note}</p>
               </dd>
             </Reveal>
           ))}
         </dl>
-      </Band>
+      </Block>
 
       {/* ---- The boundary ---- */}
-      <Band ground="surface" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="display display-md">What this module does not decide</h2>
-          <p className="mt-6 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Boundaries" title="What this module does not decide" ground="canvas">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             It does not set your rating scale, your review windows, your calibration rules, your
             promotion criteria or the length of a PIP. Those are the employer&rsquo;s policy, and
             they are configured rather than supplied.
@@ -309,26 +281,24 @@ export default function PerformancePage() {
             than having no matrix at all.
           </p>
         </Reveal>
-      </Band>
+      </Block>
+
+      {/* The Performance and Engagement areas of the app, as the app names them. */}
+      <Block
+        eyebrow="In the HRMagix app"
+        title="Performance and engagement, feature by feature"
+        ground="sunken"
+      >
+        <FeatureMap areas={["performance", "engagement"]} />
+      </Block>
 
       {/* ---- Questions ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Questions about performance</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              Mostly asked by HR leads part-way through designing a review cycle.
-            </p>
-            <Link
-              href="/resources/faqs"
-              className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
-            >
-              Every question, in one place <Arrow />
-            </Link>
-          </Reveal>
-          <Accordion items={faqs} />
-        </div>
-      </Band>
+      <FaqSection
+        title="Questions about performance"
+        intro="Mostly asked by HR leads part-way through designing a review cycle."
+        items={faqs}
+        ground="canvas"
+      />
 
       <Onward
         links={[

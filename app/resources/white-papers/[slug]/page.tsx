@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { whitePapers, paperBySlug } from "@/lib/papers";
-import { Band, Onward } from "@/components/editorial";
-import { Arrow, Button } from "@/components/ui";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import PdfDownloadButton from "@/components/PdfDownloadButton";
 import Prose, { headingId, type ProseBlock } from "@/components/Prose";
 
 export function generateStaticParams() {
@@ -54,7 +56,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
     <>
       <article>
         {/* ---- Title page ---- */}
-        <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+        <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
           <div className="shell">
             <Reveal y={8}>
               <Breadcrumbs
@@ -117,7 +119,16 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                 {/* A download control appears only when a real document exists. */}
                 {paper.document && (
                   <Reveal delay={240} className="mt-8">
-                    <Button href={paper.document.path}>Download the PDF</Button>
+                    <PdfDownloadButton
+                      title={paper.title}
+                      href={paper.document.path}
+                      fileName={paper.document.path.split("/").pop() ?? `${paper.slug}.pdf`}
+                      source={`White paper: ${paper.title}`}
+                      kind="White paper"
+                      className="btn-shimmer inline-flex h-12 items-center gap-2.5 rounded-full bg-brand px-6 text-[14.5px] font-semibold text-white shadow-glow transition-colors hover:bg-brand-hover"
+                    >
+                      Download the PDF
+                    </PdfDownloadButton>
                   </Reveal>
                 )}
               </div>
@@ -125,7 +136,19 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
           </div>
         </header>
 
-        <Band ground="surface" size="md">
+      <SiteStats />
+
+        <Block eyebrow="Abstract" title="Abstract" ground="canvas">
+          <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+            {paper.abstract.map((p, i) => (
+              <p key={i} className={`text-[17px] leading-[1.72] text-body ${i ? "mt-4" : ""}`}>
+                {p}
+              </p>
+            ))}
+          </Reveal>
+        </Block>
+
+        <Block ground="sunken">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-16">
             {/* ---- Contents rail ---- */}
             <nav aria-label="Contents" className="lg:sticky lg:top-[110px] lg:self-start">
@@ -169,16 +192,6 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
 
             {/* ---- Document body ---- */}
             <div className="min-w-0">
-              <Reveal y={12} className="mb-12 border-l-2 border-line-accent pl-6">
-                <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-accent">
-                  Abstract
-                </p>
-                {paper.abstract.map((p, i) => (
-                  <p key={i} className="mt-4 max-w-[68ch] text-[17px] leading-[1.72] text-body">
-                    {p}
-                  </p>
-                ))}
-              </Reveal>
 
               {paper.sections.map((section, i) => (
                 <section key={section.heading} className="mt-14 first:mt-0">
@@ -196,11 +209,13 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                 </section>
               ))}
 
-              <Reveal y={12} className="mt-16 rounded-2xl bg-surface-sunken p-7 ring-1 ring-line">
-                <p className="font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
-                  About this paper
-                </p>
-                <p className="mt-4 text-[15.5px] leading-[1.72] text-muted">
+            </div>
+          </div>
+        </Block>
+
+        <Block eyebrow="Sources" title="About this paper" ground="canvas">
+              <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+                <p className="text-[15.5px] leading-[1.72] text-muted">
                   Everything above draws on one of three things: a provision of Indian law, a
                   published HRMagix product capability, or the structural logic of the problem
                   described. There is no survey, benchmark or commissioned research behind it, and
@@ -212,30 +227,22 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                   against the current notification or with your own advisers before you act on them.
                 </p>
               </Reveal>
-            </div>
-          </div>
-        </Band>
+        </Block>
       </article>
 
-      <Band ground="sunken" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[20ch]">
-              Talk it through against your own configuration
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              A paper describes the general case. How a statutory head behaves for your entities,
-              locations and grades is a shorter conversation than a longer document.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button href="/company/contact">Ask the team</Button>
-            <Button href="/resources/white-papers" variant="outline">
-              All papers
-            </Button>
-          </div>
+      <Block
+        eyebrow="Next step"
+        title="Talk it through against your own configuration"
+        intro="A paper describes the general case. How a statutory head behaves for your entities, locations and grades is a shorter conversation than a longer document."
+        ground="sunken"
+      >
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button href="/company/contact">Ask the team</Button>
+          <Button href="/resources/white-papers" variant="outline">
+            All papers
+          </Button>
         </div>
-      </Band>
+      </Block>
 
       <Onward
         title="Other papers"

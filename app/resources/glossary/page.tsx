@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Band, Onward } from "@/components/editorial";
+import { SiteStats, Block } from "@/components/sky9";
+import { Onward } from "@/components/editorial";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlossaryIndex from "@/components/GlossaryIndex";
@@ -10,10 +11,7 @@ export const metadata: Metadata = {
   description:
     "Plain definitions of the Indian HR and payroll terms that cause the most confusion — EPF, ESI, CTC, LOP, PF wage, contribution period, comp-off, 9-box, Form 16 and more, with the distinctions people usually get wrong.",
   keywords: [
-    "HR software for companies",
-    "payroll processing system",
-    "HRMS software",
-    "employee management system",
+
   ],
   alternates: { canonical: "/resources/glossary" },
   openGraph: {
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
 export default function GlossaryPage() {
   return (
     <>
-      <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -63,14 +61,15 @@ export default function GlossaryPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <GlossaryIndex />
-      </Band>
+      <SiteStats />
 
-      <Band ground="sunken" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="display display-md">On the numbers in these definitions</h2>
-          <p className="mt-6 text-[16.5px] leading-[1.72] text-muted">
+      <Block ground="canvas">
+        <GlossaryIndex />
+      </Block>
+
+      <Block eyebrow="A note" title="On the numbers in these definitions" ground="sunken">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             A rate appears in an entry only where central statute fixes it — the provident fund
             contribution, the ESI rates and threshold, the gratuity formula. Anything a state sets,
             such as professional tax or the labour welfare fund, is described as varying rather than
@@ -82,7 +81,7 @@ export default function GlossaryPage() {
             with somebody who does give that advice is a shorter one.
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

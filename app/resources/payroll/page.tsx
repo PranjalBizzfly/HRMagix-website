@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
+import { Icon } from "@/components/icons";
 import Link from "next/link";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -11,11 +13,7 @@ export const metadata: Metadata = {
   description:
     "Everything on this site about Indian payroll, indexed by what you are trying to do: work out a figure, understand why a number came out wrong, set something up, or find the statutory rule.",
   keywords: [
-    "payroll software",
-    "payroll processing system",
-    "employee payroll system",
-    "payroll software with PF ESI TDS",
-    "online payroll software",
+
   ],
   alternates: { canonical: "/resources/payroll" },
   openGraph: {
@@ -210,7 +208,7 @@ export default function PayrollResourcesPage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -235,48 +233,41 @@ export default function PayrollResourcesPage() {
         </div>
       </header>
 
+      <SiteStats />
+
       {/* ---- The router ---- */}
       {sections.map((section, i) => (
-        <Band key={section.intent} ground={i % 2 === 0 ? "surface" : "sunken"} size="md">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-            <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-              <p className="font-mono text-[12.5px] font-semibold text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h2 className="display display-md mt-3">{section.intent}</h2>
-              <p className="mt-5 text-[16px] leading-[1.7] text-muted">{section.lead}</p>
-            </Reveal>
-
-            <ul className="min-w-0 divide-y divide-line border-y border-line-strong">
-              {section.items.map((item, j) => (
-                <Reveal as="li" key={item.href} delay={j * 40} y={10}>
-                  <Link
-                    href={item.href}
-                    className="group block py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
-                  >
-                    <span className="flex items-baseline gap-2.5">
-                      <span className="font-display text-[16.5px] font-bold leading-snug text-heading transition-colors group-hover:text-accent">
-                        {item.label}
-                      </span>
-                      <span className="shrink-0 text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                        <Arrow />
-                      </span>
-                    </span>
-                    <span className="mt-1.5 block max-w-2xl text-[15px] leading-[1.68] text-muted">
-                      {item.note}
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-        </Band>
+        <Block
+          key={section.intent}
+          eyebrow={["Work it out", "Diagnose", "Set up", "Reference", "Explain"][i] ?? String(i + 1).padStart(2, "0")}
+          title={section.intent}
+          intro={section.lead}
+          ground={i % 2 === 0 ? "canvas" : "sunken"}
+        >
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            {section.items.map((item, j) => (
+              <Reveal as="li" key={item.href} delay={j * 40} y={10}>
+                <Link href={item.href} className="card card-hover group flex h-full flex-col p-6">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-accent">
+                    <Icon name="compass" className="h-5 w-5" />
+                  </span>
+                  <span className="mt-5 font-display text-[16.5px] font-bold leading-snug text-heading transition-colors group-hover:text-accent">
+                    {item.label}
+                  </span>
+                  <span className="mt-2 flex-1 text-[14.5px] leading-[1.6] text-muted">{item.note}</span>
+                  <span className="mt-5 inline-flex items-center text-accent" aria-hidden="true">
+                    <Arrow />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </Block>
       ))}
 
-      <Band ground="raised" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="display display-md">What is deliberately not here</h2>
-          <p className="mt-6 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Scope" title="What is deliberately not here" ground="sunken">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             There is no TDS, professional tax or labour welfare fund calculator, and their absence is
             a decision rather than an omission. Tax under Section 192 depends on the employee&rsquo;s
             regime election, on slab rates set by Finance Act each year and on verified declarations;
@@ -289,7 +280,7 @@ export default function PayrollResourcesPage() {
             produce a confident number from assumptions the page could not state.
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { site } from "@/lib/content";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import { Icon } from "@/components/icons";
@@ -49,7 +50,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ---- Split opener: dark channel rail beside the page ---- */}
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -88,20 +89,18 @@ export default function ContactPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
+      <SiteStats />
+
+      <Block
+        eyebrow="Contact"
+        title="Send a message"
+        intro="The more specific the message, the more useful the reply. If you already know which module or which statutory head you are asking about, say so."
+        ground="canvas"
+      >
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-10">
           {/* ---- Form ---- */}
-          <div>
-            <Reveal y={12}>
-              <h2 className="display display-md">Send a message</h2>
-              <p className="mt-5 max-w-xl text-[16px] leading-[1.7] text-muted">
-                The more specific the message, the more useful the reply. If you already know which
-                module or which statutory head you are asking about, say so.
-              </p>
-            </Reveal>
-            <div className="mt-9">
-              <ContactForm />
-            </div>
+          <div className="card p-5 sm:p-8">
+            <ContactForm />
           </div>
 
           {/* ---- Channels ---- */}
@@ -173,22 +172,17 @@ export default function ContactPage() {
             </p>
           </Reveal>
         </div>
-      </Band>
+      </Block>
 
-      {/* ---- What to expect ---- */}
       {/* ---- What to expect, and what to bring ---- */}
-      <Band ground="raised" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">What a demo actually looks like</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              Worth saying plainly, because the word covers everything from a slide deck to a
-              two-hour workshop.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
+      <Block
+        eyebrow="Demo"
+        title="What a demo actually looks like"
+        intro="Worth saying plainly, because the word covers everything from a slide deck to a two-hour workshop."
+        ground="sunken"
+      >
+          <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 It is your payroll month, not ours
               </h3>
@@ -201,7 +195,7 @@ export default function ContactPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 What helps to have ready
               </h3>
@@ -213,7 +207,7 @@ export default function ContactPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Questions we would rather you asked
               </h3>
@@ -226,7 +220,7 @@ export default function ContactPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 If you would rather not talk to anyone yet
               </h3>
@@ -238,20 +232,17 @@ export default function ContactPage() {
               </p>
             </section>
           </div>
-        </div>
-      </Band>
+      </Block>
 
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Four reasons people write</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            And what makes a message about each one genuinely useful to answer.
-          </p>
-        </Reveal>
-
-        <dl className="mt-12 grid gap-x-14 gap-y-9 lg:grid-cols-2">
+      <Block
+        eyebrow="Reasons"
+        title="Four reasons people write"
+        intro="And what makes a message about each one genuinely useful to answer."
+        ground="canvas"
+      >
+        <dl className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {reasons.map((r, i) => (
-            <Reveal key={r.title} delay={i * 65} y={12} className="border-t border-line pt-5">
+            <Reveal key={r.title} delay={i * 65} y={12} className="card card-hover p-6">
               <dt className="font-display text-[17px] font-bold leading-snug text-heading">
                 {r.title}
               </dt>
@@ -259,7 +250,7 @@ export default function ContactPage() {
             </Reveal>
           ))}
         </dl>
-      </Band>
+      </Block>
 
       <Onward
         links={[

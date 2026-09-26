@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
+import { SiteStats, Block, ProcessTimeline, FaqSection } from "@/components/sky9";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { calculators, calculatorBySlug } from "@/lib/calculators";
-import { Band, Onward } from "@/components/editorial";
-import { Arrow, Button } from "@/components/ui";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import { Icon } from "@/components/icons";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Accordion from "@/components/Accordion";
 import CalculatorRunner from "@/components/CalculatorRunner";
 import OnThisPage from "@/components/OnThisPage";
 
@@ -65,7 +64,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
       {/* ---- 1. What this calculates ---- */}
-      <header className="border-b border-line bg-surface-sunken pb-10 pt-[104px] sm:pb-12 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-10 pt-[104px] sm:pb-12 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -112,109 +111,66 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
         </div>
       </header>
 
+      <SiteStats />
+
       {/* ---- 2. The tool: inputs → Calculate → result ---- */}
-      <Band ground="surface" size="lg" id="calculator">
+      <Block id="calculator" eyebrow="Calculator" title={calc.name}>
         <CalculatorRunner slug={calc.slug} />
-      </Band>
+      </Block>
 
       {/* ---- 3. How is this calculated? ---- */}
-      <Band ground="sunken" size="lg" id="method">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">How is this calculated?</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              {calc.methodIntro}
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <div className="overflow-x-auto rounded-2xl bg-surface p-5 ring-1 ring-line-accent sm:p-6">
-              <p className="whitespace-nowrap font-mono text-[14px] font-semibold text-accent-strong sm:text-[15px]">
-                {calc.method.formula}
-              </p>
-            </div>
-
-            <ol className="mt-9 space-y-0">
-              {calc.method.steps.map((s, i) => (
-                <Reveal as="li" key={s.label} delay={i * 55} y={10} className="relative flex gap-5 pb-7 last:pb-0">
-                  <span className="relative flex flex-col items-center">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-surface-raised font-display text-[12.5px] font-bold text-accent-strong">
-                      {i + 1}
-                    </span>
-                    {i < calc.method.steps.length - 1 && (
-                      <span aria-hidden="true" className="mt-1 w-px flex-1 bg-line" />
-                    )}
-                  </span>
-                  <span className="min-w-0 pb-1">
-                    <span className="block font-display text-[16.5px] font-bold leading-snug text-heading">
-                      {s.label}
-                    </span>
-                    <span className="mt-2 block max-w-2xl text-[15.5px] leading-[1.7] text-muted">
-                      {s.text}
-                    </span>
-                  </span>
-                </Reveal>
-              ))}
-            </ol>
-
-            <Reveal y={12} className="mt-10 rounded-2xl bg-surface p-6 ring-1 ring-line sm:p-7">
-              <p className="flex items-center gap-2.5 font-display text-[13px] font-bold uppercase tracking-[0.14em] text-accent">
-                <Icon name="scale" className="h-4 w-4" />
-                What this does not include
-              </p>
-              <ul className="mt-4 space-y-3">
-                {calc.method.notes.map((n) => (
-                  <li key={n} className="flex gap-3.5 text-[15px] leading-[1.7] text-muted">
-                    <span aria-hidden="true" className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-accent-soft" />
-                    {n}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+      <Block
+        id="method"
+        eyebrow="Method"
+        title="How is this calculated?"
+        intro={calc.methodIntro}
+        ground="sunken"
+      >
+        <div className="mx-auto mb-10 max-w-3xl overflow-x-auto rounded-2xl bg-surface p-5 text-center ring-1 ring-line-accent sm:p-6">
+          <p className="whitespace-nowrap font-mono text-[14px] font-semibold text-accent-strong sm:text-[15px]">
+            {calc.method.formula}
+          </p>
         </div>
-      </Band>
+
+        <ProcessTimeline steps={calc.method.steps.map((s) => ({ title: s.label, body: s.text }))} />
+
+        <Reveal y={12} className="card mx-auto mt-12 max-w-3xl p-6 sm:p-7">
+          <p className="flex items-center gap-2.5 font-display text-[13px] font-bold uppercase tracking-[0.14em] text-accent">
+            <Icon name="scale" className="h-4 w-4" />
+            What this does not include
+          </p>
+          <ul className="mt-4 space-y-3">
+            {calc.method.notes.map((n) => (
+              <li key={n} className="flex gap-3.5 text-[15px] leading-[1.7] text-muted">
+                <span aria-hidden="true" className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-accent-soft" />
+                {n}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </Block>
 
       {/* ---- 4. Questions about this specific calculator ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Questions</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              Asked often enough about this calculation to be worth answering beside it.
-            </p>
-            <Link
-              href="/resources/faqs"
-              className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
-            >
-              Every question, in one place <Arrow />
-            </Link>
-          </Reveal>
-          <Accordion items={calc.faqs} />
-        </div>
-      </Band>
+      <FaqSection
+        title="Questions"
+        intro="Asked often enough about this calculation to be worth answering beside it."
+        items={calc.faqs}
+      />
 
       {/* ---- 5. Cross-links to the other calculators ---- */}
-      <Band ground="raised" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[20ch]">
-              See this run against your own payroll month
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              A calculator applies a rule to figures you type in. A payroll run applies it to your
-              actual employee record, your locations and your verified declarations — which is where
-              Professional Tax, LWF and TDS also resolve.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button href="/company/contact">Book a demo</Button>
-            <Button href="/resources/calculator" variant="outline">
-              All calculators
-            </Button>
-          </div>
+      <Block
+        eyebrow="Next step"
+        title="See this run against your own payroll month"
+        intro="A calculator applies a rule to figures you type in. A payroll run applies it to your actual employee record, your locations and your verified declarations — which is where Professional Tax, LWF and TDS also resolve."
+        ground="sunken"
+      >
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button href="/company/contact">Book a demo</Button>
+          <Button href="/resources/calculator" variant="outline">
+            All calculators
+          </Button>
         </div>
-      </Band>
+      </Block>
 
       <Onward
         title="Other calculators"

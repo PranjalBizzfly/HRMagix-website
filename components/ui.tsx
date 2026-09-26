@@ -84,15 +84,15 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    "group inline-flex select-none items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 ease-out active:scale-[0.98] motion-reduce:active:scale-100";
+    "group inline-flex select-none items-center justify-center gap-2.5 whitespace-nowrap rounded-full font-semibold transition-all duration-300 ease-out active:scale-95 motion-reduce:active:scale-100";
 
   const skins = {
     primary:
-      "bg-brand text-white shadow-glow hover:-translate-y-0.5 hover:bg-brand-hover motion-reduce:hover:translate-y-0",
+      "btn-shimmer bg-brand text-white shadow-glow hover:scale-[1.04] hover:bg-brand-hover motion-reduce:hover:scale-100",
     outline:
-      "bg-surface text-heading ring-1 ring-inset ring-line-strong hover:-translate-y-0.5 hover:ring-line-accent hover:shadow-soft motion-reduce:hover:translate-y-0",
+      "bg-surface text-heading ring-1 ring-inset ring-line-strong hover:scale-[1.04] hover:ring-line-accent hover:shadow-soft motion-reduce:hover:scale-100",
     light:
-      "bg-white text-violet-800 hover:-translate-y-0.5 hover:shadow-lift motion-reduce:hover:translate-y-0",
+      "bg-white text-violet-800 hover:scale-[1.04] hover:shadow-lift motion-reduce:hover:scale-100",
     ghost:
       "bg-surface-sunken text-accent-deep ring-1 ring-inset ring-line hover:bg-surface-raised hover:text-accent-strong",
   };
@@ -330,7 +330,7 @@ export function Badge({
 
 export function Stars({ className = "", size = "h-3.5 w-3.5" }: { className?: string; size?: string }) {
   return (
-    <span className={`inline-flex items-center gap-0.5 text-amber-400 ${className}`} role="img" aria-label="Rated 5 out of 5">
+    <span className={`inline-flex items-center gap-0.5 text-gold ${className}`} role="img" aria-label="Rated 5 out of 5">
       {[0, 1, 2, 3, 4].map((i) => (
         <svg key={i} viewBox="0 0 24 24" className={size} fill="currentColor" aria-hidden="true" focusable="false">
           <path d="m12 3.4 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9-5.3-2.9-5.3 2.9 1.1-5.9L3.5 9.6l5.9-.8L12 3.4Z" />

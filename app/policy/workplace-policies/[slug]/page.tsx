@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { policyDetails, detailBySlug, detailByCode } from "@/lib/policyDetail";
 import { policyRegister } from "@/lib/policies";
 import { pdfPath, suppliedCodes } from "@/lib/policyAssets";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import { Icon } from "@/components/icons";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import PdfDownloadButton from "@/components/PdfDownloadButton";
 
 /**
  * The framings that would otherwise be identical on all twenty-five policy
@@ -166,7 +168,7 @@ export default async function PolicyDetailPage({
   return (
     <>
       <article>
-        <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+        <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
           <div className="shell">
             <Reveal y={8}>
               <Breadcrumbs
@@ -197,8 +199,10 @@ export default async function PolicyDetailPage({
           </div>
         </header>
 
-        <Band ground="surface" size="md">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:gap-16">
+      <SiteStats />
+
+        <Block ground="canvas">
+          <div className="card grid gap-12 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:gap-16 lg:p-10">
             {/* ---- Body ---- */}
             <div className="max-w-[68ch]">
               <section>
@@ -324,14 +328,16 @@ export default async function PolicyDetailPage({
                         View PDF
                         <span className="sr-only">(opens in a new tab)</span>
                       </a>
-                      <a
+                      <PdfDownloadButton
+                        title={entry.name}
                         href={pdf}
-                        download={`${entry.code}-${entry.name.replace(/\s+/g, "-")}.pdf`}
+                        fileName={`${entry.code}-${entry.name.replace(/\s+/g, "-")}.pdf`}
+                        source={`Policy page: ${entry.name}`}
                         className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-[13.5px] font-semibold text-accent ring-1 ring-line-strong transition-colors hover:ring-line-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                       >
                         <Icon name="arrowRight" className="h-3.5 w-3.5 rotate-90" />
                         Download
-                      </a>
+                      </PdfDownloadButton>
                     </div>
                   </div>
                 )}
@@ -388,14 +394,13 @@ export default async function PolicyDetailPage({
               </div>
             </aside>
           </div>
-        </Band>
+        </Block>
       </article>
 
-      <Band ground="sunken" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
+      <Block eyebrow="Put it to work" title={frame.ctaTitle} ground="sunken">
+        <div className="card mx-auto flex max-w-3xl flex-col items-center gap-8 p-6 text-center sm:p-8">
           <div>
-            <h2 className="display display-md max-w-[20ch]">{frame.ctaTitle}</h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
+            <p className="mx-auto max-w-xl text-[16.5px] leading-[1.7] text-muted">
               {frame.ctaBody}{" "}
               <Link
                 href="/solutions/employee-management"
@@ -406,14 +411,14 @@ export default async function PolicyDetailPage({
               .
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button href="/company/contact">Book a demo</Button>
             <Button href="/solutions/employee-management" variant="outline">
               How documents work
             </Button>
           </div>
         </div>
-      </Band>
+      </Block>
 
       {seeAlso.length > 0 && (
         <Onward

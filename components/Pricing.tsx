@@ -1,5 +1,5 @@
 import { plans, site } from "@/lib/content";
-import { Button, Check, Pill } from "./ui";
+import { Button, Check } from "./ui";
 import { Reveal } from "./motion";
 
 /** Three plan cards; the Growth plan is inverted and lifted. */
@@ -12,19 +12,24 @@ export default function Pricing() {
           return (
             <Reveal key={plan.name} delay={i * 100} y={22} className={featured ? "lg:-my-4" : ""}>
               <div
-                className={`flex h-full flex-col rounded-[24px] p-7 transition-all duration-500 sm:p-9 ${
+                className={`relative flex h-full flex-col rounded-[24px] p-7 transition-all duration-500 sm:p-9 ${
                   featured
-                    ? "bg-panel text-white shadow-lift ring-1 ring-panel-line/45"
-                    : "bg-surface shadow-soft ring-1 ring-line hover:-translate-y-1 hover:shadow-lift motion-reduce:hover:translate-y-0"
+                    ? "bg-panel text-white shadow-lift ring-2 ring-gold/60"
+                    : "card card-hover"
                 }`}
               >
+                {featured && <span className="border-beam" aria-hidden="true" />}
                 <div className="flex items-center justify-between gap-3">
                   <h3
                     className={`font-display text-[20px] font-bold ${featured ? "text-white" : "text-heading"}`}
                   >
                     {plan.name}
                   </h3>
-                  {featured && <Pill tone="dark">Most Popular</Pill>}
+                  {featured && (
+                    <span className="rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#2b1c00]">
+                      Most Popular
+                    </span>
+                  )}
                 </div>
                 <p className={`mt-2 text-[13.5px] ${featured ? "text-violet-300/85" : "text-subtle"}`}>
                   {plan.blurb}

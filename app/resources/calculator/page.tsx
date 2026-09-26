@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block, ProcessTimeline } from "@/components/sky9";
 import Link from "next/link";
 import { calculators, unavailable } from "@/lib/calculators";
-import { Band, Opening, Onward } from "@/components/editorial";
+import { Opening, Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import { Icon } from "@/components/icons";
@@ -13,12 +14,8 @@ export const metadata: Metadata = {
   description:
     "Free Indian payroll calculators: salary breakup and take-home, EPF and pension contributions, ESI eligibility, gratuity under the Payment of Gratuity Act, and total payroll cost.",
   keywords: [
-    "employee salary calculator",
-    "PF calculation",
-    "ESI calculation",
     "gratuity calculator",
     "payroll cost calculator",
-    "salary calculation software",
   ],
   alternates: { canonical: "/resources/calculator" },
 };
@@ -38,7 +35,7 @@ export const metadata: Metadata = {
 export default function CalculatorHub() {
   return (
     <>
-      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -68,25 +65,23 @@ export default function CalculatorHub() {
         </div>
       </header>
 
-      {/* ---- The options ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Choose a calculator</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Each opens a dedicated page. The first four apply provisions of central Indian statute;
-            the last two apply those rules across a team, and the published HRMagix rates.
-          </p>
-        </Reveal>
+      <SiteStats />
 
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2">
+      {/* ---- The options ---- */}
+      <Block
+        eyebrow="Calculators"
+        title="Choose a calculator"
+        intro="Each opens a dedicated page. The first four apply provisions of central Indian statute; the last two apply those rules across a team, and the published HRMagix rates."
+      >
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {calculators.map((c, i) => (
-            <Reveal as="li" key={c.slug} delay={i * 55} y={12} className="bg-surface">
+            <Reveal as="li" key={c.slug} delay={i * 55} y={12}>
               <Link
                 href={`/calculators/${c.slug}`}
-                className="group flex h-full flex-col gap-4 p-7 transition-colors hover:bg-surface-raised/50 sm:p-8"
+                className="card card-hover group flex h-full flex-col gap-4 p-6"
               >
                 <span className="flex items-start gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-surface-sunken text-accent ring-1 ring-line transition-colors group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-accent">
                     <Icon name={c.icon} className="h-[19px] w-[19px]" />
                   </span>
                   <span className="min-w-0">
@@ -115,60 +110,39 @@ export default function CalculatorHub() {
             </Reveal>
           ))}
         </ul>
-      </Band>
+      </Block>
 
       {/* ---- How to use them ---- */}
-      <Band ground="sunken" size="md">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12}>
-            <h2 className="display display-md">How each page works</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              The same three questions in the same order, on every calculator.
-            </p>
-          </Reveal>
-
-          <ol className="min-w-0 space-y-0">
-            {[
+      <Block
+        eyebrow="Process"
+        title="How each page works"
+        intro="The same three questions in the same order, on every calculator."
+        ground="sunken"
+      >
+        <ProcessTimeline
+          steps={[
               {
-                label: "What do I enter?",
-                text: "Clearly labelled inputs with a hint under each, and a note on what the figure should be — basic rather than gross, gross rather than basic, completed years rather than months.",
+                title: "What do I enter?",
+                body: "Clearly labelled inputs with a hint under each, and a note on what the figure should be — basic rather than gross, gross rather than basic, completed years rather than months.",
               },
               {
-                label: "What will be calculated?",
-                text: "A short explanation sits beside the title before you touch anything, so the tool is never the first thing you have to interpret.",
+                title: "What will be calculated?",
+                body: "A short explanation sits beside the title before you touch anything, so the tool is never the first thing you have to interpret.",
               },
               {
-                label: "What is my result?",
-                text: "Press Calculate for headline figures, then the full breakdown underneath — every intermediate line, with the rate or rule that produced it named beside it.",
+                title: "What is my result?",
+                body: "Press Calculate for headline figures, then the full breakdown underneath — every intermediate line, with the rate or rule that produced it named beside it.",
               },
               {
-                label: "How was that worked out?",
-                text: "The formula in full, the steps in order, and an explicit list of what the calculation does not include and why.",
+                title: "How was that worked out?",
+                body: "The formula in full, the steps in order, and an explicit list of what the calculation does not include and why.",
               },
-            ].map((s, i, arr) => (
-              <Reveal as="li" key={s.label} delay={i * 60} y={10} className="relative flex gap-5 pb-7 last:pb-0">
-                <span className="relative flex flex-col items-center">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-surface font-display text-[12.5px] font-bold text-accent-strong ring-1 ring-line">
-                    {i + 1}
-                  </span>
-                  {i < arr.length - 1 && <span aria-hidden="true" className="mt-1 w-px flex-1 bg-line" />}
-                </span>
-                <span className="min-w-0 pb-1">
-                  <span className="block font-display text-[16.5px] font-bold leading-snug text-heading">
-                    {s.label}
-                  </span>
-                  <span className="mt-2 block max-w-2xl text-[15.5px] leading-[1.7] text-muted">
-                    {s.text}
-                  </span>
-                </span>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </Band>
+          ]}
+        />
+      </Block>
 
       {/* ---- What is deliberately not offered ---- */}
-      <Band ground="surface" size="lg">
+      <Block ground="canvas">
         <Opening
           label="Not offered"
           paragraphs={[
@@ -177,19 +151,19 @@ export default function CalculatorHub() {
           ]}
         />
 
-        <div className="mt-12 divide-y divide-line border-y border-line">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {unavailable.map((u, i) => (
             <Reveal
               key={u.name}
               delay={i * 60}
               y={12}
-              className="grid gap-4 py-7 lg:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] lg:gap-12"
+              className="card card-hover flex flex-col gap-4 p-6"
             >
               <h3 className="flex items-start gap-2.5 font-display text-[17px] font-bold leading-snug text-heading">
                 <Icon name="cross" className="mt-1 h-4 w-4 shrink-0 text-subtle" />
                 {u.name}
               </h3>
-              <div className="max-w-3xl">
+              <div>
                 <p className="text-[15.5px] leading-[1.7] text-muted">{u.why}</p>
                 <p className="mt-3 text-[14.5px] leading-[1.7] text-accent-strong">
                   <span className="font-semibold uppercase tracking-[0.08em] text-subtle">
@@ -202,13 +176,13 @@ export default function CalculatorHub() {
           ))}
         </div>
 
-        <Reveal delay={200} className="mt-10 flex flex-wrap gap-3">
+        <Reveal delay={200} className="mt-10 flex flex-wrap justify-center gap-3">
           <Button href="/solutions/payroll">How payroll resolves all three</Button>
           <Button href="/company/contact" variant="outline">
             Ask about your own case
           </Button>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

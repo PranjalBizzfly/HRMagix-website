@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, CtaBand, Block } from "@/components/sky9";
 import Link from "next/link";
 import { industries } from "@/lib/industries";
-import { Band, Opening, Statement } from "@/components/editorial";
+import { Opening, Statement } from "@/components/editorial";
 import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -13,11 +14,7 @@ export const metadata: Metadata = {
   description:
     "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services — the same platform, matched to how each workforce is actually paid.",
   keywords: [
-    "HR software for companies",
-    "HRMS for small business",
-    "payroll software for SMEs",
-    "HR software for manufacturing companies",
-    "HR software for startups",
+
   ],
   alternates: { canonical: "/industries" },
 };
@@ -35,7 +32,7 @@ export default function IndustriesHub() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -65,73 +62,65 @@ export default function IndustriesHub() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <Opening
-          label="Why this page exists"
-          paragraphs={[
-            "Software companies usually publish industry pages to widen a keyword net, and the pages end up identical apart from a noun. That is not useful to anybody choosing a system.",
-            "So each of the six below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.",
-          ]}
-        />
-      </Band>
+      <SiteStats />
 
-      {/* ---- The six, as alternating editorial rows ---- */}
-      <div className="bg-surface-sunken">
-        <div className="shell divide-y divide-line">
+      <Block eyebrow="Overview" title="Why this page exists" ground="canvas">
+        <div className="card mx-auto max-w-4xl p-6 sm:p-8">
+          <Opening
+            paragraphs={[
+              "Software companies usually publish industry pages to widen a keyword net, and the pages end up identical apart from a noun. That is not useful to anybody choosing a system.",
+              "So each of the six below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.",
+            ]}
+          />
+        </div>
+      </Block>
+
+      {/* ---- The six, as cards ---- */}
+      <Block eyebrow="Sectors" title="Industries" ground="sunken">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {industries.map((industry, i) => (
-            <Reveal
-              key={industry.slug}
-              y={18}
-              className="grid items-center gap-8 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16"
-            >
-              <div className={i % 2 ? "lg:order-2" : ""}>
-                <Link href={industry.href} className="group block">
-                  <div className="overflow-hidden rounded-[20px] shadow-lift transition-transform duration-500 group-hover:scale-[1.015]">
-                    <Photo
-                      slot={industry.image}
-                      ratio="16 / 10"
-                      rounded="rounded-[20px]"
-                      sizes="(max-width: 1024px) 100vw, 560px"
-                    />
-                  </div>
-                </Link>
-              </div>
-
-              <div className={i % 2 ? "lg:order-1" : ""}>
+            <Reveal as="li" key={industry.slug} delay={i * 60} y={14} className="card card-hover flex h-full flex-col overflow-hidden">
+              <Link href={industry.href} className="group block">
+                <Photo
+                  slot={industry.image}
+                  ratio="16 / 10"
+                  rounded="rounded-none"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                />
+              </Link>
+              <div className="flex flex-1 flex-col p-6">
                 <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent-soft">
                   {industry.audience}
                 </p>
-                <h2 className="mt-4 font-display text-[26px] font-bold leading-[1.2] tracking-[-0.025em] text-heading sm:text-[30px]">
+                <h3 className="mt-3 font-display text-[20px] font-bold leading-[1.25] tracking-[-0.02em] text-heading">
                   <Link
                     href={industry.href}
                     className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                   >
                     {industry.name}
                   </Link>
-                </h2>
-                <p className="mt-4 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-                  {industry.standfirst}
-                </p>
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-muted">{industry.standfirst}</p>
 
-                <p className="mt-6 text-[13px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                <p className="mt-5 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-subtle">
                   Start with
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-body">
+                <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-body">
                   <span className="font-semibold text-heading">{industry.priority[0].module}</span>{" "}
                   — {industry.priority[0].why}
                 </p>
 
                 <Link
                   href={industry.href}
-                  className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent transition-colors hover:text-accent-strong"
+                  className="group mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-accent transition-colors hover:text-accent-strong"
                 >
                   Read the {industry.name.toLowerCase()} page <Arrow />
                 </Link>
               </div>
             </Reveal>
           ))}
-        </div>
-      </div>
+        </ul>
+      </Block>
 
       <Statement tone="dark" attribution="The only claim this site makes about outcomes">
         Every company here runs the same statutory rules. What changes is how much of the work a
@@ -139,19 +128,14 @@ export default function IndustriesHub() {
       </Statement>
 
       {/* ---- What is common, and what genuinely differs ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">The same platform, different pressure points</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              These are not six products. The HRMS, payroll, attendance and leave modules are
-              identical in every case; what changes is which of them carries the weight, and which
-              statutory obligations arrive first.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
+      <Block
+        eyebrow="Common ground"
+        title="The same platform, different pressure points"
+        intro="These are not six products. The HRMS, payroll, attendance and leave modules are identical in every case; what changes is which of them carries the weight, and which statutory obligations arrive first."
+        ground="canvas"
+      >
+        <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
+            <section className="card p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 What every Indian employer shares
               </h3>
@@ -170,7 +154,7 @@ export default function IndustriesHub() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 What changes is where the difficulty sits
               </h3>
@@ -189,7 +173,7 @@ export default function IndustriesHub() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Which module to switch on first
               </h3>
@@ -207,30 +191,25 @@ export default function IndustriesHub() {
                 the most time.
               </p>
             </section>
-          </div>
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="surface" size="lg">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[18ch]">
-              Not on this list, or somewhere between two of them?
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              Most companies are. The configuration questions that matter — how many states, how
-              many entities, whether any part of the workforce runs shifts — cut across sectors
-              entirely. A short conversation settles it faster than another page would.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+      <Block eyebrow="Not sure?" title="Not on this list, or somewhere between two of them?" ground="sunken">
+        <div className="card mx-auto max-w-3xl p-6 text-center sm:p-8">
+          <p className="text-[16.5px] leading-[1.7] text-muted">
+            Most companies are. The configuration questions that matter — how many states, how
+            many entities, whether any part of the workforce runs shifts — cut across sectors
+            entirely. A short conversation settles it faster than another page would.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button href="/company/contact">Talk to the team</Button>
             <Button href="/solutions" variant="outline">
               Browse solutions
             </Button>
           </div>
         </div>
-      </Band>
+      </Block>
+      <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
     </>
   );
 }

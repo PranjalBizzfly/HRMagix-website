@@ -23,7 +23,7 @@ export type Industry = {
   title: string;
   standfirst: string;
   image: string;
-  seo: { title: string; description: string; keywords: string[] };
+  seo: { title: string; description: string; keywords: string[]; focus?: string };
   /** The situation, in that reader's own terms. */
   situation: string[];
   /** The specific pressures, each with a real explanation rather than a label. */
@@ -39,6 +39,11 @@ export type Industry = {
   deepDive?: { heading: string; body: string[] }[];
   /** A closing argument written for this reader alone. */
   closing: string;
+  /**
+   * The events that usually make this kind of company start looking for an HR
+   * system — buyer situations, not product claims.
+   */
+  signals?: string[];
   questions: IndustryQuestion[];
 };
 
@@ -55,13 +60,13 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Startups",
       description:
-        "HRMS and payroll software for Indian startups: statutory compliance from your first employee, leave and attendance policy that scales, and self-service that keeps founders out of HR admin.",
+        "HR software for startups in India: payroll software for startups with statutory compliance from the first employee, leave and attendance policy that scales, and self-service that keeps founders out of HR admin.",
       keywords: [
-        "HR software for startups",
         "payroll software for startups",
-        "HRMS for small business",
-        "HR automation software",
+        "HR software for startups",
+        "best HR software for startups",
       ],
+      focus: "HR software for startups",
     },
     situation: [
       "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised — how much notice do I owe, does a Friday off cost me two days, when does my leave reset — and discovers that the answer depends on who they asked and when.",
@@ -137,6 +142,11 @@ export const industries: Industry[] = [
         ],
       },
     ],
+    signals: [
+      "A funding round closes, and a hiring plan arrives with it before any HR process exists.",
+      "Due diligence asks for appointment letters, statutory filings and salary records as they stood at the time.",
+      "The first engineer's salary crosses the income-tax exemption limit and TDS becomes a monthly obligation.",
+    ],
     closing:
       "The Starter plan is deliberately narrow — attendance, leaves, directory and documents — because a fifteen-person company genuinely does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
     questions: [
@@ -183,13 +193,12 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Small Business",
       description:
-        "HR and payroll software for small businesses in India: correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records — without an HR department.",
+        "HR software for small business in India: an HRMS for small business with correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records — without an HR department.",
       keywords: [
         "HR software for small business",
         "HRMS for small business",
-        "payroll software for SMEs",
-        "employee payroll system",
       ],
+      focus: "HR software for small business",
     },
     situation: [
       "In an owner-managed business the payroll is usually run by the person who also handles purchases, banking and the accountant relationship. It is not a specialism; it is one of eleven things on a list, and it comes due on a fixed date whether or not the rest of the list is finished.",
@@ -265,6 +274,11 @@ export const industries: Industry[] = [
         ],
       },
     ],
+    signals: [
+      "Headcount crosses 25, then 50, and the arrangements that worked when everyone sat together stop holding.",
+      "An employee disputes a salary or a leave balance, and nobody can show how the figure was reached.",
+      "The first notice from a labour or tax authority arrives and the records have to be produced.",
+    ],
     closing:
       "Nothing here requires an implementation project. Employee data comes in through Excel templates, the statutory rules are configuration rather than customisation, and most organisations of this size complete setup within two to three days including a dry-run payroll.",
     questions: [
@@ -309,16 +323,14 @@ export const industries: Industry[] = [
       "The defining difficulty of a mid-market Indian business is that its branches are one organisation operationally and several distinct compliance positions statutorily — and both have to be true at once.",
     image: "industry-smes",
     seo: {
-      title: "HRMS & Payroll Software for SMEs and Growing Companies",
+      title: "Payroll Software for SMEs and Growing Companies",
       description:
-        "HRMS for multi-branch, multi-state Indian SMEs: one employee record across entities and locations, state-specific Professional Tax and leave rules, and consolidated workforce reporting.",
+        "Payroll software for SMEs in India: one employee record across entities and locations, state-specific Professional Tax and leave rules, and consolidated reporting — an HRMS for a 100 employees company and beyond.",
       keywords: [
         "payroll software for SMEs",
-        "HR software for companies",
         "HRMS for 100 employees company",
-        "HR management system",
-        "employee management system",
       ],
+      focus: "Payroll software for SMEs",
     },
     situation: [
       "A business with a head office in Pune, a branch in Bengaluru and a unit in Hyderabad experiences itself as one company. Its employees move between locations, its leadership reads one set of numbers, and its culture is singular.",
@@ -395,6 +407,12 @@ export const industries: Industry[] = [
         ],
       },
     ],
+    signals: [
+      "The renewal date of the current HR or payroll tool is coming up.",
+      "An acquisition or a new entity means two payrolls, two leave policies and one board asking for combined headcount.",
+      "A new head of HR joins and inherits several tools and a monthly report built by hand.",
+      "An appraisal cycle fails, or attrition jumps and nobody can say where it is concentrated.",
+    ],
     closing:
       "Multi-entity and multi-location structures sit under a single login, with role-based permissions deciding who sees which entity. The Enterprise plan adds single sign-on and advanced security, along with succession and lifecycle modules and a dedicated success manager.",
     questions: [
@@ -441,13 +459,11 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Manufacturing Companies",
       description:
-        "HRMS and payroll for Indian manufacturing: rotating shift management, overtime and night differentials, biometric attendance across plants, ESI and Labour Welfare Fund compliance.",
+        "HR software for manufacturing companies in India: rotating shift management, overtime and night differentials, biometric attendance across plants, ESI and Labour Welfare Fund compliance.",
       keywords: [
         "HR software for manufacturing companies",
-        "attendance management system",
-        "biometric attendance system software",
-        "payroll management system",
       ],
+      focus: "HR software for manufacturing companies",
     },
     situation: [
       "In an office, attendance is close to binary: someone was in, or they were not. On a production floor almost nothing is binary. A punch at 22:40 belongs to a shift that started yesterday. A Sunday worked generates a comp-off with its own expiry. An hour past shift end may be overtime or may be a handover, depending on the rule.",
@@ -527,6 +543,12 @@ export const industries: Industry[] = [
         ],
       },
     ],
+    signals: [
+      "Another site or branch opens, and attendance and rostering get harder with it.",
+      "The overtime bill jumps without anyone having approved the extra hours.",
+      "A wage dispute turns on attendance records nobody can fully stand behind.",
+      "A seasonal hiring surge doubles the headcount that has to be onboarded and paid.",
+    ],
     closing:
       "The biometric hardware most plants already run — eSSL, Matrix, Realtime, ZKTeco — pushes into HRMagix over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
     questions: [
@@ -573,13 +595,9 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for IT & Technology Companies",
       description:
-        "HRMS and payroll for Indian IT and technology companies: hybrid and remote attendance, 24/7 delivery rosters, OKR and KRA alignment, and full statutory payroll compliance.",
+        "HR software for companies in IT and technology: hybrid and remote attendance, 24/7 delivery rosters, OKR and KRA alignment, and full statutory payroll compliance.",
       keywords: [
-        "HR platform for companies",
-        "cloud HR software",
-        "HR SaaS platform",
-        "HRMS tools for companies",
-        "employee self service portal",
+        "HR software for companies",
       ],
     },
     situation: [
@@ -656,6 +674,10 @@ export const industries: Industry[] = [
         ],
       },
     ],
+    signals: [
+      "A new contract doubles headcount in weeks, and onboarding has to keep pace with it.",
+      "Contractor onboarding and exits across several clients become impossible to track by hand.",
+    ],
     closing:
       "OKRs, KRAs, the 9-box talent matrix, PIPs, 1-on-1s and recognition all sit on the Growth plan alongside payroll and analytics, which is usually the right starting plan for a technology company of any size.",
     questions: [
@@ -704,10 +726,7 @@ export const industries: Industry[] = [
       description:
         "HRMS for consultancies and agencies: client-site attendance capture, project shift rosters, approval hierarchies by grade, and statutory payroll for a mobile professional workforce.",
       keywords: [
-        "HR software for companies",
-        "attendance tracking software",
-        "HR management system",
-        "employee attendance software",
+
       ],
     },
     situation: [
@@ -783,6 +802,10 @@ export const industries: Industry[] = [
           "Access granted by role against the record, withdrawn when the role changes, and recorded when a restricted field is opened, is what turns a confidentiality clause into something that can actually be demonstrated.",
         ],
       },
+    ],
+    signals: [
+      "A client disputes the hours billed, and the timesheets cannot settle it.",
+      "Utilisation is being estimated rather than measured.",
     ],
     closing:
       "Everything here runs from the same employee record and the same attendance ledger — which is what allows a firm whose people are almost never in one place to still close a month on time.",

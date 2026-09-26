@@ -76,13 +76,7 @@ export const whitePapers: WhitePaper[] = [
       title: "Payroll as a Chain of Custody — White Paper",
       description:
         "A technical briefing on the Indian monthly payroll cycle: the eight handovers from attendance close to statutory filing, what each statutory head requires as input, and what it must produce.",
-      keywords: [
-        "payroll processing software",
-        "payroll compliance",
-        "payroll management system",
-        "PF calculation",
-        "ESI calculation",
-      ],
+      keywords: [],
     },
     sections: [
       {
@@ -268,12 +262,7 @@ export const whitePapers: WhitePaper[] = [
       title: "Multi-State Payroll Compliance in India — White Paper",
       description:
         "How to configure payroll for a company operating across Indian states: entity, location and grade axes, state Professional Tax and LWF divergence, and consolidated reporting over distinct filings.",
-      keywords: [
-        "payroll software for SMEs",
-        "HRMS for 100 employees company",
-        "payroll compliance",
-        "HR management system",
-      ],
+      keywords: [],
     },
     sections: [
       {
@@ -418,12 +407,7 @@ export const whitePapers: WhitePaper[] = [
       title: "Manufacturing Payroll Exceptions — White Paper",
       description:
         "Auto shift detection across midnight, overtime and night differentials as derived figures, comp-off with expiry, ESI against a moving wage base, and per-plant configuration under one filing.",
-      keywords: [
-        "HR software for manufacturing companies",
-        "attendance management system",
-        "biometric attendance system software",
-        "ESI calculation",
-      ],
+      keywords: [],
     },
     sections: [
       {
@@ -543,12 +527,7 @@ export const whitePapers: WhitePaper[] = [
       title: "The Policy Vacuum in Growing Companies — White Paper",
       description:
         "The minimum written HR positions a growing Indian company needs, in the order to decide them: statutory registrations, leave scheme, notice, probation and remote work, plus acknowledgement as evidence.",
-      keywords: [
-        "HR software for startups",
-        "HRMS for small business",
-        "employee lifecycle management",
-        "HR automation software",
-      ],
+      keywords: [],
     },
     sections: [
       {
@@ -663,12 +642,7 @@ export const whitePapers: WhitePaper[] = [
       title: "The Arithmetic of Employee Self-Service — White Paper",
       description:
         "How to audit HR request volume, which requests are lookups rather than judgement, what an employee can complete alone, and why mobile is the primary channel for a large part of an Indian workforce.",
-      keywords: [
-        "employee self service portal",
-        "ESS portal HR",
-        "HR employee portal",
-        "employee login HR system",
-      ],
+      keywords: [],
     },
     sections: [
       {

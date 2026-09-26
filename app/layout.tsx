@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter_Tight, Montserrat } from "next/font/google";
 import Nav from "@/components/Nav";
+import { buildSiteIndex } from "@/lib/siteIndex";
 import Footer from "@/components/Footer";
 import StickyCta from "@/components/StickyCta";
 import ScrollTop from "@/components/ScrollTop";
 import RouteTransition from "@/components/RouteTransition";
+import HeadingMotion from "@/components/HeadingMotion";
 import { ThemeProvider, themeScript } from "@/components/theme";
 import "./globals.css";
 
@@ -17,7 +19,7 @@ const interTight = Inter_Tight({
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-display",
 });
 
@@ -112,13 +114,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <ThemeProvider>
-          <Nav />
+          <Nav searchIndex={buildSiteIndex()} />
           <main id="main" tabIndex={-1} className="outline-none">
             <RouteTransition>{children}</RouteTransition>
           </main>
           <Footer />
           <StickyCta />
           <ScrollTop />
+          <HeadingMotion />
         </ThemeProvider>
       </body>
     </html>

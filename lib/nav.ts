@@ -35,6 +35,11 @@ export const solutionsNav: NavColumn[] = [
     blurb: "The employee record and the workflows built on top of it.",
     links: [
       {
+        label: "All Features",
+        href: "/features",
+        note: "All twelve modules, each with its own page",
+      },
+      {
         label: "HRMS",
         href: "/solutions/hrms",
         note: "The single employee record twelve modules read from",
@@ -156,6 +161,11 @@ export const resourcesNav: NavColumn[] = [
         label: "HR Guides",
         href: "/resources/guides",
         note: "Chaptered, practical guides that end in a checklist",
+      },
+      {
+        label: "HR Topics",
+        href: "/hr/topics",
+        note: "Practical guides to every area of HR and payroll",
       },
       {
         label: "HR Glossary",

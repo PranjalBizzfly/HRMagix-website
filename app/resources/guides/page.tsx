@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { guides } from "@/lib/guides";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -11,10 +12,7 @@ export const metadata: Metadata = {
   description:
     "Practical, chaptered guides for Indian HR and payroll teams: running a first payroll in a new system, writing a leave policy that survives a year, and setting up attendance for a workforce that is not at a desk.",
   keywords: [
-    "HR software for companies",
-    "payroll processing system",
-    "leave management system",
-    "attendance management system",
+
   ],
   alternates: { canonical: "/resources/guides" },
   openGraph: {
@@ -39,7 +37,7 @@ export const metadata: Metadata = {
 export default function GuidesPage() {
   return (
     <>
-      <header className="border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -64,23 +62,21 @@ export default function GuidesPage() {
         </div>
       </header>
 
-      {/* ---- Contents ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Contents</h2>
-        </Reveal>
+      <SiteStats />
 
-        <ol className="mt-11 border-t border-line-strong">
+      {/* ---- Contents ---- */}
+      <Block eyebrow="Guides" title="Contents" ground="canvas">
+        <ol className="grid gap-4 lg:grid-cols-2 lg:gap-5">
           {guides.map((g, i) => (
             <Reveal
               as="li"
               key={g.slug}
               delay={i * 60}
               y={12}
-              className="border-b border-line py-9"
+              className="card card-hover h-full p-6 sm:p-8"
             >
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,3.5rem)_minmax(0,1fr)] lg:gap-10">
-                <p className="font-display text-[30px] font-bold leading-none tracking-[-0.03em] text-line-accent lg:sticky lg:top-[110px] lg:self-start">
+              <div className="grid gap-5 sm:grid-cols-[minmax(0,3.5rem)_minmax(0,1fr)] sm:gap-6">
+                <p className="font-display text-[30px] font-bold leading-none tracking-[-0.03em] text-line-accent">
                   {g.number}
                 </p>
 
@@ -125,12 +121,12 @@ export default function GuidesPage() {
             </Reveal>
           ))}
         </ol>
-      </Band>
+      </Block>
 
-      <Band ground="surface" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="display display-md">How these differ from the other two formats</h2>
-          <p className="mt-6 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Formats" title="How these differ from the other two formats" ground="sunken">
+        <div className="grid gap-4 md:grid-cols-3 lg:gap-5">
+          <Reveal y={12} className="card card-hover h-full p-6">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             <Link href="/blog" className="font-semibold text-accent underline-offset-2 hover:underline">
               Insights
             </Link>{" "}
@@ -138,7 +134,9 @@ export default function GuidesPage() {
             in a payroll month. Read one when you need to understand why a number came out the way
             it did.
           </p>
-          <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+          </Reveal>
+          <Reveal y={12} delay={70} className="card card-hover h-full p-6">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             <Link
               href="/resources/white-papers"
               className="font-semibold text-accent underline-offset-2 hover:underline"
@@ -149,12 +147,15 @@ export default function GuidesPage() {
             you are invited to disagree with. Read one when you are choosing an approach rather than
             fixing a problem.
           </p>
-          <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+          </Reveal>
+          <Reveal y={12} delay={140} className="card card-hover h-full p-6">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             Guides are instructional. Read one when the work is already yours and you would rather
             not discover the order of it by getting it wrong.
           </p>
-        </Reveal>
-      </Band>
+          </Reveal>
+        </div>
+      </Block>
 
       <Onward
         links={[

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { articles, bySlug } from "@/lib/blog";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -69,7 +70,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <article>
-        <header className="border-b border-line bg-surface pb-10 pt-[104px] sm:pt-[128px]">
+        <header className="page-hero border-b border-line bg-surface pb-10 pt-[104px] sm:pt-[128px]">
           <div className="shell">
             <Reveal y={8}>
               <Breadcrumbs
@@ -115,7 +116,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </header>
 
-        <Band ground="surface" size="md">
+      <SiteStats />
+
+        <Block ground="canvas">
           <Reveal y={18} className="mb-12">
             <Photo
               slot={article.image}
@@ -150,26 +153,25 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </div>
             </aside>
           </div>
-        </Band>
+        </Block>
       </article>
 
       {/* ---- Closing: back to the section, and the related pieces ---- */}
-      <Band ground="sunken" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[18ch]">{article.closing.title}</h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              {article.closing.body}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+      <Block
+        eyebrow="Next step"
+        title={article.closing.title}
+        intro={article.closing.body}
+        ground="sunken"
+      >
+        <div className="flex flex-wrap justify-center gap-3">
+          <div className="contents">
             <Button href="/company/contact">Book a demo</Button>
             <Button href="/blog" variant="outline">
               All insights
             </Button>
           </div>
         </div>
-      </Band>
+      </Block>
 
       {related.length > 0 && (
         <Onward

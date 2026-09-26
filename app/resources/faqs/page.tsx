@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
 import Link from "next/link";
 import { faqs } from "@/lib/content";
 import { solutions } from "@/lib/solutions";
 import { industries } from "@/lib/industries";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Accordion from "@/components/Accordion";
 import OnThisPage from "@/components/OnThisPage";
+import { faqTopics, questionsByTopic } from "@/lib/faqTopics";
 
 export const metadata: Metadata = {
   title: "Questions & Answers",
   description:
     "Answers on Indian statutory compliance, biometric integration, geo-fenced mobile punch-in, the old and new tax regimes, data migration from Excel, hosting and support.",
-  keywords: ["HRMS software", "payroll compliance", "biometric attendance system software"],
+  keywords: [
+
+  ],
   alternates: { canonical: "/resources/faqs" },
 };
 
@@ -30,11 +33,12 @@ export const metadata: Metadata = {
  * this page is the map to all of them.
  */
 export default function FaqsPage() {
+  const byTopic = questionsByTopic();
   return (
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -56,45 +60,63 @@ export default function FaqsPage() {
         </div>
       </header>
 
+      <SiteStats />
+
+      {/* ---- Browse by topic ---- */}
+      <Block eyebrow="Topics" title="Browse by topic" ground="canvas">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {faqTopics.map((t) => (
+            <li key={t.slug}>
+              <Link
+                href={`/resources/faqs/${t.slug}`}
+                className="card card-hover group flex h-full items-center justify-between gap-4 p-6"
+              >
+                <span>
+                  <span className="block font-display text-[16.5px] font-bold text-heading group-hover:text-accent">
+                    {t.name}
+                  </span>
+                  <span className="mt-1 block text-[13px] text-subtle">
+                    {byTopic[t.slug].length} questions
+                  </span>
+                </span>
+                <span className="text-accent">
+                  <Arrow />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Block>
+
       {/* ---- General, answered in full ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">General</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              Statutory compliance, hardware integration, data migration, hosting and support — the
-              eight that come up in almost every first conversation.
-            </p>
-          </Reveal>
-          <Accordion items={faqs.map((f) => ({ q: f.q, a: f.a }))} />
-        </div>
-      </Band>
+      <FaqSection
+        title="General"
+        intro="Statutory compliance, hardware integration, data migration, hosting and support — the eight that come up in almost every first conversation."
+        items={faqs.map((f) => ({ q: f.q, a: f.a }))}
+        ground="sunken"
+        more={null}
+      />
 
       {/* ---- Index: by module ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">By module</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Each of these is answered on the page for the module it concerns, where the surrounding
-            context makes the answer more useful than it would be in a list.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 space-y-10">
+      <Block
+        eyebrow="Modules"
+        title="By module"
+        intro="Each of these is answered on the page for the module it concerns, where the surrounding context makes the answer more useful than it would be in a list."
+        ground="canvas"
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {solutions.map((s) => (
-            <Reveal key={s.slug} y={12} className="grid gap-4 border-t border-line pt-7 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-14">
-              <div>
-                <Link
-                  href={s.href}
-                  className="group inline-flex items-center gap-2 font-display text-[17px] font-bold text-heading transition-colors hover:text-accent"
-                >
-                  {s.name}
-                  <span className="text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
-                    <Arrow />
-                  </span>
-                </Link>
-              </div>
-              <ul className="space-y-2.5">
+            <Reveal key={s.slug} y={12} className="card card-hover h-full p-6">
+              <Link
+                href={s.href}
+                className="group inline-flex items-center gap-2 font-display text-[17px] font-bold text-heading transition-colors hover:text-accent"
+              >
+                {s.name}
+                <span className="text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
+                  <Arrow />
+                </span>
+              </Link>
+              <ul className="mt-4 space-y-2.5">
                 {s.questions.map((q) => (
                   <li key={q.q}>
                     <Link
@@ -113,21 +135,18 @@ export default function FaqsPage() {
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
       {/* ---- Index: by industry ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">By kind of company</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            The same question often has a different answer for a thirty-person business and a
-            four-hundred-person one across three states.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid gap-x-14 gap-y-9 lg:grid-cols-2">
+      <Block
+        eyebrow="Industries"
+        title="By kind of company"
+        intro="The same question often has a different answer for a thirty-person business and a four-hundred-person one across three states."
+        ground="sunken"
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
           {industries.map((ind) => (
-            <Reveal key={ind.slug} y={12} className="border-t border-line pt-6">
+            <Reveal key={ind.slug} y={12} className="card card-hover h-full p-6">
               <Link
                 href={ind.href}
                 className="group inline-flex items-center gap-2 font-display text-[17px] font-bold text-heading transition-colors hover:text-accent"
@@ -156,20 +175,18 @@ export default function FaqsPage() {
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="raised" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[18ch]">Still unanswered?</h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              Questions about how a specific statutory head behaves in your situation are better
-              asked than searched for. The specialists in Pune answer these daily.
-            </p>
-          </div>
+      <Block
+        eyebrow="Ask us"
+        title="Still unanswered?"
+        intro="Questions about how a specific statutory head behaves in your situation are better asked than searched for. The specialists in Pune answer these daily."
+        ground="canvas"
+      >
+        <div className="flex justify-center">
           <Button href="/company/contact">Ask a question</Button>
         </div>
-      </Band>
+      </Block>
 
       <Onward
         links={[

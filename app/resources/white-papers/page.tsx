@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { whitePapers, anyDownloadable } from "@/lib/papers";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -13,10 +14,7 @@ export const metadata: Metadata = {
   description:
     "Five technical briefings: payroll as a chain of custody, multi-state compliance, the manufacturing exceptions engine, the startup policy vacuum, and the arithmetic of employee self-service.",
   keywords: [
-    "payroll compliance",
-    "payroll processing software",
-    "HR automation software",
-    "employee lifecycle management",
+
   ],
   alternates: { canonical: "/resources/white-papers" },
 };
@@ -36,7 +34,7 @@ export default function WhitePapersPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -66,10 +64,12 @@ export default function WhitePapersPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
-        <div className="divide-y divide-line border-y border-line">
+      <SiteStats />
+
+      <Block ground="canvas">
+        <div className="grid gap-5 lg:gap-6">
           {whitePapers.map((paper) => (
-            <Reveal key={paper.slug} y={16} as="article" className="py-12 sm:py-14">
+            <Reveal key={paper.slug} y={16} as="article" className="card card-hover p-6 sm:p-10">
               <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:gap-16">
                 <div>
                   <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
@@ -152,14 +152,11 @@ export default function WhitePapersPage() {
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="sunken" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
-            On format
-          </h2>
-          <p className="mt-5 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Format" title="On format" ground="sunken">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             These are readable web documents rather than downloadable PDFs, and there is no email
             gate in front of any of them. HRMagix does not operate a gated document archive, so this
             page does not present one — no download control appears above because there is nothing
@@ -175,7 +172,7 @@ export default function WhitePapersPage() {
             </p>
           )}
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

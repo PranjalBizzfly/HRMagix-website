@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { mediaRoom } from "@/lib/resources";
 import { site } from "@/lib/content";
-import { Band, Opening, Onward } from "@/components/editorial";
+import { priceLabel } from "@/lib/pricing";
+import { Opening, Onward } from "@/components/editorial";
 import { Arrow, TickCircle, CrossCircle } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
 export default function MediaPage() {
   return (
     <>
-      <header className="relative overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -57,7 +59,9 @@ export default function MediaPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
+      <SiteStats />
+
+      <Block ground="canvas">
         <Opening
           label="Why this page"
           paragraphs={[
@@ -65,12 +69,12 @@ export default function MediaPage() {
             "So this is an attribution guide instead. The first list below is what can be stated as fact about the product, with the basis for each. The second is what cannot — not because it is secret, but because HRMagix has not published it and we are not going to supply a number that has no source behind it.",
           ]}
         />
-      </Band>
+      </Block>
 
       {/* ---- Attributable / not, as two facing ledgers ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+      <Block eyebrow="Attribution" title="Attributable, and not" ground="sunken">
+        <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
+          <div className="card p-6 sm:p-8">
             <h2 className="flex items-center gap-3 border-b border-line-accent pb-3 font-display text-[13px] font-bold uppercase tracking-[0.16em] text-accent">
               <TickCircle className="h-[18px] w-[18px]" />
               Attributable to HRMagix
@@ -88,7 +92,7 @@ export default function MediaPage() {
             </ul>
           </div>
 
-          <div>
+          <div className="card p-6 sm:p-8">
             <h2 className="flex items-center gap-3 border-b border-line pb-3 font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
               <CrossCircle className="h-[18px] w-[18px]" />
               Not attributable
@@ -102,7 +106,7 @@ export default function MediaPage() {
               ))}
             </ul>
 
-            <div className="mt-9 rounded-2xl bg-surface p-6 ring-1 ring-line">
+            <div className="mt-9 rounded-2xl bg-surface-sunken p-6 ring-1 ring-line">
               <h3 className="font-display text-[15.5px] font-bold text-heading">
                 Interviews and quotations
               </h3>
@@ -120,26 +124,20 @@ export default function MediaPage() {
             </div>
           </div>
         </div>
-      </Band>
+      </Block>
 
       {/* ---- A short factual profile a writer can quote ---- */}
-      <Band ground="raised" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">The product, described neutrally</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              Written so it can be quoted or paraphrased without checking back. Everything here is
-              also stated somewhere else on this site, which is the test we apply before putting it
-              on this page.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
-              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+      <Block
+        eyebrow="Profile"
+        title="The product, described neutrally"
+        intro="Written so it can be quoted or paraphrased without checking back. Everything here is also stated somewhere else on this site, which is the test we apply before putting it on this page."
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17.5px] font-bold tracking-[-0.02em] text-heading">
                 In one sentence
               </h3>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 HRMagix is HRMS and payroll software for Indian companies: twelve modules —
                 attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRA and
                 9-box, PIPs and growth, recognition, 1-on-1s and meetings, onboarding, documents,
@@ -147,17 +145,17 @@ export default function MediaPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
-              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17.5px] font-bold tracking-[-0.02em] text-heading">
                 What distinguishes it
               </h3>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Statutory calculation is part of the payroll run rather than a downstream export:
                 EPF, ESI, professional tax by state and TDS under Section 192 are derived from the
                 salary structure on the record, and the run produces the payslips, the returns and
                 the bank file from the same figures.
               </p>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 The second distinguishing property is that history is not overwritten. An
                 attendance correction sits alongside the original capture, a backdated increment
                 produces an arrear rather than a restatement, and a revised policy re-opens
@@ -165,11 +163,11 @@ export default function MediaPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
-              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17.5px] font-bold tracking-[-0.02em] text-heading">
                 Who uses it
               </h3>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Indian employers whose HR administration has outgrown spreadsheets: startups,
                 owner-managed small businesses, multi-entity mid-market groups, manufacturers
                 paying staff and workmen under different logic, IT services firms and professional
@@ -178,43 +176,39 @@ export default function MediaPage() {
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
-              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17.5px] font-bold tracking-[-0.02em] text-heading">
                 Commercial facts
               </h3>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
-                Three published plans priced per employee per month — Starter at $3, Growth at $6,
-                and Enterprise quoted on request. Fourteen-day free trial with full access to every
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
+                Three published plans priced per employee per month — Starter at{" "}
+                {priceLabel("Starter")}, Growth at {priceLabel("Growth")}, and Enterprise quoted on
+                request. Fourteen-day free trial with full access to every
                 module and no credit card. No setup or implementation fee. Based in Pune,
                 Maharashtra.
               </p>
             </section>
 
-            <section className="mt-9 border-t border-line pt-7">
-              <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17.5px] font-bold tracking-[-0.02em] text-heading">
                 Writing the name
               </h3>
-              <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 HRMagix, one word, capital H, R and M. Not HR Magix, HRmagix or Hrmagix. The
                 product is referred to as a platform rather than a suite, and as HRMS and payroll
                 software rather than an HRIS.
               </p>
             </section>
-          </div>
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="surface" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[18ch]">
-              Need the mark, the colours or the boilerplate?
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              The press kit carries the wordmark spelling, the vector mark, the brand palette with
-              hex values, short and long boilerplate, and the usage rules.
-            </p>
-          </div>
+      <Block
+        eyebrow="Press kit"
+        title="Need the mark, the colours or the boilerplate?"
+        intro="The press kit carries the wordmark spelling, the vector mark, the brand palette with hex values, short and long boilerplate, and the usage rules."
+        ground="sunken"
+      >
+        <div className="flex justify-center">
           <Link
             href="/company/press-kit"
             className="group inline-flex items-center gap-2 text-[15px] font-semibold text-accent"
@@ -222,7 +216,7 @@ export default function MediaPage() {
             Open the press kit <Arrow />
           </Link>
         </div>
-      </Band>
+      </Block>
 
       <Onward
         links={[

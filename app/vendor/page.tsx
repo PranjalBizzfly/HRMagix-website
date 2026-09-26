@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Link from "next/link";
 import { vendor } from "@/lib/resources";
-import { site } from "@/lib/content";
-import { Band, Opening, Onward } from "@/components/editorial";
-import { Arrow, Button } from "@/components/ui";
+import { Opening, Onward } from "@/components/editorial";
+import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
@@ -34,7 +34,7 @@ export default function VendorPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Partners & Vendors" }]} />
@@ -56,28 +56,30 @@ export default function VendorPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="lg">
+      <SiteStats />
+
+      <Block ground="canvas">
         <Opening label="The position" paragraphs={vendor.position} />
-      </Band>
+      </Block>
 
       {/* ---- The three relationships ---- */}
-      <Band ground="sunken" size="lg">
-        <ol className="divide-y divide-line border-y border-line">
+      <Block ground="sunken">
+        <ol className="grid gap-4 lg:grid-cols-3 lg:gap-5">
           {vendor.relationships.map((r, i) => (
-            <Reveal as="li" key={r.title} delay={i * 70} y={14} className="py-10 sm:py-12">
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,3rem)_minmax(0,1fr)] lg:gap-10">
+            <Reveal as="li" key={r.title} delay={i * 70} y={14} className="card card-hover flex flex-col p-6">
+              <div className="flex flex-1 flex-col gap-4">
                 <span
                   aria-hidden="true"
-                  className="font-display text-[34px] font-light leading-none text-line-accent"
+                  className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 font-display text-[16px] font-bold text-accent"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div>
-                  <h2 className="font-display text-[22px] font-bold leading-snug tracking-[-0.02em] text-heading">
+                <div className="flex flex-1 flex-col">
+                  <h2 className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading">
                     {r.title}
                   </h2>
-                  <p className="mt-4 max-w-3xl text-[16.5px] leading-[1.72] text-muted">{r.body}</p>
-                  <p className="mt-5 inline-flex items-start gap-2.5 rounded-lg bg-surface px-4 py-3 text-[14px] leading-snug text-accent-strong ring-1 ring-line">
+                  <p className="mt-3 flex-1 text-[15.5px] leading-[1.7] text-muted">{r.body}</p>
+                  <p className="mt-5 flex flex-col items-start gap-1.5 rounded-lg bg-surface-sunken px-4 py-3 text-[14px] leading-snug text-accent-strong ring-1 ring-line">
                     <span className="font-semibold uppercase tracking-[0.08em]">Who this is for</span>
                     <span className="text-muted">{r.forWhom}</span>
                   </p>
@@ -86,36 +88,32 @@ export default function VendorPage() {
             </Reveal>
           ))}
         </ol>
-      </Band>
+      </Block>
 
       {/* ---- Procurement ---- */}
-      <Band ground="surface" size="md">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12}>
-            <h2 className="display display-md">Selling to us</h2>
-          </Reveal>
-          <div>
+      <Block eyebrow="Suppliers" title="Selling to us" ground="canvas">
+          <div className="card mx-auto max-w-3xl p-6 sm:p-8">
             {vendor.procurement.map((p, i) => (
               <Reveal key={i} delay={i * 80} y={12}>
-                <p className={`max-w-2xl text-[16.5px] leading-[1.72] text-muted ${i ? "mt-5" : ""}`}>
+                <p className={`text-[16.5px] leading-[1.72] text-muted ${i ? "mt-5" : ""}`}>
                   {p}
                 </p>
               </Reveal>
             ))}
           </div>
-        </div>
-      </Band>
+      </Block>
 
       {/* ---- A real enquiry route, without inventing a programme ---- */}
-      <Band ground="sunken" size="lg" id="enquiry">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Start a conversation</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              There is no programme to apply to, so this is not an application. It routes a specific
-              proposal to the team in Pune, who arrange each relationship individually.
-            </p>
-            <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
+      <Block
+        id="enquiry"
+        eyebrow="Contact"
+        title="Start a conversation"
+        intro="There is no programme to apply to, so this is not an application. It routes a specific proposal to the team in Pune, who arrange each relationship individually."
+        ground="sunken"
+      >
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-10">
+          <Reveal y={12} className="card self-start p-6">
+            <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
               Who writes to us
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -128,6 +126,7 @@ export default function VendorPage() {
             </ul>
           </Reveal>
 
+          <div className="card p-5 sm:p-8">
           <EnquiryForm
             subject="Partner or supplier enquiry"
             submitLabel="Send the proposal"
@@ -166,22 +165,20 @@ export default function VendorPage() {
               { name: "site", label: "Website", type: "url", placeholder: "https://", half: true },
             ]}
           />
+          </div>
         </div>
-      </Band>
+      </Block>
 
       {/* ---- What is absent, and why ---- */}
       {/* ---- Procurement questions ---- */}
-      <Band ground="surface" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">What a procurement team usually needs to establish</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              Most vendor assessments ask the same questions in a different order. These are the ones we can answer here; the rest depend on your requirements and are better handled in writing.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
+      <Block
+        eyebrow="Procurement"
+        title="What a procurement team usually needs to establish"
+        intro="Most vendor assessments ask the same questions in a different order. These are the ones we can answer here; the rest depend on your requirements and are better handled in writing."
+        ground="canvas"
+      >
+          <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Where the data sits, and who can reach it
               </h3>
@@ -192,7 +189,7 @@ export default function VendorPage() {
                 Specific hosting, retention and sub-processor questions belong in a written response against your own template rather than on a marketing page, because the answers have to be precise enough to sign.
               </p>
             </section>
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 What the platform produces for audit and inspection
               </h3>
@@ -203,7 +200,7 @@ export default function VendorPage() {
                 Those four together are what allow a past period to be reconstructed as it stood, which is the substance of most inspection and diligence questions.
               </p>
             </section>
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 Commercial terms, stated plainly
               </h3>
@@ -214,7 +211,7 @@ export default function VendorPage() {
                 Cancellation is available at any time. We recommend exporting payroll, attendance and leave history before access ends — those are records you may be required to produce long after you stop using the software that created them.
               </p>
             </section>
-            <section className="mt-9 border-t border-line pt-7">
+            <section className="card card-hover p-6">
               <h3 className="font-display text-[19px] font-bold tracking-[-0.02em] text-heading">
                 What this page does not claim
               </h3>
@@ -226,15 +223,11 @@ export default function VendorPage() {
               </p>
             </section>
           </div>
-        </div>
-      </Band>
+      </Block>
 
-      <Band ground="raised" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
-            {vendor.honesty.heading}
-          </h2>
-          <ul className="mt-6 space-y-3.5">
+      <Block eyebrow="Transparency" title={vendor.honesty.heading} ground="sunken">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <ul className="space-y-3.5">
             {vendor.honesty.points.map((p) => (
               <li key={p} className="flex gap-3.5 text-[15.5px] leading-[1.7] text-muted">
                 <span aria-hidden="true" className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-subtle/60" />
@@ -254,7 +247,7 @@ export default function VendorPage() {
             Talk to the team instead <Arrow />
           </Link>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import Image from "next/image";
 import Link from "next/link";
 import { pressKit } from "@/lib/resources";
-import { Band, Onward } from "@/components/editorial";
+import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 export default function PressKitPage() {
   return (
     <>
-      <header className="border-b border-line bg-surface-sunken pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -56,46 +57,44 @@ export default function PressKitPage() {
         </div>
       </header>
 
-      {/* ---- Boilerplate ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Boilerplate</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Copy either of these verbatim. Both are accurate as written; the difference is length,
-            not emphasis.
-          </p>
-        </Reveal>
+      <SiteStats />
 
-        <div className="mt-10 space-y-8">
+      {/* ---- Boilerplate ---- */}
+      <Block
+        eyebrow="Copy"
+        title="Boilerplate"
+        intro="Copy either of these verbatim. Both are accurate as written; the difference is length, not emphasis."
+        ground="canvas"
+      >
+        <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
           {(
             [
               ["Short — one sentence", pressKit.boilerplate.short],
               ["Long — one paragraph", pressKit.boilerplate.long],
             ] as [string, string][]
           ).map(([label, text], i) => (
-            <Reveal key={label} delay={i * 90} y={12}>
+            <Reveal key={label} delay={i * 90} y={12} className="card p-6">
               <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
                 {label}
               </p>
-              <blockquote className="mt-3 border-l-2 border-line-accent bg-surface-sunken py-5 pl-6 pr-5 text-[16px] leading-[1.72] text-body">
+              <blockquote className="mt-3 border-l-2 border-line-accent py-1 pl-5 text-[16px] leading-[1.72] text-body">
                 {text}
               </blockquote>
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
       {/* ---- The mark ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
-          <div>
-            <h2 className="display display-md">The mark</h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              HRMagix publishes one mark. It is a vector, so it scales to any size without loss —
-              please use it rather than a screenshot of it.
-            </p>
-
-            <ul className="mt-9 space-y-6">
+      <Block
+        eyebrow="Brand"
+        title="The mark"
+        intro="HRMagix publishes one mark. It is a vector, so it scales to any size without loss — please use it rather than a screenshot of it."
+        ground="sunken"
+      >
+        <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
+          <div className="card p-6">
+            <ul className="space-y-6">
               {pressKit.assets.map((asset) => (
                 <Reveal as="li" key={asset.file} y={12} className="flex items-start gap-5">
                   <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-surface ring-1 ring-line">
@@ -122,7 +121,7 @@ export default function PressKitPage() {
             </ul>
           </div>
 
-          <div>
+          <div className="card p-6">
             <h3 className="border-b border-line-accent pb-3 text-[11.5px] font-bold uppercase tracking-[0.18em] text-accent">
               Usage
             </h3>
@@ -148,21 +147,18 @@ export default function PressKitPage() {
             </dl>
           </div>
         </div>
-      </Band>
+      </Block>
 
       {/* ---- Colours ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Colour</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            These are the values this website is built from. The violet is the identity; everything
-            else is structure.
-          </p>
-        </Reveal>
-
-        <ul className="mt-10 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+      <Block
+        eyebrow="Palette"
+        title="Colour"
+        intro="These are the values this website is built from. The violet is the identity; everything else is structure."
+        ground="canvas"
+      >
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {pressKit.colours.map((c, i) => (
-            <Reveal as="li" key={c.hex} delay={i * 55} y={12}>
+            <Reveal as="li" key={c.hex} delay={i * 55} y={12} className="card p-5">
               <span
                 className="block h-20 w-full rounded-xl ring-1 ring-inset ring-black/10"
                 style={{ backgroundColor: c.hex }}
@@ -178,18 +174,16 @@ export default function PressKitPage() {
             </Reveal>
           ))}
         </ul>
-      </Band>
+      </Block>
 
       {/* ---- Facts, and what is not published ---- */}
-      <Band ground="raised" size="lg">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <h2 className="display display-md">Facts</h2>
-            <dl className="mt-8 border-t border-line-strong">
+      <Block eyebrow="Reference" title="Facts" ground="sunken">
+          <div className="card mx-auto max-w-3xl px-6 py-2">
+            <dl>
               {pressKit.facts.map((f) => (
                 <div
                   key={f.label}
-                  className="flex flex-wrap justify-between gap-x-8 gap-y-1 border-b border-line py-4"
+                  className="flex flex-wrap justify-between gap-x-8 gap-y-1 border-b border-line py-4 last:border-b-0"
                 >
                   <dt className="text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">
                     {f.label}
@@ -199,14 +193,16 @@ export default function PressKitPage() {
               ))}
             </dl>
           </div>
+      </Block>
 
-          <div>
-            <h2 className="display display-md">Not published</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              If you need any of the following, please ask rather than infer — we would rather answer
-              than see a placeholder become a printed figure.
-            </p>
-            <ul className="mt-7 space-y-3.5">
+      <Block
+        eyebrow="Ask us"
+        title="Not published"
+        intro="If you need any of the following, please ask rather than infer — we would rather answer than see a placeholder become a printed figure."
+        ground="canvas"
+      >
+          <div className="card mx-auto max-w-3xl p-6 sm:p-8">
+            <ul className="space-y-3.5">
               {pressKit.notPublished.map((n) => (
                 <li key={n} className="flex gap-3.5 text-[15px] leading-[1.65] text-muted">
                   <span aria-hidden="true" className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-subtle/60" />
@@ -221,8 +217,7 @@ export default function PressKitPage() {
               Ask the team <Arrow />
             </Link>
           </div>
-        </div>
-      </Band>
+      </Block>
 
       <Onward
         links={[

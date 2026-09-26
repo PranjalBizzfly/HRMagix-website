@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { SiteStats, Block } from "@/components/sky9";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { guides, guideBySlug } from "@/lib/guides";
-import { Band, Onward } from "@/components/editorial";
-import { Button, Arrow } from "@/components/ui";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -54,7 +55,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
   return (
     <>
-      <header className="border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -92,33 +93,32 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         </div>
       </header>
 
-      {/* ---- Who it is for ---- */}
-      <Band ground="surface" size="sm">
-        <Reveal y={10}>
-          <dl className="grid gap-x-12 gap-y-6 border-y border-line py-7 sm:grid-cols-2">
-            <div>
+      <SiteStats />
+
+      {/* ---- Who it is for + chapters ---- */}
+      <Block ground="canvas">
+        <Reveal y={10} className="mx-auto max-w-[74ch]">
+          <dl className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <div className="card p-6">
               <dt className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-subtle">
                 Written for
               </dt>
-              <dd className="mt-2.5 max-w-md text-[15.5px] leading-[1.68] text-muted">
+              <dd className="mt-2.5 text-[15.5px] leading-[1.68] text-muted">
                 {guide.audience}
               </dd>
             </div>
-            <div>
+            <div className="card p-6">
               <dt className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-subtle">
                 You will be able to
               </dt>
-              <dd className="mt-2.5 max-w-md text-[15.5px] leading-[1.68] text-muted">
+              <dd className="mt-2.5 text-[15.5px] leading-[1.68] text-muted">
                 {guide.outcome}
               </dd>
             </div>
           </dl>
         </Reveal>
-      </Band>
 
-      {/* ---- Chapters ---- */}
-      <Band ground="surface" size="md">
-        <div className="max-w-[74ch]">
+        <div className="mx-auto mt-14 max-w-[74ch]">
           {guide.chapters.map((ch, i) => (
             <Reveal
               as="section"
@@ -180,79 +180,63 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
       {/* ---- The checklist ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">Before you call it done</h2>
-            <p className="mt-5 text-[16px] leading-[1.7] text-muted">
-              Every guide ends here rather than in a summary. If a line below is not true yet, that
-              is the next thing to do.
-            </p>
-          </Reveal>
-
-          <ul className="min-w-0 divide-y divide-line border-y border-line-strong">
-            {guide.checklist.map((item, i) => (
-              <Reveal as="li" key={item} delay={i * 40} y={8} className="flex gap-4 py-4">
-                <span
-                  aria-hidden="true"
-                  className="mt-1 h-4 w-4 shrink-0 rounded border border-line-strong"
-                />
-                <span className="text-[16px] leading-[1.7] text-body">{item}</span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </Band>
+      <Block
+        eyebrow="Checklist"
+        title="Before you call it done"
+        intro="Every guide ends here rather than in a summary. If a line below is not true yet, that is the next thing to do."
+        ground="sunken"
+      >
+        <ul className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+          {guide.checklist.map((item, i) => (
+            <Reveal as="li" key={item} delay={i * 40} y={8} className="card flex gap-4 p-6">
+              <span
+                aria-hidden="true"
+                className="mt-1 h-4 w-4 shrink-0 rounded border border-line-strong"
+              />
+              <span className="text-[16px] leading-[1.7] text-body">{item}</span>
+            </Reveal>
+          ))}
+        </ul>
+      </Block>
 
       {/* ---- Continue ---- */}
-      <Band ground="surface" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[20ch]">
-              Work through this against your own setup
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              The checklist above is generic by necessity. Bring your own structures, states and
-              rota and we will tell you which lines are already true and which are not.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button href="/company/contact">Talk it through</Button>
-            <Button href="/resources/guides" variant="outline">
-              All guides
-            </Button>
-          </div>
+      <Block
+        eyebrow="Next step"
+        title="Work through this against your own setup"
+        intro="The checklist above is generic by necessity. Bring your own structures, states and rota and we will tell you which lines are already true and which are not."
+        ground="canvas"
+      >
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button href="/company/contact">Talk it through</Button>
+          <Button href="/resources/guides" variant="outline">
+            All guides
+          </Button>
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="sunken" size="sm">
-        <Reveal y={10}>
-          <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-subtle">
-            The other guides
-          </p>
-          <ul className="mt-5 divide-y divide-line border-t border-line">
-            {others.map((o) => (
-              <li key={o.slug}>
-                <Link
-                  href={`/resources/guides/${o.slug}`}
-                  className="group flex flex-wrap items-baseline gap-x-4 gap-y-1 py-4 transition-colors hover:text-accent"
-                >
-                  <span className="font-mono text-[12.5px] font-semibold text-accent">
-                    {o.number}
-                  </span>
-                  <span className="font-display text-[16.5px] font-bold text-heading transition-colors group-hover:text-accent">
-                    {o.title}
-                  </span>
-                  <span className="text-[13.5px] text-subtle">about {o.minutes} minutes</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </Band>
+      <Block eyebrow="Guides" title="The other guides" ground="sunken">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+          {others.map((o, i) => (
+            <Reveal as="li" key={o.slug} delay={i * 60} y={10}>
+              <Link
+                href={`/resources/guides/${o.slug}`}
+                className="card card-hover group flex h-full flex-col gap-2 p-6"
+              >
+                <span className="font-mono text-[12.5px] font-semibold text-accent">
+                  {o.number}
+                </span>
+                <span className="flex-1 font-display text-[16.5px] font-bold text-heading transition-colors group-hover:text-accent">
+                  {o.title}
+                </span>
+                <span className="text-[13.5px] text-subtle">about {o.minutes} minutes</span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </Block>
 
       <Onward links={guide.related} />
     </>

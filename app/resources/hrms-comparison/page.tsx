@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Band, Onward } from "@/components/editorial";
-import { Button, Arrow } from "@/components/ui";
+import { SiteStats, Block } from "@/components/sky9";
+import { Onward } from "@/components/editorial";
+import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
-  title: "Integrated HRMS vs Point Tools vs Spreadsheets",
+  title: "Best HRMS Software Comparison — Integrated HRMS vs Point Tools vs Spreadsheets",
   description:
-    "A structural comparison of the three ways Indian companies run HR: spreadsheets, separate point tools, and an integrated HRMS. Where each holds up, where each breaks, and how to tell which you are actually in.",
+    "A best HRMS software comparison: integrated HRMS vs point tools vs spreadsheets, and what to check in the best payroll software and top payroll software lists before choosing the best HRMS and payroll software in India.",
   keywords: [
     "best HRMS software",
-    "HRMS software",
-    "HR management system",
-    "HRMS and payroll software",
-    "HRMS system",
+    "best payroll software",
+    "best HRMS and payroll software in India",
+    "best HRMS software comparison",
+    "top payroll software",
   ],
   alternates: { canonical: "/resources/hrms-comparison" },
   openGraph: {
@@ -186,7 +186,7 @@ export default function ComparisonPage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+      <header className="page-hero border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -219,18 +219,18 @@ export default function ComparisonPage() {
         </div>
       </header>
 
-      {/* ---- The grid ---- */}
-      <Band ground="sunken" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">The comparison</h2>
-          <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-            Ten properties. Each is explained underneath, in the same order.
-          </p>
-        </Reveal>
+      <SiteStats />
 
+      {/* ---- The grid ---- */}
+      <Block
+        eyebrow="Compare"
+        title="The comparison"
+        intro="Ten properties. Each is explained underneath, in the same order."
+        ground="sunken"
+      >
         <Reveal
           delay={120}
-          className="mt-11 overflow-x-auto rounded-[22px] bg-surface p-1 shadow-soft ring-1 ring-line"
+          className="overflow-x-auto rounded-[22px] bg-surface p-1 shadow-soft ring-1 ring-line"
         >
           <table className="w-full min-w-[720px] border-collapse text-left">
             <caption className="sr-only">
@@ -287,15 +287,11 @@ export default function ComparisonPage() {
             </tbody>
           </table>
         </Reveal>
-      </Band>
+      </Block>
 
       {/* ---- Row by row ---- */}
-      <Band ground="surface" size="lg">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">Why each row lands where it does</h2>
-        </Reveal>
-
-        <div className="mt-11 max-w-[72ch]">
+      <Block eyebrow="Row by row" title="Why each row lands where it does">
+        <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
           {rows.map((row, i) => (
             <Reveal
               as="section"
@@ -303,7 +299,7 @@ export default function ComparisonPage() {
               id={`row-${i + 1}`}
               delay={30}
               y={12}
-              className="scroll-mt-[130px] border-t border-line py-8"
+              className="card scroll-mt-[130px] p-6"
             >
               <h3 className="font-display text-[19px] font-bold leading-snug tracking-[-0.02em] text-heading">
                 <span className="mr-3 font-mono text-[13px] font-semibold text-accent">
@@ -319,46 +315,42 @@ export default function ComparisonPage() {
             </Reveal>
           ))}
         </div>
-      </Band>
+      </Block>
 
       {/* ---- Which one are you in ---- */}
-      <Band ground="sunken" size="lg">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-16">
-          <Reveal y={12} className="lg:sticky lg:top-[110px] lg:self-start">
-            <h2 className="display display-md">How to tell which you are actually in</h2>
-            <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">
-              Most companies describe themselves as one thing and operate as another. Four questions
-              settle it faster than an audit.
-            </p>
-          </Reveal>
-
-          <div className="min-w-0">
-            <section className="border-t border-line-strong pt-7">
-              <h3 className="font-display text-[18px] font-bold text-heading">
+      <Block
+        eyebrow="Diagnose"
+        title="How to tell which you are actually in"
+        intro="Most companies describe themselves as one thing and operate as another. Four questions settle it faster than an audit."
+        ground="sunken"
+      >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">
                 Ask what happens when somebody joins on the 20th
               </h3>
-              <p className="mt-3.5 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Count the places their details have to be entered before their first payslip is
                 correct. One is an integrated system. Three or four is a point-tool estate, whatever
                 the licences say.
               </p>
             </section>
 
-            <section className="mt-8 border-t border-line pt-7">
-              <h3 className="font-display text-[18px] font-bold text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">
                 Ask who reconciles attendance to payroll, and when
               </h3>
-              <p className="mt-3.5 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 If the answer is a named person in the last week of the month, that reconciliation is
                 the system — and it is being performed by someone who could be doing something else.
               </p>
             </section>
 
-            <section className="mt-8 border-t border-line pt-7">
-              <h3 className="font-display text-[18px] font-bold text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">
                 Ask for last March&rsquo;s position, not last March&rsquo;s file
               </h3>
-              <p className="mt-3.5 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Specifically: what was this person&rsquo;s salary structure, reporting line and leave
                 balance on a named date. If the honest answer is &ldquo;whatever the file says now&rdquo;,
                 the records are not effective-dated, and a diligence exercise will find that out
@@ -366,51 +358,76 @@ export default function ComparisonPage() {
               </p>
             </section>
 
-            <section className="mt-8 border-t border-line pt-7">
-              <h3 className="font-display text-[18px] font-bold text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">
                 Ask what an employee does to get a payslip from two years ago
               </h3>
-              <p className="mt-3.5 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 If the answer involves asking a person, the self-service is nominal. This is the
                 cheapest of the four questions to fix and the one that most reliably indicates how
                 the rest of the estate is arranged.
               </p>
             </section>
 
-            <section className="mt-8 border-t border-line pt-7">
-              <h3 className="font-display text-[18px] font-bold text-heading">
+            <section className="card card-hover p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">
                 And when spreadsheets are still right
               </h3>
-              <p className="mt-3.5 text-[16.5px] leading-[1.72] text-muted">
+              <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Under about ten people, with no statutory registrations yet and everyone visible to
                 everyone, the reconciliation cost is genuinely lower than the cost of running a
                 system. Move when obligations with fixed dates arrive — not because a spreadsheet is
                 embarrassing.
               </p>
             </section>
-          </div>
         </div>
-      </Band>
+      </Block>
 
-      <Band ground="surface" size="md">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
-          <div>
-            <h2 className="display display-md max-w-[22ch]">
-              Test the four questions against HRMagix
-            </h2>
-            <p className="mt-5 max-w-xl text-[16.5px] leading-[1.7] text-muted">
-              The published rates are on the pricing page and the trial includes every module, so
-              the comparison above can be checked rather than accepted. Bring the awkward month.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+      <Block
+        eyebrow="Try it"
+        title="Test the four questions against HRMagix"
+        intro="The published rates are on the pricing page and the trial includes every module, so the comparison above can be checked rather than accepted. Bring the awkward month."
+      >
+        <div className="flex flex-wrap justify-center gap-3">
+          <div className="contents">
             <Button href="/company/contact">Book a demo</Button>
             <Button href="/pricing" variant="outline">
               See pricing
             </Button>
           </div>
         </div>
-      </Band>
+      </Block>
+
+      {/* ---- Why switches fail ---- */}
+      <Block
+        eyebrow="Before you switch"
+        title="Why a new HR system fails in its first 90 days"
+        intro="Whichever system you choose, the reasons companies abandon one are remarkably consistent — and the stated reason is rarely the real one."
+        ground="sunken"
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {[
+            ["“Too expensive”", "The system was never fully set up, so its value was never experienced.", "Get to the first live payroll quickly; cost is judged against value delivered."],
+            ["“Too complicated”", "It was configured by one person, alone, without guidance.", "Plan setup with the vendor, and work through it in order."],
+            ["“It’s missing a feature”", "Sometimes true — often the feature exists and was never found.", "Ask the vendor directly before deciding it is missing."],
+            ["“Our HR person left”", "Only one administrator ever knew how it worked.", "Name at least two administrators from the start."],
+            ["“We went back to spreadsheets”", "Employees never adopted self-service, so HR kept doing it by hand.", "Launch self-service to employees deliberately, with managers on board."],
+            ["It quietly lapsed", "Nobody noticed the account had stopped being used.", "Check usage in the first months, not at renewal."],
+          ].map(([reason, cause, fix], i) => (
+            <Reveal key={reason} delay={i * 60} y={12} className="card card-hover flex flex-col p-6">
+              <h3 className="font-display text-[17px] font-bold text-heading">{reason}</h3>
+              <p className="mt-2 text-[14.5px] leading-[1.6] text-muted">
+                <span className="font-semibold text-body">Real cause: </span>
+                {cause}
+              </p>
+              <p className="mt-3 border-t border-line pt-3 text-[14px] leading-[1.6] text-body">
+                <span className="font-semibold text-accent">What prevents it: </span>
+                {fix}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+      </Block>
 
       <Onward
         links={[

@@ -20,42 +20,48 @@
 
     /* Elevation: canvas < sunken < surface < raised < strong */
     --c-canvas: 255 255 255;
-    --c-surface-sunken: 247 245 255;
+    --c-surface-sunken: 248 246 252;
     --c-surface: 255 255 255;
-    --c-surface-raised: 239 234 255;
-    --c-surface-strong: 233 229 255;
+    --c-surface-raised: 241 236 250;
+    --c-surface-strong: 232 224 247;
     /* Form fields read as flush on a light page. */
     --c-field: 255 255 255;
 
     /* The inverse panel — the site's one near-black brand block on a light page. */
-    --c-panel: 46 16 101;
-    --c-panel-line: 139 116 248;
+    --c-panel: 36 24 69;
+    --c-panel-line: 185 164 232;
 
     /* Hairlines. Deep enough to survive the /60 and /70 alpha modifiers the
      * site applies to them. */
-    --c-line: 234 227 253;
-    --c-line-strong: 226 221 250;
-    --c-line-accent: 183 166 255;
+    --c-line: 234 228 246;
+    --c-line-strong: 222 214 240;
+    --c-line-accent: 185 164 232;
     /* Ambient blurred bloom behind heroes. */
-    --c-glow: 183 166 255;
+    --c-glow: 185 164 232;
 
     /* Brand fill for interactive surfaces. Hover *deepens* on a light page. */
-    --c-brand: 113 80 240;
-    --c-brand-hover: 90 54 214;
+    --c-brand: 107 75 176;
+    --c-brand-hover: 88 60 150;
+
+    /* The logo's gold dot. Spent sparingly: status dots, the featured plan,
+     * ratings. Never as text on white — it fails contrast there. */
+    --c-gold: 245 163 1;
+    --c-gold-soft: 254 243 214;
+    --c-gold-ink: 138 88 0;
 
     /* Type ramp */
-    --c-heading: 22 11 58;
-    --c-body: 30 27 58;
-    --c-muted: 74 69 104;
-    --c-subtle: 114 109 144;
+    --c-heading: 26 18 51;
+    --c-body: 33 29 56;
+    --c-muted: 76 70 100;
+    --c-subtle: 110 104 136;
     /* Uppercase micro-labels. violet-400 failed AA on white; this passes both. */
-    --c-label: 111 91 201;
+    --c-label: 116 92 176;
 
     /* Brand-tinted text / icons */
-    --c-accent-soft: 113 80 240;
-    --c-accent: 90 54 214;
-    --c-accent-strong: 76 41 180;
-    --c-accent-deep: 42 26 94;
+    --c-accent-soft: 122 94 190;
+    --c-accent: 107 75 176;
+    --c-accent-strong: 88 60 150;
+    --c-accent-deep: 46 31 85;
 
     /* Status */
     --c-ok: 4 120 87;
@@ -73,26 +79,26 @@
     --c-danger-line: 255 228 230;
 
     /* Elevation shadows — soft violet drop shadows on light ground. */
-    --sh-soft: 0 2px 6px rgba(31, 17, 71, 0.06), 0 18px 40px -26px rgba(31, 17, 71, 0.3);
-    --sh-lift: 0 24px 60px -28px rgba(31, 17, 71, 0.28);
-    --sh-glow: 0 14px 34px -14px rgba(124, 92, 255, 0.6);
-    --sh-float: 0 40px 90px -40px rgba(31, 17, 71, 0.45);
+    --sh-soft: 0 2px 6px rgba(35, 24, 68, 0.06), 0 18px 40px -26px rgba(35, 24, 68, 0.3);
+    --sh-lift: 0 24px 60px -28px rgba(35, 24, 68, 0.28);
+    --sh-glow: 0 14px 34px -14px rgba(138, 107, 197, 0.6);
+    --sh-float: 0 40px 90px -40px rgba(35, 24, 68, 0.45);
 
     /* Ambient washes */
-    --wash-1: #efeaff;
-    --wash-2: #f7f5ff;
+    --wash-1: #f0eafa;
+    --wash-2: #f8f5fd;
     --wash-3: #ffffff;
-    --dot: rgba(124, 92, 255, 0.16);
-    --spot-tint: rgba(124, 92, 255, 0.16);
-    --selection-bg: #ddd6ff;
-    --selection-fg: #1f1147;
-    --focus-ring: #7c5cff;
-    --grad-a: #7c5cff;
-    --grad-b: #5a36d6;
-    --chip-shadow: 0 1px 2px rgba(31, 17, 71, 0.08);
-    --chip-shadow-hover: 0 10px 24px -12px rgba(31, 17, 71, 0.35);
-    --scroll-thumb: #ddd6ff;
-    --scroll-thumb-hover: #b7a6ff;
+    --dot: rgba(138, 107, 197, 0.16);
+    --spot-tint: rgba(138, 107, 197, 0.16);
+    --selection-bg: #d4c6f0;
+    --selection-fg: #231844;
+    --focus-ring: #8a6bc5;
+    --grad-a: #8a6bc5;
+    --grad-b: #6b4bb0;
+    --chip-shadow: 0 1px 2px rgba(35, 24, 68, 0.08);
+    --chip-shadow-hover: 0 10px 24px -12px rgba(35, 24, 68, 0.35);
+    --scroll-thumb: #d4c6f0;
+    --scroll-thumb-hover: #b9a4e8;
     /* Photography sits a touch hot against a light page; untouched here. */
     --media-filter: none;
   }
@@ -127,13 +133,13 @@
      * becomes a *lifted* charcoal plane instead — same job in the hierarchy,
      * correct luminance for the theme.
      */
-    --c-panel: 26 28 34;
-    --c-panel-line: 124 106 224;
+    --c-panel: 27 24 38;
+    --c-panel-line: 122 100 184;
 
     /* Borders: two neutral weights, plus one violet for genuine emphasis. */
     --c-line: 38 40 47;
     --c-line-strong: 52 55 64;
-    --c-line-accent: 108 92 196;
+    --c-line-accent: 116 96 180;
     /*
      * The ambient bloom behind hero sections. On a light page this is brand
      * violet at low alpha; on a dark one a violet blob 130px-blurred across
@@ -141,11 +147,15 @@
      * gets a desaturated violet-grey that lifts luminance and barely reads as
      * a hue at all.
      */
-    --c-glow: 132 128 172;
+    --c-glow: 140 128 170;
 
     /* Hover lifts on a dark page — deepening would make the button recede. */
-    --c-brand: 116 84 242;
-    --c-brand-hover: 138 110 255;
+    --c-brand: 122 94 190;
+    --c-brand-hover: 141 112 204;
+
+    --c-gold: 247 178 38;
+    --c-gold-soft: 44 33 12;
+    --c-gold-ink: 248 200 102;
 
     /*
      * Type is neutral, not violet-tinted. Headings sit just under pure white
@@ -157,13 +167,13 @@
     --c-body: 209 212 219;
     --c-muted: 163 168 179;
     --c-subtle: 144 150 162;
-    --c-label: 173 160 234;
+    --c-label: 186 170 232;
 
     /* The accent ramp inverts direction: deeper = lighter on a dark ground. */
-    --c-accent-soft: 166 152 246;
-    --c-accent: 181 169 250;
-    --c-accent-strong: 201 192 253;
-    --c-accent-deep: 224 219 255;
+    --c-accent-soft: 178 158 230;
+    --c-accent: 192 174 238;
+    --c-accent-strong: 210 196 246;
+    --c-accent-deep: 230 222 250;
 
     --c-ok: 74 213 158;
     --c-ok-strong: 125 231 186;
@@ -188,7 +198,7 @@
       0 12px 28px -20px rgba(0, 0, 0, 0.8);
     --sh-lift: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 44px -24px rgba(0, 0, 0, 0.85);
     /* The one place violet is allowed into a shadow: the primary button. */
-    --sh-glow: 0 10px 26px -14px rgba(116, 84, 242, 0.55);
+    --sh-glow: 0 10px 26px -14px rgba(123, 94, 190, 0.55);
     --sh-float: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 32px 70px -40px rgba(0, 0, 0, 0.9);
 
     /*
@@ -200,12 +210,12 @@
     --wash-2: #15161b;
     --wash-3: #0e0f12;
     --dot: rgba(255, 255, 255, 0.07);
-    --spot-tint: rgba(148, 128, 245, 0.07);
-    --selection-bg: #3b2f6e;
+    --spot-tint: rgba(170, 150, 222, 0.07);
+    --selection-bg: #3f3166;
     --selection-fg: #f4f5f7;
-    --focus-ring: #9d86ff;
-    --grad-a: #b6a8ff;
-    --grad-b: #8a6cff;
+    --focus-ring: #b9a4e8;
+    --grad-a: #cdbdee;
+    --grad-b: #a18cd1;
     --chip-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 1px 3px rgba(0, 0, 0, 0.4);
     --chip-shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
       0 10px 22px -14px rgba(0, 0, 0, 0.7);
@@ -637,7 +647,7 @@ html.theme-switching *::after {
  */
 .nav-plate {
   background: rgb(var(--c-surface) / 0.95);
-  box-shadow: 0 1px 0 rgba(31, 17, 71, 0.07);
+  box-shadow: 0 1px 0 rgba(35, 24, 68, 0.07);
 }
 
 /*
@@ -680,7 +690,7 @@ html.theme-switching *::after {
  * correct luminance for the theme.
  */
 .contrast-band {
-  background: linear-gradient(to bottom, #5a36d6, #7c5cff);
+  background: linear-gradient(to bottom, #6b4bb0, #8a6bc5);
 }
 
 /*
@@ -692,11 +702,754 @@ html.theme-switching *::after {
 .dark .contrast-band {
   background: linear-gradient(to bottom, #212329, #191a1f);
   box-shadow:
-    inset 0 1px 0 rgba(148, 128, 245, 0.3),
+    inset 0 1px 0 rgba(170, 150, 222, 0.3),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* On a charcoal canvas a violet-900/40 rule is invisible; lift it, neutrally. */
 .dark .panel-fixed-dark {
   border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Structured layer — header motion, cards and bands
+   --------------------------------------------------------------------------
+   The card-and-band vocabulary used by the redesigned header, home page and
+   footer. Every colour resolves from the theme tokens above, so each class
+   renders correctly in light and dark with no `dark:` variants at call sites.
+   ========================================================================== */
+
+@keyframes mega-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes drawer-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+.mega-in {
+  animation: mega-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.drawer-in {
+  animation: drawer-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.drawer-fade {
+  animation: drawer-fade 0.24s ease-out both;
+}
+
+/* Section eyebrow — a small outlined pill above every section heading. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-accent));
+  background: rgb(var(--c-brand) / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(var(--c-line-accent) / 0.55);
+}
+
+/* The standard content card: hairline, soft lift on hover. */
+.card {
+  position: relative;
+  border-radius: 20px;
+  background: rgb(var(--c-surface));
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--c-line)),
+    var(--sh-soft);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--c-line-accent) / 0.8),
+    var(--sh-lift);
+}
+
+/* Frosted card for surfaces that sit over a wash or a photograph. */
+.glass {
+  background: rgb(var(--c-surface) / 0.82);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--c-line-strong) / 0.9),
+    var(--sh-float);
+}
+
+/* A diagonal light sweep across primary buttons on hover. */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  animation: shimmer 0.9s ease;
+}
+
+/* Fades both ends of a scrolling ticker. */
+.mask-fade-both {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mega-in,
+  .drawer-in,
+  .drawer-fade {
+    animation: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .btn-shimmer:hover::after {
+    animation: none;
+  }
+
+  .ticker .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Page hero — the dark opening band on every interior page
+   --------------------------------------------------------------------------
+   Every interior page opens with <header class="page-hero …">. Rather than
+   restyle thirty headers one by one, the band re-declares the theme tokens
+   inside itself: text, lines, surfaces, pills and buttons all read those
+   tokens, so everything inside flips to its dark-ground pairing in both
+   themes, with no change to the markup of any page.
+   ========================================================================== */
+
+.page-hero {
+  --c-canvas: 20 14 40;
+  --c-surface-sunken: 28 20 54;
+  --c-surface: 34 25 64;
+  --c-surface-raised: 46 35 84;
+  --c-surface-strong: 58 45 102;
+  --c-field: 22 16 44;
+  --c-line: 255 255 255;
+  --c-line-strong: 255 255 255;
+  --c-line-accent: 185 164 232;
+  --c-glow: 138 107 197;
+  --c-heading: 255 255 255;
+  --c-body: 228 223 244;
+  --c-muted: 200 192 228;
+  --c-subtle: 172 163 208;
+  --c-label: 205 190 244;
+  --c-accent-soft: 190 172 236;
+  --c-accent: 205 190 244;
+  --c-accent-strong: 222 212 250;
+  --c-accent-deep: 238 233 252;
+  --dot: rgba(255, 255, 255, 0.07);
+  --sh-soft: 0 12px 30px -18px rgba(0, 0, 0, 0.7);
+  --sh-lift: 0 26px 60px -28px rgba(0, 0, 0, 0.8);
+
+  position: relative;
+  isolation: isolate;
+  color: rgb(var(--c-body));
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  background:
+    radial-gradient(60% 80% at 85% 0%, rgba(138, 107, 197, 0.35) 0%, transparent 60%),
+    radial-gradient(50% 70% at 0% 100%, rgba(107, 75, 176, 0.3) 0%, transparent 65%),
+    linear-gradient(160deg, #2a1c52 0%, #1a1233 55%, #120c24 100%) !important;
+}
+
+/* Hairlines are white at low alpha on the dark band, never solid white. */
+.page-hero [class*="border-line"],
+.page-hero [class*="divide-line"] > * {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.page-hero [class*="ring-line"] {
+  --tw-ring-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* A faint dot grid across the band, as texture. */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  pointer-events: none;
+}
+
+.dark .page-hero {
+  background:
+    radial-gradient(60% 80% at 85% 0%, rgba(138, 107, 197, 0.22) 0%, transparent 60%),
+    linear-gradient(160deg, #17122e 0%, #0f0d1c 60%, #0b0a14 100%) !important;
+}
+
+.page-hero ::selection {
+  background: rgba(185, 164, 232, 0.45);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Heading weight — bolder, product-style headings
+   ========================================================================== */
+
+.display {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.display strong,
+.display b {
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Motion & surface layer — continuous button shimmer, glass-panel cards with
+   a hover sheen, border beams, floating accents and pulsing glows. Written
+   for the HRMagix tokens, so every effect is violet/gold in both themes.
+   ========================================================================== */
+
+/* ---- Primary buttons: a light sweep every few seconds, always on. ---- */
+@keyframes btn-shimmer-sweep {
+  0% { transform: translateX(-160%) skewX(-20deg); }
+  25% { transform: translateX(260%) skewX(-20deg); }
+  100% { transform: translateX(260%) skewX(-20deg); }
+}
+
+.btn-shimmer {
+  isolation: isolate;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.btn-shimmer::after {
+  content: "";
+  pointer-events: none;
+  z-index: 10;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  animation: btn-shimmer-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.btn-shimmer:hover::after {
+  animation: btn-shimmer-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ---- Cards: glass panel, lift and a diagonal sheen on hover. ---- */
+@keyframes glass-sheen-sweep {
+  from { background-position: 155% 0; }
+  to { background-position: -55% 0; }
+}
+
+.card {
+  isolation: isolate;
+  border-radius: 20px;
+  background-image: linear-gradient(145deg, rgb(var(--c-surface)), rgb(var(--c-surface-sunken) / 0.6));
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+/* A hairline of brand light across the top edge, drawn in on hover. */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background-image: linear-gradient(90deg, transparent, rgb(var(--c-brand) / 0.85), transparent);
+  transform: scaleX(0.4);
+  transition: opacity 0.45s, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background-image: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.35) 46%,
+    rgb(var(--c-brand) / 0.12) 52%,
+    transparent 64%
+  );
+  background-position: 155% 0;
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+  transition: opacity 0.35s;
+}
+
+.dark .card::after {
+  background-image: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.08) 46%,
+    rgb(var(--c-brand) / 0.14) 52%,
+    transparent 64%
+  );
+}
+
+.card-hover:hover {
+  transform: translate3d(0, -6px, 0);
+  box-shadow:
+    inset 0 0 0 1px rgb(var(--c-line-accent) / 0.8),
+    0 18px 40px -12px rgb(var(--c-heading) / 0.18),
+    0 0 28px -6px rgb(var(--c-brand) / 0.28);
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.card-hover:hover::after {
+  opacity: 1;
+  animation: glass-sheen-sweep 1.15s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+/* ---- Border beam: a point of light travelling round the edge. ---- */
+@keyframes border-beam {
+  to { offset-distance: 100%; }
+}
+
+.border-beam {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid transparent;
+  -webkit-mask: linear-gradient(transparent, transparent) padding-box, linear-gradient(#000, #000) border-box;
+  -webkit-mask-composite: source-in;
+  mask: linear-gradient(transparent, transparent) padding-box, linear-gradient(#000, #000) border-box;
+  mask-composite: intersect;
+  z-index: 3;
+}
+
+.border-beam::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  aspect-ratio: 1;
+  background: linear-gradient(to left, rgb(var(--c-gold)), rgb(var(--c-brand)), transparent);
+  offset-path: rect(0 auto auto 0 round 150px);
+  offset-distance: 0%;
+  animation: border-beam 8s linear infinite;
+}
+
+/* ---- Floating accents and pulsing glows. ---- */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.04); }
+}
+
+.animate-float-y { animation: float-y 4s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-pulse-subtle { animation: pulse-subtle 6s ease-in-out infinite; }
+
+/* ---- Typewriter caret. ---- */
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+.type-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.06em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+/* ---- Scroll reveal, with a slight scale-up. ---- */
+.reveal {
+  --reveal-s: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shimmer::after,
+  .border-beam::after,
+  .animate-float-y,
+  .animate-float-slow,
+  .animate-pulse-subtle,
+  .type-caret {
+    animation: none !important;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .card-hover:hover::after {
+    animation: none;
+  }
+}
+
+/* Interior heroes: two soft glows that breathe, as on the homepage. */
+.page-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -10rem;
+  right: -8rem;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(var(--c-glow) / 0.55), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulse-subtle 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero::after {
+    animation: none;
+    opacity: 0.25;
+  }
+}
+
+/* ==========================================================================
+   Interaction motion — press, zoom, ping, bounce and sway
+   ========================================================================== */
+
+/* Cards press in slightly on tap. */
+.card-hover:active {
+  transform: translate3d(0, -3px, 0) scale(0.985);
+}
+
+/* Icon tiles inside a hovered card grow. */
+.card-hover [class*="bg-brand/10"],
+.card-hover [class*="rounded-2xl bg-brand "] {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-hover:hover [class*="bg-brand/10"],
+.card-hover:hover [class*="rounded-2xl bg-brand "] {
+  transform: scale(1.1);
+}
+
+/* Photographs inside hovered cards zoom slowly. */
+.card-hover img {
+  transition: transform 0.7s ease-out;
+}
+
+.card-hover:hover img {
+  transform: scale(1.05);
+}
+
+/* Live dots: a ripple ring behind the small dot in eyebrows and strips. */
+@keyframes ping-ring {
+  75%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.eyebrow > span:first-child,
+.ping-dot {
+  position: relative;
+}
+
+.eyebrow > span:first-child::after,
+.ping-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: inherit;
+  opacity: 0.6;
+  animation: ping-ring 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Scroll cue under the homepage hero. */
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-bounce-y {
+  animation: bounce-y 1.6s ease-in-out infinite;
+}
+
+/* A gentle sway for floating badges. */
+@keyframes sway {
+  0%, 100% { transform: translateY(-3px) rotate(-2deg); }
+  50% { transform: translateY(3px) rotate(2deg); }
+}
+
+.animate-sway {
+  animation: sway 5s ease-in-out infinite;
+}
+
+/* Accordion panels slide open and closed. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.accordion-panel > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:active,
+  .card-hover:hover [class*="bg-brand/10"],
+  .card-hover:hover [class*="rounded-2xl bg-brand "],
+  .card-hover:hover img {
+    transform: none;
+  }
+
+  .eyebrow > span:first-child::after,
+  .ping-dot::after,
+  .animate-bounce-y,
+  .animate-sway {
+    animation: none;
+  }
+
+  .accordion-panel {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Heading motion — every h1 and h2 (see components/HeadingMotion.tsx)
+   Hidden only after the script marks it, so headings are never lost.
+   ========================================================================== */
+
+@keyframes type-in {
+  from { clip-path: inset(-0.3em 100% -0.35em -0.2em); }
+  to { clip-path: inset(-0.3em -0.6em -0.35em -0.2em); }
+}
+
+@keyframes type-caret {
+  0%, 49% { border-right-color: rgb(var(--c-brand)); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+[data-h="wait"] {
+  opacity: 0;
+}
+
+/* Letter by letter: a stepped reveal, one step per character of the longest line. */
+[data-h="in"] {
+  animation: type-in var(--type-ms, 1200ms) steps(var(--chars, 30), end) both;
+}
+
+/* The caret rides the right edge of the revealed text. */
+[data-h="in"]::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0.85em;
+  margin-left: 0.08em;
+  vertical-align: -0.05em;
+  border-right: 0.07em solid rgb(var(--c-brand));
+  animation: type-caret 0.8s steps(1) infinite;
+}
+
+/* Gradient headline text shimmers slowly across its width. */
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.text-gradient {
+  background-image: linear-gradient(96deg, var(--grad-a), var(--grad-b), rgb(var(--c-gold)), var(--grad-a));
+  background-size: 250% 100%;
+  animation: gradient-pan 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-h] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .text-gradient {
+    animation: none;
+  }
+}
+
+/* Section headings (h2) take the bolder, larger section scale site-wide. */
+h2.display-md {
+  font-size: clamp(1.65rem, 3.6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Two consecutive sections on the same ground read as one: drop the doubled
+   padding between them instead of leaving an empty band. */
+section.bg-canvas + section.bg-canvas,
+section.bg-surface-sunken + section.bg-surface-sunken,
+section.bg-surface + section.bg-surface {
+  padding-top: 0;
+}
+
+/* Failsafe: a heading waiting to type is never left hidden. If the typing
+   never starts, it simply appears after a short delay. */
+@keyframes heading-failsafe {
+  to { opacity: 1; }
+}
+
+[data-h="wait"] {
+  animation: heading-failsafe 0.3s ease-out 2.5s forwards;
+}
+
+/* ==========================================================================
+   Sparse grids — never leave a card stranded beside empty columns.
+   A 3/4-column card grid adapts to how many cards it actually holds.
+   ========================================================================== */
+@media (min-width: 1024px) {
+  /* One card: centred, at a readable width. */
+  .grid[class*="lg:grid-cols-3"]:has(> :only-child),
+  .grid[class*="lg:grid-cols-4"]:has(> :only-child) {
+    grid-template-columns: minmax(0, 36rem);
+    justify-content: center;
+  }
+
+  /* Two cards: two columns. */
+  .grid[class*="lg:grid-cols-3"]:has(> :last-child:nth-child(2)),
+  .grid[class*="lg:grid-cols-4"]:has(> :last-child:nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Three cards in a four-column grid: three columns. */
+  .grid[class*="lg:grid-cols-4"]:has(> :last-child:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Four cards in a three-column grid: two by two, not three plus one. */
+  .grid[class*="lg:grid-cols-3"]:has(> :last-child:nth-child(4)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Any other lone card on the last row of a three-column grid: centre it. */
+  .grid[class*="lg:grid-cols-3"]:not(:has(> :last-child:nth-child(4))) > :last-child:nth-child(3n + 1):not(:only-child) {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid[class*="xl:grid-cols-4"]:has(> :only-child) {
+    grid-template-columns: minmax(0, 36rem);
+    justify-content: center;
+  }
+
+  .grid[class*="xl:grid-cols-4"]:has(> :last-child:nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid[class*="xl:grid-cols-4"]:has(> :last-child:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Headings read as one sentence: emphasised words keep the heading's own
+   weight and size instead of switching to a heavier cut mid-sentence. */
+.display strong,
+.display b,
+h1 strong,
+h2 strong,
+h3 strong {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* One heading weight across the whole site: the lighter semibold. */
+.display {
+  font-weight: 600;
 }

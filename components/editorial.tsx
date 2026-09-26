@@ -4,6 +4,7 @@ import { Reveal, Words } from "./motion";
 import { Arrow } from "./ui";
 import Photo from "./Photo";
 import Breadcrumbs, { type Crumb } from "./Breadcrumbs";
+import { CtaBand } from "./sky9";
 
 /**
  * The editorial vocabulary.
@@ -47,7 +48,7 @@ export function ArticleOpener({
   actions?: ReactNode;
 }) {
   return (
-    <header className="relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+    <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
       {/* Editorial glowing ambient wash */}
       <div
         className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -182,18 +183,16 @@ export function Passages({
 }) {
   const H = level;
   return (
-    <div className={className}>
-      {items.map((item, i) => (
+    <div className={`grid gap-4 lg:gap-5 ${className}`}>
+      {items.map((item) => (
         <Reveal
           key={item.heading}
           delay={40}
           y={18}
           as="section"
-          className={`grid gap-5 border-t border-line py-10 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-14 lg:py-12 ${
-            i === items.length - 1 ? "border-b" : ""
-          }`}
+          className="card card-hover grid gap-4 p-6 sm:p-8 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12"
         >
-          <H className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading lg:sticky lg:top-[100px] lg:self-start lg:text-[22px]">
+          <H className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading lg:text-[22px]">
             {item.heading}
           </H>
           <div className="max-w-2xl">
@@ -235,14 +234,14 @@ export function UseCases({
         {intro && <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">{intro}</p>}
       </Reveal>
 
-      <div className="mt-11 grid gap-x-14 gap-y-10 lg:grid-cols-2">
+      <div className="mt-10 grid gap-4 lg:grid-cols-2 lg:gap-5">
         {items.map((item, i) => (
           <Reveal
             key={item.role}
             delay={i * 45}
             y={14}
             as="section"
-            className="min-w-0 border-t border-line-strong pt-6"
+            className="card card-hover min-w-0 p-6 sm:p-7"
           >
             <h3 className="font-display text-[13px] font-bold uppercase tracking-[0.14em] text-accent">
               {item.role}
@@ -271,8 +270,8 @@ export function Statement({
     <section
       className={`relative overflow-hidden ${
         dark
-          ? "panel-fixed-dark bg-panel py-14 sm:py-18 lg:py-22"
-          : "border-y border-line bg-surface-sunken py-14 sm:py-18 lg:py-22"
+          ? "panel-fixed-dark bg-panel py-10 sm:py-12 lg:py-14"
+          : "border-y border-line bg-surface-sunken py-10 sm:py-12 lg:py-14"
       }`}
     >
       <div
@@ -332,13 +331,13 @@ export function Ledger({
         {intro && <p className="mt-5 text-[16.5px] leading-[1.7] text-muted">{intro}</p>}
       </Reveal>
 
-      <dl className="mt-10 border-t border-line-strong">
+      <dl className="mt-10 grid gap-4 md:grid-cols-2 lg:gap-5">
         {rows.map((row, i) => (
           <Reveal
             key={row.term}
             delay={i * 45}
             y={12}
-            className="grid gap-2 border-b border-line py-6 transition-colors hover:bg-surface-raised/40 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-10 sm:py-7 sm:px-3 rounded-lg"
+            className="card card-hover flex flex-col gap-2.5 p-6"
           >
             <dt className="font-display text-[15.5px] font-bold leading-snug text-heading">
               {row.term}
@@ -393,15 +392,17 @@ export function Mechanics({
             key={s.step}
             delay={i * 60}
             y={14}
-            className="relative grid gap-4 pb-10 pl-14 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-10 sm:pl-[74px]"
+            className="relative pb-5 pl-14 sm:pl-[74px]"
           >
-            <span className="absolute left-0 top-0 grid h-10 w-10 place-items-center rounded-full bg-surface font-display text-[13px] font-bold text-accent ring-2 ring-line-accent shadow-sm sm:h-12 sm:w-12 sm:text-[14px]">
+            <span className="absolute left-0 top-3 z-10 grid h-10 w-10 place-items-center rounded-2xl bg-brand font-display text-[13px] font-bold text-white shadow-glow sm:h-12 sm:w-12 sm:text-[14px]">
               {s.step}
             </span>
-            <h3 className="font-display text-[17.5px] font-bold leading-snug text-heading">
-              {s.title}
-            </h3>
-            <p className="max-w-2xl text-[15.5px] leading-[1.7] text-muted">{s.body}</p>
+            <div className="card card-hover grid gap-3 p-5 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-8 sm:p-6">
+              <h3 className="font-display text-[17.5px] font-bold leading-snug text-heading">
+                {s.title}
+              </h3>
+              <p className="max-w-2xl text-[15.5px] leading-[1.7] text-muted">{s.body}</p>
+            </div>
           </Reveal>
         ))}
       </ol>
@@ -422,16 +423,18 @@ export function CapabilityIndex({
   className?: string;
 }) {
   return (
-    <div className={`grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 ${className}`}>
+    <div className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 ${className}`}>
       {groups.map((g, i) => (
-        <Reveal key={g.group} delay={i * 80} y={14}>
+        <Reveal key={g.group} delay={i * 80} y={14} className="card card-hover p-6">
           <h3 className="border-b border-line-accent pb-3 font-display text-[13px] font-bold uppercase tracking-[0.16em] text-accent">
             {g.group}
           </h3>
           <ul className="mt-5 space-y-3.5">
             {g.items.map((item) => (
               <li key={item} className="flex gap-3 text-[15px] leading-[1.6] text-muted">
-                <span aria-hidden="true" className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-soft" />
+                <span aria-hidden="true" className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/10 text-accent">
+                  <svg viewBox="0 0 16 16" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m3.5 8.5 3 3 6-7" /></svg>
+                </span>
                 {item}
               </li>
             ))}
@@ -455,12 +458,12 @@ export function NumberedNarrative({
   className?: string;
 }) {
   return (
-    <div className={`grid gap-x-14 gap-y-11 lg:grid-cols-2 ${className}`}>
+    <div className={`grid gap-4 lg:grid-cols-2 lg:gap-5 ${className}`}>
       {items.map((item, i) => (
-        <Reveal key={item.title} delay={i * 70} y={16} className="flex gap-5 sm:gap-7">
+        <Reveal key={item.title} delay={i * 70} y={16} className="card card-hover flex gap-5 p-6 sm:gap-6 sm:p-7">
           <span
             aria-hidden="true"
-            className="font-display text-[38px] font-light leading-none text-line-accent sm:text-[46px]"
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand/10 font-display text-[18px] font-bold text-accent"
           >
             {String(i + 1).padStart(2, "0")}
           </span>
@@ -561,26 +564,31 @@ export function Onward({
   className?: string;
 }) {
   return (
-    <section className={`border-t border-line bg-surface-sunken py-12 sm:py-16 lg:py-20 ${className}`}>
+    <>
+    {/* Every interior page closes the same way: the CTA band, then onward routes. */}
+    <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
+    <section className={`border-t border-line bg-surface-sunken py-8 sm:py-10 md:py-14 ${className}`}>
       <div className="shell">
-        <Reveal y={10}>
-          <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
-            {title}
-          </h2>
+        <Reveal y={10} className="mx-auto mb-6 max-w-3xl text-center sm:mb-8">
+          <span className="eyebrow">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
+            Keep exploring
+          </span>
+          <h2 className="display display-lg mt-4 font-bold">{title}</h2>
         </Reveal>
-        <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-3">
+        <ul className="grid gap-4 sm:grid-cols-3 lg:gap-5">
           {links.map((l, i) => (
-            <Reveal as="li" key={l.href} delay={i * 70} y={12} className="bg-surface">
+            <Reveal as="li" key={l.href} delay={i * 70} y={12}>
               <Link
                 href={l.href}
-                className="group flex h-full flex-col justify-between gap-6 p-6 transition-colors hover:bg-surface-raised/60 sm:p-7"
+                className="card card-hover group flex h-full flex-col justify-between gap-6 p-6 sm:p-7"
               >
-                <span className="font-display text-[17px] font-bold leading-snug text-heading">
+                <span className="font-display text-[17px] font-bold leading-snug text-heading transition-colors group-hover:text-accent">
                   {l.label}
                 </span>
                 <span className="flex items-end justify-between gap-4">
                   <span className="text-[13.5px] leading-relaxed text-muted">{l.note}</span>
-                  <span className="mt-1 shrink-0 text-accent">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-surface-sunken text-accent ring-1 ring-line transition-colors group-hover:bg-brand group-hover:text-white">
                     <Arrow />
                   </span>
                 </span>
@@ -590,6 +598,7 @@ export function Onward({
         </ul>
       </div>
     </section>
+    </>
   );
 }
 
@@ -617,10 +626,12 @@ export function Band({
     dark: "panel-fixed-dark bg-panel",
   };
   const sizes = {
-    sm: "py-8 sm:py-12 lg:py-14",
-    md: "py-10 sm:py-14 lg:py-18",
-    lg: "py-12 sm:py-18 lg:py-24",
-    xl: "py-16 sm:py-22 lg:py-28",
+    sm: "py-6 sm:py-8 lg:py-10",
+    // Only values on Tailwind's default spacing scale — `py-18`/`py-22` do not
+    // exist there and silently produced no padding at all.
+    md: "py-8 sm:py-10 lg:py-12",
+    lg: "py-8 sm:py-10 md:py-14",
+    xl: "py-10 sm:py-12 md:py-16",
   };
   return (
     <section id={id} className={`${grounds[ground]} ${sizes[size]} ${className}`}>

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { SiteStats, Block, ProcessTimeline } from "@/components/sky9";
 import { policyRegister, policyCount, registerNotes } from "@/lib/policies";
 import { detailByCode } from "@/lib/policyDetail";
 import { suppliedCodes, pdfPath } from "@/lib/policyAssets";
 import PolicyLibrary, { type PolicyRow } from "@/components/PolicyLibrary";
-import { Band, Opening, Onward } from "@/components/editorial";
+import { Opening, Onward } from "@/components/editorial";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   keywords: [
     "HR policy templates",
     "employee handbook policies",
-    "employee management system",
-    "HR onboarding system",
   ],
   alternates: { canonical: "/policy/workplace-policies" },
 };
@@ -53,7 +51,7 @@ export default function WorkplacePoliciesPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
@@ -87,44 +85,26 @@ export default function WorkplacePoliciesPage() {
         </div>
       </header>
 
-      <Band ground="surface" size="md">
-        <Opening label="Read this first" paragraphs={registerNotes.what} />
-      </Band>
+      <SiteStats />
 
-      <Band ground="sunken" size="md">
-        <Reveal y={12} className="max-w-2xl">
-          <h2 className="display display-md">How a policy becomes an obligation</h2>
-        </Reveal>
-        <ol className="mt-10 grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {registerNotes.how.map((s, i) => (
-            <Reveal
-              as="li"
-              key={s.step}
-              delay={i * 70}
-              y={12}
-              className="border-t-2 border-line-accent pt-5"
-            >
-              <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-accent">
-                Step {i + 1}
-              </p>
-              <h3 className="mt-2 font-display text-[17px] font-bold text-heading">{s.step}</h3>
-              <p className="mt-2.5 text-[14.5px] leading-[1.68] text-muted">{s.body}</p>
-            </Reveal>
-          ))}
-        </ol>
-      </Band>
+      <Block eyebrow="Start here" title="Read this first" ground="canvas">
+        <div className="mx-auto max-w-3xl">
+          <Opening paragraphs={registerNotes.what} />
+        </div>
+      </Block>
+
+      <Block eyebrow="Process" title="How a policy becomes an obligation" ground="sunken">
+        <ProcessTimeline steps={registerNotes.how.map((s) => ({ title: s.step, body: s.body }))} />
+      </Block>
 
       {/* ---- The document library ---- */}
-      <Band ground="surface" size="lg" id="library">
+      <Block id="library" ground="canvas">
         <PolicyLibrary rows={rows} supplied={supplied} />
-      </Band>
+      </Block>
 
-      <Band ground="raised" size="md">
-        <Reveal y={12} className="mx-auto max-w-3xl">
-          <h2 className="font-display text-[13px] font-bold uppercase tracking-[0.18em] text-subtle">
-            What this library does not tell you
-          </h2>
-          <p className="mt-5 text-[16.5px] leading-[1.72] text-muted">
+      <Block eyebrow="Limits" title="What this library does not tell you" ground="sunken">
+        <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
+          <p className="text-[16.5px] leading-[1.72] text-muted">
             It does not state a notice period, a grace window for late arrival, an increment cycle or
             a probation length. Those are the operative rules, and they belong to each employer
             rather than to a template library. The source schedule these are adapted from lists
@@ -136,7 +116,7 @@ export default function WorkplacePoliciesPage() {
             the final text against the states you operate in before you issue it.
           </p>
         </Reveal>
-      </Band>
+      </Block>
 
       <Onward
         links={[

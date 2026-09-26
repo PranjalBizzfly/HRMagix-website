@@ -7,6 +7,12 @@ import { whitePapers } from "@/lib/papers";
 import { policyDetails } from "@/lib/policyDetail";
 import { calculators } from "@/lib/calculators";
 import { guides } from "@/lib/guides";
+import { modules } from "@/lib/content";
+import { glossary } from "@/lib/glossary";
+import { categories } from "@/lib/blog";
+import { topics } from "@/lib/topics";
+import { faqTopics } from "@/lib/faqTopics";
+import { slugify } from "@/lib/related";
 
 const BASE = "https://hrmagix.com";
 
@@ -48,6 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/resources/glossary", 0.6, "monthly"],
     ["/resources/hrms-comparison", 0.7, "monthly"],
     ["/resources/payroll", 0.7, "monthly"],
+    ["/all-pages", 0.3, "monthly"],
+    ["/features", 0.9, "monthly"],
+    ["/hr/topics", 0.7, "monthly"],
   ];
 
   return [
@@ -97,6 +106,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/policy/workplace-policies/${d.slug}`,
       lastModified: now,
       changeFrequency: "yearly" as const,
+      priority: 0.5,
+    })),
+    ...modules.map((m) => ({
+      url: `${BASE}/features/${m.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...topics.map((t) => ({
+      url: `${BASE}/hr/topics/${t.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+    ...faqTopics.map((t) => ({
+      url: `${BASE}/resources/faqs/${t.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
+    ...glossary.map((g) => ({
+      url: `${BASE}/resources/glossary/${slugify(g.term)}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.4,
+    })),
+    ...categories.map((c) => ({
+      url: `${BASE}/blog/category/${slugify(c.name)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
     ...legalPages.map((p) => ({
