@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import { Onward } from "@/components/editorial";
 import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Icon } from "@/components/icons";
 import OnThisPage from "@/components/OnThisPage";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Indian Statutory Compliance Engine — EPF, ESI, PT, LWF and TDS",
+  title: "Compliance: Indian Statutory Compliance Engine for EPF, ESI, PT, LWF and TDS",
   description:
     "How HRMagix derives EPF, ESI, Professional Tax, Labour Welfare Fund and TDS inside the payroll run, and produces the ECR file, ESIC return, PT working, Form 24Q and Form 16 Part B from the same figures.",
   keywords: [
@@ -16,13 +18,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/solutions/compliance" },
   openGraph: {
-    title: "Indian Statutory Compliance Engine · HRMagix",
+    title: "Compliance: Indian Statutory Compliance Engine · HRMagix",
     description:
       "EPF, ESI, PT, LWF and TDS derived inside the payroll run, with the returns produced from the same figures.",
     url: "/solutions/compliance",
     siteName: "HRMagix",
     type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],
   },
 };
 
@@ -73,7 +75,7 @@ const register = [
     head: "LWF",
     full: "Labour Welfare Fund",
     applies:
-      "In the states that operate a fund, at the periodicity that state sets — half-yearly and annual cycles are both common.",
+      "In the states that operate a fund, at the periodicity that state sets, half-yearly and annual cycles are both common.",
     basis:
       "Also a state subject, with employer and employee shares set by the state. Deadlines are matched to the state cycle and applied inside the run rather than remembered separately.",
     output: "State LWF statement",
@@ -107,7 +109,7 @@ const calendar = [
   {
     when: "On processing",
     what: "Each head is derived from the salary structure and the registrations held",
-    why: "Nothing is entered. A rate cannot be stale, because it is not stored twice — the deduction is computed from the structure at the moment the run executes.",
+    why: "Nothing is entered. A rate cannot be stale, because it is not stored twice, the deduction is computed from the structure at the moment the run executes.",
   },
   {
     when: "With the run",
@@ -127,14 +129,14 @@ const calendar = [
   {
     when: "Annually",
     what: "Form 16 Part B is issued to employees",
-    why: "It has to reconcile across the whole financial year regardless of which system produced each month of it — the reason a mid-year migration must carry year-to-date figures across.",
+    why: "It has to reconcile across the whole financial year regardless of which system produced each month of it, the reason a mid-year migration must carry year-to-date figures across.",
   },
 ];
 
 const faqs = [
   {
     q: "Are statutory rates entered by us, or built in?",
-    a: "The rates fixed by central statute — EPF at 12% each side, EPS at 8.33% within the employer share, ESI at 0.75% and 3.25% — are built in. What you supply is the registrations you hold and the salary structure, because those decide applicability and the wage base. State heads work differently: see the next answer.",
+    a: "The rates fixed by central statute, EPF at 12% each side, EPS at 8.33% within the employer share, ESI at 0.75% and 3.25%, are built in. What you supply is the registrations you hold and the salary structure, because those decide applicability and the wage base. State heads work differently: see the next answer.",
   },
   {
     q: "How are Professional Tax and Labour Welfare Fund handled if they differ by state?",
@@ -158,7 +160,7 @@ const faqs = [
   },
   {
     q: "Does HRMagix submit the returns for us?",
-    a: "It produces the files the portals expect — the ECR text file, the ESIC contribution return, the PT working, Form 24Q and Form 16 Part B — from the run that generated the figures. Submission remains yours, which also means the numbers can be checked before anything is filed in your name.",
+    a: "It produces the files the portals expect, the ECR text file, the ESIC contribution return, the PT working, Form 24Q and Form 16 Part B, from the run that generated the figures. Submission remains yours, which also means the numbers can be checked before anything is filed in your name.",
   },
 ];
 
@@ -167,7 +169,19 @@ export default function CompliancePage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-16 pt-[104px] sm:pb-20 sm:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="solutions-compliance-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -198,12 +212,12 @@ export default function CompliancePage() {
             <p className="mt-7 text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
               EPF, ESI, Professional Tax, Labour Welfare Fund and TDS are calculated inside the
               payroll run from the salary structure on the employee record and the registrations you
-              hold — and the same run produces the files each authority expects. This page is a
+              hold, and the same run produces the files each authority expects. This page is a
               reference rather than an argument: the register first, the rhythm second.
             </p>
           </Reveal>
           <Reveal delay={140} className="mt-9 flex flex-wrap gap-3">
-            <Button href="/company/contact">Talk to the compliance team</Button>
+            <Button href="/company/contact-hrmagix">Talk to the compliance team</Button>
             <Button href="/resources/calculator" variant="outline">
               Check a figure yourself
             </Button>
@@ -291,7 +305,7 @@ export default function CompliancePage() {
           <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
             It also does not decide applicability for you. Whether an establishment is covered,
             which state registrations you hold and whether you have opted into voluntary coverage
-            are facts about your business that you supply. The engine applies them consistently —
+            are facts about your business that you supply. The engine applies them consistently,
             it cannot know them.
           </p>
           <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
@@ -306,9 +320,9 @@ export default function CompliancePage() {
       <FaqSection
         title="Questions on the statutory heads"
         intro="The ones that decide whether a payroll month closes cleanly."
-        items={faqs}
+        items={[...faqs, ...marketingFaqs["/solutions/compliance"]]}
         ground="sunken"
-        more={{ label: "All payroll resources", href: "/resources/payroll" }}
+        more={{ label: "All payroll resources", href: "/resources/payroll-resources" }}
       />
 
       <Onward
@@ -319,13 +333,13 @@ export default function CompliancePage() {
             note: "The run these heads are computed inside, month by month.",
           },
           {
-            label: "Payroll resources",
-            href: "/resources/payroll",
+            label: "Payroll Resources",
+            href: "/resources/payroll-resources",
             note: "Calculators and articles for the heads described above.",
           },
           {
-            label: "Workplace policy library",
-            href: "/policy/workplace-policies",
+            label: "Workplace Policy Library",
+            href: "/policy-centre/workplace-policy-library",
             note: "The gratuity and leave policies these obligations sit alongside.",
           },
         ]}

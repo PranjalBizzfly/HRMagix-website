@@ -13,7 +13,7 @@ export const site = {
     // Word for word from the hrmagix.com hero. Do not rewrite.
     eyebrow: "All-in-one HR platform · v2.0",
     title: ["Smart HR for", "modern teams."],
-    lede: "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+    lede: "People, performance, and payroll, all in one workspace. Built for scale, audited by design.",
     highlights: ["Unified Platform", "Enterprise Ready", "Built to Scale"],
     pillars: [
       ["100% Indian", "Statutory Compliance"],
@@ -26,14 +26,14 @@ export const site = {
     companies: "120+ Indian enterprises",
     trustline: "Loved by 120+ companies",
     avatars: [
-      "/media/portrait-meera.jpg",
-      "/media/portrait-vikram.jpg",
-      "/media/portrait-arjun.jpg",
-      "/media/portrait-sanjay.jpg",
+      "/media/portrait-meera.webp",
+      "/media/portrait-vikram.webp",
+      "/media/portrait-arjun.webp",
+      "/media/portrait-sanjay.webp",
     ],
   },
   contact: {
-    email: "hello@hrmagix.com",
+    email: "hello@HrMagix.com",
     phone: "+91 900 600 7955",
     // Verified against hrmagix.com ("Pune, Maharashtra, India"). The phone
     // number below conflicts with the live site's (+91 98765 43210, which looks
@@ -73,7 +73,7 @@ export const manifesto = {
 export const indianCompliance = {
   eyebrow: "Statutory Compliance by Design",
   title: "Engineered specifically for Indian labor laws & multi-state tax rules",
-  sub: "Handle multi-entity statutory filings with 100% precision — no consultants or manual tax calculations required.",
+  sub: "Handle multi-entity statutory filings with 100% precision, no consultants or manual tax calculations required.",
   aspects: [
     {
       key: "epf",
@@ -354,7 +354,7 @@ export const showcases = [
     key: "time",
     kicker: "Time & Attendance",
     title: "Real-time presence, zero spreadsheets",
-    copy: "See who's in, on leave, or remote at a glance. Geo-aware punch-in, smart shifts and live dashboards keep everyone in sync — automatically.",
+    copy: "See who's in, on leave, or remote at a glance. Geo-aware punch-in, smart shifts and live dashboards keep everyone in sync, automatically.",
     points: [
       "One-tap punch-in with geo & selfie",
       "Auto shift & overtime calculation",
@@ -364,7 +364,7 @@ export const showcases = [
   {
     key: "growth",
     kicker: "Performance & Growth",
-    title: "Goals, reviews and growth — connected",
+    title: "Goals, reviews and growth: connected",
     copy: "Set OKRs and KRAs, run lightweight reviews, track 9-box and PIPs, and celebrate wins with recognition. Everything that grows your people, in one flow.",
     points: [
       "Aligned OKRs & KRAs with live progress",
@@ -383,7 +383,7 @@ export const steps = [
   {
     n: "2",
     title: "Switch on modules",
-    copy: "Enable attendance, payroll, performance & more — set to your policies, no code.",
+    copy: "Enable attendance, payroll, performance & more, set to your policies, no code.",
   },
   {
     n: "3",
@@ -399,7 +399,7 @@ export const testimonials = [
     name: "Priya Sharma",
     role: "HR Manager, 1XL Demo",
     company: "1XL Demo",
-    avatar: "/media/portrait-meera.jpg",
+    avatar: "/media/portrait-meera.webp",
     rating: 5,
   },
   {
@@ -408,7 +408,7 @@ export const testimonials = [
     name: "Rahul Kulkarni",
     role: "Finance Lead, Northwind",
     company: "Northwind",
-    avatar: "/media/portrait-vikram.jpg",
+    avatar: "/media/portrait-vikram.webp",
     rating: 5,
   },
   {
@@ -417,7 +417,7 @@ export const testimonials = [
     name: "Amit Mehta",
     role: "People Ops, Vertex",
     company: "Vertex",
-    avatar: "/media/portrait-arjun.jpg",
+    avatar: "/media/portrait-arjun.webp",
     rating: 5,
   },
 ];
@@ -446,7 +446,7 @@ export const plans: Plan[] = [
       "Email support",
     ],
     cta: "Get Started Free",
-    href: "/company/contact",
+    href: "/company/contact-hrmagix",
   },
   {
     name: "Growth",
@@ -462,7 +462,7 @@ export const plans: Plan[] = [
       "Priority support",
     ],
     cta: "Start Free Trial",
-    href: "/company/contact",
+    href: "/company/contact-hrmagix",
   },
   {
     name: "Enterprise",
@@ -475,7 +475,7 @@ export const plans: Plan[] = [
       "Dedicated success manager",
     ],
     cta: "Contact Sales",
-    href: "/company/contact",
+    href: "/company/contact-hrmagix",
   },
 ];
 
@@ -503,7 +503,7 @@ export const faqs = [
   },
   {
     q: "Where is our employee and payroll data hosted, and how secure is it?",
-    a: "Platform data is hosted in Indian cloud data centres, encrypted in transit between your browser or app and the platform, and encrypted at rest in storage. Access is governed by role-based permissions, with multi-factor authentication available and single sign-on on the Enterprise plan, and automated backups run daily. HRMagix does not claim ISO, SOC or comparable certification of its own — certifications held by the underlying infrastructure providers belong to those providers and should be attributed to them. If a procurement process needs specific assurance documentation, ask the team and you will get an honest answer about what exists.",
+    a: "Platform data is hosted in Indian cloud data centres, encrypted in transit between your browser or app and the platform, and encrypted at rest in storage. Access is governed by role-based permissions, with multi-factor authentication available and single sign-on on the Enterprise plan, and automated backups run daily. HRMagix does not claim ISO, SOC or comparable certification of its own, certifications held by the underlying infrastructure providers belong to those providers and should be attributed to them. If a procurement process needs specific assurance documentation, ask the team and you will get an honest answer about what exists.",
   },
   {
     q: "How are complex shift rotations, night allowances, and comp-offs managed?",
@@ -515,7 +515,7 @@ export const faqs = [
   },
   {
     q: "What is the difference between an HRMS and payroll software?",
-    a: "An HRMS is the system of record — who works here, in which role, under which manager, on what terms. Payroll software is a calculation that reads that record and produces a payslip, a statutory return and a bank file. The distinction matters when they are separate products, because the record has to be exported into the calculation every month and the export is where errors enter. HRMagix is HRMS and payroll software in one platform, so the calculation reads the record directly.",
+    a: "An HRMS is the system of record, who works here, in which role, under which manager, on what terms. Payroll software is a calculation that reads that record and produces a payslip, a statutory return and a bank file. The distinction matters when they are separate products, because the record has to be exported into the calculation every month and the export is where errors enter. HRMagix is HRMS and payroll software in one platform, so the calculation reads the record directly.",
   },
   {
     q: "Is HRMagix cloud HR software, or is it installed on our servers?",
@@ -539,7 +539,7 @@ export const faqs = [
   },
   {
     q: "Can we run HRMagix for more than one legal entity?",
-    a: "Yes. Each entity keeps its own PF and ESI registrations, its own professional tax registrations by state, and its own payroll run and returns. Entity is an attribute of the employee record, so somebody transferring between entities keeps their history — which matters because gratuity eligibility and leave accrual are computed from the original date of joining.",
+    a: "Yes. Each entity keeps its own PF and ESI registrations, its own professional tax registrations by state, and its own payroll run and returns. Entity is an attribute of the employee record, so somebody transferring between entities keeps their history, which matters because gratuity eligibility and leave accrual are computed from the original date of joining.",
   },
   {
     q: "Who can see salary information in the system?",
@@ -547,19 +547,19 @@ export const faqs = [
   },
   {
     q: "What happens to our data if we stop using HRMagix?",
-    a: "Export it while you can still log in. Payroll, attendance and leave history are records you may be required to produce long after you stop using the software that produced them — Form 16 reissues, gratuity calculations and inspections all reach backwards — so an export at the point of cancellation is worth doing carefully rather than quickly.",
+    a: "Export it while you can still log in. Payroll, attendance and leave history are records you may be required to produce long after you stop using the software that produced them, Form 16 reissues, gratuity calculations and inspections all reach backwards, so an export at the point of cancellation is worth doing carefully rather than quickly.",
   },
   {
     q: "Is there a free trial, and does it include payroll?",
-    a: "Fourteen days with full access to every module and no credit card required. Payroll is included deliberately: a payroll product cannot be evaluated honestly with payroll switched off, and the questions worth asking — how a backdated increment is treated, how a mid-year migration handles year-to-date figures — only surface when you run one.",
+    a: "Fourteen days with full access to every module and no credit card required. Payroll is included deliberately: a payroll product cannot be evaluated honestly with payroll switched off, and the questions worth asking, how a backdated increment is treated, how a mid-year migration handles year-to-date figures, only surface when you run one.",
   },
   {
     q: "How should we judge which is the best HRMS software for our company?",
-    a: "By the cases that break rather than the feature list, because every product in the category lists the same features. Four questions separate them in practice: what happens to a shift that crosses midnight, how a backdated increment is treated in a month already filed, how a mid-year migration carries year-to-date figures so Form 16 reconciles, and whether an attendance correction overwrites the original record or sits beside it. The best payroll software for you is the one whose answers to those match how your company actually operates — which is why the trial includes payroll rather than excluding it.",
+    a: "By the cases that break rather than the feature list, because every product in the category lists the same features. Four questions separate them in practice: what happens to a shift that crosses midnight, how a backdated increment is treated in a month already filed, how a mid-year migration carries year-to-date figures so Form 16 reconciles, and whether an attendance correction overwrites the original record or sits beside it. The best payroll software for you is the one whose answers to those match how your company actually operates, which is why the trial includes payroll rather than excluding it.",
   },
   {
     q: "Is this payroll software with PF, ESI and TDS built in, or do we need something separate?",
-    a: "Built in. EPF, ESI, professional tax by state, labour welfare fund and TDS under Section 192 are calculated inside the payroll run from the salary structure on the employee record and the registrations you hold. The same run produces the payslips, the ECR and ESIC files, the PT working, Form 24Q and Form 16 Part B — so the return and the ledger are built from one set of figures rather than reconciled afterwards.",
+    a: "Built in. EPF, ESI, professional tax by state, labour welfare fund and TDS under Section 192 are calculated inside the payroll run from the salary structure on the employee record and the registrations you hold. The same run produces the payslips, the ECR and ESIC files, the PT working, Form 24Q and Form 16 Part B, so the return and the ledger are built from one set of figures rather than reconciled afterwards.",
   },
 ];
 
@@ -592,7 +592,7 @@ export const contrast = {
     label: "After HRMagix",
     points: [
       "Live presence dashboards with geo-aware punch-in",
-      "Payroll runs in minutes — payslips, taxes and compliance built in",
+      "Payroll runs in minutes, payslips, taxes and compliance built in",
       "One workspace, twelve modules, one login",
       "Flexible leave policies with instant approvals and a shared calendar",
       "OKRs, KRAs, 9-box and reviews connected in a single flow",
@@ -606,14 +606,14 @@ export const pillars = [
     key: "time",
     name: "Time & Attendance",
     tagline: "Real-time presence, zero spreadsheets",
-    copy: "See who's in, on leave, or remote at a glance. Geo-aware punch-in, smart shifts and live dashboards keep everyone in sync — automatically.",
+    copy: "See who's in, on leave, or remote at a glance. Geo-aware punch-in, smart shifts and live dashboards keep everyone in sync, automatically.",
     includes: ["Attendance & Shifts", "Leaves & Holidays", "Analytics"],
     tint: "bg-violet-50",
   },
   {
     key: "growth",
     name: "Performance & Growth",
-    tagline: "Goals, reviews and growth — connected",
+    tagline: "Goals, reviews and growth, connected",
     copy: "Set OKRs and KRAs, run lightweight reviews, track 9-box and PIPs, and celebrate wins with recognition. Everything that grows your people, in one flow.",
     includes: ["Objectives & OKRs", "KRA & 9-Box", "PIPs & Growth", "1-on-1s & Meetings"],
     tint: "bg-violet-100",

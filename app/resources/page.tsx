@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, CtaBand, Block } from "@/components/sky9";
+import { SiteStats, CtaBand, Block, FaqSection } from "@/components/sky9";
+import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
 import { whitePapers } from "@/lib/papers";
 import { sorted as articles } from "@/lib/blog";
@@ -10,9 +11,10 @@ import { Reveal } from "@/components/motion";
 import { Icon, type IconName } from "@/components/icons";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import OnThisPage from "@/components/OnThisPage";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Resources — Papers, Calculators & Answers",
+  title: "Resources: Papers, Calculators & Answers",
   description:
     "Long-form briefings on Indian payroll and people operations, salary and statutory calculators, a media room, and every question asked before a first demo.",
   alternates: { canonical: "/resources" },
@@ -39,7 +41,7 @@ const moments: { icon: IconName; title: string; paras: string[] }[] = [
     icon: "folder",
     title: "White papers, when you are making a decision rather than fixing a problem",
     paras: [
-      "Longer arguments about how HR and payroll systems should be structured — the chain of custody from a punch to a payslip, what self-service actually removes from an HR team's week, why a policy vacuum is more expensive than a bad policy.",
+      "Longer arguments about how HR and payroll systems should be structured, the chain of custody from a punch to a payslip, what self-service actually removes from an HR team's week, why a policy vacuum is more expensive than a bad policy.",
       "These are position papers rather than research. They contain no survey data, no benchmarks and no customer outcomes, because none have been gathered. What they contain is reasoning you can disagree with.",
     ],
   },
@@ -65,7 +67,20 @@ export default function ResourcesHub() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="resources-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -121,7 +136,7 @@ export default function ResourcesHub() {
             label="On format"
             paragraphs={[
               "These briefings are published as web pages rather than PDFs. That is a considered choice: a PDF behind a form is a lead-generation artefact wearing the clothes of a research paper, and the reader can usually tell.",
-              "Each one is written for a specific person doing a specific job — a payroll lead closing a cutoff, a founder with no HR function, a plant head with three shift patterns — and says plainly what is a provision of law, what is a product capability, and what is an opinion.",
+              "Each one is written for a specific person doing a specific job, a payroll lead closing a cutoff, a founder with no HR function, a plant head with three shift patterns, and says plainly what is a provision of law, what is a product capability, and what is an opinion.",
             ]}
           />
         </div>
@@ -154,13 +169,13 @@ export default function ResourcesHub() {
       <Block
         eyebrow="Insights"
         title="Latest from Insights"
-        intro="Shorter than the papers and written as arguments rather than references — on ESI against a moving wage base, multi-state Professional Tax, comp-off and the sandwich rule."
+        intro="Shorter than the papers and written as arguments rather than references, on ESI against a moving wage base, multi-state Professional Tax, comp-off and the sandwich rule."
         ground="canvas"
       >
         <ul className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {articles.slice(0, 4).map((a, i) => (
             <Reveal as="li" key={a.slug} delay={i * 45} y={10}>
-              <Link href={`/blog/${a.slug}`} className="card card-hover group flex h-full flex-col gap-2 p-6">
+              <Link href={`/insights/${a.slug}`} className="card card-hover group flex h-full flex-col gap-2 p-6">
                 <span className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent">{a.category}</span>
                 <span className="flex-1 font-display text-[16.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent">
                   {a.title}
@@ -171,7 +186,7 @@ export default function ResourcesHub() {
           ))}
         </ul>
         <p className="mt-8 text-center">
-          <Link href="/blog" className="group inline-flex items-center gap-2 text-[15px] font-semibold text-accent">
+          <Link href="/insights" className="group inline-flex items-center gap-2 text-[15px] font-semibold text-accent">
             All {articles.length} articles <Arrow />
           </Link>
         </p>
@@ -208,9 +223,11 @@ export default function ResourcesHub() {
         ground="canvas"
       >
         <div className="flex justify-center">
-          <Button href="/company/contact">Ask the team</Button>
+          <Button href="/company/contact-hrmagix">Ask the team</Button>
         </div>
       </Block>
+      <FaqSection items={resourcesFaqs["/resources"]} ground="sunken" />
+
       <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
     </>
   );

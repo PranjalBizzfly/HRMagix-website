@@ -22,7 +22,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <section className="relative overflow-hidden wash py-24 pt-[132px] sm:py-28 sm:pt-[152px]">
+    <section className="relative overflow-hidden wash py-16 pt-[120px] sm:py-20 sm:pt-[140px]">
       <div className="pointer-events-none absolute inset-0 dotted opacity-60" aria-hidden="true" />
       <div className="shell relative">
         <div className="mx-auto flex max-w-xl flex-col items-center">
@@ -35,7 +35,7 @@ export default function Error({
             title="This page didn't load"
             body={
               <>
-                Something went wrong on our side. Try again — if it keeps happening,{" "}
+                Something went wrong on our side. Try again, if it keeps happening,{" "}
                 <Link href="/contact" className="font-semibold text-accent underline-offset-2 hover:underline">
                   let us know
                 </Link>

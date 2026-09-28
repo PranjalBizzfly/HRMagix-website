@@ -17,7 +17,7 @@ import { Icon } from "./icons";
 const START_HERE: { title: string; href: string }[] = [
   { title: "Platform overview", href: "/solutions" },
   { title: "Every feature in the app", href: "/solutions#app-features" },
-  { title: "All industries", href: "/industries" },
+  { title: "Industries", href: "/industries" },
   { title: "Pricing", href: "/pricing" },
   { title: "Resources", href: "/resources" },
 ];
@@ -188,7 +188,7 @@ export default function SearchDialog({
         {/* Footer */}
         <button
           type="button"
-          onClick={() => go("/all-pages")}
+          onClick={() => go("/explore-all-pages")}
           className="flex w-full items-center justify-between gap-4 border-t border-line bg-surface-sunken px-5 py-3.5 text-left transition-colors hover:bg-surface-raised"
         >
           <span className="flex items-center gap-2.5 text-[14px] font-semibold text-heading">

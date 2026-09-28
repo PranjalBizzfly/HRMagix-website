@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import Link from "next/link";
 import { careers } from "@/lib/resources";
 import { site } from "@/lib/content";
@@ -15,7 +16,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "What working on HRMagix involves: building Indian statutory payroll as software, from Pune and Mumbai. No vacancy list is published — here is how to approach us instead.",
+    "What working on HRMagix involves: building Indian statutory payroll as software, from Pune and Mumbai. No vacancy list is published, here is how to approach us instead.",
   alternates: { canonical: "/company/careers" },
 };
 
@@ -38,7 +39,7 @@ export default function CareersPage() {
 
       <header className="page-hero relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <Photo slot="careers" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <Photo slot="careers-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
           <div
             className="absolute inset-0 bg-gradient-to-r from-panel/97 via-panel/88 to-panel/58"
             aria-hidden="true"
@@ -55,7 +56,7 @@ export default function CareersPage() {
               tone="light"
               items={[
                 { label: "Home", href: "/" },
-                { label: "Company", href: "/company/about" },
+                { label: "About HRMagix", href: "/company/about-hrmagix" },
                 { label: "Careers" },
               ]}
             />
@@ -98,7 +99,7 @@ export default function CareersPage() {
               body={
                 <>
                   This is a genuine empty state, not a page waiting for content. HRMagix has not
-                  published a vacancy list, so none is shown — inventing roles would waste the time
+                  published a vacancy list, so none is shown, inventing roles would waste the time
                   of the people this page most wants to reach.
                   <span className="mt-4 block">
                     The form below still goes somewhere. If what you would want to work on matches
@@ -144,11 +145,11 @@ export default function CareersPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-10">
           <div className="card p-5 sm:p-8">
             <Reveal delay={200}>
-              <EnquiryForm
+              <EnquiryForm form="careers"
                 subject="Working at HRMagix"
                 submitLabel="Send your introduction"
-                successTitle="Your introduction is ready to send"
-                intro="There is no application portal behind this. Tell us what you would want to work on and what you have built — that is more useful to us than a form with twelve required fields."
+                successTitle="Thanks, your introduction has been sent"
+                intro="There is no application portal behind this. Tell us what you would want to work on and what you have built, that is more useful to us than a form with twelve required fields."
                 fields={[
                   { name: "name", label: "Your name", required: true, half: true },
                   { name: "email", label: "Email", type: "email", required: true, half: true },
@@ -171,7 +172,7 @@ export default function CareersPage() {
                     label: "A link to your work",
                     type: "url",
                     placeholder: "https://",
-                    hint: "Portfolio, repository, writing — anything we can actually look at.",
+                    hint: "Portfolio, repository, writing, anything we can actually look at.",
                     half: true,
                   },
                   { name: "location", label: "Where you are based", half: true },
@@ -235,11 +236,14 @@ export default function CareersPage() {
         </Reveal>
       </Block>
 
+      {/* ---- Questions ---- */}
+      <FaqSection title="Questions about working here" items={marketingFaqs["/company/careers"]} ground="sunken" />
+
       <Onward
         links={[
           {
             label: "About HRMagix",
-            href: "/company/about",
+            href: "/company/about-hrmagix",
             note: "What the company is, and what it deliberately is not.",
           },
           {
@@ -248,8 +252,8 @@ export default function CareersPage() {
             note: "The product you would be working on, described in full.",
           },
           {
-            label: "Contact",
-            href: "/company/contact",
+            label: "Contact HRMagix",
+            href: "/company/contact-hrmagix",
             note: "The same team, for any other reason.",
           },
         ]}

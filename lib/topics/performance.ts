@@ -9,11 +9,11 @@ export const topicsPerformance: Topic[] = [
     standfirst:
       "An annual review can only summarise what already happened. Performance management is everything that shapes it while it is happening: goals, conversations and feedback.",
     definition: [
-      "Performance management is the continuous process of setting expectations, tracking progress, giving feedback and making decisions — on pay, promotion, development or improvement — based on how work is actually going.",
+      "Performance management is the continuous process of setting expectations, tracking progress, giving feedback and making decisions, on pay, promotion, development or improvement, based on how work is actually going.",
       "It usually combines goals (such as OKRs or KRAs), regular check-ins between managers and employees, periodic reviews, and a calibration step that makes ratings comparable across teams.",
     ],
     whyItMatters: [
-      "When the only performance conversation is the annual review, the review contains surprises — and a review with surprises in it is one that failed months earlier.",
+      "When the only performance conversation is the annual review, the review contains surprises, and a review with surprises in it is one that failed months earlier.",
       "Performance data also feeds decisions with lasting consequences: increments, promotions, succession and, sometimes, exits. Those decisions are only defensible if the record behind them was kept through the year.",
     ],
     challenges: [
@@ -44,18 +44,23 @@ export const topicsPerformance: Topic[] = [
     software:
       "Performance software keeps goals, check-ins, feedback and reviews in one record, so the review draws on the whole year rather than memory, and calibration compares like with like.",
     inHRMagix: [
-      { label: "Performance & OKRs", href: "/solutions/performance", note: "Objectives, KRAs, 9-box, PIPs, 1-on-1s and recognition on one record." },
+      { label: "Performance & OKRs", href: "/solutions/performance-and-okrs", note: "Objectives, KRAs, 9-box, PIPs, 1-on-1s and recognition on one record." },
       { label: "Objectives & OKRs", href: "/features/okrs", note: "Cascading OKRs with progress and check-in reminders." },
       { label: "Reviews", href: "/solutions#app-features", note: "Performance reviews, in the Performance area of the app." },
     ],
     faqs: [
-      { q: "How often should performance be reviewed?", a: "Formal reviews are commonly annual or half-yearly, but check-ins should be far more frequent — monthly or fortnightly — so the formal review has no surprises." },
+      { q: "How often should performance be reviewed?", a: "Formal reviews are commonly annual or half-yearly, but check-ins should be far more frequent, monthly or fortnightly, so the formal review has no surprises." },
       { q: "What is calibration?", a: "The step in a review cycle where draft ratings are compared across managers before they are finalised, so that comparable work receives comparable ratings." },
       { q: "Should performance ratings decide pay?", a: "They commonly inform it. What matters is that the link is explained in advance and applied consistently, so employees can see how one leads to the other." },
+      { q: "What is the difference between performance management and a performance review?", a: "A performance review is a periodic assessment at the end of a cycle. Performance management is the continuous process around it, setting goals, checking in, giving feedback and making decisions while the work is happening." },
+      { q: "What are the steps in a performance management cycle?", a: "Set goals, check in regularly, record feedback and achievements as they happen, review the period, calibrate ratings across managers, and then link outcomes to pay, promotion and development." },
+      { q: "How can recency bias be reduced in appraisals?", a: "By writing feedback and achievements down when they happen rather than at review time. The review can then draw on the whole year instead of the last few weeks." },
+      { q: "Why do annual reviews alone fail?", a: "When the annual review is the only performance conversation, it tends to contain surprises, and goals set at the start of the year are often not revisited until the end. Regular check-ins keep the review grounded in what actually happened." },
+      { q: "Should development and pay be discussed in the same conversation?", a: "Where possible, they are better kept separate. Mixing them tends to turn a development conversation into a negotiation about the increment." },
     ],
     phrases: ["performance", "review", "rating", "calibration"],
     seo: {
-      title: "Performance Management — A Year-Round Process",
+      title: "Performance Management: A Year-Round Process",
       description: "What performance management is, why annual reviews alone fail, the six-step cycle from goals to calibration, best practices and common mistakes.",
     },
   },
@@ -104,10 +109,15 @@ export const topicsPerformance: Topic[] = [
       { q: "What should a self-assessment include?", a: "What the employee achieved against their goals, with evidence, what got in the way, and what they want to develop next. It is most useful when written before the manager's assessment." },
       { q: "Should peers give review input?", a: "Peer input can add perspective the manager lacks, especially in cross-functional roles. It works best when it is specific and focused on observed work." },
       { q: "How long should a review meeting be?", a: "Long enough for a real two-way conversation about the period and the next one. If the review contains no surprises, it rarely needs to be long." },
+      { q: "What are the steps in a performance review?", a: "Collect self, manager and any peer input against the period's goals, draft ratings using shared level definitions, calibrate across teams, hold the review conversation, and record the outcome with any development or improvement plan." },
+      { q: "Should ratings be shared before calibration?", a: "No. Sharing draft ratings before they are calibrated means some may later change, which undermines trust in the whole process." },
+      { q: "How do you make rating levels consistent across managers?", a: "Define what each rating level means, with examples, so that every manager is applying the same scale. Without shared definitions, the same rating means different things in different teams." },
+      { q: "Should a performance review raise problems for the first time?", a: "No. A good review contains no news. Concerns should be raised as they arise during the year, so the review summarises conversations that have already happened." },
+      { q: "How should a performance review end?", a: "With agreed next steps and a documented outcome, not only a rating. The record may later be referred to for increments, promotions or improvement plans." },
     ],
     phrases: ["review", "self-assessment", "appraisal"],
     seo: {
-      title: "Performance Reviews — Running Reviews Without Surprises",
+      title: "Performance Reviews: Running Reviews Without Surprises",
       description: "How to run fair performance reviews: self and manager assessment, rating definitions, calibration, the review conversation, and mistakes to avoid.",
     },
   },
@@ -117,9 +127,9 @@ export const topicsPerformance: Topic[] = [
     category: "Performance & growth",
     title: "An OKR is a direction and a measure. Without the measure, it is a wish.",
     standfirst:
-      "Objectives and key results work when objectives say where you are going and key results say how you will know you got there — and both stay visible all quarter.",
+      "Objectives and key results work when objectives say where you are going and key results say how you will know you got there, and both stay visible all quarter.",
     definition: [
-      "OKRs — objectives and key results — are a goal-setting framework. An objective is a qualitative statement of what to achieve; each key result is a measurable outcome that shows progress towards it.",
+      "OKRs, objectives and key results, are a goal-setting framework. An objective is a qualitative statement of what to achieve; each key result is a measurable outcome that shows progress towards it.",
       "OKRs are usually set quarterly, cascade from company to team to individual, and are scored at the end of the cycle.",
     ],
     whyItMatters: [
@@ -147,19 +157,24 @@ export const topicsPerformance: Topic[] = [
       "Setting OKRs nobody looks at until they are scored.",
     ],
     software:
-      "OKR software keeps the cascade visible — who contributes to what — and prompts regular check-ins with progress and confidence, so the quarter's goals stay in front of people rather than in a document.",
+      "OKR software keeps the cascade visible, who contributes to what, and prompts regular check-ins with progress and confidence, so the quarter's goals stay in front of people rather than in a document.",
     inHRMagix: [
       { label: "Objectives & OKRs", href: "/features/okrs", note: "Quarterly and annual cascading, progress sliders, confidence scores and check-in reminders." },
-      { label: "Performance & OKRs", href: "/solutions/performance", note: "OKRs alongside KRAs, reviews and 1-on-1s." },
+      { label: "Performance & OKRs", href: "/solutions/performance-and-okrs", note: "OKRs alongside KRAs, reviews and 1-on-1s." },
     ],
     faqs: [
-      { q: "What is the difference between an OKR and a KPI?", a: "A KPI is an ongoing measure of health — a number you watch continuously. An OKR is a time-bound goal to change something, with key results that show whether the change happened." },
+      { q: "What is the difference between an OKR and a KPI?", a: "A KPI is an ongoing measure of health, a number you watch continuously. An OKR is a time-bound goal to change something, with key results that show whether the change happened." },
       { q: "How many OKRs should a team have?", a: "Few enough that they are genuine priorities. Most teams find a small handful of objectives, each with a few key results, is the limit of what they can focus on in a quarter." },
       { q: "Should OKRs be linked to bonuses?", a: "Many organisations deliberately avoid a direct link, because it encourages people to set goals they know they can hit rather than ambitious ones." },
+      { q: "What is the difference between an objective and a key result?", a: "An objective is a qualitative statement of what to achieve. A key result is a measurable outcome that shows progress towards that objective." },
+      { q: "How often are OKRs set?", a: "Usually quarterly, with scoring at the end of the cycle. Some organisations also set annual OKRs that quarterly ones contribute to." },
+      { q: "What does it mean to cascade OKRs?", a: "Company objectives are set first, and teams and individuals then set OKRs that contribute to those above them, so everyone can see how their goals connect to the company's." },
+      { q: "Can a task be a key result?", a: "It should not be. A key result written as an activity, such as launching a campaign, measures effort rather than outcome." },
+      { q: "Why record a confidence level with OKR check-ins?", a: "A confidence level alongside each progress update shows whether a key result is still likely to be met, so problems surface during the quarter rather than at scoring time." },
     ],
     phrases: ["okr", "okrs", "objectives", "key results"],
     seo: {
-      title: "OKRs — Objectives and Key Results Explained",
+      title: "OKRs: Objectives and Key Results Explained",
       description: "What OKRs are, how objectives and key results differ, cascading and check-ins, OKRs versus KPIs, and the common mistakes that make OKRs fail.",
     },
   },
@@ -169,13 +184,13 @@ export const topicsPerformance: Topic[] = [
     category: "Performance & growth",
     title: "KRAs define the job. The 9-box asks what comes after it.",
     standfirst:
-      "Key result areas describe what a role is accountable for. The 9-box plots how someone performs in it against how far they could grow — two different questions that are often answered together.",
+      "Key result areas describe what a role is accountable for. The 9-box plots how someone performs in it against how far they could grow, two different questions that are often answered together.",
     definition: [
       "Key result areas (KRAs) are the main areas of outcome a role is responsible for, each typically with measures and a weight. They are more stable than goals, because they describe the role rather than the quarter.",
-      "The 9-box is a talent grid that plots employees on two axes — current performance and assessed potential — each in three levels, giving nine boxes that inform development, succession and retention decisions.",
+      "The 9-box is a talent grid that plots employees on two axes, current performance and assessed potential, each in three levels, giving nine boxes that inform development, succession and retention decisions.",
     ],
     whyItMatters: [
-      "KRAs give reviews a fixed reference: what the role exists to deliver. The 9-box turns performance data into talent decisions — who to develop, who to stretch, and whose role is at risk if they leave.",
+      "KRAs give reviews a fixed reference: what the role exists to deliver. The 9-box turns performance data into talent decisions, who to develop, who to stretch, and whose role is at risk if they leave.",
     ],
     challenges: [
       { title: "KRAs that describe activity", body: "KRAs written as duties rather than outcomes cannot be measured." },
@@ -208,8 +223,13 @@ export const topicsPerformance: Topic[] = [
     ],
     faqs: [
       { q: "What is the difference between a KRA and a KPI?", a: "A KRA is an area of outcome a role is accountable for; KPIs are the measures used to judge performance within that area." },
-      { q: "What does the 9-box measure?", a: "Two things: current performance and assessed potential, each in three levels. The combination suggests different actions — development, stretch assignments, succession or support." },
+      { q: "What does the 9-box measure?", a: "Two things: current performance and assessed potential, each in three levels. The combination suggests different actions, development, stretch assignments, succession or support." },
       { q: "Should employees see their 9-box position?", a: "Organisations differ. Where positions are shared, they should come with an explanation and a development plan, not as a label." },
+      { q: "What is a key result area (KRA)?", a: "A main area of outcome a role is responsible for, typically with measures and a weight. KRAs describe the role rather than the quarter, so they are more stable than goals." },
+      { q: "How do you write good KRAs?", a: "As outcomes with measures and weights, not as lists of duties. A KRA written as an activity cannot be measured." },
+      { q: "How is potential assessed for the 9-box?", a: "Against shared criteria agreed across managers, and based on evidence rather than personality. Without shared criteria, the grid becomes a collection of opinions." },
+      { q: "Is a 9-box placement permanent?", a: "No. Treating a placement as permanent is a common mistake, since performance and potential are reassessed in later cycles." },
+      { q: "How is the 9-box used for succession planning?", a: "Each placement is linked to an action, such as development, a stretch assignment, retention or succession. A grid that is filled in but not acted on is an exercise rather than a tool." },
     ],
     phrases: ["kra", "kras", "9-box", "potential"],
     seo: {
@@ -223,7 +243,7 @@ export const topicsPerformance: Topic[] = [
     category: "Performance & growth",
     title: "A PIP is a plan to succeed, or it is not a plan.",
     standfirst:
-      "A performance improvement plan works when it states the gap, the target, the support and the timeline — and fails when it is a formality before a decision already made.",
+      "A performance improvement plan works when it states the gap, the target, the support and the timeline, and fails when it is a formality before a decision already made.",
     definition: [
       "A performance improvement plan (PIP) is a structured, time-bound plan agreed with an employee whose performance is below expectations. It sets out the specific gaps, measurable targets, the support provided, check-in points and the consequences at the end of the period.",
       "PIPs are commonly 30, 60 or 90 days, with milestone reviews along the way.",
@@ -241,7 +261,7 @@ export const topicsPerformance: Topic[] = [
       { step: "Set measurable targets", body: "Define what success looks like by the end of the plan." },
       { step: "Agree support", body: "Coaching, training or resources the employer will provide." },
       { step: "Check in on milestones", body: "Review progress at fixed points and record each review." },
-      { step: "Conclude", body: "Record the outcome — completed, extended or not met — and what follows." },
+      { step: "Conclude", body: "Record the outcome, completed, extended or not met, and what follows." },
     ],
     practices: [
       "Raise concerns before a PIP, so the plan is not a surprise.",
@@ -254,19 +274,24 @@ export const topicsPerformance: Topic[] = [
       "Keeping PIP notes in private documents instead of the record.",
     ],
     software:
-      "Software gives PIPs a consistent structure — milestones, check-ins, a confidential journal and sign-offs — so each plan is run the same way and its outcome is fully recorded.",
+      "Software gives PIPs a consistent structure, milestones, check-ins, a confidential journal and sign-offs, so each plan is run the same way and its outcome is fully recorded.",
     inHRMagix: [
       { label: "PIPs & Growth", href: "/features/pips", note: "30/60/90-day plans with milestone checkpoints, a confidential journal and sign-offs." },
       { label: "PIPs", href: "/solutions#app-features", note: "Performance improvement plans, in the Performance area of the app." },
     ],
     faqs: [
-      { q: "How long should a PIP last?", a: "Long enough for meaningful improvement to be visible — 30, 60 or 90 days is common, depending on the role and the gap." },
+      { q: "How long should a PIP last?", a: "Long enough for meaningful improvement to be visible, 30, 60 or 90 days is common, depending on the role and the gap." },
       { q: "Does a PIP always end in termination?", a: "It should not. A PIP is a plan for improvement, and a genuine one is designed so that success is achievable. Many end with the employee meeting the targets." },
-      { q: "What should be recorded during a PIP?", a: "The plan itself, the support provided, each milestone review with its outcome, and the final conclusion — all dated." },
+      { q: "What should be recorded during a PIP?", a: "The plan itself, the support provided, each milestone review with its outcome, and the final conclusion, all dated." },
+      { q: "What should a performance improvement plan include?", a: "The specific gaps with evidence, measurable targets, the support the employer will provide, milestone check-in points, and the consequences at the end of the period." },
+      { q: "What support should an employer provide during a PIP?", a: "Coaching, training or resources that help the employee close the gap. A plan that asks for change without support is set up to fail." },
+      { q: "Can PIP targets be changed midway?", a: "Not without the employee's agreement. Changing targets during the plan without agreement is one of the most common PIP mistakes." },
+      { q: "What are the possible outcomes of a PIP?", a: "The plan can be completed, extended or not met. The outcome and what follows should be recorded at the end of the period." },
+      { q: "Should an employee be surprised by a PIP?", a: "No. Concerns should be raised before a PIP starts, so the plan is a structured next step rather than a surprise." },
     ],
     phrases: ["pip", "pips", "improvement plan"],
     seo: {
-      title: "Performance Improvement Plans (PIPs) — A Fair Process",
+      title: "Performance Improvement Plans (PIPs): A Fair Process",
       description: "How to run a fair performance improvement plan: naming the gap, measurable targets, support, milestone check-ins, documentation and common PIP mistakes.",
     },
   },
@@ -312,12 +337,17 @@ export const topicsPerformance: Topic[] = [
     ],
     faqs: [
       { q: "How often should 1-on-1s happen?", a: "Weekly or fortnightly is common. Consistency matters more than frequency: a reliable fortnightly meeting is worth more than an erratic weekly one." },
-      { q: "What should a 1-on-1 cover?", a: "The employee's priorities, obstacles, development, feedback in both directions, and how they are doing — rather than a status update that could be written." },
+      { q: "What should a 1-on-1 cover?", a: "The employee's priorities, obstacles, development, feedback in both directions, and how they are doing, rather than a status update that could be written." },
       { q: "Should 1-on-1 notes be private?", a: "Agenda items and agreed actions are usually shared. Managers often keep separate private notes as well, which should be written as if the employee might read them." },
+      { q: "Who should set the agenda for a 1-on-1?", a: "Both sides can add topics beforehand, but the employee should own the agenda and have their items discussed first. It is the employee's meeting, held in the manager's diary." },
+      { q: "Is it okay to cancel a 1-on-1?", a: "It is better to reschedule than cancel. 1-on-1s are the easiest meeting to move, which is why they are moved most, and repeated cancellations break the continuity that makes them useful." },
+      { q: "How do you keep continuity between 1-on-1 meetings?", a: "Capture action items with owners and dates, and open each meeting by reviewing the last meeting's actions. Without notes, each meeting starts from zero." },
+      { q: "What is the difference between a 1-on-1 and a status meeting?", a: "A status meeting recites task lists. A 1-on-1 focuses on the employee's priorities, obstacles, development and wellbeing, which status updates tend to crowd out." },
+      { q: "Why do 1-on-1 meetings matter?", a: "Most issues that end up in reviews, grievances or resignations were visible earlier to someone. A regular 1-on-1 is where they can be raised while still small." },
     ],
     phrases: ["1-on-1", "1-on-1s", "one-on-one"],
     seo: {
-      title: "1-on-1 Meetings — Running Effective One-to-Ones",
+      title: "1-on-1 Meetings: Running Effective One-to-Ones",
       description: "Why 1-on-1 meetings matter, setting a cadence, shared agendas, action items and continuity, and the mistakes that turn them into status updates.",
     },
   },

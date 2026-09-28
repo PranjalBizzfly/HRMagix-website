@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block, ProcessTimeline } from "@/components/sky9";
+import { SiteStats, Block, ProcessTimeline, FaqSection } from "@/components/sky9";
+import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
 import { calculators, unavailable } from "@/lib/calculators";
 import { Opening, Onward } from "@/components/editorial";
@@ -10,7 +11,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Salary, PF, ESI & Gratuity Calculators",
+  title: "Calculator: Salary, PF, ESI & Gratuity Calculators",
   description:
     "Free Indian payroll calculators: salary breakup and take-home, EPF and pension contributions, ESI eligibility, gratuity under the Payment of Gratuity Act, and total payroll cost.",
   keywords: [
@@ -35,8 +36,21 @@ export const metadata: Metadata = {
 export default function CalculatorHub() {
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="resources-calculator-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
@@ -55,11 +69,21 @@ export default function CalculatorHub() {
               <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
                 Each one opens on its own page with its own inputs, its own worked result and a
                 full explanation of how the figure was reached. Nothing is modelled, estimated or
-                projected — you should be able to reproduce every number by hand.
+                projected, you should be able to reproduce every number by hand.
               </p>
             </div>
             <Reveal delay={140} y={20}>
-              <Photo slot="calculator" ratio="3 / 2" sizes="(max-width: 1024px) 100vw, 420px" />
+              <div className="card border-line/60 bg-surface/85 backdrop-blur-md p-6 sm:p-7 rounded-2xl shadow-lift">
+                <span className="text-[12px] font-bold uppercase tracking-wider text-accent-soft">
+                  Transparent Arithmetic
+                </span>
+                <p className="font-display text-lg font-bold text-heading mt-2">
+                  Reproducible statutory math
+                </p>
+                <p className="text-[14px] text-body mt-2 leading-relaxed">
+                  Salary breakup, take-home pay, EPF (12% ceiling), ESI (₹21,000 threshold), and gratuity (15/26 formula) with full line-by-line deduction logic.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -123,7 +147,7 @@ export default function CalculatorHub() {
           steps={[
               {
                 title: "What do I enter?",
-                body: "Clearly labelled inputs with a hint under each, and a note on what the figure should be — basic rather than gross, gross rather than basic, completed years rather than months.",
+                body: "Clearly labelled inputs with a hint under each, and a note on what the figure should be, basic rather than gross, gross rather than basic, completed years rather than months.",
               },
               {
                 title: "What will be calculated?",
@@ -131,7 +155,7 @@ export default function CalculatorHub() {
               },
               {
                 title: "What is my result?",
-                body: "Press Calculate for headline figures, then the full breakdown underneath — every intermediate line, with the rate or rule that produced it named beside it.",
+                body: "Press Calculate for headline figures, then the full breakdown underneath, every intermediate line, with the rate or rule that produced it named beside it.",
               },
               {
                 title: "How was that worked out?",
@@ -147,7 +171,7 @@ export default function CalculatorHub() {
           label="Not offered"
           paragraphs={[
             "Three calculations people look for are missing from the list above, and they are missing deliberately rather than by omission.",
-            "Each depends on figures that change by statute every year, or that differ by state, and that HRMagix does not publish. A calculator built on a guessed slab produces a confident wrong number — which is worse than no calculator, because someone will act on it.",
+            "Each depends on figures that change by statute every year, or that differ by state, and that HRMagix does not publish. A calculator built on a guessed slab produces a confident wrong number, which is worse than no calculator, because someone will act on it.",
           ]}
         />
 
@@ -167,7 +191,7 @@ export default function CalculatorHub() {
                 <p className="text-[15.5px] leading-[1.7] text-muted">{u.why}</p>
                 <p className="mt-3 text-[14.5px] leading-[1.7] text-accent-strong">
                   <span className="font-semibold uppercase tracking-[0.08em] text-subtle">
-                    What it would need —{" "}
+                    What it would need,{" "}
                   </span>
                   {u.needs}
                 </p>
@@ -178,22 +202,24 @@ export default function CalculatorHub() {
 
         <Reveal delay={200} className="mt-10 flex flex-wrap justify-center gap-3">
           <Button href="/solutions/payroll">How payroll resolves all three</Button>
-          <Button href="/company/contact" variant="outline">
+          <Button href="/company/contact-hrmagix" variant="outline">
             Ask about your own case
           </Button>
         </Reveal>
       </Block>
 
+      <FaqSection items={resourcesFaqs["/resources/calculator"]} ground="sunken" />
+
       <Onward
         links={[
           {
-            label: "White papers",
+            label: "White Papers",
             href: "/resources/white-papers",
             note: "The reasoning behind these figures, at length.",
           },
           {
             label: "Insights",
-            href: "/blog",
+            href: "/insights",
             note: "Shorter pieces on ESI thresholds, gratuity and payroll cost.",
           },
           {

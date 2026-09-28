@@ -72,7 +72,7 @@ export const policyDetails: PolicyDetail[] = [
     code: "HRMAGIX007",
     slug: "workplace-harassment",
     purpose: [
-      "This policy defines harassment in the workplace, states the obligation it places on every employee, and — the part that matters most in practice — sets out the route by which someone affected can raise it.",
+      "This policy defines harassment in the workplace, states the obligation it places on every employee, and, the part that matters most in practice, sets out the route by which someone affected can raise it.",
       "A harassment policy that only defines the offence is half a policy. The reporting route, the confidentiality attached to it, and the assurance against retaliation are what make it usable by the person who needs it.",
     ],
     appliesTo:
@@ -97,7 +97,7 @@ export const policyDetails: PolicyDetail[] = [
       "It sits separately from the general workplace harassment policy because its obligations, timelines and complaints machinery are prescribed by statute rather than chosen by the employer.",
     ],
     appliesTo:
-      "Every person at the workplace, including employees, and — as the statute requires — women engaged at the workplace regardless of employment status.",
+      "Every person at the workplace, including employees, and, as the statute requires, women engaged at the workplace regardless of employment status.",
     statute:
       "The Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 prescribes the employer's obligations, the constitution of the Internal Committee and the redressal process. The employer's policy document must reflect those requirements.",
     defines: [
@@ -116,7 +116,7 @@ export const policyDetails: PolicyDetail[] = [
     code: "HRMAGIX013",
     slug: "workplace-violence",
     purpose: [
-      "This policy names the conduct — threat, intimidation, physical harm — that the organisation will not tolerate under any circumstance, and sets the immediate escalation path when it occurs.",
+      "This policy names the conduct, threat, intimidation, physical harm, that the organisation will not tolerate under any circumstance, and sets the immediate escalation path when it occurs.",
       "Unlike most policies in the register, its defining feature is speed. It exists so that nobody has to work out who to call while an incident is happening.",
     ],
     appliesTo: "Every employee, and conduct at any company premises or work-related location.",
@@ -142,7 +142,7 @@ export const policyDetails: PolicyDetail[] = [
     appliesTo: "Every employment decision, and every candidate and employee those decisions touch.",
     defines: [
       "The grounds on which discrimination is prohibited",
-      "How the commitment applies at each decision point — hiring, evaluation, promotion, pay",
+      "How the commitment applies at each decision point, hiring, evaluation, promotion, pay",
       "How a concern about a specific decision is raised",
     ],
     evidence: [
@@ -156,7 +156,7 @@ export const policyDetails: PolicyDetail[] = [
     slug: "open-door",
     purpose: [
       "An open door policy gives an employee a route to raise a concern beyond their immediate reporting line, and attaches an assurance to using it.",
-      "It exists because the ordinary escalation path fails in exactly the situation where escalation matters most — when the concern is about the person it would ordinarily be raised with.",
+      "It exists because the ordinary escalation path fails in exactly the situation where escalation matters most, when the concern is about the person it would ordinarily be raised with.",
     ],
     appliesTo: "Every employee, at every grade.",
     defines: [
@@ -180,9 +180,9 @@ export const policyDetails: PolicyDetail[] = [
       "Almost every payroll dispute in an Indian company traces back to an attendance policy that was either unwritten or applied inconsistently. This is the document that ends that.",
     ],
     appliesTo:
-      "Every employee whose pay depends on days present — in practice, everyone, since loss of pay applies at every grade.",
+      "Every employee whose pay depends on days present, in practice, everyone, since loss of pay applies at every grade.",
     defines: [
-      "Which capture methods are valid for which population — biometric, mobile, browser",
+      "Which capture methods are valid for which population, biometric, mobile, browser",
       "What constitutes a full working day and a half day",
       "How a missed or disputed punch is regularised, and who approves it",
       "By what date in the month regularisations must be raised",
@@ -226,7 +226,7 @@ export const policyDetails: PolicyDetail[] = [
     statute:
       "Minimum leave entitlements are set by the applicable state Shops and Establishments Act, or the Factories Act for covered establishments. An employer's policy may be more generous than the statutory floor but not less.",
     defines: [
-      "Which leave categories exist — earned or privilege, casual, sick, and any others",
+      "Which leave categories exist, earned or privilege, casual, sick, and any others",
       "How entitlement accrues, and from what date",
       "Whether unused leave carries forward, up to what cap, and whether it is encashable",
       "How the sandwich rule is applied, if it is applied",
@@ -272,7 +272,7 @@ export const policyDetails: PolicyDetail[] = [
     defines: [
       "Which roles or grades are eligible, and on what basis",
       "How a remote day or period is requested and approved",
-      "Which obligations continue to apply unchanged — availability, confidentiality, attendance recording",
+      "Which obligations continue to apply unchanged, availability, confidentiality, attendance recording",
       "What equipment and connectivity arrangements apply",
     ],
     evidence: [
@@ -285,7 +285,7 @@ export const policyDetails: PolicyDetail[] = [
     code: "HRMAGIX023",
     slug: "work-from-home-monitoring",
     purpose: [
-      "This policy states what is recorded while an employee works remotely, how that record is used, and — importantly — the limits placed on it.",
+      "This policy states what is recorded while an employee works remotely, how that record is used, and, importantly, the limits placed on it.",
       "A monitoring policy that only describes what is captured invites suspicion. Stating the limits and the permitted uses is what makes remote working workable for both sides.",
     ],
     appliesTo: "Employees working remotely under the work-from-home policy.",
@@ -336,7 +336,7 @@ export const policyDetails: PolicyDetail[] = [
       "What follows from a falsified record",
     ],
     evidence: [
-      "Every punch carries its source — biometric device, mobile app or browser",
+      "Every punch carries its source, biometric device, mobile app or browser",
       "Mobile check-ins can carry location tagging and selfie validation where configured",
       "Regularisations record who requested and who approved",
     ],
@@ -348,7 +348,7 @@ export const policyDetails: PolicyDetail[] = [
     code: "HRMAGIX014",
     slug: "probationary-period",
     purpose: [
-      "This policy states the purpose and duration of probation, how performance is assessed during it, and how confirmation — or its refusal — is communicated.",
+      "This policy states the purpose and duration of probation, how performance is assessed during it, and how confirmation, or its refusal, is communicated.",
       "The part most often missing is the last one. A probation period that ends without an explicit decision leaves both sides unclear about the employee's status, which becomes a problem precisely when it matters.",
     ],
     appliesTo: "Employees serving an initial probationary period.",
@@ -356,7 +356,7 @@ export const policyDetails: PolicyDetail[] = [
       "The length of probation, and whether it may be extended",
       "How performance is assessed during the period, and by whom",
       "How and by when confirmation is communicated",
-      "What terms differ during probation — notice, leave, benefits",
+      "What terms differ during probation, notice, leave, benefits",
     ],
     evidence: [
       "Probation end dates surface to the reporting manager ahead of time rather than after",
@@ -374,7 +374,7 @@ export const policyDetails: PolicyDetail[] = [
     appliesTo: "Employees eligible for review under the cycle the employer defines.",
     defines: [
       "The review cycle and its dates",
-      "Who contributes to an assessment — self, manager, peers, skip-level",
+      "Who contributes to an assessment, self, manager, peers, skip-level",
       "How ratings are calibrated across managers and teams",
       "How the outcome is recorded, communicated and appealed",
     ],
@@ -430,7 +430,7 @@ export const policyDetails: PolicyDetail[] = [
     slug: "timely-submission-of-reports",
     purpose: [
       "This policy sets out the reporting obligations attached to a role, the expectation of timeliness, and what follows from persistent delay.",
-      "It exists because reporting deadlines are usually the first obligation to slip and the last to be addressed, and because downstream work — payroll cutoff among it — depends on them.",
+      "It exists because reporting deadlines are usually the first obligation to slip and the last to be addressed, and because downstream work, payroll cutoff among it, depends on them.",
     ],
     appliesTo: "Employees in roles carrying a defined reporting obligation.",
     defines: [
@@ -450,7 +450,7 @@ export const policyDetails: PolicyDetail[] = [
     slug: "gratuity",
     purpose: [
       "This policy sets out gratuity eligibility and computation, and how it is settled on separation.",
-      "Because gratuity is a statutory entitlement with a fixed formula, the employer's policy is largely a restatement of the law plus the organisation's own administrative process. The provisioning question — recognising the liability before it falls due — is the part that is genuinely the employer's.",
+      "Because gratuity is a statutory entitlement with a fixed formula, the employer's policy is largely a restatement of the law plus the organisation's own administrative process. The provisioning question, recognising the liability before it falls due, is the part that is genuinely the employer's.",
     ],
     appliesTo: "Employees completing the qualifying period of continuous service.",
     statute:
@@ -499,7 +499,7 @@ export const policyDetails: PolicyDetail[] = [
       "This policy states the notice obligation on each side, how notice is served, and how it interacts with leave and the final working day.",
       "The leave interaction is where most disputes arise. Whether leave may be taken or encashed during notice, and whether approved leave extends the last working day, are questions best settled in the policy rather than at the exit interview.",
     ],
-    appliesTo: "Both parties — the employee resigning and the employer terminating.",
+    appliesTo: "Both parties, the employee resigning and the employer terminating.",
     defines: [
       "The notice period required from each side, and whether it varies by grade or by probation status",
       "How notice is served and from what date it runs",
@@ -542,7 +542,7 @@ export const policyDetails: PolicyDetail[] = [
     appliesTo: "Every employee, and every termination initiated by the employer.",
     defines: [
       "The grounds on which employment may be terminated",
-      "The procedural steps that must precede a decision — notice of concern, opportunity to respond, enquiry where required",
+      "The procedural steps that must precede a decision, notice of concern, opportunity to respond, enquiry where required",
       "Who decides, and at what level of authority",
       "What notice or payment in lieu applies",
     ],

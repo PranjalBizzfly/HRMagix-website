@@ -21,18 +21,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const i = industryBySlug(slug);
   if (!i) return {};
+  // The tab title opens with the page's name, exactly as the header and footer link it.
+  const title = i.seo.title.startsWith(i.name) ? i.seo.title : `${i.name}: ${i.seo.title}`;
   return {
-    title: i.seo.title,
+    title,
     description: i.seo.description,
     keywords: i.seo.keywords,
     alternates: { canonical: i.href },
     openGraph: {
-      title: `${i.seo.title} · HRMagix`,
+      title: `${title} · HRMagix`,
       description: i.seo.description,
       url: i.href,
       siteName: "HRMagix",
       type: "website",
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],
     },
   };
 }
@@ -108,7 +110,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </Reveal>
 
           <Reveal delay={320} className="mt-9 flex flex-wrap gap-3">
-            <Button href="/company/contact" variant="light">
+            <Button href="/company/contact-hrmagix" variant="light">
               Talk to the team
             </Button>
             <Link
@@ -167,7 +169,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       <Block
         eyebrow="Why it is hard"
         title="What makes this hard"
-        intro="Not a feature gap — the specific operational pressures this kind of company runs into, and why each one resists a spreadsheet."
+        intro="Not a feature gap, the specific operational pressures this kind of company runs into, and why each one resists a spreadsheet."
         ground="sunken"
       >
         <NumberedNarrative items={industry.pressures} />

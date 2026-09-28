@@ -2,6 +2,15 @@ import { plans, site } from "@/lib/content";
 import { Button, Check } from "./ui";
 import { Reveal } from "./motion";
 
+/** The price rolls up into place as the card scrolls in; the text itself never changes. */
+function PriceRoll({ price }: { price: string }) {
+  return (
+    <span className="inline-block overflow-hidden align-bottom">
+      <span className="price-roll inline-block">{price}</span>
+    </span>
+  );
+}
+
 /** Three plan cards; the Growth plan is inverted and lifted. */
 export default function Pricing() {
   return (
@@ -41,7 +50,7 @@ export default function Pricing() {
                       featured ? "!text-white" : ""
                     }`}
                   >
-                    {plan.price}
+                    <PriceRoll price={plan.price} />
                   </span>
                   {plan.unit && (
                     <span className={`text-[14px] ${featured ? "text-violet-300/85" : "text-subtle"}`}>

@@ -53,7 +53,7 @@ export async function submitLead(lead: Lead, context: { document: string; source
   const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
   if (!endpoint) {
     if (process.env.NODE_ENV !== "production") {
-      console.warn("[leadCapture] NEXT_PUBLIC_LEAD_ENDPOINT is not set — lead not sent anywhere.");
+      console.warn("[leadCapture] NEXT_PUBLIC_LEAD_ENDPOINT is not set, lead not sent anywhere.");
     }
     return { ok: true, sent: false };
   }

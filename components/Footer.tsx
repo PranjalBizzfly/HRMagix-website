@@ -26,9 +26,9 @@ const groups = [
     title: "Resources",
     links: dedupe([
       { label: "Pricing", href: "/pricing" },
-      { label: "How Setup Works", href: "/how-it-works" },
+      { label: "How Setup Works", href: "/how-setup-works" },
       ...resourcesNav.flatMap((c) => c.links),
-      { label: "Explore All Pages", href: "/all-pages" },
+      { label: "Explore All Pages", href: "/explore-all-pages" },
     ]),
   },
   { title: "Legal", links: dedupe([...policyNav]) },
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="shell relative pb-8 pt-16">
+      <div className="shell relative pb-8 pt-12 lg:pt-14">
         <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16">
           {/* Brand column */}
           <div className="flex flex-col gap-6">
@@ -101,7 +101,7 @@ export default function Footer() {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/company/contact"
+                href="/company/contact-hrmagix"
                 className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-500 px-5 text-[14px] font-semibold text-white transition-colors hover:bg-violet-400"
               >
                 Book a Demo

@@ -197,9 +197,10 @@ function Card({
           <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-line-strong shadow-sm">
             <Image
               src={t.avatar}
-              alt={t.name}
+              alt={`Headshot of ${t.name}, ${t.role}, an HRMagix customer`}
               width={48}
               height={48}
+              quality={90}
               className="h-full w-full object-cover object-[center_20%]"
             />
           </div>

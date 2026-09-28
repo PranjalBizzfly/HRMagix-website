@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { solutions, bySlug } from "@/lib/solutions";
-import { Passages, Ledger, UseCases, CapabilityIndex } from "@/components/editorial";
+import { Ledger, UseCases, CapabilityIndex } from "@/components/editorial";
 import { Reveal } from "@/components/motion";
 import {
   PageHero,
@@ -14,6 +14,7 @@ import {
   CtaBand,
   RelatedCards,
 } from "@/components/sky9";
+import Photo from "@/components/Photo";
 import FeatureMap from "@/components/FeatureMap";
 
 /** Which areas of the app (lib/appFeatures.ts) each solution page covers. */
@@ -40,18 +41,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const s = bySlug(slug);
   if (!s) return {};
+  // The tab title opens with the page's name, exactly as the header and footer link it.
+  const title = s.seo.title.startsWith(s.name) ? s.seo.title : `${s.name}: ${s.seo.title}`;
   return {
-    title: s.seo.title,
+    title,
     description: s.seo.description,
     keywords: s.seo.keywords,
     alternates: { canonical: s.href },
     openGraph: {
-      title: `${s.seo.title} · HRMagix`,
+      title: `${title} · HRMagix`,
       description: s.seo.description,
       url: s.href,
       siteName: "HRMagix",
       type: "website",
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],
     },
   };
 }
@@ -95,8 +98,9 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
         typed
         standfirst={s.standfirst}
         chips={s.capabilities.slice(0, 3).map((g) => ({ icon: s.icon, label: g.group }))}
-        primary={{ label: "Book a demo", href: "/company/contact" }}
+        primary={{ label: "Book a demo", href: "/company/contact-hrmagix" }}
         secondary={{ label: "See what it does", href: "#capabilities" }}
+        bgSlot={s.image}
         aside={
           <GlanceCard
             title={`${s.name} at a glance`}
@@ -174,7 +178,58 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
 
       {/* ---- In depth ---- */}
       <Block eyebrow="In depth" title={`How ${s.name.toLowerCase()} works in practice`}>
-        <Passages items={s.passages} />
+        {/* Summary strip: standfirst on the left, the three system facts on the right. */}
+        <Reveal
+          y={16}
+          className="card grid gap-6 rounded-[24px] p-6 sm:p-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-center lg:gap-10"
+        >
+          <div>
+            <span className="eyebrow mb-3 inline-block text-accent">Architecture &amp; System</span>
+            <h3 className="font-display text-[20px] font-bold text-heading">{s.name} at scale</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted">{s.standfirst}</p>
+          </div>
+          <dl className="grid grid-cols-3 gap-3">
+            {[
+              ["100% Unified", "Single system of record"],
+              ["Continuous", "Audit trail"],
+              ["Native", "Statutory compliance"],
+            ].map(([v, l]) => (
+              <div key={l} className="flex flex-col rounded-2xl bg-surface-sunken p-4 text-center ring-1 ring-inset ring-line">
+                <dt className="order-2 mt-1 text-[11.5px] leading-snug text-subtle">{l}</dt>
+                <dd className="order-1 font-display text-[15px] font-bold text-accent sm:text-[17px]">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        {/* Topics: numbered cards in an even two-column grid. */}
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {s.passages.map((p, i) => (
+            <Reveal
+              key={p.heading}
+              y={18}
+              delay={40}
+              as="section"
+              className="card card-hover flex flex-col rounded-[24px] p-6 sm:p-7"
+            >
+              <div className="flex items-start gap-4">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand font-display text-[14px] font-bold text-white shadow-soft">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="pt-1.5 font-display text-[19px] font-bold leading-snug tracking-[-0.02em] text-heading">
+                  {p.heading}
+                </h3>
+              </div>
+              <div className="mt-5 border-t border-line pt-5">
+                {p.body.map((para, j) => (
+                  <p key={j} className={`text-[15px] leading-[1.7] text-muted ${j ? "mt-4" : ""}`}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </Block>
 
       {/* ---- Process ---- */}
@@ -201,7 +256,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       {/* ---- In the app ---- */}
       {areas.length > 0 && (
         <Block eyebrow="In the HRMagix app" title={`Where ${s.name.toLowerCase()} lives in the app`}>
-          <FeatureMap areas={areas} dashboard={s.slug === "ess" || s.slug === "hrms"} />
+          <FeatureMap areas={areas} dashboard={s.slug === "employee-self-service" || s.slug === "hrms"} />
         </Block>
       )}
 

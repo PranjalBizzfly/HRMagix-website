@@ -94,7 +94,7 @@ export default function GlossaryIndex() {
       {matches.length === 0 ? (
         <p className="mt-14 max-w-xl text-[16.5px] leading-[1.7] text-muted">
           Nothing matches &ldquo;{query.trim()}&rdquo;. The glossary covers Indian statutory terms,
-          ordinary payroll vocabulary and the words this site uses for parts of the platform — if a
+          ordinary payroll vocabulary and the words this site uses for parts of the platform, if a
           term you expected is missing, it is worth asking rather than assuming it means what it
           looks like.
         </p>
@@ -123,7 +123,7 @@ function Entry({ term }: { term: Term }) {
     <div className="grid gap-2 border-b border-line py-7 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12">
       <dt className="lg:sticky lg:top-[110px] lg:self-start">
         <Link
-          href={`/resources/glossary/${termSlug(term.term)}`}
+          href={`/resources/hr-and-payroll-glossary/${termSlug(term.term)}`}
           className="font-display text-[17px] font-bold leading-snug tracking-[-0.02em] text-heading underline-offset-4 transition-colors hover:text-accent hover:underline"
         >
           {term.term}

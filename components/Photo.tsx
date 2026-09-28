@@ -59,7 +59,7 @@ export default function Photo({
     <div
       ref={ref}
       data-shown={shown}
-      className={`group/photo overflow-hidden bg-surface-sunken ${
+      className={`photo-skeleton group/photo overflow-hidden bg-surface-sunken ${
         cover ? "absolute inset-0 h-full w-full" : "relative"
       } ${rounded} ${className}`}
       style={cover ? undefined : { aspectRatio: ratio ?? `${media.width} / ${media.height}` }}
@@ -69,14 +69,15 @@ export default function Photo({
         alt={media.alt}
         fill
         sizes={sizes}
+        quality={100}
         priority={media.priority}
         loading={media.priority ? undefined : "lazy"}
         style={{ objectPosition: media.position ?? "center" }}
-        className={`object-cover transition-[transform,opacity,filter] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] ${
-          shown ? "scale-100 opacity-100 blur-0" : "scale-[1.05] opacity-0 blur-[6px]"
+        className={`object-cover transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] ${
+          shown ? "scale-100 opacity-100" : "scale-[1.03] opacity-0"
         } ${hover ? "group-hover/photo:scale-[1.035]" : ""} ${
           tone ? "media-tone" : ""
-        } motion-reduce:!scale-100 motion-reduce:!opacity-100 motion-reduce:!blur-0 motion-reduce:transition-none ${imgClassName}`}
+        } motion-reduce:!scale-100 motion-reduce:!opacity-100 motion-reduce:transition-none ${imgClassName}`}
       />
     </div>
   );

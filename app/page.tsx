@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { appAreas, appFeatureCount } from "@/lib/appFeatures";
 import FeatureMap from "@/components/FeatureMap";
-import Typewriter from "@/components/Typewriter";
+import HeroCinematic from "@/components/HeroCinematic";
 import {
   site,
   manifesto,
@@ -27,9 +27,9 @@ import ModuleTabs from "@/components/ModuleTabs";
 import Pricing from "@/components/Pricing";
 
 export const metadata: Metadata = {
-  title: "HRMagix — HRMS & Payroll Software for India",
+  title: "HRMagix: HRMS & Payroll Software for India",
   description:
-    "HRMagix is HR software for Indian companies — an HRMS system and HR platform for companies with attendance, leave, payroll with PF, ESI, PT and TDS, employee self-service and HR analytics: HRMS and payroll software, twelve modules on one employee record.",
+    "HRMagix is HR software for Indian companies, an HRMS system and HR platform for companies with attendance, leave, payroll with PF, ESI, PT and TDS, employee self-service and HR analytics: HRMS and payroll software, twelve modules on one employee record.",
   keywords: [
     "HRMS software",
     "payroll software",
@@ -84,7 +84,7 @@ const industryIcons: Record<string, IconName> = {
   "small-business": "gift",
   smes: "grid",
   manufacturing: "layers",
-  "it-services": "compass",
+  "it-and-technology": "compass",
   "professional-services": "users",
 };
 
@@ -93,7 +93,7 @@ const plainTerms = [
     icon: "layers" as IconName,
     title: "An HRMS and payroll software in one platform",
     body: [
-      "HRMagix is an HR management system built around a single employee record. Twelve modules read from it — attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRA and 9-box, PIPs and growth, recognition, 1-on-1s, onboarding, documents, succession and analytics.",
+      "HRMagix is an HR management system built around a single employee record. Twelve modules read from it, attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRA and 9-box, PIPs and growth, recognition, 1-on-1s, onboarding, documents, succession and analytics.",
       "The practical consequence is that nothing is re-keyed. An approved leave day is already a payroll input; an attendance correction is already reflected in the month's paid days; a promotion entered once changes the reporting line, the approval routing and the salary in the same act.",
     ],
   },
@@ -117,14 +117,14 @@ const plainTerms = [
     icon: "users" as IconName,
     title: "Who it is for",
     body: [
-      "Companies where HR administration has outgrown spreadsheets but has not yet earned a department — startups formalising their first policies, small businesses where HR is someone's second job, mid-market groups that are several legal entities on paper, manufacturers paying staff and workmen under different logic, and services firms whose people are rarely in one building.",
+      "Companies where HR administration has outgrown spreadsheets but has not yet earned a department, startups formalising their first policies, small businesses where HR is someone's second job, mid-market groups that are several legal entities on paper, manufacturers paying staff and workmen under different logic, and services firms whose people are rarely in one building.",
       "What they have in common is not size. It is that the cost of getting a month wrong has started to exceed the cost of running it properly.",
     ],
   },
 ];
 
 export default function HomePage() {
-  const featured = ["payroll", "attendance", "ess", "hr-analytics"]
+  const featured = ["payroll", "attendance-and-shifts", "employee-self-service", "hr-analytics"]
     .map((slug) => solutions.find((s) => s.slug === slug))
     .filter(Boolean) as typeof solutions;
 
@@ -138,137 +138,7 @@ export default function HomePage() {
   return (
     <>
       {/* ================= 1. Hero ================= */}
-      <header className="relative overflow-hidden wash pb-10 pt-[92px] sm:pb-12 sm:pt-[132px] lg:pb-16 lg:pt-[148px]">
-        <div className="pointer-events-none absolute inset-0 dotted opacity-50" aria-hidden="true" />
-        <div
-          className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-glow/25 blur-[120px] animate-pulse-subtle"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute -left-32 top-1/2 h-[420px] w-[420px] rounded-full bg-glow/15 blur-[120px] animate-pulse-subtle [animation-delay:-3s]"
-          aria-hidden="true"
-        />
-
-        <div className="shell relative">
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-            <Stagger step={110} from={60} className="min-w-0 text-center lg:col-span-7 lg:text-left">
-              <Reveal y={10}>
-                <span className="eyebrow">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
-                  {site.hero.eyebrow}
-                </span>
-              </Reveal>
-
-              {/* Headline, lede and highlights are hrmagix.com's own words. */}
-              <h1 className="display display-xl mx-auto mt-6 text-balance font-bold lg:mx-0">
-                <Words as="span" text={site.hero.title[0]} className="block" />
-                <Typewriter text={site.hero.title[1]} className="block text-gradient" delay={700} />
-              </h1>
-
-              <Reveal y={16} className="mx-auto mt-6 max-w-[44ch] lg:mx-0">
-                <p className="text-[17px] leading-[1.65] text-muted sm:text-[19px]">
-                  {site.hero.lede}
-                </p>
-              </Reveal>
-
-              <Reveal y={14} className="mt-8">
-                <ul className="flex justify-center gap-3 min-[400px]:gap-6 sm:gap-10 lg:justify-start">
-                  {site.hero.highlights.map((h, i) => (
-                    <li key={h} className="flex w-[84px] flex-col min-[400px]:w-24 items-center gap-2.5 text-center">
-                      <span
-                        className={`grid h-12 w-12 place-items-center rounded-2xl text-white shadow-soft ${
-                          ["bg-ok-dot", "bg-brand", "bg-violet-500"][i]
-                        }`}
-                      >
-                        <Icon name={(["grid", "shield", "layers"] as const)[i]} className="h-5 w-5" />
-                      </span>
-                      <span className="font-display text-[14.5px] font-bold leading-tight text-heading">
-                        {h}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-
-              <Reveal y={16} className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                <Button href="/company/contact" size="lg" className="btn-shimmer w-full sm:w-auto">
-                  Book a demo
-                </Button>
-                <Button href="/solutions" variant="outline" size="lg" className="w-full sm:w-auto">
-                  See the platform
-                </Button>
-              </Reveal>
-
-              <Reveal y={12} className="mt-7">
-                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13.5px] font-medium text-muted lg:justify-start">
-                  {["14-day free trial", "No credit card required", "Cancel anytime"].map((t) => (
-                    <li key={t} className="flex items-center gap-1.5">
-                      <TickCircle className="h-4 w-4 text-accent" />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </Stagger>
-
-            {/* A photograph of the people who use it, with the app's areas
-                listed over it in words. */}
-            <Reveal delay={200} y={24} className="relative mx-auto w-full min-w-0 max-w-xl lg:col-span-5">
-              <div
-                className="pointer-events-none absolute -inset-2 rounded-[32px] bg-gradient-to-br from-violet-400/30 to-violet-600/20 blur-2xl"
-                aria-hidden="true"
-              />
-
-              <div className="relative hidden sm:block">
-                <Photo
-                  slot="home-hero"
-                  ratio="4 / 3"
-                  sizes="(max-width: 1024px) 90vw, 520px"
-                  rounded="rounded-[24px]"
-                  className="shadow-lift"
-                />
-              </div>
-
-              {/* What is inside the app, in words — the site shows no product
-                  screens. Areas and counts come from lib/appFeatures.ts. */}
-              <div className="glass relative z-10 rounded-[20px] p-5 sm:-mt-40 sm:ml-10 lg:-ml-8 lg:mr-6">
-                <span className="border-beam" aria-hidden="true" />
-                <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-label">
-                  Inside the HRMagix app
-                </p>
-                <ul className="mt-3 grid grid-cols-2 gap-2">
-                  {appAreas.map((a) => (
-                    <li
-                      key={a.key}
-                      className="flex items-center gap-2.5 rounded-xl bg-surface-sunken px-3 py-2.5 ring-1 ring-line"
-                    >
-                      <Icon name={a.icon} className="h-4 w-4 shrink-0 text-accent" />
-                      <span className="min-w-0 truncate text-[13.5px] font-semibold text-heading">
-                        {a.name}
-                      </span>
-                      <span className="ml-auto text-[11.5px] tabular-nums text-subtle">
-                        {a.features.length}
-                      </span>
-                    </li>
-                  ))}
-                  <li className="flex items-center justify-center rounded-xl bg-brand px-3 py-2.5 text-[13px] font-bold text-white">
-                    {appFeatureCount} features
-                  </li>
-                </ul>
-              </div>
-
-              <span className="animate-float-y absolute -left-2 top-4 z-20 hidden items-center gap-1.5 rounded-xl bg-panel px-3.5 py-2 text-[12px] font-bold text-white shadow-lift sm:inline-flex">
-                <Icon name="scale" className="h-4 w-4 text-gold" />
-                EPF · ESI · PT · TDS built in
-              </span>
-              <span className="animate-sway absolute -bottom-3 right-4 z-20 inline-flex items-center gap-1.5 rounded-xl bg-brand px-3.5 py-2 text-[12px] font-bold text-white shadow-glow [animation-delay:-2s]">
-                <Icon name="layers" className="h-4 w-4" />
-                12 modules · one record
-              </span>
-            </Reveal>
-          </div>
-        </div>
-      </header>
+      <HeroCinematic />
 
       {/* ================= 2. Module ticker ================= */}
       <div id="platform" className="ticker relative scroll-mt-[90px] border-y border-line bg-surface py-3.5" aria-label="The twelve HRMagix modules">
@@ -377,6 +247,42 @@ export default function HomePage() {
           className="mb-10"
         />
         <ModuleTabs />
+
+        {/* Module Explorer Visual Spotlight */}
+        <div className="mt-12 grid items-center gap-8 rounded-[28px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal y={16} className="relative lg:col-span-5">
+            <Photo
+              slot="home-modules"
+              ratio="16 / 10"
+              rounded="rounded-[20px]"
+              className="shadow-lift"
+            />
+            <div className="glass absolute -bottom-3 left-4 rounded-xl px-4 py-2 text-xs font-semibold text-heading shadow-float sm:bottom-4 sm:left-4">
+              <span className="inline-block h-2 w-2 rounded-full bg-accent mr-2 animate-pulse" />
+              12 workflows · Single employee record
+            </div>
+          </Reveal>
+          <div className="lg:col-span-7">
+            <span className="eyebrow text-accent">Cross-Module Flow</span>
+            <h3 className="display display-md mt-4 text-balance">
+              Zero duplicate entries across your entire company
+            </h3>
+            <p className="mt-4 text-[16px] leading-[1.7] text-muted">
+              When an attendance regularization is approved, paid days update instantly. When a promotion takes effect, approval hierarchy, salary structure, and statutory ceilings adjust in the same keystroke. Every module speaks to the same central ledger.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-heading ring-1 ring-line">
+                Auto-synced paid days
+              </span>
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-heading ring-1 ring-line">
+                Instant hierarchy routing
+              </span>
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-heading ring-1 ring-line">
+                Integrated tax declarations
+              </span>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* ================= 6. The three outcomes ================= */}
@@ -470,6 +376,32 @@ export default function HomePage() {
             </Reveal>
           ))}
         </ul>
+
+        {/* Featured Visual Spotlight */}
+        <div className="mt-10 grid items-center gap-8 rounded-[28px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal y={16} className="relative lg:col-span-5">
+            <Photo
+              slot="team-collaboration"
+              ratio="4 / 3"
+              rounded="rounded-[20px]"
+              className="shadow-lift"
+            />
+          </Reveal>
+          <div className="lg:col-span-7">
+            <span className="eyebrow text-accent">Cross-Functional Speed</span>
+            <h3 className="display display-md mt-4 text-balance">
+              Where high-growth teams start their rollout
+            </h3>
+            <p className="mt-4 text-[16px] leading-[1.7] text-muted">
+              Most companies don&rsquo;t switch everything on day one. They begin with the workflow causing the most friction, usually attendance disputes or a delayed monthly payroll run, and expand into performance, OKRs, and employee self-service as their team scales.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button href="/solutions/payroll" size="sm">Explore Payroll</Button>
+              <Button href="/solutions/attendance-and-shifts" variant="outline" size="sm">Explore Attendance</Button>
+              <Button href="/solutions" variant="outline" size="sm">All 12 Modules</Button>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* ================= 5. Statutory compliance ================= */}
@@ -479,6 +411,45 @@ export default function HomePage() {
           title={indianCompliance.title}
           lede={indianCompliance.sub}
         />
+
+        {/* Featured Compliance Spotlight */}
+        <div className="mt-12 grid items-center gap-8 rounded-[28px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-6">
+            <span className="eyebrow text-accent">Audited by design</span>
+            <h3 className="display display-md mt-4 text-balance">
+              Every formula verified before your bank cutoff
+            </h3>
+            <p className="mt-4 text-[16px] leading-[1.7] text-muted">
+              Indian statutory compliance is not an afterthought or an export plugin. EPF wage ceilings, ESI thresholds across 28 states, dual tax regime TDS schedules, and LWF slabs are calculated directly inside the attendance and salary ledger.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-accent-strong ring-1 ring-line">
+                EPF 12% Auto-Ceiling
+              </span>
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-accent-strong ring-1 ring-line">
+                ESI ₹21,000 Threshold
+              </span>
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-accent-strong ring-1 ring-line">
+                28 States PT Slabs
+              </span>
+              <span className="rounded-lg bg-surface-sunken px-3 py-1.5 text-xs font-semibold text-accent-strong ring-1 ring-line">
+                TDS Form 24Q ECR
+              </span>
+            </div>
+          </div>
+          <Reveal y={16} className="relative lg:col-span-6">
+            <Photo
+              slot="home-compliance"
+              ratio="16 / 10"
+              rounded="rounded-[20px]"
+              className="shadow-lift"
+            />
+            <div className="glass absolute -bottom-4 right-4 rounded-xl px-4 py-2.5 text-xs font-medium text-body shadow-float sm:bottom-4 sm:right-4">
+              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 mr-2 animate-pulse" />
+              Pre-cutoff compliance verified
+            </div>
+          </Reveal>
+        </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {indianCompliance.aspects.map((a, i) => (
@@ -565,6 +536,42 @@ export default function HomePage() {
             </Reveal>
           ))}
         </div>
+
+        {/* Plain Terms Visual Spotlight */}
+        <div className="mt-10 grid items-center gap-8 rounded-[28px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal y={16} className="relative lg:col-span-5">
+            <Photo
+              slot="home-plain-terms"
+              ratio="4 / 3"
+              rounded="rounded-[20px]"
+              className="shadow-lift"
+            />
+            <div className="glass absolute -bottom-3 left-4 rounded-xl px-4 py-2 text-xs font-semibold text-heading shadow-float sm:bottom-4 sm:left-4">
+              <span className="inline-block h-2 w-2 rounded-full bg-accent mr-2" />
+              Transparent employee self-service
+            </div>
+          </Reveal>
+          <div className="lg:col-span-7">
+            <span className="eyebrow text-accent">Clarity & Trust</span>
+            <h3 className="display display-md mt-4 text-balance">
+              Software your team actually understands and trusts
+            </h3>
+            <p className="mt-4 text-[16px] leading-[1.7] text-muted">
+              When an employee checks their payslip, Form 16, or tax regime calculation on their phone, the numbers must match down to the paise. No hidden formulas, no unexplained deductions, and no waiting three days for HR to reply to an email thread.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted">
+                <TickCircle className="h-4 w-4 text-accent" /> Dual tax regime comparison
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted">
+                <TickCircle className="h-4 w-4 text-accent" /> 1-click Form 16 & payslips
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted">
+                <TickCircle className="h-4 w-4 text-accent" /> Zero payroll query backlogs
+              </div>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* ================= 8. How it works ================= */}
@@ -602,10 +609,43 @@ export default function HomePage() {
         </ol>
 
         <Reveal className="mt-12 text-center">
-          <Button href="/how-it-works" variant="outline">
+          <Button href="/how-setup-works" variant="outline">
             See how setup runs
           </Button>
         </Reveal>
+
+        {/* Day 1 Go-Live Spotlight */}
+        <div className="mt-12 grid items-center gap-8 rounded-[28px] border border-line bg-surface p-6 sm:p-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-7">
+            <span className="eyebrow text-accent">Day 1 Go-Live</span>
+            <h3 className="display display-md mt-4 text-balance">
+              From biometric turnstile punch to final salary credit
+            </h3>
+            <p className="mt-4 text-[16px] leading-[1.7] text-muted">
+              Whether your employees punch in through office biometric scanners, mobile geo-fenced check-ins on client sites, or factory gate turnstiles, attendance timestamps synchronize immediately into your shift roster. No reconciliation spreadsheets at the end of the month.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Button href="/how-setup-works" variant="primary" size="sm">
+                Explore setup workflow
+              </Button>
+              <span className="text-xs font-semibold text-muted">
+                Average go-live: 2–3 business days
+              </span>
+            </div>
+          </div>
+          <Reveal y={16} className="relative lg:col-span-5">
+            <Photo
+              slot="home-how-it-works"
+              ratio="4 / 3"
+              rounded="rounded-[20px]"
+              className="shadow-lift"
+            />
+            <div className="glass absolute -bottom-3 right-4 rounded-xl px-4 py-2 text-xs font-semibold text-heading shadow-float sm:bottom-4 sm:right-4">
+              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 mr-2 animate-pulse" />
+              Real-time attendance capture
+            </div>
+          </Reveal>
+        </div>
       </Section>
 
       {/* ================= 12. Industries ================= */}
@@ -688,6 +728,42 @@ export default function HomePage() {
               Why companies actually switch
             </p>
           </Reveal>
+
+          {/* Audit-Ready Pre-Cutoff Showcase */}
+          <div className="mx-auto mt-10 max-w-5xl rounded-[24px] bg-white/10 p-6 backdrop-blur-md ring-1 ring-white/15 sm:p-8">
+            <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+              <div className="lg:col-span-7 text-left">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-white/20 px-2.5 py-1 text-xs font-semibold text-white">
+                  The End of Cutoff Night Panic
+                </span>
+                <h3 className="mt-3 font-display text-[22px] font-bold leading-snug text-white sm:text-[26px]">
+                  A calm 15-minute review instead of an all-nighter
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.68] text-violet-100/90">
+                  With attendance locked, tax declarations verified, and statutory deductions auto-calculated against current slabs, the final payroll run is a peaceful confirmation rather than an emergency spreadsheet debug session.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <span className="rounded-lg bg-black/20 px-3 py-1.5 text-xs font-medium text-white ring-1 ring-white/10">
+                    ✓ Verified EPF & ESI Challans
+                  </span>
+                  <span className="rounded-lg bg-black/20 px-3 py-1.5 text-xs font-medium text-white ring-1 ring-white/10">
+                    ✓ Direct Bank Payout TXT
+                  </span>
+                </div>
+              </div>
+              <Reveal y={14} className="relative lg:col-span-5">
+                <Photo
+                  slot="home-before-after"
+                  ratio="16 / 10"
+                  rounded="rounded-[16px]"
+                  className="shadow-lift ring-1 ring-white/20"
+                />
+                <div className="absolute -bottom-3 right-3 rounded-lg bg-black/75 px-3 py-1.5 text-[11px] font-semibold text-emerald-400 backdrop-blur-sm ring-1 ring-white/20 sm:bottom-3 sm:right-3">
+                  ● 100% Audit-Ready Cutoff
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -710,7 +786,7 @@ export default function HomePage() {
         <SectionHeader
           eyebrow="Pricing"
           title="Three plans, one platform"
-          lede="Per employee, per month. Every module lives on one platform — your plan decides which are switched on."
+          lede="Per employee, per month. Every module lives on one platform, your plan decides which are switched on."
           className="mb-10"
         />
         <Pricing />
@@ -737,7 +813,7 @@ export default function HomePage() {
               align="left"
             />
             <Reveal delay={100} className="mt-7">
-              <Button href="/resources/faqs" variant="outline">
+              <Button href="/resources/questions-and-answers" variant="outline">
                 Read every answer
               </Button>
             </Reveal>
@@ -747,7 +823,7 @@ export default function HomePage() {
             {faqs.slice(0, 8).map((f, i) => (
               <Reveal as="li" key={f.q} delay={i * 40} y={10}>
                 <Link
-                  href="/resources/faqs"
+                  href="/resources/questions-and-answers"
                   className="card card-hover group flex items-center justify-between gap-5 px-5 py-4 sm:px-6"
                 >
                   <span className="font-display text-[15.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent sm:text-[16.5px]">

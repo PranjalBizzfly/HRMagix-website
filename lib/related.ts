@@ -31,8 +31,8 @@ const flat = (x: unknown) => JSON.stringify(x).replace(/\\n|[{}[\]"]/g, " ").toL
 const corpus: Doc[] = [
   ...solutions.map((s) => ({ title: s.name, href: s.href, kind: "Solution", text: flat(s) })),
   ...industries.map((i) => ({ title: i.name, href: i.href, kind: "Industry", text: flat(i) })),
-  ...articles.map((a) => ({ title: a.title, href: `/blog/${a.slug}`, kind: "Article", text: flat(a) })),
-  ...guides.map((g) => ({ title: g.title, href: `/resources/guides/${g.slug}`, kind: "Guide", text: flat(g) })),
+  ...articles.map((a) => ({ title: a.title, href: `/insights/${a.slug}`, kind: "Article", text: flat(a) })),
+  ...guides.map((g) => ({ title: g.title, href: `/resources/hr-guides/${g.slug}`, kind: "Guide", text: flat(g) })),
   ...whitePapers.map((w) => ({
     title: w.title,
     href: `/resources/white-papers/${w.slug}`,
@@ -42,7 +42,7 @@ const corpus: Doc[] = [
   ...calculators.map((c) => ({ title: c.name, href: `/calculators/${c.slug}`, kind: "Calculator", text: flat(c) })),
   ...policyDetails.map((d) => ({
     title: policyName.get(d.code) ?? d.slug,
-    href: `/policy/workplace-policies/${d.slug}`,
+    href: `/policy-centre/workplace-policy-library/${d.slug}`,
     kind: "Policy",
     text: flat(d),
   })),
@@ -75,7 +75,7 @@ export function relatedPages(
 
 /** Every question answered anywhere on the site, with the page that answers it. */
 export const allQuestions: SourcedQuestion[] = [
-  ...generalFaqs.map((f) => ({ ...f, href: "/resources/faqs", source: "Questions & answers" })),
+  ...generalFaqs.map((f) => ({ ...f, href: "/resources/questions-and-answers", source: "Questions & Answers" })),
   ...solutions.flatMap((s) =>
     s.questions.map((q) => ({ q: q.q, a: q.a, href: s.href, source: s.name })),
   ),

@@ -3,6 +3,7 @@ import { Inter_Tight, Montserrat } from "next/font/google";
 import Nav from "@/components/Nav";
 import { buildSiteIndex } from "@/lib/siteIndex";
 import Footer from "@/components/Footer";
+import Interactions from "@/components/Interactions";
 import StickyCta from "@/components/StickyCta";
 import ScrollTop from "@/components/ScrollTop";
 import RouteTransition from "@/components/RouteTransition";
@@ -26,15 +27,15 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://hrmagix.com"),
   title: {
-    default: "HRMagix — Modern HR, From Hire to Retire",
+    default: "HRMagix: Modern HR, From Hire to Retire",
     template: "%s · HRMagix",
   },
   description:
-    "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+    "People, performance, and payroll, all in one workspace. Built for scale, audited by design.",
   openGraph: {
-    title: "HRMagix — Modern HR, From Hire to Retire",
+    title: "HRMagix: Modern HR, From Hire to Retire",
     description:
-      "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+      "People, performance, and payroll, all in one workspace. Built for scale, audited by design.",
     siteName: "HRMagix",
     type: "website",
     locale: "en_US",
@@ -44,15 +45,15 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "HRMagix — Smart HR for modern teams",
+        alt: "HRMagix, Smart HR for modern teams",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HRMagix — Modern HR, From Hire to Retire",
+    title: "HRMagix: Modern HR, From Hire to Retire",
     description:
-      "People, performance, and payroll — all in one workspace. Built for scale, audited by design.",
+      "People, performance, and payroll, all in one workspace. Built for scale, audited by design.",
     images: ["/og.png"],
   },
   alternates: { canonical: "/" },
@@ -80,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/*
           Sets the theme class before first paint. Must stay inline and
-          render-blocking — a deferred script would let the wrong theme flash.
+          render-blocking, a deferred script would let the wrong theme flash.
         */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
 
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <RouteTransition>{children}</RouteTransition>
           </main>
           <Footer />
+          <Interactions />
           <StickyCta />
           <ScrollTop />
           <HeadingMotion />

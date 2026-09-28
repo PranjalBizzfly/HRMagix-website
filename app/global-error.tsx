@@ -99,8 +99,8 @@ export default function GlobalError({
           </h1>
           <p style={{ margin: "0.75rem 0 0", lineHeight: 1.6, color: "var(--g-muted)" }}>
             A problem stopped the page from starting. Reload to try again, or email{" "}
-            <a href="mailto:hello@hrmagix.com" style={{ color: "var(--g-link)" }}>
-              hello@hrmagix.com
+            <a href="mailto:hello@HrMagix.com" style={{ color: "var(--g-link)" }}>
+              hello@HrMagix.com
             </a>
             .
           </p>

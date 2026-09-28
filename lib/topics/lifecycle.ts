@@ -13,7 +13,7 @@ export const topicsLifecycle: Topic[] = [
       "Pre-boarding is the part that happens before the joining date; onboarding proper runs through the first weeks or months, often up to the end of probation.",
     ],
     whyItMatters: [
-      "A new hire's first impressions of how organised the company is are formed in onboarding. It is also where the employee record is created, so errors made here — a wrong date of joining, a missing UAN, an incorrect bank account — travel into every later process.",
+      "A new hire's first impressions of how organised the company is are formed in onboarding. It is also where the employee record is created, so errors made here, a wrong date of joining, a missing UAN, an incorrect bank account, travel into every later process.",
     ],
     challenges: [
       { title: "Paperwork on day one", body: "Collecting PAN, Aadhaar and bank details on the first morning delays everything else." },
@@ -42,19 +42,24 @@ export const topicsLifecycle: Topic[] = [
       "Creating the employee record from memory after the first payroll.",
     ],
     software:
-      "Onboarding software moves document collection to a pre-boarding portal, generates letters, assigns checklist tasks to the teams that own them, and creates the employee record once — correctly — for payroll and every other module to read.",
+      "Onboarding software moves document collection to a pre-boarding portal, generates letters, assigns checklist tasks to the teams that own them, and creates the employee record once, correctly, for payroll and every other module to read.",
     inHRMagix: [
       { label: "Onboarding", href: "/features/onboarding", note: "Self-service pre-boarding, appointment letters with digital signature and asset checklists." },
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding", note: "Pre-boarding through confirmation, transfer and exit." },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation, transfer and exit." },
     ],
     faqs: [
-      { q: "What is pre-boarding?", a: "The part of onboarding that happens between offer acceptance and the joining date — collecting documents, issuing the appointment letter and preparing equipment and access." },
+      { q: "What is pre-boarding?", a: "The part of onboarding that happens between offer acceptance and the joining date, collecting documents, issuing the appointment letter and preparing equipment and access." },
       { q: "Which documents are usually collected at onboarding?", a: "Identity and address proof, PAN, bank details, educational and previous employment records, and details needed for the provident fund, such as an existing UAN." },
       { q: "How long does onboarding last?", a: "Pre-boarding runs until the joining date; onboarding proper usually continues for the first weeks and often until the end of probation." },
+      { q: "What should an employee onboarding checklist include?", a: "Document collection, the appointment letter, equipment, workspace and system access, introductions to the team and role, policy acknowledgements, and scheduled check-ins through the first weeks. One checklist per role, with named owners, keeps the experience consistent." },
+      { q: "Why collect joining documents before the first day?", a: "Collecting PAN, Aadhaar and bank details on the first morning delays everything else. Gathering them digitally after the offer is accepted lets day one be spent working rather than on paperwork." },
+      { q: "What statutory details are needed for a new hire's first payroll?", a: "Provident fund, ESI and tax details must be captured correctly during onboarding, including an existing UAN where the employee has one. Errors here travel into every later payroll." },
+      { q: "What is a 30/60/90-day plan for new hires?", a: "A plan agreed in the first week that sets out what good looks like at 30, 60 and 90 days, so the new hire knows what is expected of them during their early months." },
+      { q: "Should new hires acknowledge company policies?", a: "Yes. Asking new hires to acknowledge key policies during onboarding, and recording the acknowledgement, gives both sides a clear record of what was shared." },
     ],
     phrases: ["onboarding", "pre-boarding", "joining", "new hire"],
     seo: {
-      title: "Employee Onboarding — From Offer to Confirmation",
+      title: "Employee Onboarding: From Offer to Confirmation",
       description: "A practical guide to employee onboarding: pre-boarding, documents, appointment letters, equipment and access, policy acknowledgement and first-weeks follow-up.",
     },
   },
@@ -64,7 +69,7 @@ export const topicsLifecycle: Topic[] = [
     category: "Employee lifecycle",
     title: "Probation ends with a decision. If nobody makes it, one gets made anyway.",
     standfirst:
-      "When a probation period ends without a review, most employers find the employee has been treated as confirmed by default — whether or not that was intended.",
+      "When a probation period ends without a review, most employers find the employee has been treated as confirmed by default, whether or not that was intended.",
     definition: [
       "Probation is an initial period of employment, set out in the appointment letter or standing orders, during which the employer assesses the employee's suitability. Confirmation is the decision, at the end of probation, to make the employment permanent.",
       "Probation terms usually cover its length, whether it can be extended, the notice period during it, and what confirmation requires.",
@@ -96,17 +101,22 @@ export const topicsLifecycle: Topic[] = [
     software:
       "Software tracks every probation end date, prompts the manager in time, and records the decision and the letter against the employee's effective-dated record.",
     inHRMagix: [
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding", note: "Pre-boarding through confirmation." },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation." },
       { label: "Documents", href: "/features/documents", note: "Letters and acknowledgements on the employee's personnel file." },
     ],
     faqs: [
       { q: "How long is a typical probation period?", a: "It is set by the employer's policy, appointment letter or standing orders. Periods of three to six months are common, sometimes with the option to extend." },
       { q: "What happens if probation is not reviewed?", a: "In practice the employee is often treated as confirmed, whether or not that was intended. The appointment terms and any standing orders decide the formal position." },
       { q: "Can probation be extended?", a: "Where the terms allow it. An extension should be communicated in writing with the reason and the new end date." },
+      { q: "What is the difference between probation and confirmation?", a: "Probation is the initial period during which the employer assesses the employee's suitability. Confirmation is the decision at the end of probation to make the employment permanent." },
+      { q: "What should probation terms cover?", a: "The length of probation, whether it can be extended, the notice period during it, and what confirmation requires. These are usually set out in the appointment letter or standing orders." },
+      { q: "When should a probation review take place?", a: "Before the probation end date, with managers reminded well in advance. The manager then recommends confirmation, extension or exit." },
+      { q: "Is a confirmation letter necessary?", a: "Issuing a letter for every outcome, including confirmation and extension, records the decision and removes any doubt about the employee's status." },
+      { q: "How should confirmation criteria be set?", a: "At the start of probation, not the end. Agreeing what success looks like in the first weeks means the confirmation decision can be explained and applied consistently to similar roles." },
     ],
     phrases: ["probation", "confirmation"],
     seo: {
-      title: "Probation and Confirmation — Running the Decision",
+      title: "Probation and Confirmation: Running the Decision",
       description: "How probation and confirmation work: terms in the appointment letter, setting expectations, reviewing before the end date, extensions and recording the decision.",
     },
   },
@@ -118,7 +128,7 @@ export const topicsLifecycle: Topic[] = [
     standfirst:
       "Titles, salaries, managers and locations change. A record that simply overwrites them cannot answer the question audits, disputes and diligence always ask: what was the position on that date?",
     definition: [
-      "Employee records are the information an employer holds about each employee — personal details, job details, compensation, documents, and the history of changes to each — together with the rules for who may see and change them.",
+      "Employee records are the information an employer holds about each employee, personal details, job details, compensation, documents, and the history of changes to each, together with the rules for who may see and change them.",
       "Effective dating means each change is stored with the date it takes effect, so the record can show the position on any past date.",
     ],
     whyItMatters: [
@@ -138,7 +148,7 @@ export const topicsLifecycle: Topic[] = [
       { step: "Retain and dispose", body: "Keep records for the required periods and dispose of them deliberately." },
     ],
     practices: [
-      "Never overwrite — add a dated change.",
+      "Never overwrite, add a dated change.",
       "Restrict salary fields to roles that need them.",
       "Keep documents attached to the record, not in email.",
     ],
@@ -156,12 +166,17 @@ export const topicsLifecycle: Topic[] = [
     ],
     faqs: [
       { q: "What is effective dating?", a: "Storing each change to an employee's record with the date it takes effect, so the record can show the position on any past date rather than only the current one." },
-      { q: "Who should be able to see salary information?", a: "Roles that need it to do their job — typically payroll and HR — and the employee themselves. Managers commonly see attendance, leave and goals but not salary components." },
+      { q: "Who should be able to see salary information?", a: "Roles that need it to do their job, typically payroll and HR, and the employee themselves. Managers commonly see attendance, leave and goals but not salary components." },
       { q: "How long should employee records be kept?", a: "For the periods required by the laws that apply to the establishment and the records concerned, and in practice long enough to answer later questions about gratuity, tax and verification." },
+      { q: "What information does an employee record contain?", a: "Personal details, job details, compensation, documents and the history of changes to each, together with the rules for who may see and change them." },
+      { q: "Why should employee records not be overwritten?", a: "Overwriting loses history, such as a previous salary. Audits, disputes and diligence often ask what the position was on a particular date, which only a record with dated changes can answer." },
+      { q: "How should employee documents be stored?", a: "Attached to the employee's record rather than scattered across email, shared drives and filing cabinets, with access controlled by role." },
+      { q: "How can employers track expiring employee documents?", a: "By recording expiry dates and setting alerts before visas, licences and certificates expire, rather than leaving it to memory." },
+      { q: "Should managers see their team's salary data?", a: "Not by default. Visibility of salary fields should be granted by role rather than seniority, and giving managers salary access by default is a common mistake." },
     ],
     phrases: ["employee record", "effective-dated", "effective dating", "record"],
     seo: {
-      title: "Employee Records — History, Access and Documents",
+      title: "Employee Records: History, Access and Documents",
       description: "How to keep employee records that hold up: effective-dated history, role-based access to sensitive data, documents and expiry, retention and common mistakes.",
     },
   },
@@ -171,13 +186,13 @@ export const topicsLifecycle: Topic[] = [
     category: "Employee lifecycle",
     title: "A notice period is a contract term. Handling it consistently is a policy.",
     standfirst:
-      "How much notice an employee owes, whether it can be bought out, and what happens to leave during it are decided once — and then argued about every time they are applied differently.",
+      "How much notice an employee owes, whether it can be bought out, and what happens to leave during it are decided once, and then argued about every time they are applied differently.",
     definition: [
       "A notice period is the time an employee or employer must give before employment ends, as set in the appointment letter, the employer's policy or applicable standing orders. It may differ by grade and during probation.",
       "Notice buyout or recovery is the practice of paying, or recovering, salary in place of notice not served, where the terms allow it.",
     ],
     whyItMatters: [
-      "The notice period decides the handover time an employer can rely on and the date an employee is free to start elsewhere. Inconsistent handling — waiving it for one person and enforcing it for another — is one of the most visible sources of unfairness at exit.",
+      "The notice period decides the handover time an employer can rely on and the date an employee is free to start elsewhere. Inconsistent handling, waiving it for one person and enforcing it for another, is one of the most visible sources of unfairness at exit.",
     ],
     challenges: [
       { title: "Different terms by cohort", body: "Employees hired at different times may have different notice terms." },
@@ -203,17 +218,22 @@ export const topicsLifecycle: Topic[] = [
     software:
       "Software records the resignation, calculates the last working day from the employee's own terms, and carries any notice shortfall or payment into the final settlement automatically.",
     inHRMagix: [
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding", note: "Confirmation, transfer and exit on one record." },
-      { label: "Notice period policy", href: "/policy/workplace-policies/notice-period", note: "A notice period policy template in the workplace policy library." },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Confirmation, transfer and exit on one record." },
+      { label: "Notice period policy", href: "/policy-centre/workplace-policy-library/notice-period", note: "A notice period policy template in the workplace policy library." },
     ],
     faqs: [
       { q: "Is the notice period the same for everyone?", a: "Not necessarily. It is commonly set by grade and is often shorter during probation. What matters is that the terms for each employee are written down and applied as written." },
       { q: "Can an employee buy out their notice period?", a: "Where the appointment terms or policy allow it, salary in place of the unserved notice may be recovered. The calculation and approval should follow a stated rule." },
       { q: "Can leave be taken during the notice period?", a: "That is an employer policy decision. The policy should say whether leave is allowed, and whether any balance is adjusted against notice or settled." },
+      { q: "Where are notice period terms set?", a: "In the appointment letter, the employer's policy or applicable standing orders. The terms should be consistent across these documents." },
+      { q: "How is the last working day determined?", a: "From the date notice is given and the notice terms that apply to that employee. Both the resignation date and the calculated last working day should be recorded formally." },
+      { q: "Can an employer release an employee before the notice period ends?", a: "Early release is handled under the employer's policy, and should go through one approval route so it is applied consistently rather than waived informally for some employees." },
+      { q: "How does notice shortfall affect the full and final settlement?", a: "Any notice shortfall recovery or payment in lieu of notice flows into the full and final settlement, calculated according to the stated rule." },
+      { q: "Is the notice period different during probation?", a: "Often, yes. Notice terms may differ during probation and by grade, and each should be written into the appointment terms." },
     ],
     phrases: ["notice period", "resignation", "notice"],
     seo: {
-      title: "Notice Periods — Terms, Buyouts and Consistency",
+      title: "Notice Periods: Terms, Buyouts and Consistency",
       description: "How to handle notice periods: terms by grade and probation, resignation and last working day, buyouts and early release, leave during notice, and settlement.",
     },
   },
@@ -223,13 +243,13 @@ export const topicsLifecycle: Topic[] = [
     category: "Employee lifecycle",
     title: "An exit is the last impression, and the last payroll.",
     standfirst:
-      "Offboarding is where access must be removed, assets returned, knowledge handed over and a full and final settlement paid correctly — often by people who are already thinking about the replacement.",
+      "Offboarding is where access must be removed, assets returned, knowledge handed over and a full and final settlement paid correctly, often by people who are already thinking about the replacement.",
     definition: [
       "Employee offboarding is the process of ending an employment relationship: accepting the resignation or issuing the termination, managing the notice period, recovering assets, removing access, arranging handover, and paying the full and final settlement.",
       "Full and final settlement is the last payment to the employee, bringing together salary to the last working day, leave encashment where applicable, gratuity where eligible, and any recoveries.",
     ],
     whyItMatters: [
-      "A delayed or wrong settlement is the last thing a departing employee remembers about the company, and a common source of disputes. Access not removed on time is a security risk. And records needed years later — for gratuity, tax and verification — are easiest to get right at the moment of exit.",
+      "A delayed or wrong settlement is the last thing a departing employee remembers about the company, and a common source of disputes. Access not removed on time is a security risk. And records needed years later, for gratuity, tax and verification, are easiest to get right at the moment of exit.",
     ],
     challenges: [
       { title: "Many owners", body: "HR, payroll, IT, finance and the manager each own part of an exit." },
@@ -257,18 +277,23 @@ export const topicsLifecycle: Topic[] = [
     software:
       "Offboarding software coordinates the exit checklist across teams, computes the settlement from the employee's own record, and keeps their documents available after they leave.",
     inHRMagix: [
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding", note: "Pre-boarding through confirmation, transfer and exit." },
-      { label: "Gratuity calculator", href: "/calculators/gratuity", note: "The statutory formula on your own figures." },
-      { label: "Full and final settlement", href: "/blog/full-and-final-settlement", note: "What goes into the last payment." },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation, transfer and exit." },
+      { label: "Gratuity Calculator", href: "/calculators/gratuity", note: "The statutory formula on your own figures." },
+      { label: "Full and final settlement", href: "/insights/full-and-final-settlement", note: "What goes into the last payment." },
     ],
     faqs: [
       { q: "What is included in a full and final settlement?", a: "Typically salary to the last working day, leave encashment where the policy provides for it, gratuity where the employee is eligible, bonus or variable pay due, and recoveries such as notice shortfall or advances." },
       { q: "When is gratuity payable on exit?", a: "Under the Payment of Gratuity Act, generally after five years of continuous service, calculated as fifteen days' wages per completed year on a twenty-six day month." },
       { q: "What documents should a leaving employee receive?", a: "Commonly a relieving letter, an experience or service letter, the final payslip and, after the year closes, Form 16." },
+      { q: "What are the steps in employee offboarding?", a: "Record the exit and last working day, plan the handover during the notice period, recover assets and remove access, compute the settlement, and issue the relieving letter, experience letter and final payslip." },
+      { q: "When should system access be removed for a leaving employee?", a: "On the last working day. Access left active after exit is a security risk." },
+      { q: "Who is involved in an employee exit?", a: "HR, payroll, IT, finance and the manager each own part of it. Running the exit from one checklist with named owners keeps it from stalling." },
+      { q: "Why is full and final settlement often delayed?", a: "Commonly because one clearance is pending, or because the settlement is computed in a separate spreadsheet rather than from the employee's record." },
+      { q: "Should former employees still have access to their payslips?", a: "Yes. Keeping former employees' payslips and Form 16 accessible helps with later questions about gratuity, tax and verification." },
     ],
     phrases: ["exit", "offboarding", "full and final", "relieving", "settlement"],
     seo: {
-      title: "Employee Offboarding — Exits and Full and Final Settlement",
+      title: "Employee Offboarding: Exits and Full and Final Settlement",
       description: "A guide to employee offboarding: recording the exit, handover, assets and access, full and final settlement, gratuity, and the documents a leaver needs.",
     },
   },
@@ -281,7 +306,7 @@ export const topicsLifecycle: Topic[] = [
       "Every organisation has roles whose sudden vacancy would hurt. Succession planning names them, names who could step in, and closes the gap before it is needed.",
     definition: [
       "Succession planning is the process of identifying roles that are critical to the organisation, assessing who could fill them and how soon, and developing those people so that a vacancy can be filled from within.",
-      "Candidates are commonly rated by readiness — ready now, ready in one to two years, ready in three or more — and given individual development plans.",
+      "Candidates are commonly rated by readiness, ready now, ready in one to two years, ready in three or more, and given individual development plans.",
     ],
     whyItMatters: [
       "Without a plan, a key departure becomes an emergency: an external search, a gap in leadership and knowledge that leaves with the person. With one, it becomes a transition.",
@@ -315,13 +340,18 @@ export const topicsLifecycle: Topic[] = [
       { label: "KRA & 9-Box", href: "/features/kra-9box", note: "Performance and potential on one grid." },
     ],
     faqs: [
-      { q: "Which roles need a succession plan?", a: "Roles whose sudden vacancy would significantly disrupt the organisation — often leadership roles, but also specialist roles that are hard to hire for or hold unique knowledge." },
+      { q: "Which roles need a succession plan?", a: "Roles whose sudden vacancy would significantly disrupt the organisation, often leadership roles, but also specialist roles that are hard to hire for or hold unique knowledge." },
       { q: "What are readiness ratings?", a: "An assessment of how soon a candidate could step into a role, commonly ready now, ready in one to two years, or ready in three or more years." },
       { q: "Should successors know they have been identified?", a: "Approaches differ. Many organisations share development plans without labelling anyone a successor, so development happens without creating expectations." },
+      { q: "What are the steps in succession planning?", a: "Identify critical roles, name potential successors, rate their readiness, create individual development plans, and review the plan as people and roles change." },
+      { q: "Is succession planning only for senior leadership?", a: "No. Criticality is not the same as seniority, and planning only for the top team misses specialist roles that are hard to hire for or hold unique knowledge." },
+      { q: "How often should a succession plan be reviewed?", a: "At least annually, and after key changes in people or roles." },
+      { q: "Why does a succession plan need development plans?", a: "A list of successors without development plans is only a hope. Development plans close the gap between a candidate's current readiness and what the role needs." },
+      { q: "How does the 9-box support succession planning?", a: "Linking succession plans to performance and potential data such as the 9-box means candidates are chosen on evidence rather than impression." },
     ],
     phrases: ["succession", "successor", "bench"],
     seo: {
-      title: "Succession Planning — Critical Roles and Readiness",
+      title: "Succession Planning: Critical Roles and Readiness",
       description: "How succession planning works: identifying critical roles, naming and rating successors by readiness, development plans, and keeping the plan current.",
     },
   },

@@ -55,7 +55,7 @@ export const industries: Industry[] = [
     audience: "Founders and first HR hires, roughly 10 to 100 people",
     title: "You do not have an HR problem yet. You have a policy vacuum.",
     standfirst:
-      "Early-stage companies rarely fail at HR because their tools are bad. They fail because nothing has been decided — and every undecided rule becomes a precedent the first time someone asks.",
+      "Early-stage companies rarely fail at HR because their tools are bad. They fail because nothing has been decided, and every undecided rule becomes a precedent the first time someone asks.",
     image: "industry-startups",
     seo: {
       title: "HR Software for Startups",
@@ -69,7 +69,7 @@ export const industries: Industry[] = [
       focus: "HR software for startups",
     },
     situation: [
-      "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised — how much notice do I owe, does a Friday off cost me two days, when does my leave reset — and discovers that the answer depends on who they asked and when.",
+      "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
       "By then the decision has already been made, badly, several times. Founders usually reach for HR software at this point believing they need a tool. What they actually need is for the rules to exist somewhere other than in their head, applied identically to everyone, from the day they are written.",
     ],
     pressures: [
@@ -79,7 +79,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Every policy you improvise becomes precedent",
-        body: "A leave request granted generously once is a rule from then on. Writing the leave scheme, the notice period, the probation length and the work-from-home position down — and having the system apply them — is what stops the founder becoming the appeals process.",
+        body: "A leave request granted generously once is a rule from then on. Writing the leave scheme, the notice period, the probation length and the work-from-home position down, and having the system apply them, is what stops the founder becoming the appeals process.",
       },
       {
         title: "Founder time is the scarcest input in the company",
@@ -87,7 +87,7 @@ export const industries: Industry[] = [
       },
       {
         title: "You will change shape faster than your records can keep up",
-        body: "Titles, reporting lines and salaries move constantly in the first two years. Effective-dated records mean a raise in August does not rewrite what July looked like — which matters the first time an investor, an auditor or a departing employee asks.",
+        body: "Titles, reporting lines and salaries move constantly in the first two years. Effective-dated records mean a raise in August does not rewrite what July looked like, which matters the first time an investor, an auditor or a departing employee asks.",
       },
     ],
     priority: [
@@ -106,7 +106,7 @@ export const industries: Industry[] = [
       {
         order: "Then",
         module: "Employee Self-Service",
-        href: "/solutions/ess",
+        href: "/solutions/employee-self-service",
         why: "Because it removes the lookups from the founder's inbox permanently.",
       },
       {
@@ -121,7 +121,7 @@ export const industries: Industry[] = [
         heading: "The five decisions to make before the tenth hire",
         body: [
           "Almost every HR problem a young company hits in its second year traces back to a decision that was never made in its first. Five are worth settling deliberately, because each becomes a precedent the moment somebody asks.",
-          "How much leave, of which kinds, accruing on what basis. What the notice period is, and whether it differs by seniority. How long probation runs, and what confirmation requires. Whether work from home is a right, an arrangement or an exception. And what the salary structure looks like — specifically the split between basic and allowances, because that decides the PF cost of every offer you make afterwards.",
+          "How much leave, of which kinds, accruing on what basis. What the notice period is, and whether it differs by seniority. How long probation runs, and what confirmation requires. Whether work from home is a right, an arrangement or an exception. And what the salary structure looks like, specifically the split between basic and allowances, because that decides the PF cost of every offer you make afterwards.",
           "None of these needs to be generous or elaborate. They need to exist in writing and be applied identically, which is exactly what founders find hardest when the person asking is sitting three feet away.",
         ],
       },
@@ -148,7 +148,7 @@ export const industries: Industry[] = [
       "The first engineer's salary crosses the income-tax exemption limit and TDS becomes a monthly obligation.",
     ],
     closing:
-      "The Starter plan is deliberately narrow — attendance, leaves, directory and documents — because a fifteen-person company genuinely does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
+      "The Starter plan is deliberately narrow, attendance, leaves, directory and documents, because a fifteen-person company genuinely does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
     questions: [
       {
         q: "We have twelve people. Is this too early?",
@@ -160,7 +160,7 @@ export const industries: Industry[] = [
       },
       {
         q: "Can we import what we already have in spreadsheets?",
-        a: "Yes — employee master data, historical leave balances, previous salary structures and department hierarchies come in through structured Excel templates, with a dry-run payroll before the first live cutoff.",
+        a: "Yes, employee master data, historical leave balances, previous salary structures and department hierarchies come in through structured Excel templates, with a dry-run payroll before the first live cutoff.",
       },
       {
         q: "We are eight people. Is it too early for HRMS software?",
@@ -178,6 +178,10 @@ export const industries: Industry[] = [
         q: "What do investors typically ask for in a people diligence?",
         a: "A headcount reconciliation, appointment letters, evidence of statutory registration and filings, salary and ESOP records, and confirmation that policies were issued and acknowledged. The difficulty is almost never the answer; it is showing the position as it stood at a past date, which is what effective-dated records exist for.",
       },
+      {
+        q: "What does the Starter plan include, and when do we need Growth?",
+        a: "Starter covers attendance, leaves, the employee directory and documents. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration because they read the same record you have been building since your first hire.",
+      },
     ],
   },
 
@@ -193,7 +197,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Small Business",
       description:
-        "HR software for small business in India: an HRMS for small business with correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records — without an HR department.",
+        "HR software for small business in India: an HRMS for small business with correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records, without an HR department.",
       keywords: [
         "HR software for small business",
         "HRMS for small business",
@@ -232,8 +236,8 @@ export const industries: Industry[] = [
       {
         order: "Then",
         module: "Attendance & Shifts",
-        href: "/solutions/attendance",
-        why: "Because payable days are the input payroll cannot be correct without — and most small businesses already own the biometric hardware.",
+        href: "/solutions/attendance-and-shifts",
+        why: "Because payable days are the input payroll cannot be correct without, and most small businesses already own the biometric hardware.",
       },
       {
         order: "Then",
@@ -244,7 +248,7 @@ export const industries: Industry[] = [
       {
         order: "Optional",
         module: "Employee Self-Service",
-        href: "/solutions/ess",
+        href: "/solutions/employee-self-service",
         why: "Worth it the moment you notice you are the person people ask for their payslips.",
       },
     ],
@@ -253,7 +257,7 @@ export const industries: Industry[] = [
         heading: "When the person doing HR is also doing three other jobs",
         body: [
           "In most businesses under fifty people there is no HR department. There is an office manager, an accountant or a founder's spouse who does HR among other things, and the work reaches them in interruptions rather than as a job with a start and an end. That is the fact any HRMS for small business has to be designed around.",
-          "That shapes what HR software for small business actually has to do. It is not primarily about capability; it is about removing the interruptions. A payslip request, a leave balance question, a salary certificate for a bank, a Form 16 reissue — each takes minutes, and together they are most of the week.",
+          "That shapes what HR software for small business actually has to do. It is not primarily about capability; it is about removing the interruptions. A payslip request, a leave balance question, a salary certificate for a bank, a Form 16 reissue, each takes minutes, and together they are most of the week.",
           "The measure worth applying to any system here is simple: how many of the questions people currently ask a person can they answer themselves. Not because the person is a bottleneck by temperament, but because they were only ever doing this alongside something else.",
         ],
       },
@@ -261,7 +265,7 @@ export const industries: Industry[] = [
         heading: "The cost of getting statutory filing slightly wrong",
         body: [
           "Small employers rarely fail compliance dramatically. They fail it in small, compounding ways: a PF contribution calculated on the wrong wage base, an ESI deduction continued after an employee crossed the threshold mid-year, a professional tax slab that changed and was not picked up.",
-          "Each is minor in a month and material across a year, and all three share a cause — the rate or the rule lived in somebody's memory or in a spreadsheet formula rather than in the system that produces the payslip.",
+          "Each is minor in a month and material across a year, and all three share a cause, the rate or the rule lived in somebody's memory or in a spreadsheet formula rather than in the system that produces the payslip.",
           "Deriving statutory deductions from the salary structure on the record, rather than entering them, is what removes the class of error rather than the instance of it. The monthly return is then produced from the run that generated the figures, so the two cannot disagree.",
         ],
       },
@@ -300,7 +304,7 @@ export const industries: Industry[] = [
       },
       {
         q: "Can we keep paper attendance registers as well?",
-        a: "Yes — the digital ledger does not replace whatever record-keeping obligation applies to you, it makes the same information retrievable. Most small employers keep both for a period and find the paper copy is consulted less and less.",
+        a: "Yes, the digital ledger does not replace whatever record-keeping obligation applies to you, it makes the same information retrievable. Most small employers keep both for a period and find the paper copy is consulted less and less.",
       },
       {
         q: "How much of HR can a small business realistically move to self-service?",
@@ -309,6 +313,10 @@ export const industries: Industry[] = [
       {
         q: "What happens if we only pay some staff through the platform?",
         a: "Running part of the workforce inside payroll software and part outside it reintroduces exactly the reconciliation problem the system exists to remove, and statutory totals will not tie back to the returns. It is far better to bring everyone onto one run, even where their pay structures differ substantially.",
+      },
+      {
+        q: "How long does setup take for a small business?",
+        a: "Most organisations of this size complete setup within two to three days, including a dry-run payroll. Employee data comes in through Excel templates and statutory rules are configuration rather than customisation, so no implementation project is needed.",
       },
     ],
   },
@@ -320,12 +328,12 @@ export const industries: Industry[] = [
     audience: "Multi-branch, multi-state businesses, roughly 100 to 1,000 people",
     title: "One company on the letterhead. Several under the law.",
     standfirst:
-      "The defining difficulty of a mid-market Indian business is that its branches are one organisation operationally and several distinct compliance positions statutorily — and both have to be true at once.",
+      "The defining difficulty of a mid-market Indian business is that its branches are one organisation operationally and several distinct compliance positions statutorily, and both have to be true at once.",
     image: "industry-smes",
     seo: {
       title: "Payroll Software for SMEs and Growing Companies",
       description:
-        "Payroll software for SMEs in India: one employee record across entities and locations, state-specific Professional Tax and leave rules, and consolidated reporting — an HRMS for a 100 employees company and beyond.",
+        "Payroll software for SMEs in India: one employee record across entities and locations, state-specific Professional Tax and leave rules, and consolidated reporting, an HRMS for a 100 employees company and beyond.",
       keywords: [
         "payroll software for SMEs",
         "HRMS for 100 employees company",
@@ -344,7 +352,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Approval chains stop being obvious",
-        body: "At thirty people everyone knows who approves what. At four hundred across three cities, an approval hierarchy has to be configured — by grade, by location, with escalation — or requests simply stall with whoever happens to be on leave.",
+        body: "At thirty people everyone knows who approves what. At four hundred across three cities, an approval hierarchy has to be configured, by grade, by location, with escalation, or requests simply stall with whoever happens to be on leave.",
       },
       {
         title: "Leadership wants one number, finance needs several",
@@ -371,7 +379,7 @@ export const industries: Industry[] = [
       {
         order: "Then",
         module: "Attendance & Leave",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         why: "So that different shift patterns and different state leave quotas stop requiring different spreadsheets.",
       },
       {
@@ -386,7 +394,7 @@ export const industries: Industry[] = [
         heading: "One company on the letterhead, several on the returns",
         body: [
           "The defining administrative fact about a mid-market Indian business is that it is usually more than one legal entity. A manufacturing arm and a services arm. A holding company and an operating company. A subsidiary created for a specific client or a specific state.",
-          "Each entity carries its own PF and ESI registrations, its own professional tax registrations in the states where it employs people, and its own payroll run and returns. Employees, meanwhile, move between them — on promotion, on transfer, or because the group reorganised.",
+          "Each entity carries its own PF and ESI registrations, its own professional tax registrations in the states where it employs people, and its own payroll run and returns. Employees, meanwhile, move between them, on promotion, on transfer, or because the group reorganised.",
           "The requirement that follows is precise: entity has to be an attribute of the employee record rather than a separate installation of the system. Otherwise a transfer means recreating the person, and recreating the person breaks continuity of service, which is what gratuity eligibility and leave accrual are both computed from.",
         ],
       },
@@ -394,7 +402,7 @@ export const industries: Industry[] = [
         heading: "Approval chains that survive contact with reality",
         body: [
           "At forty people an approval is whoever is nearest. At four hundred it is a chain, and the chain has to keep working when a link is on leave, has moved department or has left the company.",
-          "Three properties do most of the work here. Routing reads the current reporting line on the record, so a request never arrives with someone who has left. A delegate can be named for a period, so approvals do not stall during a holiday. And a threshold can require a second approver — for leave beyond a number of days, or for an expense above an amount — without requiring a second approver for everything.",
+          "Three properties do most of the work here. Routing reads the current reporting line on the record, so a request never arrives with someone who has left. A delegate can be named for a period, so approvals do not stall during a holiday. And a threshold can require a second approver, for leave beyond a number of days, or for an expense above an amount, without requiring a second approver for everything.",
           "What this replaces is the informal escalation that mid-market companies otherwise depend on, where a stuck request is resolved by walking to somebody's desk. That works until the person is in another building.",
         ],
       },
@@ -402,7 +410,7 @@ export const industries: Industry[] = [
         heading: "Growing without adding administrative headcount",
         body: [
           "The uncomfortable arithmetic of the mid-market is that HR administration scales roughly with headcount unless something changes, so a company that doubles adds an HR person to do the same work twice.",
-          "The parts that scale linearly are the ones worth attacking: answering lookup questions, chasing documents and approvals, assembling reports, and re-keying between systems. Each of these is removed by a different mechanism — self-service, automated reminders, reporting that reads the live record, and integration by architecture rather than by export.",
+          "The parts that scale linearly are the ones worth attacking: answering lookup questions, chasing documents and approvals, assembling reports, and re-keying between systems. Each of these is removed by a different mechanism, self-service, automated reminders, reporting that reads the live record, and integration by architecture rather than by export.",
           "What does not scale away is judgement: policy exceptions, grievances, appraisal calibration, difficult conversations. A useful test when evaluating an HR management system at this size is whether it reduces the first list without pretending to reduce the second.",
         ],
       },
@@ -418,7 +426,7 @@ export const industries: Industry[] = [
     questions: [
       {
         q: "We have three legal entities. Is that three subscriptions?",
-        a: "Multi-entity structures are supported under one login, with permissions determining who can see which entity. Payroll runs remain distinct per entity — as they must be for filing — while reporting consolidates across them.",
+        a: "Multi-entity structures are supported under one login, with permissions determining who can see which entity. Payroll runs remain distinct per entity, as they must be for filing, while reporting consolidates across them.",
       },
       {
         q: "Can different locations have different leave quotas and holiday lists?",
@@ -444,6 +452,10 @@ export const industries: Industry[] = [
         q: "Do different locations need different leave and holiday rules?",
         a: "Usually yes, and they should have them. Holiday calendars are defined per location and attach to the employee record; leave quotas can vary by location, grade or entity. What stays common is the ledger the balances are held in, so reporting still works across the group.",
       },
+      {
+        q: "Which plan suits a multi-entity business that needs single sign-on?",
+        a: "The Enterprise plan adds single sign-on and advanced security, along with succession and lifecycle modules and a dedicated success manager. Multi-entity and multi-location structures sit under one login, with role-based permissions deciding who sees which entity.",
+      },
     ],
   },
 
@@ -454,7 +466,7 @@ export const industries: Industry[] = [
     audience: "Plants, production units and processing facilities",
     title: "The shop floor is where payroll assumptions go to die",
     standfirst:
-      "Rotating shifts, night differentials, overtime, comp-off, contract labour and an ESI population that changes as wages move — a manufacturing payroll is an exceptions engine wearing a payroll's clothes.",
+      "Rotating shifts, night differentials, overtime, comp-off, contract labour and an ESI population that changes as wages move, a manufacturing payroll is an exceptions engine wearing a payroll's clothes.",
     image: "industry-manufacturing",
     seo: {
       title: "HR Software for Manufacturing Companies",
@@ -467,7 +479,7 @@ export const industries: Industry[] = [
     },
     situation: [
       "In an office, attendance is close to binary: someone was in, or they were not. On a production floor almost nothing is binary. A punch at 22:40 belongs to a shift that started yesterday. A Sunday worked generates a comp-off with its own expiry. An hour past shift end may be overtime or may be a handover, depending on the rule.",
-      "Because the wage base moves with overtime and allowances, ESI applicability moves too — and it does not move on the neat monthly boundary an untrained system assumes. The result in most plants is a payroll input that is assembled by hand every month by someone who knows the exceptions, which makes the whole operation dependent on that person's memory.",
+      "Because the wage base moves with overtime and allowances, ESI applicability moves too, and it does not move on the neat monthly boundary an untrained system assumes. The result in most plants is a payroll input that is assembled by hand every month by someone who knows the exceptions, which makes the whole operation dependent on that person's memory.",
     ],
     pressures: [
       {
@@ -476,7 +488,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Overtime and night differentials are money, not metadata",
-        body: "These are contested figures. Calculating them from the shift definition and the employee's eligibility on the record — rather than from a supervisor's tally — is what makes them defensible.",
+        body: "These are contested figures. Calculating them from the shift definition and the employee's eligibility on the record, rather than from a supervisor's tally, is what makes them defensible.",
       },
       {
         title: "ESI moves with the wage base",
@@ -484,7 +496,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Multiple plants rarely run identical rules",
-        body: "Different sites often carry different shift patterns, grace periods and weekly offs for entirely legitimate reasons. Configuring these per location — while filing as one organisation — is the requirement.",
+        body: "Different sites often carry different shift patterns, grace periods and weekly offs for entirely legitimate reasons. Configuring these per location, while filing as one organisation, is the requirement.",
       },
       {
         title: "Labour Welfare Fund has its own calendar",
@@ -495,7 +507,7 @@ export const industries: Industry[] = [
       {
         order: "First",
         module: "Attendance & Shifts",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         why: "Everything downstream is wrong if the shift and overtime layer is wrong. This is the foundation on a plant.",
       },
       {
@@ -522,7 +534,7 @@ export const industries: Industry[] = [
         heading: "Two workforces, one payroll run",
         body: [
           "A manufacturing company generally pays two populations under different logic. Staff are salaried monthly, largely present during fixed hours, and their pay barely varies. Workmen are on shifts, their pay moves with attendance and overtime, and a substantial share of the monthly cost is decided by what happened on the shop floor that month.",
-          "The temptation is to run them as two systems, and it is usually a mistake. The statutory obligations are shared — the same PF and ESI registrations, the same returns, the same wage registers — and separating the populations means reconciling them again before every filing.",
+          "The temptation is to run them as two systems, and it is usually a mistake. The statutory obligations are shared, the same PF and ESI registrations, the same returns, the same wage registers, and separating the populations means reconciling them again before every filing.",
           "What actually differs is the rules, not the machinery: different shift patterns, different overtime treatment, different attendance capture. Holding those as configuration against one payroll run is what keeps the statutory output whole.",
         ],
       },
@@ -530,7 +542,7 @@ export const industries: Industry[] = [
         heading: "Shift patterns, rotation and the night that crosses midnight",
         body: [
           "Continuous operations bring three problems that office attendance systems never encounter. Shifts rotate, so an individual's expected hours change week to week and the roster is the only thing that knows. Shifts cross midnight, and a system that splits them at the date boundary produces two short days and an overtime figure that is simply wrong.",
-          "And weekly offs move with the rotation rather than falling on Sunday, which changes the rate at which a day's work is compensated — a day worked on a rotated weekly off is not the same as a day worked on an ordinary weekday.",
+          "And weekly offs move with the rotation rather than falling on Sunday, which changes the rate at which a day's work is compensated, a day worked on a rotated weekly off is not the same as a day worked on an ordinary weekday.",
           "The design answer is to treat the shift rather than the calendar day as the unit of attendance, attribute it to the day it began, and hold the rotation as a pattern the roster generates rather than a spreadsheet somebody retypes each week.",
         ],
       },
@@ -538,7 +550,7 @@ export const industries: Industry[] = [
         heading: "Wage registers, muster rolls and what an inspection asks",
         body: [
           "The record-keeping obligations on a factory or covered establishment are specific and long-standing: registers of wages, attendance, overtime and leave, maintained in prescribed form and produced on demand.",
-          "An inspection does not usually test the total. It tests a particular person on a particular date — why was this worker marked absent, what overtime was paid for this shift, when was this leave approved and by whom. Answering that requires the original capture, any correction, the reason and the approver, all still retrievable.",
+          "An inspection does not usually test the total. It tests a particular person on a particular date, why was this worker marked absent, what overtime was paid for this shift, when was this leave approved and by whom. Answering that requires the original capture, any correction, the reason and the approver, all still retrievable.",
           "This is the practical reason an attendance ledger should never be editable in place. A record that can be changed to match the answer currently needed is not evidence, and on the shop floor it is exactly the record most likely to be questioned.",
         ],
       },
@@ -550,7 +562,7 @@ export const industries: Industry[] = [
       "A seasonal hiring surge doubles the headcount that has to be onboarded and paid.",
     ],
     closing:
-      "The biometric hardware most plants already run — eSSL, Matrix, Realtime, ZKTeco — pushes into HRMagix over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
+      "The biometric hardware most plants already run, eSSL, Matrix, Realtime, ZKTeco, pushes into HRMagix over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
     questions: [
       {
         q: "Can HRMagix handle a rotating three-shift operation?",
@@ -558,7 +570,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How is overtime calculated?",
-        a: "From the shift definition and the employee's overtime eligibility on their record, against the attendance ledger — then carried directly into the payroll run rather than entered again.",
+        a: "From the shift definition and the employee's overtime eligibility on their record, against the attendance ledger, then carried directly into the payroll run rather than entered again.",
       },
       {
         q: "Do different plants need different configurations?",
@@ -580,17 +592,21 @@ export const industries: Industry[] = [
         q: "Can attendance be captured at a factory gate without a device per worker?",
         a: "Yes. A shared kiosk at the gate handles a shift changeover far faster than individual devices, and biometric readers remain appropriate where a controlled entry point already exists. Capture method is a property of the location, and all methods write to the same attendance ledger.",
       },
+      {
+        q: "How does ESI applicability work when overtime pushes wages over the threshold?",
+        a: "The ₹21,000 gross threshold interacts with overtime and allowances, and contribution-period rules mean an employee does not simply drop out the month they cross it. Applicability is evaluated monthly against the actual salary structure, avoiding both over- and under-deduction.",
+      },
     ],
   },
 
   {
-    slug: "it-services",
-    href: "/industries/it-services",
+    slug: "it-and-technology",
+    href: "/industries/it-and-technology",
     name: "IT & Technology",
     audience: "Product companies, services firms and delivery centres",
     title: "Distributed by default, and audited all the same",
     standfirst:
-      "Technology companies were the first to abandon the assumption that work happens in one building — which makes attendance a design question, and makes goal alignment the thing that actually needs managing.",
+      "Technology companies were the first to abandon the assumption that work happens in one building, which makes attendance a design question, and makes goal alignment the thing that actually needs managing.",
     image: "industry-it-services",
     seo: {
       title: "HR Software for IT & Technology Companies",
@@ -602,12 +618,12 @@ export const industries: Industry[] = [
     },
     situation: [
       "A technology company's HR problem is rarely capture and almost always alignment. Everyone has a laptop, everyone is reachable, and nobody is confused about whether their colleague is working. What is genuinely unclear is whether the work being done this sprint is the work that matters this quarter.",
-      "Meanwhile the statutory obligations are exactly as heavy as they are in a factory, and the shift complexity can be worse — a delivery centre supporting a client in another timezone runs rosters a plant would recognise.",
+      "Meanwhile the statutory obligations are exactly as heavy as they are in a factory, and the shift complexity can be worse, a delivery centre supporting a client in another timezone runs rosters a plant would recognise.",
     ],
     pressures: [
       {
         title: "Attendance has to mean something without meaning surveillance",
-        body: "For hybrid teams the point of capture is establishing payable days and leave, not monitoring keystrokes. Browser and mobile check-in, with a geofence only where it genuinely applies — client sites, secure floors — keeps the input honest without turning it into a control mechanism.",
+        body: "For hybrid teams the point of capture is establishing payable days and leave, not monitoring keystrokes. Browser and mobile check-in, with a geofence only where it genuinely applies, client sites, secure floors, keeps the input honest without turning it into a control mechanism.",
       },
       {
         title: "Annual appraisals do not describe quarterly work",
@@ -615,7 +631,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Delivery centres run genuine rosters",
-        body: "Support and operations teams covering another timezone need rotating schedules, night differentials and comp-off — the same shift machinery a plant uses, applied to a floor of engineers.",
+        body: "Support and operations teams covering another timezone need rotating schedules, night differentials and comp-off, the same shift machinery a plant uses, applied to a floor of engineers.",
       },
       {
         title: "Growth changes the org chart faster than anywhere else",
@@ -632,7 +648,7 @@ export const industries: Industry[] = [
       {
         order: "Then",
         module: "Employee Self-Service",
-        href: "/solutions/ess",
+        href: "/solutions/employee-self-service",
         why: "A technically literate workforce will use a portal properly, and expects to.",
       },
       {
@@ -668,9 +684,9 @@ export const industries: Industry[] = [
       {
         heading: "Attrition, notice periods and the bench",
         body: [
-          "Services businesses feel attrition more sharply than most, because a resignation is simultaneously a staffing problem, a client-commitment problem and a revenue problem — and the notice period is the only window in which all three can be addressed.",
+          "Services businesses feel attrition more sharply than most, because a resignation is simultaneously a staffing problem, a client-commitment problem and a revenue problem, and the notice period is the only window in which all three can be addressed.",
           "The administrative half of that window is the part software can carry: the resignation recorded with its date, the notice obligation computed from the contract, clearance and asset return routed to the people responsible, knowledge-transfer tasks tracked, and the final settlement assembled from the leave ledger and the payroll record rather than agreed by email.",
-          "The judgement half — whether to counter-offer, how to reassign, what to tell the client — is not a software problem, and no HR platform should claim otherwise. What it can do is make sure the administrative half never becomes the reason an exit is messy.",
+          "The judgement half, whether to counter-offer, how to reassign, what to tell the client, is not a software problem, and no HR platform should claim otherwise. What it can do is make sure the administrative half never becomes the reason an exit is messy.",
         ],
       },
     ],
@@ -707,7 +723,11 @@ export const industries: Industry[] = [
       },
       {
         q: "Can we see attrition risk by project or department?",
-        a: "Analytics reports attrition-risk indicators by department, grade and location from signals the platform already holds — tenure, leave pattern, goal completion, time since last review. It is an early-warning flag intended to prompt a conversation, not a prediction of who will resign.",
+        a: "Analytics reports attrition-risk indicators by department, grade and location from signals the platform already holds, tenure, leave pattern, goal completion, time since last review. It is an early-warning flag intended to prompt a conversation, not a prediction of who will resign.",
+      },
+      {
+        q: "Can a 24/7 delivery or support centre run rotating rosters?",
+        a: "Yes. Support and operations teams covering another timezone use the same shift machinery a plant uses: rotating schedules, night differentials and compensatory off, applied to a floor of engineers.",
       },
     ],
   },
@@ -719,7 +739,7 @@ export const industries: Industry[] = [
     audience: "Consultancies, agencies and firms billing client time",
     title: "When your product is time, the timesheet is the ledger",
     standfirst:
-      "In a consultancy the same hour is simultaneously a payroll input and a revenue line. Capturing it once, accurately, against the right client is not administration — it is bookkeeping.",
+      "In a consultancy the same hour is simultaneously a payroll input and a revenue line. Capturing it once, accurately, against the right client is not administration, it is bookkeeping.",
     image: "industry-professional-services",
     seo: {
       title: "HR & Payroll Software for Professional Services Firms",
@@ -731,7 +751,7 @@ export const industries: Industry[] = [
     },
     situation: [
       "A consulting or agency workforce is rarely in the office, and that is the point. People are at client sites, between them, or working from wherever the engagement requires. The office is an address, not a place of work.",
-      "This makes the ordinary assumptions of attendance software useless. A biometric reader at reception measures nothing meaningful. At the same time, the firm genuinely needs to know where hours went — not to police anyone, but because those hours are the thing being sold.",
+      "This makes the ordinary assumptions of attendance software useless. A biometric reader at reception measures nothing meaningful. At the same time, the firm genuinely needs to know where hours went, not to police anyone, but because those hours are the thing being sold.",
     ],
     pressures: [
       {
@@ -740,7 +760,7 @@ export const industries: Industry[] = [
       },
       {
         title: "Project rosters are not shifts, but they behave like them",
-        body: "Engagement-specific schedules, extended hours during a delivery push, and weekend work that must generate comp-off rather than resentment — all of it needs the same rule engine a shift operation uses.",
+        body: "Engagement-specific schedules, extended hours during a delivery push, and weekend work that must generate comp-off rather than resentment, all of it needs the same rule engine a shift operation uses.",
       },
       {
         title: "Approval has to follow grade, not proximity",
@@ -755,7 +775,7 @@ export const industries: Industry[] = [
       {
         order: "First",
         module: "Attendance & Shifts",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         why: "Because a mobile workforce needs geo-tagged capture before anything else can be reconciled.",
       },
       {
@@ -773,7 +793,7 @@ export const industries: Industry[] = [
       {
         order: "Then",
         module: "Onboarding & Lifecycle",
-        href: "/solutions/onboarding",
+        href: "/solutions/onboarding-and-lifecycle",
         why: "Firms of this kind hire in cohorts, and pre-boarding is where cohort hiring either works or does not.",
       },
     ],
@@ -782,7 +802,7 @@ export const industries: Industry[] = [
         heading: "A firm where the partners are also the employer",
         body: [
           "Professional firms have an organisational shape that HR software rarely anticipates. Partners are owners rather than employees, and are usually paid through drawings rather than payroll. Associates and staff are employees in the ordinary sense. Articled clerks, trainees and interns are a third category with their own stipend and statutory treatment.",
-          "The consequence is that a single payroll run has to accommodate populations whose relationship to the firm is legally different, and a single employee record has to be honest about which is which — because it determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual.",
+          "The consequence is that a single payroll run has to accommodate populations whose relationship to the firm is legally different, and a single employee record has to be honest about which is which, because it determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual.",
           "The point is not that the software decides these questions. It is that the category has to be a field on the record rather than an understanding held by the person who runs payroll, because that person eventually goes on leave.",
         ],
       },
@@ -790,7 +810,7 @@ export const industries: Industry[] = [
         heading: "Seasonality, and the months that are not like the others",
         body: [
           "Accounting, audit, legal and consulting firms have compressed periods where the ordinary rules of working time stop applying: statutory audit season, tax filing deadlines, a case going to hearing, a transaction closing.",
-          "Two administrative facts follow. Overtime and late working concentrate into a few weeks, which makes the overtime and comp-off policy far more consequential than its usage across the year suggests. And leave becomes contested — applications cluster immediately after the peak, and a team calendar showing the overlap at the point of approval is worth more than a policy document.",
+          "Two administrative facts follow. Overtime and late working concentrate into a few weeks, which makes the overtime and comp-off policy far more consequential than its usage across the year suggests. And leave becomes contested, applications cluster immediately after the peak, and a team calendar showing the overlap at the point of approval is worth more than a policy document.",
           "Where the firm compensates the peak with time off rather than payment, the comp-off entitlement and its expiry are the mechanism that decides whether that promise is honoured or quietly forgotten.",
         ],
       },
@@ -798,7 +818,7 @@ export const industries: Industry[] = [
         heading: "Confidentiality is a permissions problem before it is a policy problem",
         body: [
           "Professional firms hold client confidences as a professional obligation, and they hold employee confidences as an employer. The two are separate, and the second is the one HR systems are responsible for.",
-          "In a small firm the practical risk is not a breach from outside. It is that salary, disciplinary records or a grievance become visible to a colleague because access was granted informally and never withdrawn — the partner's assistant who was given the payroll folder once, the manager who kept access to a team they no longer lead.",
+          "In a small firm the practical risk is not a breach from outside. It is that salary, disciplinary records or a grievance become visible to a colleague because access was granted informally and never withdrawn, the partner's assistant who was given the payroll folder once, the manager who kept access to a team they no longer lead.",
           "Access granted by role against the record, withdrawn when the role changes, and recorded when a restricted field is opened, is what turns a confidentiality clause into something that can actually be demonstrated.",
         ],
       },
@@ -808,7 +828,7 @@ export const industries: Industry[] = [
       "Utilisation is being estimated rather than measured.",
     ],
     closing:
-      "Everything here runs from the same employee record and the same attendance ledger — which is what allows a firm whose people are almost never in one place to still close a month on time.",
+      "Everything here runs from the same employee record and the same attendance ledger, which is what allows a firm whose people are almost never in one place to still close a month on time.",
     questions: [
       {
         q: "Can we capture attendance at client sites?",
@@ -816,11 +836,11 @@ export const industries: Industry[] = [
       },
       {
         q: "How do approvals work when managers are travelling?",
-        a: "Approval hierarchies are configured by grade with escalation, and notifications go by email and push — so a request routes onward rather than sitting with someone who is unreachable.",
+        a: "Approval hierarchies are configured by grade with escalation, and notifications go by email and push, so a request routes onward rather than sitting with someone who is unreachable.",
       },
       {
         q: "Do you track billable hours against clients?",
-        a: "HRMagix captures attendance and location, including project-specific rosters and overtime. It is not a billing or invoicing system, and does not claim to be one — what it provides is the accurate time record that billing depends on.",
+        a: "HRMagix captures attendance and location, including project-specific rosters and overtime. It is not a billing or invoicing system, and does not claim to be one, what it provides is the accurate time record that billing depends on.",
       },
       {
         q: "How are partners, employees and articled trainees handled differently?",
@@ -832,11 +852,15 @@ export const industries: Industry[] = [
       },
       {
         q: "Can we compensate peak-season overtime with time off instead of payment?",
-        a: "Yes. Compensatory off is earned from the attendance ledger — a day worked that was not a working day — and carries the expiry the policy sets, so it lapses on a date rather than when someone forgets. That expiry is usually what determines whether the promise is honoured.",
+        a: "Yes. Compensatory off is earned from the attendance ledger, a day worked that was not a working day, and carries the expiry the policy sets, so it lapses on a date rather than when someone forgets. That expiry is usually what determines whether the promise is honoured.",
       },
       {
         q: "How do we stop salary and disciplinary records being visible to the wrong colleague?",
         a: "Access is granted by role against the record rather than informally, and it changes when the role changes. Views of restricted fields are recorded. In small firms the realistic risk is not an external breach but access that was granted once for a reason and never withdrawn.",
+      },
+      {
+        q: "Can we run structured 1-on-1s to support career progression?",
+        a: "Yes. Structured 1-on-1s carry shared agendas, running action items and the manager's own notes, so progression becomes a documented conversation rather than an annual surprise.",
       },
     ],
   },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, CtaBand, Block } from "@/components/sky9";
+import { SiteStats, CtaBand, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import Link from "next/link";
 import { solutionGroups, bySlug } from "@/lib/solutions";
 import { modules, moduleGroups, contrast } from "@/lib/content";
@@ -13,9 +14,9 @@ import OnThisPage from "@/components/OnThisPage";
 import FeatureMap from "@/components/FeatureMap";
 
 export const metadata: Metadata = {
-  title: "Solutions — HRMS, Payroll, Attendance & ESS",
+  title: "Solutions: HRMS, Payroll, Attendance & ESS",
   description:
-    "The HRMagix HR SaaS platform: HRMS tools for companies — payroll with PF, ESI, PT and TDS, attendance, leave management, employee self-service, onboarding and HR analytics — twelve modules on one employee record.",
+    "The HRMagix HR SaaS platform: HRMS tools for companies, payroll with PF, ESI, PT and TDS, attendance, leave management, employee self-service, onboarding and HR analytics, twelve modules on one employee record.",
   keywords: [
     "HR SaaS platform",
     "HRMS tools for companies",
@@ -36,7 +37,19 @@ export default function SolutionsHub() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="solutions-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -66,9 +79,9 @@ export default function SolutionsHub() {
               approval changes the loss-of-pay register without anyone re-entering anything.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button href="/company/contact">Book a demo</Button>
-              <Button href="/how-it-works" variant="outline">
-                How setup works
+              <Button href="/company/contact-hrmagix">Book a demo</Button>
+              <Button href="/how-setup-works" variant="outline">
+                How Setup Works
               </Button>
             </div>
           </div>
@@ -116,7 +129,7 @@ export default function SolutionsHub() {
             eyebrow="Why one record matters"
             heading="Integration is not a sync. It is the absence of a second copy."
             body={[
-              "Plenty of tools claim integration and deliver an overnight job. The distinction that matters operationally is whether a correction propagates — whether an approved leave application backdated on the 28th changes the loss-of-pay register before the cutoff, or whether somebody has to remember to reconcile it.",
+              "Plenty of tools claim integration and deliver an overnight job. The distinction that matters operationally is whether a correction propagates, whether an approved leave application backdated on the 28th changes the loss-of-pay register before the cutoff, or whether somebody has to remember to reconcile it.",
               "In HRMagix the modules are not separate products joined by an API. They read the same ledger, so a backdated approval is not a message sent between systems. It is the same number, seen from a different page.",
             ]}
             slot="solutions-overview"
@@ -179,7 +192,7 @@ export default function SolutionsHub() {
         id="modules"
         eyebrow="Complete module reference"
         title="All twelve, and what each one does"
-        intro="Eight of these have a page of their own. The remaining four — performance, recognition, meetings and succession — are described in full here rather than given a page each, because four near-identical pages would tell you less than one honest list."
+        intro="Eight of these have a page of their own. The remaining four, performance, recognition, meetings and succession, are described in full here rather than given a page each, because four near-identical pages would tell you less than one honest list."
         ground="sunken"
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -238,13 +251,16 @@ export default function SolutionsHub() {
             </div>
           </div>
           <Photo
-            slot="analytics"
+            slot="lifecycle-exit"
             ratio="4 / 3"
             sizes="(max-width: 1024px) 100vw, 384px"
             className="hidden lg:block"
           />
         </div>
       </Block>
+      {/* ---- Questions ---- */}
+      <FaqSection title="Questions about the platform" items={marketingFaqs["/solutions"]} ground="canvas" />
+
       <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
     </>
   );

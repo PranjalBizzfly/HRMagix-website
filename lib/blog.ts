@@ -65,7 +65,7 @@ export const categories: { name: Category; blurb: string }[] = [
   {
     name: "Payroll & statutory",
     blurb:
-      "EPF, ESI, Professional Tax, TDS and the monthly filing chain — what the law requires and where the work actually goes.",
+      "EPF, ESI, Professional Tax, TDS and the monthly filing chain, what the law requires and where the work actually goes.",
   },
   {
     name: "Attendance & time",
@@ -95,14 +95,14 @@ export const articles: Article[] = [
     },
     title: "Your payroll does not take four days. Your reconciliation does.",
     standfirst:
-      "Multiplying a per-day rate by a number of days takes seconds. Establishing that number is what consumes the week — and it is a different problem with a different fix.",
+      "Multiplying a per-day rate by a number of days takes seconds. Establishing that number is what consumes the week, and it is a different problem with a different fix.",
     category: "Payroll & statutory",
     reader: "Payroll and finance leads running a monthly cutoff",
     minutes: 9,
     date: "2026-02-11",
     image: "blog-whiteboard-plan",
     seo: {
-      title: "Why Payroll Takes Four Days — And What Actually Fixes It",
+      title: "Why Payroll Takes Four Days: And What Actually Fixes It",
       description:
         "Indian payroll is slow because establishing payable days is slow, not because the arithmetic is hard. A breakdown of the four disagreeing sources and how integration removes the reconciliation step.",
       keywords: [],
@@ -138,7 +138,7 @@ export const articles: Article[] = [
           ],
           [
             "Manager's recollection",
-            "Context nothing else has — the site visit, the half day",
+            "Context nothing else has, the site visit, the half day",
             "Anything consistently, across a whole team, a month later",
           ],
           [
@@ -150,7 +150,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "The last row is the important one. The moment payable days becomes a typed number in a payroll sheet, its provenance is gone. Six months later, when the figure is questioned, nobody can reconstruct which record it came from — only re-derive it, from records that have since moved on.",
+        text: "The last row is the important one. The moment payable days becomes a typed number in a payroll sheet, its provenance is gone. Six months later, when the figure is questioned, nobody can reconstruct which record it came from, only re-derive it, from records that have since moved on.",
       },
       { kind: "h2", text: "Why an overnight sync does not solve it" },
       {
@@ -159,7 +159,7 @@ export const articles: Article[] = [
       },
       {
         kind: "quote",
-        text: "If a leave application is approved and backdated on the 28th, does the loss-of-pay register change before the run — or does somebody have to remember to reconcile it?",
+        text: "If a leave application is approved and backdated on the 28th, does the loss-of-pay register change before the run, or does somebody have to remember to reconcile it?",
       },
       {
         kind: "para",
@@ -198,7 +198,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "What changes is the ratio. When establishing the facts stops consuming the week, the judgement calls get the attention they actually need — which is the argument for doing this, rather than any figure about hours saved.",
+        text: "What changes is the ratio. When establishing the facts stops consuming the week, the judgement calls get the attention they actually need, which is the argument for doing this, rather than any figure about hours saved.",
       },
       {
         kind: "note",
@@ -219,7 +219,7 @@ export const articles: Article[] = [
     },
     title: "The ESI threshold is not a monthly test, and treating it as one costs money",
     standfirst:
-      "Overtime moves the wage base. The wage base moves ESI applicability. But an employee does not simply drop out of ESI the month they cross ₹21,000 — and a system that assumes they do will be wrong in both directions.",
+      "Overtime moves the wage base. The wage base moves ESI applicability. But an employee does not simply drop out of ESI the month they cross ₹21,000, and a system that assumes they do will be wrong in both directions.",
     category: "Payroll & statutory",
     reader: "Payroll teams in manufacturing, logistics and any shift-based operation",
     minutes: 8,
@@ -238,7 +238,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "Overtime, night-shift differentials and attendance-linked allowances all move the gross. In a heavy month an operator's wages rise; in a lean month they fall. If the payroll system tests the ₹21,000 threshold afresh every month and switches the employee in and out accordingly, it will be wrong — and it will be wrong in a way that is expensive to correct later.",
+        text: "Overtime, night-shift differentials and attendance-linked allowances all move the gross. In a heavy month an operator's wages rise; in a lean month they fall. If the payroll system tests the ₹21,000 threshold afresh every month and switches the employee in and out accordingly, it will be wrong, and it will be wrong in a way that is expensive to correct later.",
       },
       { kind: "h2", text: "The two rates, and what they apply to" },
       {
@@ -266,15 +266,15 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Under-deduction — the employee is dropped mid-period after a heavy overtime month, so contributions that were due are never made. This surfaces at inspection, with interest.",
-          "Over-deduction — the employee is re-added the following month when overtime falls back, producing contributions where the position had already been settled.",
-          "Benefit disruption — coverage that flickers is worse for the employee than either error is for the employer, because entitlement depends on it.",
+          "Under-deduction, the employee is dropped mid-period after a heavy overtime month, so contributions that were due are never made. This surfaces at inspection, with interest.",
+          "Over-deduction, the employee is re-added the following month when overtime falls back, producing contributions where the position had already been settled.",
+          "Benefit disruption, coverage that flickers is worse for the employee than either error is for the employer, because entitlement depends on it.",
         ],
       },
       { kind: "h2", text: "Why this is a configuration problem, not an arithmetic one" },
       {
         kind: "para",
-        text: "Nobody gets 0.75% wrong. The failure is upstream of the multiplication: it is in deciding, for this employee, in this month, whether the deduction applies at all — and that decision depends on a period, a wage base that includes overtime, and the employee's position when the period began.",
+        text: "Nobody gets 0.75% wrong. The failure is upstream of the multiplication: it is in deciding, for this employee, in this month, whether the deduction applies at all, and that decision depends on a period, a wage base that includes overtime, and the employee's position when the period began.",
       },
       {
         kind: "para",
@@ -305,7 +305,7 @@ export const articles: Article[] = [
       {
         kind: "note",
         title: "Where to verify",
-        text: "The rates and the threshold above are statutory and are stated as such. Applicability in a specific case — including how a particular allowance is treated in the wage base — is a question for your own advisers or the ESIC, not for a software vendor's blog.",
+        text: "The rates and the threshold above are statutory and are stated as such. Applicability in a specific case, including how a particular allowance is treated in the wage base, is a question for your own advisers or the ESIC, not for a software vendor's blog.",
       },
     ],
     related: ["why-payroll-takes-four-days", "comp-off-entitlement", "professional-tax-february"],
@@ -328,7 +328,7 @@ export const articles: Article[] = [
     date: "2026-01-28",
     image: "blog-state-filing",
     seo: {
-      title: "Professional Tax Across Indian States — Multi-State Payroll",
+      title: "Professional Tax Across Indian States: Multi-State Payroll",
       description:
         "Why Professional Tax is a state subject, how slabs and periodicity differ between states, and how to configure multi-state payroll so consolidated reporting and correct state filing coexist.",
       keywords: [],
@@ -346,9 +346,9 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Slabs — the wage bands and the amount deducted in each are set per state, so the same salary produces a different deduction in two offices of the same company.",
-          "Periodicity — some states deduct monthly, others on a different cycle, and the due dates for remittance follow the state rather than your payroll calendar.",
-          "Exemptions — several states provide specific exemptions, including gender-based ones, which a single national rule set cannot express.",
+          "Slabs, the wage bands and the amount deducted in each are set per state, so the same salary produces a different deduction in two offices of the same company.",
+          "Periodicity, some states deduct monthly, others on a different cycle, and the due dates for remittance follow the state rather than your payroll calendar.",
+          "Exemptions, several states provide specific exemptions, including gender-based ones, which a single national rule set cannot express.",
         ],
       },
       {
@@ -380,11 +380,11 @@ export const articles: Article[] = [
       { kind: "h2", text: "The configuration that avoids the choice" },
       {
         kind: "para",
-        text: "The resolution is to hold the rules against three axes rather than one — entity, location and grade — and to derive an employee's Professional Tax position from their work location on the record rather than from a company-wide default.",
+        text: "The resolution is to hold the rules against three axes rather than one, entity, location and grade, and to derive an employee's Professional Tax position from their work location on the record rather than from a company-wide default.",
       },
       {
         kind: "para",
-        text: "HRMagix carries state-specific rule sets configured for Maharashtra, Karnataka, Telangana, Tamil Nadu, Andhra Pradesh, Gujarat and West Bengal, including the February treatment and gender-specific exemptions where a state provides them. Payroll runs remain distinct per entity — as they must be, because filing is per entity — while reporting consolidates across them.",
+        text: "HRMagix carries state-specific rule sets configured for Maharashtra, Karnataka, Telangana, Tamil Nadu, Andhra Pradesh, Gujarat and West Bengal, including the February treatment and gender-specific exemptions where a state provides them. Payroll runs remain distinct per entity, as they must be, because filing is per entity, while reporting consolidates across them.",
       },
       {
         kind: "para",
@@ -393,7 +393,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "The same logic applies to Labour Welfare Fund" },
       {
         kind: "para",
-        text: "LWF is the other state-level deduction that runs on its own calendar — half-yearly in some states, annual in others, on dates that have nothing to do with your payroll cycle. It is missed for exactly the same reason Professional Tax is: it is remembered rather than configured. Applying it inside the run is the only approach that survives a busy month.",
+        text: "LWF is the other state-level deduction that runs on its own calendar, half-yearly in some states, annual in others, on dates that have nothing to do with your payroll cycle. It is missed for exactly the same reason Professional Tax is: it is remembered rather than configured. Applying it inside the run is the only approach that survives a busy month.",
       },
       {
         kind: "note",
@@ -421,7 +421,7 @@ export const articles: Article[] = [
     date: "2026-01-21",
     image: "blog-payslip-explained",
     seo: {
-      title: "How to Read an Indian Payslip — Every Line Explained",
+      title: "How to Read an Indian Payslip: Every Line Explained",
       description:
         "A complete walkthrough of an Indian salary slip: basic, HRA and allowances, employee PF and ESI deductions, Professional Tax, TDS, and the difference between gross, net and cost to company.",
       keywords: [],
@@ -439,10 +439,10 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Pay period and pay date — the month the slip covers, and when money moved. They are frequently different, and a query about a missing credit is usually about the second.",
-          "Payable days and loss of pay — the output of the attendance and leave ledger for that month. Every earnings line below is scaled by this.",
-          "UAN — the Universal Account Number that follows an employee across employers and holds their provident fund.",
-          "PAN — required for TDS to be deducted at the correct rate rather than a higher default.",
+          "Pay period and pay date, the month the slip covers, and when money moved. They are frequently different, and a query about a missing credit is usually about the second.",
+          "Payable days and loss of pay, the output of the attendance and leave ledger for that month. Every earnings line below is scaled by this.",
+          "UAN, the Universal Account Number that follows an employee across employers and holds their provident fund.",
+          "PAN, required for TDS to be deducted at the correct rate rather than a higher default.",
         ],
       },
       {
@@ -456,7 +456,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "The foundation of the structure, and the figure most statutory calculations reference. Provident fund is computed on basic (with dearness allowance where it applies), and gratuity is computed on last drawn basic. A structure with an unusually low basic reduces present deductions and reduces future gratuity at the same time — which is worth understanding rather than discovering at exit.",
+        text: "The foundation of the structure, and the figure most statutory calculations reference. Provident fund is computed on basic (with dearness allowance where it applies), and gratuity is computed on last drawn basic. A structure with an unusually low basic reduces present deductions and reduces future gratuity at the same time, which is worth understanding rather than discovering at exit.",
       },
       { kind: "h3", text: "House Rent Allowance" },
       {
@@ -484,7 +484,7 @@ export const articles: Article[] = [
             "ESI (employee)",
             "0.75%",
             "Gross wages, where the employee is within the ₹21,000 threshold",
-            "ESIC — funds medical and cash benefits",
+            "ESIC, funds medical and cash benefits",
           ],
           [
             "Professional Tax",
@@ -507,19 +507,19 @@ export const articles: Article[] = [
       { kind: "h2", text: "Gross, net and CTC are three different numbers" },
       {
         kind: "para",
-        text: "This is the single most common misunderstanding, and it is entirely reasonable — the three are rarely explained together.",
+        text: "This is the single most common misunderstanding, and it is entirely reasonable, the three are rarely explained together.",
       },
       {
         kind: "list",
         items: [
-          "Gross — everything earned for the month before any deduction.",
-          "Net (take-home) — gross minus employee deductions. This is what reaches the bank account.",
-          "Cost to company — gross plus the employer's own contributions. It is higher than gross and is never the amount anyone receives.",
+          "Gross, everything earned for the month before any deduction.",
+          "Net (take-home), gross minus employee deductions. This is what reaches the bank account.",
+          "Cost to company, gross plus the employer's own contributions. It is higher than gross and is never the amount anyone receives.",
         ],
       },
       {
         kind: "para",
-        text: "An offer quoted in CTC and a payslip showing net are two ends of the same structure, and the gap between them is mostly employer statutory contribution — money that belongs to the employee, but sits in their provident fund rather than their bank.",
+        text: "An offer quoted in CTC and a payslip showing net are two ends of the same structure, and the gap between them is mostly employer statutory contribution, money that belongs to the employee, but sits in their provident fund rather than their bank.",
       },
       { kind: "h2", text: "What an employee should be able to do without asking anybody" },
       {
@@ -528,7 +528,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "That is the actual argument for self-service. Not that it saves HR time in the abstract, but that the person best placed to spot an error on a payslip is the person it belongs to — and they can only do that if they can see it.",
+        text: "That is the actual argument for self-service. Not that it saves HR time in the abstract, but that the person best placed to spot an error on a payslip is the person it belongs to, and they can only do that if they can see it.",
       },
     ],
     related: ["old-vs-new-regime", "why-payroll-takes-four-days", "full-and-final-settlement"],
@@ -551,7 +551,7 @@ export const articles: Article[] = [
     date: "2026-01-14",
     image: "blog-regime-choice",
     seo: {
-      title: "Old vs New Tax Regime — Employee Declarations and Monthly TDS",
+      title: "Old vs New Tax Regime: Employee Declarations and Monthly TDS",
       description:
         "How the employee's regime election drives the monthly TDS schedule under Section 192, why late declarations cause February corrections, and how proof verification fits the payroll cycle.",
       keywords: [],
@@ -576,7 +576,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "The reverse is worse. An employee who declares generously in April and produces no proof by January leaves the employer with under-deducted tax that must be recovered before the year closes — from one or two payslips, at a point in the year when the employee is least expecting it.",
+        text: "The reverse is worse. An employee who declares generously in April and produces no proof by January leaves the employer with under-deducted tax that must be recovered before the year closes, from one or two payslips, at a point in the year when the employee is least expecting it.",
       },
       { kind: "h2", text: "The comparison employees actually need" },
       {
@@ -588,7 +588,7 @@ export const articles: Article[] = [
         items: [
           "An employee with a home loan, meaningful Section 80C investments and rent paid may find the old regime produces the lower liability.",
           "An employee early in their career, renting informally or without significant investments, may find the new regime produces the lower liability with far less paperwork.",
-          "The only way to know is to compute both against that employee's own numbers — which is a calculation, not an opinion.",
+          "The only way to know is to compute both against that employee's own numbers, which is a calculation, not an opinion.",
         ],
       },
       {
@@ -617,7 +617,7 @@ export const articles: Article[] = [
           },
           {
             label: "The schedule follows the verified position",
-            text: "Where proof falls short of the declaration, the remaining months absorb the correction — earlier, and over more months, than a January discovery would allow.",
+            text: "Where proof falls short of the declaration, the remaining months absorb the correction, earlier, and over more months, than a January discovery would allow.",
           },
           {
             label: "Quarterly and annual returns follow the same data",
@@ -656,7 +656,7 @@ export const articles: Article[] = [
     date: "2026-01-07",
     image: "blog-shift-handover",
     seo: {
-      title: "Compensatory Off — Tracking Comp-Off as a Real Entitlement",
+      title: "Compensatory Off: Tracking Comp-Off as a Real Entitlement",
       description:
         "Why comp-off needs credit rules, expiry and consumption tracking like any other leave type, and how weekend and holiday work should flow automatically into a leave balance.",
       keywords: [],
@@ -678,11 +678,11 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "A credit event — approved work on a weekly off or a declared holiday.",
-          "A balance — days earned and not yet taken.",
-          "A consumption rule — whether it may be taken as a half day, whether approval is required, whether it can be combined with other leave.",
-          "An expiry — a window within which it must be used, or it lapses.",
-          "A settlement position — what happens to an unused balance when someone leaves.",
+          "A credit event, approved work on a weekly off or a declared holiday.",
+          "A balance, days earned and not yet taken.",
+          "A consumption rule, whether it may be taken as a half day, whether approval is required, whether it can be combined with other leave.",
+          "An expiry, a window within which it must be used, or it lapses.",
+          "A settlement position, what happens to an unused balance when someone leaves.",
         ],
       },
       {
@@ -769,7 +769,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "An operator on the night shift punches in at 22:40 on Tuesday and out at 06:50 on Wednesday. That is one shift, and it belongs to Tuesday. A system that files the two punches under the calendar dates they occurred on has recorded a Tuesday with no exit and a Wednesday with no entry — which is to say, two exceptions where there was no problem at all.",
+        text: "An operator on the night shift punches in at 22:40 on Tuesday and out at 06:50 on Wednesday. That is one shift, and it belongs to Tuesday. A system that files the two punches under the calendar dates they occurred on has recorded a Tuesday with no exit and a Wednesday with no entry, which is to say, two exceptions where there was no problem at all.",
       },
       { kind: "h2", text: "Why manual shift assignment does not survive contact with a plant" },
       {
@@ -778,7 +778,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "The workable approach is inference. Given the shift definitions and the punch timestamp, the system assigns the punch to the shift it must belong to — including where that shift began on the previous calendar day.",
+        text: "The workable approach is inference. Given the shift definitions and the punch timestamp, the system assigns the punch to the shift it must belong to, including where that shift began on the previous calendar day.",
       },
       { kind: "h2", text: "What depends on getting the assignment right" },
       {
@@ -815,7 +815,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "Grace periods belong to the policy, not to the supervisor" },
       {
         kind: "para",
-        text: "A grace allowance is a reasonable thing for an employer to grant. It becomes a problem only when it is applied by judgement, because it is then applied differently by each supervisor and on each shift — and the difference is noticed immediately by the people it is applied to.",
+        text: "A grace allowance is a reasonable thing for an employer to grant. It becomes a problem only when it is applied by judgement, because it is then applied differently by each supervisor and on each shift, and the difference is noticed immediately by the people it is applied to.",
       },
       {
         kind: "para",
@@ -824,7 +824,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "Different plants, different rules, one filing" },
       {
         kind: "para",
-        text: "Multi-site manufacturers routinely need different shift patterns, grace periods and weekly offs at each location, for entirely legitimate operational reasons. That does not require separate systems. In HRMagix these are configured per location while the organisation continues to report and file as one, and the biometric hardware already installed — eSSL, Matrix, Realtime, ZKTeco — pushes into the same ledger over a secure API or local sync service.",
+        text: "Multi-site manufacturers routinely need different shift patterns, grace periods and weekly offs at each location, for entirely legitimate operational reasons. That does not require separate systems. In HRMagix these are configured per location while the organisation continues to report and file as one, and the biometric hardware already installed, eSSL, Matrix, Realtime, ZKTeco, pushes into the same ledger over a secure API or local sync service.",
       },
       {
         kind: "para",
@@ -873,8 +873,8 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "It is applied inconsistently — enforced for one employee, waived for another by a manager acting in good faith, and both outcomes become known.",
-          "It is discovered afterwards — the employee applies for two days, sees two days deducted from the balance shown at the time, and finds four days gone on the payslip.",
+          "It is applied inconsistently, enforced for one employee, waived for another by a manager acting in good faith, and both outcomes become known.",
+          "It is discovered afterwards, the employee applies for two days, sees two days deducted from the balance shown at the time, and finds four days gone on the payslip.",
         ],
       },
       {
@@ -903,14 +903,14 @@ export const articles: Article[] = [
           },
           {
             label: "Who may vary it, and on what grounds",
-            text: "If nobody can, say so. If somebody can, name the authority — because an unwritten discretion is the inconsistency employees actually object to.",
+            text: "If nobody can, say so. If somebody can, name the authority, because an unwritten discretion is the inconsistency employees actually object to.",
           },
         ],
       },
       { kind: "h2", text: "Enforcement should be mechanical, not managerial" },
       {
         kind: "para",
-        text: "Once the policy is written, the application of it should not be a decision anyone makes. Configured as a policy setting, the rule applies identically to every employee, and — this is the part that matters — the outcome is visible at the point of applying rather than on the payslip.",
+        text: "Once the policy is written, the application of it should not be a decision anyone makes. Configured as a policy setting, the rule applies identically to every employee, and, this is the part that matters, the outcome is visible at the point of applying rather than on the payslip.",
       },
       {
         kind: "para",
@@ -946,7 +946,7 @@ export const articles: Article[] = [
     date: "2025-12-03",
     image: "blog-payslip-explained",
     seo: {
-      title: "Full and Final Settlement — The Complete Checklist",
+      title: "Full and Final Settlement: The Complete Checklist",
       description:
         "Everything a full-and-final settlement must cover: notice period, leave encashment, gratuity eligibility, recoveries, statutory deductions, document issue and record retention.",
       keywords: [],
@@ -958,14 +958,14 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "A full-and-final settlement is a single calculation that has to pull from attendance, leave, payroll, assets and statute simultaneously — at exactly the moment when the person who knows the detail is leaving.",
+        text: "A full-and-final settlement is a single calculation that has to pull from attendance, leave, payroll, assets and statute simultaneously, at exactly the moment when the person who knows the detail is leaving.",
       },
       { kind: "h2", text: "Earnings due" },
       {
         kind: "list",
         items: [
           "Salary for days worked in the final month, computed on the same payable-days basis as any other month.",
-          "Notice period treatment — served, paid in lieu, or bought out. Each has a different calculation and a different tax position.",
+          "Notice period treatment, served, paid in lieu, or bought out. Each has a different calculation and a different tax position.",
           "Leave encashment, where the policy provides for it, on the balance as at the last working day rather than at the resignation date.",
           "Any variable pay, incentive or arrear that has crystallised but not been paid.",
         ],
@@ -977,7 +977,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "Two practical points are worth stating. First, continuous service has to be computed correctly where there have been breaks or periods of statutory leave — this is where most gratuity disputes originate. Second, the liability should have been provisioned long before the exit, so that a five-year employee leaving is a settlement rather than a surprise on the books.",
+        text: "Two practical points are worth stating. First, continuous service has to be computed correctly where there have been breaks or periods of statutory leave, this is where most gratuity disputes originate. Second, the liability should have been provisioned long before the exit, so that a five-year employee leaving is a settlement rather than a surprise on the books.",
       },
       { kind: "h2", text: "Recoveries" },
       {
@@ -985,7 +985,7 @@ export const articles: Article[] = [
         items: [
           "Notice shortfall, where notice was not served in full and buyout terms apply.",
           "Advances, loans or salary paid in excess.",
-          "Unreturned assets — laptop, access card, tools, phone — recovered per the value stated in the asset policy rather than negotiated at exit.",
+          "Unreturned assets, laptop, access card, tools, phone, recovered per the value stated in the asset policy rather than negotiated at exit.",
           "Any training or relocation bond amount, where one exists and is enforceable.",
         ],
       },

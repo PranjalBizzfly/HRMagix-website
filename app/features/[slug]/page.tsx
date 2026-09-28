@@ -8,9 +8,11 @@ import { Band, Onward } from "@/components/editorial";
 import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { StatsStrip } from "@/components/sky9";
+import { StatsStrip, FaqSection } from "@/components/sky9";
+import { featureFaqs } from "@/lib/pageFaqs/features";
 import { Icon } from "@/components/icons";
 import FeatureMap from "@/components/FeatureMap";
+import Photo from "@/components/Photo";
 
 /**
  * One module of the platform.
@@ -36,7 +38,7 @@ export async function generateMetadata({
   const m = modules.find((x) => x.slug === slug);
   if (!m) return {};
   return {
-    title: `${m.name} — HRMagix Feature`,
+    title: `${m.name}: HRMagix Feature`,
     description: m.desc,
     alternates: { canonical: `/features/${m.slug}` },
   };
@@ -54,8 +56,21 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot={`feature-${m.slug}`} cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
@@ -79,7 +94,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
             {m.desc}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/company/contact" size="lg">
+            <Button href="/company/contact-hrmagix" size="lg">
               Book a demo
             </Button>
             <Button href={link.solution.href} variant="outline" size="lg">
@@ -142,6 +157,12 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
         </Reveal>
         <FeatureMap areas={[link.area]} />
       </Band>
+
+      <FaqSection
+        title={`${m.name}: frequently asked questions`}
+        items={featureFaqs[m.slug] ?? []}
+        ground="canvas"
+      />
 
       {/* ---- Related ---- */}
       {(questions.length > 0 || pages.length > 0) && (

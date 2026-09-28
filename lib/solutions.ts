@@ -83,12 +83,12 @@ export const solutions: Solution[] = [
     title: "One employee record, and twelve workflows that read from it",
     standfirst:
       "HRMagix is an HRMS in the strict sense: a single authoritative record of every employee, from which attendance, payroll, performance and documents all draw. Nothing is re-keyed, because there is only one place the data lives.",
-    image: "hrms",
+    image: "solutions-hrms",
     icon: "layers",
     seo: {
       title: "Cloud Based HRMS Software for Indian Companies",
       description:
-        "Cloud based HRMS software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules — cloud HR software your whole company can use.",
+        "Cloud based HRMS software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules, cloud HR software your whole company can use.",
       keywords: [
         "cloud HR software",
         "cloud based HRMS software",
@@ -105,14 +105,14 @@ export const solutions: Solution[] = [
         heading: "What the record actually holds",
         body: [
           "An employee in HRMagix is not a row in a table with a name and a salary. It is a versioned record: personal and statutory identifiers, employment history within the company, reporting line, department and location, the compensation structure in force on any given date, the leave balances accrued against it, and the documents that evidence all of it.",
-          "The versioning matters more than it sounds. When a payroll run for March is questioned in September, the platform can answer with the structure that was in force in March — not the one in force today. That single property is the difference between a system you can audit and a system you have to defend.",
+          "The versioning matters more than it sounds. When a payroll run for March is questioned in September, the platform can answer with the structure that was in force in March, not the one in force today. That single property is the difference between a system you can audit and a system you have to defend.",
         ],
       },
       {
         heading: "Why 'integrated' has to mean more than 'linked'",
         body: [
           "Plenty of tools claim integration and deliver an overnight sync. The distinction that matters operationally is whether a correction propagates. If an approved leave application is backdated on the 28th, does the loss-of-pay register for that month change before the cutoff, or does somebody have to remember to reconcile it?",
-          "In HRMagix the modules are not separate products joined by an API. Attendance, leave and payroll read the same attendance ledger, so a backdated approval is not a message sent between systems — it is the same number, seen from a different page. There is nothing to reconcile because there was never a second copy.",
+          "In HRMagix the modules are not separate products joined by an API. Attendance, leave and payroll read the same attendance ledger, so a backdated approval is not a message sent between systems, it is the same number, seen from a different page. There is nothing to reconcile because there was never a second copy.",
         ],
       },
       {
@@ -126,7 +126,7 @@ export const solutions: Solution[] = [
         heading: "What moving to an HRMS actually involves",
         body: [
           "The work of adopting HRMS software is not the software. It is deciding what your data currently says, because the migration is the first time anyone has looked at all of it at once.",
-          "In practice the sequence is the same everywhere. Employee master data comes across first, because everything else hangs off it — names, identifiers, dates of joining, departments, reporting lines, salary structures. Then the balances that have a history: leave accrued and taken so far this year, and where relevant the year-to-date payroll figures that Form 16 will eventually have to reconcile against.",
+          "In practice the sequence is the same everywhere. Employee master data comes across first, because everything else hangs off it, names, identifiers, dates of joining, departments, reporting lines, salary structures. Then the balances that have a history: leave accrued and taken so far this year, and where relevant the year-to-date payroll figures that Form 16 will eventually have to reconcile against.",
           "Two things reliably surface during that exercise. Duplicate records for the same person, usually created when someone was rehired or moved between entities. And salary structures that were described one way in the offer letter and calculated another way in practice. Neither is caused by the migration; the migration is simply the first process that compares them.",
         ],
       },
@@ -134,7 +134,7 @@ export const solutions: Solution[] = [
         heading: "Running the old and the new system in the same month",
         body: [
           "The safest cutover for payroll is a parallel run: process one month in both the outgoing system and the new one, and compare the results head by head before switching over.",
-          "That comparison is worth doing properly rather than in aggregate. A total that matches to the rupee can still conceal two offsetting errors, and the differences that matter are usually in the same few places — a rounding convention on PF, an allowance treated as part of the gross in one system and outside it in the other, an employee whose ESI eligibility changed mid-year.",
+          "That comparison is worth doing properly rather than in aggregate. A total that matches to the rupee can still conceal two offsetting errors, and the differences that matter are usually in the same few places, a rounding convention on PF, an allowance treated as part of the gross in one system and outside it in the other, an employee whose ESI eligibility changed mid-year.",
           "Once the two agree line by line for one month, the historical figures can be carried in with confidence, because the thing that had to be trusted was the calculation rather than the import.",
         ],
       },
@@ -244,7 +244,7 @@ export const solutions: Solution[] = [
           situation:
             "In most companies under a hundred people, HR is part of a finance or operations role, and the administrative load is the part that crowds out the rest of the job.",
           resolution:
-            "The recurring work — payslips, balances, letters, reminders, approvals — either automates or moves to self-service. What is left is the part that genuinely needed a person.",
+            "The recurring work, payslips, balances, letters, reminders, approvals, either automates or moves to self-service. What is left is the part that genuinely needed a person.",
         },
       ],
     },
@@ -258,14 +258,14 @@ export const solutions: Solution[] = [
       reality: "Several disconnected tools, a monthly headcount report built by hand, and a leadership team asking questions the data cannot answer.",
       signals: [
         "The incumbent system's renewal date is approaching.",
-        "Leadership asks for a number — headcount, attrition, cost — and producing it takes days.",
+        "Leadership asks for a number, headcount, attrition, cost, and producing it takes days.",
         "A new entity or acquisition doubles the records that have to be reconciled.",
       ],
     },
     questions: [
       {
         q: "What is the difference between an HRMS and payroll software?",
-        a: "Payroll software calculates salaries. An HRMS holds the employee record that payroll needs in order to calculate them correctly — attendance, approved leave, the compensation structure in force, statutory identifiers and the documents behind them. HRMagix is both: the record and the run, which is why a backdated leave approval changes the loss-of-pay register without anyone re-entering anything.",
+        a: "Payroll software calculates salaries. An HRMS holds the employee record that payroll needs in order to calculate them correctly, attendance, approved leave, the compensation structure in force, statutory identifiers and the documents behind them. HRMagix is both: the record and the run, which is why a backdated leave approval changes the loss-of-pay register without anyone re-entering anything.",
       },
       {
         q: "How long does it take to move an existing company onto HRMagix?",
@@ -277,7 +277,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "What data has to be ready before migration?",
-        a: "Employee master data first — names, statutory identifiers, dates of joining, departments, reporting lines and salary structures — because everything else references it. Then leave balances accrued and taken in the current leave year, and year-to-date payroll figures if you are moving mid-financial-year, since Form 16 has to reconcile across the whole year.",
+        a: "Employee master data first, names, statutory identifiers, dates of joining, departments, reporting lines and salary structures, because everything else references it. Then leave balances accrued and taken in the current leave year, and year-to-date payroll figures if you are moving mid-financial-year, since Form 16 has to reconcile across the whole year.",
       },
       {
         q: "Should we run the old payroll system in parallel for a month?",
@@ -289,7 +289,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "Does an HRMS replace our accounting software?",
-        a: "No. It produces the payroll outputs accounting needs — the cost by head, the statutory liabilities, the bank transfer file — and the accounting system remains where the ledger lives. The overlap is the handover, not the function.",
+        a: "No. It produces the payroll outputs accounting needs, the cost by head, the statutory liabilities, the bank transfer file, and the accounting system remains where the ledger lives. The overlap is the handover, not the function.",
       },
       {
         q: "What happens if a policy changes mid-year?",
@@ -324,12 +324,12 @@ export const solutions: Solution[] = [
     title: "Payroll is not a calculation. It is a chain of custody.",
     standfirst:
       "Attendance becomes loss of pay, loss of pay becomes gross, gross becomes statutory deductions, and deductions become filings. HRMagix runs the whole chain in one pass and leaves the working visible at every step.",
-    image: "payroll",
+    image: "solutions-payroll",
     icon: "wallet",
     seo: {
       title: "Payroll Software with PF, ESI, PT and TDS Built In",
       description:
-        "Payroll processing software for India: automated EPF, ESI, Professional Tax and TDS on salary, payslips, Form 16 and bank-ready NEFT files — a payroll automation system and salary management system in one monthly run.",
+        "Payroll processing software for India: automated EPF, ESI, Professional Tax and TDS on salary, payslips, Form 16 and bank-ready NEFT files, a payroll automation system and salary management system in one monthly run.",
       keywords: [
         "payroll automation software",
         "employee payroll system",
@@ -344,7 +344,7 @@ export const solutions: Solution[] = [
     opening: [
       "The reason payroll takes days in most Indian companies has almost nothing to do with arithmetic. Multiplying a per-day rate by a number of days is trivial. Establishing the number of days is not.",
       "That number is the sum of a biometric log, a set of leave applications in various states of approval, a comp-off credited for a Sunday worked in a previous month, a late-mark policy with a grace period, and a manager who confirmed a work-from-home day over WhatsApp. Payroll teams do not spend four days calculating. They spend four days establishing what happened, and then a few minutes calculating.",
-      "HRMagix removes the establishing. Because attendance, leave and payroll read one ledger, the number of payable days for every employee is already settled when the cutoff arrives — and every statutory deduction that follows from it is derived rather than typed.",
+      "HRMagix removes the establishing. Because attendance, leave and payroll read one ledger, the number of payable days for every employee is already settled when the cutoff arrives, and every statutory deduction that follows from it is derived rather than typed.",
     ],
     passages: [
       {
@@ -358,7 +358,7 @@ export const solutions: Solution[] = [
         heading: "The two tax regimes, and the declaration that decides them",
         body: [
           "Since employees may elect between the old and new regimes, the monthly TDS schedule under Section 192 depends on a declaration that many employees make late and some change. Getting it wrong in April produces a painful correction in February.",
-          "Employees compare their liability under both regimes inside their own self-service portal before declaring, then upload proof — Section 80C and 80D investments, HRA rent receipts, home loan interest — for HR to verify. The monthly deduction schedule follows the verified declaration, quarterly Form 24Q is generated from the same data, and Part B of Form 16 at year end is a report rather than a project.",
+          "Employees compare their liability under both regimes inside their own self-service portal before declaring, then upload proof, Section 80C and 80D investments, HRA rent receipts, home loan interest, for HR to verify. The monthly deduction schedule follows the verified declaration, quarterly Form 24Q is generated from the same data, and Part B of Form 16 at year end is a report rather than a project.",
         ],
       },
       {
@@ -372,7 +372,7 @@ export const solutions: Solution[] = [
         heading: "Structuring a salary before you can process one",
         body: [
           "A payroll management system cannot calculate anything until the salary structure exists, and the structure is where most of the consequential decisions are made. Basic pay determines the PF wage. The split between basic, house rent allowance and special allowance determines how much of the package is exemptible. Whether a component is treated as part of the gross determines ESI eligibility near the threshold.",
-          "Those are policy decisions with statutory consequences, not formatting choices, and they are made once per grade rather than once per employee. Holding the structure as a template on the grade — and the individual's figures as an instance of it — is what stops two people on the same band being paid under different arithmetic because their offer letters were drafted by different people in different years.",
+          "Those are policy decisions with statutory consequences, not formatting choices, and they are made once per grade rather than once per employee. Holding the structure as a template on the grade, and the individual's figures as an instance of it, is what stops two people on the same band being paid under different arithmetic because their offer letters were drafted by different people in different years.",
           "It is also what makes an increment a change to one field rather than a re-derivation of everything downstream of it.",
         ],
       },
@@ -388,7 +388,7 @@ export const solutions: Solution[] = [
         heading: "Full and final settlement, where everything has to agree at once",
         body: [
           "A final settlement is the only payroll event that reads from every other module simultaneously. Salary to the last working day comes from attendance. Leave encashment comes from the leave ledger. Notice pay or recovery comes from the resignation record. Gratuity, where five years of continuous service have been completed, comes from the date of joining and the last drawn basic.",
-          "Against those sit the deductions: outstanding advances, unrecovered assets, the notice shortfall if any. The reason settlements are slow in most companies is not the arithmetic but the collection — four people confirming four figures by email, in a week when the employee has already left.",
+          "Against those sit the deductions: outstanding advances, unrecovered assets, the notice shortfall if any. The reason settlements are slow in most companies is not the arithmetic but the collection, four people confirming four figures by email, in a week when the employee has already left.",
           "When each of those figures is already a record rather than an opinion, the settlement is assembled rather than negotiated, and the employee gets a statement showing every component and where it came from.",
         ],
       },
@@ -464,7 +464,7 @@ export const solutions: Solution[] = [
           note: "Output: state-wise PT working",
         },
         {
-          term: "TDS on salary — Section 192",
+          term: "TDS on salary, Section 192",
           detail:
             "Old and new regime comparison in the employee portal, declarations under 80C, 80D, HRA and home loan interest, HR verification, and a monthly deduction schedule that follows the verified position.",
           note: "Output: quarterly Form 24Q, annual Form 16 Part B",
@@ -478,7 +478,7 @@ export const solutions: Solution[] = [
         {
           term: "Labour Welfare Fund",
           detail:
-            "Half-yearly and annual deductions matched to state deadlines — Maharashtra's June and December cycles among them — applied inside the payroll run rather than remembered separately.",
+            "Half-yearly and annual deductions matched to state deadlines, Maharashtra's June and December cycles among them, applied inside the payroll run rather than remembered separately.",
           note: "Output: state LWF statement",
         },
       ],
@@ -550,7 +550,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "What goes into a full and final settlement?",
-        a: "Salary to the last working day, leave encashment from the leave ledger, notice pay or recovery from the resignation record, and gratuity where five years of continuous service are complete — less advances, unrecovered assets and any notice shortfall. Each component is drawn from the module that owns it rather than confirmed by email.",
+        a: "Salary to the last working day, leave encashment from the leave ledger, notice pay or recovery from the resignation record, and gratuity where five years of continuous service are complete, less advances, unrecovered assets and any notice shortfall. Each component is drawn from the module that owns it rather than confirmed by email.",
       },
       {
         q: "Can we run payroll for more than one legal entity?",
@@ -568,7 +568,7 @@ export const solutions: Solution[] = [
     onward: [
       {
         label: "Attendance & Shifts",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         note: "Where the payable-days figure comes from",
       },
       {
@@ -578,7 +578,7 @@ export const solutions: Solution[] = [
       },
       {
         label: "Employee Self-Service",
-        href: "/solutions/ess",
+        href: "/solutions/employee-self-service",
         note: "Where payslips, declarations and Form 16 reach employees",
       },
     ],
@@ -593,12 +593,12 @@ export const solutions: Solution[] = [
     title: "The quiet work of keeping five hundred records straight",
     standfirst:
       "Employee management is unglamorous until it fails: a promotion that never reached payroll, a certificate that expired unnoticed, a policy nobody can prove was acknowledged. HRMagix makes each of those a scheduled event rather than a discovery.",
-    image: "employee-management",
+    image: "solutions-employee-management",
     icon: "users",
     seo: {
       title: "Employee Database Software & Employee Record Management System",
       description:
-        "Employee database software for Indian companies: a versioned employee record management system with a document vault, expiry alerts, org structure and policy acknowledgement — an HR employee management system on one record.",
+        "Employee database software for Indian companies: a versioned employee record management system with a document vault, expiry alerts, org structure and policy acknowledgement, an HR employee management system on one record.",
       keywords: [
         "employee database software",
         "employee record management system",
@@ -608,13 +608,13 @@ export const solutions: Solution[] = [
     },
     opening: [
       "Ask an HR team what takes their time and very few will say strategy. They will describe chasing: a bank detail that was never updated, a driving licence that expired three weeks ago, an appointment letter somebody needs for a visa application by Friday.",
-      "None of these are difficult. They are simply invisible until the moment they are urgent. The problem employee management software actually solves is not storage — a shared drive stores things perfectly well. It is knowing, without being told, what has changed and what is about to.",
+      "None of these are difficult. They are simply invisible until the moment they are urgent. The problem employee management software actually solves is not storage, a shared drive stores things perfectly well. It is knowing, without being told, what has changed and what is about to.",
     ],
     passages: [
       {
         heading: "A record with a memory",
         body: [
-          "Every change to an employee record in HRMagix is dated rather than overwritten. A grade revision in July does not erase the grade that applied in June; it succeeds it. This is what makes it possible to answer questions about the past truthfully — which structure applied when a particular payroll ran, who the approving manager was at the time a leave was sanctioned, when a policy was acknowledged.",
+          "Every change to an employee record in HRMagix is dated rather than overwritten. A grade revision in July does not erase the grade that applied in June; it succeeds it. This is what makes it possible to answer questions about the past truthfully, which structure applied when a particular payroll ran, who the approving manager was at the time a leave was sanctioned, when a policy was acknowledged.",
           "It also means promotions, transfers and confirmations do not need to be communicated to payroll separately. They are the same record, so they arrive automatically at the next cutoff.",
         ],
       },
@@ -622,7 +622,7 @@ export const solutions: Solution[] = [
         heading: "Documents that expire on their own schedule",
         body: [
           "A personnel file is a mixture of documents that never change and documents that quietly stop being valid. Offer and appointment letters are permanent. Visas, driving licences, professional certifications and contractor agreements are not.",
-          "HRMagix holds both kinds in an encrypted vault with role-based access, and treats expiry as a property of the document rather than something a person has to remember. Alerts fire ahead of the date, to the employee and to whoever is accountable — which turns an expired certificate from an incident into an errand.",
+          "HRMagix holds both kinds in an encrypted vault with role-based access, and treats expiry as a property of the document rather than something a person has to remember. Alerts fire ahead of the date, to the employee and to whoever is accountable, which turns an expired certificate from an incident into an errand.",
         ],
       },
       {
@@ -635,7 +635,7 @@ export const solutions: Solution[] = [
       {
         heading: "The org chart is a consequence, not a drawing",
         body: [
-          "In most companies the organisation chart is a slide. Someone maintains it, it is accurate on the day it is made, and it drifts from that afternoon onward — because a reporting line changed in a conversation and the slide was not in the room.",
+          "In most companies the organisation chart is a slide. Someone maintains it, it is accurate on the day it is made, and it drifts from that afternoon onward, because a reporting line changed in a conversation and the slide was not in the room.",
           "In an employee management system the reporting line is a field on the record, so the chart is drawn from it rather than maintained alongside it. Changing a manager changes the chart, and it also changes who approves that person's leave, who sees their attendance regularisation, and whose queue their appraisal lands in.",
           "That is the practical argument for keeping structure in the record instead of a document: an org chart nobody updates is merely out of date, but an approval routing nobody updates sends requests to someone who left.",
         ],
@@ -643,7 +643,7 @@ export const solutions: Solution[] = [
       {
         heading: "Who may see what, and why that is a structure question",
         body: [
-          "An employee directory is useful precisely because it is open — names, roles, departments, work contact details, the things colleagues look up a dozen times a week. An employee record is useful precisely because it is not: it holds bank details, statutory identifiers, salary, and documents that were handed over in confidence.",
+          "An employee directory is useful precisely because it is open, names, roles, departments, work contact details, the things colleagues look up a dozen times a week. An employee record is useful precisely because it is not: it holds bank details, statutory identifiers, salary, and documents that were handed over in confidence.",
           "The two live in the same HR management system and are separated by role rather than by keeping a second, quieter spreadsheet. A colleague sees the directory. A reporting manager sees their team's attendance, leave and goals. Payroll roles see salary components. HR administrators see the full record, and the record notes that they looked.",
           "Every widening of access is therefore a deliberate change to a role rather than an informal favour, which is the difference between a permission model and a habit.",
         ],
@@ -652,7 +652,7 @@ export const solutions: Solution[] = [
         heading: "Keeping the record right without chasing people",
         body: [
           "Records go stale in predictable places: a new address after a move, a changed bank account, a phone number, an emergency contact recorded on the day of joining and never revisited.",
-          "Almost all of these are things the employee knows and HR does not. The self-service portal lets them correct their own details, and routes anything with a downstream consequence — a bank account change ahead of a payroll run, for instance — for confirmation before it takes effect.",
+          "Almost all of these are things the employee knows and HR does not. The self-service portal lets them correct their own details, and routes anything with a downstream consequence, a bank account change ahead of a payroll run, for instance, for confirmation before it takes effect.",
           "The result is that accuracy stops depending on an annual data-cleaning exercise. The people with the correct information are the ones entering it, and the audit trail records what changed, when, and at whose request.",
         ],
       },
@@ -664,7 +664,7 @@ export const solutions: Solution[] = [
       rows: [
         { term: "Document expiry", detail: "Visas, driving licences, professional certificates and agreements, with lead time before the date." },
         { term: "Probation and confirmation", detail: "Confirmation dates surfaced to the reporting manager ahead of time, not after." },
-        { term: "Policy acknowledgement", detail: "Per employee, per policy version — re-opened when the policy text changes." },
+        { term: "Policy acknowledgement", detail: "Per employee, per policy version, re-opened when the policy text changes." },
         { term: "Statutory identifiers", detail: "Missing PAN, UAN, ESIC IP number or bank details flagged before they block a payroll run." },
         { term: "Asset handover", detail: "Hardware and workspace assets tracked against the person they were issued to." },
       ],
@@ -701,7 +701,7 @@ export const solutions: Solution[] = [
     useCases: {
       title: "Where the record earns its keep",
       intro:
-        "Not on the day it is created — on the days something has to be proved, produced or reconstructed at short notice.",
+        "Not on the day it is created, on the days something has to be proved, produced or reconstructed at short notice.",
       items: [
         {
           role: "During a statutory inspection",
@@ -753,11 +753,11 @@ export const solutions: Solution[] = [
       },
       {
         q: "What is the difference between the employee directory and the employee record?",
-        a: "The directory is the open part — name, role, department, work contact details — that colleagues are meant to look up. The record is everything else: statutory identifiers, bank details, salary components, documents and history. They are the same system separated by role permissions, not two databases.",
+        a: "The directory is the open part, name, role, department, work contact details, that colleagues are meant to look up. The record is everything else: statutory identifiers, bank details, salary components, documents and history. They are the same system separated by role permissions, not two databases.",
       },
       {
         q: "Can employees update their own details?",
-        a: "Yes, through the employee self service portal. Changes with a downstream consequence — a bank account before a payroll run, for example — are routed for confirmation rather than applied silently. Everything else takes effect immediately and is recorded in the audit trail.",
+        a: "Yes, through the employee self service portal. Changes with a downstream consequence, a bank account before a payroll run, for example, are routed for confirmation rather than applied silently. Everything else takes effect immediately and is recorded in the audit trail.",
       },
       {
         q: "Does the org chart have to be maintained separately?",
@@ -765,39 +765,39 @@ export const solutions: Solution[] = [
       },
       {
         q: "How are employees imported when moving from spreadsheets?",
-        a: "Through a bulk import of the fields you already hold, with validation on the ones that have to be well formed — identifiers, dates of joining, salary components. Records that fail validation are reported individually rather than silently skipped, so nobody is quietly missing from the first payroll run.",
+        a: "Through a bulk import of the fields you already hold, with validation on the ones that have to be well formed, identifiers, dates of joining, salary components. Records that fail validation are reported individually rather than silently skipped, so nobody is quietly missing from the first payroll run.",
       },
       {
-        q: "Can we store documents that are not employee documents — an offer letter template, say?",
+        q: "Can we store documents that are not employee documents, an offer letter template, say?",
         a: "Templates and company-level documents live at the organisation level, and issued copies attach to the individual record. That distinction is what makes acknowledgement tracking meaningful: the version is held once, and each person's confirmation points at it.",
       },
       {
         q: "What happens to a record when someone leaves?",
-        a: "It is retained rather than deleted. Statutory records have to survive the employment that produced them — gratuity, Form 16 reissues and inspections all reach backwards — so an exited record moves out of active views but stays queryable.",
+        a: "It is retained rather than deleted. Statutory records have to survive the employment that produced them, gratuity, Form 16 reissues and inspections all reach backwards, so an exited record moves out of active views but stays queryable.",
       },
     ],
     onward: [
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding", note: "How a record begins" },
-      { label: "Workplace Policy Library", href: "/policy/workplace-policies", note: "The policies these acknowledgements are for" },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "How a record begins" },
+      { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library", note: "The policies these acknowledgements are for" },
       { label: "HRMS", href: "/solutions/hrms", note: "The record everything else reads" },
     ],
   },
 
   /* ================================================================= */
   {
-    slug: "attendance",
-    href: "/solutions/attendance",
+    slug: "attendance-and-shifts",
+    href: "/solutions/attendance-and-shifts",
     name: "Attendance & Shifts",
     kicker: "Time capture",
     title: "Every hour accounted for, without anybody chasing it",
     standfirst:
-      "Attendance is the input payroll cannot do without and the one most companies capture least reliably. HRMagix takes punches from the hardware you already own, from a phone in the field, and from a browser at a desk — into one ledger.",
-    image: "attendance",
+      "Attendance is the input payroll cannot do without and the one most companies capture least reliably. HRMagix takes punches from the hardware you already own, from a phone in the field, and from a browser at a desk, into one ledger.",
+    image: "solutions-attendance",
     icon: "fingerprint",
     seo: {
       title: "Attendance Management System with Biometric & Mobile Punch-In",
       description:
-        "Attendance management system for Indian companies: biometric attendance system software, GPS geo-fenced mobile punch-in, shift rotation, overtime and automatic loss-of-pay — an employee attendance and payroll system on one record.",
+        "Attendance management system for Indian companies: biometric attendance system software, GPS geo-fenced mobile punch-in, shift rotation, overtime and automatic loss-of-pay, an employee attendance and payroll system on one record.",
       keywords: [
         "attendance management system",
         "employee attendance software",
@@ -810,13 +810,13 @@ export const solutions: Solution[] = [
     },
     opening: [
       "There is a specific kind of dispute that only happens in companies with good attendance hardware and no attendance system. The machine says a person entered at 09:47. The person says they were at a client site from 08:30. Both are true. Neither is in the payroll input.",
-      "Capture is not the hard part — most Indian offices have had biometric readers for a decade. The hard part is that a workforce is rarely all in one place, and the exceptions are where the entire argument lives: field staff, night shifts, plant rotations, a warehouse that runs on Sundays, a developer working from Pune for a fortnight.",
+      "Capture is not the hard part, most Indian offices have had biometric readers for a decade. The hard part is that a workforce is rarely all in one place, and the exceptions are where the entire argument lives: field staff, night shifts, plant rotations, a warehouse that runs on Sundays, a developer working from Pune for a fortnight.",
     ],
     passages: [
       {
         heading: "Three ways in, one ledger",
         body: [
-          "HRMagix accepts attendance from the biometric hardware already installed — eSSL, Matrix, Realtime and ZKTeco devices push over a secure API or a local sync service — from the iOS and Android app, and from the browser. What matters is that these are not three systems. They are three inputs to the same ledger, so a person who badges in at the plant on Monday and checks in from a client site on Tuesday has one continuous record.",
+          "HRMagix accepts attendance from the biometric hardware already installed, eSSL, Matrix, Realtime and ZKTeco devices push over a secure API or a local sync service, from the iOS and Android app, and from the browser. What matters is that these are not three systems. They are three inputs to the same ledger, so a person who badges in at the plant on Monday and checks in from a client site on Tuesday has one continuous record.",
           "Mobile check-ins can be constrained by a GPS geofence drawn around office coordinates, client sites or branch warehouses, with optional selfie validation. For field teams, that turns a check-in from an assertion into evidence.",
         ],
       },
@@ -846,7 +846,7 @@ export const solutions: Solution[] = [
         heading: "What the attendance record has to prove later",
         body: [
           "Attendance data is read twice: once by payroll at the end of the month, and once, much later, by somebody asking a question about a specific day. The second reading is the one that determines how the ledger should be designed.",
-          "Muster rolls and wage registers under the Shops and Establishments Acts and the wage legislation are attendance records by another name, and an inspector's question is almost always specific — this person, this date, why were they marked absent. Answering it requires the original capture, the correction if there was one, the reason given and the person who approved it.",
+          "Muster rolls and wage registers under the Shops and Establishments Acts and the wage legislation are attendance records by another name, and an inspector's question is almost always specific, this person, this date, why were they marked absent. Answering it requires the original capture, the correction if there was one, the reason given and the person who approved it.",
           "This is why a regularisation is recorded alongside the original punch rather than replacing it. An attendance ledger that can be edited to say whatever the current answer needs to be is not evidence of anything.",
         ],
       },
@@ -903,7 +903,7 @@ export const solutions: Solution[] = [
     ],
     capabilitiesTitle: "Capture, rules and consequence",
     capabilitiesIntro:
-      "Read in that order. How presence gets in, what the rules do with it, and where the result ends up — because the third is what makes the first two worth configuring properly.",
+      "Read in that order. How presence gets in, what the rules do with it, and where the result ends up, because the third is what makes the first two worth configuring properly.",
     questionsIntro:
       "The questions that separate an attendance system that survives a real shop floor from one that does not.",
     buyer: {
@@ -918,7 +918,7 @@ export const solutions: Solution[] = [
     questions: [
       {
         q: "Will HRMagix work with the biometric machines we already have?",
-        a: "In most cases yes. HRMagix integrates with leading biometric hardware — eSSL, Matrix, Realtime and ZKTeco — over a secure API push or a local sync service. Punches flow to the cloud presence board in real time and reflect automatically in shift calculations, late marks and the monthly loss-of-pay register.",
+        a: "In most cases yes. HRMagix integrates with leading biometric hardware, eSSL, Matrix, Realtime and ZKTeco, over a secure API push or a local sync service. Punches flow to the cloud presence board in real time and reflect automatically in shift calculations, late marks and the monthly loss-of-pay register.",
       },
       {
         q: "How does geo-fenced mobile punch-in work?",
@@ -938,7 +938,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "How are half-days and late arrivals treated?",
-        a: "By the thresholds the policy defines — a grace window, a cut-off after which the day counts as a half day, and a consequence for repetition. Because the rule is configured rather than applied by judgement, the same lateness produces the same outcome across departments, which is usually the reason the policy existed in the first place.",
+        a: "By the thresholds the policy defines, a grace window, a cut-off after which the day counts as a half day, and a consequence for repetition. Because the rule is configured rather than applied by judgement, the same lateness produces the same outcome across departments, which is usually the reason the policy existed in the first place.",
       },
       {
         q: "Can different teams have different capture methods?",
@@ -964,8 +964,8 @@ export const solutions: Solution[] = [
     kicker: "Leave, holidays and balances",
     title: "A leave calendar the whole company believes",
     standfirst:
-      "Leave goes wrong in two directions at once — employees do not know their true balance, and managers do not know who else is away. HRMagix fixes both with one shared, accrual-accurate calendar.",
-    image: "leave",
+      "Leave goes wrong in two directions at once, employees do not know their true balance, and managers do not know who else is away. HRMagix fixes both with one shared, accrual-accurate calendar.",
+    image: "solutions-leave-management",
     icon: "calendar",
     seo: {
       title: "Leave Management System & Leave Tracking Software",
@@ -988,7 +988,7 @@ export const solutions: Solution[] = [
         heading: "Accrual is the part that has to be right",
         body: [
           "A leave balance is not a number somebody maintains. It is the outcome of an accrual rule applied month by month against a joining date, adjusted for unpaid days, capped by a carry-forward limit and reset on a policy year.",
-          "HRMagix computes it rather than storing it, which is why the balance an employee sees in their portal is the same balance the approving manager sees and the same one payroll uses. Categories are configurable — earned or privilege leave, casual, sick, maternity and paternity — each with its own accrual, encashment and carry-over behaviour.",
+          "HRMagix computes it rather than storing it, which is why the balance an employee sees in their portal is the same balance the approving manager sees and the same one payroll uses. Categories are configurable, earned or privilege leave, casual, sick, maternity and paternity, each with its own accrual, encashment and carry-over behaviour.",
         ],
       },
       {
@@ -1002,13 +1002,13 @@ export const solutions: Solution[] = [
         heading: "Holidays are regional, and the calendar should say so",
         body: [
           "An Indian company with offices in more than one state does not have a holiday list. It has several. A shared calendar that shows Bengaluru's holidays to a Pune team is worse than no calendar at all.",
-          "Holiday calendars in HRMagix are defined per location, and the team calendar an employee sees combines their own location's holidays with their team's approved leave — so the question \"who is around next Thursday\" has a single, correct answer.",
+          "Holiday calendars in HRMagix are defined per location, and the team calendar an employee sees combines their own location's holidays with their team's approved leave, so the question \"who is around next Thursday\" has a single, correct answer.",
         ],
       },
       {
         heading: "The year end, where balances become money",
         body: [
-          "For eleven months a leave balance is an administrative figure. At the close of the leave year it becomes three different things: leave that carries forward, leave that lapses, and leave that is encashed — and the last of those is a payroll transaction.",
+          "For eleven months a leave balance is an administrative figure. At the close of the leave year it becomes three different things: leave that carries forward, leave that lapses, and leave that is encashed, and the last of those is a payroll transaction.",
           "The rules that decide the split are the employer's, and they are usually more specific than they first appear. A carry-forward cap. A separate cap on how much of the carried balance may later be encashed. A rule on whether encashment is computed on basic or on gross. A cut-off date that is not the same as the financial year end.",
           "A leave management system earns its place by applying those rules identically to everyone on the same night, and by producing the encashment figures as a payroll input rather than as a spreadsheet somebody types up. The arithmetic is not hard; doing it consistently for four hundred people on one date is.",
         ],
@@ -1016,7 +1016,7 @@ export const solutions: Solution[] = [
       {
         heading: "Loss of pay, and why it is a leave decision rather than a payroll one",
         body: [
-          "Loss of pay is where leave and payroll meet, and where the handover between them usually goes wrong. An absence without an approved application, or an approved application against an exhausted balance, becomes an unpaid day — and an unpaid day changes the salary, the PF wage, and in some cases the ESI contribution for that month.",
+          "Loss of pay is where leave and payroll meet, and where the handover between them usually goes wrong. An absence without an approved application, or an approved application against an exhausted balance, becomes an unpaid day, and an unpaid day changes the salary, the PF wage, and in some cases the ESI contribution for that month.",
           "The decision belongs to leave management, because that is where the balance and the approval live. The consequence belongs to payroll. When the two are separate systems, the connection is a monthly file, and the file is prepared under time pressure in the same week the run has to close.",
           "Holding both in one platform makes the LOP day an outcome of the leave ledger rather than a line somebody adds to it. That also means an application approved after the run has closed is visible as an arrear against a specific date, instead of a quiet correction next month.",
         ],
@@ -1026,7 +1026,7 @@ export const solutions: Solution[] = [
         body: [
           "Maternity leave under the Maternity Benefit Act, and leave taken while on ESI benefit, are entitlements the employer does not set and cannot reduce by policy. They are earned differently, approved differently and treated differently in payroll from casual or earned leave.",
           "Keeping them as separate leave types rather than deductions from a common pool matters for two reasons. The employee's ordinary entitlement continues to accrue rather than being consumed, and the statutory absence is identifiable in the record when it has to be evidenced later.",
-          "The same logic applies to compensatory off. A comp-off is earned by working a day that was not a working day, which makes it a consequence of the attendance ledger rather than an allowance granted at someone's discretion — and it usually carries an expiry that a manual tracker forgets.",
+          "The same logic applies to compensatory off. A comp-off is earned by working a day that was not a working day, which makes it a consequence of the attendance ledger rather than an allowance granted at someone's discretion, and it usually carries an expiry that a manual tracker forgets.",
         ],
       },
     ],
@@ -1068,13 +1068,13 @@ export const solutions: Solution[] = [
         { term: "Sick and casual leave", detail: "Configured per state establishment rules and company policy, with their own accrual behaviour." },
         { term: "Maternity leave", detail: "Configured as a leave category with its own entitlement and approval path, tracked against the employee record." },
         { term: "Compensatory off", detail: "Credited on approved weekend or holiday work, with expiry and consumption rules of its own." },
-        { term: "Loss of pay", detail: "Unpaid days flow directly into the month's payable-days figure — no separate register." },
+        { term: "Loss of pay", detail: "Unpaid days flow directly into the month's payable-days figure, no separate register." },
       ],
     },
     useCases: {
       title: "The moments a leave policy is actually tested",
       intro:
-        "Rarely on an ordinary application. Almost always at a boundary — a joiner mid-month, a festival week, a year end, an exit.",
+        "Rarely on an ordinary application. Almost always at a boundary, a joiner mid-month, a festival week, a year end, an exit.",
       items: [
         {
           role: "The mid-year joiner",
@@ -1110,7 +1110,7 @@ export const solutions: Solution[] = [
     capabilitiesIntro:
       "The parts that decide entitlement, the parts that move an application, and the parts that let people plan around each other.",
     questionsIntro:
-      "Almost all of these arrive at a boundary — a joiner, a festival week, a year end, an exit.",
+      "Almost all of these arrive at a boundary, a joiner, a festival week, a year end, an exit.",
     questions: [
       {
         q: "Can we run different leave quotas at different locations?",
@@ -1138,7 +1138,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "How is compensatory off handled?",
-        a: "As an entitlement earned from the attendance ledger — a day worked that was not a working day — rather than a discretionary grant. It carries the expiry the policy sets, and lapses on that date rather than when someone notices.",
+        a: "As an entitlement earned from the attendance ledger, a day worked that was not a working day, rather than a discretionary grant. It carries the expiry the policy sets, and lapses on that date rather than when someone notices.",
       },
       {
         q: "Can approval go to somebody other than the reporting manager?",
@@ -1150,27 +1150,27 @@ export const solutions: Solution[] = [
       },
     ],
     onward: [
-      { label: "Attendance & Shifts", href: "/solutions/attendance", note: "The other input to payable days" },
-      { label: "Employee Self-Service", href: "/solutions/ess", note: "Where employees apply and check balances" },
-      { label: "Workplace Policy Library", href: "/policy/workplace-policies", note: "The leave policy template itself" },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "The other input to payable days" },
+      { label: "Employee Self-Service", href: "/solutions/employee-self-service", note: "Where employees apply and check balances" },
+      { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library", note: "The leave policy template itself" },
     ],
   },
 
   /* ================================================================= */
   {
-    slug: "ess",
-    href: "/solutions/ess",
+    slug: "employee-self-service",
+    href: "/solutions/employee-self-service",
     name: "Employee Self-Service",
     kicker: "The employee's own login",
     title: "Most HR questions are lookups. Give people the lookup.",
     standfirst:
       "An employee self-service portal is judged by how much traffic it removes from HR. Payslips, balances, declarations, documents and approvals all live behind the employee's own login, on the web and on the phone.",
-    image: "ess",
+    image: "solutions-ess",
     icon: "phone",
     seo: {
       title: "Employee Self Service Portal (ESS) for HR & Payroll",
       description:
-        "An employee self service portal for Indian companies: payslips, leave balances, attendance regularisation, tax declarations and Form 16 download on web and mobile — an HRMS with ESS portal built in.",
+        "An employee self service portal for Indian companies: payslips, leave balances, attendance regularisation, tax declarations and Form 16 download on web and mobile, an HRMS with ESS portal built in.",
       keywords: [
         "Form 16 download",
         "employee self service portal",
@@ -1196,19 +1196,19 @@ export const solutions: Solution[] = [
       {
         heading: "The manager's side of the same portal",
         body: [
-          "Self-service that stops at the employee simply moves the queue. Managers approve leave and regularisations from the same interface, see their team's live presence, hold 1-on-1s with a shared agenda and running action items, and update goal progress — without a separate manager tool to learn.",
+          "Self-service that stops at the employee simply moves the queue. Managers approve leave and regularisations from the same interface, see their team's live presence, hold 1-on-1s with a shared agenda and running action items, and update goal progress, without a separate manager tool to learn.",
         ],
       },
       {
         heading: "On the phone, because that is where the workforce is",
         body: [
-          "For a large part of an Indian workforce — field staff, plant operators, drivers, site engineers — the phone is not a secondary channel. It is the only one. The HRMagix iOS and Android app carries punch-in with GPS and selfie validation, leave application and balances, payslips and the company holiday calendar, so the portal is genuinely available to everyone rather than to the people with desks.",
+          "For a large part of an Indian workforce, field staff, plant operators, drivers, site engineers, the phone is not a secondary channel. It is the only one. The HRMagix iOS and Android app carries punch-in with GPS and selfie validation, leave application and balances, payslips and the company holiday calendar, so the portal is genuinely available to everyone rather than to the people with desks.",
         ],
       },
       {
         heading: "The arithmetic of the HR inbox",
         body: [
-          "The case for an employee self service portal is usually made in terms of employee experience. The stronger case is arithmetic, and it applies to any employee payroll system with more than a hundred people on it. A company of two hundred generates a predictable volume of small requests — a payslip copy, a leave balance, a salary certificate for a loan application, an address correction, last year's Form 16.",
+          "The case for an employee self service portal is usually made in terms of employee experience. The stronger case is arithmetic, and it applies to any employee payroll system with more than a hundred people on it. A company of two hundred generates a predictable volume of small requests, a payslip copy, a leave balance, a salary certificate for a loan application, an address correction, last year's Form 16.",
           "None of these is difficult. Each takes a few minutes, arrives without warning, and interrupts something else. Together they are most of what a small HR team is asked for in a week, and they are all requests for access to information the company already holds about the person asking.",
           "Answering them individually is not a service; it is a queue with a person at the front of it. The portal removes the queue rather than making it faster.",
         ],
@@ -1217,7 +1217,7 @@ export const solutions: Solution[] = [
         heading: "What the portal deliberately does not let an employee do",
         body: [
           "Self-service is only trustworthy if its limits are as clear as its capabilities. An employee can read their own record and everything derived from it. They cannot read anyone else's, beyond the open directory their colleagues share.",
-          "They can apply, declare and request — leave, regularisation, reimbursement, an investment declaration — but applying is not approving. Anything with a financial or policy consequence routes to whoever the record says is responsible for it, and the outcome is written back with its approver and timestamp attached.",
+          "They can apply, declare and request, leave, regularisation, reimbursement, an investment declaration, but applying is not approving. Anything with a financial or policy consequence routes to whoever the record says is responsible for it, and the outcome is written back with its approver and timestamp attached.",
           "They can correct their own details, and the changes that affect a payment are confirmed before they take effect. The point is not to distrust the employee; it is that a bank account changed the night before a salary run is exactly the event a control exists for.",
         ],
       },
@@ -1278,7 +1278,7 @@ export const solutions: Solution[] = [
         {
           term: "Regularise attendance",
           detail:
-            "Raised against a specific day with a reason attached, and routed for approval. The original record is not overwritten — the correction sits alongside it, which is what makes the ledger defensible later.",
+            "Raised against a specific day with a reason attached, and routed for approval. The original record is not overwritten, the correction sits alongside it, which is what makes the ledger defensible later.",
         },
         {
           term: "Update personal details",
@@ -1337,7 +1337,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "Does self-service reduce control over the data?",
-        a: "It narrows it. Employees can read only their own record, and the actions that carry a financial consequence — leave, regularisation, a bank account change — are applications rather than changes. What self-service removes is the informal route where someone asks HR to make an edit on their behalf and no record survives of who requested it.",
+        a: "It narrows it. Employees can read only their own record, and the actions that carry a financial consequence, leave, regularisation, a bank account change, are applications rather than changes. What self-service removes is the informal route where someone asks HR to make an edit on their behalf and no record survives of who requested it.",
       },
       {
         q: "What can a manager do that an employee cannot?",
@@ -1345,10 +1345,10 @@ export const solutions: Solution[] = [
       },
       {
         q: "Is there anything an employee still has to email HR about?",
-        a: "Yes — anything requiring judgement rather than access. A grievance, a policy exception, a request to change a leave rule. The portal is deliberately for the requests that are lookups in disguise, which is most of them by volume and few of them by importance.",
+        a: "Yes, anything requiring judgement rather than access. A grievance, a policy exception, a request to change a leave rule. The portal is deliberately for the requests that are lookups in disguise, which is most of them by volume and few of them by importance.",
       },
       {
-        q: "What happens when an employee leaves — do they lose access to their payslips?",
+        q: "What happens when an employee leaves, do they lose access to their payslips?",
         a: "Access ends with employment, which is why exited employees should download what they need during their notice period. A former employee needing a payslip or Form 16 afterwards requests it from HR, who can still produce it from the retained record.",
       },
       {
@@ -1357,7 +1357,7 @@ export const solutions: Solution[] = [
       },
     ],
     onward: [
-      { label: "Attendance & Shifts", href: "/solutions/attendance", note: "What the app is capturing" },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "What the app is capturing" },
       { label: "Payroll", href: "/solutions/payroll", note: "Where payslips and Form 16 come from" },
       { label: "Leave Management", href: "/solutions/leave-management", note: "The balances employees are checking" },
     ],
@@ -1365,19 +1365,19 @@ export const solutions: Solution[] = [
 
   /* ================================================================= */
   {
-    slug: "onboarding",
-    href: "/solutions/onboarding",
+    slug: "onboarding-and-lifecycle",
+    href: "/solutions/onboarding-and-lifecycle",
     name: "Onboarding & Lifecycle",
     kicker: "Hire to retire",
     title: "The first week sets the tone. The last one sets the reference.",
     standfirst:
       "Onboarding is the visible end of employee lifecycle management, but the same record carries confirmation, transfer, promotion and exit. HRMagix treats all five as stages of one process rather than five unrelated pieces of paperwork.",
-    image: "onboarding",
+    image: "solutions-onboarding",
     icon: "rocket",
     seo: {
       title: "Employee Onboarding Software & Lifecycle Management",
       description:
-        "Employee onboarding software for India: a digital onboarding platform for pre-boarding documents, appointment letters and assets, then confirmation, transfer and exit — employee lifecycle management on one HR onboarding system.",
+        "Employee onboarding software for India: a digital onboarding platform for pre-boarding documents, appointment letters and assets, then confirmation, transfer and exit, employee lifecycle management on one HR onboarding system.",
       keywords: [
         "employee lifecycle management",
         "employee onboarding software",
@@ -1403,7 +1403,7 @@ export const solutions: Solution[] = [
         heading: "Day one, and the record it creates",
         body: [
           "Because the pre-boarding data lands directly on the employee record, day one produces no re-entry. Statutory identifiers are already present, so EPF and ESI applicability is already determined. The compensation structure is already effective-dated from the joining date, so the first payroll run needs no special handling. The leave scheme is already attached, so accrual starts on the right date.",
-          "The department welcome workflow — introductions, systems access, first-week goals — runs on top of a record that is already complete, rather than being the thing that completes it.",
+          "The department welcome workflow, introductions, systems access, first-week goals, runs on top of a record that is already complete, rather than being the thing that completes it.",
         ],
       },
       {
@@ -1423,8 +1423,8 @@ export const solutions: Solution[] = [
       {
         heading: "Probation, and the decision nobody diarised",
         body: [
-          "Probation is a defined period with a decision at the end of it, and the decision is the part that most often goes missing. The period lapses, nobody confirms anything, and the employee is left in an ambiguous status that becomes awkward precisely when it matters — at an increment, or at an exit.",
-          "The mechanism that fixes this is unglamorous: the probation end date is a field on the employee record, and it raises the confirmation decision before it arrives rather than after. The outcome — confirmation, extension with reasons, or separation — is recorded against the record with its date, and any change it triggers, such as eligibility for earned leave, follows from the same event.",
+          "Probation is a defined period with a decision at the end of it, and the decision is the part that most often goes missing. The period lapses, nobody confirms anything, and the employee is left in an ambiguous status that becomes awkward precisely when it matters, at an increment, or at an exit.",
+          "The mechanism that fixes this is unglamorous: the probation end date is a field on the employee record, and it raises the confirmation decision before it arrives rather than after. The outcome, confirmation, extension with reasons, or separation, is recorded against the record with its date, and any change it triggers, such as eligibility for earned leave, follows from the same event.",
           "It is worth being clear that the platform holds the date and the outcome. What the probation period is, how performance is assessed during it, and what an extension requires are the employer's decisions, written into their own policy.",
         ],
       },
@@ -1432,7 +1432,7 @@ export const solutions: Solution[] = [
         heading: "Internal moves are onboarding too",
         body: [
           "A promotion, a transfer between locations and a move between legal entities are all treated in most companies as administrative footnotes, and all three have the same shape as a joining: a new reporting line, a new set of approvals, sometimes a new payroll treatment, and a new set of things the person needs access to.",
-          "Handling them as changes to the existing record rather than as new records is what preserves continuity of service — which is not a technicality, because gratuity eligibility and leave accrual both depend on it. An employee who moves between entities and is recreated has, on paper, started again.",
+          "Handling them as changes to the existing record rather than as new records is what preserves continuity of service, which is not a technicality, because gratuity eligibility and leave accrual both depend on it. An employee who moves between entities and is recreated has, on paper, started again.",
           "The same record therefore carries the history: the grades held, the managers reported to, the locations worked at, and the dates each changed. Tenure is then a fact rather than a reconstruction.",
         ],
       },
@@ -1473,7 +1473,7 @@ export const solutions: Solution[] = [
         {
           step: "05",
           title: "Exit",
-          body: "Notice period, clearance, asset recovery and full-and-final settlement including gratuity where eligible — computed from the same ledger, with documents retained.",
+          body: "Notice period, clearance, asset recovery and full-and-final settlement including gratuity where eligible, computed from the same ledger, with documents retained.",
         },
       ],
     },
@@ -1526,7 +1526,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "How is probation confirmation handled?",
-        a: "The probation end date sits on the employee record and raises the confirmation decision before it lapses. The outcome — confirmed, extended, or separated — is recorded with its date, and anything that follows from it, such as eligibility for earned leave, takes effect from that event. The length of probation and the criteria are the employer's policy, not ours.",
+        a: "The probation end date sits on the employee record and raises the confirmation decision before it lapses. The outcome, confirmed, extended, or separated, is recorded with its date, and anything that follows from it, such as eligibility for earned leave, takes effect from that event. The length of probation and the criteria are the employer's policy, not ours.",
       },
       {
         q: "What happens when an employee is promoted or transferred?",
@@ -1542,13 +1542,13 @@ export const solutions: Solution[] = [
       },
       {
         q: "How long does onboarding take to set up for a company?",
-        a: "The configuration is the checklist itself — which documents are collected, which policies are issued, who clears what — and it is defined once and reused. The work is deciding the sequence, not building it, which is why companies usually start from their existing joining formalities rather than designing a new process.",
+        a: "The configuration is the checklist itself, which documents are collected, which policies are issued, who clears what, and it is defined once and reused. The work is deciding the sequence, not building it, which is why companies usually start from their existing joining formalities rather than designing a new process.",
       },
     ],
     onward: [
       { label: "Employee Management", href: "/solutions/employee-management", note: "Living with the record afterwards" },
       { label: "Payroll", href: "/solutions/payroll", note: "Full-and-final settlement in detail" },
-      { label: "How it works", href: "/how-it-works", note: "Getting your own company on in three steps" },
+      { label: "How Setup Works", href: "/how-setup-works", note: "Getting your own company on in three steps" },
     ],
   },
 
@@ -1561,7 +1561,7 @@ export const solutions: Solution[] = [
     title: "The numbers a board asks for, without a week of collation",
     standfirst:
       "Because every module writes to one record, workforce reporting is a read rather than a project. Headcount, attrition risk, overtime cost, leave utilisation and payroll variance come from the data that is already there.",
-    image: "analytics",
+    image: "solutions-hr-analytics",
     icon: "chart",
     seo: {
       title: "HR Analytics Software & Workforce Reporting",
@@ -1576,7 +1576,7 @@ export const solutions: Solution[] = [
       focus: "HR analytics software",
     },
     opening: [
-      "Most HR reporting is not analysis. It is collation — pulling headcount from one place, resignations from another, overtime from a third, and reconciling the three before anyone can look at them. HR analytics software earns its place by removing that step rather than by drawing better charts.",
+      "Most HR reporting is not analysis. It is collation, pulling headcount from one place, resignations from another, overtime from a third, and reconciling the three before anyone can look at them. HR analytics software earns its place by removing that step rather than by drawing better charts.",
       "By the time the numbers agree, the month they describe is over. The value of analytics in an integrated platform is not that the charts are better. It is that the collation step does not exist, so the question can be asked on a Tuesday and answered on a Tuesday.",
     ],
     passages: [
@@ -1584,7 +1584,7 @@ export const solutions: Solution[] = [
         heading: "What is worth watching monthly",
         body: [
           "Headcount growth, department distribution and gender diversity describe the shape of the workforce. Tenure analysis and early-warning attrition risk indicators describe its stability. Overtime expense, leave utilisation rates and payroll budget variance describe what it costs.",
-          "None of these are useful in isolation. Overtime rising in one department while attrition risk rises in the same department is a different story from either on its own — and that comparison is only possible because both come from the same record.",
+          "None of these are useful in isolation. Overtime rising in one department while attrition risk rises in the same department is a different story from either on its own, and that comparison is only possible because both come from the same record.",
         ],
       },
       {
@@ -1759,6 +1759,10 @@ export const solutions: Solution[] = [
         q: "Does analytics expose data a manager should not see?",
         a: "Visibility follows the same role permissions as the rest of the platform. A department head sees their own department; salary components are visible only to roles that already have payroll access. Analytics does not create a side door into records the same user could not open directly.",
       },
+      {
+        q: "How is headcount counted for people serving notice or on leave?",
+        a: "Headcount is the number of active employee records at the moment of reading, including those on approved leave. People serving notice are counted until their last working day, which is why it can differ from a payroll count during a notice period.",
+      },
     ],
     onward: [
       { label: "HRMS", href: "/solutions/hrms", note: "The record these reports read" },
@@ -1776,12 +1780,12 @@ export const solutionGroups = [
     title: "Core HR",
     blurb:
       "The employee record, and the workflows that keep it accurate from the offer letter to the final settlement.",
-    slugs: ["hrms", "employee-management", "onboarding", "ess"],
+    slugs: ["hrms", "employee-management", "onboarding-and-lifecycle", "employee-self-service"],
   },
   {
     title: "Time & Pay",
     blurb:
-      "Hours captured, leave resolved, salary calculated and statutory filings produced — as one continuous chain rather than four handovers.",
-    slugs: ["payroll", "attendance", "leave-management", "hr-analytics"],
+      "Hours captured, leave resolved, salary calculated and statutory filings produced, as one continuous chain rather than four handovers.",
+    slugs: ["payroll", "attendance-and-shifts", "leave-management", "hr-analytics"],
   },
 ];

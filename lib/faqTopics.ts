@@ -28,7 +28,7 @@ export const faqTopics: FaqTopic[] = [
     links: [
       { label: "Payroll", href: "/solutions/payroll" },
       { label: "Payroll feature", href: "/features/payroll" },
-      { label: "Salary calculator", href: "/calculators/salary" },
+      { label: "Salary Calculator", href: "/calculators/salary" },
     ],
   },
   {
@@ -38,8 +38,8 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["epf", "pf", "esi", "professional tax", "pt", "lwf", "labour welfare", "tds", "form 16", "form 24q", "gratuity", "ecr", "section 192", "statutory"],
     links: [
       { label: "Compliance", href: "/solutions/compliance" },
-      { label: "PF calculator", href: "/calculators/pf" },
-      { label: "Gratuity calculator", href: "/calculators/gratuity" },
+      { label: "PF Calculator", href: "/calculators/pf" },
+      { label: "Gratuity Calculator", href: "/calculators/gratuity" },
     ],
   },
   {
@@ -48,8 +48,8 @@ export const faqTopics: FaqTopic[] = [
     intro: "Capturing attendance by biometric, mobile or kiosk, shift rotations, night shifts, overtime and regularisation.",
     phrases: ["attendance", "shift", "punch", "biometric", "geo", "overtime", "late", "kiosk", "regularis"],
     links: [
-      { label: "Attendance & Shifts", href: "/solutions/attendance" },
-      { label: "Attendance feature", href: "/features/attendance" },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
+      { label: "Attendance & Shifts", href: "/features/attendance" },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["leave", "holiday", "comp-off", "sandwich", "accrual", "carry"],
     links: [
       { label: "Leave Management", href: "/solutions/leave-management" },
-      { label: "Leaves feature", href: "/features/leaves" },
+      { label: "Leaves & Holidays", href: "/features/leaves" },
     ],
   },
   {
@@ -68,8 +68,8 @@ export const faqTopics: FaqTopic[] = [
     intro: "OKRs, KRAs, review cycles, calibration, the 9-box, PIPs, 1-on-1s and recognition.",
     phrases: ["okr", "kra", "review", "rating", "calibration", "9-box", "pip", "1-on-1", "recognition", "goal", "performance"],
     links: [
-      { label: "Performance & OKRs", href: "/solutions/performance" },
-      { label: "OKRs feature", href: "/features/okrs" },
+      { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
+      { label: "Objectives & OKRs", href: "/features/okrs" },
     ],
   },
   {
@@ -78,7 +78,7 @@ export const faqTopics: FaqTopic[] = [
     intro: "Onboarding, probation, confirmation, transfers, documents, exits and full and final settlement.",
     phrases: ["onboarding", "joining", "probation", "confirmation", "transfer", "exit", "resign", "notice", "full and final", "document", "offboarding"],
     links: [
-      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+      { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
       { label: "Employee Management", href: "/solutions/employee-management" },
     ],
   },
@@ -88,17 +88,17 @@ export const faqTopics: FaqTopic[] = [
     intro: "What employees and managers can do themselves, on the web and on a phone.",
     phrases: ["self-service", "self service", "mobile", "phone", "app", "portal", "employee can", "manager"],
     links: [
-      { label: "Employee Self-Service", href: "/solutions/ess" },
+      { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
     ],
   },
   {
     slug: "reports-and-analytics",
     name: "Reports & analytics",
-    intro: "Headcount, attrition, overtime, leave utilisation and payroll cost — and who can see what.",
+    intro: "Headcount, attrition, overtime, leave utilisation and payroll cost, and who can see what.",
     phrases: ["report", "analytics", "attrition", "headcount", "dashboard", "cost"],
     links: [
       { label: "HR Analytics", href: "/solutions/hr-analytics" },
-      { label: "Payroll cost calculator", href: "/calculators/payroll-cost" },
+      { label: "Payroll Cost Calculator", href: "/calculators/payroll-cost" },
     ],
   },
   {
@@ -107,8 +107,8 @@ export const faqTopics: FaqTopic[] = [
     intro: "Implementation, migrating from Excel, multiple entities, hosting, access control and leaving the platform.",
     phrases: ["implementation", "setup", "migrat", "excel", "import", "entity", "entities", "hosted", "security", "data", "access", "sso", "trial", "plan", "pricing"],
     links: [
-      { label: "How it works", href: "/how-it-works" },
-      { label: "Security", href: "/policy/security" },
+      { label: "How Setup Works", href: "/how-setup-works" },
+      { label: "Security", href: "/policy-centre/security" },
       { label: "Pricing", href: "/pricing" },
     ],
   },

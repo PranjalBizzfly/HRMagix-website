@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import { Onward } from "@/components/editorial";
 import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import OnThisPage from "@/components/OnThisPage";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Best HRMS Software Comparison — Integrated HRMS vs Point Tools vs Spreadsheets",
+  title: "HRMS Comparison: Integrated HRMS vs Point Tools vs Spreadsheets",
   description:
     "A best HRMS software comparison: integrated HRMS vs point tools vs spreadsheets, and what to check in the best payroll software and top payroll software lists before choosing the best HRMS and payroll software in India.",
   keywords: [
@@ -19,13 +21,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/resources/hrms-comparison" },
   openGraph: {
-    title: "Integrated HRMS vs Point Tools vs Spreadsheets · HRMagix",
+    title: "HRMS Comparison: Integrated HRMS vs Point Tools vs Spreadsheets · HRMagix",
     description:
       "Three approaches compared on the properties that decide the outcome: where the record lives, how data moves, and what can be proved later.",
     url: "/resources/hrms-comparison",
     siteName: "HRMagix",
     type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],
   },
 };
 
@@ -60,7 +62,7 @@ const rows: {
       { verdict: "good", note: "Once, read by every workflow" },
     ],
     explain: [
-      "This is the property everything else follows from. With spreadsheets there is no single record — there is a joining sheet, a leave tracker and a payroll file, and each is authoritative for its own purpose until they disagree.",
+      "This is the property everything else follows from. With spreadsheets there is no single record, there is a joining sheet, a leave tracker and a payroll file, and each is authoritative for its own purpose until they disagree.",
       "Point tools improve on this by giving each domain a proper system, but the employee now exists three times. Keeping the copies in step becomes a monthly task, and the export is where errors enter.",
       "An integrated HRMS holds one record that attendance, leave, payroll and performance all read from. Nothing is re-keyed because there is nowhere to re-key it to.",
     ],
@@ -110,7 +112,7 @@ const rows: {
     ],
     explain: [
       "An inspection, a dispute or a diligence exercise asks what the position was on a specific date, not what it is now. That is a different question, and only a system that records when a change took effect can answer it.",
-      "A spreadsheet edited in place cannot answer it at all — not because the data is gone, but because the file only knows its current state.",
+      "A spreadsheet edited in place cannot answer it at all, not because the data is gone, but because the file only knows its current state.",
     ],
   },
   {
@@ -140,13 +142,13 @@ const rows: {
   {
     criterion: "Setup effort and immediate cost",
     cells: [
-      { verdict: "good", note: "None — it already exists" },
+      { verdict: "good", note: "None, it already exists" },
       { verdict: "mixed", note: "Per tool, and they accumulate" },
       { verdict: "mixed", note: "One configuration exercise" },
     ],
     explain: [
       "This is the row where spreadsheets genuinely win, and it is why almost every company starts there. There is no procurement, no configuration and no licence.",
-      "It is a real advantage for a real period. The question is not whether spreadsheets are wrong in principle — it is when the cost of the reconciliation exceeds the cost of the system.",
+      "It is a real advantage for a real period. The question is not whether spreadsheets are wrong in principle, it is when the cost of the reconciliation exceeds the cost of the system.",
     ],
   },
   {
@@ -170,7 +172,7 @@ const rows: {
     ],
     explain: [
       "A second legal entity brings its own provident fund code, its own professional tax registrations and its own returns, while people continue to move between the two.",
-      "The property that matters is whether a transfer preserves continuity of service. Recreating somebody in a second system means that, on paper, they started again — and gratuity eligibility and leave accrual both count from the original date of joining.",
+      "The property that matters is whether a transfer preserves continuity of service. Recreating somebody in a second system means that, on paper, they started again, and gratuity eligibility and leave accrual both count from the original date of joining.",
     ],
   },
 ];
@@ -186,14 +188,27 @@ export default function ComparisonPage() {
     <>
       <OnThisPage exclude={["Talk it through"]} />
 
-      <header className="page-hero border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="hrms-comparison-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
                 { label: "Resources", href: "/resources" },
-                { label: "HRMS comparison" },
+                { label: "HRMS Comparison" },
               ]}
             />
           </Reveal>
@@ -203,7 +218,7 @@ export default function ComparisonPage() {
             </h1>
             <p className="mt-7 text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
               Three ways of running HR, compared on the structural properties that decide how each
-              behaves — not on feature counts. Spreadsheets win a row outright and are the right
+              behaves, not on feature counts. Spreadsheets win a row outright and are the right
               answer for a genuinely small team; the comparison says so, because one that found
               against them everywhere would not be a comparison.
             </p>
@@ -342,7 +357,7 @@ export default function ComparisonPage() {
               </h3>
               <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 If the answer is a named person in the last week of the month, that reconciliation is
-                the system — and it is being performed by someone who could be doing something else.
+                the system, and it is being performed by someone who could be doing something else.
               </p>
             </section>
 
@@ -376,7 +391,7 @@ export default function ComparisonPage() {
               <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Under about ten people, with no statutory registrations yet and everyone visible to
                 everyone, the reconciliation cost is genuinely lower than the cost of running a
-                system. Move when obligations with fixed dates arrive — not because a spreadsheet is
+                system. Move when obligations with fixed dates arrive, not because a spreadsheet is
                 embarrassing.
               </p>
             </section>
@@ -390,7 +405,7 @@ export default function ComparisonPage() {
       >
         <div className="flex flex-wrap justify-center gap-3">
           <div className="contents">
-            <Button href="/company/contact">Book a demo</Button>
+            <Button href="/company/contact-hrmagix">Book a demo</Button>
             <Button href="/pricing" variant="outline">
               See pricing
             </Button>
@@ -402,14 +417,14 @@ export default function ComparisonPage() {
       <Block
         eyebrow="Before you switch"
         title="Why a new HR system fails in its first 90 days"
-        intro="Whichever system you choose, the reasons companies abandon one are remarkably consistent — and the stated reason is rarely the real one."
+        intro="Whichever system you choose, the reasons companies abandon one are remarkably consistent, and the stated reason is rarely the real one."
         ground="sunken"
       >
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {[
             ["“Too expensive”", "The system was never fully set up, so its value was never experienced.", "Get to the first live payroll quickly; cost is judged against value delivered."],
             ["“Too complicated”", "It was configured by one person, alone, without guidance.", "Plan setup with the vendor, and work through it in order."],
-            ["“It’s missing a feature”", "Sometimes true — often the feature exists and was never found.", "Ask the vendor directly before deciding it is missing."],
+            ["“It’s missing a feature”", "Sometimes true, often the feature exists and was never found.", "Ask the vendor directly before deciding it is missing."],
             ["“Our HR person left”", "Only one administrator ever knew how it worked.", "Name at least two administrators from the start."],
             ["“We went back to spreadsheets”", "Employees never adopted self-service, so HR kept doing it by hand.", "Launch self-service to employees deliberately, with managers on board."],
             ["It quietly lapsed", "Nobody noticed the account had stopped being used.", "Check usage in the first months, not at renewal."],
@@ -429,6 +444,8 @@ export default function ComparisonPage() {
         </div>
       </Block>
 
+      <FaqSection items={resourcesFaqs["/resources/hrms-comparison"]} ground="canvas" />
+
       <Onward
         links={[
           {
@@ -438,7 +455,7 @@ export default function ComparisonPage() {
           },
           {
             label: "First payroll run",
-            href: "/resources/guides/first-payroll-run",
+            href: "/resources/hr-guides/first-payroll-run",
             note: "The guide for actually making the move, including the parallel month.",
           },
           {

@@ -100,14 +100,14 @@ export const policyRegister: PolicyGroup[] = [
         name: "Attendance Policy",
         covers:
           "How presence is recorded, what constitutes a full and a half working day, and the process for regularising a missed or disputed record.",
-        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
       },
       {
         code: "HRMAGIX001",
         name: "Late Coming Policy",
         covers:
           "How late arrival is measured against the shift start, how a grace allowance operates where one is granted, and the consequence of repeated lateness.",
-        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
       },
       {
         code: "HRMAGIX003",
@@ -128,7 +128,7 @@ export const policyRegister: PolicyGroup[] = [
         name: "Work From Home Policy",
         covers:
           "When remote working is available, how it is requested and approved, and the obligations that continue to apply while working away from an office.",
-        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
       },
       {
         code: "HRMAGIX023",
@@ -147,7 +147,7 @@ export const policyRegister: PolicyGroup[] = [
         name: "Time and Work Tracking Software Policy",
         covers:
           "The employee's obligations in relation to the systems used to record time and work, and how the resulting records are treated.",
-        enforcedBy: { label: "Employee Self-Service", href: "/solutions/ess" },
+        enforcedBy: { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
       },
     ],
   },
@@ -161,7 +161,7 @@ export const policyRegister: PolicyGroup[] = [
         name: "Employee Probationary Period Policy",
         covers:
           "The purpose and duration of probation, how performance is assessed during it, and how confirmation or its refusal is communicated.",
-        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
       },
       {
         code: "HRMAGIX017",
@@ -202,21 +202,21 @@ export const policyRegister: PolicyGroup[] = [
   {
     title: "Separation",
     intro:
-      "The policies that apply when the relationship ends — the group most often missing from a policy set, and the one most often needed at short notice.",
+      "The policies that apply when the relationship ends, the group most often missing from a policy set, and the one most often needed at short notice.",
     entries: [
       {
         code: "HRMAGIX004",
         name: "Employee Resignation Policy",
         covers:
           "How a resignation is tendered and acknowledged, and the sequence of clearance, handover and settlement that follows it.",
-        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
       },
       {
         code: "HRMAGIX008",
         name: "Notice Period Policy",
         covers:
           "The notice obligation on each side, how it is served, and how it interacts with leave and the final working day.",
-        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+        enforcedBy: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
       },
       {
         code: "HRMAGIX019",
@@ -236,7 +236,7 @@ export const policyRegister: PolicyGroup[] = [
         name: "Employee Absconding Policy",
         covers:
           "How unexplained absence is treated, the attempts at contact that must be made, and the point at which employment is deemed to have ended.",
-        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+        enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
       },
     ],
   },
@@ -247,8 +247,8 @@ export const policyCount = policyRegister.reduce((n, g) => n + g.entries.length,
 /** How the register is meant to be used, stated on the page itself. */
 export const registerNotes = {
   what: [
-    "These twenty-five templates — a code of conduct and twenty-four policies — are templates, not HRMagix's own staff handbook. They ship inside the Documents module so that a customer can issue them to their own employees, collect acknowledgement, and prove later that it was collected.",
-    "Each employer writes the operative rules into their own copy — the notice period length, the grace window, the increment cycle. This page describes only what subject each policy governs, because publishing a specific rule here would be putting words into an employer's mouth.",
+    "These twenty-five templates, a code of conduct and twenty-four policies, are templates, not HRMagix's own staff handbook. They ship inside the Documents module so that a customer can issue them to their own employees, collect acknowledgement, and prove later that it was collected.",
+    "Each employer writes the operative rules into their own copy, the notice period length, the grace window, the increment cycle. This page describes only what subject each policy governs, because publishing a specific rule here would be putting words into an employer's mouth.",
   ],
   how: [
     {
@@ -288,12 +288,12 @@ export type LegalPage = {
 
 export const legalPages: LegalPage[] = [
   {
-    slug: "privacy",
-    href: "/policy/privacy",
+    slug: "privacy-policy",
+    href: "/policy-centre/privacy-policy",
     name: "Privacy Policy",
     title: "What we hold, why we hold it, and for how long",
     standfirst:
-      "HRMagix processes employee data on behalf of the companies that subscribe to it. This page separates what we do as a controller of our own website visitors from what we do as a processor of a customer's employee records — because the obligations are different.",
+      "HRMagix processes employee data on behalf of the companies that subscribe to it. This page separates what we do as a controller of our own website visitors from what we do as a processor of a customer's employee records, because the obligations are different.",
     seo: {
       title: "Privacy Policy",
       description:
@@ -310,7 +310,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "What we collect from website visitors",
         body: [
-          "If you submit an enquiry or request a demo, we collect what you type into the form — typically a name, a work email address, a phone number, a company name and whatever you tell us about your requirement — so that a member of the team can respond.",
+          "If you submit an enquiry or request a demo, we collect what you type into the form, typically a name, a work email address, a phone number, a company name and whatever you tell us about your requirement, so that a member of the team can respond.",
         ],
         list: [
           "Contact details you provide in an enquiry or demo request",
@@ -336,7 +336,7 @@ export const legalPages: LegalPage[] = [
         heading: "How long it is kept",
         body: [
           "Enquiry correspondence is kept for as long as it is useful to the conversation it belongs to, and then removed.",
-          "Employee records are retained for as long as the subscribing company requires them — which, for statutory reasons, extends beyond the end of an individual's employment. Retention of a customer's data is the customer's decision, exercised through the platform.",
+          "Employee records are retained for as long as the subscribing company requires them, which, for statutory reasons, extends beyond the end of an individual's employment. Retention of a customer's data is the customer's decision, exercised through the platform.",
         ],
       },
       {
@@ -355,8 +355,8 @@ export const legalPages: LegalPage[] = [
     ],
   },
   {
-    slug: "terms",
-    href: "/policy/terms",
+    slug: "terms-of-service",
+    href: "/policy-centre/terms-of-service",
     name: "Terms of Service",
     title: "The agreement behind a subscription",
     standfirst:
@@ -384,7 +384,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "Where statutory responsibility sits",
         body: [
-          "This is the clause that matters most and is most often glossed over. HRMagix calculates statutory deductions and produces filing-ready output — the ECR file, the ESIC contribution return, the Professional Tax working, Form 24Q and Form 16 Part B.",
+          "This is the clause that matters most and is most often glossed over. HRMagix calculates statutory deductions and produces filing-ready output, the ECR file, the ESIC contribution return, the Professional Tax working, Form 24Q and Form 16 Part B.",
           "The legal obligation to file, to pay and to be correct remains the employer's. The platform is configured with your structures, your locations and your declarations; where those are wrong, the output follows them. We will help you get them right, and we do not become your employer of record by doing so.",
         ],
       },
@@ -405,7 +405,7 @@ export const legalPages: LegalPage[] = [
         heading: "Trial, billing and cancellation",
         body: [
           "A fourteen-day trial provides full access with no setup fee. After that, subscriptions are billed per employee per month against the plan selected.",
-          "You may cancel. On cancellation, arrange your data export before access ends — your records are yours, and the practical time to take them is while you can still log in.",
+          "You may cancel. On cancellation, arrange your data export before access ends, your records are yours, and the practical time to take them is while you can still log in.",
         ],
       },
       {
@@ -418,7 +418,7 @@ export const legalPages: LegalPage[] = [
   },
   {
     slug: "security",
-    href: "/policy/security",
+    href: "/policy-centre/security",
     name: "Security",
     title: "Hosting, encryption, access and the trail everything leaves",
     standfirst:
@@ -475,8 +475,8 @@ export const legalPages: LegalPage[] = [
     ],
   },
   {
-    slug: "cookies",
-    href: "/policy/cookies",
+    slug: "cookie-policy",
+    href: "/policy-centre/cookie-policy",
     name: "Cookie Policy",
     title: "What this website stores in your browser",
     standfirst:
@@ -513,7 +513,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "How to remove any of it",
         body: [
-          "Clearing site data for this domain removes all three, and the site continues to work — it simply reverts to following your system appearance and shows the call-to-action bar again. No functionality depends on any of these values existing.",
+          "Clearing site data for this domain removes all three, and the site continues to work, it simply reverts to following your system appearance and shows the call-to-action bar again. No functionality depends on any of these values existing.",
           "If you have added custom policy PDFs and clear site data, those files are deleted along with everything else, because your browser is the only place they were ever held.",
         ],
       },

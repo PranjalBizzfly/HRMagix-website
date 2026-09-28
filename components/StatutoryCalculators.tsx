@@ -233,7 +233,7 @@ function SalaryBreakup() {
         {!result ? (
           <EmptyState
             title="Enter a valid salary to see the breakup"
-            body="Both fields need a number before anything can be calculated. Nothing is estimated here — if a figure cannot be computed, it is not shown."
+            body="Both fields need a number before anything can be calculated. Nothing is estimated here, if a figure cannot be computed, it is not shown."
             errors={[grossError, basicError].filter((e): e is string => Boolean(e))}
           />
         ) : (
@@ -250,7 +250,7 @@ function SalaryBreakup() {
               <Row
                 term="Employee PF contribution"
                 value={`− ${inr(result.employeePf)}`}
-                note={`12% of ${inr(result.pfBase)}${result.ceilingBit ? " — ceiling applied" : ""}`}
+                note={`12% of ${inr(result.pfBase)}${result.ceilingBit ? ", ceiling applied" : ""}`}
               />
               <Row
                 term="Employee ESI contribution"
@@ -270,7 +270,7 @@ function SalaryBreakup() {
               <Row
                 term="Take-home before income tax"
                 value={inr(result.netBeforeTax)}
-                note="Excludes TDS, Professional Tax and LWF — see the note below"
+                note="Excludes TDS, Professional Tax and LWF, see the note below"
                 emphasis
               />
             </dl>
@@ -593,7 +593,7 @@ function Caveat({ gratuity = false }: { gratuity?: boolean }) {
               </strong>{" "}
               TDS under Section 192 depends on the employee&rsquo;s election between the old and new
               regimes and on their declarations, so a figure here would mislead. Professional Tax and
-              LWF are state subjects with different slabs and periodicity — in Maharashtra, for
+              LWF are state subjects with different slabs and periodicity, in Maharashtra, for
               instance, PT carries a different amount in one month of the year. All three are
               calculated inside a real HRMagix payroll run against your actual locations and
               declarations.

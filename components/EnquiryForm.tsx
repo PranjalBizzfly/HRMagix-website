@@ -5,32 +5,24 @@ import { site } from "@/lib/content";
 import { SubmitButton } from "./ui";
 import { SuccessState } from "./states";
 import { Icon } from "./icons";
+import type { CountryCode } from "libphonenumber-js/min";
+import PhoneInput from "./PhoneInput";
+import { checkEmail, checkName, checkPhone, checkUrl, failureMessage, submitForm, type FormKind } from "@/lib/forms";
 
 /**
  * A configurable enquiry form, used by Careers and by Vendor & Partners.
  *
- * HOW IT SUBMITS, STATED HONESTLY.
- *
- * HRMagix publishes no application portal and no supplier registration system,
- * and this site has no backend. Rather than pretend otherwise, the form
- * validates in the browser and then hands a fully composed message to the
- * visitor's own mail client, addressed to the published team address.
- *
- * That is a real, working path — the message reaches the same inbox a direct
- * email would — but it is not a submission to a server, so the success state
- * says exactly what happened ("we handed it to your mail app") and the address
- * is shown as a fallback for anyone without a mail client configured.
- *
- * Fields are declared by the caller so Careers can ask what someone wants to
- * work on while Vendor asks what they supply, without either page inheriting a
- * generic "how can we help" box.
+ * Validates in the browser, then posts to /api/forms (the same rules run on
+ * the server). The success state appears only when the server confirms the
+ * message was delivered; any failure is shown with the team address as a
+ * direct fallback. Fields are declared by the caller.
  */
 
 export type FieldDef = {
   name: string;
   label: string;
   /** Long-form answers get a textarea. */
-  type?: "text" | "email" | "url" | "textarea";
+  type?: "text" | "email" | "url" | "tel" | "textarea";
   placeholder?: string;
   required?: boolean;
   /** Guidance shown under the field. */
@@ -40,12 +32,15 @@ export type FieldDef = {
 };
 
 export default function EnquiryForm({
+  form,
   fields,
   subject,
   submitLabel,
   intro,
   successTitle,
 }: {
+  /** Which server-side rule set and inbox label this form uses. */
+  form: Extract<FormKind, "careers" | "vendor">;
   fields: FieldDef[];
   /** Prefills the mail subject so the recipient can triage. */
   subject: string;
@@ -56,6 +51,10 @@ export default function EnquiryForm({
   const [values, setValues] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failure, setFailure] = useState("");
+  const [hp, setHp] = useState("");
+  const [country, setCountry] = useState<CountryCode>("IN");
 
   const set = (name: string) => (value: string) => {
     setValues((v) => ({ ...v, [name]: value }));
@@ -67,26 +66,33 @@ export default function EnquiryForm({
     });
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (busy) return;
 
     const next: Record<string, string> = {};
+    const out: Record<string, string> = {};
     for (const f of fields) {
       const raw = (values[f.name] ?? "").trim();
       if (f.required && !raw) {
-        next[f.name] = `${f.label} is required`;
+        next[f.name] = `${f.label} is required.`;
         continue;
       }
       if (!raw) continue;
-      if (f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw)) {
-        next[f.name] = "Enter a valid email address";
-      }
-      if (f.type === "url" && !/^https?:\/\/\S+\.\S+/.test(raw)) {
-        next[f.name] = "Enter a full URL, starting with https://";
-      }
+      let err: string | undefined;
+      if (f.type === "email") err = checkEmail(raw);
+      else if (f.type === "url") err = checkUrl(raw);
+      else if (f.type === "tel") {
+        const p = checkPhone(raw, country);
+        err = p.error;
+        if (p.e164) out[f.name] = p.e164;
+      } else if (f.name === "name") err = checkName(raw);
+      if (err) next[f.name] = err;
+      else if (!out[f.name]) out[f.name] = raw;
     }
 
     setErrors(next);
+    setFailure("");
     if (Object.keys(next).length) {
       // Move focus to the first field in error so the message is announced.
       const first = fields.find((f) => next[f.name]);
@@ -94,18 +100,15 @@ export default function EnquiryForm({
       return;
     }
 
-    const body = fields
-      .map((f) => {
-        const raw = (values[f.name] ?? "").trim();
-        return raw ? `${f.label}:\n${raw}` : null;
-      })
-      .filter(Boolean)
-      .join("\n\n");
-
-    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setBusy(true);
+    const result = await submitForm(form, { ...out, _hp: hp }, { subject });
+    setBusy(false);
+    if (result.ok) {
+      setSent(true);
+      return;
+    }
+    if (result.fields) setErrors(result.fields);
+    setFailure(failureMessage(result.reason));
   };
 
   if (sent) {
@@ -114,15 +117,14 @@ export default function EnquiryForm({
         title={successTitle}
         body={
           <>
-            We handed it to your mail app, addressed to{" "}
+            It has reached our team, and we will reply to the email you gave. To add anything, write to{" "}
             <a
               href={`mailto:${site.contact.email}`}
               className="font-semibold text-accent underline-offset-2 hover:underline"
             >
               {site.contact.email}
             </a>
-            . If nothing opened, your device may not have a mail client set up — write to that
-            address directly and the message reaches the same place.
+            .
           </>
         }
       />
@@ -130,7 +132,17 @@ export default function EnquiryForm({
   }
 
   return (
-    <form noValidate onSubmit={onSubmit} className="grid gap-5">
+    <form noValidate onSubmit={onSubmit} className="relative grid gap-5" aria-busy={busy || undefined}>
+      <input
+        type="text"
+        name="website"
+        value={hp}
+        onChange={(e) => setHp(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+      />
       {intro && (
         <p className="flex items-start gap-3 rounded-xl bg-surface-sunken p-4 text-[14px] leading-[1.65] text-muted ring-1 ring-line">
           <Icon name="mail" className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />
@@ -149,7 +161,8 @@ export default function EnquiryForm({
             value: values[f.name] ?? "",
             "aria-invalid": Boolean(error) || undefined,
             "aria-describedby": describedBy,
-            placeholder: f.placeholder,
+            placeholder: f.placeholder ?? defaultPlaceholder(f),
+            "aria-required": f.required || undefined,
             className: `w-full rounded-xl bg-surface-field px-4 py-3.5 text-[15px] text-heading outline-none ring-1 transition-colors placeholder:text-subtle focus:ring-2 ${
               error ? "ring-danger" : "ring-line focus:ring-brand"
             }`,
@@ -163,7 +176,18 @@ export default function EnquiryForm({
               </label>
 
               <div className="mt-2.5">
-                {f.type === "textarea" ? (
+                {f.type === "tel" ? (
+                  <PhoneInput
+                    id={id}
+                    country={country}
+                    onCountryChange={setCountry}
+                    value={values[f.name] ?? ""}
+                    onChange={set(f.name)}
+                    invalid={Boolean(error)}
+                    describedBy={describedBy}
+                    inputClassName={shared.className}
+                  />
+                ) : f.type === "textarea" ? (
                   <textarea
                     {...shared}
                     rows={5}
@@ -200,13 +224,31 @@ export default function EnquiryForm({
       </div>
 
       <div className="mt-2">
-        <SubmitButton loadingLabel="Opening your mail app…">{submitLabel}</SubmitButton>
+        <SubmitButton loading={busy} loadingLabel="Sending…">{submitLabel}</SubmitButton>
       </div>
 
-      <p className="text-[12.5px] leading-relaxed text-subtle">
-        This opens a pre-filled message in your own mail app rather than posting to a server — there
-        is no application portal behind it. Nothing is stored on this website.
-      </p>
+      <div aria-live="assertive">
+        {failure && (
+          <p role="alert" className="rounded-xl bg-danger-soft px-4 py-3 text-[13.5px] font-medium text-danger">
+            {failure}{" "}
+            <a href={`mailto:${site.contact.email}`} className="underline underline-offset-2">
+              {site.contact.email}
+            </a>
+          </p>
+        )}
+      </div>
+
     </form>
   );
+}
+
+/** A clear example for any field the caller did not give a placeholder. */
+function defaultPlaceholder(f: FieldDef): string {
+  if (f.type === "email") return "you@company.com";
+  if (f.type === "url") return "https://";
+  if (f.type === "tel") return "98765 43210";
+  if (f.name === "name") return "Priya Sharma";
+  if (f.name === "company") return "Your company name";
+  if (f.name === "location") return "City, country";
+  return `${f.label}`;
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, CtaBand, Block } from "@/components/sky9";
+import { SiteStats, CtaBand, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import Link from "next/link";
 import { industries } from "@/lib/industries";
 import { Opening, Statement } from "@/components/editorial";
@@ -10,9 +11,9 @@ import Photo from "@/components/Photo";
 import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
-  title: "Industries — HR & Payroll by Company Type",
+  title: "Industries: HR & Payroll by Company Type",
   description:
-    "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services — the same platform, matched to how each workforce is actually paid.",
+    "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services, the same platform, matched to how each workforce is actually paid.",
   keywords: [
 
   ],
@@ -32,7 +33,19 @@ export default function IndustriesHub() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="industries-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -57,7 +70,7 @@ export default function IndustriesHub() {
           </h1>
           <p className="mt-8 max-w-2xl text-[18px] leading-[1.65] text-body sm:text-[19.5px]">
             Every company on this page has the same statutory obligations. What differs is where the
-            difficulty sits — and therefore which module is worth switching on first.
+            difficulty sits, and therefore which module is worth switching on first.
           </p>
         </div>
       </header>
@@ -107,7 +120,7 @@ export default function IndustriesHub() {
                 </p>
                 <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-body">
                   <span className="font-semibold text-heading">{industry.priority[0].module}</span>{" "}
-                  — {industry.priority[0].why}
+                 , {industry.priority[0].why}
                 </p>
 
                 <Link
@@ -197,18 +210,21 @@ export default function IndustriesHub() {
       <Block eyebrow="Not sure?" title="Not on this list, or somewhere between two of them?" ground="sunken">
         <div className="card mx-auto max-w-3xl p-6 text-center sm:p-8">
           <p className="text-[16.5px] leading-[1.7] text-muted">
-            Most companies are. The configuration questions that matter — how many states, how
-            many entities, whether any part of the workforce runs shifts — cut across sectors
+            Most companies are. The configuration questions that matter, how many states, how
+            many entities, whether any part of the workforce runs shifts, cut across sectors
             entirely. A short conversation settles it faster than another page would.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Button href="/company/contact">Talk to the team</Button>
+            <Button href="/company/contact-hrmagix">Talk to the team</Button>
             <Button href="/solutions" variant="outline">
               Browse solutions
             </Button>
           </div>
         </div>
       </Block>
+      {/* ---- Questions ---- */}
+      <FaqSection title="Questions about industries" items={marketingFaqs["/industries"]} ground="canvas" />
+
       <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />
     </>
   );

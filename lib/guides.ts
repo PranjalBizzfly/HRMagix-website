@@ -58,7 +58,7 @@ export const guides: Guide[] = [
     number: "01",
     title: "Running your first payroll in a new system",
     audience:
-      "Whoever has been handed payroll at a company moving off spreadsheets — often a finance or operations lead rather than an HR specialist.",
+      "Whoever has been handed payroll at a company moving off spreadsheets, often a finance or operations lead rather than an HR specialist.",
     outcome:
       "Sequence the switch, know which data must be right before the first run, and understand why a parallel month is worth the effort.",
     minutes: 12,
@@ -69,7 +69,7 @@ export const guides: Guide[] = [
       keywords: [],
     },
     opening: [
-      "The hard part of a first payroll run is almost never the calculation. It is establishing what is true — which salary structure a person is actually on, which identifiers are correct, and what the previous system has already reported to the government on your behalf.",
+      "The hard part of a first payroll run is almost never the calculation. It is establishing what is true, which salary structure a person is actually on, which identifiers are correct, and what the previous system has already reported to the government on your behalf.",
       "This guide runs in the order the work runs. If you are switching at the start of a financial year, chapters four and five get considerably shorter; everyone else should read them carefully.",
     ],
     chapters: [
@@ -92,7 +92,7 @@ export const guides: Guide[] = [
           style: "bullet",
           items: [
             "Full name as it appears on statutory records, not as colleagues use it",
-            "Date of joining — the field gratuity eligibility and leave accrual both count from",
+            "Date of joining, the field gratuity eligibility and leave accrual both count from",
             "Department, location and reporting line, since approvals route by the last of these",
             "Salary structure by grade: basic, allowances, and which components sit inside the gross",
             "Statutory identifiers: UAN, ESIC number where applicable, PAN, and the bank account",
@@ -121,7 +121,7 @@ export const guides: Guide[] = [
         title: "Carry the year-to-date figures across",
         body: [
           "If you are switching mid-year, this is the chapter that determines whether your annual certificates are correct. For each employee you need, for the financial year so far: gross paid, each statutory deduction made, and tax deducted and deposited.",
-          "The reason is narrow and unavoidable. Tax under Section 192 is projected across the whole financial year, so the new system needs to know what has already been deducted in order to project the rest correctly. Get this wrong and the error does not show up in the first month — it shows up in February, when the projection corrects itself violently in one deduction.",
+          "The reason is narrow and unavoidable. Tax under Section 192 is projected across the whole financial year, so the new system needs to know what has already been deducted in order to project the rest correctly. Get this wrong and the error does not show up in the first month, it shows up in February, when the projection corrects itself violently in one deduction.",
         ],
         watch:
           "Reconcile the year-to-date figures against the Form 24Q returns already filed, not against your internal spreadsheet. The return is what the tax authority has been told; that is the number that has to match.",
@@ -135,7 +135,7 @@ export const guides: Guide[] = [
         list: {
           style: "ordered",
           items: [
-            "Rounding convention on provident fund — a rupee per head across four hundred heads is a visible total",
+            "Rounding convention on provident fund, a rupee per head across four hundred heads is a visible total",
             "An allowance treated as part of the gross in one system and outside it in the other, which moves ESI eligibility near the threshold",
             "Employees whose ESI eligibility changed mid-year, where one system retested monthly and the other held the contribution period",
             "Loss-of-pay days, if attendance and leave were being reconciled manually before",
@@ -169,7 +169,7 @@ export const guides: Guide[] = [
         note: "How each statutory head is derived and what the run produces.",
       },
       {
-        label: "Salary calculator",
+        label: "Salary Calculator",
         href: "/calculators/salary",
         note: "Check a structure before you load four hundred of them.",
       },
@@ -189,18 +189,18 @@ export const guides: Guide[] = [
     seo: {
       title: "Guide: Writing a Leave Policy for an Indian Company",
       description:
-        "The decisions a leave policy is made of — accrual basis, leave types, approval routing, carry-forward, encashment, the sandwich rule and statutory leave — and how each behaves in a leave management system.",
+        "The decisions a leave policy is made of, accrual basis, leave types, approval routing, carry-forward, encashment, the sandwich rule and statutory leave, and how each behaves in a leave management system.",
       keywords: [],
     },
     opening: [
-      "A leave policy is not a document. It is a set of decisions that a document records, and most policies that cause trouble were never actually decided — they were improvised consistently enough to feel settled, and then written down afterwards in language vague enough to keep everyone comfortable.",
+      "A leave policy is not a document. It is a set of decisions that a document records, and most policies that cause trouble were never actually decided, they were improvised consistently enough to feel settled, and then written down afterwards in language vague enough to keep everyone comfortable.",
       "The vagueness is the problem. A leave management system applies whatever you write, identically, to everyone, on the same night. Ambiguity that a manager was quietly resolving becomes visible the moment a system enforces it.",
     ],
     chapters: [
       {
         title: "Separate the leave you grant from the leave you owe",
         body: [
-          "Two categories, governed differently. Company leave — casual, earned, sick — is yours to design. Statutory leave is not: maternity benefit is provided under the Maternity Benefit Act, and leave taken while on ESI benefit follows that scheme.",
+          "Two categories, governed differently. Company leave, casual, earned, sick, is yours to design. Statutory leave is not: maternity benefit is provided under the Maternity Benefit Act, and leave taken while on ESI benefit follows that scheme.",
           "Keep them as distinct leave types rather than drawing statutory absence from a common pool. The employee's ordinary entitlement should continue to accrue through a statutory absence rather than being consumed by it, and the absence needs to stay identifiable in the record if it ever has to be evidenced.",
         ],
       },
@@ -208,7 +208,7 @@ export const guides: Guide[] = [
         title: "Decide the accrual basis before the quantum",
         body: [
           "How much leave is the question everybody starts with. How it accrues is the question that determines every balance you will ever be asked about.",
-          "Monthly accrual — a fixed fraction credited each month — handles mid-year joiners without anybody doing arithmetic, because a person who joined in August simply has fewer accruals. Annual crediting is simpler to explain and immediately raises the question of what a joiner in August is entitled to, which you then have to answer with a pro-rata rule anyway.",
+          "Monthly accrual, a fixed fraction credited each month, handles mid-year joiners without anybody doing arithmetic, because a person who joined in August simply has fewer accruals. Annual crediting is simpler to explain and immediately raises the question of what a joiner in August is entitled to, which you then have to answer with a pro-rata rule anyway.",
         ],
         watch:
           "Whichever you choose, decide explicitly whether probationers accrue. This single omission generates more leave disputes than any other, because it only surfaces when a probationer asks for leave.",
@@ -237,7 +237,7 @@ export const guides: Guide[] = [
           items: [
             "A carry-forward cap: how many days may travel into the next year",
             "Whether carried days may later be encashed, and up to what limit",
-            "The wage base encashment is computed on — basic, or gross",
+            "The wage base encashment is computed on, basic, or gross",
             "The cut-off date itself, which need not be the financial year end",
             "What happens to the remainder: lapse, and whether anybody is warned first",
           ],
@@ -248,7 +248,7 @@ export const guides: Guide[] = [
       {
         title: "Handle comp-off as an entitlement with an expiry",
         body: [
-          "Compensatory off is earned by working a day that was not a working day. Because it is earned rather than granted, it comes out of the attendance record — and because it is usually promised informally, it is the entitlement most often forgotten.",
+          "Compensatory off is earned by working a day that was not a working day. Because it is earned rather than granted, it comes out of the attendance record, and because it is usually promised informally, it is the entitlement most often forgotten.",
           "Give it an expiry, and make the expiry a date rather than a vague intention. An entitlement with no expiry accumulates invisibly and surfaces at an exit, when the employee is entitled to be paid for it and nobody has been tracking it.",
         ],
       },
@@ -263,7 +263,7 @@ export const guides: Guide[] = [
         title: "Write down what happens with no balance",
         body: [
           "Leave taken without an approved application, or against an exhausted balance, becomes a loss-of-pay day. That reduces paid days for the month, which reduces the salary, the provident fund wage, and in some cases the ESI contribution.",
-          "State this plainly in the policy. It is not a penalty and should not read as one — it is simply the withholding of pay for a day not worked and not covered by leave — but an employee who first encounters the rule on a payslip will experience it as a surprise deduction.",
+          "State this plainly in the policy. It is not a penalty and should not read as one, it is simply the withholding of pay for a day not worked and not covered by leave, but an employee who first encounters the rule on a payslip will experience it as a surprise deduction.",
         ],
       },
     ],
@@ -285,12 +285,12 @@ export const guides: Guide[] = [
       },
       {
         label: "The sandwich rule",
-        href: "/blog/sandwich-rule",
+        href: "/insights/sandwich-rule",
         note: "The specific mechanism, in short form.",
       },
       {
-        label: "Workplace policy library",
-        href: "/policy/workplace-policies",
+        label: "Workplace Policy Library",
+        href: "/policy-centre/workplace-policy-library",
         note: "The approved leave policy document itself.",
       },
     ],
@@ -314,19 +314,19 @@ export const guides: Guide[] = [
     },
     opening: [
       "Attendance software written for an office assumes a desk, a device and a network. A large part of the Indian workforce has none of the three, and configuring a system as though they do is the reason attendance projects fail on the shop floor while working perfectly in head office.",
-      "This guide works outward from the capture point, because everything else — overtime, payroll, the wage register — is downstream of whether the record was captured honestly in the first place.",
+      "This guide works outward from the capture point, because everything else, overtime, payroll, the wage register, is downstream of whether the record was captured honestly in the first place.",
     ],
     chapters: [
       {
         title: "Choose the capture method per location, not per company",
         body: [
           "The right method is a property of where the work happens and who is doing it. Standardising on one method across a mixed workforce forces most of it into a mechanism that does not fit.",
-          "All three of the following write to the same attendance ledger, so mixing them does not mean maintaining separate records — which is the objection people usually raise before deciding to standardise on the wrong one.",
+          "All three of the following write to the same attendance ledger, so mixing them does not mean maintaining separate records, which is the objection people usually raise before deciding to standardise on the wrong one.",
         ],
         list: {
           style: "bullet",
           items: [
-            "A biometric reader where a controlled entry point already exists — the natural choice at a factory or office gate",
+            "A biometric reader where a controlled entry point already exists, the natural choice at a factory or office gate",
             "A shared kiosk for a shift changeover, which handles a hundred people faster than a hundred phones",
             "A geo-fenced mobile punch for field engineers, sales and site supervisors, which establishes that somebody was at the client site rather than merely logged in",
           ],
@@ -367,7 +367,7 @@ export const guides: Guide[] = [
       {
         title: "Set the exception rules, because that is what you are judged on",
         body: [
-          "Every attendance system handles the person who arrives on time. What distinguishes them is the treatment of the exceptions, and those need thresholds rather than judgement — the same lateness should produce the same outcome in every department.",
+          "Every attendance system handles the person who arrives on time. What distinguishes them is the treatment of the exceptions, and those need thresholds rather than judgement, the same lateness should produce the same outcome in every department.",
           "Decide the grace window, the point at which a late arrival becomes a half day, the treatment of a missed punch, and the consequence of repetition. Each of these is an employer decision, and each will be applied by the system exactly as written.",
         ],
       },
@@ -375,7 +375,7 @@ export const guides: Guide[] = [
         title: "Never let a correction overwrite the original",
         body: [
           "A regularisation should sit alongside the original capture with its reason and its approver attached, not replace it. A ledger that can be edited to say whatever the current answer needs is not evidence of anything.",
-          "This is not an abstract principle. An inspection under the applicable establishment legislation tests a specific person on a specific date: why was this worker marked absent, what overtime was paid for this shift, who approved this correction. Answering that requires the original, the correction, the reason and the approver — all four, still retrievable.",
+          "This is not an abstract principle. An inspection under the applicable establishment legislation tests a specific person on a specific date: why was this worker marked absent, what overtime was paid for this shift, who approved this correction. Answering that requires the original, the correction, the reason and the approver, all four, still retrievable.",
         ],
       },
       {
@@ -398,12 +398,12 @@ export const guides: Guide[] = [
     related: [
       {
         label: "Attendance & Shifts",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         note: "The module these rules are configured in.",
       },
       {
         label: "Shifts across midnight",
-        href: "/blog/shift-detection-across-midnight",
+        href: "/insights/shift-detection-across-midnight",
         note: "The midnight problem in detail.",
       },
       {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { paperFaqs } from "@/lib/pageFaqs/papers";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { whitePapers, paperBySlug } from "@/lib/papers";
@@ -33,7 +34,7 @@ export async function generateMetadata({
       url: `/resources/white-papers/${p.slug}`,
       type: "article",
       siteName: "HRMagix",
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix" }],
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],
     },
   };
 }
@@ -219,7 +220,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                   Everything above draws on one of three things: a provision of Indian law, a
                   published HRMagix product capability, or the structural logic of the problem
                   described. There is no survey, benchmark or commissioned research behind it, and
-                  none is implied — where a figure appears it is either statutory or a published
+                  none is implied, where a figure appears it is either statutory or a published
                   HRMagix price.
                 </p>
                 <p className="mt-4 text-[15.5px] leading-[1.72] text-muted">
@@ -230,6 +231,12 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
         </Block>
       </article>
 
+      <FaqSection
+        title="Questions about this paper"
+        items={paperFaqs[paper.slug] ?? []}
+        ground="canvas"
+      />
+
       <Block
         eyebrow="Next step"
         title="Talk it through against your own configuration"
@@ -237,7 +244,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
         ground="sunken"
       >
         <div className="flex flex-wrap justify-center gap-3">
-          <Button href="/company/contact">Ask the team</Button>
+          <Button href="/company/contact-hrmagix">Ask the team</Button>
           <Button href="/resources/white-papers" variant="outline">
             All papers
           </Button>

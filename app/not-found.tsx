@@ -38,14 +38,14 @@ export default function NotFound() {
             <Button href="/" size="lg">
               Back home
             </Button>
-            <Button href="/company/contact" variant="outline" size="lg">
+            <Button href="/company/contact-hrmagix" variant="outline" size="lg">
               Ask us directly
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface py-16 sm:py-20">
+      <section className="border-t border-line bg-surface py-12 sm:py-14">
         <div className="shell">
           <h2 className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">
             Everything on this site
@@ -102,7 +102,7 @@ export default function NotFound() {
               </li>
               <li>
                 <Link
-                  href="/how-it-works"
+                  href="/how-setup-works"
                   className="group inline-flex items-center gap-1.5 text-[14px] text-muted transition-colors hover:text-accent"
                 >
                   How it works <Arrow />

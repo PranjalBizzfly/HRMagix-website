@@ -35,7 +35,7 @@ export const solutionsNav: NavColumn[] = [
     blurb: "The employee record and the workflows built on top of it.",
     links: [
       {
-        label: "All Features",
+        label: "Features",
         href: "/features",
         note: "All twelve modules, each with its own page",
       },
@@ -51,19 +51,19 @@ export const solutionsNav: NavColumn[] = [
       },
       {
         label: "Onboarding & Lifecycle",
-        href: "/solutions/onboarding",
+        href: "/solutions/onboarding-and-lifecycle",
         note: "Pre-boarding through confirmation, transfer and exit",
       },
       {
         label: "Employee Self-Service",
-        href: "/solutions/ess",
+        href: "/solutions/employee-self-service",
         note: "The portal and app employees actually log in to",
       },
     ],
   },
   {
     heading: "Time & Pay",
-    blurb: "Hours in, salary out — with the statutory work done in between.",
+    blurb: "Hours in, salary out, with the statutory work done in between.",
     links: [
       {
         label: "Payroll",
@@ -72,7 +72,7 @@ export const solutionsNav: NavColumn[] = [
       },
       {
         label: "Attendance & Shifts",
-        href: "/solutions/attendance",
+        href: "/solutions/attendance-and-shifts",
         note: "Biometric, mobile and geo-fenced capture",
       },
       {
@@ -87,7 +87,7 @@ export const solutionsNav: NavColumn[] = [
       },
       {
         label: "Performance & OKRs",
-        href: "/solutions/performance",
+        href: "/solutions/performance-and-okrs",
         note: "Objectives, KRAs, 9-box, PIPs, 1-on-1s and recognition",
       },
       {
@@ -130,7 +130,7 @@ export const industriesNav: NavColumn[] = [
       },
       {
         label: "IT & Technology",
-        href: "/industries/it-services",
+        href: "/industries/it-and-technology",
         note: "Distributed teams, OKRs and 24/7 rosters",
       },
       {
@@ -148,8 +148,8 @@ export const resourcesNav: NavColumn[] = [
     blurb: "Writing on Indian payroll and people operations, none of it behind a form.",
     links: [
       {
-        label: "Blogs",
-        href: "/blog",
+        label: "Insights",
+        href: "/insights",
         note: "Insights on payroll, attendance, leave and lifecycle",
       },
       {
@@ -159,7 +159,7 @@ export const resourcesNav: NavColumn[] = [
       },
       {
         label: "HR Guides",
-        href: "/resources/guides",
+        href: "/resources/hr-guides",
         note: "Chaptered, practical guides that end in a checklist",
       },
       {
@@ -168,8 +168,8 @@ export const resourcesNav: NavColumn[] = [
         note: "Practical guides to every area of HR and payroll",
       },
       {
-        label: "HR Glossary",
-        href: "/resources/glossary",
+        label: "HR & Payroll Glossary",
+        href: "/resources/hr-and-payroll-glossary",
         note: "Indian HR and payroll terms, defined plainly",
       },
     ],
@@ -185,12 +185,12 @@ export const resourcesNav: NavColumn[] = [
       },
       {
         label: "Questions & Answers",
-        href: "/resources/faqs",
+        href: "/resources/questions-and-answers",
         note: "Everything asked before a first demo",
       },
       {
         label: "Payroll Resources",
-        href: "/resources/payroll",
+        href: "/resources/payroll-resources",
         note: "Payroll material indexed by what you are trying to do",
       },
       {
@@ -200,7 +200,7 @@ export const resourcesNav: NavColumn[] = [
       },
       {
         label: "Media Room",
-        href: "/resources/media",
+        href: "/resources/media-room",
         note: "Company facts, coverage guidance and contacts",
       },
     ],
@@ -211,31 +211,31 @@ export const companyNav: NavColumn[] = [
   {
     heading: "Company",
     links: [
-      { label: "About", href: "/company/about", note: "What HRMagix is, and what it is not" },
+      { label: "About HRMagix", href: "/company/about-hrmagix", note: "What HRMagix is, and what it is not" },
       { label: "Careers", href: "/company/careers", note: "How we hire, and what is open" },
       { label: "Press Kit", href: "/company/press-kit", note: "Name, mark, colours and boilerplate" },
-      { label: "Contact", href: "/company/contact", note: "Talk to the team in Pune" },
+      { label: "Contact HRMagix", href: "/company/contact-hrmagix", note: "Talk to the team in Pune" },
     ],
   },
   {
     heading: "Working with us",
     links: [
-      { label: "Vendor & Partners", href: "/vendor", note: "How we work with consultants and suppliers" },
+      { label: "Partners & Vendors", href: "/partners-and-vendors", note: "How we work with consultants and suppliers" },
       { label: "Pricing", href: "/pricing", note: "Three published plans, per employee, per month" },
-      { label: "Policy Centre", href: "/policy", note: "Privacy, terms, security and HR policy library" },
+      { label: "Policy Centre", href: "/policy-centre", note: "Privacy, terms, security and HR policy library" },
     ],
   },
 ];
 
 export const policyNav: NavLink[] = [
-  { label: "Policy Centre", href: "/policy", note: "Everything legal and procedural in one place" },
-  { label: "Privacy Policy", href: "/policy/privacy", note: "What we hold, why, and for how long" },
-  { label: "Terms of Service", href: "/policy/terms", note: "The agreement behind a subscription" },
-  { label: "Security", href: "/policy/security", note: "Hosting, encryption, access and backups" },
-  { label: "Cookies", href: "/policy/cookies", note: "What this website stores in your browser" },
+  { label: "Policy Centre", href: "/policy-centre", note: "Everything legal and procedural in one place" },
+  { label: "Privacy Policy", href: "/policy-centre/privacy-policy", note: "What we hold, why, and for how long" },
+  { label: "Terms of Service", href: "/policy-centre/terms-of-service", note: "The agreement behind a subscription" },
+  { label: "Security", href: "/policy-centre/security", note: "Hosting, encryption, access and backups" },
+  { label: "Cookie Policy", href: "/policy-centre/cookie-policy", note: "What this website stores in your browser" },
   {
     label: "Workplace Policy Library",
-    href: "/policy/workplace-policies",
+    href: "/policy-centre/workplace-policy-library",
     note: "The twenty-five HR policies HRMagix ships as templates",
   },
 ];
@@ -269,16 +269,16 @@ export const primaryNav: NavSection[] = [
     footer: {
       label: "Browse the full resource centre",
       href: "/resources",
-      note: "Papers, calculators and answers — free, no form in front of them.",
+      note: "Papers, calculators and answers, free, no form in front of them.",
     },
   },
   {
     label: "Company",
-    href: "/company/about",
+    href: "/company/about-hrmagix",
     columns: companyNav,
     footer: {
       label: "Read the policy centre",
-      href: "/policy",
+      href: "/policy-centre",
       note: "Privacy, terms, security and the workplace policy library.",
     },
   },
@@ -292,14 +292,14 @@ export const allRoutes: string[] = [
   "/industries",
   ...industriesNav.flatMap((c) => c.links.map((l) => l.href)),
   "/resources",
-  "/blog",
+  "/insights",
   ...resourcesNav.flatMap((c) => c.links.map((l) => l.href)),
-  "/company/about",
+  "/company/about-hrmagix",
   "/company/careers",
   "/company/press-kit",
-  "/company/contact",
-  "/vendor",
+  "/company/contact-hrmagix",
+  "/partners-and-vendors",
   "/pricing",
-  "/how-it-works",
+  "/how-setup-works",
   ...policyNav.map((l) => l.href),
 ];

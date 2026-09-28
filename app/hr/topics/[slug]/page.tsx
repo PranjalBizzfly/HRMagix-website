@@ -89,7 +89,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
-                { label: "HR topics", href: "/hr/topics" },
+                { label: "HR Topics", href: "/hr/topics" },
                 { label: t.name },
               ]}
             />
@@ -231,7 +231,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                   ))}
                 </ul>
                 <div className="mt-6">
-                  <Button href="/company/contact" variant="light">
+                  <Button href="/company/contact-hrmagix" variant="light">
                     Book a demo
                   </Button>
                 </div>
@@ -298,8 +298,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
       <Onward
         links={[
-          { label: "All HR topics", href: "/hr/topics", note: `${topics.length} guides across five areas of HR.` },
-          { label: "HR glossary", href: "/resources/glossary", note: "The terms these guides use, defined." },
+          { label: "HR Topics", href: "/hr/topics", note: `${topics.length} guides across five areas of HR.` },
+          { label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", note: "The terms these guides use, defined." },
           { label: "Calculators", href: "/resources/calculator", note: "Statutory formulas on your own figures." },
         ]}
       />

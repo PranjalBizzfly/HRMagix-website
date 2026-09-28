@@ -69,11 +69,11 @@ export const whitePapers: WhitePaper[] = [
     reader: "Finance and payroll leads who close a monthly cutoff in India",
     minutes: 14,
     abstract: [
-      "The time an Indian payroll takes is almost never spent on arithmetic. It is spent establishing what happened — reconciling a biometric log against leave applications, comp-offs, regularisations and a manager's recollection — before a single calculation can begin.",
+      "The time an Indian payroll takes is almost never spent on arithmetic. It is spent establishing what happened, reconciling a biometric log against leave applications, comp-offs, regularisations and a manager's recollection, before a single calculation can begin.",
       "This briefing sets out payroll as a sequence of eight custody handovers rather than a computation, identifies which of the eight can be eliminated entirely by integration, and specifies exactly what each statutory head requires as input and produces as output.",
     ],
     seo: {
-      title: "Payroll as a Chain of Custody — White Paper",
+      title: "Payroll as a Chain of Custody: White Paper",
       description:
         "A technical briefing on the Indian monthly payroll cycle: the eight handovers from attendance close to statutory filing, what each statutory head requires as input, and what it must produce.",
       keywords: [],
@@ -108,21 +108,21 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "A payroll month can be described as eight transfers of custody. Naming them separately makes it visible which are mechanical and which require judgement — and therefore which can be removed by integration rather than by working faster.",
+            text: "A payroll month can be described as eight transfers of custody. Naming them separately makes it visible which are mechanical and which require judgement, and therefore which can be removed by integration rather than by working faster.",
           },
           {
             kind: "table",
             caption: "The monthly cycle, by custody handover",
             head: ["#", "Handover", "Requires a person?"],
             rows: [
-              ["01", "Attendance capture settles into a ledger", "No — continuous, from device, app and browser"],
-              ["02", "Leave and comp-off resolve against each scheme", "No — approvals already recorded"],
-              ["03", "Payable days derives from the ledger", "No — a view, not an entry"],
-              ["04", "Gross assembles from effective-dated structures", "No — structure held against the record"],
-              ["05", "Statutory heads evaluate for the month", "No — rules against the record"],
-              ["06", "Variance review against the prior month", "Yes — judgement on exceptions"],
-              ["07", "Bank payment batch generated", "Yes — authorisation"],
-              ["08", "Filings and payslips issue", "Yes — submission"],
+              ["01", "Attendance capture settles into a ledger", "No, continuous, from device, app and browser"],
+              ["02", "Leave and comp-off resolve against each scheme", "No, approvals already recorded"],
+              ["03", "Payable days derives from the ledger", "No, a view, not an entry"],
+              ["04", "Gross assembles from effective-dated structures", "No, structure held against the record"],
+              ["05", "Statutory heads evaluate for the month", "No, rules against the record"],
+              ["06", "Variance review against the prior month", "Yes, judgement on exceptions"],
+              ["07", "Bank payment batch generated", "Yes, authorisation"],
+              ["08", "Filings and payslips issue", "Yes, submission"],
             ],
           },
           {
@@ -169,7 +169,7 @@ export const whitePapers: WhitePaper[] = [
                 "State-wise PT working",
               ],
               [
-                "TDS — Section 192",
+                "TDS, Section 192",
                 "Per regime and declarations",
                 "Estimated annual liability spread monthly, following the verified declaration",
                 "Quarterly Form 24Q; annual Form 16 Part B",
@@ -183,7 +183,7 @@ export const whitePapers: WhitePaper[] = [
               [
                 "Labour Welfare Fund",
                 "State amount",
-                "State calendar — half-yearly or annual, unrelated to the payroll cycle",
+                "State calendar, half-yearly or annual, unrelated to the payroll cycle",
                 "State LWF statement",
               ],
             ],
@@ -225,7 +225,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "The property that separates an auditable payroll from a defensible one is versioning. When a March run is questioned in September, the system must answer with the structure that was in force in March — not the one in force today, and not a reconstruction.",
+            text: "The property that separates an auditable payroll from a defensible one is versioning. When a March run is questioned in September, the system must answer with the structure that was in force in March, not the one in force today, and not a reconstruction.",
           },
           {
             kind: "para",
@@ -242,7 +242,7 @@ export const whitePapers: WhitePaper[] = [
     readOn: [
       { label: "Payroll", href: "/solutions/payroll" },
       { label: "Salary & compliance calculators", href: "/resources/calculator" },
-      { label: "Why payroll takes four days", href: "/blog/why-payroll-takes-four-days" },
+      { label: "Why payroll takes four days", href: "/insights/why-payroll-takes-four-days" },
     ],
   },
 
@@ -256,10 +256,10 @@ export const whitePapers: WhitePaper[] = [
     minutes: 12,
     abstract: [
       "A business with offices in three states experiences itself as one organisation and is treated by statute as several. Professional Tax is a state subject. Leave entitlements sit under state Shops and Establishments Acts. Labour Welfare Fund runs on state calendars that ignore your payroll cycle.",
-      "This briefing works through where state divergence actually bites in a mid-market Indian company, and sets out the configuration model — per entity, per location, per grade — that lets consolidated reporting and correct state-level filing coexist rather than compete.",
+      "This briefing works through where state divergence actually bites in a mid-market Indian company, and sets out the configuration model, per entity, per location, per grade, that lets consolidated reporting and correct state-level filing coexist rather than compete.",
     ],
     seo: {
-      title: "Multi-State Payroll Compliance in India — White Paper",
+      title: "Multi-State Payroll Compliance in India: White Paper",
       description:
         "How to configure payroll for a company operating across Indian states: entity, location and grade axes, state Professional Tax and LWF divergence, and consolidated reporting over distinct filings.",
       keywords: [],
@@ -267,7 +267,7 @@ export const whitePapers: WhitePaper[] = [
     sections: [
       {
         heading: "The three axes",
-        summary: "Entity, location and grade — what belongs on each, and what breaks when they collapse.",
+        summary: "Entity, location and grade, what belongs on each, and what breaks when they collapse.",
         blocks: [
           {
             kind: "para",
@@ -339,7 +339,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "An employer's policy may be more generous than the floor but not less. The common failure is to adopt one national scheme set at the level of the least generous state, which is compliant nowhere except there. The alternative failure — setting it at the most generous — is compliant everywhere and expensive.",
+            text: "An employer's policy may be more generous than the floor but not less. The common failure is to adopt one national scheme set at the level of the least generous state, which is compliant nowhere except there. The alternative failure, setting it at the most generous, is compliant everywhere and expensive.",
           },
           {
             kind: "para",
@@ -357,7 +357,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "The resolution is to keep runs distinct at the entity level — because filing is per entity — while allowing reporting to aggregate across them. Multi-entity structures sit under a single login, with role-based permissions determining who can see which entity.",
+            text: "The resolution is to keep runs distinct at the entity level, because filing is per entity, while allowing reporting to aggregate across them. Multi-entity structures sit under a single login, with role-based permissions determining who can see which entity.",
           },
           {
             kind: "list",
@@ -375,7 +375,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "LWF is deducted half-yearly in some states and annually in others, on dates set by the state. Because the cycle does not align with the monthly payroll rhythm, it is the deduction most often remembered rather than configured — and therefore the one most often missed.",
+            text: "LWF is deducted half-yearly in some states and annually in others, on dates set by the state. Because the cycle does not align with the monthly payroll rhythm, it is the deduction most often remembered rather than configured, and therefore the one most often missed.",
           },
           {
             kind: "para",
@@ -387,7 +387,7 @@ export const whitePapers: WhitePaper[] = [
     readOn: [
       { label: "SMEs", href: "/industries/smes" },
       { label: "Payroll", href: "/solutions/payroll" },
-      { label: "Professional Tax across states", href: "/blog/professional-tax-february" },
+      { label: "Professional Tax across states", href: "/insights/professional-tax-february" },
     ],
   },
 
@@ -401,10 +401,10 @@ export const whitePapers: WhitePaper[] = [
     minutes: 13,
     abstract: [
       "Office attendance is close to binary. Production attendance is not: a punch at 22:40 belongs to yesterday's shift, a Sunday worked creates a comp-off with an expiry, and an hour past shift end is either overtime or a handover depending on a rule nobody wrote down.",
-      "This briefing catalogues the exceptions a manufacturing payroll actually produces, and shows how each becomes a configured rule rather than a monthly manual adjustment — including the interaction between overtime, the moving wage base and ESI applicability.",
+      "This briefing catalogues the exceptions a manufacturing payroll actually produces, and shows how each becomes a configured rule rather than a monthly manual adjustment, including the interaction between overtime, the moving wage base and ESI applicability.",
     ],
     seo: {
-      title: "Manufacturing Payroll Exceptions — White Paper",
+      title: "Manufacturing Payroll Exceptions: White Paper",
       description:
         "Auto shift detection across midnight, overtime and night differentials as derived figures, comp-off with expiry, ESI against a moving wage base, and per-plant configuration under one filing.",
       keywords: [],
@@ -416,7 +416,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "An operator punches in at 22:40 on Tuesday and out at 06:50 on Wednesday. That is one shift, and it belongs to Tuesday. A system that files the punches under the calendar dates they occurred on records a Tuesday with no exit and a Wednesday with no entry — two exceptions where there was no problem.",
+            text: "An operator punches in at 22:40 on Tuesday and out at 06:50 on Wednesday. That is one shift, and it belongs to Tuesday. A system that files the punches under the calendar dates they occurred on records a Tuesday with no exit and a Wednesday with no entry, two exceptions where there was no problem.",
           },
           {
             kind: "para",
@@ -456,7 +456,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "Deriving them from the shift definition and the employee's eligibility on the record — against the same attendance ledger everything else reads — makes them defensible. The figure the operator disputes is the figure the system can show the working for, rather than a number transcribed from a register.",
+            text: "Deriving them from the shift definition and the employee's eligibility on the record, against the same attendance ledger everything else reads, makes them defensible. The figure the operator disputes is the figure the system can show the working for, rather than a number transcribed from a register.",
           },
         ],
       },
@@ -471,11 +471,11 @@ export const whitePapers: WhitePaper[] = [
           {
             kind: "list",
             items: [
-              "A credit event — approved work on a weekly off or declared holiday.",
-              "A balance — days earned and not yet taken.",
-              "A consumption rule — half days, approval requirement, combination with other leave.",
-              "An expiry — the window within which it must be used, or it lapses.",
-              "A settlement position — what happens to an unused balance at exit.",
+              "A credit event, approved work on a weekly off or declared holiday.",
+              "A balance, days earned and not yet taken.",
+              "A consumption rule, half days, approval requirement, combination with other leave.",
+              "An expiry, the window within which it must be used, or it lapses.",
+              "A settlement position, what happens to an unused balance at exit.",
             ],
           },
           {
@@ -499,15 +499,15 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "Shift patterns, grace periods, weekly offs, holiday calendars and leave schemes are configured per location while the organisation continues to report and file as one. The biometric hardware most plants already run — eSSL, Matrix, Realtime, ZKTeco — pushes into the same ledger over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
+            text: "Shift patterns, grace periods, weekly offs, holiday calendars and leave schemes are configured per location while the organisation continues to report and file as one. The biometric hardware most plants already run, eSSL, Matrix, Realtime, ZKTeco, pushes into the same ledger over a secure API or a local sync service, so the capture layer does not need replacing. What changes is what happens to the punches after they arrive.",
           },
         ],
       },
     ],
     readOn: [
       { label: "Manufacturing", href: "/industries/manufacturing" },
-      { label: "Attendance & Shifts", href: "/solutions/attendance" },
-      { label: "A punch at 22:40 belongs to yesterday's shift", href: "/blog/shift-detection-across-midnight" },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
+      { label: "A punch at 22:40 belongs to yesterday's shift", href: "/insights/shift-detection-across-midnight" },
     ],
   },
 
@@ -524,7 +524,7 @@ export const whitePapers: WhitePaper[] = [
       "This briefing sets out the minimum set of written positions a growing Indian company needs, the order to decide them in, and how policy acknowledgement turns a document into an obligation both sides can rely on.",
     ],
     seo: {
-      title: "The Policy Vacuum in Growing Companies — White Paper",
+      title: "The Policy Vacuum in Growing Companies: White Paper",
       description:
         "The minimum written HR positions a growing Indian company needs, in the order to decide them: statutory registrations, leave scheme, notice, probation and remote work, plus acknowledgement as evidence.",
       keywords: [],
@@ -532,11 +532,11 @@ export const whitePapers: WhitePaper[] = [
     sections: [
       {
         heading: "How the vacuum forms",
-        summary: "At fifteen people HR is a chat window, and it works — until it doesn't.",
+        summary: "At fifteen people HR is a chat window, and it works, until it doesn't.",
         blocks: [
           {
             kind: "para",
-            text: "At fifteen people, HR is a founder answering questions in a chat window. It works precisely because everyone can see everyone. The failure arrives quietly at around forty, when someone asks a question whose answer was previously improvised — how much notice do I owe, does a Friday off cost me two days, when does my leave reset — and discovers that the answer depends on who they asked and when.",
+            text: "At fifteen people, HR is a founder answering questions in a chat window. It works precisely because everyone can see everyone. The failure arrives quietly at around forty, when someone asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
           },
           {
             kind: "para",
@@ -573,7 +573,7 @@ export const whitePapers: WhitePaper[] = [
             head: ["Order", "Position", "Why here"],
             rows: [
               ["1", "Statutory registrations and identifiers", "Compounds. The only genuinely expensive mistake on this list."],
-              ["2", "Leave scheme — categories, accrual, carry-forward, sandwich rule", "Where improvised precedent does most damage and written policy is felt fastest."],
+              ["2", "Leave scheme, categories, accrual, carry-forward, sandwich rule", "Where improvised precedent does most damage and written policy is felt fastest."],
               ["3", "Notice period and probation", "Needed the first time someone resigns, which is always sooner than expected."],
               ["4", "Remote working and its obligations", "Cheap to write now, contentious to write during a dispute."],
               ["Later", "Performance review cycle, promotion criteria, succession", "Only useful once alignment cannot happen by proximity."],
@@ -582,7 +582,7 @@ export const whitePapers: WhitePaper[] = [
           {
             kind: "callout",
             title: "What a fifty-person company does not need",
-            text: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopting them early produces ceremony rather than clarity. The Starter plan is deliberately narrow — attendance, leaves, directory and documents — for this reason.",
+            text: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopting them early produces ceremony rather than clarity. The Starter plan is deliberately narrow, attendance, leaves, directory and documents, for this reason.",
           },
         ],
       },
@@ -614,15 +614,15 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "Versioning is the part usually omitted. When a policy is revised, an earlier acceptance should not silently stand in for the new wording — publishing a new version should re-open acknowledgement for everyone it applies to. HRMagix ships twenty-five workplace policy templates in the Documents module on exactly this basis: the employer writes their own rules into them, issues them, and the platform records who accepted which version and when.",
+            text: "Versioning is the part usually omitted. When a policy is revised, an earlier acceptance should not silently stand in for the new wording, publishing a new version should re-open acknowledgement for everyone it applies to. HRMagix ships twenty-five workplace policy templates in the Documents module on exactly this basis: the employer writes their own rules into them, issues them, and the platform records who accepted which version and when.",
           },
         ],
       },
     ],
     readOn: [
       { label: "Startups", href: "/industries/startups" },
-      { label: "Workplace Policy Library", href: "/policy/workplace-policies" },
-      { label: "The sandwich rule", href: "/blog/sandwich-rule" },
+      { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library" },
+      { label: "The sandwich rule", href: "/insights/sandwich-rule" },
     ],
   },
 
@@ -636,10 +636,10 @@ export const whitePapers: WhitePaper[] = [
     minutes: 10,
     abstract: [
       "Most of what an HR team is asked in a week requires access rather than judgement: a balance, a payslip, a UAN, the status of a regularisation. Each is a two-minute answer, which is exactly why the cost of answering them is invisible.",
-      "This briefing separates the HR requests that are genuinely lookups from the ones that need a person, and works through what changes when the first category moves behind the employee's own login — on a desktop for office staff and on a phone for everybody else.",
+      "This briefing separates the HR requests that are genuinely lookups from the ones that need a person, and works through what changes when the first category moves behind the employee's own login, on a desktop for office staff and on a phone for everybody else.",
     ],
     seo: {
-      title: "The Arithmetic of Employee Self-Service — White Paper",
+      title: "The Arithmetic of Employee Self-Service: White Paper",
       description:
         "How to audit HR request volume, which requests are lookups rather than judgement, what an employee can complete alone, and why mobile is the primary channel for a large part of an Indian workforce.",
       keywords: [],
@@ -656,7 +656,7 @@ export const whitePapers: WhitePaper[] = [
           {
             kind: "table",
             caption: "Two kinds of HR request",
-            head: ["Lookup — needs access", "Judgement — needs a person"],
+            head: ["Lookup, needs access", "Judgement, needs a person"],
             rows: [
               ["How many leaves do I have left", "Can I take unpaid leave for six weeks"],
               ["Send me my March payslip", "My manager and I disagree about my rating"],
@@ -699,7 +699,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "If employees can raise but managers cannot approve in the same place, the bottleneck relocates rather than clearing. Managers need leave and regularisation approvals in one queue, a live team presence view, 1-on-1 agendas with running action items, and goal progress updates — without a separate tool to learn.",
+            text: "If employees can raise but managers cannot approve in the same place, the bottleneck relocates rather than clearing. Managers need leave and regularisation approvals in one queue, a live team presence view, 1-on-1 agendas with running action items, and goal progress updates, without a separate tool to learn.",
           },
           {
             kind: "para",
@@ -737,9 +737,9 @@ export const whitePapers: WhitePaper[] = [
       },
     ],
     readOn: [
-      { label: "Employee Self-Service", href: "/solutions/ess" },
-      { label: "Reading an Indian payslip", href: "/blog/reading-an-indian-payslip" },
-      { label: "The declaration that decides twelve months of TDS", href: "/blog/old-vs-new-regime" },
+      { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
+      { label: "Reading an Indian payslip", href: "/insights/reading-an-indian-payslip" },
+      { label: "The declaration that decides twelve months of TDS", href: "/insights/old-vs-new-regime" },
     ],
   },
 ];

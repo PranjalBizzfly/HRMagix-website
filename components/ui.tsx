@@ -59,15 +59,15 @@ type ButtonProps = {
 };
 
 const sizes = {
-  sm: "h-10 pl-4 pr-1.5 text-[13.5px]",
-  md: "h-12 pl-5 pr-2 text-[14.5px]",
-  lg: "h-[58px] pl-7 pr-2.5 text-[16px]",
+  sm: "min-h-10 py-1.5 pl-4 pr-1.5 text-[13.5px]",
+  md: "min-h-12 py-2 pl-5 pr-2 text-[14.5px]",
+  lg: "min-h-[58px] py-2 pl-7 pr-2.5 text-[16px]",
 };
 
 const flatSizes = {
-  sm: "h-10 px-4 text-[13.5px]",
-  md: "h-12 px-5 text-[14.5px]",
-  lg: "h-[58px] px-7 text-[16px]",
+  sm: "min-h-10 py-1.5 px-4 text-[13.5px]",
+  md: "min-h-12 py-2 px-5 text-[14.5px]",
+  lg: "min-h-[58px] py-2 px-7 text-[16px]",
 };
 
 /**
@@ -84,7 +84,7 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    "group inline-flex select-none items-center justify-center gap-2.5 whitespace-nowrap rounded-full font-semibold transition-all duration-300 ease-out active:scale-95 motion-reduce:active:scale-100";
+    "group inline-flex select-none max-w-full items-center justify-center gap-2.5 whitespace-normal text-center leading-tight rounded-full sm:whitespace-nowrap font-semibold transition-all duration-300 ease-out active:scale-95 motion-reduce:active:scale-100";
 
   const skins = {
     primary:

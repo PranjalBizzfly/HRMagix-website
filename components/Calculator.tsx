@@ -39,7 +39,7 @@ export default function Calculator() {
             What would <strong>HRMagix cost</strong> your team?
           </h3>
           <p className="mt-4 max-w-[42ch] text-[16px] leading-relaxed text-violet-200/85">
-            Pricing is per employee, per month. Move the slider and pick a plan — the number below is
+            Pricing is per employee, per month. Move the slider and pick a plan, the number below is
             simply the published rate times your headcount.
           </p>
 
@@ -131,7 +131,7 @@ export default function Calculator() {
           </ul>
 
           <div className="mt-8">
-            <Button href="/company/contact" variant="light" size="md" className="w-full">
+            <Button href="/company/contact-hrmagix" variant="light" size="md" className="w-full">
               {monthly == null ? "Contact Sales" : "Start Free Trial"}
             </Button>
             <p className="mt-4 text-center text-[11.5px] text-violet-300/70">{site.trial}</p>

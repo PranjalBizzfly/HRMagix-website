@@ -7,6 +7,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import Accordion from "./Accordion";
 import Typewriter from "./Typewriter";
 import ContactForm from "./ContactForm";
+import Photo from "./Photo";
 import { site } from "@/lib/content";
 
 /**
@@ -33,9 +34,10 @@ export function PageHero({
   typed = false,
   standfirst,
   chips = [],
-  primary = { label: "Book a demo", href: "/company/contact" },
+  primary = { label: "Book a demo", href: "/company/contact-hrmagix" },
   secondary,
   aside,
+  bgSlot,
 }: {
   crumbs: Crumb[];
   badge?: string;
@@ -47,9 +49,23 @@ export function PageHero({
   primary?: { label: string; href: string } | null;
   secondary?: { label: string; href: string };
   aside?: ReactNode;
+  bgSlot?: string;
 }) {
   return (
-    <header className="page-hero relative border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+    <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      {bgSlot && (
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+          <Photo slot={bgSlot} cover rounded="rounded-none" hover={false} sizes="100vw" imgClassName="" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/95 via-panel/70 to-panel/20"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-panel/80 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+      )}
       <div className="shell relative w-full">
         <Reveal y={8}>
           <Breadcrumbs items={crumbs} />
@@ -236,6 +252,11 @@ export function ProcessTimeline({ steps }: { steps: { title: string; body: strin
         className="absolute left-7 top-0 h-full w-0.5 bg-line md:left-[8%] md:right-[8%] md:top-7 md:h-0.5 md:w-auto"
         aria-hidden="true"
       />
+      {/* Brand-coloured line that draws itself along the track as it scrolls into view. */}
+      <span
+        className="timeline-draw absolute left-7 top-0 h-full w-0.5 bg-gradient-to-b from-violet-500 via-brand to-gold md:left-[8%] md:right-[8%] md:top-7 md:h-0.5 md:w-auto md:bg-gradient-to-r"
+        aria-hidden="true"
+      />
       {steps.map((s, i) => (
         <Reveal
           as="li"
@@ -266,17 +287,32 @@ export function FaqSection({
   intro,
   items,
   ground = "canvas",
-  more = { label: "Every question, in one place", href: "/resources/faqs" },
+  more = { label: "Every question, in one place", href: "/resources/questions-and-answers" },
+  schema = true,
 }: {
   title?: string;
   intro?: string;
   items: { q: string; a: string }[];
   ground?: "canvas" | "sunken";
   more?: { label: string; href: string } | null;
+  /** Emit FAQPage JSON-LD. Turn off where the page already emits its own. */
+  schema?: boolean;
 }) {
   if (!items.length) return null;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
   return (
     <Block eyebrow="FAQs" title={title} intro={intro} ground={ground}>
+      {schema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      )}
       <div className="mx-auto max-w-3xl">
         <Accordion items={items} single />
         {more && (
@@ -353,7 +389,7 @@ export function CtaBand({
   eyebrow = "Book a demo",
   title,
   body,
-  primary = { label: "Book a demo", href: "/company/contact" },
+  primary = { label: "Book a demo", href: "/company/contact-hrmagix" },
   secondary = { label: "See pricing", href: "/pricing" },
 }: {
   eyebrow?: string;

@@ -10,11 +10,12 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Pricing from "@/components/Pricing";
 import Calculator from "@/components/Calculator";
 import OnThisPage from "@/components/OnThisPage";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    `Affordable payroll software for small business and growing companies: three published plans, priced per employee per month — ${pricingSummary()}. Fourteen-day trial, no setup fee, and every module on one platform.`,
+    `Affordable payroll software for small business and growing companies: three published plans, priced per employee per month, ${pricingSummary()}. Fourteen-day trial, no setup fee, and every module on one platform.`,
   keywords: [
     "affordable payroll software for small business",
   ],
@@ -41,7 +42,19 @@ export default function PricingPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="page-hero relative overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="pricing-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
         {/* Editorial glowing ambient wash */}
         <div
           className="pointer-events-none absolute -left-40 top-0 h-[460px] w-[680px] rounded-full bg-glow/18 blur-[140px]"
@@ -65,7 +78,7 @@ export default function PricingPage() {
             Published rates, <strong>before you speak to anyone</strong>
           </h1>
           <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
-            Per employee, per month, across three plans. Every module lives on one platform — your
+            Per employee, per month, across three plans. Every module lives on one platform, your
             plan decides which are switched on, and switching one on later is a setting rather than a
             migration.
           </p>
@@ -88,7 +101,7 @@ export default function PricingPage() {
       <Block
         eyebrow="Compare"
         title="What is included where"
-        intro="Exactly what each published plan lists — no asterisks, and nothing that appears only after a sales call."
+        intro="Exactly what each published plan lists, no asterisks, and nothing that appears only after a sales call."
         ground="sunken"
       >
         <Reveal delay={140} className="overflow-x-auto rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
@@ -170,7 +183,7 @@ export default function PricingPage() {
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
                 Attendance, leave, the employee directory and documents. This is the right
                 starting point for a company whose payroll is small enough to be handled elsewhere
-                but whose attendance and leave data has stopped being trustworthy — typically the
+                but whose attendance and leave data has stopped being trustworthy, typically the
                 point at which a spreadsheet has grown a second spreadsheet to explain it.
               </p>
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
@@ -187,7 +200,7 @@ export default function PricingPage() {
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
                 Everything in Starter, plus payroll, performance, OKRs, KRAs, 9-box, recognition
                 and analytics. The reason payroll and analytics sit on the same plan is that they
-                are the same data read twice — the cost figures in a report are the figures the
+                are the same data read twice, the cost figures in a report are the figures the
                 run produced.
               </p>
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
@@ -221,7 +234,7 @@ export default function PricingPage() {
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
                 Every module lives on one platform, so a change of plan switches modules on rather
                 than migrating you onto a different product. The data you have already accumulated
-                stays where it is — which is why starting on Starter does not cost you the
+                stays where it is, which is why starting on Starter does not cost you the
                 attendance history you will want when payroll is switched on.
               </p>
             </section>
@@ -249,13 +262,13 @@ export default function PricingPage() {
         />
         <Reveal delay={200} className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
           <Link
-            href="/policy/terms"
+            href="/policy-centre/terms-of-service"
             className="group inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
           >
             Read the terms <Arrow />
           </Link>
           <Link
-            href="/how-it-works"
+            href="/how-setup-works"
             className="group inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
           >
             What setup involves <Arrow />
@@ -267,11 +280,11 @@ export default function PricingPage() {
         <div className="card mx-auto flex max-w-3xl flex-col items-center p-6 text-center sm:p-8">
           <p className="text-[16.5px] leading-[1.7] text-muted">
             It is quoted because it depends on entity count, module scope and whether single
-            sign-on and a dedicated success manager are required — not because there is a number
+            sign-on and a dedicated success manager are required, not because there is a number
             we would rather you did not see until later.
           </p>
           <div className="mt-6">
-            <Button href="/company/contact">Get a quote</Button>
+            <Button href="/company/contact-hrmagix">Get a quote</Button>
           </div>
         </div>
       </Block>
@@ -296,7 +309,7 @@ export default function PricingPage() {
               },
               {
                 q: "Can we cancel, and what happens to our data?",
-                a: "You can cancel at any time. Export what you need while you can still log in — payroll, attendance and leave history are records you may be required to produce long after you stop using the software that generated them.",
+                a: "You can cancel at any time. Export what you need while you can still log in, payroll, attendance and leave history are records you may be required to produce long after you stop using the software that generated them.",
               },
               {
                 q: "Can we switch plans later?",
@@ -308,7 +321,7 @@ export default function PricingPage() {
               },
               {
                 q: "Do we pay for employees who have left?",
-                a: "No. Their records are retained — gratuity, Form 16 reissues and inspections all reach backwards — but a retained record is not an active one and is not billed.",
+                a: "No. Their records are retained, gratuity, Form 16 reissues and inspections all reach backwards, but a retained record is not an active one and is not billed.",
               },
               {
                 q: "Is support included on every plan?",
@@ -330,8 +343,8 @@ export default function PricingPage() {
             note: "What each module on each plan actually does.",
           },
           {
-            label: "Questions & answers",
-            href: "/resources/faqs",
+            label: "Questions & Answers",
+            href: "/resources/questions-and-answers",
             note: "Migration, hosting, support and statutory handling.",
           },
         ]}

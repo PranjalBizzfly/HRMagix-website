@@ -41,36 +41,36 @@ const linkIcons: Record<string, IconName> = {
   "/hr/topics": "folder",
   "/solutions/hrms": "layers",
   "/solutions/employee-management": "users",
-  "/solutions/onboarding": "rocket",
-  "/solutions/ess": "fingerprint",
+  "/solutions/onboarding-and-lifecycle": "rocket",
+  "/solutions/employee-self-service": "fingerprint",
   "/solutions/payroll": "wallet",
-  "/solutions/attendance": "clock",
+  "/solutions/attendance-and-shifts": "clock",
   "/solutions/leave-management": "calendar",
   "/solutions/hr-analytics": "chart",
-  "/solutions/performance": "target",
+  "/solutions/performance-and-okrs": "target",
   "/solutions/compliance": "scale",
   "/industries/startups": "rocket",
   "/industries/small-business": "gift",
   "/industries/smes": "grid",
   "/industries/manufacturing": "layers",
-  "/industries/it-services": "compass",
+  "/industries/it-and-technology": "compass",
   "/industries/professional-services": "users",
-  "/blog": "chat",
+  "/insights": "chat",
   "/resources/white-papers": "folder",
-  "/resources/guides": "compass",
-  "/resources/glossary": "grid",
+  "/resources/hr-guides": "compass",
+  "/resources/hr-and-payroll-glossary": "grid",
   "/resources/calculator": "equals",
-  "/resources/faqs": "chat",
-  "/resources/payroll": "wallet",
+  "/resources/questions-and-answers": "chat",
+  "/resources/payroll-resources": "wallet",
   "/resources/hrms-comparison": "scale",
-  "/resources/media": "sparkle",
-  "/company/about": "sparkle",
+  "/resources/media-room": "sparkle",
+  "/company/about-hrmagix": "sparkle",
   "/company/careers": "users",
   "/company/press-kit": "folder",
-  "/company/contact": "mail",
-  "/vendor": "gift",
+  "/company/contact-hrmagix": "mail",
+  "/partners-and-vendors": "gift",
   "/pricing": "wallet",
-  "/policy": "shield",
+  "/policy-centre": "shield",
 };
 
 const iconFor = (href: string): IconName => linkIcons[href] ?? "sparkle";
@@ -175,6 +175,7 @@ export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
   return (
     <MotionConfig reducedMotion="user">
       <header
+        data-site-header
         className="fixed inset-x-0 top-0 z-50"
         onMouseLeave={scheduleClose}
       >
@@ -204,16 +205,14 @@ export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
 
         {/* ---- 2. Glass bar ---- */}
         <div
-          className={`border-b transition-[background-color,box-shadow,border-color] duration-300 ${
-            // Interior pages open on a dark hero, so the bar is solid there from
-            // the first frame; only the light homepage hero shows through it.
-            scrolled || open || pathname !== "/"
-              ? "nav-plate border-line shadow-soft"
-              : "border-transparent bg-transparent"
-          }`}
+          className={`nav-plate border-b border-line shadow-soft transition-[background-color,box-shadow,border-color] duration-300 ${scrolled ? "nav-scrolled" : ""}`}
         >
           <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-7 lg:px-8">
-            <div className="flex h-[64px] items-center justify-between gap-4 sm:h-[72px]">
+            <div
+              className={`flex items-center justify-between gap-4 transition-[height] duration-300 ease-out ${
+                scrolled ? "h-[60px] sm:h-[62px]" : "h-[64px] sm:h-[72px]"
+              }`}
+            >
               <Link
                 href="/"
                 className="shrink-0 rounded-lg"
@@ -347,7 +346,7 @@ export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
                   Sign in
                 </Link>
                 <span className="hidden sm:inline-flex">
-                  <Button href="/company/contact" size="sm">
+                  <Button href="/company/contact-hrmagix" size="sm">
                     Book a demo
                   </Button>
                 </span>
@@ -383,6 +382,10 @@ export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
           menuButtonRef.current?.focus();
         }}
         isActive={isActive}
+        onSearch={() => {
+          setDrawer(false);
+          setSearchOpen(true);
+        }}
       />
     </MotionConfig>
   );
@@ -456,17 +459,22 @@ function Drawer({
   open,
   onClose,
   isActive,
+  onSearch,
 }: {
   open: boolean;
   onClose: () => void;
   isActive: (href: string) => boolean;
+  onSearch: () => void;
 }) {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [top, setTop] = useState(108);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   /* Move focus in on open, and keep Tab inside the drawer. */
   useEffect(() => {
     if (!open) return;
+    const bar = document.querySelector("[data-site-header]")?.getBoundingClientRect().bottom;
+    if (bar) setTop(Math.round(bar) + (window.innerWidth < 400 ? 6 : 10));
     const panel = panelRef.current;
     panel?.querySelector<HTMLElement>("button, a")?.focus();
 
@@ -503,52 +511,52 @@ function Drawer({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/40"
       />
 
+      {/* Compact floating menu card, anchored under the menu button. */}
       <motion.div
         ref={panelRef}
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 26, stiffness: 220 }}
-        className="absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col border-l border-line bg-canvas shadow-float"
+        initial={{ opacity: 0, y: -8, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -8, scale: 0.97 }}
+        transition={{ type: "spring", damping: 28, stiffness: 340 }}
+        style={{ transformOrigin: "top right", top, maxHeight: `calc(100dvh - ${top + 12}px)` }}
+        className="absolute right-2 flex w-[calc(100vw-16px)] min-[400px]:right-3 min-[400px]:w-[340px] sm:right-5 sm:w-[380px] md:right-8 md:w-[440px] flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-float"
       >
-        <div className="flex shrink-0 items-center justify-between border-b border-line px-5 py-4">
-          <Link href="/" onClick={onClose} aria-label="HRMagix home">
-            <Logo />
-          </Link>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close menu"
-            className="grid h-11 w-11 place-items-center rounded-full text-heading ring-1 ring-line transition-colors hover:bg-surface-raised"
-          >
-            <Icon name="cross" className="h-4 w-4" />
-          </button>
-        </div>
-
-        <nav aria-label="Mobile" className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
-          <Link
-            href="/"
-            onClick={onClose}
-            aria-current={isActive("/") ? "page" : undefined}
-            className={`flex items-center justify-between rounded-xl px-3 py-3 text-[16px] font-bold ${
-              isActive("/") ? "text-accent" : "text-heading"
-            }`}
-          >
-            Home
-          </Link>
+        <nav aria-label="Mobile" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-1 pt-3.5 sm:px-5 sm:pt-4">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-label">Navigation</p>
+          <div className="mt-2.5 grid grid-cols-2 gap-2 pb-3">
+            <button
+              type="button"
+              onClick={onSearch}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-xl text-[14px] font-semibold text-heading ring-1 ring-inset ring-line-strong transition-colors hover:bg-surface-raised"
+            >
+              <Icon name="search" className="h-4 w-4" />
+              Search
+            </button>
+            <Link
+              href="/"
+              onClick={onClose}
+              aria-current={isActive("/") ? "page" : undefined}
+              className={`inline-flex h-10 items-center justify-center gap-2 rounded-xl text-[14px] font-semibold ring-1 ring-inset ring-line-strong transition-colors hover:bg-surface-raised ${
+                isActive("/") ? "text-accent" : "text-heading"
+              }`}
+            >
+              <Icon name="grid" className="h-4 w-4" />
+              Home
+            </Link>
+          </div>
 
           {primaryNav.map((section) => {
             const isOpen = expanded === section.label;
             return (
-              <div key={section.label} className="border-b border-line">
+              <div key={section.label}>
                 <button
                   type="button"
                   onClick={() => setExpanded(isOpen ? null : section.label)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between rounded-xl px-3 py-3.5 text-left text-[16px] font-bold text-heading"
+                  className="flex w-full items-center justify-between border-t border-line py-3 text-left text-[15px] font-semibold sm:py-3.5 sm:text-[16px] text-heading"
                 >
                   {section.label}
                   <Icon
@@ -560,27 +568,24 @@ function Drawer({
                 </button>
 
                 {isOpen && (
-                  <div className="mb-3 ml-3 space-y-4 border-l-2 border-line-accent/60 pl-4">
+                  <div className="mb-2.5 space-y-3 border-l-2 border-line-accent/60 pl-3">
                     {section.columns.map((col) => (
                       <div key={col.heading}>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-label">
+                        <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-label">
                           {col.heading}
                         </p>
-                        <ul className="mt-1.5">
+                        <ul className="mt-1 md:grid md:grid-cols-2 md:gap-x-4">
                           {col.links.map((link) => (
                             <li key={link.href}>
                               <Link
                                 href={link.href}
                                 onClick={onClose}
                                 aria-current={isActive(link.href) ? "page" : undefined}
-                                className={`flex min-h-[44px] items-center gap-2.5 py-1.5 text-[14.5px] font-medium ${
+                                className={`flex min-h-[40px] items-center gap-2 py-1 text-[14px] font-medium ${
                                   isActive(link.href) ? "text-accent" : "text-body"
                                 }`}
                               >
-                                <Icon
-                                  name={iconFor(link.href)}
-                                  className="h-4 w-4 shrink-0 text-accent-soft"
-                                />
+                                <Icon name={iconFor(link.href)} className="h-4 w-4 shrink-0 text-accent-soft" />
                                 {link.label}
                               </Link>
                             </li>
@@ -591,7 +596,7 @@ function Drawer({
                     <Link
                       href={section.href}
                       onClick={onClose}
-                      className="inline-flex min-h-[44px] items-center gap-2 text-[13.5px] font-semibold text-accent"
+                      className="inline-flex min-h-[40px] items-center gap-2 text-[13px] font-semibold text-accent"
                     >
                       All of {section.label.toLowerCase()} <Arrow />
                     </Link>
@@ -605,24 +610,23 @@ function Drawer({
             href="/pricing"
             onClick={onClose}
             aria-current={isActive("/pricing") ? "page" : undefined}
-            className={`flex items-center rounded-xl px-3 py-3.5 text-[16px] font-bold ${
-              isActive("/pricing") ? "text-accent" : "text-heading"
-            }`}
+            className={`flex w-full items-center justify-between border-t border-line py-3 text-left text-[15px] font-semibold sm:py-3.5 sm:text-[16px] ${isActive("/pricing") ? "text-accent" : "text-heading"}`}
           >
             Pricing
           </Link>
+          <Link href={SIGN_IN} onClick={onClose} className="flex w-full items-center justify-between border-t border-line py-3 text-left text-[15px] font-semibold sm:py-3.5 sm:text-[16px] text-heading">
+            Sign in
+          </Link>
 
-          <div className="mt-4 px-3">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-label">
-              Policy centre
-            </p>
-            <ul className="mt-2 flex flex-wrap gap-2">
+          <div className="border-t border-line py-3">
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-label">Policy centre</p>
+            <ul className="mt-2 flex flex-wrap gap-1.5">
               {policyNav.map((p) => (
                 <li key={p.href}>
                   <Link
                     href={p.href}
                     onClick={onClose}
-                    className="inline-flex min-h-[40px] items-center rounded-full bg-surface-sunken px-3.5 text-[13px] font-semibold text-body ring-1 ring-line"
+                    className="inline-flex min-h-[32px] items-center rounded-full bg-surface-sunken px-3 text-[12.5px] font-semibold text-body ring-1 ring-line"
                   >
                     {p.label}
                   </Link>
@@ -632,19 +636,23 @@ function Drawer({
           </div>
         </nav>
 
-        <div className="shrink-0 space-y-2.5 border-t border-line p-4">
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-line bg-surface-sunken px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-5">
+          <div className="min-w-0 text-[12px] leading-relaxed text-muted">
+            <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="block truncate hover:text-heading">
+              {site.contact.phone}
+            </a>
+            <a href={`mailto:${site.contact.email}`} className="block truncate hover:text-heading">
+              {site.contact.email}
+            </a>
+          </div>
           <Link
-            href={SIGN_IN}
-            className="flex h-12 w-full items-center justify-center rounded-full text-[14.5px] font-semibold text-heading ring-1 ring-inset ring-line-strong"
+            href="/company/contact-hrmagix"
+            onClick={onClose}
+            className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl bg-brand px-3.5 text-[13.5px] font-semibold text-white shadow-glow transition-colors hover:bg-brand-hover"
           >
-            Sign in
-          </Link>
-          <Button href="/company/contact" className="w-full">
             Book a demo
-          </Button>
-          <p className="pt-1 text-center text-[12px] text-subtle">
-            {site.contact.email} · {site.contact.location}
-          </p>
+            <Icon name="arrowRight" className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </motion.div>
     </div>

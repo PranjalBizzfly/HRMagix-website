@@ -52,7 +52,7 @@ export default function StickyCta() {
   }, []);
 
   // The contact page is the destination — no point nagging there.
-  const suppressed = pathname === "/company/contact" || dismissed || navOpen;
+  const suppressed = pathname === "/company/contact-hrmagix" || dismissed || navOpen;
   const shown = past && !suppressed;
 
   // Let the back-to-top button know how much room it has.
@@ -90,7 +90,7 @@ export default function StickyCta() {
         </span>
 
         <Link
-          href="/company/contact"
+          href="/company/contact-hrmagix"
           tabIndex={shown ? 0 : -1}
           className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-brand pl-4 pr-1.5 text-[13.5px] font-semibold text-white shadow-glow transition-colors hover:bg-brand-hover"
         >

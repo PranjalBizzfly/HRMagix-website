@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import Image from "next/image";
 import Link from "next/link";
 import { pressKit } from "@/lib/resources";
@@ -29,13 +30,26 @@ export const metadata: Metadata = {
 export default function PressKitPage() {
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface-sunken pb-12 pt-[92px] sm:pb-16 sm:pt-[120px] lg:pb-20 lg:pt-[132px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="presskit-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
-                { label: "Company", href: "/company/about" },
+                { label: "About HRMagix", href: "/company/about-hrmagix" },
                 { label: "Press Kit" },
               ]}
             />
@@ -51,7 +65,17 @@ export default function PressKitPage() {
               </p>
             </div>
             <Reveal delay={140} y={20}>
-              <Photo slot="press-kit" ratio="4 / 5" sizes="(max-width: 1024px) 100vw, 320px" />
+              <div className="card border-line/60 bg-surface/85 backdrop-blur-md p-6 sm:p-7 rounded-2xl shadow-lift">
+                <span className="text-[12px] font-bold uppercase tracking-wider text-accent-soft">
+                  Brand & Media Assets
+                </span>
+                <p className="font-display text-lg font-bold text-heading mt-2">
+                  Official trademarks, marks & boilerplate
+                </p>
+                <p className="text-[14px] text-body mt-2 leading-relaxed">
+                  Verified product specifications, hex colour palettes, and copy guidelines for journalists and analysts.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -69,8 +93,8 @@ export default function PressKitPage() {
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
           {(
             [
-              ["Short — one sentence", pressKit.boilerplate.short],
-              ["Long — one paragraph", pressKit.boilerplate.long],
+              ["Short, one sentence", pressKit.boilerplate.short],
+              ["Long, one paragraph", pressKit.boilerplate.long],
             ] as [string, string][]
           ).map(([label, text], i) => (
             <Reveal key={label} delay={i * 90} y={12} className="card p-6">
@@ -89,7 +113,7 @@ export default function PressKitPage() {
       <Block
         eyebrow="Brand"
         title="The mark"
-        intro="HRMagix publishes one mark. It is a vector, so it scales to any size without loss — please use it rather than a screenshot of it."
+        intro="HRMagix publishes one mark. It is a vector, so it scales to any size without loss, please use it rather than a screenshot of it."
         ground="sunken"
       >
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
@@ -98,7 +122,7 @@ export default function PressKitPage() {
               {pressKit.assets.map((asset) => (
                 <Reveal as="li" key={asset.file} y={12} className="flex items-start gap-5">
                   <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-surface ring-1 ring-line">
-                    <Image src={asset.file} alt="" width={40} height={40} unoptimized className="h-10 w-10" />
+                    <Image src={asset.file} alt={`Preview of the ${asset.name}`} width={40} height={40} unoptimized className="h-10 w-10" />
                   </span>
                   <span className="min-w-0">
                     <span className="block font-display text-[16px] font-bold text-heading">
@@ -198,7 +222,7 @@ export default function PressKitPage() {
       <Block
         eyebrow="Ask us"
         title="Not published"
-        intro="If you need any of the following, please ask rather than infer — we would rather answer than see a placeholder become a printed figure."
+        intro="If you need any of the following, please ask rather than infer, we would rather answer than see a placeholder become a printed figure."
         ground="canvas"
       >
           <div className="card mx-auto max-w-3xl p-6 sm:p-8">
@@ -211,7 +235,7 @@ export default function PressKitPage() {
               ))}
             </ul>
             <Link
-              href="/company/contact"
+              href="/company/contact-hrmagix"
               className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
             >
               Ask the team <Arrow />
@@ -219,21 +243,24 @@ export default function PressKitPage() {
           </div>
       </Block>
 
+      {/* ---- Questions ---- */}
+      <FaqSection title="Questions from the press" items={marketingFaqs["/company/press-kit"]} ground="sunken" />
+
       <Onward
         links={[
           {
-            label: "Media room",
-            href: "/resources/media",
+            label: "Media Room",
+            href: "/resources/media-room",
             note: "Which claims are attributable, and on what basis.",
           },
           {
-            label: "About",
-            href: "/company/about",
+            label: "About HRMagix",
+            href: "/company/about-hrmagix",
             note: "The company behind the mark.",
           },
           {
-            label: "Contact",
-            href: "/company/contact",
+            label: "Contact HRMagix",
+            href: "/company/contact-hrmagix",
             note: "For anything this page does not cover.",
           },
         ]}

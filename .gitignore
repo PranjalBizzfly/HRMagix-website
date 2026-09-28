@@ -110,3 +110,7 @@ docs/
 .shots
 
 .vercel
+.env*
+
+.media-originals/
+!.env.example

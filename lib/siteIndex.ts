@@ -44,83 +44,83 @@ export function buildSiteIndex(): IndexGroup[] {
       pages: [
         { title: "Home", href: "/" },
         { title: "Pricing", href: "/pricing", keywords: "plans cost price trial" },
-        { title: "How it works", href: "/how-it-works", keywords: "setup implementation steps" },
-        { title: "Contact", href: "/company/contact", keywords: "demo sales email phone" },
-        { title: "Explore all pages", href: "/all-pages", keywords: "sitemap index" },
+        { title: "How Setup Works", href: "/how-setup-works", keywords: "setup implementation steps" },
+        { title: "Contact HRMagix", href: "/company/contact-hrmagix", keywords: "demo sales email phone" },
+        { title: "Explore All Pages", href: "/explore-all-pages", keywords: "sitemap index" },
       ].map((p) => ({ ...p, group: "Main" })),
     },
     {
       name: "Solutions",
       pages: [
-        { title: "All solutions", href: "/solutions", keywords: "platform modules features" },
+        { title: "Solutions", href: "/solutions", keywords: "platform modules features" },
         ...solutions.map((s) => ({ title: s.name, href: s.href, keywords: s.title })),
-        { title: "Performance & OKRs", href: "/solutions/performance", keywords: "kra okr pip reviews 9-box" },
+        { title: "Performance & OKRs", href: "/solutions/performance-and-okrs", keywords: "kra okr pip reviews 9-box" },
         { title: "Compliance", href: "/solutions/compliance", keywords: "epf esi pt tds lwf statutory" },
       ].map((p) => ({ ...p, group: "Solutions" })),
     },
     {
       name: "Features",
       pages: [
-        { title: "All features", href: "/features", keywords: "modules" },
+        { title: "Features", href: "/features", keywords: "modules" },
         ...modules.map((m) => ({ title: m.name, href: `/features/${m.slug}`, keywords: `${m.group} ${m.desc}` })),
       ].map((p) => ({ ...p, group: "Features" })),
     },
     {
       name: "Industries",
       pages: [
-        { title: "All industries", href: "/industries" },
+        { title: "Industries", href: "/industries" },
         ...industries.map((i) => ({ title: i.name, href: i.href, keywords: i.title })),
       ].map((p) => ({ ...p, group: "Industries" })),
     },
     {
       name: "Resources",
       pages: [
-        { title: "Resource centre", href: "/resources" },
-        { title: "Payroll resources", href: "/resources/payroll" },
-        { title: "HRMS comparison", href: "/resources/hrms-comparison", keywords: "compare spreadsheets" },
-        { title: "Media room", href: "/resources/media", keywords: "press news" },
+        { title: "Resources", href: "/resources" },
+        { title: "Payroll Resources", href: "/resources/payroll-resources" },
+        { title: "HRMS Comparison", href: "/resources/hrms-comparison", keywords: "compare spreadsheets" },
+        { title: "Media Room", href: "/resources/media-room", keywords: "press news" },
       ].map((p) => ({ ...p, group: "Resources" })),
     },
     {
       name: "HR topics",
       pages: [
-        { title: "All HR topics", href: "/hr/topics", keywords: "guides knowledge" },
+        { title: "HR Topics", href: "/hr/topics", keywords: "guides knowledge" },
         ...topics.map((t) => ({ title: t.name, href: `/hr/topics/${t.slug}`, keywords: `${t.category} ${t.phrases.join(" ")}` })),
       ].map((p) => ({ ...p, group: "HR topics" })),
     },
     {
       name: "FAQs",
       pages: [
-        { title: "All questions & answers", href: "/resources/faqs", keywords: "faq" },
-        ...faqTopics.map((t) => ({ title: `${t.name} FAQs`, href: `/resources/faqs/${t.slug}`, keywords: "faq questions" })),
+        { title: "Questions & Answers", href: "/resources/questions-and-answers", keywords: "faq" },
+        ...faqTopics.map((t) => ({ title: `${t.name} FAQs`, href: `/resources/questions-and-answers/${t.slug}`, keywords: "faq questions" })),
       ].map((p) => ({ ...p, group: "FAQs" })),
     },
     {
       name: "Glossary",
       pages: [
-        { title: "HR glossary", href: "/resources/glossary", keywords: "terms definitions" },
-        ...glossary.map((g) => ({ title: g.term, href: `/resources/glossary/${slugify(g.term)}`, keywords: g.expands ?? "" })),
+        { title: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", keywords: "terms definitions" },
+        ...glossary.map((g) => ({ title: g.term, href: `/resources/hr-and-payroll-glossary/${slugify(g.term)}`, keywords: g.expands ?? "" })),
       ].map((p) => ({ ...p, group: "Glossary" })),
     },
     {
       name: "Calculators",
       pages: [
-        { title: "All calculators", href: "/resources/calculator" },
+        { title: "Calculator", href: "/resources/calculator" },
         ...calculators.map((c) => ({ title: c.name, href: `/calculators/${c.slug}`, keywords: c.title })),
       ].map((p) => ({ ...p, group: "Calculators" })),
     },
     {
       name: "Blog",
       pages: [
-        { title: "All articles", href: "/blog" },
-        ...categories.map((c) => ({ title: `${c.name} articles`, href: `/blog/category/${slugify(c.name)}`, keywords: "category" })),
-        ...articles.map((a) => ({ title: a.title, href: `/blog/${a.slug}`, keywords: a.category })),
+        { title: "Insights", href: "/insights" },
+        ...categories.map((c) => ({ title: `${c.name} articles`, href: `/insights/category/${slugify(c.name)}`, keywords: "category" })),
+        ...articles.map((a) => ({ title: a.title, href: `/insights/${a.slug}`, keywords: a.category })),
       ].map((p) => ({ ...p, group: "Blog" })),
     },
     {
       name: "White papers",
       pages: [
-        { title: "All white papers", href: "/resources/white-papers" },
+        { title: "White Papers", href: "/resources/white-papers" },
         ...whitePapers.map((w) => ({
           title: w.title,
           href: `/resources/white-papers/${w.slug}`,
@@ -131,17 +131,17 @@ export function buildSiteIndex(): IndexGroup[] {
     {
       name: "HR guides",
       pages: [
-        { title: "All guides", href: "/resources/guides" },
-        ...guides.map((g) => ({ title: g.title, href: `/resources/guides/${g.slug}` })),
+        { title: "HR Guides", href: "/resources/hr-guides" },
+        ...guides.map((g) => ({ title: g.title, href: `/resources/hr-guides/${g.slug}` })),
       ].map((p) => ({ ...p, group: "HR guides" })),
     },
     {
       name: "Workplace policies",
       pages: [
-        { title: "Workplace policy library", href: "/policy/workplace-policies" },
+        { title: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library" },
         ...policyDetails.map((d) => ({
           title: policyName.get(d.code) ?? d.slug.replace(/-/g, " "),
-          href: `/policy/workplace-policies/${d.slug}`,
+          href: `/policy-centre/workplace-policy-library/${d.slug}`,
           keywords: "policy template",
         })),
       ].map((p) => ({ ...p, group: "Workplace policies" })),
@@ -149,16 +149,16 @@ export function buildSiteIndex(): IndexGroup[] {
     {
       name: "Company",
       pages: [
-        { title: "About", href: "/company/about" },
+        { title: "About HRMagix", href: "/company/about-hrmagix" },
         { title: "Careers", href: "/company/careers", keywords: "jobs hiring" },
-        { title: "Press kit", href: "/company/press-kit", keywords: "logo brand" },
-        { title: "Vendor & partners", href: "/vendor", keywords: "partner" },
+        { title: "Press Kit", href: "/company/press-kit", keywords: "logo brand" },
+        { title: "Partners & Vendors", href: "/partners-and-vendors", keywords: "partner" },
       ].map((p) => ({ ...p, group: "Company" })),
     },
     {
       name: "Legal",
       pages: [
-        { title: "Policy centre", href: "/policy" },
+        { title: "Policy Centre", href: "/policy-centre" },
         ...legalPages.map((l) => ({ title: l.name, href: l.href })),
       ].map((p) => ({ ...p, group: "Legal" })),
     },

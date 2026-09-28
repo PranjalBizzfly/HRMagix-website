@@ -50,19 +50,19 @@ export const glossary: Term[] = [
   {
     term: "Basic pay",
     definition:
-      "The core fixed component of a salary, before allowances. It matters far beyond its own size, because the provident fund wage and the gratuity calculation are both computed on it — which makes the split between basic and allowances a cost decision rather than a formatting one.",
+      "The core fixed component of a salary, before allowances. It matters far beyond its own size, because the provident fund wage and the gratuity calculation are both computed on it, which makes the split between basic and allowances a cost decision rather than a formatting one.",
   },
   {
     term: "Calibration",
     definition:
       "The step in a review cycle where draft ratings are compared across managers before they are finalised. It exists because two managers assessing comparable work rarely arrive at the same rating unaided.",
-    see: { label: "Performance & OKRs", href: "/solutions/performance" },
+    see: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
   },
   {
     term: "Comp-off",
     expands: "Compensatory off",
     definition:
-      "Leave earned by working on a day that was not a working day — a weekly off or a public holiday — granted instead of paying an overtime premium. It is a consequence of the attendance record rather than a discretionary grant, and it normally carries an expiry.",
+      "Leave earned by working on a day that was not a working day, a weekly off or a public holiday, granted instead of paying an overtime premium. It is a consequence of the attendance record rather than a discretionary grant, and it normally carries an expiry.",
     confusedWith:
       "Not a leave type an employee applies for from a balance. It has to be earned first, and it lapses if unused by the date the policy sets.",
     see: { label: "Leave Management", href: "/solutions/leave-management" },
@@ -86,7 +86,7 @@ export const glossary: Term[] = [
       "The employer's total annual cost of employing someone: gross pay plus the employer's own contributions and any other costs attributed to the role. It is higher than gross, and it is never an amount the employee receives.",
     confusedWith:
       "Frequently quoted as though it were salary. Gross is what is earned before deduction; take-home is what reaches the bank; CTC is what the employer spends.",
-    see: { label: "Salary calculator", href: "/calculators/salary" },
+    see: { label: "Salary Calculator", href: "/calculators/salary" },
   },
   {
     term: "Dearness allowance",
@@ -113,7 +113,7 @@ export const glossary: Term[] = [
     expands: "Employees' Provident Fund",
     definition:
       "A statutory retirement savings scheme. The employee contributes 12% of the PF wage and the employer 12%, of which 8.33% is diverted to the pension scheme within the statutory ceiling. Coverage generally begins at twenty employees in a covered establishment, with voluntary coverage possible below that.",
-    see: { label: "PF calculator", href: "/calculators/pf" },
+    see: { label: "PF Calculator", href: "/calculators/pf" },
   },
   {
     term: "EPS",
@@ -126,7 +126,7 @@ export const glossary: Term[] = [
     expands: "Employees' State Insurance",
     definition:
       "A contributory health and social security scheme for employees earning at or below the wage threshold, currently ₹21,000 gross a month. The employee contributes 0.75% of gross and the employer 3.25%. Coverage generally begins at ten employees in a covered establishment.",
-    see: { label: "ESI calculator", href: "/calculators/esi" },
+    see: { label: "ESI Calculator", href: "/calculators/esi" },
   },
   {
     term: "Form 16",
@@ -143,13 +143,13 @@ export const glossary: Term[] = [
     expands: "F&F",
     definition:
       "The closing payment when employment ends. It draws on every other record at once: salary to the last working day from attendance, leave encashment from the leave ledger, notice pay or recovery from the resignation record, gratuity where the qualifying service is complete, less advances and unreturned assets.",
-    see: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+    see: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
   },
   {
     term: "Gratuity",
     definition:
       "A statutory payment on separation to employees who have completed five years of continuous service, calculated as fifteen days' wages for each completed year on the last drawn basic, using a twenty-six day divisor. The five-year condition does not apply in the case of death or disablement.",
-    see: { label: "Gratuity calculator", href: "/calculators/gratuity" },
+    see: { label: "Gratuity Calculator", href: "/calculators/gratuity" },
   },
   {
     term: "Gross salary",
@@ -165,7 +165,7 @@ export const glossary: Term[] = [
     term: "HRMS",
     expands: "Human Resource Management System",
     definition:
-      "A system that holds one authoritative record per employee and runs the workflows that read from it — attendance, leave, payroll, performance, documents. The defining property is the single record, not the number of features.",
+      "A system that holds one authoritative record per employee and runs the workflows that read from it, attendance, leave, payroll, performance, documents. The defining property is the single record, not the number of features.",
     confusedWith:
       "Often used interchangeably with payroll software. Payroll is a calculation that reads the record; an HRMS is the record itself plus everything else that reads it.",
     see: { label: "HRMS", href: "/solutions/hrms" },
@@ -200,7 +200,7 @@ export const glossary: Term[] = [
   {
     term: "Muster roll",
     definition:
-      "The attendance register an establishment is required to maintain. Whether kept on paper or digitally, it must be able to answer a specific question about a specific person on a specific date — which is the form an inspection almost always takes.",
+      "The attendance register an establishment is required to maintain. Whether kept on paper or digitally, it must be able to answer a specific question about a specific person on a specific date, which is the form an inspection almost always takes.",
   },
   {
     term: "New tax regime",
@@ -217,20 +217,20 @@ export const glossary: Term[] = [
   {
     term: "9-box",
     definition:
-      "A three-by-three matrix plotting demonstrated performance against assessed potential. Its value is comparative — it shows where a team is dense and where it is thin. A single person's position, read alone, tells you very little.",
+      "A three-by-three matrix plotting demonstrated performance against assessed potential. Its value is comparative, it shows where a team is dense and where it is thin. A single person's position, read alone, tells you very little.",
   },
   {
     term: "OKR",
     expands: "Objective and Key Result",
     definition:
       "A goal-setting structure pairing a qualitative objective with quantitative key results that measure progress toward it. Objectives are written to be memorable; key results exist to be read rather than argued about.",
-    see: { label: "Performance & OKRs", href: "/solutions/performance" },
+    see: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
   },
   {
     term: "Payslip",
     definition:
       "The statement issued to an employee for a pay period, showing earnings, deductions and net pay. A reissued payslip should be the original document rather than a regenerated approximation, since the period it covers has already been filed against.",
-    see: { label: "Reading an Indian payslip", href: "/blog/reading-an-indian-payslip" },
+    see: { label: "Reading an Indian payslip", href: "/insights/reading-an-indian-payslip" },
   },
   {
     term: "PF wage",
@@ -246,7 +246,7 @@ export const glossary: Term[] = [
   {
     term: "Probation",
     definition:
-      "An initial period during which suitability is assessed, ending in confirmation, extension or separation. The failure mode is not a harsh decision but no decision — the period lapses, nothing is recorded, and the ambiguity surfaces at an increment or an exit.",
+      "An initial period during which suitability is assessed, ending in confirmation, extension or separation. The failure mode is not a harsh decision but no decision, the period lapses, nothing is recorded, and the ambiguity surfaces at an increment or an exit.",
   },
   {
     term: "Professional tax",
@@ -258,13 +258,13 @@ export const glossary: Term[] = [
     term: "Regularisation",
     definition:
       "A correction to an attendance record raised against a specific day with a reason attached and routed for approval. The original capture is kept alongside the correction rather than replaced, because a ledger that can be overwritten is not evidence of anything.",
-    see: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+    see: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
   },
   {
     term: "Sandwich rule",
     definition:
       "A leave policy under which non-working days falling between two leave days are themselves counted as leave. It is an employer choice rather than a statutory requirement, and most organisations discover their own position on it only when somebody disputes a deduction.",
-    see: { label: "The sandwich rule", href: "/blog/sandwich-rule" },
+    see: { label: "The sandwich rule", href: "/insights/sandwich-rule" },
   },
   {
     term: "Section 192",
@@ -275,8 +275,8 @@ export const glossary: Term[] = [
     term: "Self-service",
     expands: "ESS, employee self service portal",
     definition:
-      "The employee's own access to their record: payslips, Form 16, leave balances and applications, attendance regularisation, personal detail updates and investment declarations. Its scope is deliberately narrow — applying is not approving.",
-    see: { label: "Employee Self-Service", href: "/solutions/ess" },
+      "The employee's own access to their record: payslips, Form 16, leave balances and applications, attendance regularisation, personal detail updates and investment declarations. Its scope is deliberately narrow, applying is not approving.",
+    see: { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
   },
   {
     term: "Shift",
@@ -284,7 +284,7 @@ export const glossary: Term[] = [
       "A defined working window that attendance is measured against. A shift crossing midnight is treated as one unit attributed to the day it began; splitting it at the date boundary produces two short days and an incorrect overtime figure.",
     see: {
       label: "Shifts across midnight",
-      href: "/blog/shift-detection-across-midnight",
+      href: "/insights/shift-detection-across-midnight",
     },
   },
   {

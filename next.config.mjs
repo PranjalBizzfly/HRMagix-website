@@ -13,22 +13,22 @@
  */
 const redirects = [
   // Company
-  ["/about", "/company/about"],
-  ["/contact", "/company/contact"],
+  ["/about", "/company/about-hrmagix"],
+  ["/contact", "/company/contact-hrmagix"],
   ["/careers", "/company/careers"],
   ["/press-kit", "/company/press-kit"],
 
   // Policy
-  ["/privacy", "/policy/privacy"],
-  ["/terms", "/policy/terms"],
-  ["/security", "/policy/security"],
-  ["/cookies", "/policy/cookies"],
+  ["/privacy", "/policy-centre/privacy-policy"],
+  ["/terms", "/policy-centre/terms-of-service"],
+  ["/security", "/policy-centre/security"],
+  ["/cookies", "/policy-centre/cookie-policy"],
 
   // Resources
-  ["/faq", "/resources/faqs"],
-  ["/faqs", "/resources/faqs"],
+  ["/faq", "/resources/questions-and-answers"],
+  ["/faqs", "/resources/questions-and-answers"],
   ["/white-papers", "/resources/white-papers"],
-  ["/media", "/resources/media"],
+  ["/media", "/resources/media-room"],
   ["/calculator", "/resources/calculator"],
 
   // Platform. /features is a real page again; the old /modules URLs go to the
@@ -53,12 +53,44 @@ const redirects = [
   ["/compliance", "/solutions/payroll"],
 
   // Partner enquiries.
-  ["/partners", "/vendor"],
+  ["/partners", "/partners-and-vendors"],
+
+  // Page URLs renamed to carry each page's full name. Specific paths come
+  // before the section-wide wildcards so each old URL lands in one hop.
+  ["/solutions/onboarding", "/solutions/onboarding-and-lifecycle"],
+  ["/solutions/ess", "/solutions/employee-self-service"],
+  ["/solutions/attendance", "/solutions/attendance-and-shifts"],
+  ["/solutions/performance", "/solutions/performance-and-okrs"],
+  ["/industries/it-services", "/industries/it-and-technology"],
+  ["/company/about", "/company/about-hrmagix"],
+  ["/company/contact", "/company/contact-hrmagix"],
+  ["/resources/payroll", "/resources/payroll-resources"],
+  ["/resources/media", "/resources/media-room"],
+  ["/resources/guides/:path*", "/resources/hr-guides/:path*"],
+  ["/resources/glossary/:path*", "/resources/hr-and-payroll-glossary/:path*"],
+  ["/resources/faqs/:path*", "/resources/questions-and-answers/:path*"],
+  ["/policy/privacy", "/policy-centre/privacy-policy"],
+  ["/policy/terms", "/policy-centre/terms-of-service"],
+  ["/policy/cookies", "/policy-centre/cookie-policy"],
+  ["/policy/workplace-policies/:path*", "/policy-centre/workplace-policy-library/:path*"],
+  ["/policy/:path*", "/policy-centre/:path*"],
+  ["/blog/:path*", "/insights/:path*"],
+  ["/vendor", "/partners-and-vendors"],
+  ["/how-it-works", "/how-setup-works"],
+  ["/all-pages", "/explore-all-pages"],
 ];
 
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Sharper photographs: modern formats first, and a higher quality than the
+  // default 75 for every <Image> that asks for it.
+  images: {
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 90, 100],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840],
+    minimumCacheTTL: 2678400,
+  },
   // Lets a verification build run without clobbering a running `next dev`.
   // Default stays `.next`; CI/QA can set NEXT_DIST_DIR=.next-verify.
   distDir: process.env.NEXT_DIST_DIR || ".next",

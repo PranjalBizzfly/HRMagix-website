@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
 import { whitePapers, anyDownloadable } from "@/lib/papers";
 import { Onward } from "@/components/editorial";
@@ -34,8 +35,20 @@ export default function WhitePapersPage() {
     <>
       <OnThisPage exclude={["See it run", "See this run", "See this running", "Talk it through"]} />
 
-      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="resources-whitepapers-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
@@ -58,7 +71,17 @@ export default function WhitePapersPage() {
               </p>
             </div>
             <Reveal delay={140} y={20}>
-              <Photo slot="white-papers" ratio="4 / 5" sizes="(max-width: 1024px) 100vw, 420px" />
+              <div className="card border-line/60 bg-surface/85 backdrop-blur-md p-6 sm:p-7 rounded-2xl shadow-lift">
+                <span className="text-[12px] font-bold uppercase tracking-wider text-accent-soft">
+                  Peer-Reviewed Briefings
+                </span>
+                <p className="font-display text-lg font-bold text-heading mt-2">
+                  Statutory analysis without email paywalls
+                </p>
+                <p className="text-[14px] text-body mt-2 leading-relaxed">
+                  Indian labor statute, the four Wage Codes, multi-state PF rulings, and ESI court precedents published open-access with full citations.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -159,7 +182,7 @@ export default function WhitePapersPage() {
           <p className="text-[16.5px] leading-[1.72] text-muted">
             These are readable web documents rather than downloadable PDFs, and there is no email
             gate in front of any of them. HRMagix does not operate a gated document archive, so this
-            page does not present one — no download control appears above because there is nothing
+            page does not present one, no download control appears above because there is nothing
             to download.
           </p>
           <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
@@ -174,11 +197,13 @@ export default function WhitePapersPage() {
         </Reveal>
       </Block>
 
+      <FaqSection items={resourcesFaqs["/resources/white-papers"]} ground="canvas" />
+
       <Onward
         links={[
           {
             label: "Insights",
-            href: "/blog",
+            href: "/insights",
             note: "Shorter pieces on the same subjects, written as arguments rather than references.",
           },
           {

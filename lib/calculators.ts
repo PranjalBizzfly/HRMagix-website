@@ -142,7 +142,7 @@ export const calculators: Calculator[] = [
     standfirst:
       "Enter a monthly gross and see the whole structure: basic, statutory deductions on both sides, take-home before income tax, and what the employee actually costs.",
     intro: [
-      "A salary has three different totals and they are routinely confused. Gross is everything earned before deduction. Take-home is gross minus the employee's own statutory contributions. Cost to company is gross plus the employer's contributions — higher than gross, and never an amount anyone receives.",
+      "A salary has three different totals and they are routinely confused. Gross is everything earned before deduction. Take-home is gross minus the employee's own statutory contributions. Cost to company is gross plus the employer's contributions, higher than gross, and never an amount anyone receives.",
       "This calculator produces all three from one figure, along with the provident fund and ESI lines that sit between them.",
     ],
     icon: "wallet",
@@ -253,7 +253,7 @@ export const calculators: Calculator[] = [
         { label: "The PF base is capped, or not", text: "Where the ₹15,000 statutory wage ceiling is applied, the provident fund base is the lower of basic and ₹15,000. Without the cap, it is full basic." },
         { label: "Provident fund is 12% on each side", text: "The employee contributes 12% of the PF base. The employer contributes 12% as well, of which 8.33% (capped at the ceiling) is diverted to the pension scheme and the remainder to provident fund." },
         { label: "ESI applies only below the threshold", text: "Where monthly gross is ₹21,000 or less, the employee contributes 0.75% and the employer 3.25% of gross." },
-        { label: "Each head is rounded before it is summed", text: "Every statutory line is rounded to the nearest rupee where it is computed, and totals sum the rounded parts — which is how a payslip is actually produced." },
+        { label: "Each head is rounded before it is summed", text: "Every statutory line is rounded to the nearest rupee where it is computed, and totals sum the rounded parts, which is how a payslip is actually produced." },
       ],
       notes: [
         "Income tax under Section 192 is not included. Liability depends on the employee's election between the old and new regimes and on their verified declarations, so any figure here would mislead.",
@@ -272,11 +272,31 @@ export const calculators: Calculator[] = [
       },
       {
         q: "Why does changing the basic percentage change my take-home?",
-        a: "Provident fund is computed on basic rather than on gross. A higher basic means a larger PF base, a larger deduction and therefore a lower take-home — while increasing what accumulates in the provident fund and, at exit, the gratuity computed on last drawn basic.",
+        a: "Provident fund is computed on basic rather than on gross. A higher basic means a larger PF base, a larger deduction and therefore a lower take-home, while increasing what accumulates in the provident fund and, at exit, the gratuity computed on last drawn basic.",
+      },
+      {
+        q: "Does the take-home figure include income tax?",
+        a: "No. Income tax under Section 192 depends on the employee's choice between the old and new regimes and on their verified declarations, so the figure shown is take-home before income tax.",
+      },
+      {
+        q: "Is Professional Tax deducted in this salary breakup?",
+        a: "No. Professional Tax and Labour Welfare Fund are state subjects with different slabs, exemptions and periodicity in each state, so neither is included.",
+      },
+      {
+        q: "When does ESI appear in the salary breakup?",
+        a: "Only where monthly gross is ₹21,000 or less. In that case the employee contributes 0.75% and the employer 3.25% of gross; above it, both ESI lines show as not applicable.",
+      },
+      {
+        q: "What basic percentage should I enter?",
+        a: "Enter the share your salary structure actually uses. Most Indian structures set basic between 40% and 50% of gross, and the calculator defaults to 50%.",
+      },
+      {
+        q: "How are the figures rounded?",
+        a: "Each statutory line is rounded to the nearest rupee where it is computed, and totals sum the rounded parts, which is how a payslip is actually produced.",
       },
     ],
     seo: {
-      title: "Salary Breakup Calculator — Take-Home and Cost to Company",
+      title: "Salary Breakup Calculator: Take-Home and Cost to Company",
       description:
         "Free salary calculator for India: enter a monthly gross to see basic, employee and employer provident fund, ESI, take-home before income tax and total cost to employer.",
       keywords: [
@@ -298,7 +318,7 @@ export const calculators: Calculator[] = [
     name: "PF Calculator",
     title: "EPF and pension contribution calculator",
     standfirst:
-      "Provident fund is 12% on each side, but the employer's 12% splits between provident fund and pension — and the split is capped even when the contribution is not.",
+      "Provident fund is 12% on each side, but the employer's 12% splits between provident fund and pension, and the split is capped even when the contribution is not.",
     intro: [
       "Most provident fund confusion is about the employer's share rather than the employee's. The employee contributes a flat 12%. The employer contributes 12% as well, but 8.33% of it is diverted to the Employees' Pension Scheme, and that pension share is capped at the statutory wage ceiling even where the employer has chosen to contribute on full basic.",
       "This calculator shows both sides separately, the split within the employer share, and what accumulates in a year before interest.",
@@ -312,7 +332,7 @@ export const calculators: Calculator[] = [
         initial: "25000",
         min: 1,
         max: 10_000_000,
-        hint: "Basic salary plus dearness allowance — not gross.",
+        hint: "Basic salary plus dearness allowance, not gross.",
       },
       {
         name: "ceiling",
@@ -372,7 +392,7 @@ export const calculators: Calculator[] = [
                   ? basic > EPF_CEILING
                     ? "Capped at the ₹15,000 statutory ceiling"
                     : "Basic is below the ceiling, so full basic is used"
-                  : "Ceiling not applied — full basic used",
+                  : "Ceiling not applied, full basic used",
               },
             ],
           },
@@ -411,7 +431,7 @@ export const calculators: Calculator[] = [
       steps: [
         { label: "Establish the PF base", text: "The base is basic salary plus dearness allowance. Where the employer applies the statutory wage ceiling, the base is the lower of that figure and ₹15,000." },
         { label: "Employee contributes 12%", text: "A flat 12% of the PF base. An employee may add a voluntary contribution above this; the employer's share is unaffected by it." },
-        { label: "Employer contributes 12%, split two ways", text: "8.33% of the base — capped at the ₹15,000 ceiling regardless of the employer's ceiling choice — goes to the Employees' Pension Scheme. The remainder goes to provident fund." },
+        { label: "Employer contributes 12%, split two ways", text: "8.33% of the base, capped at the ₹15,000 ceiling regardless of the employer's ceiling choice, goes to the Employees' Pension Scheme. The remainder goes to provident fund." },
         { label: "Both sides land in the same account", text: "The monthly total is the sum of both contributions. Interest is credited by EPFO at a rate declared each year and is not included here." },
       ],
       notes: [
@@ -433,9 +453,29 @@ export const calculators: Calculator[] = [
         q: "Does this include the interest my PF earns?",
         a: "No. EPFO declares an interest rate each year, and applying an assumed rate to future balances would be a projection rather than a calculation. The annual figure shown is contributions only.",
       },
+      {
+        q: "What is the PF base, and should I enter basic or gross?",
+        a: "Enter monthly basic plus dearness allowance, not gross. Where the ₹15,000 wage ceiling is applied, the PF base is the lower of that figure and ₹15,000.",
+      },
+      {
+        q: "How is the employer's 12% split between EPF and EPS?",
+        a: "8.33% of the PF base, capped at the ₹15,000 ceiling, goes to the Employees' Pension Scheme. The remainder of the employer's 12% goes to provident fund.",
+      },
+      {
+        q: "What changes if I switch the ₹15,000 ceiling off?",
+        a: "Contributions on both sides are computed on full basic instead of the capped figure. The pension share stays capped at the ceiling either way.",
+      },
+      {
+        q: "How much goes into the PF account in a year?",
+        a: "The calculator totals the employee and employer contributions each month and multiplies by twelve. That annual figure is contributions only, before any interest credited by EPFO.",
+      },
+      {
+        q: "Does EPF apply to my establishment and employees?",
+        a: "The calculator does not determine that. Applicability of the scheme to a particular establishment and employee is a question for your advisers or the EPFO.",
+      },
     ],
     seo: {
-      title: "EPF Calculator — Provident Fund and Pension Contributions",
+      title: "EPF Calculator: Provident Fund and Pension Contributions",
       description:
         "PF calculation for Indian payroll: employee and employer provident fund at 12%, the 8.33% pension split, the ₹15,000 wage ceiling and voluntary provident fund.",
       keywords: [
@@ -452,14 +492,14 @@ export const calculators: Calculator[] = [
   {
     slug: "esi",
     methodIntro:
-      "The contribution rates are the easy half. The eligibility test — and the fact that it is fixed for a contribution period rather than checked monthly — is the half that costs employers money.",
+      "The contribution rates are the easy half. The eligibility test, and the fact that it is fixed for a contribution period rather than checked monthly, is the half that costs employers money.",
     name: "ESI Calculator",
     title: "ESI eligibility and contribution calculator",
     standfirst:
-      "ESI turns on a threshold, and the threshold is tested against gross wages — which means overtime and allowances can move an employee in or out of coverage.",
+      "ESI turns on a threshold, and the threshold is tested against gross wages, which means overtime and allowances can move an employee in or out of coverage.",
     intro: [
       "Employees' State Insurance is contributed at 0.75% by the employee and 3.25% by the employer, on gross wages, for employees within the statutory wage threshold of ₹21,000 a month.",
-      "The part that catches payroll teams out is not the rate. It is that the wage base moves — overtime, night differentials and attendance-linked allowances all count towards gross — so an employee near the line can appear to cross it in a heavy month.",
+      "The part that catches payroll teams out is not the rate. It is that the wage base moves, overtime, night differentials and attendance-linked allowances all count towards gross, so an employee near the line can appear to cross it in a heavy month.",
     ],
     icon: "scale",
     fields: [
@@ -524,8 +564,8 @@ export const calculators: Calculator[] = [
           {
             heading: "Contributions",
             rows: [
-              { term: "Employee — 0.75%", value: applies ? inr(emp) : "Not applicable", muted: !applies },
-              { term: "Employer — 3.25%", value: applies ? inr(er) : "Not applicable", muted: !applies },
+              { term: "Employee, 0.75%", value: applies ? inr(emp) : "Not applicable", muted: !applies },
+              { term: "Employer, 3.25%", value: applies ? inr(er) : "Not applicable", muted: !applies },
               { term: "Total remitted to ESIC", value: applies ? inr(emp + er) : "Nil", total: true },
             ],
           },
@@ -536,7 +576,7 @@ export const calculators: Calculator[] = [
                 term: crossedByVariable ? "Crossed the threshold on variable pay" : "Position on the threshold",
                 value: crossedByVariable ? "Yes" : "No",
                 note: crossedByVariable
-                  ? "Fixed wages alone are within the threshold — it is this month's overtime and allowances that took gross above it. Contribution-period rules matter here."
+                  ? "Fixed wages alone are within the threshold, it is this month's overtime and allowances that took gross above it. Contribution-period rules matter here."
                   : applies
                     ? "Within the threshold on fixed wages and total gross alike."
                     : "Above the threshold on fixed wages alone, not only because of variable pay.",
@@ -550,9 +590,9 @@ export const calculators: Calculator[] = [
       formula: "If Gross ≤ ₹21,000 → Employee = 0.75% × Gross, Employer = 3.25% × Gross",
       steps: [
         { label: "Total the wage base", text: "Gross wages for the month, including overtime, shift differentials and attendance-linked allowances. ESI is tested on gross rather than on basic." },
-        { label: "Compare against the threshold", text: "Where monthly gross wages are ₹21,000 or less, the scheme applies. The threshold is inclusive — an employee at exactly ₹21,000 is covered." },
+        { label: "Compare against the threshold", text: "Where monthly gross wages are ₹21,000 or less, the scheme applies. The threshold is inclusive, an employee at exactly ₹21,000 is covered." },
         { label: "Apply both rates to gross", text: "The employee contributes 0.75% and the employer 3.25%, each rounded to the nearest rupee and each computed on gross rather than on the capped figure." },
-        { label: "Check whether variable pay moved the result", text: "If fixed wages alone are within the threshold but total gross is not, the crossing was caused by this month's overtime — which is exactly the case where contribution periods matter." },
+        { label: "Check whether variable pay moved the result", text: "If fixed wages alone are within the threshold but total gross is not, the crossing was caused by this month's overtime, which is exactly the case where contribution periods matter." },
       ],
       notes: [
         "This applies a monthly test. A live payroll must also respect contribution periods: an employee covered at the start of a period continues to contribute through it even if wages rise above the threshold within it.",
@@ -567,15 +607,35 @@ export const calculators: Calculator[] = [
       },
       {
         q: "Is the threshold tested on gross or on basic?",
-        a: "On gross wages. That is why overtime, shift differentials and attendance-linked allowances all affect ESI applicability, while provident fund — computed on basic — is unaffected by them.",
+        a: "On gross wages. That is why overtime, shift differentials and attendance-linked allowances all affect ESI applicability, while provident fund, computed on basic, is unaffected by them.",
       },
       {
         q: "What does the employer's 3.25% pay for?",
         a: "Contributions fund the medical and cash benefits available to insured employees and their dependants under the scheme. The contribution is the employer's cost and does not reduce the employee's take-home.",
       },
+      {
+        q: "What are the ESI contribution rates?",
+        a: "The employee contributes 0.75% and the employer 3.25% of gross wages, each rounded to the nearest rupee, for employees within the ₹21,000 monthly threshold.",
+      },
+      {
+        q: "Is an employee earning exactly ₹21,000 covered by ESI?",
+        a: "Yes. The threshold is inclusive, so monthly gross wages of ₹21,000 or less fall within the scheme.",
+      },
+      {
+        q: "Why does the calculator ask for overtime and allowances separately?",
+        a: "So you can see whether this month's variable pay took gross over the threshold. If fixed wages alone are within ₹21,000 but total gross is not, the calculator flags the crossing as caused by variable pay.",
+      },
+      {
+        q: "Does every allowance count towards the ESI wage base?",
+        a: "Overtime, shift differentials and attendance-linked allowances count towards gross. Whether a specific allowance forms part of the wage base for ESI purposes is a question for your advisers or the ESIC.",
+      },
+      {
+        q: "What goes wrong if payroll re-tests ESI every month?",
+        a: "A system that re-tests applicability month by month, with no memory of the contribution period, produces under-deduction, over-deduction and disrupted benefit entitlement in turn.",
+      },
     ],
     seo: {
-      title: "ESI Calculator — Eligibility and Contribution",
+      title: "ESI Calculator: Eligibility and Contribution",
       description:
         "ESI calculation for Indian payroll: test the ₹21,000 gross wage threshold, compute 0.75% employee and 3.25% employer contributions, and see when overtime moves the wage base.",
       keywords: [
@@ -597,7 +657,7 @@ export const calculators: Calculator[] = [
     standfirst:
       "Fifteen days' wages for every completed year of service, on a twenty-six day divisor, once five years of continuous service are complete.",
     intro: [
-      "Gratuity is a statutory entitlement under the Payment of Gratuity Act rather than a discretionary benefit, and its formula is fixed. What varies between employers is the administration — how a claim is processed, how continuous service is computed across a break, and whether the liability has been provisioned before it falls due.",
+      "Gratuity is a statutory entitlement under the Payment of Gratuity Act rather than a discretionary benefit, and its formula is fixed. What varies between employers is the administration, how a claim is processed, how continuous service is computed across a break, and whether the liability has been provisioned before it falls due.",
       "This calculator applies the statutory formula to the figures you enter, and shows the position for an employee who has not yet reached the qualifying period.",
     ],
     icon: "trophy",
@@ -609,7 +669,7 @@ export const calculators: Calculator[] = [
         initial: "30000",
         min: 1,
         max: 10_000_000,
-        hint: "Basic salary plus dearness allowance as at the last working day — not gross.",
+        hint: "Basic salary plus dearness allowance as at the last working day, not gross.",
       },
       {
         name: "years",
@@ -633,7 +693,7 @@ export const calculators: Calculator[] = [
       return {
         summary: eligible
           ? `${years} completed years at ${inr(basic)} last drawn basic, on the statutory fifteen-days-per-year formula.`
-          : `${years} completed ${years === 1 ? "year" : "years"} of service — ${shortfall} more ${shortfall === 1 ? "year is" : "years are"} required before gratuity becomes payable.`,
+          : `${years} completed ${years === 1 ? "year" : "years"} of service, ${shortfall} more ${shortfall === 1 ? "year is" : "years are"} required before gratuity becomes payable.`,
         cards: [
           {
             label: eligible ? "Gratuity payable" : "Not yet eligible",
@@ -698,11 +758,31 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What happens to gratuity before five years?",
-        a: "It is not payable, but the liability is accruing. The calculator shows what would be payable at five years on the current basic, which is the figure worth provisioning against — so that a long-serving employee reaching eligibility is a settlement rather than a surprise on the books.",
+        a: "It is not payable, but the liability is accruing. The calculator shows what would be payable at five years on the current basic, which is the figure worth provisioning against, so that a long-serving employee reaching eligibility is a settlement rather than a surprise on the books.",
+      },
+      {
+        q: "What is the gratuity formula used here?",
+        a: "Gratuity = (15 ÷ 26) × last drawn basic plus DA × completed years of service, payable once five years of continuous service are complete.",
+      },
+      {
+        q: "Does the calculator apply the statutory maximum on gratuity?",
+        a: "No. The maximum payable under the Act is not applied, so where the computed figure is large, confirm the current ceiling before settling.",
+      },
+      {
+        q: "How are part years of service counted?",
+        a: "Only completed years count in this calculation. How a part year is treated in a specific case, and how continuous service is computed across a break, are matters for your advisers.",
+      },
+      {
+        q: "Is the five-year rule absolute?",
+        a: "Gratuity becomes payable on completing five years of continuous service, but the Act also prescribes circumstances in which the five-year condition does not apply.",
+      },
+      {
+        q: "Does the calculator show the tax on gratuity?",
+        a: "No. The tax treatment of gratuity in a full-and-final settlement has its own rules and is not addressed by this calculator.",
       },
     ],
     seo: {
-      title: "Gratuity Calculator — Payment of Gratuity Act Formula",
+      title: "Gratuity Calculator: Payment of Gratuity Act Formula",
       description:
         "Gratuity calculator for India: fifteen days' wages per completed year on a 26-day divisor, with the five-year continuous service rule and per-year accrual shown.",
       keywords: [
@@ -837,7 +917,7 @@ export const calculators: Calculator[] = [
         { label: "Multiply by headcount", text: "Because every input is an average, run the calculator once per salary band for a workforce with meaningfully different pay levels." },
       ],
       notes: [
-        "This is an averaged figure. A workforce spanning the ESI threshold will not be represented accurately by a single average — run each band separately.",
+        "This is an averaged figure. A workforce spanning the ESI threshold will not be represented accurately by a single average, run each band separately.",
         "Employee-side deductions do not appear here, because they reduce take-home rather than adding to employer cost.",
         "Professional Tax, Labour Welfare Fund and gratuity provisioning are not included. The first two are state subjects; the third depends on individual service length.",
       ],
@@ -855,9 +935,29 @@ export const calculators: Calculator[] = [
         q: "Does this include gratuity?",
         a: "No. Gratuity accrues per employee against their length of service rather than as a flat monthly percentage, so it cannot be represented by a headcount average. The gratuity calculator handles it per employee.",
       },
+      {
+        q: "What does the monthly payroll cost include?",
+        a: "Gross salary plus the employer's statutory contributions: 12% provident fund on the PF base (including the 8.33% pension share) and 3.25% ESI where average gross is within the ₹21,000 threshold.",
+      },
+      {
+        q: "Why are employee PF and ESI deductions not shown?",
+        a: "Because they come out of the employee's gross and reduce take-home rather than adding to the employer's cost.",
+      },
+      {
+        q: "Are Professional Tax and Labour Welfare Fund included?",
+        a: "No. Both are state subjects, so they are left out, as is gratuity provisioning, which depends on individual service length.",
+      },
+      {
+        q: "Why does the basic percentage change the payroll cost?",
+        a: "Employer provident fund is computed on basic, so a higher basic share raises the PF base and the employer's contribution, unless the ₹15,000 ceiling caps it.",
+      },
+      {
+        q: "Does the calculator give an annual payroll figure?",
+        a: "Yes. It annualises the total monthly cost as twelve months at the current run rate.",
+      },
     ],
     seo: {
-      title: "Payroll Cost Calculator — Total Monthly Employer Cost",
+      title: "Payroll Cost Calculator: Total Monthly Employer Cost",
       description:
         "Calculate total monthly payroll cost for a team in India: salary bill plus employer provident fund, pension and ESI contributions, per employee and annualised.",
       keywords: [
@@ -873,14 +973,14 @@ export const calculators: Calculator[] = [
   {
     slug: "plan-cost",
     methodIntro:
-      "Published rate times headcount, and nothing else. No modelled savings, no projected return — the arithmetic is deliberately trivial so the number is checkable.",
+      "Published rate times headcount, and nothing else. No modelled savings, no projected return, the arithmetic is deliberately trivial so the number is checkable.",
     name: "HRMagix Plan Cost",
     title: "HRMagix subscription cost calculator",
     standfirst:
       "The published per-employee rate multiplied by your headcount. No modelled savings, no projected return, and no discount that appears when you ask.",
     intro: [
       "HRMagix publishes its rates per employee per month across three plans. This calculator does one thing: multiplies the published rate by the number of people you would put on the platform.",
-      "Enterprise is quoted rather than listed, because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required — so this calculator returns no figure for it.",
+      "Enterprise is quoted rather than listed, because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required, so this calculator returns no figure for it.",
     ],
     icon: "layers",
     fields: [
@@ -925,7 +1025,7 @@ export const calculators: Calculator[] = [
                 {
                   term: "Enterprise pricing",
                   value: "On application",
-                  note: "It is quoted because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required — not because there is a number we would rather you did not see.",
+                  note: "It is quoted because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required, not because there is a number we would rather you did not see.",
                 },
               ],
             },
@@ -988,9 +1088,29 @@ export const calculators: Calculator[] = [
         q: "Can I switch plans later?",
         a: "Every module lives on one platform, and your plan decides which are switched on. Moving between plans changes what is available rather than requiring a migration.",
       },
+      {
+        q: "Why does Enterprise show no price?",
+        a: "Enterprise is quoted rather than published, because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required.",
+      },
+      {
+        q: "What currency are the plan rates in?",
+        a: "Rates are published in US dollars, as HRMagix lists them, and are charged per employee per month.",
+      },
+      {
+        q: "Is there a free trial?",
+        a: "Yes. The trial runs for 14 days with full access to every module, rather than a restricted version.",
+      },
+      {
+        q: "What is the difference between the Starter and Growth plans?",
+        a: "Starter covers attendance, leaves, directory and documents. Growth adds payroll, performance, OKRs, recognition and analytics; the full module list is on the pricing page.",
+      },
+      {
+        q: "Does the calculation apply tiering or a minimum commitment?",
+        a: "No. It is the published per-employee rate multiplied by headcount, with no tiering, no minimum commitment and no setup fee applied.",
+      },
     ],
     seo: {
-      title: "HRMagix Plan Cost Calculator — Per Employee Pricing",
+      title: "HRMagix Plan Cost Calculator: Per Employee Pricing",
       description:
         "Work out your HRMagix subscription cost: published per-employee monthly rates across the Starter, Growth and Enterprise plans, multiplied by your headcount.",
       keywords: [
@@ -1005,14 +1125,14 @@ export const calculators: Calculator[] = [
   {
     slug: "overtime",
     methodIntro:
-      "The statutory multiplier is fixed; the hourly rate it multiplies is not. So the working is shown in that order — the rate you supply, then the doubling the Act requires.",
+      "The statutory multiplier is fixed; the hourly rate it multiplies is not. So the working is shown in that order, the rate you supply, then the doubling the Act requires.",
     name: "Overtime Calculator",
     title: "Overtime pay calculator",
     standfirst:
-      "Overtime at twice the ordinary rate of wages — the Factories Act rule for work beyond nine hours in a day or forty-eight in a week.",
+      "Overtime at twice the ordinary rate of wages, the Factories Act rule for work beyond nine hours in a day or forty-eight in a week.",
     intro: [
       "Under the Factories Act, a worker who works more than nine hours in a day or more than forty-eight hours in a week is entitled to wages for the extra time at twice the ordinary rate of wages. The multiplier is set by statute. How the hourly rate is derived from a monthly wage is not uniform, so this calculator asks you for the basis instead of assuming one.",
-      "Establishments outside the Factories Act — shops, offices and commercial establishments — are governed by the Shops and Establishments Act of their state, whose overtime provisions vary. Check which applies before relying on the figure.",
+      "Establishments outside the Factories Act, shops, offices and commercial establishments, are governed by the Shops and Establishments Act of their state, whose overtime provisions vary. Check which applies before relying on the figure.",
     ],
     icon: "clock",
     fields: [
@@ -1023,7 +1143,7 @@ export const calculators: Calculator[] = [
         initial: "24000",
         min: 1,
         max: 10_000_000,
-        hint: "Basic and allowances that count as ordinary wages — not bonus, and not earlier overtime.",
+        hint: "Basic and allowances that count as ordinary wages, not bonus, and not earlier overtime.",
       },
       {
         name: "days",
@@ -1110,9 +1230,29 @@ export const calculators: Calculator[] = [
         q: "Does this apply to office staff?",
         a: "Not necessarily. Offices and shops fall under the Shops and Establishments Act of their state, which sets its own overtime rules. The Factories Act rule shown here applies to workers in factories.",
       },
+      {
+        q: "How is overtime pay calculated?",
+        a: "Overtime pay = 2 × (monthly ordinary wages ÷ working days ÷ normal hours per day) × overtime hours. The daily, hourly and overtime rates are each shown on their own line.",
+      },
+      {
+        q: "What counts as the ordinary rate of wages?",
+        a: "Basic wages plus the allowances that count as ordinary wages. Bonus and wages for earlier overtime are excluded.",
+      },
+      {
+        q: "Which working-day divisor should I use?",
+        a: "The one your establishment applies. Many use 26, which is the calculator's default, but confirm yours before relying on the figure.",
+      },
+      {
+        q: "Does the calculator check the limit on total overtime in a quarter?",
+        a: "No. Statutory limits on the total overtime a worker may do in a quarter are not checked here.",
+      },
+      {
+        q: "Which parts of the calculation come from the Factories Act?",
+        a: "Only the twice-the-ordinary-rate multiplier and the nine-hour daily and forty-eight-hour weekly limits. The divisor for the hourly rate is yours to supply.",
+      },
     ],
     seo: {
-      title: "Overtime Calculator India — Factories Act Twice the Ordinary Rate",
+      title: "Overtime Calculator India: Factories Act Twice the Ordinary Rate",
       description:
         "Overtime pay calculator for India: twice the ordinary rate of wages for work beyond nine hours a day or 48 a week under the Factories Act, on your own hourly basis.",
       keywords: [
@@ -1238,14 +1378,14 @@ export const calculators: Calculator[] = [
     method: {
       formula: "CTC = 12 × (Gross + Employer PF + Employer ESI + Gratuity provision) + Annual bonus",
       steps: [
-        { label: "Start from gross", text: "The monthly gross salary — basic plus allowances — before any deduction." },
+        { label: "Start from gross", text: "The monthly gross salary, basic plus allowances, before any deduction." },
         { label: "Add employer provident fund", text: "Twelve per cent of the PF wage, with the ₹15,000 ceiling applied if you choose it. The split between EPF and EPS does not change the total." },
         { label: "Add employer ESI where it applies", text: "3.25% of gross when gross is within the ₹21,000 threshold; nothing above it." },
-        { label: "Add a gratuity provision", text: "Fifteen twenty-sixths of monthly basic per year of service, spread across twelve months — the amount an employer sets aside each month against the eventual liability." },
+        { label: "Add a gratuity provision", text: "Fifteen twenty-sixths of monthly basic per year of service, spread across twelve months, the amount an employer sets aside each month against the eventual liability." },
         { label: "Annualise and add bonus", text: "Twelve months of the monthly cost plus any annual bonus or variable pay you enter." },
       ],
       notes: [
-        "CTC is a convention, not a statutory definition. Employers differ in what they include — insurance premiums, meal cards and reimbursements are common additions not modelled here.",
+        "CTC is a convention, not a statutory definition. Employers differ in what they include, insurance premiums, meal cards and reimbursements are common additions not modelled here.",
         "EPF administration and EDLI charges payable by the employer are not included.",
         "The gratuity provision is an accounting convention for spreading a future liability; gratuity itself is only payable after five years of continuous service.",
       ],
@@ -1253,7 +1393,7 @@ export const calculators: Calculator[] = [
     faqs: [
       {
         q: "Why is my in-hand salary so much lower than my CTC?",
-        a: "Because CTC includes amounts the employer pays that never reach your account in the month — its own provident fund and ESI contributions, a gratuity provision and any variable pay — and your own deductions come off gross before you are paid. The salary calculator shows the take-home side.",
+        a: "Because CTC includes amounts the employer pays that never reach your account in the month, its own provident fund and ESI contributions, a gratuity provision and any variable pay, and your own deductions come off gross before you are paid. The salary calculator shows the take-home side.",
       },
       {
         q: "Is gratuity always part of CTC?",
@@ -1261,11 +1401,31 @@ export const calculators: Calculator[] = [
       },
       {
         q: "Does a higher basic change the CTC?",
-        a: "It can. Provident fund and gratuity are both computed on basic, so a larger basic raises the employer's contributions — unless the EPF wage ceiling caps the provident fund side.",
+        a: "It can. Provident fund and gratuity are both computed on basic, so a larger basic raises the employer's contributions, unless the EPF wage ceiling caps the provident fund side.",
+      },
+      {
+        q: "Is CTC a legal or statutory term?",
+        a: "No. Cost to company is a convention for quoting a salary as everything the employer spends on the employee in a year, which is why two offers with the same CTC can mean different take-home pay.",
+      },
+      {
+        q: "What does this CTC calculation leave out?",
+        a: "Insurance premiums, meal cards and reimbursements, which some employers add, are not modelled. EPF administration and EDLI charges payable by the employer are also not included.",
+      },
+      {
+        q: "How is the gratuity provision in CTC worked out?",
+        a: "Fifteen twenty-sixths of monthly basic per year of service, spread across twelve months. It is an accounting convention; gratuity itself is only payable after five years of continuous service.",
+      },
+      {
+        q: "Is employer ESI included in every CTC?",
+        a: "Only where monthly gross is within the ₹21,000 threshold, in which case 3.25% of gross is added. Above the threshold, nothing is added for ESI.",
+      },
+      {
+        q: "Does the EPF and EPS split affect CTC?",
+        a: "No. The employer's 12% provident fund contribution is added in full, and how it divides between EPF and EPS does not change the total.",
       },
     ],
     seo: {
-      title: "CTC Calculator India — Cost to Company from Gross Salary",
+      title: "CTC Calculator India: Cost to Company from Gross Salary",
       description:
         "CTC calculator for India: build annual cost to company from monthly gross with employer PF, employer ESI, a gratuity provision and bonus, every line shown.",
       keywords: [
@@ -1302,7 +1462,7 @@ export const unavailable: { name: string; why: string; needs: string }[] = [
   },
   {
     name: "Labour Welfare Fund",
-    why: "LWF runs on state calendars — half-yearly in some states, annual in others — on dates unrelated to the payroll cycle.",
+    why: "LWF runs on state calendars, half-yearly in some states, annual in others, on dates unrelated to the payroll cycle.",
     needs: "The current state-notified amounts and due dates for each location.",
   },
 ];

@@ -3,14 +3,10 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  downloadPdf,
-  emptyLead,
-  submitLead,
-  validateLead,
-  type Lead,
-  type LeadErrors,
-} from "@/lib/leadCapture";
+import type { CountryCode } from "libphonenumber-js/min";
+import { downloadPdf, emptyLead, validateLead, type Lead, type LeadErrors } from "@/lib/leadCapture";
+import { checkPhone, failureMessage, submitForm } from "@/lib/forms";
+import PhoneInput from "./PhoneInput";
 import { Icon } from "./icons";
 import { Spinner } from "./ui";
 
@@ -90,6 +86,8 @@ function LeadModal({
   const [lead, setLead] = useState<Lead>(emptyLead);
   const [errors, setErrors] = useState<LeadErrors>({});
   const [phase, setPhase] = useState<Phase>("form");
+  const [country, setCountry] = useState<CountryCode>("IN");
+  const [failure, setFailure] = useState("");
   const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const firstFieldRef = useRef<HTMLInputElement | null>(null);
@@ -146,6 +144,9 @@ function LeadModal({
     if (phase === "submitting") return;
 
     const found = validateLead(lead);
+    const phone = checkPhone(lead.phone, country);
+    if (phone.error) found.phone = phone.error;
+    else delete found.phone;
     setErrors(found);
     if (Object.keys(found).length) {
       const firstBad = panelRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]');
@@ -154,8 +155,17 @@ function LeadModal({
     }
 
     setPhase("submitting");
-    const result = await submitLead(lead, { document: title, source });
-    if (!result.ok) {
+    const result = await submitForm(
+      "download",
+      { ...lead, phone: phone.e164 ?? "" },
+      { document: title, source },
+    );
+    // The download itself is the service, so it is not held hostage to the
+    // lead inbox being configured (503). A network or validation failure is
+    // reported and nothing downloads.
+    if (!result.ok && result.reason !== "unavailable") {
+      if (result.fields) setErrors(result.fields as LeadErrors);
+      setFailure(failureMessage(result.reason));
       setPhase("error");
       return;
     }
@@ -240,6 +250,7 @@ function LeadModal({
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "lead-name-err" : undefined}
                   className={inputClass(!!errors.name)}
+                  placeholder="Priya Sharma"
                 />
               </Field>
               <Field id="lead-email" label="Work email" error={errors.email} className="sm:col-span-2">
@@ -256,7 +267,7 @@ function LeadModal({
                   placeholder="you@company.com"
                 />
               </Field>
-              <Field id="lead-company" label="Company name" error={errors.company}>
+              <Field id="lead-company" label="Company name" error={errors.company} className="sm:col-span-2">
                 <input
                   id="lead-company"
                   type="text"
@@ -266,20 +277,22 @@ function LeadModal({
                   aria-invalid={!!errors.company}
                   aria-describedby={errors.company ? "lead-company-err" : undefined}
                   className={inputClass(!!errors.company)}
+                  placeholder="Your company name"
                 />
               </Field>
-              <Field id="lead-phone" label="Phone number" error={errors.phone}>
-                <input
+              <Field id="lead-phone" label="Phone number" error={errors.phone} className="sm:col-span-2">
+                <PhoneInput
                   id="lead-phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
+                  country={country}
+                  onCountryChange={setCountry}
                   value={lead.phone}
-                  onChange={set("phone")}
-                  aria-invalid={!!errors.phone}
-                  aria-describedby={errors.phone ? "lead-phone-err" : undefined}
-                  className={inputClass(!!errors.phone)}
-                  placeholder="+91"
+                  onChange={(v) => {
+                    setLead((l) => ({ ...l, phone: v }));
+                    if (errors.phone) setErrors((p) => ({ ...p, phone: undefined }));
+                  }}
+                  invalid={!!errors.phone}
+                  describedBy={errors.phone ? "lead-phone-err" : undefined}
+                  inputClassName={inputClass(!!errors.phone)}
                 />
               </Field>
               <Field id="lead-title" label="Job title" optional className="sm:col-span-2">
@@ -290,6 +303,7 @@ function LeadModal({
                   value={lead.jobTitle}
                   onChange={set("jobTitle")}
                   className={inputClass(false)}
+                  placeholder="HR Manager"
                 />
               </Field>
             </div>
@@ -297,7 +311,7 @@ function LeadModal({
             <div className="border-t border-line px-5 py-4 sm:px-7">
               {phase === "error" && (
                 <p role="alert" className="mb-3 rounded-xl bg-danger-soft px-4 py-3 text-[13.5px] font-medium text-danger">
-                  We couldn&rsquo;t process your request. Please try again.
+                  {failure || "We couldn’t process your request. Please try again."}
                 </p>
               )}
               <button

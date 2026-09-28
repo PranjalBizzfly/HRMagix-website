@@ -35,19 +35,19 @@
  */
 export const careers = {
   standfirst:
-    "HRMagix does not currently publish a list of open roles. What follows is an honest account of what the company builds, where it builds it, and how to approach us — rather than a vacancy page with nothing behind it.",
+    "HRMagix does not currently publish a list of open roles. What follows is an honest account of what the company builds, where it builds it, and how to approach us, rather than a vacancy page with nothing behind it.",
   situation: [
-    "HRMagix builds people-operations software for Indian companies, from Pune and Mumbai. The product is a single platform of twelve modules — attendance, leave, payroll, OKRs, KRAs and the 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics — sitting on one employee record.",
+    "HRMagix builds people-operations software for Indian companies, from Pune and Mumbai. The product is a single platform of twelve modules, attendance, leave, payroll, OKRs, KRAs and the 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics, sitting on one employee record.",
     "That description matters for anyone considering working here, because it determines the nature of the work. Building payroll for India is not a design problem with a compliance appendix. It is a compliance problem that has to be expressed as software: the EPF wage ceiling, the ESI contribution period, seven states' Professional Tax slabs, the February treatment in Maharashtra, the Payment of Gratuity Act formula. Correctness is not a quality attribute here. It is the product.",
   ],
   whatTheWorkIs: [
     {
       title: "Statutory correctness, expressed as configuration",
-      body: "Most of the hard thinking on this product is about turning a provision of law into a rule that can be evaluated monthly against a versioned employee record — and doing it in a way that a customer's HR team can configure without an implementation project.",
+      body: "Most of the hard thinking on this product is about turning a provision of law into a rule that can be evaluated monthly against a versioned employee record, and doing it in a way that a customer's HR team can configure without an implementation project.",
     },
     {
       title: "Software people use on their worst day",
-      body: "HR software is used at cutoff, at exit, at an inspection — moments where the user is under time pressure and the cost of an error is real money or a real dispute. That shapes every interface decision differently from software used casually.",
+      body: "HR software is used at cutoff, at exit, at an inspection, moments where the user is under time pressure and the cost of an error is real money or a real dispute. That shapes every interface decision differently from software used casually.",
     },
     {
       title: "A workforce that is not at a desk",
@@ -55,7 +55,7 @@ export const careers = {
     },
     {
       title: "Support that runs on someone else's calendar",
-      body: "Customer conversations cluster around monthly payroll cutoffs and the annual tax cycle. Support here is WhatsApp, phone and email with the product specialists in Pune — not a ticket queue with an SLA and no context.",
+      body: "Customer conversations cluster around monthly payroll cutoffs and the annual tax cycle. Support here is WhatsApp, phone and email with the product specialists in Pune, not a ticket queue with an SLA and no context.",
     },
   ],
   howToApply: [
@@ -97,17 +97,17 @@ export const careers = {
 
 export const pressKit = {
   standfirst:
-    "Everything a journalist, analyst or partner needs to describe HRMagix accurately — the name, the mark, the colours, the product description and the wording we would like used.",
+    "Everything a journalist, analyst or partner needs to describe HRMagix accurately, the name, the mark, the colours, the product description and the wording we would like used.",
   boilerplate: {
     short:
       "HRMagix is a people-operations platform for Indian companies, combining attendance, leave, payroll, performance and employee lifecycle management in a single workspace with Indian statutory compliance built in.",
     long:
-      "HRMagix is an HRMS and payroll platform built for Indian companies. Twelve integrated modules — attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRAs and the 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics — read from a single versioned employee record, so attendance flows into loss of pay, loss of pay flows into payroll, and statutory deductions for EPF, ESI, Professional Tax and TDS under Section 192 are derived rather than entered. HRMagix is based in Pune and Mumbai, Maharashtra.",
+      "HRMagix is an HRMS and payroll platform built for Indian companies. Twelve integrated modules, attendance and shifts, leaves and holidays, payroll, objectives and OKRs, KRAs and the 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics, read from a single versioned employee record, so attendance flows into loss of pay, loss of pay flows into payroll, and statutory deductions for EPF, ESI, Professional Tax and TDS under Section 192 are derived rather than entered. HRMagix is based in Pune and Mumbai, Maharashtra.",
   },
   naming: [
     { rule: "Write it HRMagix", detail: "One word, capital H, capital R, capital M. Not HR Magix, HRmagix or HR-Magix." },
     { rule: "No article", detail: "\"HRMagix announced\", not \"The HRMagix announced\"." },
-    { rule: "Describe the category as HRMS and payroll", detail: "Not as an HRIS, an ATS or a workforce-management suite — it is neither an applicant tracking system nor a billing platform." },
+    { rule: "Describe the category as HRMS and payroll", detail: "Not as an HRIS, an ATS or a workforce-management suite, it is neither an applicant tracking system nor a billing platform." },
     { rule: "Do not attribute certifications", detail: "HRMagix has not published ISO, SOC or similar certifications of its own. Statements about hosting providers should be attributed to those providers." },
   ],
   colours: [
@@ -205,7 +205,7 @@ export const mediaRoom = {
  */
 export const vendor = {
   standfirst:
-    "HRMagix does not operate a published partner programme with tiers, badges or commission schedules. It does work with implementation consultants, accounting firms and suppliers — and this page explains how, honestly.",
+    "HRMagix does not operate a published partner programme with tiers, badges or commission schedules. It does work with implementation consultants, accounting firms and suppliers, and this page explains how, honestly.",
   position: [
     "It is common for a software company of this kind to publish a partner programme long before it has one. We would rather describe the relationships that actually exist.",
     "There are three of them, and each is arranged individually rather than through a portal. If one of them describes you, the fastest route is a direct conversation with the team in Pune.",
@@ -213,7 +213,7 @@ export const vendor = {
   relationships: [
     {
       title: "Accounting and compliance firms",
-      body: "Many HRMagix customers arrive with an accountant or a compliance consultant already handling their filings. That relationship does not end when a company adopts the platform — it changes shape. The payroll run produces the ECR file, the ESIC contribution return, the state Professional Tax working and Form 24Q, which the firm reviews and files rather than assembles from scratch.",
+      body: "Many HRMagix customers arrive with an accountant or a compliance consultant already handling their filings. That relationship does not end when a company adopts the platform, it changes shape. The payroll run produces the ECR file, the ESIC contribution return, the state Professional Tax working and Form 24Q, which the firm reviews and files rather than assembles from scratch.",
       forWhom: "Chartered accountants, payroll bureaus and labour-law consultants advising Indian employers.",
     },
     {

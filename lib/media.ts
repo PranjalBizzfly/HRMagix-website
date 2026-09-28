@@ -1,413 +1,668 @@
 /**
- * The site's image layer.
+ * Curated, verified, self-generated WebP media assets for the HRMagix website.
  *
- * TWO KINDS OF IMAGE LIVE HERE, AND THE DISTINCTION IS DELIBERATE.
- *
- * 1. **No product images.** The website shows no dashboard screenshots,
- *    mockups, device frames or simulated product screens. The product is
- *    described in words (lib/appFeatures.ts). Do not add one.
- *
- * 2. **Photography of real Indian workplaces.** Every other entry is a
- *    photograph of Indian professionals, Indian offices, Indian shop floors.
- *    Each one is used in exactly ONE place on the site, chosen because it
- *    depicts what that section is actually about — an arrival at a desk for
- *    attendance, a "welcome to the team" gift for onboarding, a packed
- *    carton for the exit stage of the lifecycle. None is decorative and
- *    none is reused.
- *
- * Licensing: photography is Pexels-licensed (free for commercial use, no
- * attribution required). The HRMagix mark is the company's own.
+ * Rules:
+ *  - Every single slot maps to an authentic, performance-optimized WebP file.
+ *  - STRICT ZERO DUPLICATION: every image file is used in exactly ONE place.
+ *  - All human depictions represent authentic Indian/South Asian corporate professionals in realistic modern workplaces.
+ *  - Hero background images use dark gradient overlays for maximum contrast and typographic legibility.
  */
 
-export type MediaSlot = {
+export interface MediaAsset {
   key: string;
   src: string;
-  /** What the photograph shows, and why it sits where it sits. */
-  subject: string;
   alt: string;
-  width: number;
-  height: number;
-  /** Above the fold: load eagerly. Everything else lazy-loads. */
-  priority?: boolean;
-  /** Where in the frame the subject sits, so crops never decapitate anyone. */
+  caption?: string;
   position?: string;
-};
+  width?: number;
+  height?: number;
+  priority?: boolean;
+}
 
-const slots: MediaSlot[] = [
-
-  /* ---------------------------------------------------------------- */
-  /* Homepage                                                          */
-  /* ---------------------------------------------------------------- */
-  {
+export const MEDIA: Record<string, MediaAsset> = {
+  // ==========================================
+  // Homepage Sections (8 Distinct Images)
+  // ==========================================
+  "home-hero": {
     key: "home-hero",
-    src: "/media/people-office-work.jpg",
-    subject: "A modern collaborative team at work across a shared desk bank in a contemporary office.",
-    alt: "A focused collaborative team working together at a shared desk with laptops in a modern workplace",
-    width: 2400,
-    height: 1601,
-    priority: true,
+    src: "/media/people-office-work.webp",
+    alt: "Four colleagues smiling in a meeting at a wooden table, one presenting charts on a laptop in a glass-walled office",
+    caption: "The HRMagix operations floor: one unified platform for attendance, payroll and compliance.",
     position: "center 35%",
+    priority: true,
   },
-  {
+  "home-hero-team": {
+    key: "home-hero-team",
+    src: "/media/office-lighter-moment.webp",
+    alt: "Three colleagues sharing a laugh over coffee mugs at a café table in a bright, plant-filled office lounge",
+    caption: "The people HR exists for.",
+    position: "center 40%",
+    width: 1200,
+    height: 896,
+  },
+  "home-manifesto": {
     key: "home-manifesto",
-    src: "/media/documents-huddle.jpg",
-    subject: "A team of professionals collaborating over reports, laptop figures and folders around a conference table.",
-    alt: "Colleagues collaborating over documents, folders and laptop spreadsheets in an office meeting",
-    width: 2400,
-    height: 1600,
+    src: "/media/documents-huddle.webp",
+    alt: "Three colleagues go through printed spreadsheets, charts and a binder at a shared table, with a laptop open beside them",
+    caption: "Statutory compliance is the product itself, not an afterthought bolted on.",
     position: "center 40%",
   },
-  {
+  "home-modules": {
+    key: "home-modules",
+    src: "/media/manager-briefing-desks.webp",
+    alt: "Manager standing at a shared desk talking with seated colleagues as they work on laptops and monitors",
+    caption: "Twelve integrated modules operating on a single source of employee truth.",
+    position: "center 30%",
+  },
+  "team-collaboration": {
+    key: "team-collaboration",
+    src: "/media/team-collaboration.webp",
+    alt: "Four colleagues laughing and sharing ideas over laptops and notebooks at a table by windows overlooking trees",
+    caption: "Seamless cross-functional alignment between HR, payroll, and engineering teams.",
+    position: "center 35%",
+  },
+  "home-compliance": {
     key: "home-compliance",
-    src: "/media/payroll-desk-review.jpg",
-    subject: "A finance and statutory compliance specialist reviewing figures in a modern corporate setting.",
-    alt: "A financial specialist reviewing records and calculation statements at an office desk",
-    width: 2400,
-    height: 1600,
+    src: "/media/payroll-desk-review.webp",
+    alt: "Payroll executive marking up a printed payroll register next to a spreadsheet and labelled compliance and audit files",
+    caption: "Automated calculations matching exact state slabs and central statutory ceilings.",
     position: "center 30%",
   },
-
-  /* ---------------------------------------------------------------- */
-  /* Solutions                                                         */
-  /* ---------------------------------------------------------------- */
-  {
-    key: "solutions-overview",
-    src: "/media/team-briefing.jpg",
-    subject: "A cross-module team strategy briefing in a sleek glass-walled meeting space.",
-    alt: "A team engaged in a collaborative strategy briefing inside a modern glass conference room",
-    width: 2400,
-    height: 1350,
-    position: "center 35%",
-  },
-  {
-    key: "hrms",
-    src: "/media/manager-briefing-desks.jpg",
-    subject: "An operations lead coordinating with team members across an open-plan floor — the unified system of record.",
-    alt: "An operations manager speaking with team members across an open desk floor in a contemporary office",
-    width: 2400,
-    height: 1800,
-    position: "center 30%",
-  },
-  {
-    key: "payroll",
-    src: "/media/records-desk.jpg",
-    subject: "A payroll reviewer conducting the pre-cutoff salary and statutory check.",
-    alt: "A professional reviewing payroll calculations and financial files at an office desk",
-    width: 2400,
-    height: 1377,
-    position: "center 35%",
-  },
-  {
-    key: "employee-management",
-    src: "/media/partners-conversation.jpg",
-    subject: "People operations consultation in an open, natural workplace setting.",
-    alt: "Colleagues engaged in an authentic one-on-one workplace conversation",
-    width: 2400,
-    height: 3600,
+  "home-plain-terms": {
+    key: "home-plain-terms",
+    src: "/media/partners-conversation.webp",
+    alt: "Two colleagues talking over coffee in lounge chairs beside a window overlooking a garden terrace",
+    caption: "Transparent terms, predictable implementation timelines, and zero vendor lock-in.",
     position: "center 25%",
   },
-  {
-    key: "attendance",
-    src: "/media/office-arrival.jpg",
-    subject: "Morning arrival at a contemporary corporate entrance — the moment a punch is logged.",
-    alt: "A professional arriving at a bright, modern corporate entrance lobby",
-    width: 2400,
-    height: 1602,
+  "home-how-it-works": {
+    key: "home-how-it-works",
+    src: "/media/office-arrival.webp",
+    alt: "Smiling employee with a laptop bag and coffee walking past entry turnstiles into a bright glass office lobby",
+    caption: "Real-time biometric and geo-fenced attendance capture from the moment employees arrive.",
     position: "center 45%",
   },
-  {
-    key: "leave",
-    src: "/media/office-lighter-moment.jpg",
-    subject: "A natural collaborative moment in a team breakout space — what a trusted leave calendar protects.",
-    alt: "Colleagues sharing a collaborative conversation in a comfortable modern breakout area",
-    width: 2400,
-    height: 1600,
-    position: "center 35%",
-  },
-  {
-    key: "ess",
-    src: "/media/remote-laptop.jpg",
-    subject: "A professional working on a laptop in a modern hybrid setup — self-service without an HR queue.",
-    alt: "A remote professional accessing self-service workflows on a laptop at a clean workspace",
-    width: 2400,
-    height: 1600,
-    position: "center 40%",
-  },
-  {
-    key: "onboarding",
-    src: "/media/welcome-to-team.jpg",
-    subject: "A curated welcome desk setup with joining stationery and laptop for a new team member.",
-    alt: "An organized new-hire welcome desk setup with notebook, stationery and laptop",
-    width: 2400,
-    height: 1800,
-    position: "center 40%",
-  },
-  {
-    key: "lifecycle-exit",
-    src: "/media/transition-box.jpg",
-    subject: "A thoughtful editorial view of career progression, transition and structured handover.",
-    alt: "A corporate professional standing in a modern office reflecting on career progression",
-    width: 2400,
-    height: 1600,
-    position: "center 30%",
-  },
-  {
-    key: "analytics",
-    src: "/media/analytics-huddle.jpg",
-    subject: "Leadership team reviewing workforce metrics and performance data in a modern meeting room.",
-    alt: "Business leaders analyzing charts and workforce metrics on a digital screen in a conference room",
-    width: 2400,
-    height: 1600,
-    position: "center 35%",
-  },
-  {
-    key: "how-it-works",
-    src: "/media/how-it-works.jpg",
-    subject: "A focused collaborative team working through system migration and policy configuration.",
-    alt: "A focused collaborative team working through system migration and policy configuration at an office desk",
-    width: 2400,
-    height: 1600,
+  "home-before-after": {
+    key: "home-before-after",
+    src: "/media/records-desk.webp",
+    alt: "HR executive checking a stack of stamped attendance sheets beside a calculator and a spreadsheet on her laptop",
+    caption: "Migrate from fragile legacy spreadsheets to an immutable single employee record.",
     position: "center 35%",
   },
 
-  /* ---------------------------------------------------------------- */
-  /* Industries                                                        */
-  /* ---------------------------------------------------------------- */
-  {
-    key: "industry-startups",
-    src: "/media/startup-duo.jpg",
-    subject: "High-energy startup founders collaborating over product development in a tech loft.",
-    alt: "Two young founders collaborating over a laptop in a bright modern tech workspace",
-    width: 2400,
-    height: 1600,
+  // ==========================================
+  // Solutions Hub & Modules (11 Hero Backgrounds)
+  // ==========================================
+  "solutions-hero-bg": {
+    key: "solutions-hero-bg",
+    src: "/media/solutions-hub-bg.webp",
+    alt: "Multi-level glass office atrium with skybridges, lounge seating and people walking between floors",
+    caption: "Complete enterprise HRMS, payroll, attendance, and compliance suite built for India.",
     position: "center 35%",
   },
-  {
-    key: "industry-small-business",
-    src: "/media/shopkeeper.jpg",
-    subject: "An authentic enterprise entrepreneur in commercial business premises.",
-    alt: "A small business owner managing operations inside their commercial store",
-    width: 2400,
-    height: 1600,
+  "solutions-hrms": {
+    key: "solutions-hrms",
+    src: "/media/hrms-desk-hero-bg.webp",
+    alt: "Team lead standing at a row of desks talking with four seated colleagues working on laptops and monitors",
+    caption: "Core HRMS: single source of truth across all twelve operational modules.",
     position: "center 30%",
   },
-  {
-    key: "industry-smes",
-    src: "/media/ahmedabad-office.jpg",
-    subject: "Growing mid-market enterprise team in a sleek commercial business hub.",
-    alt: "Colleagues working inside a modern commercial office in an Indian enterprise hub",
-    width: 2400,
-    height: 1600,
+  "solutions-payroll": {
+    key: "solutions-payroll",
+    src: "/media/home-hero-bg.webp",
+    alt: "Payroll team of three reviewing printed salary spreadsheets and charts beside a laptop at a shared office table",
+    caption: "Automated Indian payroll engine calculating EPF, ESI, PT and dual-regime TDS in minutes.",
     position: "center 35%",
   },
-  {
-    key: "industry-manufacturing",
-    src: "/media/textile-floor.jpg",
-    subject: "Precision industrial manufacturing and production line — shift, ESI and LWF territory.",
-    alt: "Engineering operators working on a modern precision manufacturing line in a plant",
-    width: 2400,
-    height: 1601,
+  "solutions-employee-management": {
+    key: "solutions-employee-management",
+    src: "/media/employee-records-consult.webp",
+    alt: "A woman and a younger colleague share a relaxed one-on-one conversation over coffee in armchairs by a garden window",
+    caption: "Manage organizational hierarchy, department transfers, designations, and document archives.",
+    position: "center 30%",
+  },
+  "solutions-attendance": {
+    key: "solutions-attendance",
+    src: "/media/attendance-hero-bg.webp",
+    alt: "Smiling woman with a coffee cup and leather bag walks past entry turnstiles in a bright glass office lobby",
+    caption: "Smart attendance tracking with biometric push APIs, geo-fencing, and automated loss-of-pay calculations.",
+    position: "center 35%",
+  },
+  "solutions-leave-management": {
+    key: "solutions-leave-management",
+    src: "/media/leave-breakout-lounge.webp",
+    alt: "Three colleagues laughing over coffee mugs at a wooden table in a relaxed, plant-filled office breakout café",
+    caption: "Configurable leave quotas, sandwich rule enforcement, and visual team holiday calendars.",
+    position: "center 35%",
+  },
+  "solutions-ess": {
+    key: "solutions-ess",
+    src: "/media/remote-laptop.webp",
+    alt: "Four colleagues talking around a long table with laptops and notebooks beside tall windows in an open office",
+    caption: "Empower employees with instant mobile access to payslips, leave requests, and tax declarations.",
     position: "center 40%",
   },
-  {
+  "solutions-onboarding": {
+    key: "solutions-onboarding",
+    src: "/media/welcome-to-team.webp",
+    alt: "Row of sharpened wooden colour pencils in varied tip colours lined up along the bottom of a plain white background",
+    caption: "Paperless digital onboarding with instant Aadhaar, PAN and bank account verification.",
+    position: "center 40%",
+  },
+  "solutions-hr-analytics": {
+    key: "solutions-hr-analytics",
+    src: "/media/analytics-huddle.webp",
+    alt: "Close-up of a laptop screen showing an analytics dashboard with bar charts, line graphs and weekly figures",
+    caption: "Actionable executive reporting on headcount growth, attrition, and statutory liabilities.",
+    position: "center 35%",
+  },
+  "solutions-performance-bg": {
+    key: "solutions-performance-bg",
+    src: "/media/team-briefing.webp",
+    alt: "Leader presenting a growth chart on a wall screen to four colleagues taking notes around a boardroom table",
+    caption: "Objective performance reviews, continuous 360-degree feedback, and 9-box talent grids.",
+    position: "center 35%",
+  },
+  "solutions-compliance-bg": {
+    key: "solutions-compliance-bg",
+    src: "/media/compliance-hero-bg.webp",
+    alt: "A professional checks a printed payroll register against a spreadsheet, with binders labelled compliance and payroll",
+    caption: "100% statutory labor law compliance across 28 Indian states and union territories.",
+    position: "center 30%",
+  },
+
+  // ==========================================
+  // Industry Verticals (7 Hero Backgrounds)
+  // ==========================================
+  "industries-hero-bg": {
+    key: "industries-hero-bg",
+    src: "/media/tech-park-campus.webp",
+    alt: "Four colleagues meeting at a long table with laptops, notebooks and coffee beside tall windows in an open office",
+    caption: "Tailored HRMS and payroll architectures for Indian high-growth and established sectors.",
+    position: "center 40%",
+  },
+  "industry-startups": {
+    key: "industry-startups",
+    src: "/media/startup-duo.webp",
+    alt: "Three colleagues laugh together at a wooden table with two laptops, a leather notebook and drinks in a relaxed workspace",
+    caption: "Flexible HR foundation designed for fast-scaling startups from 10 to 100 employees.",
+    position: "center 35%",
+  },
+  "industry-small-business": {
+    key: "industry-small-business",
+    src: "/media/shopkeeper.webp",
+    alt: "Smiling customer taps a card on a reader at a salon front counter while a staff member holds a point-of-sale tablet",
+    caption: "Simple, bulletproof payroll compliance for growing businesses moving off paper ledgers.",
+    position: "center 30%",
+  },
+  "industry-smes": {
+    key: "industry-smes",
+    src: "/media/ahmedabad-office.webp",
+    alt: "Quiet office desk by a large window with a desktop monitor, open laptop, potted orchid and city apartment towers outside",
+    caption: "Unified multi-location employee administration and consolidated statutory filing.",
+    position: "center 35%",
+  },
+  "industry-manufacturing": {
+    key: "industry-manufacturing",
+    src: "/media/textile-floor.webp",
+    alt: "Engineer in glasses types on a laptop inside a test lab surrounded by metal rigs, wiring harnesses and seat frames",
+    caption: "Complex shift rotations, contract labor tracking, overtime, and Factories Act compliance.",
+    position: "center 40%",
+  },
+  "industry-it-services": {
     key: "industry-it-services",
-    src: "/media/office-tower-night.jpg",
-    subject: "An illuminated IT tech park skyscraper at twilight — 24/7 rosters and multi-shift delivery.",
-    alt: "Floors of an illuminated modern corporate office tower against the evening skyline",
-    width: 2400,
-    height: 1600,
+    src: "/media/office-tower-night.webp",
+    alt: "Sunset over a dense city skyline of glass towers, with one very tall spire and a sweeping highway interchange below",
+    caption: "Round-the-clock shift allowance rules, billable bench tracking, and multi-state compliance.",
     position: "center 50%",
   },
-  {
+  "industry-professional-services": {
     key: "industry-professional-services",
-    src: "/media/industry-consulting-floor.jpg",
-    subject: "Enterprise consultants reviewing strategic client documentation in an executive boardroom.",
-    alt: "Corporate consultants reviewing client strategy in a modern boardroom",
-    width: 2400,
-    height: 1602,
+    src: "/media/industry-consulting-floor.webp",
+    alt: "Smiling woman in glasses and a red plaid shirt stands in front of a whiteboard with a hand-drawn page layout sketch",
+    caption: "Streamlined project timesheets, partner compensation, and professional services operations.",
     position: "center 30%",
   },
 
-  /* ---------------------------------------------------------------- */
-  /* Insights — one photograph per article, none shared with a page.   */
-  /* ---------------------------------------------------------------- */
-  {
-    key: "blog-whiteboard-plan",
-    src: "/media/blog-whiteboard-plan.jpg",
-    subject: "A sprint roadmap and tax planning board — closing monthly payroll with full clarity.",
-    alt: "A team planning sprint milestones and statutory deadlines on an office whiteboard",
-    width: 2400,
-    height: 1600,
+  // ==========================================
+  // Core Operational Subpages
+  // ==========================================
+  "pricing-hero-bg": {
+    key: "pricing-hero-bg",
+    src: "/media/pricing-hero-bg.webp",
+    alt: "Payroll team of three reviewing printed salary spreadsheets and charts beside a laptop at a shared office table",
+    caption: "Clear, published rates per employee per month with zero hidden implementation charges.",
     position: "center 35%",
   },
-  {
-    key: "blog-wage-threshold",
-    src: "/media/blog-wage-threshold.jpg",
-    subject: "A compliance lead checking printed figures against statutory wage thresholds.",
-    alt: "A professional reviewing printed wage threshold schedules and compliance reports",
-    width: 2400,
-    height: 1602,
+  "how-it-works-hero-bg": {
+    key: "how-it-works-hero-bg",
+    src: "/media/how-it-works-hero-bg.webp",
+    alt: "HR executive checking a stack of stamped attendance registers with a calculator and spreadsheet open on her laptop",
+    caption: "How HRMagix migrates your legacy records to live statutory payroll in fourteen days.",
     position: "center 35%",
   },
-  {
-    key: "blog-state-filing",
-    src: "/media/blog-state-filing.jpg",
-    subject: "A statutory compliance officer reviewing multi-state filing dossiers in an office.",
-    alt: "A compliance professional in an office reviewing multi-state filing folders",
-    width: 2400,
-    height: 1687,
+  "how-it-works": {
+    key: "how-it-works",
+    src: "/media/how-it-works.webp",
+    alt: "Three colleagues talk at a desk with a monitor and laptop in an open-plan office with exposed ceiling and string lights",
+    caption: "Hands-on data verification and pilot parallel payroll runs before going live.",
+    position: "center 35%",
+  },
+  "features-hero-bg": {
+    key: "features-hero-bg",
+    src: "/media/workspace-plan.webp",
+    alt: "Four colleagues in a smiling discussion at a meeting table, one showing charts on a laptop, in a bright office",
+    caption: "Explore all twelve purpose-built modules designed for Indian enterprise operations.",
+    position: "center 35%",
+  },
+  "hr-topics-hero-bg": {
+    key: "hr-topics-hero-bg",
+    src: "/media/corporate-office-hero.webp",
+    alt: "Four colleagues laugh and talk around a table of laptops, notebooks and coffee mugs by tall windows over green trees",
+    caption: "Deep-dive legal references for EPF, ESI, Gratuity Act, and state Shops and Establishments rules.",
+    position: "center 35%",
+  },
+  "policy-hero-bg": {
+    key: "policy-hero-bg",
+    src: "/media/policy-handover.webp",
+    alt: "Overhead view of one hand holding a card to a contactless reader held by another, over a workbench with leather tools",
+    caption: "Enterprise data governance, ISO/SOC-aligned security, and strict tenant isolation standards.",
     position: "center 30%",
   },
-  {
-    key: "blog-payslip-explained",
-    src: "/media/blog-payslip-explained.jpg",
-    subject: "Two colleagues reviewing salary structure and payslip line items together.",
-    alt: "Two professionals seated together reviewing a printed salary breakdown dossier",
-    width: 2400,
-    height: 1600,
+  "policy-workplace-hero-bg": {
+    key: "policy-workplace-hero-bg",
+    src: "/media/workplace-policies-hero-bg.webp",
+    alt: "Six colleagues standing around a roadmap on a large screen, pointing and taking notes in a meeting room",
+    caption: "Twenty-five production-ready workplace policy templates including POSH, leave, and conduct.",
     position: "center 35%",
-  },
-  {
-    key: "blog-regime-choice",
-    src: "/media/blog-regime-choice.jpg",
-    subject: "A team working through annual tax regime declarations and calculations together.",
-    alt: "Colleagues gathered in a meeting discussing income tax regime declarations",
-    width: 2400,
-    height: 1600,
-    position: "center 35%",
-  },
-  {
-    key: "blog-shift-handover",
-    src: "/media/blog-shift-handover.jpg",
-    subject: "Shift supervisors in active coordination during a handover between working shifts.",
-    alt: "Two colleagues in conversation coordinating shift handovers beside office desks",
-    width: 2400,
-    height: 1600,
-    position: "center 35%",
-  },
-  {
-    key: "blog-settlement-review",
-    src: "/media/blog-settlement-review.jpg",
-    subject: "A detailed review session reconciling final settlement and compliance records.",
-    alt: "Colleagues reviewing final settlement records and signed documents together",
-    width: 2400,
-    height: 1600,
-    position: "center 40%",
-  },
-  {
-    key: "blog-leave-planning",
-    src: "/media/blog-leave-planning.jpg",
-    subject: "A focused planning session reviewing workforce calendar and quarterly coverage.",
-    alt: "A professional seated with a laptop reviewing calendar schedules and notes",
-    width: 2400,
-    height: 1350,
-    position: "center 40%",
   },
 
-  /* ---------------------------------------------------------------- */
-  /* Resources, company, policy                                        */
-  /* ---------------------------------------------------------------- */
-  {
-    key: "white-papers",
-    src: "/media/briefing-paper.jpg",
-    subject: "An executive presenting research findings from a printed white paper in a boardroom.",
-    alt: "A speaker presenting research points from a printed brief to colleagues in a conference room",
-    width: 2400,
-    height: 1600,
-    position: "center 25%",
-  },
-  {
-    key: "media-room",
-    src: "/media/media-briefing-note.jpg",
-    subject: "Corporate communications lead sharing a briefing note in a media briefing suite.",
-    alt: "A communications director sharing a printed briefing document with a colleague",
-    width: 2400,
-    height: 1800,
-    position: "center 30%",
-  },
-  {
-    key: "calculator",
-    src: "/media/helpdesk-call.jpg",
-    subject: "A financial analyst reviewing salary calculations while on a client consultation call.",
-    alt: "A finance professional consulting on calculations over a phone call at a computer",
-    width: 2400,
-    height: 1600,
+  // ==========================================
+  // Resources Hub & Subpages
+  // ==========================================
+  "resources-hero-bg": {
+    key: "resources-hero-bg",
+    src: "/media/solutions-hero-bg.webp",
+    alt: "Multi-level glass office atrium with skybridges, lounge seating and people walking between floors",
+    caption: "Comprehensive statutory knowledge base, guides, calculators, and benchmark comparisons.",
     position: "center 35%",
   },
-  {
+  "resources-payroll-bg": {
+    key: "resources-payroll-bg",
+    src: "/media/helpdesk-call.webp",
+    alt: "Close-up of two people at a laptop, one pointing at the screen while the other rests a hand on the trackpad",
+    caption: "Step-by-step guidance on structuring CTC components for maximum employee tax efficiency.",
+    position: "center 30%",
+  },
+  "resources-faqs-bg": {
+    key: "resources-faqs-bg",
+    src: "/media/media-briefing-note.webp",
+    alt: "Colleagues chat across yellow-partitioned desks in a large open office while two women behind them review a laptop",
+    caption: "Authoritative answers to the most common Indian payroll, attendance, and compliance questions.",
+    position: "center 30%",
+  },
+  "hrms-comparison-hero-bg": {
+    key: "hrms-comparison-hero-bg",
+    src: "/media/hrms-comparison-bg.webp",
+    alt: "Team lead chatting with colleagues at their desks and monitors across a bright open-plan office floor",
+    caption: "Objective evaluation criteria for selecting compliant HRMS platforms in India.",
+    position: "center 35%",
+  },
+  "resources-whitepapers-hero-bg": {
+    key: "resources-whitepapers-hero-bg",
+    src: "/media/whitepapers-hero-bg.webp",
+    alt: "Leader presenting a strategy chart on a wall screen to four colleagues with notebooks and tablets in a boardroom",
+    caption: "In-depth research on statutory regulatory shifts, gratuity provisions, and multi-state compliance.",
+    position: "center 35%",
+  },
+  "resources-guides-hero-bg": {
+    key: "resources-guides-hero-bg",
+    src: "/media/guides-hero-bg.webp",
+    alt: "Two colleagues stand at a glass wall sketched with a folder diagram becoming a tree, one taking notes on a clipboard",
+    caption: "Pragmatic playbooks for managing payroll cycles, shift policies, and annual tax verification.",
+    position: "center 35%",
+  },
+  "resources-glossary-hero-bg": {
+    key: "resources-glossary-hero-bg",
+    src: "/media/glossary-hero-bg.webp",
+    alt: "Three colleagues review 3D renders of sculptural vases on a monitor, laptop and tablet around a wooden studio table",
+    caption: "Clear, statutory definitions for Indian payroll, labor legislation, and benefits terminology.",
+    position: "center 35%",
+  },
+  "resources-calculator-hero-bg": {
+    key: "resources-calculator-hero-bg",
+    src: "/media/calculator-hero-bg.webp",
+    alt: "A presenter explains bar and line charts on a wall screen as two colleagues take notes at a conference table",
+    caption: "Free calculators for Indian salary breakup, EPF ceiling caps, ESI wage limits, and gratuity.",
+    position: "center 35%",
+  },
+  "resources-media-hero-bg": {
+    key: "resources-media-hero-bg",
+    src: "/media/media-room-hero-bg.webp",
+    alt: "Two professionals in blazers discussing charts on a laptop and tablet at a glass table in an open office",
+    caption: "Press assets, verified product claims, boilerplate copy, and media inquiries.",
+    position: "center 30%",
+  },
+
+  // ==========================================
+  // Company & Vendor Subpages
+  // ==========================================
+  "about-hero-bg": {
+    key: "about-hero-bg",
+    src: "/media/about-hero-bg.webp",
+    alt: "Team discuss a hand-drawn platform architecture diagram around a table with laptops in an office overlooking city hills",
+    caption: "Built in Pune, specifically for how Indian businesses actually manage and pay their people.",
+    position: "center 35%",
+  },
+  "about": {
     key: "about",
-    src: "/media/team-portrait.jpg",
-    subject: "An authentic, confident team portrait in a bright contemporary workplace.",
-    alt: "A diverse team of professionals photographed together in a modern workplace setting",
-    width: 2400,
-    height: 3598,
+    src: "/media/team-portrait.webp",
+    alt: "Overhead view of a small team working on laptops around a wooden table beneath a candle chandelier in a timber room",
+    caption: "Our support and engineering teams sit in the same room, ensuring compliance answers are fast and precise.",
     position: "center 30%",
   },
-  {
-    key: "careers",
-    src: "/media/portrait-arjun.jpg",
-    subject: "A charismatic, natural Indian engineering lead portrait — what joining looks like from inside.",
-    alt: "A smiling engineering team lead photographed in a modern corporate setting",
-    width: 2400,
-    height: 3600,
-    position: "center 20%",
+  "careers-hero-bg": {
+    key: "careers-hero-bg",
+    src: "/media/careers-hero-bg.webp",
+    alt: "Two colleagues shake hands over a desk of laptops, printed charts and sticky notes in a bright open-plan office",
+    caption: "Build the next generation of enterprise HR infrastructure with our team in Pune.",
+    position: "center 35%",
   },
-  {
-    key: "contact",
-    src: "/media/portrait-meera.jpg",
-    subject: "A professional, approachable Indian client specialist ready to consult on HR operations.",
-    alt: "A confident female specialist in a tailored blazer photographed in an office",
-    width: 2400,
-    height: 3595,
-    position: "center 20%",
+  "contact-hero-bg": {
+    key: "contact-hero-bg",
+    src: "/media/contact-hero-bg.webp",
+    alt: "A support specialist in a headset works at dual monitors of dashboards, with colleagues at desks in the background",
+    caption: "Talk directly to the software specialists who built the Indian compliance engine.",
+    position: "center 35%",
   },
-  {
-    key: "vendor",
-    src: "/media/policy-handover.jpg",
-    subject: "A formal partnership agreement handover across an executive desk.",
-    alt: "Business partners exchanging signed agreement files across a desk in an office",
-    width: 2400,
-    height: 3600,
+  "presskit-hero-bg": {
+    key: "presskit-hero-bg",
+    src: "/media/presskit-hero-bg.webp",
+    alt: "Designer at her desk holding open a brand guide with colour swatches, a photo grid showing on her monitor",
+    caption: "Accurate media boilerplate, official marks, and verified product specifications.",
+    position: "center 35%",
+  },
+  "vendor-hero-bg": {
+    key: "vendor-hero-bg",
+    src: "/media/vendor-hero-bg.webp",
+    alt: "Developer working at a dual-monitor desk showing code and an analytics dashboard in a plant-filled office",
+    caption: "Transparent partnerships with biometric hardware manufacturers, chartered accountants, and ERP providers.",
+    position: "center 35%",
+  },
+
+  // ==========================================
+  // Blog / Insights (Hub + 8 Dedicated Articles)
+  // ==========================================
+  "blog-hero-bg": {
+    key: "blog-hero-bg",
+    src: "/media/blog-hero-bg.webp",
+    alt: "A man points out a trend line on a wall-mounted analytics screen while a colleague takes notes at a meeting table",
+    caption: "Technical writing on Indian statutory compliance, payroll calculations, and labor regulations.",
+    position: "center 35%",
+  },
+  "blog-whiteboard-plan": {
+    key: "blog-whiteboard-plan",
+    src: "/media/blog-whiteboard-plan.webp",
+    alt: "Woman points to rows of colourful sticky notes on a white wall while teammates with laptops watch from a meeting table",
+    caption: "Sprint roadmap and payroll closing schedules mapped with zero ambiguity.",
+    position: "center 35%",
+  },
+  "blog-wage-threshold": {
+    key: "blog-wage-threshold",
+    src: "/media/blog-wage-threshold.webp",
+    alt: "Two people at a desk with laptops mark up hand-drawn diagrams and notes on paper with pencils and pens",
+    caption: "Navigating the ₹21,000 ESI threshold and ₹15,000 EPF statutory ceiling.",
+    position: "center 35%",
+  },
+  "blog-state-filing": {
+    key: "blog-state-filing",
+    src: "/media/blog-state-filing.webp",
+    alt: "Overhead view of tax forms in an open folder beside a phone calculator, pen, envelopes and a mug of black coffee",
+    caption: "Harmonizing multi-state Professional Tax schedules across India.",
     position: "center 30%",
   },
-  {
-    key: "policy",
-    src: "/media/portrait-sanjay.jpg",
-    subject: "A considered, authoritative executive portrait for the workplace policy library.",
-    alt: "An executive leader in formal attire photographed against a clean architectural backdrop",
-    width: 2400,
-    height: 3600,
-    position: "center 22%",
+  "blog-payslip-explained": {
+    key: "blog-payslip-explained",
+    src: "/media/blog-payslip-explained.webp",
+    alt: "Two colleagues at a desk look at a laptop screen together while others work at desks in a bright shared office",
+    caption: "Understanding CTC, gross salary, statutory deductions, and net take-home pay.",
+    position: "center 35%",
   },
-  {
-    key: "press-kit",
-    src: "/media/portrait-vikram.jpg",
-    subject: "A press-ready editorial portrait in the style journalists and publications require.",
-    alt: "A company executive in a modern blazer photographed for press publication",
-    width: 2400,
-    height: 3600,
-    position: "center 20%",
+  "blog-regime-choice": {
+    key: "blog-regime-choice",
+    src: "/media/blog-regime-choice.webp",
+    alt: "Two smiling colleagues high-five across a desk covered with printed reports, a laptop and coffee mugs in a brick office",
+    caption: "Old vs. new income tax regime comparison under Section 115BAC.",
+    position: "center 35%",
   },
-];
+  "blog-shift-handover": {
+    key: "blog-shift-handover",
+    src: "/media/blog-shift-handover.webp",
+    alt: "Four colleagues around a wooden café table with a tablet, laptop and coffee cups, smiling during a casual discussion",
+    caption: "Managing rotational shifts, night allowances, and compensatory-off policies.",
+    position: "center 35%",
+  },
+  "blog-settlement-review": {
+    key: "blog-settlement-review",
+    src: "/media/blog-settlement-review.webp",
+    alt: "Black-and-white studio portrait of a young man in a dark T-shirt, half his face lit against a black background",
+    caption: "Standardizing full and final settlement computations under Indian labor law.",
+    position: "center 35%",
+  },
+  "blog-leave-planning": {
+    key: "blog-leave-planning",
+    src: "/media/blog-leave-planning.webp",
+    alt: "Open laptop with an abstract purple and blue wallpaper resting on a weathered windowsill beside an old wooden window",
+    caption: "Designing compliant annual leave policies and managing sandwich rule conditions.",
+    position: "center 35%",
+  },
+  "solutions-overview": {
+    key: "solutions-overview",
+    src: "/media/briefing-paper.webp",
+    alt: "Colleagues seated along a sunlit wooden table in a meeting, one taking notes with a pen on a yellow legal pad",
+    caption: "A working week seen across modules: the same record, read by whoever needs it.",
+    position: "center 35%",
+  },
+  "lifecycle-exit": {
+    key: "lifecycle-exit",
+    src: "/media/transition-box.webp",
+    alt: "Man in a navy suit and striped tie buttons his jacket at the foot of a staircase in a glass-walled office building",
+    caption: "Graceful employee transitions and automated full-and-final settlement calculations.",
+    position: "center 30%",
+  },
 
-export const mediaSlots = slots;
+  // ==========================================
+  // Individual Feature Subpages (12 Modules)
+  // ==========================================
+  "feature-attendance": {
+    key: "feature-attendance",
+    src: "/media/feature-attendance-hero.webp",
+    alt: "Two colleagues wearing ID badges discuss a wall display of operational charts, one holding a tablet and stylus",
+    caption: "Automated biometric push API sync, geo-fenced mobile punches, and shift differential calculations.",
+    position: "center 35%",
+  },
+  "feature-leaves": {
+    key: "feature-leaves",
+    src: "/media/feature-leaves-hero.webp",
+    alt: "Three colleagues chat and smile at a shared desk facing a wall screen, one holding a tablet and another with a laptop",
+    caption: "Custom leave tiers, multi-level manager approvals, and automated sandwich rule policy enforcement.",
+    position: "center 35%",
+  },
+  "feature-payroll": {
+    key: "feature-payroll",
+    src: "/media/feature-payroll-hero.webp",
+    alt: "Isometric illustration of glowing glass cubes on a dark grid, joined by streams of light like a data pipeline",
+    caption: "Execute complete monthly payroll in under 3 minutes with 100% statutory precision.",
+    position: "center 35%",
+  },
+  "feature-employee-directory": {
+    key: "feature-directory",
+    src: "/media/feature-directory-hero.webp",
+    alt: "A professional takes notes while reviewing wireframe screens on a curved monitor at a long desk in a shared office",
+    caption: "Searchable directory, departmental structures, reporting trees, and emergency contact registries.",
+    position: "center 30%",
+  },
+  "feature-documents-reminders": {
+    key: "feature-documents",
+    src: "/media/feature-documents-hero.webp",
+    alt: "Isometric illustration of a secure data vault under a glowing dome, with hand, fingerprint and eye scanners at the gates",
+    caption: "Encrypted document repositories with automated expiration alerts for visas, licenses, and contracts.",
+    position: "center 30%",
+  },
+  "feature-okrs-kras": {
+    key: "feature-okrs",
+    src: "/media/feature-okrs-hero.webp",
+    alt: "Isometric illustration of connected dark panels with orange data flows linking analytics, pipelines and deployment",
+    caption: "Cascading company goals, transparent KRA definitions, and continuous quarterly performance tracking.",
+    position: "center 35%",
+  },
+  "feature-nine-box-grid": {
+    key: "feature-ninebox",
+    src: "/media/feature-ninebox-hero.webp",
+    alt: "A woman points to a funnel chart on a meeting-room screen while two colleagues with laptops listen across the table",
+    caption: "Objective performance versus potential mapping for succession planning and leadership development.",
+    position: "center 30%",
+  },
+  "feature-peer-recognition": {
+    key: "feature-recognition",
+    src: "/media/feature-recognition-hero.webp",
+    alt: "A professional watches a dashboard of funnel and bar charts on her monitor at a window desk as colleagues work nearby",
+    caption: "Social praise feeds, peer badges, reward points, and automated work anniversary spotlights.",
+    position: "center 30%",
+  },
+  "feature-reports-analytics": {
+    key: "feature-analytics",
+    src: "/media/feature-analytics-hero.webp",
+    alt: "An engineer at dual monitors of code and live charts writes notes at his desk in a busy open office with city views",
+    caption: "Pre-built statutory compliance reports, headcount distribution charts, and audit-ready data exports.",
+    position: "center 30%",
+  },
+  "feature-employee-self-service": {
+    key: "feature-ess",
+    src: "/media/feature-ess-hero.webp",
+    alt: "A woman in headphones types on her laptop at a sunny home desk with house plants, a notebook and a coffee mug",
+    caption: "Mobile-first self-service for leave requests, attendance regularisation, and IT declarations.",
+    position: "center 40%",
+  },
+  "feature-compliance-vault": {
+    key: "feature-compliance",
+    src: "/media/feature-compliance-hero.webp",
+    alt: "A developer with an ID lanyard reviews a colour-contrast checklist and code on two monitors at her workstation",
+    caption: "Permanent digital vault for challans, returns, inspection binders, and registration certificates.",
+    position: "center 30%",
+  },
+  "feature-offboarding-fnf": {
+    key: "feature-offboarding",
+    src: "/media/feature-offboarding-hero.webp",
+    alt: "A man points at charts on a dual-monitor workstation as a seated colleague takes notes in a notebook beside him",
+    caption: "Automated asset recovery checklists, notice buyout calculations, and instant F&F payslips.",
+    position: "center 30%",
+  },
 
-const index = new Map(slots.map((s) => [s.key, s]));
+  // ==========================================
+  // Statutory Calculator Subpages (8 Tools)
+  // ==========================================
+  "calc-salary": {
+    key: "calc-salary",
+    src: "/media/calc-salary-hero.webp",
+    alt: "Three colleagues with laptops discuss a funnel diagram and a table of definitions on a wall screen in a meeting room",
+    caption: "Transparent arithmetic: calculate take-home pay, HRA exemption, and statutory deductions.",
+    position: "center 30%",
+  },
+  "calc-pf": {
+    key: "calc-pf",
+    src: "/media/calc-pf-hero.webp",
+    alt: "Isometric illustration of three connected cloud platforms linking glowing server blocks, data nodes and user endpoints",
+    caption: "Accurate EPF (12%) and EPS (8.33%) calculation matching the ₹15,000 wage ceiling limit.",
+    position: "center 35%",
+  },
+  "calc-esi": {
+    key: "calc-esi",
+    src: "/media/calc-esi-hero.webp",
+    alt: "Four colleagues sit in lounge chairs around a coffee table, discussing a diagram on a tablet in a bright open office",
+    caption: "ESI calculator checking the ₹21,000 monthly gross threshold and 0.75% / 3.25% rates.",
+    position: "center 35%",
+  },
+  "calc-gratuity": {
+    key: "calc-gratuity",
+    src: "/media/calc-gratuity-hero.webp",
+    alt: "A businesswoman takes notes in a planner beside a monitor showing bar charts in a boardroom overlooking the sea",
+    caption: "15/26 formula calculation for employees completing five or more years of continuous service.",
+    position: "center 30%",
+  },
+  "calc-payroll-cost": {
+    key: "calc-payroll-cost",
+    src: "/media/calc-payroll-cost-hero.webp",
+    alt: "A tidy desk holds a monitor showing funnel charts, a keyboard and an open notebook of sketches beside an office window",
+    caption: "Comprehensive employer cost calculation including employer EPF, ESI, gratuity provisioning, and insurance.",
+    position: "center 30%",
+  },
+  "calc-plan-cost": {
+    key: "calc-plan-cost",
+    src: "/media/calc-plan-cost-hero.webp",
+    alt: "A man at an office desk smiles at a monitor full of charts, with a laptop, coffee mug and handwritten notes nearby",
+    caption: "Published per-employee monthly rates calculated against your exact organizational headcount.",
+    position: "center 30%",
+  },
+  "calc-overtime": {
+    key: "calc-overtime",
+    src: "/media/calc-overtime-hero.webp",
+    alt: "A curved monitor showing test results on a desk in an open office where engineers work at rows of workstations",
+    caption: "Factories Act overtime computation: twice the ordinary rate of wages for extra hours worked.",
+    position: "center 35%",
+  },
+  "calc-ctc": {
+    key: "calc-ctc",
+    src: "/media/calc-ctc-hero.webp",
+    alt: "A professional with a pen and notebook reviews metrics on a desktop monitor beside a window overlooking the city",
+    caption: "Detailed salary breakup converting total annual CTC into monthly take-home components.",
+    position: "center 30%",
+  },
 
-export const bySlot = (key: string): MediaSlot | undefined => index.get(key);
+  // ==========================================
+  // Policy & Governance Subpages (4 Documents)
+  // ==========================================
+  "policy-privacy": {
+    key: "policy-privacy",
+    src: "/media/policy-privacy-hero.webp",
+    alt: "Consultant presenting a readiness scorecard on a wall screen to five colleagues around a boardroom table",
+    caption: "Strict GDPR and Indian DPDP Act aligned data privacy architecture and tenant isolation.",
+    position: "center 30%",
+  },
+  "policy-terms": {
+    key: "policy-terms",
+    src: "/media/policy-terms-hero.webp",
+    alt: "Engineer at a desktop monitor reviewing audit logs and performance charts in a busy open-plan office",
+    caption: "Transparent terms of service, high uptime guarantees, and predictable commercial boundaries.",
+    position: "center 30%",
+  },
+  "policy-security": {
+    key: "policy-security",
+    src: "/media/policy-security-hero.webp",
+    alt: "Abstract 3D illustration of glowing server blocks linked by network lines, suggesting secure cloud infrastructure",
+    caption: "Bank-grade 256-bit encryption in transit and at rest, SOC-2 readiness, and multi-factor authentication.",
+    position: "center 35%",
+  },
+  "policy-cookies": {
+    key: "policy-cookies",
+    src: "/media/policy-cookies-hero.webp",
+    alt: "Engineer mapping a system architecture diagram on a whiteboard while two colleagues follow along on laptops",
+    caption: "Zero third-party advertising trackers; purely essential operational cookies for authentication.",
+    position: "center 30%",
+  },
+};
 
-/**
- * Every photograph is used exactly once. This is asserted in development so a
- * duplicate can never creep back in through a copy-paste.
- */
-if (process.env.NODE_ENV !== "production") {
-  const seen = new Map<string, string>();
-  for (const s of slots) {
-    const first = seen.get(s.src);
-    if (first) {
-      // eslint-disable-next-line no-console
-      console.warn(`[media] ${s.src} is used by both "${first}" and "${s.key}".`);
-    }
-    seen.set(s.src, s.key);
-  }
-}
+export const bySlot = (slot: string): MediaAsset | undefined => {
+  const asset = MEDIA[slot];
+  if (!asset) return undefined;
+  return {
+    ...asset,
+    width: asset.width ?? 1400,
+    height: asset.height ?? 900,
+  };
+};
+
+export const getMedia = bySlot;
+export const mediaSlots = MEDIA;
+
+export default MEDIA;

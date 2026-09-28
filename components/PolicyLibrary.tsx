@@ -108,8 +108,8 @@ export default function PolicyLibrary({
           <span>
             Rows without a document show their status rather than a broken link. Drop the approved
             PDF into <code className="font-mono text-[13px] text-accent">public/policies</code> named
-            for its code — <code className="font-mono text-[13px] text-accent">hrmagix003.pdf</code>{" "}
-            for the Leave Policy — and that row&rsquo;s View and Download controls activate on the
+            for its code, <code className="font-mono text-[13px] text-accent">hrmagix003.pdf</code>{" "}
+            for the Leave Policy, and that row&rsquo;s View and Download controls activate on the
             next build.
           </span>
         </p>
@@ -197,7 +197,7 @@ function PolicyRowItem({ row, hasPdf, delay }: { row: PolicyRow; hasPdf: boolean
           <h4 className="mt-2 font-display text-[17px] font-bold leading-snug text-heading">
             {row.slug ? (
               <Link
-                href={`/policy/workplace-policies/${row.slug}`}
+                href={`/policy-centre/workplace-policy-library/${row.slug}`}
                 className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
               >
                 {row.name}
@@ -243,7 +243,7 @@ function PolicyRowItem({ row, hasPdf, delay }: { row: PolicyRow; hasPdf: boolean
                 <>
                   {" "}
                   <Link
-                    href={`/policy/workplace-policies/${row.slug}`}
+                    href={`/policy-centre/workplace-policy-library/${row.slug}`}
                     className="font-semibold text-accent underline-offset-2 hover:underline"
                   >
                     Read what it covers
@@ -448,7 +448,7 @@ function AddPolicyDialog({
             </h2>
             <p className="mt-3 max-w-lg text-[15px] leading-[1.68] text-muted">
               For a policy your organisation has approved that is not in the standard register.
-              Attach the approved document — nothing is generated for you.
+              Attach the approved document, nothing is generated for you.
             </p>
           </div>
           <button
@@ -549,7 +549,7 @@ function AddPolicyDialog({
           <p className="flex items-start gap-3 rounded-xl bg-surface-sunken p-4 text-[13.5px] leading-[1.65] text-muted ring-1 ring-line">
             <Icon name="lock" className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />
             The file is stored in this browser only, so View and Download work immediately and
-            survive a reload. It is not uploaded to a server and not visible to anyone else —
+            survive a reload. It is not uploaded to a server and not visible to anyone else,
             publishing a policy to employees and tracking acknowledgement per version happens in the
             HRMagix Documents module.
           </p>

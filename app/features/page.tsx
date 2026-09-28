@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteStats, Block } from "@/components/sky9";
+import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { marketingFaqs } from "@/lib/pageFaqs/marketing";
 import Link from "next/link";
 import { modules, moduleGroups } from "@/lib/content";
 import { Onward } from "@/components/editorial";
@@ -8,9 +9,10 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Icon } from "@/components/icons";
 import FeatureMap from "@/components/FeatureMap";
+import Photo from "@/components/Photo";
 
 export const metadata: Metadata = {
-  title: "Features — All Twelve HRMagix Modules",
+  title: "Features: All Twelve HRMagix Modules",
   description:
     "Every HRMagix feature: attendance and shifts, leaves and holidays, payroll, OKRs, KRA and 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics.",
   alternates: { canonical: "/features" },
@@ -23,7 +25,19 @@ export const metadata: Metadata = {
 export default function FeaturesHub() {
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+        {/* Background photo */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <Photo slot="features-hero-bg" cover rounded="rounded-none" hover={false} sizes="100vw" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+            aria-hidden="true"
+          />
+        </div>
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Features" }]} />
@@ -36,7 +50,7 @@ export default function FeaturesHub() {
             has its own page with what it does, where it sits in the app and what to read next.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/company/contact" size="lg">
+            <Button href="/company/contact-hrmagix" size="lg">
               Book a demo
             </Button>
             <Button href="/pricing" variant="outline" size="lg">
@@ -87,6 +101,9 @@ export default function FeaturesHub() {
       >
         <FeatureMap dashboard everywhere />
       </Block>
+
+      {/* ---- Questions ---- */}
+      <FaqSection title="Questions about the features" items={marketingFaqs["/features"]} ground="canvas" />
 
       <Onward
         links={[

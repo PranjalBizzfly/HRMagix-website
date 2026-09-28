@@ -11,7 +11,7 @@ export const featureLinks: Record<
 > = {
   attendance: {
     area: "time",
-    solution: { label: "Attendance & Shifts", href: "/solutions/attendance" },
+    solution: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
     phrases: ["attendance", "shift", "punch", "biometric", "geo-fenc"],
   },
   leaves: {
@@ -26,32 +26,32 @@ export const featureLinks: Record<
   },
   okrs: {
     area: "performance",
-    solution: { label: "Performance & OKRs", href: "/solutions/performance" },
+    solution: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
     phrases: ["okr", "okrs", "objectives", "key results"],
   },
   "kra-9box": {
     area: "performance",
-    solution: { label: "Performance & OKRs", href: "/solutions/performance" },
+    solution: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
     phrases: ["kra", "kras", "9-box", "calibration"],
   },
   pips: {
     area: "performance",
-    solution: { label: "Performance & OKRs", href: "/solutions/performance" },
+    solution: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
     phrases: ["pip", "pips", "improvement plan"],
   },
   recognition: {
     area: "engagement",
-    solution: { label: "Employee Self-Service", href: "/solutions/ess" },
+    solution: { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
     phrases: ["recognition", "kudos", "badges"],
   },
   meetings: {
     area: "engagement",
-    solution: { label: "Performance & OKRs", href: "/solutions/performance" },
+    solution: { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
     phrases: ["1-on-1", "1-on-1s", "one-on-one", "meetings"],
   },
   onboarding: {
     area: "people",
-    solution: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding" },
+    solution: { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle" },
     phrases: ["onboarding", "pre-boarding", "joining", "new hire"],
   },
   documents: {

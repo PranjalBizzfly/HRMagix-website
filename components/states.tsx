@@ -35,7 +35,11 @@ export function StatePanel({
     <div
       className={`flex flex-col items-center rounded-[24px] bg-surface px-6 py-12 text-center shadow-soft ring-1 ring-line sm:px-10 ${className}`}
     >
-      <span className={`grid h-14 w-14 place-items-center rounded-2xl ring-1 ${skin}`}>
+      <span
+        className={`grid h-14 w-14 place-items-center rounded-2xl ring-1 ${skin} ${
+          tone === "success" ? "success-pop" : ""
+        }`}
+      >
         <Icon name={icon} className="h-6 w-6" />
       </span>
       <h3 className="mt-6 font-display text-[19px] font-bold text-heading">{title}</h3>

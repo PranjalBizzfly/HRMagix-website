@@ -4,65 +4,71 @@ import { useState, type FormEvent } from "react";
 import { site } from "@/lib/content";
 import { SubmitButton } from "./ui";
 import { SuccessState } from "./states";
+import { checkEmail, checkName, failureMessage, submitForm } from "@/lib/forms";
 
 type Fields = { name: string; email: string; company: string; message: string };
 
 const empty: Fields = { name: "", email: "", company: "", message: "" };
 
 /**
- * No backend is published for HRMagix, so the form composes the message and
- * hands it to the visitor's mail client addressed to hello@hrmagix.com.
+ * Posts to /api/forms. The success state appears only when the server confirms
+ * delivery; otherwise the visitor sees why, with the team address to use.
  */
 export default function ContactForm() {
   const [fields, setFields] = useState<Fields>(empty);
   const [errors, setErrors] = useState<Partial<Fields>>({});
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failure, setFailure] = useState("");
+  const [hp, setHp] = useState("");
 
   const set = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFields((f) => ({ ...f, [key]: e.target.value }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (busy) return;
     const next: Partial<Fields> = {};
-    if (!fields.name.trim()) next.name = "Tell us your name";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) next.email = "Enter a valid work email";
-    if (!fields.message.trim()) next.message = "Add a short message";
+    const n = checkName(fields.name);
+    if (n) next.name = n;
+    const m = checkEmail(fields.email);
+    if (m) next.email = m;
+    if (!fields.message.trim()) next.message = "Add a short message.";
+    else if (fields.message.trim().length < 10) next.message = "Tell us a little more (at least 10 characters).";
     setErrors(next);
-    if (Object.keys(next).length) return;
+    setFailure("");
+    if (Object.keys(next).length) {
+      document.querySelector<HTMLElement>('#contact-form [aria-invalid="true"]')?.focus();
+      return;
+    }
 
-    const body = [
-      `Name: ${fields.name}`,
-      `Email: ${fields.email}`,
-      fields.company ? `Company: ${fields.company}` : null,
-      "",
-      fields.message,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-      `Demo request — ${fields.company || fields.name}`,
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setBusy(true);
+    const result = await submitForm("contact", { ...fields, _hp: hp });
+    setBusy(false);
+    if (result.ok) {
+      setSent(true);
+      return;
+    }
+    if (result.fields) setErrors(result.fields as Partial<Fields>);
+    setFailure(failureMessage(result.reason));
   };
 
   if (sent) {
     return (
       <SuccessState
-        title="Your message is ready to send"
+        title="Thanks, your message has been sent"
         body={
           <>
-            We opened it in your mail app, addressed to{" "}
+            Our team will reply to {fields.email} shortly. For anything urgent, email{" "}
             <a
               href={`mailto:${site.contact.email}`}
               className="font-semibold text-accent underline-offset-2 hover:underline"
             >
               {site.contact.email}
-            </a>
-            . It is only sent once you press send there. If no mail app opened, email that address
-            directly or call {site.contact.phone}.
+            </a>{" "}
+            or call {site.contact.phone}.
           </>
         }
         action={
@@ -82,13 +88,25 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5">
+    <form id="contact-form" onSubmit={onSubmit} noValidate className="relative grid gap-5" aria-busy={busy || undefined}>
+      <input
+        type="text"
+        name="website"
+        value={hp}
+        onChange={(e) => setHp(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+      />
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full name" error={errors.name}>
           <input
             type="text"
             value={fields.name}
             onChange={set("name")}
+            aria-invalid={!!errors.name || undefined}
+            aria-required="true"
             autoComplete="name"
             className={inputClass(!!errors.name)}
             placeholder="Priya Sharma"
@@ -99,6 +117,8 @@ export default function ContactForm() {
             type="email"
             value={fields.email}
             onChange={set("email")}
+            aria-invalid={!!errors.email || undefined}
+            aria-required="true"
             autoComplete="email"
             className={inputClass(!!errors.email)}
             placeholder="you@company.com"
@@ -121,6 +141,8 @@ export default function ContactForm() {
         <textarea
           value={fields.message}
           onChange={set("message")}
+            aria-invalid={!!errors.message || undefined}
+            aria-required="true"
           rows={5}
           className={`${inputClass(!!errors.message)} h-auto min-h-[150px] resize-y py-4 leading-relaxed`}
           placeholder="What would you like to see in the demo?"
@@ -128,10 +150,20 @@ export default function ContactForm() {
       </Field>
 
       <div className="flex flex-wrap items-center gap-4">
-        <SubmitButton>Send message</SubmitButton>
+        <SubmitButton loading={busy} loadingLabel="Sending…">Send message</SubmitButton>
         <p aria-live="polite" className="text-[13.5px] text-subtle">
           Our team usually replies within a few hours.
         </p>
+      </div>
+      <div aria-live="assertive">
+        {failure && (
+          <p role="alert" className="rounded-xl bg-danger-soft px-4 py-3 text-[13.5px] font-medium text-danger">
+            {failure}{" "}
+            <a href={`mailto:${site.contact.email}`} className="underline underline-offset-2">
+              {site.contact.email}
+            </a>
+          </p>
+        )}
       </div>
     </form>
   );
@@ -161,7 +193,7 @@ function Field({
         {optional && <span className="text-[11.5px] font-normal normal-case tracking-normal">optional</span>}
       </span>
       {children}
-      {error && <span className="mt-1.5 block text-[12.5px] text-danger">{error}</span>}
+      {error && <span role="alert" className="mt-1.5 block text-[12.5px] text-danger">{error}</span>}
     </label>
   );
 }

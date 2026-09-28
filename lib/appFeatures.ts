@@ -35,7 +35,7 @@ export const appAreas: AppArea[] = [
     name: "Overview",
     icon: "grid",
     summary: "Where every employee starts the day.",
-    href: "/solutions/ess",
+    href: "/solutions/employee-self-service",
     features: [
       {
         name: "Dashboard",
@@ -65,7 +65,7 @@ export const appAreas: AppArea[] = [
     name: "Time & Work",
     icon: "clock",
     summary: "Attendance, leave and the rules that govern them.",
-    href: "/solutions/attendance",
+    href: "/solutions/attendance-and-shifts",
     features: [
       {
         name: "Attendance",
@@ -81,7 +81,7 @@ export const appAreas: AppArea[] = [
     name: "Performance",
     icon: "target",
     summary: "Goals, reviews and growth plans.",
-    href: "/solutions/performance",
+    href: "/solutions/performance-and-okrs",
     features: [
       { name: "KRA", note: "Key result areas for each role." },
       { name: "OKRs", note: "Objectives and key results." },
@@ -144,7 +144,7 @@ export const dashboardWidgets: AppFeature[] = [
     name: "Last seven days",
     note: "Hours worked per day, with the seven-day total, daily average and days active.",
   },
-  { name: "Leave balance", note: "Balance by leave type for the year — used against total." },
+  { name: "Leave balance", note: "Balance by leave type for the year: used against total." },
   { name: "Reporting line", note: "Your reporting manager, with a one-click email." },
 ];
 
@@ -152,7 +152,7 @@ export const dashboardWidgets: AppFeature[] = [
 export const everywhere: { name: string; note: string; icon: IconName }[] = [
   {
     name: "Global search",
-    note: "Find pages, employees, departments and assets from anywhere — Ctrl K.",
+    note: "Find pages, employees, departments and assets from anywhere, Ctrl K.",
     icon: "compass",
   },
   { name: "Company switcher", note: "Move between the companies you work in.", icon: "layers" },
