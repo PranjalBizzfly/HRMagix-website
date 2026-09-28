@@ -12,7 +12,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "HR Topics: Practical Guides to HR and Payroll",
   description:
-    "Practical guides to HR and payroll in India: attendance, shifts, leave, payroll, statutory compliance, performance, OKRs, onboarding, exits, engagement, policies and more.",
+    "Practical guides to HR and payroll in India: attendance, shifts, leave, payroll, compliance, performance, OKRs, onboarding, exits, engagement and policies.",
   alternates: { canonical: "/hr/topics" },
 };
 

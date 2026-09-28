@@ -125,7 +125,7 @@ export const topicsTime: Topic[] = [
     phrases: ["shift", "night shift", "rotation", "roster"],
     seo: {
       title: "Shift Management: Rotations, Night Shifts and Swaps",
-      description: "How shift management works: defining shifts, rule-based rotations, night shifts that cross midnight, swaps, shift allowances, and the mistakes that break payroll.",
+      description: "How shift management works: defining shifts, rule-based rotations, night shifts across midnight, swaps, shift allowances, and mistakes that break payroll.",
     },
   },
   {
@@ -188,7 +188,7 @@ export const topicsTime: Topic[] = [
     phrases: ["leave", "sandwich", "comp-off", "carry"],
     seo: {
       title: "Leave Management: Policies, Accrual and Approvals",
-      description: "A guide to leave management: leave types, accrual and carry-forward, the sandwich rule, approvals, statutory minimums, and the mistakes that cause leave disputes.",
+      description: "A guide to leave management: leave types, accrual and carry-forward, the sandwich rule, approvals, statutory minimums, and mistakes that cause disputes.",
     },
   },
   {

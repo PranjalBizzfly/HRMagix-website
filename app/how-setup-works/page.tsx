@@ -14,7 +14,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "How Setup Works",
   description:
-    "Getting an Indian company onto HRMagix: Excel import of employee master data, leave balances and salary structures, policy configuration, and a dry-run payroll before the first live cutoff.",
+    "Getting an Indian company onto HRMagix: Excel import of employee data, leave balances and salary structures, policy setup, and a dry-run payroll before go-live.",
   keywords: [
 
   ],

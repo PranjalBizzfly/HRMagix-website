@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import Link from "next/link";
 import Photo from "./Photo";
-import { Button } from "./ui";
+import { Arrow, Button } from "./ui";
 import { Icon } from "./icons";
 import { useReducedMotion } from "./motion";
 import { site } from "@/lib/content";
@@ -161,13 +162,16 @@ export default function HeroCinematic() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
               <Button href="/company/contact-hrmagix" size="md" className="w-full sm:w-auto">
                 Book a demo
               </Button>
-              <Button href="/solutions" variant="outline" size="md" className="w-full sm:w-auto">
-                See the platform
-              </Button>
+              <Link
+                href="/solutions"
+                className="group inline-flex min-h-[44px] items-center gap-2 text-[14.5px] font-semibold text-accent md:text-white"
+              >
+                See the platform <Arrow />
+              </Link>
             </div>
           </div>
 

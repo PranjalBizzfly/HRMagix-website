@@ -16,7 +16,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "What working on HRMagix involves: building Indian statutory payroll as software, from Pune and Mumbai. No vacancy list is published, here is how to approach us instead.",
+    "What working on HRMagix involves: building Indian statutory payroll as software, from Pune and Mumbai. No vacancy list is published; here is how to approach us.",
   alternates: { canonical: "/company/careers" },
 };
 

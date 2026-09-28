@@ -15,7 +15,7 @@ import { faqTopics, questionsByTopic } from "@/lib/faqTopics";
 export const metadata: Metadata = {
   title: "Questions & Answers",
   description:
-    "Answers on Indian statutory compliance, biometric integration, geo-fenced mobile punch-in, the old and new tax regimes, data migration from Excel, hosting and support.",
+    "Answers on Indian statutory compliance, biometric integration, geo-fenced mobile punch-in, old and new tax regimes, Excel data migration, hosting and support.",
   keywords: [
 
   ],

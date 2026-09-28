@@ -104,7 +104,7 @@ export const articles: Article[] = [
     seo: {
       title: "Why Payroll Takes Four Days: And What Actually Fixes It",
       description:
-        "Indian payroll is slow because establishing payable days is slow, not because the arithmetic is hard. A breakdown of the four disagreeing sources and how integration removes the reconciliation step.",
+        "Indian payroll is slow because establishing payable days is slow, not the arithmetic. How four disagreeing sources cause it and how integration fixes it.",
       keywords: [],
     },
     body: [
@@ -228,7 +228,7 @@ export const articles: Article[] = [
     seo: {
       title: "ESI Applicability When Overtime Moves the Wage Base",
       description:
-        "How the ₹21,000 ESI gross wage threshold interacts with overtime and allowances, why contribution periods matter, and why a naive month-by-month test produces both over- and under-deduction.",
+        "How the ₹21,000 ESI wage threshold interacts with overtime and allowances, why contribution periods matter, and why a month-by-month test mis-deducts.",
       keywords: [],
     },
     body: [
@@ -330,7 +330,7 @@ export const articles: Article[] = [
     seo: {
       title: "Professional Tax Across Indian States: Multi-State Payroll",
       description:
-        "Why Professional Tax is a state subject, how slabs and periodicity differ between states, and how to configure multi-state payroll so consolidated reporting and correct state filing coexist.",
+        "Why Professional Tax is a state subject, how slabs and periodicity differ by state, and how to configure multi-state payroll with correct state filing.",
       keywords: [],
     },
     body: [
@@ -423,7 +423,7 @@ export const articles: Article[] = [
     seo: {
       title: "How to Read an Indian Payslip: Every Line Explained",
       description:
-        "A complete walkthrough of an Indian salary slip: basic, HRA and allowances, employee PF and ESI deductions, Professional Tax, TDS, and the difference between gross, net and cost to company.",
+        "A walkthrough of an Indian salary slip: basic, HRA, allowances, PF and ESI deductions, Professional Tax, TDS, and gross vs net vs cost to company.",
       keywords: [],
     },
     body: [
@@ -553,7 +553,7 @@ export const articles: Article[] = [
     seo: {
       title: "Old vs New Tax Regime: Employee Declarations and Monthly TDS",
       description:
-        "How the employee's regime election drives the monthly TDS schedule under Section 192, why late declarations cause February corrections, and how proof verification fits the payroll cycle.",
+        "How the employee's tax regime choice drives monthly TDS under Section 192, why late declarations cause February corrections, and where proof checks fit.",
       keywords: [],
     },
     body: [
@@ -658,7 +658,7 @@ export const articles: Article[] = [
     seo: {
       title: "Compensatory Off: Tracking Comp-Off as a Real Entitlement",
       description:
-        "Why comp-off needs credit rules, expiry and consumption tracking like any other leave type, and how weekend and holiday work should flow automatically into a leave balance.",
+        "Why comp-off needs credit rules, expiry and consumption tracking like any leave type, and how weekend and holiday work should flow into a leave balance.",
       keywords: [],
     },
     body: [
@@ -759,7 +759,7 @@ export const articles: Article[] = [
     seo: {
       title: "Auto Shift Detection for Rotating and Night Shifts",
       description:
-        "Why night-shift attendance breaks calendar-day assumptions, how auto shift detection assigns a punch across midnight, and what grace periods and differentials depend on getting it right.",
+        "Why night-shift attendance breaks calendar-day assumptions, how auto shift detection assigns punches across midnight, and what depends on it.",
       keywords: [],
     },
     body: [
@@ -853,7 +853,7 @@ export const articles: Article[] = [
     seo: {
       title: "The Sandwich Rule in Indian Leave Policy",
       description:
-        "How the sandwich rule works, why inconsistent application rather than the rule itself causes grievances, and what a leave policy needs to state so employees see the cost before applying.",
+        "How the sandwich rule works, why inconsistent application causes grievances, and what a leave policy must state so employees see the cost before applying.",
       keywords: ["employee leave management"],
     },
     body: [
@@ -948,7 +948,7 @@ export const articles: Article[] = [
     seo: {
       title: "Full and Final Settlement: The Complete Checklist",
       description:
-        "Everything a full-and-final settlement must cover: notice period, leave encashment, gratuity eligibility, recoveries, statutory deductions, document issue and record retention.",
+        "What a full-and-final settlement must cover: notice period, leave encashment, gratuity, recoveries, statutory deductions, documents and record retention.",
       keywords: [],
     },
     body: [

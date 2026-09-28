@@ -117,7 +117,7 @@ export const topicsLifecycle: Topic[] = [
     phrases: ["probation", "confirmation"],
     seo: {
       title: "Probation and Confirmation: Running the Decision",
-      description: "How probation and confirmation work: terms in the appointment letter, setting expectations, reviewing before the end date, extensions and recording the decision.",
+      description: "How probation and confirmation work: appointment letter terms, setting expectations, reviewing before the end date, extensions and recording the decision.",
     },
   },
   {

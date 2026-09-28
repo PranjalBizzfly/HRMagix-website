@@ -13,7 +13,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Payroll Resources",
   description:
-    "Everything on this site about Indian payroll, indexed by what you are trying to do: work out a figure, understand why a number came out wrong, set something up, or find the statutory rule.",
+    "Everything on this site about Indian payroll, indexed by intent: work out a figure, see why a number is wrong, set something up, or find the statutory rule.",
   keywords: [
 
   ],

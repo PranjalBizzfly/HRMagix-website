@@ -13,7 +13,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Calculator: Salary, PF, ESI & Gratuity Calculators",
   description:
-    "Free Indian payroll calculators: salary breakup and take-home, EPF and pension contributions, ESI eligibility, gratuity under the Payment of Gratuity Act, and total payroll cost.",
+    "Free Indian payroll calculators: salary breakup and take-home, EPF and pension, ESI eligibility, gratuity under the Payment of Gratuity Act, and payroll cost.",
   keywords: [
     "gratuity calculator",
     "payroll cost calculator",
@@ -64,7 +64,7 @@ export default function CalculatorHub() {
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end lg:gap-16">
             <div>
               <h1 className="display display-lg max-w-[18ch] text-balance">
-                Six calculators, <strong>and every formula shown</strong>
+                {calculators.length} calculators, <strong>and every formula shown</strong>
               </h1>
               <p className="mt-7 max-w-2xl text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
                 Each one opens on its own page with its own inputs, its own worked result and a

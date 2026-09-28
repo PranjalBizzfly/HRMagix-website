@@ -12,7 +12,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Performance & OKRs: Performance Management, OKRs and KRAs",
   description:
-    "The HRMagix performance modules: objectives and OKRs, KRA and 9-box talent matrices, 30/60/90 PIPs, recurring 1-on-1s and peer recognition, running on the same employee record as attendance and payroll.",
+    "HRMagix performance modules: OKRs, KRA and 9-box talent matrices, 30/60/90 PIPs, 1-on-1s and peer recognition, on the same employee record as payroll.",
   keywords: [
 
   ],

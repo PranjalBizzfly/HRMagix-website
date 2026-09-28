@@ -297,7 +297,7 @@ export const legalPages: LegalPage[] = [
     seo: {
       title: "Privacy Policy",
       description:
-        "How HRMagix handles personal data: the distinction between website visitors and customer employee records, what is stored, where it is hosted, and how long it is retained.",
+        "How HRMagix handles personal data: website visitors vs customer employee records, what is stored, where it is hosted, and how long it is retained.",
     },
     sections: [
       {
@@ -426,7 +426,7 @@ export const legalPages: LegalPage[] = [
     seo: {
       title: "Security",
       description:
-        "How HRMagix protects payroll and employee data: Indian cloud hosting, encryption in transit and at rest, role-based access control, multi-factor authentication, SSO and audit trails.",
+        "How HRMagix protects payroll and employee data: Indian cloud hosting, encryption in transit and at rest, role-based access, MFA, SSO and audit trails.",
     },
     sections: [
       {
@@ -484,7 +484,7 @@ export const legalPages: LegalPage[] = [
     seo: {
       title: "Cookie Policy",
       description:
-        "What hrmagix.com stores in your browser, named in full: a theme preference, a dismissed-banner flag and any policy PDFs you add yourself. No cookies, no analytics, no cross-site tracking.",
+        "What hrmagix.com stores in your browser: a theme preference, a dismissed-banner flag and any policy PDFs you add. No cookies, analytics or cross-site tracking.",
     },
     sections: [
       {

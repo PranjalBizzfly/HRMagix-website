@@ -15,7 +15,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    `Affordable payroll software for small business and growing companies: three published plans, priced per employee per month, ${pricingSummary()}. Fourteen-day trial, no setup fee, and every module on one platform.`,
+    `Affordable payroll software for small business: three plans, per employee per month, ${pricingSummary()}. Fourteen-day trial, no setup fee.`,
   keywords: [
     "affordable payroll software for small business",
   ],
@@ -95,6 +95,14 @@ export default function PricingPage() {
         ground="canvas"
       >
         <Pricing />
+        <p className="mt-8 text-center">
+          <Link
+            href="/calculators/plan-cost"
+            className="group inline-flex min-h-[44px] items-center gap-2 text-[14.5px] font-semibold text-accent"
+          >
+            Work out your plan cost with the cost calculator <Arrow />
+          </Link>
+        </p>
       </Block>
 
       {/* ---- Comparison ---- */}
@@ -249,6 +257,20 @@ export default function PricingPage() {
         ground="sunken"
       >
         <Calculator />
+        <p className="mt-8 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:gap-8">
+          <Link
+            href="/calculators/plan-cost"
+            className="group inline-flex min-h-[44px] items-center gap-2 text-[14.5px] font-semibold text-accent"
+          >
+            Open the full plan cost calculator <Arrow />
+          </Link>
+          <Link
+            href="/resources/calculator"
+            className="group inline-flex min-h-[44px] items-center gap-2 text-[14.5px] font-semibold text-accent"
+          >
+            Salary, PF, ESI and gratuity calculators <Arrow />
+          </Link>
+        </p>
       </Block>
 
       {/* ---- What the price does and does not include ---- */}

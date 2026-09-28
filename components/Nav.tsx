@@ -8,7 +8,6 @@ import { Logo, Button, Arrow } from "./ui";
 import { Icon, type IconName } from "./icons";
 import ThemeToggle from "./ThemeToggle";
 import SearchDialog from "./SearchDialog";
-import type { IndexGroup } from "@/lib/siteIndex";
 import { primaryNav, policyNav, type NavSection } from "@/lib/nav";
 import { site } from "@/lib/content";
 
@@ -77,7 +76,7 @@ const iconFor = (href: string): IconName => linkIcons[href] ?? "sparkle";
 
 const SIGN_IN = "https://app.hrmagix.com/login";
 
-export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
+export default function Nav() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   /* Ctrl/⌘ K opens search from anywhere on the site. */
@@ -373,7 +372,7 @@ export default function Nav({ searchIndex }: { searchIndex: IndexGroup[] }) {
 
       </header>
 
-      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} groups={searchIndex} />
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       <Drawer
         open={drawer}

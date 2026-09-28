@@ -60,7 +60,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Startups",
       description:
-        "HR software for startups in India: payroll software for startups with statutory compliance from the first employee, leave and attendance policy that scales, and self-service that keeps founders out of HR admin.",
+        "HR software for startups in India: payroll with statutory compliance from the first employee, leave and attendance policy that scales, and self-service.",
       keywords: [
         "payroll software for startups",
         "HR software for startups",
@@ -163,8 +163,8 @@ export const industries: Industry[] = [
         a: "Yes, employee master data, historical leave balances, previous salary structures and department hierarchies come in through structured Excel templates, with a dry-run payroll before the first live cutoff.",
       },
       {
-        q: "We are eight people. Is it too early for HRMS software?",
-        a: "The tools are optional at eight; the statutory obligations may not be. Professional Tax registration is often due from the first employee and TDS from the first salary above the exemption limit. Starting with attendance, leave and the employee record on the Starter plan costs little and means the history exists when ESI and EPF thresholds arrive.",
+        q: "Titles and salaries change constantly for us. Does that break the records?",
+        a: "No. Records are effective-dated, so a raise in August does not rewrite what July looked like. That matters the first time an investor, an auditor or a departing employee asks what the position was at a past date.",
       },
       {
         q: "Can we start with only part of the platform and add payroll later?",
@@ -197,7 +197,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Small Business",
       description:
-        "HR software for small business in India: an HRMS for small business with correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records, without an HR department.",
+        "HR software for small business in India: correct PF, ESI and Professional Tax every month, simple leave and attendance, payslips and records, no HR team needed.",
       keywords: [
         "HR software for small business",
         "HRMS for small business",
@@ -333,7 +333,7 @@ export const industries: Industry[] = [
     seo: {
       title: "Payroll Software for SMEs and Growing Companies",
       description:
-        "Payroll software for SMEs in India: one employee record across entities and locations, state-specific Professional Tax and leave rules, and consolidated reporting, an HRMS for a 100 employees company and beyond.",
+        "Payroll software for SMEs in India: one employee record across entities and locations, state-specific Professional Tax and leave rules, consolidated reporting.",
       keywords: [
         "payroll software for SMEs",
         "HRMS for 100 employees company",
@@ -437,8 +437,8 @@ export const industries: Industry[] = [
         a: "State-specific rule sets are configured for Maharashtra, Karnataka, Telangana, Tamil Nadu, Andhra Pradesh, Gujarat and West Bengal, including the February slab change and gender-specific exemptions where a state provides them. Applicability follows the employee's work location on the record.",
       },
       {
-        q: "Can one platform run payroll for several legal entities?",
-        a: "Yes. Each entity keeps its own PF and ESI registrations, its own professional tax registrations by state, and its own payroll run and returns. What is shared is the employee record, which is what allows somebody to move between entities without being recreated.",
+        q: "Does HR administration have to grow as fast as headcount?",
+        a: "Not the parts that scale linearly. Lookup questions, chasing documents and approvals, assembling reports and re-keying between systems are removed by self-service, automated reminders, live reporting and one shared record. Judgement work such as policy exceptions, grievances and appraisal calibration does not scale away.",
       },
       {
         q: "What happens to continuity of service when an employee transfers between entities?",
@@ -449,8 +449,8 @@ export const industries: Industry[] = [
         a: "A delegate can be named for a period, and routing reads the current reporting line rather than a fixed list, so requests do not stall or arrive with someone who has left. Thresholds can require a second approver for larger requests without adding one to every request.",
       },
       {
-        q: "Do different locations need different leave and holiday rules?",
-        a: "Usually yes, and they should have them. Holiday calendars are defined per location and attach to the employee record; leave quotas can vary by location, grade or entity. What stays common is the ledger the balances are held in, so reporting still works across the group.",
+        q: "Can salaried office staff and shift-based floor staff run on one system?",
+        a: "Yes. One population is salaried and desk-based; the other is shift-based with overtime, night differentials and comp-off. A single policy engine expresses both, so the business does not need two systems.",
       },
       {
         q: "Which plan suits a multi-entity business that needs single sign-on?",
@@ -471,7 +471,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for Manufacturing Companies",
       description:
-        "HR software for manufacturing companies in India: rotating shift management, overtime and night differentials, biometric attendance across plants, ESI and Labour Welfare Fund compliance.",
+        "HR software for manufacturing in India: rotating shifts, overtime and night differentials, biometric attendance across plants, ESI and Labour Welfare Fund.",
       keywords: [
         "HR software for manufacturing companies",
       ],
@@ -611,7 +611,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR Software for IT & Technology Companies",
       description:
-        "HR software for companies in IT and technology: hybrid and remote attendance, 24/7 delivery rosters, OKR and KRA alignment, and full statutory payroll compliance.",
+        "HR software for IT and technology companies: hybrid and remote attendance, 24/7 delivery rosters, OKR and KRA alignment, and statutory payroll compliance.",
       keywords: [
         "HR software for companies",
       ],
@@ -744,7 +744,7 @@ export const industries: Industry[] = [
     seo: {
       title: "HR & Payroll Software for Professional Services Firms",
       description:
-        "HRMS for consultancies and agencies: client-site attendance capture, project shift rosters, approval hierarchies by grade, and statutory payroll for a mobile professional workforce.",
+        "HRMS for consultancies and agencies: client-site attendance, project shift rosters, approval hierarchies by grade, and statutory payroll for mobile teams.",
       keywords: [
 
       ],

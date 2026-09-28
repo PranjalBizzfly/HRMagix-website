@@ -88,7 +88,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Cloud Based HRMS Software for Indian Companies",
       description:
-        "Cloud based HRMS software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules, cloud HR software your whole company can use.",
+        "Cloud based HRMS software built for India: one employee record feeding attendance, leave, payroll, performance and documents across twelve integrated modules.",
       keywords: [
         "cloud HR software",
         "cloud based HRMS software",
@@ -329,7 +329,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Payroll Software with PF, ESI, PT and TDS Built In",
       description:
-        "Payroll processing software for India: automated EPF, ESI, Professional Tax and TDS on salary, payslips, Form 16 and bank-ready NEFT files, a payroll automation system and salary management system in one monthly run.",
+        "Payroll processing software for India: automated EPF, ESI, Professional Tax and TDS, payslips, Form 16 and bank-ready NEFT files in one monthly run.",
       keywords: [
         "payroll automation software",
         "employee payroll system",
@@ -553,10 +553,6 @@ export const solutions: Solution[] = [
         a: "Salary to the last working day, leave encashment from the leave ledger, notice pay or recovery from the resignation record, and gratuity where five years of continuous service are complete, less advances, unrecovered assets and any notice shortfall. Each component is drawn from the module that owns it rather than confirmed by email.",
       },
       {
-        q: "Can we run payroll for more than one legal entity?",
-        a: "Yes. Each entity has its own PF and ESI registrations, its own professional tax registrations by state, and its own run. Employees move between entities without being recreated, and statutory totals stay attached to the entity that owes them.",
-      },
-      {
         q: "How does the salary structure affect statutory cost?",
         a: "Substantially. Basic pay drives the PF wage; the split between basic, HRA and special allowance drives what is exemptible; and whether a component sits inside the gross drives ESI eligibility near the threshold. These are decisions made once per grade, and they are the reason two packages of the same total can cost the employer different amounts.",
       },
@@ -598,7 +594,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Employee Database Software & Employee Record Management System",
       description:
-        "Employee database software for Indian companies: a versioned employee record management system with a document vault, expiry alerts, org structure and policy acknowledgement, an HR employee management system on one record.",
+        "Employee database software for Indian companies: a versioned employee record with a document vault, expiry alerts, org structure and policy acknowledgement.",
       keywords: [
         "employee database software",
         "employee record management system",
@@ -768,10 +764,6 @@ export const solutions: Solution[] = [
         a: "Through a bulk import of the fields you already hold, with validation on the ones that have to be well formed, identifiers, dates of joining, salary components. Records that fail validation are reported individually rather than silently skipped, so nobody is quietly missing from the first payroll run.",
       },
       {
-        q: "Can we store documents that are not employee documents, an offer letter template, say?",
-        a: "Templates and company-level documents live at the organisation level, and issued copies attach to the individual record. That distinction is what makes acknowledgement tracking meaningful: the version is held once, and each person's confirmation points at it.",
-      },
-      {
         q: "What happens to a record when someone leaves?",
         a: "It is retained rather than deleted. Statutory records have to survive the employment that produced them, gratuity, Form 16 reissues and inspections all reach backwards, so an exited record moves out of active views but stays queryable.",
       },
@@ -797,7 +789,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Attendance Management System with Biometric & Mobile Punch-In",
       description:
-        "Attendance management system for Indian companies: biometric attendance system software, GPS geo-fenced mobile punch-in, shift rotation, overtime and automatic loss-of-pay, an employee attendance and payroll system on one record.",
+        "Attendance management system for Indian companies: biometric attendance, GPS geo-fenced mobile punch-in, shift rotation, overtime and automatic loss-of-pay.",
       keywords: [
         "attendance management system",
         "employee attendance software",
@@ -970,7 +962,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Leave Management System & Leave Tracking Software",
       description:
-        "Leave management system for Indian companies: earned, sick, maternity and paternity leave, multi-level approvals, monthly accruals, sandwich-rule enforcement and carry-forward.",
+        "Leave management system for Indian companies: earned, sick, maternity and paternity leave, multi-level approvals, accruals, sandwich rule and carry-forward.",
       keywords: [
         "leave management system",
         "leave tracking software",
@@ -1144,10 +1136,6 @@ export const solutions: Solution[] = [
         q: "Can approval go to somebody other than the reporting manager?",
         a: "Yes. Routing follows the rule rather than the hierarchy alone, so a second approver can be required above a threshold of days, and a delegate can be named for a period. What does not happen is a request sitting with someone who has left, because routing reads the current record.",
       },
-      {
-        q: "Can employees see how much leave their colleagues are taking?",
-        a: "They see a team calendar of who is away and when, because planning depends on it. They do not see leave types or reasons, which are visible to the employee, their approver and HR.",
-      },
     ],
     onward: [
       { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "The other input to payable days" },
@@ -1170,7 +1158,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Employee Self Service Portal (ESS) for HR & Payroll",
       description:
-        "An employee self service portal for Indian companies: payslips, leave balances, attendance regularisation, tax declarations and Form 16 download on web and mobile, an HRMS with ESS portal built in.",
+        "An employee self service portal for Indian companies: payslips, leave balances, attendance regularisation, tax declarations and Form 16 on web and mobile.",
       keywords: [
         "Form 16 download",
         "employee self service portal",
@@ -1377,7 +1365,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "Employee Onboarding Software & Lifecycle Management",
       description:
-        "Employee onboarding software for India: a digital onboarding platform for pre-boarding documents, appointment letters and assets, then confirmation, transfer and exit, employee lifecycle management on one HR onboarding system.",
+        "Employee onboarding software for India: pre-boarding documents, appointment letters and assets, then confirmation, transfer and exit on one lifecycle record.",
       keywords: [
         "employee lifecycle management",
         "employee onboarding software",
@@ -1566,7 +1554,7 @@ export const solutions: Solution[] = [
     seo: {
       title: "HR Analytics Software & Workforce Reporting",
       description:
-        "HR analytics software for Indian companies: workforce analytics tools and HR reporting software for real-time headcount, attrition risk, tenure, overtime expense and payroll budget variance on an employee analytics dashboard.",
+        "HR analytics software for Indian companies: real-time headcount, attrition risk, tenure, overtime expense and payroll budget variance on one dashboard.",
       keywords: [
         "HR analytics software",
         "workforce analytics tools",

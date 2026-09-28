@@ -12,7 +12,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "HR Guides",
   description:
-    "Practical, chaptered guides for Indian HR and payroll teams: running a first payroll in a new system, writing a leave policy that survives a year, and setting up attendance for a workforce that is not at a desk.",
+    "Practical guides for Indian HR and payroll teams: running a first payroll in a new system, writing a leave policy, and attendance for workforces not at a desk.",
   keywords: [
 
   ],

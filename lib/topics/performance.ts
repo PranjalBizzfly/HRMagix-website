@@ -234,7 +234,7 @@ export const topicsPerformance: Topic[] = [
     phrases: ["kra", "kras", "9-box", "potential"],
     seo: {
       title: "KRAs and the 9-Box Talent Grid",
-      description: "What key result areas are, how the 9-box plots performance against potential, calibrating placements, and turning the grid into development and succession action.",
+      description: "What key result areas are, how the 9-box plots performance against potential, calibrating placements, and turning the grid into development action.",
     },
   },
   {

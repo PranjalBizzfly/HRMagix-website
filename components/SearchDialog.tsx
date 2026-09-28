@@ -45,14 +45,26 @@ function search(pages: IndexedPage[], query: string): IndexedPage[] {
 export default function SearchDialog({
   open,
   onClose,
-  groups,
 }: {
   open: boolean;
   onClose: () => void;
-  groups: IndexGroup[];
 }) {
   const router = useRouter();
+  const [groups, setGroups] = useState<IndexGroup[]>([]);
   const [query, setQuery] = useState("");
+
+  // Load the index on first open rather than shipping it with every page.
+  useEffect(() => {
+    if (!open || groups.length) return;
+    let live = true;
+    fetch("/search-index.json")
+      .then((r) => (r.ok ? r.json() : []))
+      .then((g: IndexGroup[]) => live && setGroups(g))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [open, groups.length]);
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
 

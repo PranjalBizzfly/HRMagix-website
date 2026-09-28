@@ -13,7 +13,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "White Papers on Indian Payroll & People Operations",
   description:
-    "Five technical briefings: payroll as a chain of custody, multi-state compliance, the manufacturing exceptions engine, the startup policy vacuum, and the arithmetic of employee self-service.",
+    "Five technical briefings: payroll as a chain of custody, multi-state compliance, the manufacturing exceptions engine, the startup policy vacuum, self-service.",
   keywords: [
 
   ],
@@ -73,13 +73,13 @@ export default function WhitePapersPage() {
             <Reveal delay={140} y={20}>
               <div className="card border-line/60 bg-surface/85 backdrop-blur-md p-6 sm:p-7 rounded-2xl shadow-lift">
                 <span className="text-[12px] font-bold uppercase tracking-wider text-accent-soft">
-                  Peer-Reviewed Briefings
+                  Open-Access Briefings
                 </span>
                 <p className="font-display text-lg font-bold text-heading mt-2">
                   Statutory analysis without email paywalls
                 </p>
                 <p className="text-[14px] text-body mt-2 leading-relaxed">
-                  Indian labor statute, the four Wage Codes, multi-state PF rulings, and ESI court precedents published open-access with full citations.
+                  Payroll custody, multi-state compliance, attendance exceptions, policy gaps and self-service, each marking what is law, what is HRMagix and what is opinion.
                 </p>
               </div>
             </Reveal>

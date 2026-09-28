@@ -65,7 +65,7 @@ export const guides: Guide[] = [
     seo: {
       title: "Guide: Running Your First Payroll in a New System",
       description:
-        "A step-by-step guide to moving payroll into a payroll processing system: what data must be ready, why year-to-date figures matter for Form 16, and how to run a parallel month.",
+        "A step-by-step guide to moving payroll into a new system: what data must be ready, why year-to-date figures matter for Form 16, and how to run a parallel month.",
       keywords: [],
     },
     opening: [
@@ -189,7 +189,7 @@ export const guides: Guide[] = [
     seo: {
       title: "Guide: Writing a Leave Policy for an Indian Company",
       description:
-        "The decisions a leave policy is made of, accrual basis, leave types, approval routing, carry-forward, encashment, the sandwich rule and statutory leave, and how each behaves in a leave management system.",
+        "The decisions a leave policy is made of: accrual, leave types, approvals, carry-forward, encashment and the sandwich rule, and how each behaves in software.",
       keywords: [],
     },
     opening: [
@@ -309,7 +309,7 @@ export const guides: Guide[] = [
     seo: {
       title: "Guide: Attendance for Shift and Field Workforces",
       description:
-        "How to configure an attendance management system for shop-floor, field and multi-site teams: capture methods, rotating shifts, midnight crossings, overtime rules and the records an inspection tests.",
+        "Configuring attendance for shop-floor, field and multi-site teams: capture methods, rotating shifts, midnight crossings, overtime and inspection records.",
       keywords: [],
     },
     opening: [

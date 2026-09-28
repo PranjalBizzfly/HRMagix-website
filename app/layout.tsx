@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter_Tight, Montserrat } from "next/font/google";
 import Nav from "@/components/Nav";
-import { buildSiteIndex } from "@/lib/siteIndex";
 import Footer from "@/components/Footer";
 import Interactions from "@/components/Interactions";
 import StickyCta from "@/components/StickyCta";
@@ -115,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <ThemeProvider>
-          <Nav searchIndex={buildSiteIndex()} />
+          <Nav />
           <main id="main" tabIndex={-1} className="outline-none">
             <RouteTransition>{children}</RouteTransition>
           </main>

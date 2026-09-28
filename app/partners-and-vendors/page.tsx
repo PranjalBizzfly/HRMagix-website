@@ -14,7 +14,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "Partners & Vendors",
   description:
-    "HRMagix works with accounting firms, HR implementation consultants and biometric hardware suppliers. There is no tiered partner programme, here is how each relationship actually works.",
+    "HRMagix works with accounting firms, HR implementation consultants and biometric hardware suppliers. No tiered partner programme; here is how each one works.",
   alternates: { canonical: "/partners-and-vendors" },
 };
 

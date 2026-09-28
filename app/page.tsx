@@ -25,11 +25,12 @@ import Photo from "@/components/Photo";
 import TestimonialDeck from "@/components/TestimonialDeck";
 import ModuleTabs from "@/components/ModuleTabs";
 import Pricing from "@/components/Pricing";
+import Accordion from "@/components/Accordion";
 
 export const metadata: Metadata = {
   title: "HRMagix: HRMS & Payroll Software for India",
   description:
-    "HRMagix is HR software for Indian companies, an HRMS system and HR platform for companies with attendance, leave, payroll with PF, ESI, PT and TDS, employee self-service and HR analytics: HRMS and payroll software, twelve modules on one employee record.",
+    "HRMagix is HRMS and payroll software for Indian companies: attendance, leave, payroll with PF, ESI, PT and TDS, self-service and HR analytics on one record.",
   keywords: [
     "HRMS software",
     "payroll software",
@@ -56,9 +57,12 @@ export const metadata: Metadata = {
  *
  * Content rules still hold: every figure shown is one HRMagix publishes, the
  * site shows no dashboard screenshots or simulated screens (the product is
- * described in words, from lib/appFeatures.ts), and answers to the questions
- * live on /resources/faqs rather than being repeated here.
+ * described in words, from lib/appFeatures.ts), and the eight headline
+ * questions are answered inline, with the full set on the question index.
  */
+
+/** The eight general questions answered on the homepage. */
+const homeFaqs = faqs.slice(0, 8).map((f) => ({ q: f.q, a: f.a }));
 
 /** Only the figures published on hrmagix.com. */
 const proof: { value: number; suffix: string; label: string; icon: IconName }[] = [
@@ -339,12 +343,11 @@ export default function HomePage() {
 
       {/* ================= 10. Where to start ================= */}
       <Section>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col items-center gap-6 text-center">
           <SectionHeader
             eyebrow="Solutions"
             title="Start where it hurts most"
             lede="Four of the solution pages, chosen because they are where companies switching to HRMagix usually begin."
-            align="left"
           />
           <Reveal delay={100}>
             <Link
@@ -801,8 +804,8 @@ export default function HomePage() {
       </Section>
 
       {/* ================= 16. Questions =================
-          Titles only, linking through to where each is answered. Every answer
-          on this site lives in exactly one place, and this is not it. */}
+          The first eight general questions, answered inline with FAQPage
+          schema. The full set lives on the question index. */}
       <Section ground="sunken">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
           <div className="lg:sticky lg:top-[120px] lg:self-start">
@@ -819,23 +822,23 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <ul className="grid gap-3">
-            {faqs.slice(0, 8).map((f, i) => (
-              <Reveal as="li" key={f.q} delay={i * 40} y={10}>
-                <Link
-                  href="/resources/questions-and-answers"
-                  className="card card-hover group flex items-center justify-between gap-5 px-5 py-4 sm:px-6"
-                >
-                  <span className="font-display text-[15.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent sm:text-[16.5px]">
-                    {f.q}
-                  </span>
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-surface-sunken text-accent ring-1 ring-line transition-colors group-hover:bg-brand group-hover:text-white">
-                    <Arrow />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </ul>
+          <div>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: homeFaqs.map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: { "@type": "Answer", text: f.a },
+                  })),
+                }),
+              }}
+            />
+            <Accordion items={homeFaqs} single />
+          </div>
         </div>
       </Section>
       <CtaBand

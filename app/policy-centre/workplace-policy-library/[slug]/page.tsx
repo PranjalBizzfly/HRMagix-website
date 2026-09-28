@@ -107,6 +107,20 @@ export function generateStaticParams() {
   return policyDetails.map((d) => ({ slug: d.slug }));
 }
 
+/** Meta descriptions must stay within 160 characters; `covers` is also shown on the page. */
+const META_OVERRIDES: Record<string, string> = {
+  HRMAGIX009:
+    "The employer's obligations under Indian law on preventing and redressing workplace sexual harassment, including the complaints mechanism and confidentiality.",
+};
+
+function policyMetaDescription(code: string, covers: string): string {
+  const base = META_OVERRIDES[code] ?? covers;
+  for (const suffix of [" A HRMagix policy template with acknowledgement tracked per version.", " A HRMagix workplace policy template."]) {
+    if (base.length + suffix.length <= 160) return base + suffix;
+  }
+  return base;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -116,13 +130,14 @@ export async function generateMetadata({
   const detail = detailBySlug(slug);
   const entry = detail ? entryByCode(detail.code) : undefined;
   if (!detail || !entry) return {};
+  const description = policyMetaDescription(entry.code, entry.covers);
   return {
     title: `${entry.name}: Policy Template`,
-    description: `${entry.covers} A HRMagix workplace policy template (${entry.code}), issued to employees through the Documents module with acknowledgement tracked per version.`,
+    description,
     alternates: { canonical: `/policy-centre/workplace-policy-library/${detail.slug}` },
     openGraph: {
       title: `${entry.name} · HRMagix`,
-      description: entry.covers,
+      description,
       url: `/policy-centre/workplace-policy-library/${detail.slug}`,
       siteName: "HRMagix",
       images: [{ url: "/og.png", width: 1200, height: 630, alt: "HRMagix: Smart HR for modern teams, with attendance, payroll, performance and recognition in one workspace" }],

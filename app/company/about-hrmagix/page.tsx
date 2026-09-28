@@ -13,7 +13,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "About HRMagix",
   description:
-    "HRMagix builds HRMS and payroll software for Indian companies from Pune and Mumbai, twelve modules on one employee record, with statutory compliance as the product rather than a feature.",
+    "HRMagix builds HRMS and payroll software for Indian companies from Pune and Mumbai: twelve modules on one employee record, with compliance as the product.",
   alternates: { canonical: "/company/about-hrmagix" },
 };
 

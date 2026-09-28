@@ -13,7 +13,7 @@ import OnThisPage from "@/components/OnThisPage";
 
 export const metadata: Metadata = {
   title: "Workplace Policy Library",
-  description: `The ${policyCount} HR policy templates HRMagix ships in the Documents module, conduct, attendance, leave, performance, pay and separation, each with its own page, issued to employees with acknowledgement tracked per version.`,
+  description: `The ${policyCount} HR policy templates in the HRMagix Documents module, from conduct and leave to pay and separation, issued with acknowledgement tracked per version.`,
   keywords: [
     "HR policy templates",
     "employee handbook policies",
@@ -101,7 +101,7 @@ export default function WorkplacePoliciesPage() {
                   25 Indian statutory workplace templates
                 </p>
                 <p className="text-[14px] text-body mt-2 leading-relaxed">
-                  POSH Act, Factories Act, Standing Orders, code of conduct, and maternity benefits, structured with version control and individual digital sign-offs.
+                  Code of conduct, sexual harassment (POSH), maternity benefit, leave, gratuity and exit policies, with acknowledgement tracked per employee per version.
                 </p>
               </div>
             </Reveal>

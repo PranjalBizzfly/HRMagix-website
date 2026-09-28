@@ -30,9 +30,12 @@ export async function generateMetadata({
   const t = faqTopics.find((x) => x.slug === topic);
   if (!t) return {};
   const n = questionsByTopic()[t.slug].length;
+  // Keep the meta description within 160 characters; fall back to a shorter suffix for long intros.
+  const full = `${t.intro} ${n} questions about ${t.name.toLowerCase()} in HRMagix, answered.`;
+  const description = full.length <= 160 ? full : `${t.intro} ${n} questions answered.`;
   return {
     title: `${t.name} FAQs: ${n} Questions Answered`,
-    description: `${t.intro} ${n} questions about ${t.name.toLowerCase()} in HRMagix, answered.`,
+    description,
     alternates: { canonical: `/resources/questions-and-answers/${t.slug}` },
   };
 }

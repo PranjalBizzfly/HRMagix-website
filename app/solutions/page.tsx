@@ -16,7 +16,7 @@ import FeatureMap from "@/components/FeatureMap";
 export const metadata: Metadata = {
   title: "Solutions: HRMS, Payroll, Attendance & ESS",
   description:
-    "The HRMagix HR SaaS platform: HRMS tools for companies, payroll with PF, ESI, PT and TDS, attendance, leave management, employee self-service, onboarding and HR analytics, twelve modules on one employee record.",
+    "The HRMagix HR platform: payroll with PF, ESI, PT and TDS, attendance, leave, self-service, onboarding and HR analytics, twelve modules on one employee record.",
   keywords: [
     "HR SaaS platform",
     "HRMS tools for companies",

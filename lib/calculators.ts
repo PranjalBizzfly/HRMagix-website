@@ -298,7 +298,7 @@ export const calculators: Calculator[] = [
     seo: {
       title: "Salary Breakup Calculator: Take-Home and Cost to Company",
       description:
-        "Free salary calculator for India: enter a monthly gross to see basic, employee and employer provident fund, ESI, take-home before income tax and total cost to employer.",
+        "Free salary calculator for India: enter monthly gross to see basic, employee and employer PF, ESI, take-home before income tax and total cost to employer.",
       keywords: [
         "salary calculation software",
         "employee salary calculator",
@@ -637,7 +637,7 @@ export const calculators: Calculator[] = [
     seo: {
       title: "ESI Calculator: Eligibility and Contribution",
       description:
-        "ESI calculation for Indian payroll: test the ₹21,000 gross wage threshold, compute 0.75% employee and 3.25% employer contributions, and see when overtime moves the wage base.",
+        "ESI calculation for Indian payroll: test the ₹21,000 wage threshold, compute 0.75% employee and 3.25% employer contributions, and see overtime's effect.",
       keywords: [
         "ESI calculation",
         "ESIC contribution calculator",
@@ -784,7 +784,7 @@ export const calculators: Calculator[] = [
     seo: {
       title: "Gratuity Calculator: Payment of Gratuity Act Formula",
       description:
-        "Gratuity calculator for India: fifteen days' wages per completed year on a 26-day divisor, with the five-year continuous service rule and per-year accrual shown.",
+        "Gratuity calculator for India: fifteen days' wages per completed year on a 26-day divisor, with the five-year service rule and per-year accrual shown.",
       keywords: [
         "gratuity calculator",
         "payment of gratuity act",
@@ -1254,7 +1254,7 @@ export const calculators: Calculator[] = [
     seo: {
       title: "Overtime Calculator India: Factories Act Twice the Ordinary Rate",
       description:
-        "Overtime pay calculator for India: twice the ordinary rate of wages for work beyond nine hours a day or 48 a week under the Factories Act, on your own hourly basis.",
+        "Overtime pay calculator for India: twice the ordinary wage rate for work beyond nine hours a day or 48 a week under the Factories Act, on your own basis.",
       keywords: [
         "overtime calculator",
         "factories act overtime",

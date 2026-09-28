@@ -14,7 +14,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Features: All Twelve HRMagix Modules",
   description:
-    "Every HRMagix feature: attendance and shifts, leaves and holidays, payroll, OKRs, KRA and 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics.",
+    "Every HRMagix feature: attendance and shifts, leave, payroll, OKRs, KRA and 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics.",
   alternates: { canonical: "/features" },
 };
 

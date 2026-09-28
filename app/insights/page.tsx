@@ -13,7 +13,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "Insights: Indian Payroll & People Operations",
   description:
-    "Long-form writing on Indian payroll and people operations: ESI against a moving wage base, multi-state Professional Tax, comp-off, the sandwich rule, and reading a payslip line by line.",
+    "Long-form writing on Indian payroll and people operations: ESI's moving wage base, multi-state Professional Tax, comp-off, the sandwich rule and payslips.",
   keywords: [
 
   ],

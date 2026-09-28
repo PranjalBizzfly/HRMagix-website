@@ -13,7 +13,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Press Kit",
   description:
-    "HRMagix brand assets and boilerplate: the product mark, brand palette with hex values, how to write the name, short and long descriptions, and what is not published.",
+    "HRMagix brand assets: the product mark, brand palette with hex values, how to write the name, short and long descriptions, and what is not published.",
   alternates: { canonical: "/company/press-kit" },
 };
 

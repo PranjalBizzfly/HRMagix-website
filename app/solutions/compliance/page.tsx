@@ -12,7 +12,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "Compliance: Indian Statutory Compliance Engine for EPF, ESI, PT, LWF and TDS",
   description:
-    "How HRMagix derives EPF, ESI, Professional Tax, Labour Welfare Fund and TDS inside the payroll run, and produces the ECR file, ESIC return, PT working, Form 24Q and Form 16 Part B from the same figures.",
+    "How HRMagix derives EPF, ESI, Professional Tax, LWF and TDS in the payroll run, and produces the ECR, ESIC return, PT working, Form 24Q and Form 16 from it.",
   keywords: [
     "payroll compliance",
   ],

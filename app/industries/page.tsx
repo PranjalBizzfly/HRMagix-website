@@ -13,7 +13,7 @@ import OnThisPage from "@/components/OnThisPage";
 export const metadata: Metadata = {
   title: "Industries: HR & Payroll by Company Type",
   description:
-    "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services, the same platform, matched to how each workforce is actually paid.",
+    "How HRMagix is configured for startups, small businesses, SMEs, manufacturing, IT and professional services, matched to how each workforce is paid.",
   keywords: [
 
   ],

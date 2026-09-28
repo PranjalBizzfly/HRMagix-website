@@ -11,7 +11,7 @@ import { glossary } from "@/lib/glossary";
 export const metadata: Metadata = {
   title: "HR & Payroll Glossary",
   description:
-    "Plain definitions of the Indian HR and payroll terms that cause the most confusion, EPF, ESI, CTC, LOP, PF wage, contribution period, comp-off, 9-box, Form 16 and more, with the distinctions people usually get wrong.",
+    "Plain definitions of confusing Indian HR and payroll terms, EPF, ESI, CTC, LOP, PF wage, comp-off, 9-box, Form 16 and more, with the distinctions people miss.",
   keywords: [
 
   ],

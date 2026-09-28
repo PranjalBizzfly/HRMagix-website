@@ -239,7 +239,7 @@ export const topicsPay: Topic[] = [
     phrases: ["payroll", "payslip", "salary"],
     seo: {
       title: "How to Manage Employee Payroll in India: The Monthly Process",
-      description: "How to manage employee payroll in India: inputs and cutoff, running and approving payroll, paying salaries, statutory deposits and filings, and common payroll mistakes.",
+      description: "How to manage employee payroll in India: inputs and cutoff, running and approving payroll, paying salaries, statutory filings, and common payroll mistakes.",
       keywords: ["how to manage employee payroll in India"],
     },
   },
@@ -420,7 +420,7 @@ export const topicsPay: Topic[] = [
     phrases: ["payslip", "payslips"],
     seo: {
       title: "Payslips and Salary Slip Generator Software: What They Must Show",
-      description: "What a payslip contains, why a payslip generator must never regenerate an issued payslip, correcting errors through arrears, and self-service access for employees.",
+      description: "What a payslip contains, why an issued payslip must never be regenerated, correcting errors through arrears, and self-service access for employees.",
       keywords: ["payslip generator","salary slip generator software"],
     },
   },

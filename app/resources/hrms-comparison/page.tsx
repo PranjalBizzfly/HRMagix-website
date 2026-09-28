@@ -11,7 +11,7 @@ import Photo from "@/components/Photo";
 export const metadata: Metadata = {
   title: "HRMS Comparison: Integrated HRMS vs Point Tools vs Spreadsheets",
   description:
-    "A best HRMS software comparison: integrated HRMS vs point tools vs spreadsheets, and what to check in the best payroll software and top payroll software lists before choosing the best HRMS and payroll software in India.",
+    "An HRMS software comparison: integrated HRMS vs point tools vs spreadsheets, and what to check before choosing the best HRMS and payroll software in India.",
   keywords: [
     "best HRMS software",
     "best payroll software",
