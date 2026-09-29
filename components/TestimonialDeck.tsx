@@ -200,7 +200,7 @@ function Card({
               alt={`Headshot of ${t.name}, ${t.role}, an HRMagix customer`}
               width={48}
               height={48}
-              quality={90}
+              quality={85}
               className="h-full w-full object-cover object-[center_20%]"
             />
           </div>

@@ -196,7 +196,7 @@ export function Passages({
           <H className="font-display text-[20px] font-bold leading-snug tracking-[-0.02em] text-heading lg:text-[22px]">
             {item.heading}
           </H>
-          <div className="max-w-2xl">
+          <div>
             {item.body.map((p, j) => (
               <p key={j} className={`text-[16.5px] leading-[1.72] text-muted ${j ? "mt-5" : ""}`}>
                 {p}
@@ -286,7 +286,7 @@ export function Statement({
           <p
             className={`font-display text-[24px] font-light leading-[1.35] tracking-[-0.025em] text-balance sm:text-[32px] lg:text-[38px] ${
               dark ? "text-white" : "text-heading"
-            } max-w-[22ch] sm:max-w-[26ch]`}
+            } max-w-[22ch] sm:max-w-[40ch] lg:max-w-[56ch]`}
           >
             {children}
           </p>

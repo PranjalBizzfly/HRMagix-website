@@ -203,7 +203,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
         </Reveal>
 
         {/* Topics: numbered cards in an even two-column grid. */}
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-5 md:grid-cols-2 md:items-start">
           {s.passages.map((p, i) => (
             <Reveal
               key={p.heading}

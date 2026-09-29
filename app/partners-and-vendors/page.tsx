@@ -135,15 +135,20 @@ export default function VendorPage() {
         intro="There is no programme to apply to, so this is not an application. It routes a specific proposal to the team in Pune, who arrange each relationship individually."
         ground="sunken"
       >
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-10">
-          <Reveal y={12} className="card self-start p-6">
+        {/* Stacked rather than side by side: the "who writes" list runs as a strip
+            above the form, so a short list never sits beside a tall form. */}
+        <div className="mx-auto grid max-w-5xl gap-5">
+          <Reveal y={12} className="card p-5 sm:p-6">
             <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
               Who writes to us
             </p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {vendor.enquiryKinds.map((k) => (
-                <li key={k} className="flex gap-3 text-[14.5px] leading-[1.6] text-muted">
-                  <span aria-hidden="true" className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-soft" />
+                <li
+                  key={k}
+                  className="flex gap-3 rounded-xl bg-surface-sunken p-3.5 text-[14px] leading-[1.55] text-muted ring-1 ring-inset ring-line"
+                >
+                  <span aria-hidden="true" className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft" />
                   {k}
                 </li>
               ))}

@@ -104,14 +104,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     </dt>
                     <dd className="mt-1.5 text-[14.5px] text-heading">{article.reader}</dd>
                   </div>
-                  <div>
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
-                      Length
-                    </dt>
-                    <dd className="mt-1.5 text-[14.5px] text-heading">
-                      {article.minutes} minute read
-                    </dd>
-                  </div>
                 </dl>
               </Reveal>
             </div>

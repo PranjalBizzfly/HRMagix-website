@@ -761,9 +761,6 @@ export default function HomePage() {
                   rounded="rounded-[16px]"
                   className="shadow-lift ring-1 ring-white/20"
                 />
-                <div className="absolute -bottom-3 right-3 rounded-lg bg-black/75 px-3 py-1.5 text-[11px] font-semibold text-emerald-400 backdrop-blur-sm ring-1 ring-white/20 sm:bottom-3 sm:right-3">
-                  ● 100% Audit-Ready Cutoff
-                </div>
               </Reveal>
             </div>
           </div>

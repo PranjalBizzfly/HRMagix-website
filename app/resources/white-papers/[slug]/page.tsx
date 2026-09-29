@@ -100,14 +100,6 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                     </div>
                     <div>
                       <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
-                        Length
-                      </dt>
-                      <dd className="mt-1.5 text-[14.5px] text-heading">
-                        {paper.minutes} minute read
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
                         Format
                       </dt>
                       <dd className="mt-1.5 text-[14.5px] text-heading">

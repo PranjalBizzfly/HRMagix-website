@@ -337,7 +337,7 @@ export function FaqSection({
 /** Split enquiry band: what happens next on the left, the form on the right. */
 export function EnquirySection({ topic }: { topic: string }) {
   return (
-    <section id="enquiry" className="scroll-mt-[110px] border-y border-line bg-surface-sunken py-8 sm:py-10 md:py-14">
+    <section id="enquiry" className="scroll-mt-[110px] border-y border-line bg-surface-sunken py-12 sm:py-14 md:py-20">
       <div className="shell grid gap-10 lg:grid-cols-12 lg:gap-12">
         <Reveal y={12} className="lg:col-span-5">
           <span className="eyebrow">

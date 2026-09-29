@@ -142,8 +142,10 @@ export default function CareersPage() {
             </Reveal>
           ))}
         </div>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-10">
-          <div className="card p-5 sm:p-8">
+        {/* Stacked: the contact details run as a strip above the form, so a short
+            card never sits beside a tall form. */}
+        <div className="mx-auto grid max-w-5xl gap-5">
+          <div className="card order-2 p-5 sm:p-8">
             <Reveal delay={200}>
               <EnquiryForm form="careers"
                 subject="Working at HRMagix"
@@ -181,13 +183,19 @@ export default function CareersPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={140} y={14} className="card self-start p-6 sm:p-7">
-            <h3 className="font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
-              Where we are
-            </h3>
-            <p className="mt-4 text-[16px] leading-[1.7] text-body">{site.contact.location}</p>
-            <dl className="mt-6 space-y-4 border-t border-line pt-5">
-              <div>
+          <Reveal
+            delay={140}
+            y={14}
+            className="card order-1 grid gap-5 p-5 sm:grid-cols-3 sm:items-start sm:gap-6 sm:p-6"
+          >
+            <div>
+              <h3 className="font-display text-[13px] font-bold uppercase tracking-[0.16em] text-subtle">
+                Where we are
+              </h3>
+              <p className="mt-1 text-[15px] leading-[1.6] text-body">{site.contact.location}</p>
+            </div>
+            <dl className="contents">
+              <div className="border-t border-line pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
                 <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-subtle">
                   Email
                 </dt>
@@ -200,7 +208,7 @@ export default function CareersPage() {
                   </a>
                 </dd>
               </div>
-              <div>
+              <div className="border-t border-line pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
                 <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-subtle">
                   Phone
                 </dt>

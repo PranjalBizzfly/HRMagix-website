@@ -114,12 +114,6 @@ export default function BlogIndex() {
                     {featured.reader}
                   </dd>
                 </div>
-                <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-subtle">
-                    Length
-                  </dt>
-                  <dd className="mt-1.5 text-[14.5px] text-heading">{featured.minutes} min read</dd>
-                </div>
               </dl>
             </Reveal>
             <Reveal delay={240}>
@@ -169,7 +163,6 @@ export default function BlogIndex() {
                   </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-4 whitespace-nowrap text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">
-                  {a.minutes} min
                   <span className="text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <Arrow />
                   </span>

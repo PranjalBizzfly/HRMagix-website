@@ -32,6 +32,12 @@ export default function Photo({
    * height is set by the text on top rather than by the photograph.
    */
   cover = false,
+  /**
+   * Load immediately at high fetch priority, with no reveal fade. Defaults to
+   * on for `cover` photos (the full-bleed hero backdrops, always above the
+   * fold) and for slots registered with `priority`. Everything else is lazy.
+   */
+  priority,
 }: {
   slot: string;
   className?: string;
@@ -43,9 +49,10 @@ export default function Photo({
   hover?: boolean;
   tone?: boolean;
   cover?: boolean;
+  priority?: boolean;
 }) {
   const media = bySlot(slot);
-  const { ref, shown } = useInView<HTMLDivElement>();
+  const { ref, shown: inView } = useInView<HTMLDivElement>();
 
   if (!media) {
     if (process.env.NODE_ENV !== "production") {
@@ -54,6 +61,11 @@ export default function Photo({
     }
     return null;
   }
+
+  // Above-the-fold images are the page's LCP: never hide them behind a
+  // JS-driven reveal, and never lazy-load them.
+  const eager = priority ?? (cover || !!media.priority);
+  const shown = eager || inView;
 
   return (
     <div
@@ -69,9 +81,12 @@ export default function Photo({
         alt={media.alt}
         fill
         sizes={sizes}
-        quality={100}
-        priority={media.priority}
-        loading={media.priority ? undefined : "lazy"}
+        // 85 is visually lossless in AVIF/WebP at the served resolution and
+        // roughly halves the bytes of quality 100.
+        quality={85}
+        priority={eager}
+        loading={eager ? undefined : "lazy"}
+        decoding={eager ? "sync" : "async"}
         style={{ objectPosition: media.position ?? "center" }}
         className={`object-cover transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] ${
           shown ? "scale-100 opacity-100" : "scale-[1.03] opacity-0"

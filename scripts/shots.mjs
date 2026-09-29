@@ -15,7 +15,7 @@ const ORIGIN = process.env.ORIGIN || "http://localhost:3111";
 const [widthArg, themeArg, ...routes] = process.argv.slice(2);
 const WIDTH = Number(widthArg) || 1440;
 const THEME = themeArg === "dark" ? "dark" : "light";
-const ROUTES = routes.length ? routes : ["/"];
+const ROUTES = routes.length ? routes.map((r) => (r.startsWith("/") ? r : `/${r}`)) : ["/"];
 const STOPS = Number(process.env.STOPS || 4);
 const OUT = ".shots";
 mkdirSync(OUT, { recursive: true });

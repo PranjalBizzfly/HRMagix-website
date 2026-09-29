@@ -24,6 +24,8 @@ export default function FeatureMap({
   everywhere?: boolean;
 }) {
   const shown = areas ? appAreas.filter((a) => areas.includes(a.key)) : appAreas;
+  // A lone card spans the full width, so its list runs in two columns to use that width.
+  const single = shown.length === 1;
 
   return (
     <div className="space-y-5">
@@ -33,7 +35,7 @@ export default function FeatureMap({
         }`}
       >
         {shown.map((area, i) => (
-          <Reveal key={area.key} delay={i * 60} y={14} className="card flex flex-col p-6">
+          <Reveal key={area.key} delay={i * 60} y={14} className={`card flex flex-col ${single ? "p-5 sm:p-6" : "p-6"}`}>
             <div className="flex items-center gap-3.5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-accent">
                 <Icon name={area.icon} className="h-5 w-5" />
@@ -43,7 +45,11 @@ export default function FeatureMap({
                 <p className="text-[13px] leading-snug text-muted">{area.summary}</p>
               </div>
             </div>
-            <ul className="mt-5 flex-1 space-y-3 border-t border-line pt-4">
+            <ul
+              className={`flex-1 border-t border-line ${
+                single ? "mt-4 grid gap-x-8 gap-y-3 pt-4 md:grid-cols-2" : "mt-5 space-y-3 pt-4"
+              }`}
+            >
               {area.features.map((f) => (
                 <li key={f.name} className="flex gap-2.5">
                   <Icon name="check" className="mt-1 h-3.5 w-3.5 shrink-0 text-accent" />
@@ -57,7 +63,9 @@ export default function FeatureMap({
             {area.href && (
               <Link
                 href={area.href}
-                className="group mt-5 inline-flex min-h-[44px] items-center gap-2 text-[13.5px] font-semibold text-accent"
+                className={`group inline-flex min-h-[44px] items-center gap-2 self-start text-[13.5px] font-semibold text-accent ${
+                  single ? "mt-2" : "mt-5"
+                }`}
               >
                 More on {area.name.toLowerCase()} <Arrow />
               </Link>

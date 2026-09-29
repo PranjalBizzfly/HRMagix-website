@@ -95,7 +95,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
             <Reveal as="li" key={a.slug} delay={i * 60} y={14}>
               <Link href={`/insights/${a.slug}`} className="card card-hover group flex h-full flex-col p-6 sm:p-7">
                 <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-label">
-                  {a.minutes} min read · For {a.reader}
+                  For {a.reader}
                 </span>
                 <span className="mt-3 font-display text-[20px] font-bold leading-snug text-heading group-hover:text-accent">
                   {a.title}

@@ -156,11 +156,7 @@ export default function ResourcesHub() {
                   <Arrow />
                 </span>
               </Link>
-              <span className="mt-2 block flex-1 text-[15px] leading-[1.6] text-muted">{paper.reader}</span>
-              <span className="mt-4 whitespace-nowrap text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">
-                {paper.minutes} min
-              </span>
-            </Reveal>
+              <span className="mt-2 block flex-1 text-[15px] leading-[1.6] text-muted">{paper.reader}</span>            </Reveal>
           ))}
         </ol>
       </Block>
@@ -179,9 +175,7 @@ export default function ResourcesHub() {
                 <span className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent">{a.category}</span>
                 <span className="flex-1 font-display text-[16.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent">
                   {a.title}
-                </span>
-                <span className="whitespace-nowrap text-[13px] text-subtle">{a.minutes} min</span>
-              </Link>
+                </span>              </Link>
             </Reveal>
           ))}
         </ul>

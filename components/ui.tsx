@@ -2,7 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export function Logo({ compact = false, light = false }: { compact?: boolean; light?: boolean }) {
+export function Logo({
+  compact = false,
+  light = false,
+  priority = true,
+}: {
+  compact?: boolean;
+  light?: boolean;
+  /** Only the header mark is above the fold; the footer one loads lazily. */
+  priority?: boolean;
+}) {
   return (
     <span className="inline-flex items-center gap-2.5">
       {/* HRMagix's own product mark, taken from app.hrmagix.com/favicon.svg */}

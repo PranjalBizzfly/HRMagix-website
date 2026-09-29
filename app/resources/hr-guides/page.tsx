@@ -127,7 +127,7 @@ export default function GuidesPage() {
                       Read guide {g.number} <Arrow />
                     </Link>
                     <span className="text-[13.5px] text-subtle">
-                      {g.chapters.length} chapters &middot; about {g.minutes} minutes
+                      {g.chapters.length} chapters
                     </span>
                   </div>
                 </div>

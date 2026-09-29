@@ -71,7 +71,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
       <SiteStats />
 
       <Block ground="canvas">
-        <div className="card grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-16 lg:p-10">
+        <div className="card grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12 lg:p-10">
           {/* Contents rail — legal pages are scanned, not read start to finish. */}
           <nav aria-label="On this page" className="lg:sticky lg:top-[110px] lg:self-start">
             <p className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-subtle">

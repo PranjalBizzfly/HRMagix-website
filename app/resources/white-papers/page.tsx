@@ -101,11 +101,7 @@ export default function WhitePapersPage() {
                       className="font-display text-[34px] font-light leading-none text-line-accent"
                     >
                       {paper.number}
-                    </span>
-                    <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-subtle">
-                      {paper.minutes} minute read
-                    </span>
-                  </div>
+                    </span>                  </div>
 
                   <h2 className="display display-md mt-5 max-w-[20ch]">
                     <Link

@@ -75,7 +75,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 Guide {guide.number}
               </span>
               <span className="text-[12.5px] text-subtle">
-                {guide.chapters.length} chapters &middot; about {guide.minutes} minutes
+                {guide.chapters.length} chapters
               </span>
             </Reveal>
 
@@ -237,9 +237,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 </span>
                 <span className="flex-1 font-display text-[16.5px] font-bold text-heading transition-colors group-hover:text-accent">
                   {o.title}
-                </span>
-                <span className="text-[13.5px] text-subtle">about {o.minutes} minutes</span>
-              </Link>
+                </span>              </Link>
             </Reveal>
           ))}
         </ul>

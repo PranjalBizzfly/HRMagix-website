@@ -63,7 +63,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="flex flex-col gap-6">
             <Link href="/" aria-label="HRMagix home" className="inline-flex">
-              <Logo light />
+              <Logo light priority={false} />
             </Link>
 
             <p className="max-w-xs text-[14px] leading-relaxed text-white/70">
