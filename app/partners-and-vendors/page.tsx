@@ -165,11 +165,11 @@ export default function VendorPage() {
               { name: "name", label: "Your name", required: true, half: true },
               { name: "company", label: "Company", required: true, half: true },
               { name: "email", label: "Email", type: "email", required: true, half: true },
+              { name: "phone", label: "Phone number", type: "tel", required: true, half: true },
               {
                 name: "kind",
                 label: "Which of the above describes you",
                 required: true,
-                half: true,
                 placeholder: "e.g. Biometric hardware reseller",
               },
               {

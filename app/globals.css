@@ -1414,14 +1414,21 @@ section.bg-surface + section.bg-surface {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  /* Four cards in a three-column grid: two by two, not three plus one. */
-  .grid[class*="lg:grid-cols-3"]:has(> :last-child:nth-child(4)) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  /* Any other lone card on the last row of a three-column grid: centre it. */
-  .grid[class*="lg:grid-cols-3"]:not(:has(> :last-child:nth-child(4))) > :last-child:nth-child(3n + 1):not(:only-child) {
+  /* A lone card on the last row of a three-column grid (4, 7, 10 … cards):
+     centre it. Grids keep three columns; four cards are three plus one. */
+  .grid[class*="lg:grid-cols-3"] > :last-child:nth-child(3n + 1):not(:only-child) {
     grid-column: 2;
+  }
+}
+
+/* Link lists (e.g. Explore All Pages) opt out of the card balancing above:
+   always three columns, filled left to right, nothing centred. */
+@media (min-width: 768px) {
+  .grid.grid-strict {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .grid.grid-strict > * {
+    grid-column: auto !important;
   }
 }
 

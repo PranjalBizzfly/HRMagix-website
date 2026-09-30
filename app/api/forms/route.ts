@@ -24,12 +24,14 @@ const RULES: Record<FormKind, Record<string, Rule>> = {
   contact: {
     name: { required: true, kind: "name" },
     email: { required: true, kind: "email" },
+    phone: { required: true, kind: "phone" },
     company: { max: 160 },
     message: { required: true, max: 5000 },
   },
   careers: {
     name: { required: true, kind: "name" },
     email: { required: true, kind: "email" },
+    phone: { required: true, kind: "phone" },
     work: { max: 5000 },
     built: { max: 5000 },
     link: { kind: "url" },
@@ -39,6 +41,7 @@ const RULES: Record<FormKind, Record<string, Rule>> = {
     name: { required: true, kind: "name" },
     company: { required: true, max: 160 },
     email: { required: true, kind: "email" },
+    phone: { required: true, kind: "phone" },
     kind: { max: 500 },
     proposal: { max: 5000 },
     clients: { max: 5000 },

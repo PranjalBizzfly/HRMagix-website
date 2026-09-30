@@ -4,11 +4,13 @@ import { useState, type FormEvent } from "react";
 import { site } from "@/lib/content";
 import { SubmitButton } from "./ui";
 import { SuccessState } from "./states";
-import { checkEmail, checkName, failureMessage, submitForm } from "@/lib/forms";
+import type { CountryCode } from "libphonenumber-js/min";
+import PhoneInput from "./PhoneInput";
+import { checkEmail, checkName, checkPhone, failureMessage, submitForm } from "@/lib/forms";
 
-type Fields = { name: string; email: string; company: string; message: string };
+type Fields = { name: string; email: string; phone: string; company: string; message: string };
 
-const empty: Fields = { name: "", email: "", company: "", message: "" };
+const empty: Fields = { name: "", email: "", phone: "", company: "", message: "" };
 
 /**
  * Posts to /api/forms. The success state appears only when the server confirms
@@ -21,6 +23,7 @@ export default function ContactForm() {
   const [busy, setBusy] = useState(false);
   const [failure, setFailure] = useState("");
   const [hp, setHp] = useState("");
+  const [country, setCountry] = useState<CountryCode>("IN");
 
   const set = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFields((f) => ({ ...f, [key]: e.target.value }));
@@ -35,6 +38,8 @@ export default function ContactForm() {
     if (n) next.name = n;
     const m = checkEmail(fields.email);
     if (m) next.email = m;
+    const p = checkPhone(fields.phone, country);
+    if (p.error) next.phone = p.error;
     if (!fields.message.trim()) next.message = "Add a short message.";
     else if (fields.message.trim().length < 10) next.message = "Tell us a little more (at least 10 characters).";
     setErrors(next);
@@ -45,7 +50,8 @@ export default function ContactForm() {
     }
 
     setBusy(true);
-    const result = await submitForm("contact", { ...fields, _hp: hp });
+    // The number goes to the server in international (E.164) form, e.g. +919876543210.
+    const result = await submitForm("contact", { ...fields, phone: p.e164 ?? "", _hp: hp });
     setBusy(false);
     if (result.ok) {
       setSent(true);
@@ -124,6 +130,34 @@ export default function ContactForm() {
             placeholder="you@company.com"
           />
         </Field>
+      </div>
+
+      {/* Two controls (country + number), so a div with its own label rather than a wrapping <label>. */}
+      <div>
+        <label
+          htmlFor="contact-phone"
+          className="mb-2 flex items-baseline gap-2 text-[12px] font-bold uppercase tracking-[0.14em] text-accent-soft"
+        >
+          Phone number
+        </label>
+        <PhoneInput
+          id="contact-phone"
+          country={country}
+          onCountryChange={setCountry}
+          value={fields.phone}
+          onChange={(v) => {
+            setFields((f) => ({ ...f, phone: v }));
+            setErrors((prev) => ({ ...prev, phone: undefined }));
+          }}
+          invalid={!!errors.phone}
+          describedBy={errors.phone ? "contact-phone-err" : undefined}
+          inputClassName={inputClass(!!errors.phone)}
+        />
+        {errors.phone && (
+          <span id="contact-phone-err" role="alert" className="mt-1.5 block text-[12.5px] text-danger">
+            {errors.phone}
+          </span>
+        )}
       </div>
 
       <Field label="Company" optional>

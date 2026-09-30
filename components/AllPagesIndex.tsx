@@ -139,15 +139,18 @@ export default function AllPagesIndex({ groups }: { groups: IndexGroup[] }) {
                 </div>
 
                 {!isCollapsed && (
-                  <ul id={id} className="mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul id={id} className="grid-strict mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2 md:grid-cols-3">
+                    {/* Three even columns, filled row by row; one line per title keeps
+                        every row level so each column lines up vertically. */}
                     {g.pages.map((p) => (
-                      <li key={p.href}>
+                      <li key={p.href} className="min-w-0">
                         <Link
                           href={p.href}
-                          className="group inline-flex min-h-[36px] items-center gap-2 py-1 text-[14.5px] text-body transition-colors hover:text-accent"
+                          title={p.title}
+                          className="group flex min-h-[36px] max-w-full items-center gap-2 py-1 text-[14.5px] text-body transition-colors hover:text-accent"
                         >
-                          {p.title}
-                          <span className="text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                          <span className="truncate">{p.title}</span>
+                          <span className="shrink-0 text-accent opacity-0 transition-opacity group-hover:opacity-100">
                             <Icon name="arrowRight" className="h-3.5 w-3.5" />
                           </span>
                         </Link>

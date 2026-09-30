@@ -155,6 +155,7 @@ export default function CareersPage() {
                 fields={[
                   { name: "name", label: "Your name", required: true, half: true },
                   { name: "email", label: "Email", type: "email", required: true, half: true },
+                  { name: "phone", label: "Phone number", type: "tel", required: true },
                   {
                     name: "work",
                     label: "What you would want to work on",
