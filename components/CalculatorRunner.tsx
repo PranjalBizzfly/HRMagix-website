@@ -170,31 +170,39 @@ export default function CalculatorRunner({ slug }: { slug: string }) {
           </div>
         ) : (
           <div className="mt-6" aria-live="polite">
-            {/* Headline figures */}
-            <ul className="grid gap-4 sm:grid-cols-3">
-              {result.cards.map((c) => (
-                <li
-                  key={c.label}
-                  className={`rounded-2xl p-5 ring-1 ${
-                    c.primary ? "bg-surface ring-line-accent" : "bg-surface-sunken ring-line"
-                  }`}
-                >
-                  <p className="text-[11.5px] font-semibold uppercase tracking-[0.12em] text-subtle">
-                    {c.label}
-                  </p>
-                  <p
-                    className={`mt-2 font-display font-bold tabular-nums tracking-[-0.03em] text-heading ${
-                      c.primary ? "text-[28px] sm:text-[32px]" : "text-[22px] sm:text-[24px]"
-                    }`}
-                  >
-                    {c.value}
-                  </p>
-                  {c.note && (
-                    <p className="mt-2 text-[12.5px] leading-snug text-muted">{c.note}</p>
+            {/* Final result first, in its own highlighted card; supporting figures beneath. */}
+            {(() => {
+              const main = result.cards.find((c) => c.primary) ?? result.cards[0];
+              const rest = result.cards.filter((c) => c !== main);
+              return (
+                <>
+                  {main && (
+                    <div className="rounded-2xl bg-brand/[0.07] p-6 ring-2 ring-brand/40 sm:p-7">
+                      <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-accent">{main.label}</p>
+                      <p className="mt-2 font-display text-[34px] font-bold tabular-nums tracking-[-0.03em] text-heading sm:text-[40px]">
+                        {main.value}
+                      </p>
+                      {main.note && <p className="mt-1.5 text-[13.5px] leading-snug text-muted">{main.note}</p>}
+                    </div>
                   )}
-                </li>
-              ))}
-            </ul>
+                  {rest.length > 0 && (
+                    <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+                      {rest.map((c) => (
+                        <li key={c.label} className="rounded-2xl bg-surface-sunken p-5 ring-1 ring-line">
+                          <p className="text-[11.5px] font-semibold uppercase tracking-[0.12em] text-subtle">
+                            {c.label}
+                          </p>
+                          <p className="mt-2 font-display text-[22px] font-bold tabular-nums tracking-[-0.03em] text-heading sm:text-[24px]">
+                            {c.value}
+                          </p>
+                          {c.note && <p className="mt-2 text-[12.5px] leading-snug text-muted">{c.note}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              );
+            })()}
 
             <p className="mt-6 flex items-start gap-3 rounded-xl bg-surface-sunken p-4 text-[14px] leading-[1.65] text-muted ring-1 ring-line">
               <Icon name="sparkle" className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />

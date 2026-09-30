@@ -35,20 +35,30 @@
 
 import type { IconName } from "@/components/icons";
 import { formatPrice, rateOf } from "@/lib/pricing";
+import {
+  RULES,
+  computePf,
+  computeEsi,
+  computeGratuity,
+  computeOvertime,
+  gratuityProvision,
+  inr as inrFmt,
+  safe,
+} from "@/lib/statutory";
 
-/* ---------------- Statutory constants ---------------- */
+/* ---------------- Statutory constants (from lib/statutory.ts) ---------------- */
 
-export const EPF_RATE = 0.12;
-export const EPS_RATE = 0.0833;
-export const EPF_CEILING = 15000;
-export const ESI_EMPLOYEE = 0.0075;
-export const ESI_EMPLOYER = 0.0325;
-export const ESI_THRESHOLD = 21000;
-export const GRATUITY_DAYS = 15;
-export const GRATUITY_DIVISOR = 26;
-export const GRATUITY_MIN_YEARS = 5;
+export const EPF_RATE = RULES.epf.employeeRate;
+export const EPS_RATE = RULES.epf.epsRate;
+export const EPF_CEILING = RULES.epf.wageCeiling;
+export const ESI_EMPLOYEE = RULES.esi.employeeRate;
+export const ESI_EMPLOYER = RULES.esi.employerRate;
+export const ESI_THRESHOLD = RULES.esi.wageThreshold;
+export const GRATUITY_DAYS = RULES.gratuity.days;
+export const GRATUITY_DIVISOR = RULES.gratuity.divisor;
+export const GRATUITY_MIN_YEARS = RULES.gratuity.minYears;
 /** Factories Act, 1948: overtime at twice the ordinary rate of wages. */
-export const OVERTIME_MULTIPLIER = 2;
+export const OVERTIME_MULTIPLIER = RULES.overtime.multiplier;
 
 /** Published per-employee monthly rates. Enterprise is quoted, so it has none. */
 export const PLAN_RATES: { name: string; rate: number | null; blurb: string }[] = [
@@ -120,12 +130,14 @@ export type Calculator = {
 
 /* ---------------- Helpers ---------------- */
 
-const inr = (n: number) =>
-  n.toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+const inr = inrFmt;
 
 const usd = formatPrice;
 
-const num = (v: unknown) => (typeof v === "number" ? v : Number(v));
+/** Never NaN or negative, so no calculator can print NaN, Infinity or undefined. */
+const num = safe;
+
+const pct = (r: number) => `${+(r * 100).toFixed(2)}%`;
 
 /* ================================================================== */
 /* The calculators                                                     */
@@ -182,65 +194,66 @@ export const calculators: Calculator[] = [
       const ceiling = Boolean(v.ceiling);
 
       const basic = Math.round((gross * basicPct) / 100);
-      const pfBase = ceiling ? Math.min(basic, EPF_CEILING) : basic;
+      const pf = computePf(basic, ceiling);
+      const esi = computeEsi(gross);
 
-      const empPf = Math.round(pfBase * EPF_RATE);
-      const erTotal = Math.round(pfBase * EPF_RATE);
-      const eps = Math.round(Math.min(pfBase, EPF_CEILING) * EPS_RATE);
-      const erPf = erTotal - eps;
-
-      const esiApplies = gross <= ESI_THRESHOLD;
-      const empEsi = esiApplies ? Math.round(gross * ESI_EMPLOYEE) : 0;
-      const erEsi = esiApplies ? Math.round(gross * ESI_EMPLOYER) : 0;
-
-      const deductions = empPf + empEsi;
+      const deductions = pf.employee + esi.employee;
       const net = gross - deductions;
-      const cost = gross + erTotal + erEsi;
+      const employer = pf.employerCost + esi.employer;
+      const cost = gross + employer;
 
       return {
-        summary: `Basic taken at ${basicPct}% of gross. Provident fund computed on ${inr(pfBase)}${
-          ceiling && basic > EPF_CEILING ? " after applying the ₹15,000 ceiling" : ""
-        }. ESI ${esiApplies ? "applies" : "does not apply"} at this gross.`,
+        summary: `Basic ${basicPct}% of gross · PF on ${inr(pf.pfWage)}${
+          ceiling && basic > EPF_CEILING ? " (₹15,000 ceiling)" : ""
+        } · ESI ${esi.applies ? "applies" : "not applicable"}.`,
         cards: [
-          { label: "Take-home before income tax", value: inr(net), primary: true, note: "Gross less employee PF and ESI" },
-          { label: "Total employee deductions", value: inr(deductions), note: "PF plus ESI" },
-          { label: "Cost to employer", value: inr(cost), note: "Gross plus employer contributions" },
+          { label: "Monthly take-home (before income tax & PT)", value: inr(net), primary: true, note: "Gross − employee PF − employee ESI" },
+          { label: "Employee deductions", value: inr(deductions), note: "PF + ESI" },
+          { label: "Cost to employer", value: inr(cost), note: "Gross + employer contributions" },
         ],
         lines: [
           {
             heading: "Earnings",
             rows: [
-              { term: "Monthly gross", value: inr(gross) },
               { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
+              { term: "Other allowances", value: inr(gross - basic), note: "Gross − basic" },
+              { term: "Gross salary", value: inr(gross), total: true },
             ],
           },
           {
             heading: "Employee deductions",
             rows: [
-              { term: "Provident fund", value: `− ${inr(empPf)}`, note: `12% of ${inr(pfBase)}` },
+              { term: "Provident fund", value: `− ${inr(pf.employee)}`, note: `12% × ${inr(pf.pfWage)}` },
               {
                 term: "ESI",
-                value: esiApplies ? `− ${inr(empEsi)}` : "Not applicable",
-                note: esiApplies
-                  ? "0.75% of gross"
-                  : `Gross is above the ${inr(ESI_THRESHOLD)} threshold`,
-                muted: !esiApplies,
+                value: esi.applies ? `− ${inr(esi.employee)}` : "Not applicable",
+                note: esi.applies ? "0.75% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
+                muted: !esi.applies,
               },
-              { term: "Take-home before income tax", value: inr(net), total: true },
+              { term: "Total deductions", value: `− ${inr(deductions)}`, total: true },
             ],
           },
           {
             heading: "Employer contributions",
             rows: [
-              { term: "Provident fund (EPF share)", value: inr(erPf), note: "12% of the PF base, less the pension share" },
-              { term: "Pension scheme (EPS)", value: inr(eps), note: "8.33% of the PF base, capped at the ceiling" },
+              { term: "EPF", value: inr(pf.employerEpf), note: `12% × ${inr(pf.pfWage)} − EPS` },
+              { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
+              { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
+              { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
               {
                 term: "ESI",
-                value: esiApplies ? inr(erEsi) : "Not applicable",
-                note: esiApplies ? "3.25% of gross" : "Employee is outside the ESI threshold",
-                muted: !esiApplies,
+                value: esi.applies ? inr(esi.employer) : "Not applicable",
+                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
+                muted: !esi.applies,
               },
-              { term: "Total cost to employer", value: inr(cost), total: true },
+              { term: "Total employer contributions", value: inr(employer), total: true },
+            ],
+          },
+          {
+            heading: "Final result",
+            rows: [
+              { term: "Take-home (before income tax & PT)", value: inr(net), total: true },
+              { term: "Cost to employer", value: inr(cost), note: "Gross + employer contributions" },
             ],
           },
         ],
@@ -253,7 +266,7 @@ export const calculators: Calculator[] = [
         { label: "The PF base is capped, or not", text: "Where the ₹15,000 statutory wage ceiling is applied, the provident fund base is the lower of basic and ₹15,000. Without the cap, it is full basic." },
         { label: "Provident fund is 12% on each side", text: "The employee contributes 12% of the PF base. The employer contributes 12% as well, of which 8.33% (capped at the ceiling) is diverted to the pension scheme and the remainder to provident fund." },
         { label: "ESI applies only below the threshold", text: "Where monthly gross is ₹21,000 or less, the employee contributes 0.75% and the employer 3.25% of gross." },
-        { label: "Each head is rounded before it is summed", text: "Every statutory line is rounded to the nearest rupee where it is computed, and totals sum the rounded parts, which is how a payslip is actually produced." },
+        { label: "Each head is rounded before it is summed", text: "PF lines are rounded to the nearest rupee and ESI lines up to the next rupee, as EPFO and ESIC require, and totals sum the rounded parts, which is how a payslip is actually produced." },
       ],
       notes: [
         "Income tax under Section 192 is not included. Liability depends on the employee's election between the old and new regimes and on their verified declarations, so any figure here would mislead.",
@@ -292,7 +305,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How are the figures rounded?",
-        a: "Each statutory line is rounded to the nearest rupee where it is computed, and totals sum the rounded parts, which is how a payslip is actually produced.",
+        a: "PF lines are rounded to the nearest rupee and ESI lines up to the next rupee, as EPFO and ESIC require, and totals sum the rounded parts, which is how a payslip is actually produced.",
       },
     ],
     seo: {
@@ -359,68 +372,62 @@ export const calculators: Calculator[] = [
       const ceiling = Boolean(v.ceiling);
       const vpfPct = num(v.vpf);
 
-      const pfBase = ceiling ? Math.min(basic, EPF_CEILING) : basic;
-
-      const empStatutory = Math.round(pfBase * EPF_RATE);
-      const vpf = Math.round(pfBase * (vpfPct / 100));
-      const empTotal = empStatutory + vpf;
-
-      const erTotal = Math.round(pfBase * EPF_RATE);
-      const eps = Math.round(Math.min(pfBase, EPF_CEILING) * EPS_RATE);
-      const erPf = erTotal - eps;
-
-      const monthly = empTotal + erTotal;
+      const pf = computePf(basic, ceiling, vpfPct);
+      const empTotal = pf.employee + pf.vpf;
+      // EPS goes to the pension fund, not the member's PF account.
+      const intoAccount = empTotal + pf.employerEpf;
 
       return {
-        summary: `Contributions computed on ${inr(pfBase)}${
-          ceiling && basic > EPF_CEILING ? ", after applying the ₹15,000 ceiling" : ""
-        }. The pension share is capped at the ceiling in every case.`,
+        summary: `PF wage ${inr(pf.pfWage)}${
+          ceiling && basic > EPF_CEILING ? " (₹15,000 ceiling)" : ""
+        } · pension share always on max ${inr(EPF_CEILING)}.`,
         cards: [
-          { label: "Employee contribution", value: inr(empTotal), primary: true, note: vpfPct > 0 ? `12% statutory plus ${vpfPct}% voluntary` : "12% of the PF base" },
-          { label: "Employer contribution", value: inr(erTotal), note: "12%, split between EPF and pension" },
-          { label: "Total into the account each month", value: inr(monthly), note: `${inr(monthly * 12)} over twelve months, before interest` },
+          { label: "Into the PF account each month", value: inr(intoAccount), primary: true, note: "Employee share + employer EPF share" },
+          { label: "Employee contribution", value: inr(empTotal), note: vpfPct > 0 ? `12% + ${vpfPct}% voluntary` : "12% of PF wage" },
+          { label: "Employer contribution", value: inr(pf.employerTotal), note: `EPF ${inr(pf.employerEpf)} + EPS ${inr(pf.eps)}` },
         ],
         lines: [
           {
-            heading: "Basis",
+            heading: "Earnings",
             rows: [
-              { term: "Monthly basic (and DA)", value: inr(basic) },
+              { term: "Basic (and DA)", value: inr(basic) },
               {
-                term: "PF base used",
-                value: inr(pfBase),
-                note: ceiling
-                  ? basic > EPF_CEILING
-                    ? "Capped at the ₹15,000 statutory ceiling"
-                    : "Basic is below the ceiling, so full basic is used"
-                  : "Ceiling not applied, full basic used",
+                term: "PF wage used",
+                value: inr(pf.pfWage),
+                note: ceiling ? (basic > EPF_CEILING ? "Capped at ₹15,000" : "Below the ceiling, full basic") : "Ceiling not applied",
+                total: true,
               },
             ],
           },
           {
-            heading: "Employee side",
+            heading: "Employee deductions",
             rows: [
-              { term: "Statutory provident fund", value: inr(empStatutory), note: "12% of the PF base" },
+              { term: "Provident fund", value: inr(pf.employee), note: `12% × ${inr(pf.pfWage)}` },
               {
-                term: "Voluntary provident fund",
-                value: vpfPct > 0 ? inr(vpf) : "None",
-                note: vpfPct > 0 ? `${vpfPct}% of the PF base` : "No voluntary contribution set",
+                term: "Voluntary PF (VPF)",
+                value: vpfPct > 0 ? inr(pf.vpf) : "Not applicable",
+                note: vpfPct > 0 ? `${vpfPct}% × ${inr(pf.pfWage)}` : undefined,
                 muted: vpfPct === 0,
               },
               { term: "Total employee contribution", value: inr(empTotal), total: true },
             ],
           },
           {
-            heading: "Employer side",
+            heading: "Employer contributions",
             rows: [
-              { term: "Pension scheme (EPS)", value: inr(eps), note: "8.33% of the PF base, capped at ₹15,000" },
-              { term: "Provident fund (EPF)", value: inr(erPf), note: "The balance of the employer's 12%" },
-              { term: "Total employer contribution", value: inr(erTotal), total: true },
+              { term: "EPF", value: inr(pf.employerEpf), note: "12% − EPS" },
+              { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
+              { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
+              { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
+              { term: "Total employer PF cost", value: inr(pf.employerCost), total: true },
             ],
           },
           {
-            heading: "Annual",
+            heading: "Final result",
             rows: [
-              { term: "Contributed over twelve months", value: inr(monthly * 12), note: "Before any interest credited by EPFO", total: true },
+              { term: "Into the PF account each month", value: inr(intoAccount), total: true },
+              { term: "Into the PF account over 12 months", value: inr(intoAccount * 12), note: "Before interest" },
+              { term: "Into the pension fund (EPS) each month", value: inr(pf.eps), note: "Held by EPFO for the pension, not the PF balance" },
             ],
           },
         ],
@@ -496,10 +503,10 @@ export const calculators: Calculator[] = [
     name: "ESI Calculator",
     title: "ESI eligibility and contribution calculator",
     standfirst:
-      "ESI turns on a threshold, and the threshold is tested against gross wages, which means overtime and allowances can move an employee in or out of coverage.",
+      "ESI turns on a threshold, tested against gross wages excluding overtime, while the contribution itself is charged on every rupee paid, overtime included.",
     intro: [
       "Employees' State Insurance is contributed at 0.75% by the employee and 3.25% by the employer, on gross wages, for employees within the statutory wage threshold of ₹21,000 a month.",
-      "The part that catches payroll teams out is not the rate. It is that the wage base moves, overtime, night differentials and attendance-linked allowances all count towards gross, so an employee near the line can appear to cross it in a heavy month.",
+      "The part that catches payroll teams out is not the rate. It is that two different wage figures are in play: coverage is tested on gross excluding overtime, but the 0.75% and 3.25% are applied to gross including it.",
     ],
     icon: "scale",
     fields: [
@@ -514,85 +521,84 @@ export const calculators: Calculator[] = [
       },
       {
         name: "overtime",
-        label: "Of which overtime and allowances",
+        label: "Of which overtime",
         unit: "inr",
         initial: "0",
         min: 0,
         max: 10_000_000,
-        hint: "Shown separately so you can see whether it is the variable pay pushing the employee over the line.",
+        hint: "Overtime is left out when testing the ₹21,000 coverage limit, but ESI is still paid on it.",
       },
     ],
     compute: (v) => {
       const gross = num(v.gross);
-      const variable = Math.min(num(v.overtime), gross);
-      const fixed = gross - variable;
-
-      const applies = gross <= ESI_THRESHOLD;
-      const emp = applies ? Math.round(gross * ESI_EMPLOYEE) : 0;
-      const er = applies ? Math.round(gross * ESI_EMPLOYER) : 0;
-
-      const fixedOnlyApplies = fixed <= ESI_THRESHOLD;
-      const crossedByVariable = fixedOnlyApplies && !applies;
-      const headroom = ESI_THRESHOLD - gross;
+      const ot = Math.min(num(v.overtime), gross);
+      const esi = computeEsi(gross, ot);
+      const headroom = ESI_THRESHOLD - esi.coverageWage;
+      const total = esi.employee + esi.employer;
 
       return {
-        summary: applies
-          ? `Gross of ${inr(gross)} is within the ${inr(ESI_THRESHOLD)} threshold, so ESI applies this month.`
-          : `Gross of ${inr(gross)} is above the ${inr(ESI_THRESHOLD)} threshold, so ESI does not apply on a monthly test.`,
+        summary: esi.applies
+          ? `Wages for coverage ${inr(esi.coverageWage)} ≤ ${inr(ESI_THRESHOLD)} · ESI applies, on full gross including overtime.`
+          : `Wages for coverage ${inr(esi.coverageWage)} > ${inr(ESI_THRESHOLD)} · ESI not applicable.`,
         cards: [
           {
-            label: "ESI applicable this month",
-            value: applies ? "Yes" : "No",
+            label: "Total ESI payable this month",
+            value: esi.applies ? inr(total) : "Not applicable",
             primary: true,
-            note: applies
-              ? `${inr(Math.max(0, headroom))} of headroom before the threshold`
-              : `${inr(Math.abs(headroom))} above the threshold`,
+            note: esi.applies
+              ? `${inr(Math.max(0, headroom))} below the ${inr(ESI_THRESHOLD)} threshold`
+              : `${inr(Math.abs(headroom))} above the ${inr(ESI_THRESHOLD)} threshold`,
           },
-          { label: "Employee contribution", value: applies ? inr(emp) : "—", note: applies ? "0.75% of gross" : "Outside the threshold" },
-          { label: "Employer contribution", value: applies ? inr(er) : "—", note: applies ? "3.25% of gross" : "Outside the threshold" },
+          { label: "Employee contribution", value: esi.applies ? inr(esi.employee) : "Not applicable", note: esi.applies ? "0.75% of gross" : undefined },
+          { label: "Employer contribution", value: esi.applies ? inr(esi.employer) : "Not applicable", note: esi.applies ? "3.25% of gross" : undefined },
         ],
         lines: [
           {
-            heading: "Wage base",
+            heading: "Earnings",
             rows: [
-              { term: "Fixed wages", value: inr(fixed) },
-              { term: "Overtime and allowances", value: inr(variable), muted: variable === 0 },
-              { term: "Gross wages tested", value: inr(gross), total: true },
-              { term: "Statutory threshold", value: inr(ESI_THRESHOLD), note: "Monthly gross wages" },
+              { term: "Regular wages", value: inr(gross - ot) },
+              { term: "Overtime", value: inr(ot), muted: ot === 0 },
+              { term: "Gross wages", value: inr(gross), total: true },
+              { term: "Wages for coverage test", value: inr(esi.coverageWage), note: `Gross − overtime · threshold ${inr(ESI_THRESHOLD)}` },
             ],
           },
           {
-            heading: "Contributions",
-            rows: [
-              { term: "Employee, 0.75%", value: applies ? inr(emp) : "Not applicable", muted: !applies },
-              { term: "Employer, 3.25%", value: applies ? inr(er) : "Not applicable", muted: !applies },
-              { term: "Total remitted to ESIC", value: applies ? inr(emp + er) : "Nil", total: true },
-            ],
-          },
-          {
-            heading: "Interpretation",
+            heading: "Employee deductions",
             rows: [
               {
-                term: crossedByVariable ? "Crossed the threshold on variable pay" : "Position on the threshold",
-                value: crossedByVariable ? "Yes" : "No",
-                note: crossedByVariable
-                  ? "Fixed wages alone are within the threshold, it is this month's overtime and allowances that took gross above it. Contribution-period rules matter here."
-                  : applies
-                    ? "Within the threshold on fixed wages and total gross alike."
-                    : "Above the threshold on fixed wages alone, not only because of variable pay.",
+                term: "ESI (employee)",
+                value: esi.applies ? inr(esi.employee) : "Not applicable",
+                note: esi.applies ? `0.75% × ${inr(gross)}, rounded up` : undefined,
+                muted: !esi.applies,
               },
+            ],
+          },
+          {
+            heading: "Employer contributions",
+            rows: [
+              {
+                term: "ESI (employer)",
+                value: esi.applies ? inr(esi.employer) : "Not applicable",
+                note: esi.applies ? `3.25% × ${inr(gross)}, rounded up` : undefined,
+                muted: !esi.applies,
+              },
+            ],
+          },
+          {
+            heading: "Final result",
+            rows: [
+              { term: "Total remitted to ESIC", value: esi.applies ? inr(total) : "Not applicable", total: true, muted: !esi.applies },
             ],
           },
         ],
       };
     },
     method: {
-      formula: "If Gross ≤ ₹21,000 → Employee = 0.75% × Gross, Employer = 3.25% × Gross",
+      formula: "If (Gross − Overtime) ≤ ₹21,000 → Employee = 0.75% × Gross, Employer = 3.25% × Gross (each rounded up)",
       steps: [
-        { label: "Total the wage base", text: "Gross wages for the month, including overtime, shift differentials and attendance-linked allowances. ESI is tested on gross rather than on basic." },
-        { label: "Compare against the threshold", text: "Where monthly gross wages are ₹21,000 or less, the scheme applies. The threshold is inclusive, an employee at exactly ₹21,000 is covered." },
-        { label: "Apply both rates to gross", text: "The employee contributes 0.75% and the employer 3.25%, each rounded to the nearest rupee and each computed on gross rather than on the capped figure." },
-        { label: "Check whether variable pay moved the result", text: "If fixed wages alone are within the threshold but total gross is not, the crossing was caused by this month's overtime, which is exactly the case where contribution periods matter." },
+        { label: "Find the wages for coverage", text: "Gross wages for the month less overtime. ESIC leaves overtime out when deciding coverage, and tests gross rather than basic." },
+        { label: "Compare against the threshold", text: "Where those wages are ₹21,000 or less, the scheme applies. The threshold is inclusive, an employee at exactly ₹21,000 is covered." },
+        { label: "Apply both rates to full gross", text: "The employee contributes 0.75% and the employer 3.25% of all wages paid, overtime included, each rounded up to the next rupee." },
       ],
       notes: [
         "This applies a monthly test. A live payroll must also respect contribution periods: an employee covered at the start of a period continues to contribute through it even if wages rise above the threshold within it.",
@@ -603,11 +609,11 @@ export const calculators: Calculator[] = [
     faqs: [
       {
         q: "My employee crossed ₹21,000 this month because of overtime. Do they stop contributing?",
-        a: "Not necessarily, and this is the most common ESI error. ESI operates on contribution periods rather than isolated months. An employee covered at the start of a contribution period continues through that period even if wages rise above the threshold within it. This calculator applies a monthly test and flags when it was variable pay that caused the crossing, precisely so that case is visible.",
+        a: "No. Overtime is left out when testing coverage, so overtime alone cannot take an employee out of ESI; contributions are still paid on the overtime. ESI also runs on contribution periods: an employee covered at the start of a period continues through it even if wages rise above the threshold within it.",
       },
       {
         q: "Is the threshold tested on gross or on basic?",
-        a: "On gross wages. That is why overtime, shift differentials and attendance-linked allowances all affect ESI applicability, while provident fund, computed on basic, is unaffected by them.",
+        a: "On gross wages excluding overtime. Allowances such as shift and attendance allowances count towards it; overtime does not, although ESI is still paid on overtime.",
       },
       {
         q: "What does the employer's 3.25% pay for?",
@@ -615,19 +621,19 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What are the ESI contribution rates?",
-        a: "The employee contributes 0.75% and the employer 3.25% of gross wages, each rounded to the nearest rupee, for employees within the ₹21,000 monthly threshold.",
+        a: "The employee contributes 0.75% and the employer 3.25% of gross wages, each rounded up to the next rupee, for employees within the ₹21,000 monthly threshold.",
       },
       {
         q: "Is an employee earning exactly ₹21,000 covered by ESI?",
         a: "Yes. The threshold is inclusive, so monthly gross wages of ₹21,000 or less fall within the scheme.",
       },
       {
-        q: "Why does the calculator ask for overtime and allowances separately?",
-        a: "So you can see whether this month's variable pay took gross over the threshold. If fixed wages alone are within ₹21,000 but total gross is not, the calculator flags the crossing as caused by variable pay.",
+        q: "Why does the calculator ask for overtime separately?",
+        a: "Because overtime is excluded when testing the ₹21,000 coverage limit but included when calculating the contribution. Entering it separately lets the calculator apply both rules correctly.",
       },
       {
         q: "Does every allowance count towards the ESI wage base?",
-        a: "Overtime, shift differentials and attendance-linked allowances count towards gross. Whether a specific allowance forms part of the wage base for ESI purposes is a question for your advisers or the ESIC.",
+        a: "Shift differentials and attendance-linked allowances count towards gross. Overtime counts for contributions but not for the coverage test. Whether a specific allowance forms part of the wage base is a question for your advisers or the ESIC.",
       },
       {
         q: "What goes wrong if payroll re-tests ESI every month?",
@@ -681,68 +687,81 @@ export const calculators: Calculator[] = [
         integer: true,
         hint: "Whole completed years. Five are required before gratuity becomes payable.",
       },
+      {
+        name: "months",
+        label: "Additional months of service",
+        unit: "count",
+        initial: "0",
+        min: 0,
+        max: 11,
+        integer: true,
+        hint: "Months beyond the completed years. More than six counts as a full year.",
+      },
     ],
     compute: (v) => {
       const basic = num(v.basic);
-      const years = num(v.years);
-      const eligible = years >= GRATUITY_MIN_YEARS;
-      const perYear = Math.round((GRATUITY_DAYS / GRATUITY_DIVISOR) * basic);
-      const amount = eligible ? Math.round((GRATUITY_DAYS / GRATUITY_DIVISOR) * basic * years) : 0;
+      const years = Math.floor(num(v.years));
+      const months = Math.floor(num(v.months));
+      const g = computeGratuity(basic, years, months);
       const shortfall = GRATUITY_MIN_YEARS - years;
+      const service = `${years} ${years === 1 ? "year" : "years"}${months ? ` ${months} ${months === 1 ? "month" : "months"}` : ""}`;
 
       return {
-        summary: eligible
-          ? `${years} completed years at ${inr(basic)} last drawn basic, on the statutory fifteen-days-per-year formula.`
-          : `${years} completed ${years === 1 ? "year" : "years"} of service, ${shortfall} more ${shortfall === 1 ? "year is" : "years are"} required before gratuity becomes payable.`,
+        summary: g.eligible
+          ? `${service} of service → ${g.countedYears} years counted${months > 6 ? " (over six months rounds up)" : ""}${g.capped ? " · capped at ₹20,00,000" : ""}.`
+          : `${service} of service · five years of continuous service are required.`,
         cards: [
           {
-            label: eligible ? "Gratuity payable" : "Not yet eligible",
-            value: eligible ? inr(amount) : `${shortfall} more ${shortfall === 1 ? "year" : "years"}`,
+            label: g.eligible ? "Gratuity payable" : "Not yet eligible",
+            value: g.eligible ? inr(g.amount) : "Not applicable",
             primary: true,
-            note: eligible ? "On the statutory formula" : "Five years of continuous service required",
+            note: g.eligible
+              ? g.capped
+                ? "Capped at the ₹20,00,000 statutory maximum"
+                : `${g.countedYears} years × ${inr(g.perYear)}`
+              : `${shortfall} more ${shortfall === 1 ? "year" : "years"} of service needed`,
           },
-          { label: "Accrued per completed year", value: inr(perYear), note: "Fifteen days' wages on a 26-day divisor" },
-          {
-            label: "Payable at five years",
-            value: inr(Math.round((GRATUITY_DAYS / GRATUITY_DIVISOR) * basic * GRATUITY_MIN_YEARS)),
-            note: "At the current last drawn basic",
-          },
+          { label: "Per year of service", value: inr(g.perYear), note: "15 × basic ÷ 26" },
+          { label: "Years counted", value: `${g.countedYears}`, note: months > 6 ? "Part-year over six months counts" : "Completed years" },
         ],
         lines: [
           {
-            heading: "Inputs",
+            heading: "Earnings",
             rows: [
               { term: "Last drawn basic (and DA)", value: inr(basic) },
-              { term: "Completed years of continuous service", value: `${years}` },
-              { term: "Qualifying period", value: `${GRATUITY_MIN_YEARS} years`, note: eligible ? "Met" : "Not yet met" },
+              { term: "Service", value: service, note: `Qualifying period ${GRATUITY_MIN_YEARS} years · ${g.eligible ? "met" : "not met"}` },
             ],
           },
           {
             heading: "Working",
             rows: [
-              { term: "Daily wage basis", value: `${inr(basic)} ÷ ${GRATUITY_DIVISOR}`, note: "The Act uses a 26-day month" },
-              { term: "Fifteen days' wages", value: inr(perYear), note: `${GRATUITY_DAYS} × daily wage, per completed year` },
-              {
-                term: eligible ? `× ${years} completed years` : "Not yet payable",
-                value: eligible ? inr(amount) : "Nil",
-                total: true,
-                muted: !eligible,
-              },
+              { term: "15 days' wages", value: inr(g.perYear), note: `${inr(basic)} × 15 ÷ 26` },
+              { term: "Years counted", value: `× ${g.countedYears}`, note: months > 6 ? `${years} + 1 (over six months)` : "Completed years only" },
+              ...(g.capped
+                ? [{ term: "Before the statutory cap", value: inr(g.uncapped), note: "Maximum payable is ₹20,00,000" }]
+                : []),
+            ],
+          },
+          {
+            heading: "Final result",
+            rows: [
+              { term: "Gratuity payable", value: g.eligible ? inr(g.amount) : "Not applicable", total: true, muted: !g.eligible },
             ],
           },
         ],
       };
     },
     method: {
-      formula: "Gratuity = (15 ÷ 26) × Last drawn basic + DA × Completed years of service",
+      formula: "Gratuity = (15 ÷ 26) × Last drawn (basic + DA) × Years of service, capped at ₹20,00,000",
       steps: [
         { label: "Check the qualifying period", text: "Gratuity becomes payable on completing five years of continuous service. The Act also prescribes circumstances in which the five-year condition does not apply." },
         { label: "Derive a daily wage", text: "Last drawn basic plus dearness allowance divided by twenty-six. The Act uses a twenty-six day month, reflecting working days rather than calendar days." },
         { label: "Take fifteen days per completed year", text: "Fifteen times the daily wage gives the entitlement for one completed year of service." },
-        { label: "Multiply by completed years", text: "Only completed years count in this calculation. How a part year is treated in a specific case, and how continuous service is computed across a break, are matters for your advisers." },
+        { label: "Multiply by years of service", text: "Completed years, with a final part-year of more than six months counted as a full year (Section 4(2))." },
+        { label: "Apply the statutory maximum", text: "The amount payable under the Act is capped at ₹20,00,000." },
       ],
       notes: [
-        "The statutory maximum payable under the Act is not applied here. Where a computed figure is large, confirm the current ceiling before settling.",
+        "Continuous service across a break or statutory leave, and coverage of a particular establishment, are questions for your advisers.",
         "The tax treatment of gratuity in a full-and-final settlement has its own rules and is not addressed by this calculator.",
         "Whether an establishment is covered by the Act, and how continuous service is computed where there has been a break or a period of statutory leave, are questions for your own advisers.",
       ],
@@ -762,15 +781,15 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What is the gratuity formula used here?",
-        a: "Gratuity = (15 ÷ 26) × last drawn basic plus DA × completed years of service, payable once five years of continuous service are complete.",
+        a: "Gratuity = (15 ÷ 26) × last drawn basic plus DA × years of service, payable once five years of continuous service are complete, and capped at ₹20,00,000.",
       },
       {
         q: "Does the calculator apply the statutory maximum on gratuity?",
-        a: "No. The maximum payable under the Act is not applied, so where the computed figure is large, confirm the current ceiling before settling.",
+        a: "Yes. The amount payable under the Payment of Gratuity Act is capped at ₹20,00,000, and the calculator shows the uncapped figure alongside when the cap applies.",
       },
       {
         q: "How are part years of service counted?",
-        a: "Only completed years count in this calculation. How a part year is treated in a specific case, and how continuous service is computed across a break, are matters for your advisers.",
+        a: "A final part-year of more than six months counts as a full year. Six months or less is ignored. So 7 years 7 months is paid as 8 years, and 7 years 6 months as 7.",
       },
       {
         q: "Is the five-year rule absolute?",
@@ -855,64 +874,66 @@ export const calculators: Calculator[] = [
       const ceiling = Boolean(v.ceiling);
 
       const basic = Math.round((gross * basicPct) / 100);
-      const pfBase = ceiling ? Math.min(basic, EPF_CEILING) : basic;
+      const pf = computePf(basic, ceiling);
+      const esi = computeEsi(gross);
 
-      const erPfTotal = Math.round(pfBase * EPF_RATE);
-      const eps = Math.round(Math.min(pfBase, EPF_CEILING) * EPS_RATE);
-      const erPf = erPfTotal - eps;
-
-      const esiApplies = gross <= ESI_THRESHOLD;
-      const erEsi = esiApplies ? Math.round(gross * ESI_EMPLOYER) : 0;
-
-      const perHead = gross + erPfTotal + erEsi;
+      const employer = pf.employerCost + esi.employer;
+      const perHead = gross + employer;
       const salaryBill = gross * n;
-      const pfBill = erPfTotal * n;
-      const esiBill = erEsi * n;
+      const pfBill = pf.employerCost * n;
+      const esiBill = esi.employer * n;
       const total = perHead * n;
-      const loading = ((perHead - gross) / gross) * 100;
+      const loading = gross ? (employer / gross) * 100 : 0;
 
       return {
-        summary: `${n.toLocaleString("en-IN")} employees at ${inr(gross)} average gross. Employer statutory contributions add ${loading.toFixed(1)}% on top of the salary bill.`,
+        summary: `${n.toLocaleString("en-IN")} employees × ${inr(gross)} average gross · employer contributions add ${loading.toFixed(1)}%.`,
         cards: [
-          { label: "Total monthly payroll cost", value: inr(total), primary: true, note: `${inr(perHead)} per employee` },
-          { label: "Salary bill", value: inr(salaryBill), note: "Gross before employer contributions" },
-          { label: "Employer statutory cost", value: inr(pfBill + esiBill), note: `${loading.toFixed(1)}% on top of gross` },
+          { label: "Total monthly payroll cost", value: inr(total), primary: true, note: `${inr(perHead)} per employee · ${inr(total * 12)} a year` },
+          { label: "Salary bill", value: inr(salaryBill), note: "Gross × headcount" },
+          { label: "Employer contributions", value: inr(pfBill + esiBill), note: `${loading.toFixed(1)}% on top of gross` },
         ],
         lines: [
           {
-            heading: "Per employee",
+            heading: "Earnings (per employee)",
             rows: [
-              { term: "Monthly gross", value: inr(gross) },
               { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
-              { term: "Employer provident fund", value: inr(erPf), note: "Employer 12% less the pension share" },
-              { term: "Employer pension (EPS)", value: inr(eps), note: "8.33%, capped at the ₹15,000 ceiling" },
+              { term: "Gross salary", value: inr(gross), total: true },
+            ],
+          },
+          {
+            heading: "Employer contributions (per employee)",
+            rows: [
+              { term: "EPF", value: inr(pf.employerEpf), note: `12% × ${inr(pf.pfWage)} − EPS` },
+              { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
+              { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
+              { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
               {
-                term: "Employer ESI",
-                value: esiApplies ? inr(erEsi) : "Not applicable",
-                note: esiApplies ? "3.25% of gross" : "Average gross is above the ₹21,000 threshold",
-                muted: !esiApplies,
+                term: "ESI",
+                value: esi.applies ? inr(esi.employer) : "Not applicable",
+                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
+                muted: !esi.applies,
               },
               { term: "Cost per employee", value: inr(perHead), total: true },
             ],
           },
           {
-            heading: `Across ${n.toLocaleString("en-IN")} employees`,
+            heading: "Final result",
             rows: [
-              { term: "Salary bill", value: inr(salaryBill) },
-              { term: "Provident fund and pension", value: inr(pfBill) },
-              { term: "ESI", value: esiApplies ? inr(esiBill) : "Nil", muted: !esiApplies },
-              { term: "Total monthly cost", value: inr(total), total: true },
-              { term: "Annualised", value: inr(total * 12), note: "Twelve months at this run rate" },
+              { term: "Salary bill", value: inr(salaryBill), note: `${inr(gross)} × ${n.toLocaleString("en-IN")}` },
+              { term: "PF, pension, EDLI & admin", value: inr(pfBill) },
+              { term: "ESI", value: esi.applies ? inr(esiBill) : "Not applicable", muted: !esi.applies },
+              { term: "Total monthly payroll cost", value: inr(total), total: true },
+              { term: "Annual payroll cost", value: inr(total * 12), note: "× 12 months" },
             ],
           },
         ],
       };
     },
     method: {
-      formula: "Cost per employee = Gross + (12% × PF base) + (3.25% × Gross, where ESI applies)",
+      formula: "Cost per employee = Gross + 12% PF + 0.5% EDLI + 0.5% admin + 3.25% ESI (where it applies)",
       steps: [
         { label: "Compute one employee first", text: "The statutory rules are per employee, so the calculation runs once for the average and is then multiplied by headcount." },
-        { label: "Add the employer's provident fund", text: "12% of the PF base, of which 8.33% capped at the ceiling goes to the pension scheme. Both are employer cost." },
+        { label: "Add the employer's provident fund", text: "12% of the PF wage (8.33% of it, up to ₹1,250, goes to the pension scheme), plus EDLI at 0.5% of wages up to ₹15,000 and EPF admin charges at 0.5%." },
         { label: "Add ESI where the threshold is met", text: "3.25% of gross, where average gross is within the ₹21,000 threshold." },
         { label: "Multiply by headcount", text: "Because every input is an average, run the calculator once per salary band for a workforce with meaningfully different pay levels." },
       ],
@@ -1179,26 +1200,36 @@ export const calculators: Calculator[] = [
       const days = num(v.days);
       const hours = num(v.hours);
       const ot = num(v.ot);
-      const daily = wage / days;
-      const hourly = daily / hours;
-      const otRate = hourly * OVERTIME_MULTIPLIER;
-      const pay = Math.round(otRate * ot);
+      const { daily, hourly, otRate, pay } = computeOvertime(wage, days, hours, ot);
+      // Show paise on per-hour rates so the working reconciles exactly.
+      const rs2 = (n: number) =>
+        safe(n).toLocaleString("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
       return {
-        summary: `${ot} overtime ${ot === 1 ? "hour" : "hours"} at twice an ordinary hourly rate of ${inr(Math.round(hourly))}, derived from ${inr(wage)} over ${days} days of ${hours} hours.`,
+        summary: `${ot} OT ${ot === 1 ? "hour" : "hours"} × ${rs2(otRate)} (2 × ${rs2(hourly)} ordinary hourly rate).`,
         cards: [
-          { label: "Overtime pay for the month", value: inr(pay), primary: true, note: "At twice the ordinary rate" },
-          { label: "Overtime rate per hour", value: inr(Math.round(otRate)), note: `${OVERTIME_MULTIPLIER} × ordinary hourly rate` },
-          { label: "Ordinary hourly rate", value: inr(Math.round(hourly)), note: `${inr(wage)} ÷ ${days} ÷ ${hours}` },
+          { label: "Overtime pay for the month", value: ot ? inr(pay) : "Not applicable", primary: true, note: ot ? "At twice the ordinary rate" : "No overtime hours entered" },
+          { label: "Overtime rate per hour", value: rs2(otRate), note: "2 × ordinary hourly rate" },
+          { label: "Ordinary hourly rate", value: rs2(hourly), note: `${inr(wage)} ÷ ${days} ÷ ${hours}` },
         ],
         lines: [
           {
+            heading: "Earnings",
+            rows: [
+              { term: "Monthly ordinary wages", value: inr(wage) },
+              { term: "Daily rate", value: rs2(daily), note: `${inr(wage)} ÷ ${days} days` },
+              { term: "Ordinary hourly rate", value: rs2(hourly), note: `Daily rate ÷ ${hours} hours` },
+            ],
+          },
+          {
             heading: "Working",
             rows: [
-              { term: "Daily rate", value: inr(Math.round(daily)), note: `${inr(wage)} ÷ ${days} days` },
-              { term: "Ordinary hourly rate", value: inr(Math.round(hourly)), note: `Daily rate ÷ ${hours} hours` },
-              { term: "Overtime rate", value: inr(Math.round(otRate)), note: "Twice the ordinary rate" },
-              { term: `× ${ot} overtime hours`, value: inr(pay), total: true },
+              { term: "Overtime rate", value: rs2(otRate), note: "2 × ordinary hourly rate (Factories Act s.59)" },
+              { term: "Overtime hours", value: `× ${ot}` },
             ],
+          },
+          {
+            heading: "Final result",
+            rows: [{ term: "Overtime pay", value: ot ? inr(pay) : "Not applicable", total: true, muted: !ot }],
           },
         ],
       };
@@ -1327,48 +1358,57 @@ export const calculators: Calculator[] = [
     ],
     compute: (v) => {
       const gross = num(v.gross);
-      const basic = Math.round((gross * num(v.basicPct)) / 100);
-      const pfBase = Boolean(v.ceiling) ? Math.min(basic, EPF_CEILING) : basic;
-      const erPf = Math.round(pfBase * EPF_RATE);
-      const esiApplies = gross <= ESI_THRESHOLD;
-      const erEsi = esiApplies ? Math.round(gross * ESI_EMPLOYER) : 0;
-      const grat = Boolean(v.gratuity) ? Math.round((basic * GRATUITY_DAYS) / GRATUITY_DIVISOR / 12) : 0;
+      const basicPct = num(v.basicPct);
+      const basic = Math.round((gross * basicPct) / 100);
+      const pf = computePf(basic, Boolean(v.ceiling));
+      const esi = computeEsi(gross);
+      const grat = Boolean(v.gratuity) ? gratuityProvision(basic) : 0;
       const bonus = num(v.bonus);
-      const monthly = gross + erPf + erEsi + grat;
+      const employer = pf.employerCost + esi.employer + grat;
+      const monthly = gross + employer;
       const annual = monthly * 12 + bonus;
       return {
-        summary: `Monthly gross of ${inr(gross)} plus employer PF${esiApplies ? ", employer ESI" : ""}${grat ? ", a gratuity provision" : ""}${bonus ? " and annual bonus" : ""}.`,
+        summary: `Gross ${inr(gross)}/month + employer PF${esi.applies ? " + ESI" : ""}${grat ? " + gratuity provision" : ""}${bonus ? " + annual bonus" : ""}.`,
         cards: [
-          { label: "Annual CTC", value: inr(annual), primary: true, note: `${inr(Math.round(annual / 12))} a month on average` },
-          { label: "Annual gross salary", value: inr(gross * 12) },
-          { label: "Employer additions a year", value: inr((erPf + erEsi + grat) * 12 + bonus), note: "Above the gross salary" },
+          { label: "Annual CTC", value: inr(annual), primary: true, note: `${inr(Math.round(annual / 12))} a month` },
+          { label: "Annual gross salary", value: inr(gross * 12), note: "What the employee earns before deductions" },
+          { label: "Employer additions a year", value: inr(employer * 12 + bonus), note: "On top of gross" },
         ],
         lines: [
           {
-            heading: "Monthly",
+            heading: "Earnings (monthly)",
             rows: [
-              { term: "Gross salary", value: inr(gross) },
-              { term: "Employer provident fund", value: inr(erPf), note: `12% of ${inr(pfBase)}` },
+              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
+              { term: "Other allowances", value: inr(gross - basic) },
+              { term: "Gross salary", value: inr(gross), total: true },
+            ],
+          },
+          {
+            heading: "Employer contributions (monthly)",
+            rows: [
+              { term: "Provident fund (EPF + EPS)", value: inr(pf.employerTotal), note: `12% × ${inr(pf.pfWage)}` },
+              { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
+              { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
               {
-                term: "Employer ESI",
-                value: esiApplies ? inr(erEsi) : "Not applicable",
-                note: esiApplies ? "3.25% of gross" : `Gross is above ${inr(ESI_THRESHOLD)}`,
-                muted: !esiApplies,
+                term: "ESI",
+                value: esi.applies ? inr(esi.employer) : "Not applicable",
+                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
+                muted: !esi.applies,
               },
               {
                 term: "Gratuity provision",
                 value: grat ? inr(grat) : "Not included",
-                note: grat ? "15 ÷ 26 of basic, spread over 12 months" : undefined,
+                note: grat ? "Basic × 15 ÷ 26 ÷ 12 (≈ 4.81% of basic)" : undefined,
                 muted: !grat,
               },
-              { term: "Monthly cost", value: inr(monthly), total: true },
+              { term: "Total employer contributions", value: inr(employer), total: true },
             ],
           },
           {
-            heading: "Annual",
+            heading: "Final result",
             rows: [
-              { term: "Monthly cost × 12", value: inr(monthly * 12) },
-              { term: "Annual bonus or variable pay", value: inr(bonus), muted: !bonus },
+              { term: "Monthly cost × 12", value: inr(monthly * 12), note: `${inr(monthly)} × 12` },
+              { term: "Annual bonus or variable pay", value: bonus ? inr(bonus) : "Not included", muted: !bonus },
               { term: "Annual CTC", value: inr(annual), total: true },
             ],
           },
@@ -1376,7 +1416,7 @@ export const calculators: Calculator[] = [
       };
     },
     method: {
-      formula: "CTC = 12 × (Gross + Employer PF + Employer ESI + Gratuity provision) + Annual bonus",
+      formula: "CTC = 12 × (Gross + Employer PF + EDLI + PF admin + Employer ESI + Gratuity provision) + Annual bonus",
       steps: [
         { label: "Start from gross", text: "The monthly gross salary, basic plus allowances, before any deduction." },
         { label: "Add employer provident fund", text: "Twelve per cent of the PF wage, with the ₹15,000 ceiling applied if you choose it. The split between EPF and EPS does not change the total." },
@@ -1386,7 +1426,7 @@ export const calculators: Calculator[] = [
       ],
       notes: [
         "CTC is a convention, not a statutory definition. Employers differ in what they include, insurance premiums, meal cards and reimbursements are common additions not modelled here.",
-        "EPF administration and EDLI charges payable by the employer are not included.",
+        "EDLI (0.5% of wages up to ₹15,000) and EPF admin charges (0.5% of PF wages) payable by the employer are included.",
         "The gratuity provision is an accounting convention for spreading a future liability; gratuity itself is only payable after five years of continuous service.",
       ],
     },
@@ -1409,7 +1449,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What does this CTC calculation leave out?",
-        a: "Insurance premiums, meal cards and reimbursements, which some employers add, are not modelled. EPF administration and EDLI charges payable by the employer are also not included.",
+        a: "Insurance premiums, meal cards and reimbursements, which some employers add, are not modelled. EDLI and EPF admin charges payable by the employer are included.",
       },
       {
         q: "How is the gratuity provision in CTC worked out?",

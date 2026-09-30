@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { Icon } from "./icons";
+import { RULES, computeEsi, computeGratuity, computePf, inr } from "@/lib/statutory";
 
 /**
  * Salary and statutory calculators.
@@ -38,18 +39,12 @@ import { Icon } from "./icons";
  * rounding the total produces a figure that does not reconcile to its own lines.
  */
 
-const EPF_RATE = 0.12;
-const EPS_RATE = 0.0833;
-const EPF_CEILING = 15000;
-const ESI_EMPLOYEE = 0.0075;
-const ESI_EMPLOYER = 0.0325;
-const ESI_THRESHOLD = 21000;
-const GRATUITY_DIVISOR = 26;
-const GRATUITY_DAYS = 15;
-const GRATUITY_MIN_YEARS = 5;
-
-const inr = (n: number) =>
-  n.toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+// All rates, ceilings and rounding rules come from the one shared rules file.
+const EPF_CEILING = RULES.epf.wageCeiling;
+const ESI_THRESHOLD = RULES.esi.wageThreshold;
+const GRATUITY_DIVISOR = RULES.gratuity.divisor;
+const GRATUITY_DAYS = RULES.gratuity.days;
+const GRATUITY_MIN_YEARS = RULES.gratuity.minYears;
 
 type Tab = "salary" | "gratuity";
 
@@ -133,16 +128,18 @@ function SalaryBreakup() {
 
     // Each head is rounded where it is computed, and totals sum the rounded parts.
     const basic = Math.round((gross * basicPct) / 100);
-    const pfBase = applyCeiling ? Math.min(basic, EPF_CEILING) : basic;
+    const pf = computePf(basic, applyCeiling);
+    const pfBase = pf.pfWage;
 
-    const employeePf = Math.round(pfBase * EPF_RATE);
-    const employerTotal = Math.round(pfBase * EPF_RATE);
-    const eps = Math.round(Math.min(pfBase, EPF_CEILING) * EPS_RATE);
-    const employerPf = employerTotal - eps;
+    const employeePf = pf.employee;
+    const employerTotal = pf.employerTotal;
+    const eps = pf.eps;
+    const employerPf = pf.employerEpf;
 
-    const esiApplies = gross <= ESI_THRESHOLD;
-    const employeeEsi = esiApplies ? Math.round(gross * ESI_EMPLOYEE) : 0;
-    const employerEsi = esiApplies ? Math.round(gross * ESI_EMPLOYER) : 0;
+    const esi = computeEsi(gross);
+    const esiApplies = esi.applies;
+    const employeeEsi = esi.employee;
+    const employerEsi = esi.employer;
 
     const deductions = employeePf + employeeEsi;
 
@@ -337,7 +334,8 @@ function Gratuity() {
       basic,
       years,
       eligible,
-      amount: eligible ? Math.round((GRATUITY_DAYS / GRATUITY_DIVISOR) * basic * years) : 0,
+      // Shared rule: 15/26 × basic × years, capped at the statutory maximum.
+      amount: computeGratuity(basic, years).amount,
       shortfall: GRATUITY_MIN_YEARS - years,
     };
   }, [basicRaw, yearsRaw, hasError]);
