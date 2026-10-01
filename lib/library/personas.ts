@@ -78,7 +78,7 @@ export const personaPages: LibPage[] = [
       },
     ],
     related: [
-      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The product as a whole, and how the modules connect." },
+      { label: "Human Resource Management System", href: "/solutions/human-resource-management-system", note: "The product as a whole, and how the modules connect." },
       { label: "Employee Management", href: "/solutions/employee-management", note: "The employee record field by field." },
       { label: "Leave Management", href: "/solutions/leave-management", note: "Leave policies, balances and approvals in depth." },
       { label: "Pricing", href: "/pricing", note: "What each plan includes." },
@@ -220,7 +220,7 @@ export const personaPages: LibPage[] = [
       { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "Biometric, mobile and shift handling in depth." },
       { label: "Compliance", href: "/solutions/compliance", note: "State-wise statutory heads." },
       { label: "HR Analytics", href: "/solutions/hr-analytics", note: "Headcount and attendance across sites." },
-      { label: "Small & Medium Enterprises (SMEs)", href: "/industries/smes", note: "Several legal entities under one account." },
+      { label: "Small & Medium Enterprises", href: "/industries/small-and-medium-enterprises", note: "Several legal entities under one account." },
     ],
   },
   {
@@ -288,7 +288,7 @@ export const personaPages: LibPage[] = [
       },
     ],
     related: [
-      { label: "Small & Medium Enterprises (SMEs)", href: "/industries/smes", note: "Several legal entities under one account." },
+      { label: "Small & Medium Enterprises", href: "/industries/small-and-medium-enterprises", note: "Several legal entities under one account." },
       { label: "Payroll", href: "/solutions/payroll", note: "The monthly run in order." },
       { label: "Partners & Vendors", href: "/partners-and-vendors", note: "Start a partnership conversation." },
       { label: "Compliance", href: "/solutions/compliance", note: "PF, ESI, PT and TDS treatment." },

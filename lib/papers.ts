@@ -385,7 +385,7 @@ export const whitePapers: WhitePaper[] = [
       },
     ],
     readOn: [
-      { label: "Small & Medium Enterprises (SMEs)", href: "/industries/smes" },
+      { label: "Small & Medium Enterprises", href: "/industries/small-and-medium-enterprises" },
       { label: "Payroll", href: "/solutions/payroll" },
       { label: "One Company, Several Compliance Positions: Professional Tax Across States", href: "/insights/professional-tax-february" },
     ],

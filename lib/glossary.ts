@@ -173,7 +173,7 @@ const baseGlossary: Term[] = [
       "A system that holds one authoritative record per employee and runs the workflows that read from it, attendance, leave, payroll, performance, documents. The defining property is the single record, not the number of features.",
     confusedWith:
       "Often used interchangeably with payroll software. Payroll is a calculation that reads the record; an HRMS is the record itself plus everything else that reads it.",
-    see: { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms" },
+    see: { label: "Human Resource Management System", href: "/solutions/human-resource-management-system" },
   },
   {
     term: "KRA",

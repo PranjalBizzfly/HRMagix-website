@@ -134,7 +134,7 @@ export default function SolutionsHub() {
             ]}
             slot="solutions-overview"
             caption="A working week seen across modules: the same record, read by whoever needs it."
-            link={{ label: "Read the HRMS argument in full", href: "/solutions/hrms" }}
+            link={{ label: "Read the HRMS argument in full", href: "/solutions/human-resource-management-system" }}
           />
         </div>
       </Block>

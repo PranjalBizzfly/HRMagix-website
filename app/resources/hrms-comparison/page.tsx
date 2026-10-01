@@ -449,8 +449,8 @@ export default function ComparisonPage() {
       <Onward
         links={[
           {
-            label: "Human Resource Management System (HRMS)",
-            href: "/solutions/hrms",
+            label: "Human Resource Management System",
+            href: "/solutions/human-resource-management-system",
             note: "What the single-record approach looks like in practice.",
           },
           {

@@ -86,7 +86,7 @@ const pillarIcons: IconName[] = ["clock", "target", "wallet"];
 const industryIcons: Record<string, IconName> = {
   startups: "rocket",
   "small-business": "gift",
-  smes: "grid",
+  "small-and-medium-enterprises": "grid",
   manufacturing: "layers",
   "it-and-technology": "compass",
   "professional-services": "users",

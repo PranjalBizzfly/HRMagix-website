@@ -38,7 +38,7 @@ import { site } from "@/lib/content";
 const linkIcons: Record<string, IconName> = {
   "/features": "grid",
   "/hr/topics": "folder",
-  "/solutions/hrms": "layers",
+  "/solutions/human-resource-management-system": "layers",
   "/solutions/employee-management": "users",
   "/solutions/onboarding-and-lifecycle": "rocket",
   "/solutions/employee-self-service": "fingerprint",
@@ -50,7 +50,7 @@ const linkIcons: Record<string, IconName> = {
   "/solutions/compliance": "scale",
   "/industries/startups": "rocket",
   "/industries/small-business": "gift",
-  "/industries/smes": "grid",
+  "/industries/small-and-medium-enterprises": "grid",
   "/industries/manufacturing": "layers",
   "/industries/it-and-technology": "compass",
   "/industries/professional-services": "users",
@@ -422,7 +422,7 @@ function MegaCard({
       className={`absolute top-full z-50 hidden pt-3 lg:block ${align === "right" ? "right-0" : "left-0"}`}
     >
       <ul
-        className={`grid gap-1 rounded-[20px] border border-line bg-surface/95 p-2.5 shadow-float backdrop-blur-xl ${
+        className={`isolate grid gap-1 rounded-[20px] border border-line bg-surface p-2.5 shadow-float ${
           twoCol ? "w-[640px] max-w-[90vw] grid-cols-2" : "w-[385px] max-w-[90vw]"
         }`}
       >

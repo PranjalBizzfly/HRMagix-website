@@ -160,7 +160,7 @@ export const topicsLifecycle: Topic[] = [
     software:
       "An HRMS makes the employee record the single source every module reads, stores changes with effective dates, attaches documents to the record, and enforces role-based access to sensitive fields.",
     inHRMagix: [
-      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The single employee record twelve modules read from." },
+      { label: "Human Resource Management System", href: "/solutions/human-resource-management-system", note: "The single employee record twelve modules read from." },
       { label: "Documents Module", href: "/features/documents", note: "Encrypted personnel files, role-based access and expiry alerts." },
       { label: "Employee Management", href: "/solutions/employee-management", note: "Directory, documents, org structure and lifecycle." },
     ],

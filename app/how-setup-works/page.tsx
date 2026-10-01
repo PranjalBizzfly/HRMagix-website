@@ -122,7 +122,7 @@ export default function HowItWorksPage() {
             </Reveal>
             <Reveal delay={260}>
               <Link
-                href="/solutions/hrms"
+                href="/solutions/human-resource-management-system"
                 className="group mt-7 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent"
               >
                 What the employee record holds <Arrow />

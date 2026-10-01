@@ -324,9 +324,9 @@ export const baseIndustries: Industry[] = [
   },
 
   {
-    slug: "smes",
-    href: "/industries/smes",
-    name: "Small & Medium Enterprises (SMEs)",
+    slug: "small-and-medium-enterprises",
+    href: "/industries/small-and-medium-enterprises",
+    name: "Small & Medium Enterprises",
     audience: "Multi-branch, multi-state businesses, roughly 100 to 1,000 people",
     title: "One company on the letterhead. Several under the law.",
     standfirst:
@@ -369,7 +369,7 @@ export const baseIndustries: Industry[] = [
       {
         order: "First",
         module: "HRMS",
-        href: "/solutions/hrms",
+        href: "/solutions/human-resource-management-system",
         why: "Because the entity, location and grade structure has to be right before anything configured on top of it will behave.",
       },
       {
@@ -644,7 +644,7 @@ export const baseIndustries: Industry[] = [
       {
         order: "First",
         module: "HRMS",
-        href: "/solutions/hrms",
+        href: "/solutions/human-resource-management-system",
         why: "Because reporting lines and grades change constantly here, and everything else is configured against them.",
       },
       {

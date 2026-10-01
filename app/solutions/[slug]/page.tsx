@@ -21,7 +21,7 @@ import { LibraryArticle, libraryMetadata } from "@/components/LibraryPage";
 
 /** Which areas of the app (lib/appFeatures.ts) each solution page covers. */
 const appAreasFor: Record<string, string[]> = {
-  hrms: ["overview", "people", "time", "performance", "engagement", "payroll", "system"],
+  "human-resource-management-system": ["overview", "people", "time", "performance", "engagement", "payroll", "system"],
   "employee-management": ["people"],
   onboarding: ["people"],
   ess: ["overview", "system"],
@@ -74,7 +74,7 @@ export async function generateMetadata({
  * are the ones these pages have always carried.
  */
 const highlights: Record<string, string> = {
-  hrms: "One record, edited in one place, read by everything else.",
+  "human-resource-management-system": "One record, edited in one place, read by everything else.",
   payroll:
     "Payroll teams do not spend four days calculating. They spend four days establishing what happened.",
   attendance: "Attendance systems are judged on their exceptions, not their happy path.",

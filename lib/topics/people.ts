@@ -385,7 +385,7 @@ export const topicsPeople: Topic[] = [
       "An integrated HR platform automates across processes, not only within them, an approved leave day becomes a payroll input, a missed punch becomes an exception, a probation date becomes a reminder, without re-keying between tools.",
     inHRMagix: [
       { label: "How Setup Works", href: "/how-setup-works", note: "Add your team, switch on modules, then reminders, approvals and reports run themselves." },
-      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "One employee record every module reads from." },
+      { label: "Human Resource Management System", href: "/solutions/human-resource-management-system", note: "One employee record every module reads from." },
     ],
     faqs: [
       { q: "Which HR tasks are easiest to automate?", a: "Rule-based, high-volume tasks: leave accrual, approval routing, reminders, statutory calculations and document generation." },

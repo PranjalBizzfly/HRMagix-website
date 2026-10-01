@@ -76,9 +76,9 @@ export type Solution = {
 export const solutions: Solution[] = [
   /* ================================================================= */
   {
-    slug: "hrms",
-    href: "/solutions/hrms",
-    name: "Human Resource Management System (HRMS)",
+    slug: "human-resource-management-system",
+    href: "/solutions/human-resource-management-system",
+    name: "Human Resource Management System",
     kicker: "The system of record",
     title: "One employee record, and twelve workflows that read from it",
     standfirst:
@@ -771,7 +771,7 @@ export const solutions: Solution[] = [
     onward: [
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "How a record begins" },
       { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library", note: "The policies these acknowledgements are for" },
-      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The record everything else reads" },
+      { label: "Human Resource Management System", href: "/solutions/human-resource-management-system", note: "The record everything else reads" },
     ],
   },
 
@@ -1753,7 +1753,7 @@ export const solutions: Solution[] = [
       },
     ],
     onward: [
-      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The record these reports read" },
+      { label: "Human Resource Management System", href: "/solutions/human-resource-management-system", note: "The record these reports read" },
       { label: "Payroll", href: "/solutions/payroll", note: "Where the cost figures originate" },
       { label: "Pricing", href: "/pricing", note: "Which plan analytics sits on" },
     ],
@@ -1768,7 +1768,7 @@ export const solutionGroups = [
     title: "Core HR",
     blurb:
       "The employee record, and the workflows that keep it accurate from the offer letter to the final settlement.",
-    slugs: ["hrms", "employee-management", "onboarding-and-lifecycle", "employee-self-service"],
+    slugs: ["human-resource-management-system", "employee-management", "onboarding-and-lifecycle", "employee-self-service"],
   },
   {
     title: "Time & Pay",

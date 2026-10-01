@@ -12,6 +12,9 @@
  * they were originally looking for, never to the homepage as a catch-all.
  */
 const redirects = [
+  // Full-name URLs for these two pages
+  ["/solutions/hrms", "/solutions/human-resource-management-system"],
+  ["/industries/smes", "/industries/small-and-medium-enterprises"],
   // Company
   ["/about", "/company/about-hrmagix"],
   ["/contact", "/company/contact-hrmagix"],
