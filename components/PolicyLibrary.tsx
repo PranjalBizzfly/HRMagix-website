@@ -140,7 +140,7 @@ function PolicyRowItem({ row, hasPdf, delay }: { row: PolicyRow; hasPdf: boolean
               >
                 <Icon name="arrowRight" className="h-3.5 w-3.5 rotate-90" />
                 Download
-                <span className="sr-only">— {row.name} as PDF</span>
+                <span className="sr-only"> {row.name} as PDF</span>
               </PdfDownloadButton>
             </>
           ) : (

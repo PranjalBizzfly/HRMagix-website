@@ -22,6 +22,9 @@
  * somebody looked it up.
  */
 
+import { glossaryMore } from "./glossaryMore";
+import { glossaryName } from "./names";
+
 export type Term = {
   term: string;
   /** Expansion of an abbreviation, where the term is one. */
@@ -31,9 +34,11 @@ export type Term = {
   confusedWith?: string;
   /** An internal page that treats the subject properly. */
   see?: { label: string; href: string };
+  /** URL slug, where it should differ from slugify(term). */
+  slug?: string;
 };
 
-export const glossary: Term[] = [
+const baseGlossary: Term[] = [
   {
     term: "Arrears",
     definition:
@@ -113,7 +118,7 @@ export const glossary: Term[] = [
     expands: "Employees' Provident Fund",
     definition:
       "A statutory retirement savings scheme. The employee contributes 12% of the PF wage and the employer 12%, of which 8.33% is diverted to the pension scheme within the statutory ceiling. Coverage generally begins at twenty employees in a covered establishment, with voluntary coverage possible below that.",
-    see: { label: "PF Calculator", href: "/calculators/pf" },
+    see: { label: "Provident Fund (PF) Calculator", href: "/calculators/pf" },
   },
   {
     term: "EPS",
@@ -126,7 +131,7 @@ export const glossary: Term[] = [
     expands: "Employees' State Insurance",
     definition:
       "A contributory health and social security scheme for employees earning at or below the wage threshold, currently ₹21,000 gross a month. The employee contributes 0.75% of gross and the employer 3.25%. Coverage generally begins at ten employees in a covered establishment.",
-    see: { label: "ESI Calculator", href: "/calculators/esi" },
+    see: { label: "Employees' State Insurance (ESI) Calculator", href: "/calculators/esi" },
   },
   {
     term: "Form 16",
@@ -168,7 +173,7 @@ export const glossary: Term[] = [
       "A system that holds one authoritative record per employee and runs the workflows that read from it, attendance, leave, payroll, performance, documents. The defining property is the single record, not the number of features.",
     confusedWith:
       "Often used interchangeably with payroll software. Payroll is a calculation that reads the record; an HRMS is the record itself plus everything else that reads it.",
-    see: { label: "HRMS", href: "/solutions/hrms" },
+    see: { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms" },
   },
   {
     term: "KRA",
@@ -230,7 +235,7 @@ export const glossary: Term[] = [
     term: "Payslip",
     definition:
       "The statement issued to an employee for a pay period, showing earnings, deductions and net pay. A reissued payslip should be the original document rather than a regenerated approximation, since the period it covers has already been filed against.",
-    see: { label: "Reading an Indian payslip", href: "/insights/reading-an-indian-payslip" },
+    see: { label: "Reading an Indian Payslip, Line by Line", href: "/insights/reading-an-indian-payslip" },
   },
   {
     term: "PF wage",
@@ -264,7 +269,7 @@ export const glossary: Term[] = [
     term: "Sandwich rule",
     definition:
       "A leave policy under which non-working days falling between two leave days are themselves counted as leave. It is an employer choice rather than a statutory requirement, and most organisations discover their own position on it only when somebody disputes a deduction.",
-    see: { label: "The sandwich rule", href: "/insights/sandwich-rule" },
+    see: { label: "The Sandwich Rule Is Not Unfair. Applying It Inconsistently Is.", href: "/insights/sandwich-rule" },
   },
   {
     term: "Section 192",
@@ -283,7 +288,7 @@ export const glossary: Term[] = [
     definition:
       "A defined working window that attendance is measured against. A shift crossing midnight is treated as one unit attributed to the day it began; splitting it at the date boundary produces two short days and an incorrect overtime figure.",
     see: {
-      label: "Shifts across midnight",
+      label: "A Punch at 22:40 Belongs to Yesterday's Shift",
       href: "/insights/shift-detection-across-midnight",
     },
   },
@@ -317,6 +322,18 @@ export const glossary: Term[] = [
   },
 ];
 
+/** Every term, base and expansion, A to Z. */
+export const glossary: Term[] = [...baseGlossary, ...glossaryMore].sort((a, b) =>
+  a.term.localeCompare(b.term, "en", { sensitivity: "base" }),
+);
+
+/**
+ * The URL slug of a term. Same rule as lib/related.ts slugify, inlined so the
+ * client-side glossary index does not pull the content corpus into the browser.
+ */
+export const termSlug = (t: Term) =>
+  t.slug ?? t.term.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 /** Grouped A–Z, skipping letters with no entries. */
 export function byLetter(terms: Term[] = glossary) {
   const map = new Map<string, Term[]>();
@@ -329,3 +346,44 @@ export function byLetter(terms: Term[] = glossary) {
   }
   return [...map.entries()].sort(([a], [b]) => (a === "#" ? -1 : b === "#" ? 1 : a.localeCompare(b)));
 }
+
+/**
+ * Display names for terms whose short form is not self-explanatory. Applied
+ * to H1s, titles and indexes only; URLs (termSlug) never change.
+ */
+const LABELS: Record<string, string> = {
+  "form-16": "Form 16 (TDS certificate for salary)",
+  "form-24q": "Form 24Q (quarterly TDS return on salary)",
+  "9-box": "9-box talent grid",
+  "pf-wage": "Provident fund (PF) wage",
+  "section-192": "Section 192 (TDS on salary)",
+  "form-12bb": "Form 12BB (investment declaration)",
+  "section-87a-rebate": "Section 87A income-tax rebate",
+  "section-80c": "Section 80C deduction",
+  "epf-admin-charges": "Employees' Provident Fund (EPF) admin charges",
+  "form-11": "Form 11 (EPF declaration at joining)",
+  "epf-nomination": "Employees' Provident Fund (EPF) nomination (Form 2)",
+  "esic-ip-number": "ESIC insured person (IP) number",
+  "epf-kyc": "EPF KYC (Aadhaar, PAN and bank linking)",
+  "pf-transfer": "Provident fund (PF) transfer",
+  "pf-withdrawal": "Provident fund (PF) withdrawal",
+};
+
+const isAbbreviation = (term: string) => /^(?:[A-Z][A-Z0-9&]{1,6}|e[A-Z]{2,5})$/.test(term);
+
+/**
+ * The name a reader sees: "Employees' Provident Fund (EPF)" rather than a bare
+ * "EPF". Plain-language terms are shown as they are.
+ */
+export const termLabel = (t: Term) => {
+  const custom = LABELS[termSlug(t)];
+  if (custom) return custom;
+  if (t.expands && isAbbreviation(t.term)) {
+    const e = t.expands.replace(/^\w/, (c) => c.toUpperCase());
+    return `${e} (${t.term})`;
+  }
+  return t.term;
+};
+
+/** The term page's name, as its breadcrumb and every link to it read it. */
+export const termName = (t: Term) => glossaryName(termLabel(t));

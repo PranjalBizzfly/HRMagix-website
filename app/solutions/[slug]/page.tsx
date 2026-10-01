@@ -16,6 +16,8 @@ import {
 } from "@/components/sky9";
 import Photo from "@/components/Photo";
 import FeatureMap from "@/components/FeatureMap";
+import { personaPages } from "@/lib/library/personas";
+import { LibraryArticle, libraryMetadata } from "@/components/LibraryPage";
 
 /** Which areas of the app (lib/appFeatures.ts) each solution page covers. */
 const appAreasFor: Record<string, string[]> = {
@@ -30,7 +32,7 @@ const appAreasFor: Record<string, string[]> = {
 };
 
 export function generateStaticParams() {
-  return solutions.map((s) => ({ slug: s.slug }));
+  return [...solutions.map((s) => ({ slug: s.slug })), ...personaPages.map((p) => ({ slug: p.slug }))];
 }
 
 export async function generateMetadata({
@@ -39,6 +41,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const persona = personaPages.find((p) => p.slug === slug);
+  if (persona) return libraryMetadata(`/solutions/${persona.slug}`, persona.seo, persona.title, "website");
   const s = bySlug(slug);
   if (!s) return {};
   // The tab title opens with the page's name, exactly as the header and footer link it.
@@ -79,6 +83,18 @@ const highlights: Record<string, string> = {
 
 export default async function SolutionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const persona = personaPages.find((p) => p.slug === slug);
+  if (persona)
+    return (
+      <LibraryArticle
+        page={persona}
+        eyebrow="Who it is for"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Solutions", href: "/solutions" }, { label: persona.name }]}
+        siblings={personaPages}
+        siblingsTitle="Written for other roles"
+        hrefFor={(s) => `/solutions/${s}`}
+      />
+    );
   const s = bySlug(slug);
   if (!s) notFound();
 

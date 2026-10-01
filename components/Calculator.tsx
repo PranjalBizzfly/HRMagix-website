@@ -60,7 +60,7 @@ export default function Calculator() {
               step={1}
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
-              className="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/15 accent-violet-400 outline-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-white [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-glow"
+              className="mt-3 h-6 w-full cursor-pointer appearance-none rounded-full bg-[linear-gradient(rgb(255_255_255/0.15),rgb(255_255_255/0.15))] bg-[length:100%_6px] bg-center bg-no-repeat accent-violet-400 outline-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-white [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-glow"
             />
             <div className="mt-2 flex justify-between text-[11.5px] text-violet-300/70">
               <span>1</span>

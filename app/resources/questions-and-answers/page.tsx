@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteStats, Block, FaqSection } from "@/components/sky9";
+import { faqTopicName } from "@/lib/names";
 import Link from "next/link";
 import { faqs } from "@/lib/content";
 import { solutions } from "@/lib/solutions";
@@ -86,7 +87,7 @@ export default function FaqsPage() {
               >
                 <span>
                   <span className="block font-display text-[16.5px] font-bold text-heading group-hover:text-accent">
-                    {t.name}
+                    {faqTopicName(t.name)}
                   </span>
                   <span className="mt-1 block text-[13px] text-subtle">
                     {byTopic[t.slug].length} questions
@@ -209,7 +210,7 @@ export default function FaqsPage() {
             note: "The long-form treatment of the subjects these questions circle.",
           },
           {
-            label: "Calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "Check a PF, ESI or gratuity figure against your own numbers.",
           },

@@ -234,7 +234,7 @@ export const modules: Module[] = [
     ],
   },
   {
-    name: "KRA & 9-Box",
+    name: "Key Result Areas (KRA) & 9-Box",
     slug: "kra-9box",
     href: "/features/kra-9box",
     icon: "grid",
@@ -247,7 +247,7 @@ export const modules: Module[] = [
     ],
   },
   {
-    name: "PIPs & Growth",
+    name: "Performance Improvement Plans (PIPs) & Growth",
     slug: "pips",
     href: "/features/pips",
     icon: "sprout",
@@ -615,7 +615,7 @@ export const pillars = [
     name: "Performance & Growth",
     tagline: "Goals, reviews and growth, connected",
     copy: "Set OKRs and KRAs, run lightweight reviews, track 9-box and PIPs, and celebrate wins with recognition. Everything that grows your people, in one flow.",
-    includes: ["Objectives & OKRs", "KRA & 9-Box", "PIPs & Growth", "1-on-1s & Meetings"],
+    includes: ["Objectives & OKRs", "Key Result Areas (KRA) & 9-Box", "Performance Improvement Plans (PIPs) & Growth", "1-on-1s & Meetings"],
     tint: "bg-violet-100",
   },
   {
@@ -649,8 +649,8 @@ export const areas = [
     tagline: "Goals that stay visible all quarter",
     pairs: [
       ["Objectives & OKRs", "Aligned OKRs and KRAs with live progress"],
-      ["KRA & 9-Box", "Reviews and 9-box talent maps in one place"],
-      ["PIPs & Growth", "Growth plans that actually drive progress"],
+      ["Key Result Areas (KRA) & 9-Box", "Reviews and 9-box talent maps in one place"],
+      ["Performance Improvement Plans (PIPs) & Growth", "Growth plans that actually drive progress"],
     ],
     quote: 2,
   },

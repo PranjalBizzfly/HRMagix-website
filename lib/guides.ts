@@ -1,3 +1,7 @@
+import { guidesMoreA } from "./guidesMoreA";
+import { guidesMoreB } from "./guidesMoreB";
+import { guidesMoreC } from "./guidesMoreC";
+import { guidesMoreD } from "./guidesMoreD";
 /**
  * HR guides.
  *
@@ -49,9 +53,11 @@ export type Guide = {
   /** The takeaway list. Every guide ends with one; none ends with a summary. */
   checklist: string[];
   related: { label: string; href: string; note: string }[];
+  /** Page FAQs for guides added in the expansion (older guides use lib/pageFaqs/guides). */
+  faqs?: { q: string; a: string }[];
 };
 
-export const guides: Guide[] = [
+export const baseGuides: Guide[] = [
   /* ================================================================= */
   {
     slug: "first-payroll-run",
@@ -284,7 +290,7 @@ export const guides: Guide[] = [
         note: "How the rules above are applied and enforced.",
       },
       {
-        label: "The sandwich rule",
+        label: "The Sandwich Rule Is Not Unfair. Applying It Inconsistently Is.",
         href: "/insights/sandwich-rule",
         note: "The specific mechanism, in short form.",
       },
@@ -402,7 +408,7 @@ export const guides: Guide[] = [
         note: "The module these rules are configured in.",
       },
       {
-        label: "Shifts across midnight",
+        label: "A Punch at 22:40 Belongs to Yesterday's Shift",
         href: "/insights/shift-detection-across-midnight",
         note: "The midnight problem in detail.",
       },
@@ -414,5 +420,7 @@ export const guides: Guide[] = [
     ],
   },
 ];
+
+export const guides: Guide[] = [...baseGuides, ...guidesMoreA, ...guidesMoreB, ...guidesMoreC, ...guidesMoreD];
 
 export const guideBySlug = (slug: string) => guides.find((g) => g.slug === slug);

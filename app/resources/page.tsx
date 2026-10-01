@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteStats, CtaBand, Block, FaqSection } from "@/components/sky9";
 import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
+import { titleCase } from "@/lib/names";
 import { whitePapers } from "@/lib/papers";
 import { sorted as articles } from "@/lib/blog";
 import { resourcesNav } from "@/lib/nav";
@@ -151,7 +152,7 @@ export default function ResourcesHub() {
                 href={`/resources/white-papers/${paper.slug}`}
                 className="group mt-4 inline-flex items-center gap-2 font-display text-[18px] font-bold text-heading transition-colors hover:text-accent"
               >
-                {paper.title}
+                {titleCase(paper.title)}
                 <span className="text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
                   <Arrow />
                 </span>
@@ -174,7 +175,7 @@ export default function ResourcesHub() {
               <Link href={`/insights/${a.slug}`} className="card card-hover group flex h-full flex-col gap-2 p-6">
                 <span className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent">{a.category}</span>
                 <span className="flex-1 font-display text-[16.5px] font-semibold leading-snug text-heading transition-colors group-hover:text-accent">
-                  {a.title}
+                  {titleCase(a.title)}
                 </span>              </Link>
             </Reveal>
           ))}

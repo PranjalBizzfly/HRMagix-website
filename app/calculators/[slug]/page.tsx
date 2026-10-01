@@ -10,6 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import CalculatorRunner from "@/components/CalculatorRunner";
 import OnThisPage from "@/components/OnThisPage";
 import Photo from "@/components/Photo";
+import { bySlot } from "@/lib/media";
 
 export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
@@ -67,17 +68,13 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
       {/* ---- 1. What this calculates ---- */}
       <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface-sunken pb-10 pt-[104px] sm:pb-12 sm:pt-[128px]">
         {/* Background photo */}
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <Photo slot={`calc-${calc.slug}`} cover rounded="rounded-none" hover={false} sizes="100vw" />
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
-            aria-hidden="true"
-          />
-        </div>
+        {bySlot(`calc-${calc.slug}`) && (
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <Photo slot={`calc-${calc.slug}`} cover rounded="rounded-none" hover={false} sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65" aria-hidden="true" />
+            <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent" aria-hidden="true" />
+          </div>
+        )}
 
         <div className="shell relative">
           <Reveal y={8}>
@@ -140,7 +137,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
         intro={calc.methodIntro}
         ground="sunken"
       >
-        <div className="mx-auto mb-10 max-w-3xl overflow-x-auto rounded-2xl bg-surface p-5 text-center ring-1 ring-line-accent sm:p-6">
+        <div tabIndex={0} role="region" aria-label="Formula" className="mx-auto mb-10 max-w-3xl overflow-x-auto rounded-2xl bg-surface p-5 text-center ring-1 ring-line-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand sm:p-6">
           <p className="whitespace-nowrap font-mono text-[14px] font-semibold text-accent-strong sm:text-[15px]">
             {calc.method.formula}
           </p>

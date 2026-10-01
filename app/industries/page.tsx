@@ -82,7 +82,7 @@ export default function IndustriesHub() {
           <Opening
             paragraphs={[
               "Software companies usually publish industry pages to widen a keyword net, and the pages end up identical apart from a noun. That is not useful to anybody choosing a system.",
-              "So each of the six below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.",
+              `So each of the ${industries.length} below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.`,
             ]}
           />
         </div>
@@ -93,7 +93,8 @@ export default function IndustriesHub() {
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {industries.map((industry, i) => (
             <Reveal as="li" key={industry.slug} delay={i * 60} y={14} className="card card-hover flex h-full flex-col overflow-hidden">
-              <Link href={industry.href} className="group block">
+              {industry.image && (
+<Link href={industry.href} className="group block">
                 <Photo
                   slot={industry.image}
                   ratio="16 / 10"
@@ -101,6 +102,7 @@ export default function IndustriesHub() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                 />
               </Link>
+)}
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent-soft">
                   {industry.audience}
@@ -144,7 +146,7 @@ export default function IndustriesHub() {
       <Block
         eyebrow="Common ground"
         title="The same platform, different pressure points"
-        intro="These are not six products. The HRMS, payroll, attendance and leave modules are identical in every case; what changes is which of them carries the weight, and which statutory obligations arrive first."
+        intro="These are not separate products. The HRMS, payroll, attendance and leave modules are identical in every case; what changes is which of them carries the weight, and which statutory obligations arrive first."
         ground="canvas"
       >
         <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
@@ -199,7 +201,7 @@ export default function IndustriesHub() {
                 before payroll can be.
               </p>
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
-                If none of the six pages describes your company, the sensible order is almost always
+                If none of the industry pages describes your company, the sensible order is almost always
                 the record first, then whichever of attendance or payroll is currently costing you
                 the most time.
               </p>

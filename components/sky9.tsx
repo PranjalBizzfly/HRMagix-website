@@ -162,15 +162,17 @@ export function StatsStrip({ items }: { items: { value: string; label: string; i
           >
             {items.map((s) => (
               <div key={s.label} className="flex flex-col items-center p-2 text-center">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10 text-accent">
-                  <Icon name={s.icon} className="h-5 w-5" />
-                </span>
-                <dd className="mt-2.5 font-display text-[26px] font-bold leading-none tracking-[-0.02em] text-heading sm:text-[30px]">
-                  {s.value}
-                </dd>
-                <dt className="mt-1.5 max-w-[150px] text-[12.5px] font-medium leading-snug text-muted sm:text-[13.5px]">
+                <dt className="order-2 mt-1.5 max-w-[150px] text-[12.5px] font-medium leading-snug text-muted sm:text-[13.5px]">
                   {s.label}
                 </dt>
+                <dd className="order-1 flex flex-col items-center">
+                  <span aria-hidden="true" className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10 text-accent">
+                    <Icon name={s.icon} className="h-5 w-5" />
+                  </span>
+                  <span className="mt-2.5 font-display text-[26px] font-bold leading-none tracking-[-0.02em] text-heading sm:text-[30px]">
+                    {s.value}
+                  </span>
+                </dd>
               </div>
             ))}
           </dl>
@@ -456,9 +458,9 @@ export function RelatedCards({
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-accent transition-transform duration-300 group-hover:rotate-6 motion-reduce:group-hover:rotate-0">
                 <Icon name={it.icon ?? "compass"} className="h-5 w-5" />
               </span>
-              <span className="mt-5 font-display text-[18px] font-bold text-heading group-hover:text-accent">
+              <strong className="mt-5 font-display text-[18px] font-bold text-heading group-hover:text-accent">
                 {it.label}
-              </span>
+              </strong>
               <span className="mt-2 flex-1 text-[14.5px] leading-[1.6] text-muted">{it.note}</span>
               <span className="mt-5 inline-flex items-center gap-2 text-[13.5px] font-semibold text-accent">
                 Explore <Arrow />

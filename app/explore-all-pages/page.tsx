@@ -5,6 +5,8 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AllPagesIndex from "@/components/AllPagesIndex";
 import { buildSiteIndex, pageCount } from "@/lib/siteIndex";
+import ContentSections from "@/components/ContentSections";
+import { hubContent } from "@/lib/pageContent";
 
 export const metadata: Metadata = {
   title: "Explore All Pages",
@@ -43,6 +45,7 @@ export default function AllPagesPage() {
         <AllPagesIndex groups={groups} />
       </Block>
       {/* ---- Questions ---- */}
+      <ContentSections content={hubContent["/explore-all-pages"]} ground="canvas" />
       <FaqSection title="Questions about this index" items={marketingFaqs["/explore-all-pages"]} ground="sunken" />
 
       <CtaBand title={<>See HRMagix run on <strong>your own payroll month</strong></>} />

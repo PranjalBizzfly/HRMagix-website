@@ -176,13 +176,15 @@ export default function HomePage() {
               <dl className="grid grid-cols-2 gap-6 md:grid-cols-4 md:divide-x md:divide-line">
                 {proof.map((s) => (
                   <div key={s.label} className="flex flex-col items-center text-center">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-accent">
-                      <Icon name={s.icon} className="h-5 w-5" />
-                    </span>
-                    <dd className="mt-3 font-display text-[30px] font-bold leading-none tracking-[-0.03em] text-heading tabular-nums sm:text-[36px]">
-                      <Counter to={s.value} suffix={s.suffix} />
+                    <dt className="order-2 mt-2 text-[13px] font-medium text-muted">{s.label}</dt>
+                    <dd className="order-1 flex flex-col items-center">
+                      <span aria-hidden="true" className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-accent">
+                        <Icon name={s.icon} className="h-5 w-5" />
+                      </span>
+                      <span className="mt-3 font-display text-[30px] font-bold leading-none tracking-[-0.03em] text-heading tabular-nums sm:text-[36px]">
+                        <Counter to={s.value} suffix={s.suffix} />
+                      </span>
                     </dd>
-                    <dt className="mt-2 text-[13px] font-medium text-muted">{s.label}</dt>
                   </div>
                 ))}
               </dl>
@@ -632,7 +634,7 @@ export default function HomePage() {
                 Explore setup workflow
               </Button>
               <span className="text-xs font-semibold text-muted">
-                Average go-live: 2–3 business days
+                Average go-live: 2 to 3 business days
               </span>
             </div>
           </div>

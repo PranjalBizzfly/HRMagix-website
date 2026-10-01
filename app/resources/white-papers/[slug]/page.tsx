@@ -8,6 +8,7 @@ import { Onward } from "@/components/editorial";
 import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { titleCase } from "@/lib/names";
 import PdfDownloadButton from "@/components/PdfDownloadButton";
 import Prose, { headingId, type ProseBlock } from "@/components/Prose";
 
@@ -65,7 +66,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
                   { label: "Home", href: "/" },
                   { label: "Resources", href: "/resources" },
                   { label: "White Papers", href: "/resources/white-papers" },
-                  { label: `Paper ${paper.number}` },
+                  { label: titleCase(paper.title) },
                 ]}
               />
             </Reveal>
@@ -246,7 +247,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
       <Onward
         title="Other papers"
         links={others.map((p) => ({
-          label: p.title,
+          label: titleCase(p.title),
           href: `/resources/white-papers/${p.slug}`,
           note: p.subtitle,
         }))}

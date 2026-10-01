@@ -42,8 +42,8 @@ export const topicsPay: Topic[] = [
     software:
       "Payroll software computes both contributions and the pension split from the salary structure, applies the chosen ceiling consistently, and produces the ECR file from the same run as the payslips.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "EPF with the wage ceiling and ECR files for EPFO." },
-      { label: "PF Calculator", href: "/calculators/pf", note: "Employee and employer contributions, with the EPS split." },
+      { label: "Payroll Module", href: "/features/payroll", note: "EPF with the wage ceiling and ECR files for EPFO." },
+      { label: "Provident Fund (PF) Calculator", href: "/calculators/pf", note: "Employee and employer contributions, with the EPS split." },
       { label: "Compliance", href: "/solutions/compliance", note: "How EPF is derived inside the payroll run." },
     ],
     faqs: [
@@ -100,9 +100,9 @@ export const topicsPay: Topic[] = [
     software:
       "Payroll software tests coverage against the threshold within each contribution period, calculates both contributions on gross, and flags employees whose variable pay is taking them across the line.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "ESI on the ₹21,000 threshold, with ESIC contribution files." },
-      { label: "ESI Calculator", href: "/calculators/esi", note: "The threshold test and both contributions." },
-      { label: "The moving ESI wage base", href: "/insights/esi-threshold-moving-wage-base", note: "Why the threshold is harder than it looks." },
+      { label: "Payroll Module", href: "/features/payroll", note: "ESI on the ₹21,000 threshold, with ESIC contribution files." },
+      { label: "Employees' State Insurance (ESI) Calculator", href: "/calculators/esi", note: "The threshold test and both contributions." },
+      { label: "The ESI Threshold Is Not a Monthly Test, and Treating It as One Costs Money", href: "/insights/esi-threshold-moving-wage-base", note: "Why the threshold is harder than it looks." },
     ],
     faqs: [
       { q: "What is the ESI wage threshold?", a: "₹21,000 of gross wages a month. Employees in covered establishments within the threshold are covered." },
@@ -161,7 +161,7 @@ export const topicsPay: Topic[] = [
     inHRMagix: [
       { label: "Gratuity Calculator", href: "/calculators/gratuity", note: "The statutory formula on your own figures." },
       { label: "Compliance", href: "/solutions/compliance", note: "Gratuity provisioning and settlement calculations." },
-      { label: "CTC calculator", href: "/calculators/ctc", note: "Including a monthly gratuity provision in CTC." },
+      { label: "Cost to Company (CTC) Calculator", href: "/calculators/ctc", note: "Including a monthly gratuity provision in CTC." },
     ],
     faqs: [
       { q: "How is gratuity calculated?", a: "Fifteen days' wages for every completed year of service, where a day's wage is last drawn basic and DA divided by twenty-six." },
@@ -222,8 +222,8 @@ export const topicsPay: Topic[] = [
     software:
       "Payroll software reads its inputs directly from attendance and leave instead of receiving them as a file, calculates statutory deductions from the salary structure, and produces the payslips, bank file and returns from the same figures, so the return and the ledger cannot disagree.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "EPF, ESI, multi-state PT, TDS and bank batch files from one run." },
-      { label: "Payroll solution", href: "/solutions/payroll", note: "How a payroll month actually runs, from cutoff to filing." },
+      { label: "Payroll Module", href: "/features/payroll", note: "EPF, ESI, multi-state PT, TDS and bank batch files from one run." },
+      { label: "Payroll", href: "/solutions/payroll", note: "How a payroll month actually runs, from cutoff to filing." },
       { label: "Payroll Resources", href: "/resources/payroll-resources", note: "Payroll material indexed by what you are trying to do." },
     ],
     faqs: [
@@ -286,9 +286,9 @@ export const topicsPay: Topic[] = [
       "Compliance software turns statutory rules into configuration: ceilings, thresholds and state slabs are set once and applied to every employee, and the deposit files and returns come out of the same run as the payslips.",
     inHRMagix: [
       { label: "Compliance", href: "/solutions/compliance", note: "EPF, ESI, PT, LWF and TDS derived inside the payroll run." },
-      { label: "Payroll", href: "/features/payroll", note: "ECR files for EPFO and ESIC, and quarterly Form 24Q export." },
-      { label: "PF Calculator", href: "/calculators/pf", note: "Employee and employer contributions on your own figures." },
-      { label: "ESI Calculator", href: "/calculators/esi", note: "The threshold test and both contributions." },
+      { label: "Payroll Module", href: "/features/payroll", note: "ECR files for EPFO and ESIC, and quarterly Form 24Q export." },
+      { label: "Provident Fund (PF) Calculator", href: "/calculators/pf", note: "Employee and employer contributions on your own figures." },
+      { label: "Employees' State Insurance (ESI) Calculator", href: "/calculators/esi", note: "The threshold test and both contributions." },
     ],
     faqs: [
       { q: "Which statutory deductions apply to Indian payroll?", a: "Typically the provident fund, ESI where the employee is within the threshold and the establishment is covered, professional tax in states that levy it, the labour welfare fund in states that have one, and TDS on salary. Which apply depends on the establishment, the state and the employee." },
@@ -346,9 +346,9 @@ export const topicsPay: Topic[] = [
     software:
       "Salary structure software applies a template to a gross figure and shows every consequence immediately, statutory contributions, employer cost and estimated take-home, so a structure is chosen knowingly rather than discovered in the first payslip.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "Statutory deductions derived from the salary structure on the record." },
+      { label: "Payroll Module", href: "/features/payroll", note: "Statutory deductions derived from the salary structure on the record." },
       { label: "Salary Calculator", href: "/calculators/salary", note: "Gross to take-home, with PF and ESI shown." },
-      { label: "CTC calculator", href: "/calculators/ctc", note: "Gross to annual cost to company." },
+      { label: "Cost to Company (CTC) Calculator", href: "/calculators/ctc", note: "Gross to annual cost to company." },
     ],
     faqs: [
       { q: "What is the difference between CTC and gross salary?", a: "Gross salary is what the employee earns before deductions. CTC adds what the employer pays on top, its own PF and ESI contributions, any gratuity provision and variable pay, so CTC is always higher than gross." },
@@ -403,9 +403,9 @@ export const topicsPay: Topic[] = [
     software:
       "Software issues payslips from the approved run, stores them exactly as issued, and makes every past month available to the employee on demand, removing both the regeneration risk and the stream of 'please resend my payslip' requests.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "Payslips produced by the payroll run." },
+      { label: "Payroll Module", href: "/features/payroll", note: "Payslips produced by the payroll run." },
       { label: "Employee Self-Service", href: "/solutions/employee-self-service", note: "Payslips and Form 16 downloadable by employees." },
-      { label: "Reading an Indian payslip", href: "/insights/reading-an-indian-payslip", note: "Every line on a typical payslip, explained." },
+      { label: "Reading an Indian Payslip, Line by Line", href: "/insights/reading-an-indian-payslip", note: "Every line on a typical payslip, explained." },
     ],
     faqs: [
       { q: "Is an employer required to issue payslips?", a: "Wage laws for many categories of establishment require a wage slip or similar statement to be given to employees. Beyond the legal requirement, a payslip is the employee's main record of income." },
@@ -464,9 +464,9 @@ export const topicsPay: Topic[] = [
     software:
       "Software recalculates the annual projection automatically on every change, lets employees declare and upload proofs themselves, and produces quarterly returns and Form 16 from the same payroll data.",
     inHRMagix: [
-      { label: "Payroll", href: "/features/payroll", note: "TDS Section 192 with dual-regime comparison and quarterly Form 24Q export." },
+      { label: "Payroll Module", href: "/features/payroll", note: "TDS Section 192 with dual-regime comparison and quarterly Form 24Q export." },
       { label: "Compliance", href: "/solutions/compliance", note: "How TDS is derived inside the run." },
-      { label: "Old vs new regime", href: "/insights/old-vs-new-regime", note: "How the regime choice changes the calculation." },
+      { label: "The Declaration That Decides Twelve Months of TDS", href: "/insights/old-vs-new-regime", note: "How the regime choice changes the calculation." },
     ],
     faqs: [
       { q: "What is Form 16?", a: "The certificate an employer issues to an employee after the financial year, showing salary paid and tax deducted at source. The employee uses it when filing their own return." },
@@ -523,8 +523,8 @@ export const topicsPay: Topic[] = [
       "Software makes the cutoff enforceable: pending approvals are visible to the people who owe them, reminders go out automatically, and the month's inputs can be locked so the reviewed run is the one that is paid.",
     inHRMagix: [
       { label: "Payroll", href: "/solutions/payroll", note: "How a payroll month runs from cutoff to filing." },
-      { label: "Attendance & Shifts", href: "/features/attendance", note: "Attendance that feeds the run directly." },
-      { label: "Why payroll takes four days", href: "/insights/why-payroll-takes-four-days", note: "Where the time actually goes." },
+      { label: "Attendance & Shifts Module", href: "/features/attendance", note: "Attendance that feeds the run directly." },
+      { label: "Your Payroll Does Not Take Four Days. Your Reconciliation Does.", href: "/insights/why-payroll-takes-four-days", note: "Where the time actually goes." },
     ],
     faqs: [
       { q: "When should the payroll cutoff be?", a: "Early enough to leave time for review, approval and bank processing before pay day. The exact date matters less than keeping it fixed and known." },

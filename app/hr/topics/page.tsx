@@ -8,6 +8,8 @@ import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import ContentSections from "@/components/ContentSections";
+import { hubContent } from "@/lib/pageContent";
 
 export const metadata: Metadata = {
   title: "HR Topics: Practical Guides to HR and Payroll",
@@ -80,11 +82,12 @@ export default function TopicsHub() {
         );
       })}
 
+      <ContentSections content={hubContent["/hr/topics"]} ground="canvas" />
       <FaqSection items={resourcesFaqs["/hr/topics"]} ground="sunken" />
 
       <Onward
         links={[
-          { label: "HR guides", href: "/resources/hr-guides", note: "Longer, chaptered guides that end in a checklist." },
+          { label: "HR Guides", href: "/resources/hr-guides", note: "Longer, chaptered guides that end in a checklist." },
           { label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", note: "Indian HR and payroll terms, defined." },
           { label: "Features", href: "/features", note: "Where each practice lives in HRMagix." },
         ]}

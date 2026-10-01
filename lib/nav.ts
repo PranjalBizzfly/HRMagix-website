@@ -40,7 +40,7 @@ export const solutionsNav: NavColumn[] = [
         note: "All twelve modules, each with its own page",
       },
       {
-        label: "HRMS",
+        label: "Human Resource Management System (HRMS)",
         href: "/solutions/hrms",
         note: "The single employee record twelve modules read from",
       },
@@ -114,7 +114,7 @@ export const industriesNav: NavColumn[] = [
         note: "One location, one payroll, no HR department",
       },
       {
-        label: "SMEs",
+        label: "Small & Medium Enterprises (SMEs)",
         href: "/industries/smes",
         note: "Multi-branch, multi-state, one set of books",
       },

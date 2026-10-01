@@ -38,13 +38,20 @@ import { formatPrice, rateOf } from "@/lib/pricing";
 import {
   RULES,
   computePf,
+  establishmentPfAdmin,
+  type EsiResult,
   computeEsi,
   computeGratuity,
   computeOvertime,
   gratuityProvision,
+  gratuityWage,
+  codeWages,
   inr as inrFmt,
   safe,
 } from "@/lib/statutory";
+import { calculatorsMoreA } from "./calculatorsMoreA";
+import { calculatorsMoreB } from "./calculatorsMoreB";
+import { calculatorsMoreC } from "./calculatorsMoreC";
 
 /* ---------------- Statutory constants (from lib/statutory.ts) ---------------- */
 
@@ -139,11 +146,26 @@ const num = safe;
 
 const pct = (r: number) => `${+(r * 100).toFixed(2)}%`;
 
+/** ESI employee row: covered, waived (daily wage ≤ ₹176) or not applicable. */
+function esiEmployeeRow(esi: EsiResult, gross: number, minus = false): Line {
+  if (!esi.applies) return { term: "ESI", value: "Not applicable", note: `Wages above ${inr(ESI_THRESHOLD)}`, muted: true };
+  if (esi.employeeExempt)
+    return { term: "ESI", value: "Not applicable", note: `Average daily wage ≤ ₹${RULES.esi.exemptDailyWage}: employee share waived`, muted: true };
+  return { term: "ESI", value: `${minus ? "− " : ""}${inr(esi.employee)}`, note: `0.75% × ${inr(gross)}, rounded up` };
+}
+
+/** ESI employer row. */
+function esiEmployerRow(esi: EsiResult, gross: number): Line {
+  return esi.applies
+    ? { term: "ESI", value: inr(esi.employer), note: `3.25% × ${inr(gross)}, rounded up` }
+    : { term: "ESI", value: "Not applicable", note: `Wages above ${inr(ESI_THRESHOLD)}`, muted: true };
+}
+
 /* ================================================================== */
 /* The calculators                                                     */
 /* ================================================================== */
 
-export const calculators: Calculator[] = [
+export const baseCalculators: Calculator[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "salary",
@@ -194,7 +216,7 @@ export const calculators: Calculator[] = [
       const ceiling = Boolean(v.ceiling);
 
       const basic = Math.round((gross * basicPct) / 100);
-      const pf = computePf(basic, ceiling);
+      const pf = computePf(codeWages(basic, gross), ceiling);
       const esi = computeEsi(gross);
 
       const deductions = pf.employee + esi.employee;
@@ -213,39 +235,38 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Earnings",
+            heading: "Input",
             rows: [
-              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
-              { term: "Other allowances", value: inr(gross - basic), note: "Gross − basic" },
-              { term: "Gross salary", value: inr(gross), total: true },
+              { term: "Monthly gross salary", value: inr(gross) },
+              { term: "Basic as a share of gross", value: `${basicPct}%` },
+              { term: "₹15,000 EPF wage ceiling", value: ceiling ? "Applied" : "Not applied" },
             ],
           },
           {
-            heading: "Employee deductions",
+            heading: "Calculation",
+            rows: [
+              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% × ${inr(gross)}` },
+              { term: "Other allowances", value: inr(gross - basic), note: "Gross − basic" },
+              { term: "PF wage", value: inr(pf.pfWage), note: `${codeWages(basic, gross) > basic ? "50% of gross (Labour Codes wage rule)" : "Basic + DA"}${ceiling ? ", capped at ₹15,000" : ""}` },
+              { term: "ESI coverage test", value: esi.applies ? "Covered" : "Not covered", note: `Gross ≤ ${inr(ESI_THRESHOLD)}` },
+            ],
+          },
+          {
+            heading: "Employee deduction",
             rows: [
               { term: "Provident fund", value: `− ${inr(pf.employee)}`, note: `12% × ${inr(pf.pfWage)}` },
-              {
-                term: "ESI",
-                value: esi.applies ? `− ${inr(esi.employee)}` : "Not applicable",
-                note: esi.applies ? "0.75% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
-                muted: !esi.applies,
-              },
+              esiEmployeeRow(esi, gross, true),
               { term: "Total deductions", value: `− ${inr(deductions)}`, total: true },
             ],
           },
           {
-            heading: "Employer contributions",
+            heading: "Employer contribution",
             rows: [
               { term: "EPF", value: inr(pf.employerEpf), note: `12% × ${inr(pf.pfWage)} − EPS` },
               { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
               { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
               { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
-              {
-                term: "ESI",
-                value: esi.applies ? inr(esi.employer) : "Not applicable",
-                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
-                muted: !esi.applies,
-              },
+              esiEmployerRow(esi, gross),
               { term: "Total employer contributions", value: inr(employer), total: true },
             ],
           },
@@ -328,8 +349,8 @@ export const calculators: Calculator[] = [
     slug: "pf",
     methodIntro:
       "The wage base first, because that is where PF calculations actually go wrong, and then the split between the employee's contribution and the employer's two.",
-    name: "PF Calculator",
-    title: "EPF and pension contribution calculator",
+    name: "Provident Fund (PF) Calculator",
+    title: "Employees' Provident Fund (EPF) and pension contribution calculator",
     standfirst:
       "Provident fund is 12% on each side, but the employer's 12% splits between provident fund and pension, and the split is capped even when the contribution is not.",
     intro: [
@@ -388,19 +409,26 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Earnings",
+            heading: "Input",
             rows: [
-              { term: "Basic (and DA)", value: inr(basic) },
+              { term: "Monthly basic (and DA)", value: inr(basic) },
+              { term: "₹15,000 EPF wage ceiling", value: ceiling ? "Applied" : "Not applied" },
+              { term: "Voluntary PF", value: vpfPct > 0 ? `${vpfPct}%` : "None", muted: vpfPct === 0 },
+            ],
+          },
+          {
+            heading: "Calculation",
+            rows: [
               {
                 term: "PF wage used",
                 value: inr(pf.pfWage),
                 note: ceiling ? (basic > EPF_CEILING ? "Capped at ₹15,000" : "Below the ceiling, full basic") : "Ceiling not applied",
-                total: true,
               },
+              { term: "Pension / EDLI wage", value: inr(pf.cappedWage), note: "min(basic, ₹15,000), always capped" },
             ],
           },
           {
-            heading: "Employee deductions",
+            heading: "Employee deduction",
             rows: [
               { term: "Provident fund", value: inr(pf.employee), note: `12% × ${inr(pf.pfWage)}` },
               {
@@ -413,7 +441,7 @@ export const calculators: Calculator[] = [
             ],
           },
           {
-            heading: "Employer contributions",
+            heading: "Employer contribution",
             rows: [
               { term: "EPF", value: inr(pf.employerEpf), note: "12% − EPS" },
               { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
@@ -500,8 +528,8 @@ export const calculators: Calculator[] = [
     slug: "esi",
     methodIntro:
       "The contribution rates are the easy half. The eligibility test, and the fact that it is fixed for a contribution period rather than checked monthly, is the half that costs employers money.",
-    name: "ESI Calculator",
-    title: "ESI eligibility and contribution calculator",
+    name: "Employees' State Insurance (ESI) Calculator",
+    title: "Employees' State Insurance (ESI) eligibility and contribution calculator",
     standfirst:
       "ESI turns on a threshold, tested against gross wages excluding overtime, while the contribution itself is charged on every rupee paid, overtime included.",
     intro: [
@@ -549,41 +577,39 @@ export const calculators: Calculator[] = [
               ? `${inr(Math.max(0, headroom))} below the ${inr(ESI_THRESHOLD)} threshold`
               : `${inr(Math.abs(headroom))} above the ${inr(ESI_THRESHOLD)} threshold`,
           },
-          { label: "Employee contribution", value: esi.applies ? inr(esi.employee) : "Not applicable", note: esi.applies ? "0.75% of gross" : undefined },
+          {
+            label: "Employee contribution",
+            value: esi.applies && !esi.employeeExempt ? inr(esi.employee) : "Not applicable",
+            note: !esi.applies ? undefined : esi.employeeExempt ? "Waived: daily wage ≤ ₹176" : "0.75% of gross",
+          },
           { label: "Employer contribution", value: esi.applies ? inr(esi.employer) : "Not applicable", note: esi.applies ? "3.25% of gross" : undefined },
         ],
         lines: [
           {
-            heading: "Earnings",
+            heading: "Input",
             rows: [
-              { term: "Regular wages", value: inr(gross - ot) },
-              { term: "Overtime", value: inr(ot), muted: ot === 0 },
-              { term: "Gross wages", value: inr(gross), total: true },
-              { term: "Wages for coverage test", value: inr(esi.coverageWage), note: `Gross − overtime · threshold ${inr(ESI_THRESHOLD)}` },
+              { term: "Monthly gross wages", value: inr(gross) },
+              { term: "Of which overtime", value: inr(ot), muted: ot === 0 },
             ],
           },
           {
-            heading: "Employee deductions",
+            heading: "Calculation",
             rows: [
+              { term: "Regular wages", value: inr(gross - ot), note: "Gross − overtime" },
               {
-                term: "ESI (employee)",
-                value: esi.applies ? inr(esi.employee) : "Not applicable",
-                note: esi.applies ? `0.75% × ${inr(gross)}, rounded up` : undefined,
-                muted: !esi.applies,
+                term: "Coverage test",
+                value: esi.applies ? "Covered" : "Not covered",
+                note: `${inr(esi.coverageWage)} ${esi.applies ? "≤" : ">"} ${inr(ESI_THRESHOLD)} (overtime excluded)`,
+              },
+              {
+                term: "Average daily wage",
+                value: inr(esi.dailyWage),
+                note: `Gross ÷ 30 · employee share waived at ₹${RULES.esi.exemptDailyWage} or less`,
               },
             ],
           },
-          {
-            heading: "Employer contributions",
-            rows: [
-              {
-                term: "ESI (employer)",
-                value: esi.applies ? inr(esi.employer) : "Not applicable",
-                note: esi.applies ? `3.25% × ${inr(gross)}, rounded up` : undefined,
-                muted: !esi.applies,
-              },
-            ],
-          },
+          { heading: "Employee deduction", rows: [esiEmployeeRow(esi, gross)] },
+          { heading: "Employer contribution", rows: [esiEmployerRow(esi, gross)] },
           {
             heading: "Final result",
             rows: [
@@ -601,6 +627,7 @@ export const calculators: Calculator[] = [
         { label: "Apply both rates to full gross", text: "The employee contributes 0.75% and the employer 3.25% of all wages paid, overtime included, each rounded up to the next rupee." },
       ],
       notes: [
+        "Employees whose average daily wage is ₹176 or less are exempt from the 0.75% employee share (ESIC, w.e.f. 1 September 2019); the employer still pays 3.25%. This calculator takes the daily wage as monthly gross ÷ 30.",
         "This applies a monthly test. A live payroll must also respect contribution periods: an employee covered at the start of a period continues to contribute through it even if wages rise above the threshold within it.",
         "A system that re-tests applicability month by month, with no memory of the period, produces under-deduction, over-deduction and disrupted benefit entitlement in turn.",
         "Whether a specific allowance forms part of the wage base for ESI purposes is a question for your advisers or the ESIC.",
@@ -697,19 +724,42 @@ export const calculators: Calculator[] = [
         integer: true,
         hint: "Months beyond the completed years. More than six counts as a full year.",
       },
+      {
+        name: "gross",
+        label: "Last drawn monthly gross (optional)",
+        unit: "inr",
+        initial: "0",
+        min: 0,
+        max: 10_000_000,
+        hint: "Under the Labour Codes, allowances above 50% of pay count as wages. Leave at 0 to use basic and DA as entered.",
+      },
+      {
+        name: "fixedTerm",
+        label: "Fixed-term employee",
+        unit: "count",
+        initial: "0",
+        min: 0,
+        max: 1,
+        toggle: true,
+        hint: "Fixed-term employees qualify after one year of service, pro rata (Code on Social Security 2020).",
+      },
     ],
     compute: (v) => {
       const basic = num(v.basic);
       const years = Math.floor(num(v.years));
-      const months = Math.floor(num(v.months));
-      const g = computeGratuity(basic, years, months);
-      const shortfall = GRATUITY_MIN_YEARS - years;
+      const months = Math.min(11, Math.floor(num(v.months)));
+      const gross = num(v.gross);
+      const fixedTerm = Boolean(v.fixedTerm);
+      const g = computeGratuity(basic, years, months, { gross, fixedTerm });
+      const shortfall = Math.max(0, g.minYears - years);
+      const floored = g.wage > basic;
       const service = `${years} ${years === 1 ? "year" : "years"}${months ? ` ${months} ${months === 1 ? "month" : "months"}` : ""}`;
+      const qualifying = `${g.minYears} ${g.minYears === 1 ? "year" : "years"}${fixedTerm ? " (fixed-term)" : ""}`;
 
       return {
         summary: g.eligible
-          ? `${service} of service → ${g.countedYears} years counted${months > 6 ? " (over six months rounds up)" : ""}${g.capped ? " · capped at ₹20,00,000" : ""}.`
-          : `${service} of service · five years of continuous service are required.`,
+          ? `${service} of service → ${g.countedYears} years counted${months > 6 ? " (over six months rounds up)" : ""}${floored ? " · wage raised to 50% of gross" : ""}${g.capped ? " · capped at ₹20,00,000" : ""}.`
+          : `${service} of service · ${qualifying} of continuous service required.`,
         cards: [
           {
             label: g.eligible ? "Gratuity payable" : "Not yet eligible",
@@ -719,27 +769,40 @@ export const calculators: Calculator[] = [
               ? g.capped
                 ? "Capped at the ₹20,00,000 statutory maximum"
                 : `${g.countedYears} years × ${inr(g.perYear)}`
-              : `${shortfall} more ${shortfall === 1 ? "year" : "years"} of service needed`,
+              : basic <= 0
+                ? "Enter last drawn basic"
+                : `${shortfall} more ${shortfall === 1 ? "year" : "years"} of service needed`,
           },
-          { label: "Per year of service", value: inr(g.perYear), note: "15 × basic ÷ 26" },
+          { label: "Per year of service", value: inr(g.perYear), note: "15 × wage ÷ 26" },
           { label: "Years counted", value: `${g.countedYears}`, note: months > 6 ? "Part-year over six months counts" : "Completed years" },
         ],
         lines: [
           {
-            heading: "Earnings",
+            heading: "Input",
             rows: [
               { term: "Last drawn basic (and DA)", value: inr(basic) },
-              { term: "Service", value: service, note: `Qualifying period ${GRATUITY_MIN_YEARS} years · ${g.eligible ? "met" : "not met"}` },
+              { term: "Last drawn gross", value: gross ? inr(gross) : "Not given", muted: !gross },
+              { term: "Service", value: service },
+              { term: "Employment type", value: fixedTerm ? "Fixed-term" : "Permanent" },
             ],
           },
           {
-            heading: "Working",
+            heading: "Calculation",
             rows: [
-              { term: "15 days' wages", value: inr(g.perYear), note: `${inr(basic)} × 15 ÷ 26` },
+              {
+                term: "Wage for gratuity",
+                value: inr(g.wage),
+                note: floored ? `50% × ${inr(gross)} (allowances above 50% added back)` : "Basic + DA",
+              },
+              { term: "Qualifying period", value: g.eligible ? "Met" : "Not met", note: qualifying },
+              { term: "15 days' wages", value: inr(g.perYear), note: `${inr(g.wage)} × 15 ÷ 26` },
               { term: "Years counted", value: `× ${g.countedYears}`, note: months > 6 ? `${years} + 1 (over six months)` : "Completed years only" },
-              ...(g.capped
-                ? [{ term: "Before the statutory cap", value: inr(g.uncapped), note: "Maximum payable is ₹20,00,000" }]
-                : []),
+              {
+                term: "Statutory cap",
+                value: g.capped ? `${inr(g.uncapped)} capped` : "Not applicable",
+                note: "Maximum payable is ₹20,00,000",
+                muted: !g.capped,
+              },
             ],
           },
           {
@@ -761,6 +824,7 @@ export const calculators: Calculator[] = [
         { label: "Apply the statutory maximum", text: "The amount payable under the Act is capped at ₹20,00,000." },
       ],
       notes: [
+        "From 21 November 2025 the Payment of Gratuity Act is part of the Code on Social Security 2020. The formula and the ₹20,00,000 ceiling are unchanged; fixed-term employees qualify after one year, and where allowances exceed 50% of total pay the excess counts as wages.",
         "Continuous service across a break or statutory leave, and coverage of a particular establishment, are questions for your advisers.",
         "The tax treatment of gratuity in a full-and-final settlement has its own rules and is not addressed by this calculator.",
         "Whether an establishment is covered by the Act, and how continuous service is computed where there has been a break or a period of statutory leave, are questions for your own advisers.",
@@ -874,15 +938,17 @@ export const calculators: Calculator[] = [
       const ceiling = Boolean(v.ceiling);
 
       const basic = Math.round((gross * basicPct) / 100);
-      const pf = computePf(basic, ceiling);
+      const pf = computePf(codeWages(basic, gross), ceiling);
       const esi = computeEsi(gross);
 
-      const employer = pf.employerCost + esi.employer;
-      const perHead = gross + employer;
       const salaryBill = gross * n;
-      const pfBill = pf.employerCost * n;
+      // EPF admin charges are levied per establishment: 0.5% of total PF wages, minimum ₹500 a month.
+      const adminBill = establishmentPfAdmin(pf.admin * n);
+      const pfBill = (pf.employerTotal + pf.edli) * n + adminBill;
       const esiBill = esi.employer * n;
-      const total = perHead * n;
+      const total = salaryBill + pfBill + esiBill;
+      const perHead = n ? total / n : 0;
+      const employer = perHead - gross;
       const loading = gross ? (employer / gross) * 100 : 0;
 
       return {
@@ -894,25 +960,35 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Earnings (per employee)",
+            heading: "Input",
             rows: [
-              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
-              { term: "Gross salary", value: inr(gross), total: true },
+              { term: "Number of employees", value: n.toLocaleString("en-IN") },
+              { term: "Average monthly gross", value: inr(gross) },
+              { term: "Basic as a share of gross", value: `${basicPct}%` },
+              { term: "₹15,000 EPF wage ceiling", value: ceiling ? "Applied" : "Not applied" },
             ],
           },
           {
-            heading: "Employer contributions (per employee)",
+            heading: "Calculation",
+            rows: [
+              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% × ${inr(gross)}` },
+              { term: "PF wage", value: inr(pf.pfWage), note: `${codeWages(basic, gross) > basic ? "50% of gross (Labour Codes wage rule)" : "Basic + DA"}${ceiling ? ", capped at ₹15,000" : ""}` },
+              { term: "ESI coverage test", value: esi.applies ? "Covered" : "Not covered", note: `Gross ≤ ${inr(ESI_THRESHOLD)}` },
+              {
+                term: "EPF admin (establishment)",
+                value: inr(adminBill),
+                note: `max(0.5% × total PF wages, ₹${RULES.epf.adminMinPerEstablishment})`,
+              },
+            ],
+          },
+          {
+            heading: "Employer contribution",
             rows: [
               { term: "EPF", value: inr(pf.employerEpf), note: `12% × ${inr(pf.pfWage)} − EPS` },
               { term: "Pension (EPS)", value: inr(pf.eps), note: `8.33% × ${inr(pf.cappedWage)} (max ₹1,250)` },
               { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
-              { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
-              {
-                term: "ESI",
-                value: esi.applies ? inr(esi.employer) : "Not applicable",
-                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
-                muted: !esi.applies,
-              },
+              { term: "EPF admin charges", value: inr(adminBill / (n || 1)), note: "Establishment admin ÷ headcount" },
+              esiEmployerRow(esi, gross),
               { term: "Cost per employee", value: inr(perHead), total: true },
             ],
           },
@@ -1041,10 +1117,18 @@ export const calculators: Calculator[] = [
           ],
           lines: [
             {
-              heading: "Why there is no number here",
+              heading: "Input",
+              rows: [
+                { term: "Employees", value: n.toLocaleString("en-IN") },
+                { term: "Plan", value: plan.name },
+              ],
+            },
+            {
+              heading: "Final result",
               rows: [
                 {
                   term: "Enterprise pricing",
+                  muted: true,
                   value: "On application",
                   note: "It is quoted because it depends on entity count, module scope and whether single sign-on and a dedicated success manager are required, not because there is a number we would rather you did not see.",
                 },
@@ -1064,12 +1148,24 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Working",
+            heading: "Input",
             rows: [
               { term: "Employees", value: n.toLocaleString("en-IN") },
+              { term: "Plan", value: plan.name },
+            ],
+          },
+          {
+            heading: "Calculation",
+            rows: [
               { term: "Published rate", value: `${usd(plan.rate)} per employee per month` },
-              { term: "Monthly subscription", value: usd(monthly), total: true },
-              { term: "Annualised", value: usd(monthly * 12) },
+              { term: "Monthly subscription", value: usd(monthly), note: `${usd(plan.rate)} × ${n.toLocaleString("en-IN")}` },
+            ],
+          },
+          {
+            heading: "Final result",
+            rows: [
+              { term: "Monthly cost", value: usd(monthly), total: true },
+              { term: "Annual cost", value: usd(monthly * 12), note: "× 12 months" },
             ],
           },
           {
@@ -1213,18 +1309,21 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Earnings",
+            heading: "Input",
             rows: [
               { term: "Monthly ordinary wages", value: inr(wage) },
-              { term: "Daily rate", value: rs2(daily), note: `${inr(wage)} ÷ ${days} days` },
-              { term: "Ordinary hourly rate", value: rs2(hourly), note: `Daily rate ÷ ${hours} hours` },
+              { term: "Working days", value: `${days}` },
+              { term: "Normal hours per day", value: `${hours}` },
+              { term: "Overtime hours", value: `${ot}`, muted: !ot },
             ],
           },
           {
-            heading: "Working",
+            heading: "Calculation",
             rows: [
-              { term: "Overtime rate", value: rs2(otRate), note: "2 × ordinary hourly rate (Factories Act s.59)" },
-              { term: "Overtime hours", value: `× ${ot}` },
+              { term: "Daily rate", value: rs2(daily), note: `${inr(wage)} ÷ ${days} days` },
+              { term: "Ordinary hourly rate", value: rs2(hourly), note: `Daily rate ÷ ${hours} hours` },
+              { term: "Overtime rate", value: rs2(otRate), note: "2 × ordinary hourly rate (Factories Act s.59 / Code on Wages s.14)" },
+              { term: "Overtime pay", value: rs2(otRate * ot), note: `${rs2(otRate)} × ${ot} hours, rounded to the rupee` },
             ],
           },
           {
@@ -1301,7 +1400,7 @@ export const calculators: Calculator[] = [
     slug: "ctc",
     methodIntro:
       "CTC is the gross salary plus what the employer pays on top of it. Each addition is shown on its own line, so a CTC figure can be traced back to the salary it came from.",
-    name: "CTC Calculator",
+    name: "Cost to Company (CTC) Calculator",
     title: "CTC (cost to company) calculator",
     standfirst:
       "From a monthly gross salary to an annual cost to company: employer provident fund, employer ESI where it applies, a gratuity provision and any annual bonus.",
@@ -1360,9 +1459,11 @@ export const calculators: Calculator[] = [
       const gross = num(v.gross);
       const basicPct = num(v.basicPct);
       const basic = Math.round((gross * basicPct) / 100);
-      const pf = computePf(basic, Boolean(v.ceiling));
+      const pf = computePf(codeWages(basic, gross), Boolean(v.ceiling));
       const esi = computeEsi(gross);
-      const grat = Boolean(v.gratuity) ? gratuityProvision(basic) : 0;
+      // Labour Codes (21 Nov 2025): gratuity wage is at least 50% of gross.
+      const gratWage = gratuityWage(basic, gross);
+      const grat = Boolean(v.gratuity) ? gratuityProvision(basic, gross) : 0;
       const bonus = num(v.bonus);
       const employer = pf.employerCost + esi.employer + grat;
       const monthly = gross + employer;
@@ -1376,29 +1477,40 @@ export const calculators: Calculator[] = [
         ],
         lines: [
           {
-            heading: "Earnings (monthly)",
+            heading: "Input",
             rows: [
-              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% of gross` },
-              { term: "Other allowances", value: inr(gross - basic) },
-              { term: "Gross salary", value: inr(gross), total: true },
+              { term: "Monthly gross salary", value: inr(gross) },
+              { term: "Basic as a share of gross", value: `${basicPct}%` },
+              { term: "₹15,000 EPF wage ceiling", value: v.ceiling ? "Applied" : "Not applied" },
+              { term: "Gratuity provision", value: v.gratuity ? "Included" : "Not included" },
+              { term: "Annual bonus or variable pay", value: inr(bonus), muted: !bonus },
             ],
           },
           {
-            heading: "Employer contributions (monthly)",
+            heading: "Calculation",
+            rows: [
+              { term: "Basic (and DA)", value: inr(basic), note: `${basicPct}% × ${inr(gross)}` },
+              { term: "Other allowances", value: inr(gross - basic), note: "Gross − basic" },
+              { term: "PF wage", value: inr(pf.pfWage), note: `${codeWages(basic, gross) > basic ? "50% of gross (Labour Codes wage rule)" : "Basic + DA"}${v.ceiling ? ", capped at ₹15,000" : ""}` },
+              {
+                term: "Gratuity wage",
+                value: inr(gratWage),
+                note: gratWage > basic ? "Raised to 50% of gross (Labour Codes wage rule)" : "Basic + DA",
+              },
+              { term: "ESI coverage test", value: esi.applies ? "Covered" : "Not covered", note: `Gross ≤ ${inr(ESI_THRESHOLD)}` },
+            ],
+          },
+          {
+            heading: "Employer contribution",
             rows: [
               { term: "Provident fund (EPF + EPS)", value: inr(pf.employerTotal), note: `12% × ${inr(pf.pfWage)}` },
               { term: "EDLI insurance", value: inr(pf.edli), note: `0.5% × ${inr(pf.cappedWage)} (max ₹75)` },
               { term: "EPF admin charges", value: inr(pf.admin), note: `0.5% × ${inr(pf.pfWage)}` },
-              {
-                term: "ESI",
-                value: esi.applies ? inr(esi.employer) : "Not applicable",
-                note: esi.applies ? "3.25% × gross, rounded up" : `Gross above ${inr(ESI_THRESHOLD)}`,
-                muted: !esi.applies,
-              },
+              esiEmployerRow(esi, gross),
               {
                 term: "Gratuity provision",
                 value: grat ? inr(grat) : "Not included",
-                note: grat ? "Basic × 15 ÷ 26 ÷ 12 (≈ 4.81% of basic)" : undefined,
+                note: grat ? `${inr(gratWage)} × 15 ÷ 26 ÷ 12 (≈ 4.81% of gratuity wage)` : undefined,
                 muted: !grat,
               },
               { term: "Total employer contributions", value: inr(employer), total: true },
@@ -1478,6 +1590,8 @@ export const calculators: Calculator[] = [
     related: ["salary", "pf", "gratuity"],
   },
 ];
+
+export const calculators: Calculator[] = [...baseCalculators, ...calculatorsMoreA, ...calculatorsMoreB, ...calculatorsMoreC];
 
 export const calculatorBySlug = (slug: string) => calculators.find((c) => c.slug === slug);
 

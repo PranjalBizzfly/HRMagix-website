@@ -9,6 +9,7 @@ import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import OnThisPage from "@/components/OnThisPage";
+import { titleCase } from "@/lib/names";
 
 export const metadata: Metadata = {
   title: "Insights: Indian Payroll & People Operations",
@@ -153,7 +154,7 @@ export default function BlogIndex() {
                 </span>
                 <span className="min-w-0">
                   <span className="block font-display text-[19px] font-bold leading-snug text-heading transition-colors group-hover:text-accent">
-                    {a.title}
+                    {titleCase(a.title)}
                   </span>
                   <span className="mt-2 block max-w-2xl text-[15px] leading-[1.65] text-muted">
                     {a.standfirst}
@@ -186,7 +187,7 @@ export default function BlogIndex() {
                     href={`/insights/category/${c.name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
                     className="transition-colors hover:text-accent"
                   >
-                    {c.name}
+                    {titleCase(c.name)}
                   </Link>
                 </h3>
                 <p className="mt-2.5 max-w-lg text-[15px] leading-[1.68] text-muted">{c.blurb}</p>
@@ -201,7 +202,7 @@ export default function BlogIndex() {
                           aria-hidden="true"
                           className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-soft"
                         />
-                        {a.title}
+                        {titleCase(a.title)}
                       </Link>
                     </li>
                   ))}

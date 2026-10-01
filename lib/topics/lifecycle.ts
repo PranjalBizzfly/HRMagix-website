@@ -44,7 +44,7 @@ export const topicsLifecycle: Topic[] = [
     software:
       "Onboarding software moves document collection to a pre-boarding portal, generates letters, assigns checklist tasks to the teams that own them, and creates the employee record once, correctly, for payroll and every other module to read.",
     inHRMagix: [
-      { label: "Onboarding", href: "/features/onboarding", note: "Self-service pre-boarding, appointment letters with digital signature and asset checklists." },
+      { label: "Onboarding Module", href: "/features/onboarding", note: "Self-service pre-boarding, appointment letters with digital signature and asset checklists." },
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation, transfer and exit." },
     ],
     faqs: [
@@ -102,7 +102,7 @@ export const topicsLifecycle: Topic[] = [
       "Software tracks every probation end date, prompts the manager in time, and records the decision and the letter against the employee's effective-dated record.",
     inHRMagix: [
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation." },
-      { label: "Documents", href: "/features/documents", note: "Letters and acknowledgements on the employee's personnel file." },
+      { label: "Documents Module", href: "/features/documents", note: "Letters and acknowledgements on the employee's personnel file." },
     ],
     faqs: [
       { q: "How long is a typical probation period?", a: "It is set by the employer's policy, appointment letter or standing orders. Periods of three to six months are common, sometimes with the option to extend." },
@@ -160,8 +160,8 @@ export const topicsLifecycle: Topic[] = [
     software:
       "An HRMS makes the employee record the single source every module reads, stores changes with effective dates, attaches documents to the record, and enforces role-based access to sensitive fields.",
     inHRMagix: [
-      { label: "HRMS", href: "/solutions/hrms", note: "The single employee record twelve modules read from." },
-      { label: "Documents", href: "/features/documents", note: "Encrypted personnel files, role-based access and expiry alerts." },
+      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The single employee record twelve modules read from." },
+      { label: "Documents Module", href: "/features/documents", note: "Encrypted personnel files, role-based access and expiry alerts." },
       { label: "Employee Management", href: "/solutions/employee-management", note: "Directory, documents, org structure and lifecycle." },
     ],
     faqs: [
@@ -219,7 +219,7 @@ export const topicsLifecycle: Topic[] = [
       "Software records the resignation, calculates the last working day from the employee's own terms, and carries any notice shortfall or payment into the final settlement automatically.",
     inHRMagix: [
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Confirmation, transfer and exit on one record." },
-      { label: "Notice period policy", href: "/policy-centre/workplace-policy-library/notice-period", note: "A notice period policy template in the workplace policy library." },
+      { label: "Notice Period Policy", href: "/policy-centre/workplace-policy-library/notice-period", note: "A notice period policy template in the workplace policy library." },
     ],
     faqs: [
       { q: "Is the notice period the same for everyone?", a: "Not necessarily. It is commonly set by grade and is often shorter during probation. What matters is that the terms for each employee are written down and applied as written." },
@@ -279,7 +279,7 @@ export const topicsLifecycle: Topic[] = [
     inHRMagix: [
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "Pre-boarding through confirmation, transfer and exit." },
       { label: "Gratuity Calculator", href: "/calculators/gratuity", note: "The statutory formula on your own figures." },
-      { label: "Full and final settlement", href: "/insights/full-and-final-settlement", note: "What goes into the last payment." },
+      { label: "What a Full-and-Final Settlement Actually Has to Include", href: "/insights/full-and-final-settlement", note: "What goes into the last payment." },
     ],
     faqs: [
       { q: "What is included in a full and final settlement?", a: "Typically salary to the last working day, leave encashment where the policy provides for it, gratuity where the employee is eligible, bonus or variable pay due, and recoveries such as notice shortfall or advances." },
@@ -336,8 +336,8 @@ export const topicsLifecycle: Topic[] = [
     software:
       "Succession software keeps critical roles, candidates, readiness ratings and development plans together, and links them to performance data such as the 9-box so plans are based on evidence.",
     inHRMagix: [
-      { label: "Succession", href: "/features/succession", note: "Role criticality, bench readiness ratings and individual development plans." },
-      { label: "KRA & 9-Box", href: "/features/kra-9box", note: "Performance and potential on one grid." },
+      { label: "Succession Module", href: "/features/succession", note: "Role criticality, bench readiness ratings and individual development plans." },
+      { label: "Key Result Areas (KRA) & 9-Box Module", href: "/features/kra-9box", note: "Performance and potential on one grid." },
     ],
     faqs: [
       { q: "Which roles need a succession plan?", a: "Roles whose sudden vacancy would significantly disrupt the organisation, often leadership roles, but also specialist roles that are hard to hire for or hold unique knowledge." },

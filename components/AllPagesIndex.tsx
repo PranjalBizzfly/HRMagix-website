@@ -79,7 +79,7 @@ export default function AllPagesIndex({ groups }: { groups: IndexGroup[] }) {
               onClick={() =>
                 setCollapsed(allCollapsed ? new Set() : new Set(visible.map((g) => g.name)))
               }
-              className="border-b border-heading/60 text-heading transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex min-h-[32px] items-center border-b border-heading/60 text-heading transition-colors hover:border-accent hover:text-accent"
             >
               {allCollapsed ? "Expand all" : "Collapse all"}
             </button>

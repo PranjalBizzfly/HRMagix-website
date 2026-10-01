@@ -2,13 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { glossary, byLetter, type Term } from "@/lib/glossary";
+import { glossary, byLetter, termSlug, termLabel, termName, type Term } from "@/lib/glossary";
 import { Arrow } from "./ui";
-
-/** Same rule as lib/related.ts slugify — kept local so this client component
- *  does not pull the server-side content corpus into the browser bundle. */
-const termSlug = (s: string) =>
-  s.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 /**
  * The glossary index.
@@ -123,12 +118,12 @@ function Entry({ term }: { term: Term }) {
     <div className="grid gap-2 border-b border-line py-7 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-12">
       <dt className="lg:sticky lg:top-[110px] lg:self-start">
         <Link
-          href={`/resources/hr-and-payroll-glossary/${termSlug(term.term)}`}
+          href={`/resources/hr-and-payroll-glossary/${termSlug(term)}`}
           className="font-display text-[17px] font-bold leading-snug tracking-[-0.02em] text-heading underline-offset-4 transition-colors hover:text-accent hover:underline"
         >
-          {term.term}
+          {termName(term)}
         </Link>
-        {term.expands && (
+        {term.expands && termLabel(term) === term.term && (
           <span className="mt-1 block text-[13px] leading-snug text-subtle">{term.expands}</span>
         )}
       </dt>

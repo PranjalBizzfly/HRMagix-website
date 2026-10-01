@@ -56,7 +56,7 @@ export const policyRegister: PolicyGroup[] = [
         name: "Code of Conduct",
         covers:
           "The overarching statement of expected professional behaviour, integrity and use of company resources, to which the remaining policies are subordinate.",
-        enforcedBy: { label: "Documents", href: "/solutions/employee-management" },
+        enforcedBy: { label: "Employee Management", href: "/solutions/employee-management" },
       },
       {
         code: "HRMAGIX007",

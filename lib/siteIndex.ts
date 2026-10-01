@@ -7,11 +7,26 @@ import { calculators } from "@/lib/calculators";
 import { policyDetails } from "@/lib/policyDetail";
 import { legalPages, policyRegister } from "@/lib/policies";
 import { modules } from "@/lib/content";
-import { glossary } from "@/lib/glossary";
+import { glossary, termSlug, termLabel } from "@/lib/glossary";
 import { categories } from "@/lib/blog";
 import { topics } from "@/lib/topics";
 import { faqTopics } from "@/lib/faqTopics";
 import { slugify } from "@/lib/related";
+import { compareCollection } from "@/lib/library/compare";
+import { lettersCollection } from "@/lib/library/letters";
+import { jobDescriptionsCollection } from "@/lib/library/jobDescriptions";
+import { labourLawCollection } from "@/lib/library/labourLaw";
+import { personaPages } from "@/lib/library/personas";
+import type { LibCollection } from "@/lib/library/types";
+import { titleCase, glossaryName, featureName, topicName, faqTopicName } from "@/lib/names";
+
+const collectionGroup = (c: LibCollection, name: string, hubTitle: string): IndexGroup => ({
+  name,
+  pages: [
+    { title: hubTitle, href: c.base, group: name },
+    ...c.pages.map((p) => ({ title: p.name, href: `${c.base}/${p.slug}`, group: name, keywords: p.seo.keywords.join(" ") })),
+  ],
+});
 
 /**
  * Every page on the site, grouped — the data behind the header search and the
@@ -56,13 +71,14 @@ export function buildSiteIndex(): IndexGroup[] {
         ...solutions.map((s) => ({ title: s.name, href: s.href, keywords: s.title })),
         { title: "Performance & OKRs", href: "/solutions/performance-and-okrs", keywords: "kra okr pip reviews 9-box" },
         { title: "Compliance", href: "/solutions/compliance", keywords: "epf esi pt tds lwf statutory" },
+        ...personaPages.map((p) => ({ title: p.name, href: `/solutions/${p.slug}`, keywords: p.seo.keywords.join(" ") })),
       ].map((p) => ({ ...p, group: "Solutions" })),
     },
     {
       name: "Features",
       pages: [
         { title: "Features", href: "/features", keywords: "modules" },
-        ...modules.map((m) => ({ title: m.name, href: `/features/${m.slug}`, keywords: `${m.group} ${m.desc}` })),
+        ...modules.map((m) => ({ title: featureName(m.name), href: `/features/${m.slug}`, keywords: `${m.group} ${m.desc}` })),
       ].map((p) => ({ ...p, group: "Features" })),
     },
     {
@@ -85,21 +101,21 @@ export function buildSiteIndex(): IndexGroup[] {
       name: "HR topics",
       pages: [
         { title: "HR Topics", href: "/hr/topics", keywords: "guides knowledge" },
-        ...topics.map((t) => ({ title: t.name, href: `/hr/topics/${t.slug}`, keywords: `${t.category} ${t.phrases.join(" ")}` })),
+        ...topics.map((t) => ({ title: topicName(t.name), href: `/hr/topics/${t.slug}`, keywords: `${t.category} ${t.phrases.join(" ")}` })),
       ].map((p) => ({ ...p, group: "HR topics" })),
     },
     {
       name: "FAQs",
       pages: [
         { title: "Questions & Answers", href: "/resources/questions-and-answers", keywords: "faq" },
-        ...faqTopics.map((t) => ({ title: `${t.name} FAQs`, href: `/resources/questions-and-answers/${t.slug}`, keywords: "faq questions" })),
+        ...faqTopics.map((t) => ({ title: faqTopicName(t.name), href: `/resources/questions-and-answers/${t.slug}`, keywords: "faq questions" })),
       ].map((p) => ({ ...p, group: "FAQs" })),
     },
     {
       name: "Glossary",
       pages: [
         { title: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", keywords: "terms definitions" },
-        ...glossary.map((g) => ({ title: g.term, href: `/resources/hr-and-payroll-glossary/${slugify(g.term)}`, keywords: g.expands ?? "" })),
+        ...glossary.map((g) => ({ title: glossaryName(termLabel(g)), href: `/resources/hr-and-payroll-glossary/${termSlug(g)}`, keywords: g.expands ?? "" })),
       ].map((p) => ({ ...p, group: "Glossary" })),
     },
     {
@@ -113,7 +129,7 @@ export function buildSiteIndex(): IndexGroup[] {
       name: "Blog",
       pages: [
         { title: "Insights", href: "/insights" },
-        ...categories.map((c) => ({ title: `${c.name} articles`, href: `/insights/category/${slugify(c.name)}`, keywords: "category" })),
+        ...categories.map((c) => ({ title: c.name, href: `/insights/category/${slugify(c.name)}`, keywords: "category" })),
         ...articles.map((a) => ({ title: a.title, href: `/insights/${a.slug}`, keywords: a.category })),
       ].map((p) => ({ ...p, group: "Blog" })),
     },
@@ -146,6 +162,10 @@ export function buildSiteIndex(): IndexGroup[] {
         })),
       ].map((p) => ({ ...p, group: "Workplace policies" })),
     },
+    collectionGroup(compareCollection, "Comparisons", "Compare"),
+    collectionGroup(labourLawCollection, "Labour law", "Labour Law"),
+    collectionGroup(lettersCollection, "Letter templates", "HR Letter Templates"),
+    collectionGroup(jobDescriptionsCollection, "Job descriptions", "Job Description Templates"),
     {
       name: "Company",
       pages: [
@@ -164,7 +184,16 @@ export function buildSiteIndex(): IndexGroup[] {
     },
   ];
 
-  return groups;
+  // Every title is the destination page's name, in Title Case.
+  return groups.map((g) => ({ ...g, pages: g.pages.map((p) => ({ ...p, title: titleCase(p.title) })) }));
+}
+
+let names: Map<string, string> | undefined;
+
+/** The page name for an internal href (server-only). */
+export function pageNameOf(href: string): string | undefined {
+  names ??= new Map(buildSiteIndex().flatMap((g) => g.pages.map((p) => [p.href, p.title] as const)));
+  return names.get(href);
 }
 
 export const pageCount = (groups: IndexGroup[]) =>

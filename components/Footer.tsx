@@ -102,7 +102,7 @@ export default function Footer() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/company/contact-hrmagix"
-                className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-500 px-5 text-[14px] font-semibold text-white transition-colors hover:bg-violet-400"
+                className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-600 px-5 text-[14px] font-semibold text-white transition-colors hover:bg-violet-700"
               >
                 Book a Demo
               </Link>

@@ -241,8 +241,8 @@ export const whitePapers: WhitePaper[] = [
     ],
     readOn: [
       { label: "Payroll", href: "/solutions/payroll" },
-      { label: "Salary & compliance calculators", href: "/resources/calculator" },
-      { label: "Why payroll takes four days", href: "/insights/why-payroll-takes-four-days" },
+      { label: "Calculator", href: "/resources/calculator" },
+      { label: "Your Payroll Does Not Take Four Days. Your Reconciliation Does.", href: "/insights/why-payroll-takes-four-days" },
     ],
   },
 
@@ -385,9 +385,9 @@ export const whitePapers: WhitePaper[] = [
       },
     ],
     readOn: [
-      { label: "SMEs", href: "/industries/smes" },
+      { label: "Small & Medium Enterprises (SMEs)", href: "/industries/smes" },
       { label: "Payroll", href: "/solutions/payroll" },
-      { label: "Professional Tax across states", href: "/insights/professional-tax-february" },
+      { label: "One Company, Several Compliance Positions: Professional Tax Across States", href: "/insights/professional-tax-february" },
     ],
   },
 
@@ -507,7 +507,7 @@ export const whitePapers: WhitePaper[] = [
     readOn: [
       { label: "Manufacturing", href: "/industries/manufacturing" },
       { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
-      { label: "A punch at 22:40 belongs to yesterday's shift", href: "/insights/shift-detection-across-midnight" },
+      { label: "A Punch at 22:40 Belongs to Yesterday's Shift", href: "/insights/shift-detection-across-midnight" },
     ],
   },
 
@@ -622,7 +622,7 @@ export const whitePapers: WhitePaper[] = [
     readOn: [
       { label: "Startups", href: "/industries/startups" },
       { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library" },
-      { label: "The sandwich rule", href: "/insights/sandwich-rule" },
+      { label: "The Sandwich Rule Is Not Unfair. Applying It Inconsistently Is.", href: "/insights/sandwich-rule" },
     ],
   },
 
@@ -738,8 +738,8 @@ export const whitePapers: WhitePaper[] = [
     ],
     readOn: [
       { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
-      { label: "Reading an Indian payslip", href: "/insights/reading-an-indian-payslip" },
-      { label: "The declaration that decides twelve months of TDS", href: "/insights/old-vs-new-regime" },
+      { label: "Reading an Indian Payslip, Line by Line", href: "/insights/reading-an-indian-payslip" },
+      { label: "The Declaration That Decides Twelve Months of TDS", href: "/insights/old-vs-new-regime" },
     ],
   },
 ];

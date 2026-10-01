@@ -137,10 +137,15 @@ export default function TestimonialDeck() {
                 onClick={() => scrollTo(i)}
                 aria-label={`Show testimonial from ${t.name}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === index ? "w-7 bg-brand" : "w-2 bg-surface-strong hover:bg-violet-300"
-                }`}
-              />
+                className="group/dot grid h-6 place-items-center rounded-full px-2"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2 rounded-full transition-all duration-300 ${
+                    i === index ? "w-7 bg-brand" : "w-2 bg-surface-strong group-hover/dot:bg-violet-300"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

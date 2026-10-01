@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon } from "./icons";
+import { titleCase } from "@/lib/names";
 
 export type Crumb = { label: string; href?: string };
 
@@ -20,6 +21,8 @@ export default function Breadcrumbs({
   className?: string;
 }) {
   if (!items.length) return null;
+  // Crumbs are page names, so they share the site's Title Case rule.
+  items = items.map((item) => ({ ...item, label: titleCase(item.label) }));
 
   return (
     <nav aria-label="Breadcrumb" className={className}>

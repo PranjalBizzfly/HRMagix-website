@@ -1,12 +1,13 @@
 import { solutions } from "@/lib/solutions";
-import { industries } from "@/lib/industries";
+import { baseIndustries as industries } from "@/lib/industries";
 import { articles } from "@/lib/blog";
 import { whitePapers } from "@/lib/papers";
-import { guides } from "@/lib/guides";
-import { calculators } from "@/lib/calculators";
+import { baseGuides as guides } from "@/lib/guides";
+import { baseCalculators as calculators } from "@/lib/calculators";
 import { policyDetails } from "@/lib/policyDetail";
 import { policyRegister } from "@/lib/policies";
 import { faqs as generalFaqs } from "@/lib/content";
+import { titleCase } from "@/lib/names";
 
 /**
  * Related content, computed from what the pages actually say.
@@ -67,7 +68,7 @@ export function relatedPages(
 ): RelatedPage[] {
   return corpus
     .filter((d) => !exclude.includes(d.href))
-    .map((d) => ({ title: d.title, href: d.href, kind: d.kind, hits: count(d.text, phrases) }))
+    .map((d) => ({ title: titleCase(d.title), href: d.href, kind: d.kind, hits: count(d.text, phrases) }))
     .filter((d) => d.hits >= minHits)
     .sort((a, b) => b.hits - a.hits)
     .slice(0, limit);

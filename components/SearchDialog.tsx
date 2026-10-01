@@ -15,7 +15,7 @@ import { Icon } from "./icons";
  */
 
 const START_HERE: { title: string; href: string }[] = [
-  { title: "Platform overview", href: "/solutions" },
+  { title: "Solutions", href: "/solutions" },
   { title: "Every feature in the app", href: "/solutions#app-features" },
   { title: "Industries", href: "/industries" },
   { title: "Pricing", href: "/pricing" },

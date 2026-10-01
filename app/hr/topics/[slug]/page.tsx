@@ -7,6 +7,7 @@ import { Band, Onward } from "@/components/editorial";
 import { Arrow, Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { topicName, titleWithName } from "@/lib/names";
 import { StatsStrip } from "@/components/sky9";
 import Accordion from "@/components/Accordion";
 import { Icon } from "@/components/icons";
@@ -30,12 +31,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const t = topicBySlug(slug);
   if (!t) return {};
+  const title = titleWithName(topicName(t.name), t.name, t.seo.title);
   return {
-    title: t.seo.title,
+    title,
     description: t.seo.description,
     ...(t.seo.keywords ? { keywords: t.seo.keywords } : {}),
     alternates: { canonical: `/hr/topics/${t.slug}` },
-    openGraph: { type: "article", title: t.seo.title, description: t.seo.description },
+    openGraph: { type: "article", title, description: t.seo.description },
   };
 }
 
@@ -90,7 +92,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
               items={[
                 { label: "Home", href: "/" },
                 { label: "HR Topics", href: "/hr/topics" },
-                { label: t.name },
+                { label: topicName(t.name) },
               ]}
             />
           </Reveal>
@@ -259,7 +261,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                     <li key={s.slug}>
                       <Link href={`/hr/topics/${s.slug}`} className="card card-hover group flex items-center justify-between gap-4 p-4">
                         <span className="font-display text-[15.5px] font-bold text-heading group-hover:text-accent">
-                          {s.name}
+                          {topicName(s.name)}
                         </span>
                         <span className="text-accent">
                           <Arrow />
@@ -278,9 +280,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                     <li key={p.href}>
                       <Link href={p.href} className="card card-hover group flex items-center justify-between gap-4 p-4">
                         <span>
-                          <span className="block font-display text-[15.5px] font-bold text-heading group-hover:text-accent">
+                          <strong className="block font-display text-[15.5px] font-bold text-heading group-hover:text-accent">
                             {p.title}
-                          </span>
+                          </strong>
                           <span className="text-[12px] text-subtle">{p.kind}</span>
                         </span>
                         <span className="text-accent">
@@ -300,7 +302,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         links={[
           { label: "HR Topics", href: "/hr/topics", note: `${topics.length} guides across five areas of HR.` },
           { label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", note: "The terms these guides use, defined." },
-          { label: "Calculators", href: "/resources/calculator", note: "Statutory formulas on your own figures." },
+          { label: "Calculator", href: "/resources/calculator", note: "Statutory formulas on your own figures." },
         ]}
       />
     </>

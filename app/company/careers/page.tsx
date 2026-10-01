@@ -203,7 +203,7 @@ export default function CareersPage() {
                 <dd className="mt-1">
                   <a
                     href={`mailto:${site.contact.email}`}
-                    className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-strong"
+                    className="inline-flex min-h-[40px] items-center text-[15px] font-semibold text-accent transition-colors hover:text-accent-strong"
                   >
                     {site.contact.email}
                   </a>
@@ -216,7 +216,7 @@ export default function CareersPage() {
                 <dd className="mt-1">
                   <a
                     href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                    className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-strong"
+                    className="inline-flex min-h-[40px] items-center text-[15px] font-semibold text-accent transition-colors hover:text-accent-strong"
                   >
                     {site.contact.phone}
                   </a>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteStats, Block, FaqSection } from "@/components/sky9";
 import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
+import { titleCase } from "@/lib/names";
 import { whitePapers, anyDownloadable } from "@/lib/papers";
 import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
@@ -108,7 +109,7 @@ export default function WhitePapersPage() {
                       href={`/resources/white-papers/${paper.slug}`}
                       className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                     >
-                      {paper.title}
+                      {titleCase(paper.title)}
                     </Link>
                   </h2>
                   <p className="mt-2.5 text-[16px] italic text-muted">{paper.subtitle}</p>
@@ -134,7 +135,7 @@ export default function WhitePapersPage() {
                       <Link
                         key={r.href}
                         href={r.href}
-                        className="text-[14px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+                        className="inline-flex min-h-[32px] items-center text-[14px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
                       >
                         {r.label}
                       </Link>
@@ -203,7 +204,7 @@ export default function WhitePapersPage() {
             note: "Shorter pieces on the same subjects, written as arguments rather than references.",
           },
           {
-            label: "Calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "Put the figures from these papers against your own numbers.",
           },

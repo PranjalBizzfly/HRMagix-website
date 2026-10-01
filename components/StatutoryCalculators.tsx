@@ -2,7 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { Icon } from "./icons";
-import { RULES, computeEsi, computeGratuity, computePf, inr } from "@/lib/statutory";
+import { RULES, codeWages, computeEsi, computeGratuity, computePf, inr } from "@/lib/statutory";
 
 /**
  * Salary and statutory calculators.
@@ -128,7 +128,8 @@ function SalaryBreakup() {
 
     // Each head is rounded where it is computed, and totals sum the rounded parts.
     const basic = Math.round((gross * basicPct) / 100);
-    const pf = computePf(basic, applyCeiling);
+    // Labour Codes (21 Nov 2025): PF wage is at least 50% of gross.
+    const pf = computePf(codeWages(basic, gross), applyCeiling);
     const pfBase = pf.pfWage;
 
     const employeePf = pf.employee;
@@ -251,7 +252,7 @@ function SalaryBreakup() {
               />
               <Row
                 term="Employee ESI contribution"
-                value={result.esiApplies ? `− ${inr(result.employeeEsi)}` : "Not applicable"}
+                value={result.esiApplies && result.employeeEsi > 0 ? `− ${inr(result.employeeEsi)}` : "Not applicable"}
                 note={
                   result.esiApplies
                     ? "0.75% of gross"

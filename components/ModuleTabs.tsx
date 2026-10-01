@@ -70,7 +70,7 @@ export default function ModuleTabs() {
               {t}
               <span
                 className={`rounded-full px-1.5 text-[11px] tabular-nums ${
-                  selected ? "bg-white/20" : "bg-surface-sunken text-subtle"
+                  selected ? "bg-white text-violet-800" : "bg-surface-sunken text-subtle"
                 }`}
               >
                 {count}

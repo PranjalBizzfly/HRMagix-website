@@ -39,8 +39,8 @@ export const topicsPeople: Topic[] = [
     software:
       "Software helps engagement mostly by removing friction, fast answers to routine questions, visible recognition, regular 1-on-1s, and by giving employees a place to be heard.",
     inHRMagix: [
-      { label: "Recognition", href: "/features/recognition", note: "Peer kudos, value badges and a live culture feed." },
-      { label: "1-on-1s & Meetings", href: "/features/meetings", note: "Recurring coaching conversations with shared agendas." },
+      { label: "Recognition Module", href: "/features/recognition", note: "Peer kudos, value badges and a live culture feed." },
+      { label: "1-on-1s & Meetings Module", href: "/features/meetings", note: "Recurring coaching conversations with shared agendas." },
       { label: "Engagement in the app", href: "/solutions#app-features", note: "Meetings, Recognition, Growth & Points, Wellness and Speak Up." },
     ],
     faqs: [
@@ -97,7 +97,7 @@ export const topicsPeople: Topic[] = [
     software:
       "Recognition software makes appreciation quick to give and visible to everyone, a feed of kudos and badges tied to company values, and shows leaders where recognition is and is not reaching.",
     inHRMagix: [
-      { label: "Recognition", href: "/features/recognition", note: "Peer-to-peer kudos, core-value badges, a culture feed and a monthly leaderboard." },
+      { label: "Recognition Module", href: "/features/recognition", note: "Peer-to-peer kudos, core-value badges, a culture feed and a monthly leaderboard." },
       { label: "Growth & Points", href: "/solutions#app-features", note: "Growth points with an all-time balance on every dashboard." },
     ],
     faqs: [
@@ -210,7 +210,7 @@ export const topicsPeople: Topic[] = [
     software:
       "Analytics on an integrated HRMS reads from one record, so attendance, leave, overtime, attrition and payroll cost can be sliced the same way without exporting and merging spreadsheets.",
     inHRMagix: [
-      { label: "Analytics", href: "/features/analytics", note: "Headcount, attrition risk, tenure, overtime, leave utilisation and payroll budget variance." },
+      { label: "Analytics Module", href: "/features/analytics", note: "Headcount, attrition risk, tenure, overtime, leave utilisation and payroll budget variance." },
       { label: "HR Analytics", href: "/solutions/hr-analytics", note: "Headcount, attrition, overtime and payroll cost." },
     ],
     faqs: [
@@ -270,7 +270,7 @@ export const topicsPeople: Topic[] = [
     inHRMagix: [
       { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library", note: "Twenty-five HR policy templates." },
       { label: "All Policies", href: "/solutions#app-features", note: "Every company policy in one list in the app." },
-      { label: "Documents", href: "/features/documents", note: "Handbook, NDA and policy sign-off tracking." },
+      { label: "Documents Module", href: "/features/documents", note: "Handbook, NDA and policy sign-off tracking." },
     ],
     faqs: [
       { q: "Which HR policies does a company need?", a: "Commonly leave, attendance, code of conduct, prevention of harassment, notice period, travel and expenses, and remote work. Some are legally required for certain establishments; the rest depend on how the company works." },
@@ -385,7 +385,7 @@ export const topicsPeople: Topic[] = [
       "An integrated HR platform automates across processes, not only within them, an approved leave day becomes a payroll input, a missed punch becomes an exception, a probation date becomes a reminder, without re-keying between tools.",
     inHRMagix: [
       { label: "How Setup Works", href: "/how-setup-works", note: "Add your team, switch on modules, then reminders, approvals and reports run themselves." },
-      { label: "HRMS", href: "/solutions/hrms", note: "One employee record every module reads from." },
+      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "One employee record every module reads from." },
     ],
     faqs: [
       { q: "Which HR tasks are easiest to automate?", a: "Rule-based, high-volume tasks: leave accrual, approval routing, reminders, statutory calculations and document generation." },
@@ -441,9 +441,9 @@ export const topicsPeople: Topic[] = [
     software:
       "Software supports retention by surfacing early signals in the data, attrition concentrated by team or tenure, and by keeping growth, recognition and regular conversations part of normal work.",
     inHRMagix: [
-      { label: "Analytics", href: "/features/analytics", note: "Early-warning attrition risk indicators and tenure analysis." },
-      { label: "Succession", href: "/features/succession", note: "Readiness for roles whose vacancy would hurt most." },
-      { label: "Recognition", href: "/features/recognition", note: "Peer kudos and value badges." },
+      { label: "Analytics Module", href: "/features/analytics", note: "Early-warning attrition risk indicators and tenure analysis." },
+      { label: "Succession Module", href: "/features/succession", note: "Readiness for roles whose vacancy would hurt most." },
+      { label: "Recognition Module", href: "/features/recognition", note: "Peer kudos and value badges." },
     ],
     faqs: [
       { q: "Why do employees leave?", a: "Common reasons include limited growth, feeling unrecognised, workload, perceived unfairness and the relationship with their manager. The mix differs by organisation, which is why it is worth measuring locally." },

@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import { FaqSection, SiteStats } from "@/components/sky9";
 import { glossaryFaqs } from "@/lib/pageFaqs/glossary";
+import { glossaryMoreFaqsA } from "@/lib/pageFaqs/glossaryMoreA";
+import { glossaryMoreFaqsB } from "@/lib/pageFaqs/glossaryMoreB";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { glossary, type Term } from "@/lib/glossary";
+import { glossary, type Term, termSlug, termLabel } from "@/lib/glossary";
 import { relatedPages, relatedQuestions, slugify } from "@/lib/related";
 import { Band, Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { glossaryName } from "@/lib/names";
 import { Icon } from "@/components/icons";
+import Photo from "@/components/Photo";
+import { bySlot } from "@/lib/media";
+import { glossaryPractice } from "@/lib/pageContent/glossaryPractice";
 
 /**
  * One glossary term.
@@ -22,7 +28,7 @@ import { Icon } from "@/components/icons";
 
 export const dynamicParams = false;
 
-const termSlug = (t: Term) => slugify(t.term);
+
 const bySlug = (slug: string) => glossary.find((t) => termSlug(t) === slug);
 
 /** Phrases that count as a mention of the term. */
@@ -39,9 +45,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = bySlug((await params).slug);
   if (!t) return {};
-  const name = t.expands ? `${t.term} (${t.expands})` : t.term;
   return {
-    title: `${name}: HR & Payroll Glossary`,
+    title: `${glossaryName(termLabel(t))}: HR & Payroll Glossary`,
     description: t.definition.length > 158 ? `${t.definition.slice(0, 155).trimEnd()}…` : t.definition,
     alternates: { canonical: `/resources/hr-and-payroll-glossary/${termSlug(t)}` },
   };
@@ -74,14 +79,23 @@ export default async function GlossaryTermPage({
 
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface pb-14 pt-[104px] sm:pb-16 sm:pt-[128px]">
+        {/* Hero photo: expansion terms only (existing terms have none). */}
+        {bySlot(`glossary-${termSlug(t)}`) && (
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <Photo slot={`glossary-${termSlug(t)}`} cover rounded="rounded-none" hover={false} sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65" aria-hidden="true" />
+            <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent" aria-hidden="true" />
+          </div>
+        )}
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
                 { label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary" },
-                { label: t.term },
+                { label: glossaryName(termLabel(t)) },
               ]}
             />
           </Reveal>
@@ -89,8 +103,8 @@ export default async function GlossaryTermPage({
             <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
             HR &amp; payroll glossary
           </span>
-          <h1 className="display display-xl mt-5 text-balance">{t.term}</h1>
-          {t.expands && (
+          <h1 className="display display-xl mt-5 text-balance">{termLabel(t)}</h1>
+          {t.expands && termLabel(t) === t.term && (
             <p className="mt-3 font-display text-[18px] font-semibold text-accent sm:text-[20px]">
               {t.expands}
             </p>
@@ -121,6 +135,15 @@ export default async function GlossaryTermPage({
               </Reveal>
             )}
 
+            {glossaryPractice[termSlug(t)] && (
+              <Reveal y={12} className="mt-10">
+                <h2 className="text-[12px] font-bold uppercase tracking-[0.16em] text-label">In practice</h2>
+                {glossaryPractice[termSlug(t)].map((p, i) => (
+                  <p key={i} className="mt-4 text-[16.5px] leading-[1.75] text-body">{p}</p>
+                ))}
+              </Reveal>
+            )}
+
             {t.see && (
               <Reveal y={12} className="mt-8">
                 <Link
@@ -131,9 +154,9 @@ export default async function GlossaryTermPage({
                     <span className="block text-[12px] font-bold uppercase tracking-[0.14em] text-label">
                       Treated in depth
                     </span>
-                    <span className="mt-1 block font-display text-[17px] font-bold text-heading">
+                    <strong className="mt-1 block font-display text-[17px] font-bold text-heading">
                       {t.see.label}
-                    </span>
+                    </strong>
                   </span>
                   <span className="text-accent">
                     <Arrow />
@@ -185,9 +208,9 @@ export default async function GlossaryTermPage({
                         className="group flex min-h-[44px] items-center justify-between gap-3 rounded-lg px-2 py-1.5 hover:bg-surface-sunken"
                       >
                         <span className="min-w-0">
-                          <span className="block truncate text-[14px] font-semibold text-heading group-hover:text-accent">
+                          <strong className="block truncate text-[14px] font-semibold text-heading group-hover:text-accent">
                             {p.title}
-                          </span>
+                          </strong>
                           <span className="block text-[12px] text-subtle">{p.kind}</span>
                         </span>
                         <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0 text-accent" />
@@ -210,7 +233,7 @@ export default async function GlossaryTermPage({
                         href={`/resources/hr-and-payroll-glossary/${termSlug(o)}`}
                         className="inline-flex min-h-[36px] items-center rounded-full bg-surface-sunken px-3.5 text-[13px] font-semibold text-body ring-1 ring-line transition-colors hover:text-accent hover:ring-line-accent"
                       >
-                        {o.term}
+                        {glossaryName(termLabel(o))}
                       </Link>
                     </li>
                   ))}
@@ -228,7 +251,7 @@ export default async function GlossaryTermPage({
             <Link href={`/resources/hr-and-payroll-glossary/${termSlug(prev)}`} className="card card-hover p-5">
               <span className="block text-[12px] text-subtle">Previous term</span>
               <span className="mt-1 block font-display text-[16px] font-bold text-heading">
-                ← {prev.term}
+                ← {glossaryName(termLabel(prev))}
               </span>
             </Link>
           ) : (
@@ -238,7 +261,7 @@ export default async function GlossaryTermPage({
             <Link href={`/resources/hr-and-payroll-glossary/${termSlug(next)}`} className="card card-hover p-5 sm:text-right">
               <span className="block text-[12px] text-subtle">Next term</span>
               <span className="mt-1 block font-display text-[16px] font-bold text-heading">
-                {next.term} →
+                {glossaryName(termLabel(next))} →
               </span>
             </Link>
           )}
@@ -247,8 +270,8 @@ export default async function GlossaryTermPage({
 
       <FaqSection
         title={`${t.term}: common questions`}
-        items={glossaryFaqs[termSlug(t)] ?? []}
-        more={{ label: "The full glossary", href: "/resources/hr-and-payroll-glossary" }}
+        items={glossaryFaqs[termSlug(t)] ?? glossaryMoreFaqsA[termSlug(t)] ?? glossaryMoreFaqsB[termSlug(t)] ?? []}
+        more={{ label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary" }}
       />
 
       <Onward
@@ -259,12 +282,12 @@ export default async function GlossaryTermPage({
             note: `All ${glossary.length} terms, A to Z, searchable on one page.`,
           },
           {
-            label: "Calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "Run the statutory formulas on your own figures.",
           },
           {
-            label: "HR guides",
+            label: "HR Guides",
             href: "/resources/hr-guides",
             note: "Where these terms are worked through end to end.",
           },

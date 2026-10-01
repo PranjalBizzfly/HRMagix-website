@@ -1,0 +1,15 @@
+[
+ {"slot":"glossary-hris","alt":"Five colleagues around a long table of laptops in a glass-walled open office, one standing as they talk through HR records","issues":"Readable 'HR Operations' text on wall screen; HP and Dell laptop logos; readable screen content"},
+ {"slot":"glossary-hcm","alt":"Four professionals, one woman in a sari mid-sentence, meet around a glass conference table overlooking a green Bangalore skyline","issues":"Readable 'MANTRI' sign on a building"},
+ {"slot":"glossary-peo","alt":"Two executives in dark suits shake hands across a boardroom table as city lights come on outside at dusk","issues":"Apple laptop logo"},
+ {"slot":"glossary-ats","alt":"A young recruit and a smiling HR manager in a navy blazer talk across a desk inside a glass meeting cabin","issues":"Apple laptop logo"},
+ {"slot":"glossary-hra","alt":"A man in a checked shirt points at salary figures on a laptop while a colleague in a mustard kurta reviews the papers","issues":"Readable 'Tax Compliance 23-24' label; readable spreadsheet on screen; laptop logo"},
+ {"slot":"glossary-lta","alt":"An executive in a navy suit holds a passport and travel tickets at a desk overlooking the Mumbai seafront","issues":"Passport emblem and printing visible; dashboard UI on laptop screen"},
+ {"slot":"glossary-special-allowance","alt":"A finance head in a grey suit and a colleague taking notes discuss salary components at a long table beside floor-to-ceiling glass","issues":"Apple laptop logo; readable chart on screen and printed chart title"},
+ {"slot":"glossary-perquisites","alt":"A woman in a black blazer and sari and a grey-haired executive discuss terms at a walnut table beside a city-view window","issues":"Readable signage on a building outside"},
+ {"slot":"glossary-reimbursements","alt":"Two employees with ID lanyards sort expense receipts with a calculator and laptop at a desk in a plant-filled office","issues":"Apple laptop logo"},
+ {"slot":"glossary-form-12bb","alt":"Two women at a row of desks review printed declaration forms beside a laptop, with green treetops outside the window","issues":"Readable form titles on papers; readable spreadsheet on screen"},
+ {"slot":"glossary-tan","alt":"A woman in a grey sari and a bearded man in a blazer go through tax and payroll binders at a desk by the window","issues":"Readable binder labels ('Tax Deduction & Payroll Records', 'Payroll Register'); readable screen"},
+ {"slot":"glossary-standard-deduction","alt":"A man in a black shirt explains tax figures to a colleague in a blue kurta at a long desk in a bright high-rise office","issues":"Readable spreadsheet on screen; Apple laptop logo"},
+ {"slot":"glossary-variable-pay","alt":"Two managers review bonus and performance spreadsheets at a conference table with office towers beyond the window","issues":"Readable 'DLF' and 'Gateway to Cyber Hub' signage (real third-party brands); readable folder titles; Dell laptop logo"}
+]

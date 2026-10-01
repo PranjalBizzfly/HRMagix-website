@@ -27,7 +27,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["payroll", "payslip", "salary", "arrear", "bank file", "increment", "ctc", "take-home"],
     links: [
       { label: "Payroll", href: "/solutions/payroll" },
-      { label: "Payroll feature", href: "/features/payroll" },
+      { label: "Payroll Module", href: "/features/payroll" },
       { label: "Salary Calculator", href: "/calculators/salary" },
     ],
   },
@@ -38,7 +38,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["epf", "pf", "esi", "professional tax", "pt", "lwf", "labour welfare", "tds", "form 16", "form 24q", "gratuity", "ecr", "section 192", "statutory"],
     links: [
       { label: "Compliance", href: "/solutions/compliance" },
-      { label: "PF Calculator", href: "/calculators/pf" },
+      { label: "Provident Fund (PF) Calculator", href: "/calculators/pf" },
       { label: "Gratuity Calculator", href: "/calculators/gratuity" },
     ],
   },
@@ -49,7 +49,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["attendance", "shift", "punch", "biometric", "geo", "overtime", "late", "kiosk", "regularis"],
     links: [
       { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
-      { label: "Attendance & Shifts", href: "/features/attendance" },
+      { label: "Attendance & Shifts Module", href: "/features/attendance" },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["leave", "holiday", "comp-off", "sandwich", "accrual", "carry"],
     links: [
       { label: "Leave Management", href: "/solutions/leave-management" },
-      { label: "Leaves & Holidays", href: "/features/leaves" },
+      { label: "Leaves & Holidays Module", href: "/features/leaves" },
     ],
   },
   {
@@ -69,7 +69,7 @@ export const faqTopics: FaqTopic[] = [
     phrases: ["okr", "kra", "review", "rating", "calibration", "9-box", "pip", "1-on-1", "recognition", "goal", "performance"],
     links: [
       { label: "Performance & OKRs", href: "/solutions/performance-and-okrs" },
-      { label: "Objectives & OKRs", href: "/features/okrs" },
+      { label: "Objectives & OKRs Module", href: "/features/okrs" },
     ],
   },
   {

@@ -8,6 +8,7 @@ import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
+import { bySlot } from "@/lib/media";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -56,6 +57,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const industry = industryBySlug(slug);
   if (!industry) notFound();
+  // Original industries carry their own photo; expansion industries use their hero slot.
+  const heroSlot = industry.image ?? (bySlot(`industry-${industry.slug}`) ? `industry-${industry.slug}` : undefined);
 
   const others = industries.filter((i) => i.slug !== slug).slice(0, 3);
 
@@ -64,7 +67,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       {/* ---- Immersive opener ---- */}
       <header className="page-hero relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <Photo slot={industry.image} cover rounded="rounded-none" hover={false} sizes="100vw" />
+          {heroSlot && <Photo slot={heroSlot} cover rounded="rounded-none" hover={false} sizes="100vw" />}
           {/*
             Two overlays rather than one. The horizontal ramp keeps the headline
             column dark enough for white text; the vertical one darkens the top

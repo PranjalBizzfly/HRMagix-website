@@ -7,7 +7,10 @@ import { Band, Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { faqTopicName } from "@/lib/names";
 import Accordion from "@/components/Accordion";
+import ContentSections from "@/components/ContentSections";
+import { hubContent } from "@/lib/pageContent";
 
 /**
  * One FAQ topic. Every question here is answered elsewhere on the site too;
@@ -34,7 +37,7 @@ export async function generateMetadata({
   const full = `${t.intro} ${n} questions about ${t.name.toLowerCase()} in HRMagix, answered.`;
   const description = full.length <= 160 ? full : `${t.intro} ${n} questions answered.`;
   return {
-    title: `${t.name} FAQs: ${n} Questions Answered`,
+    title: `${faqTopicName(t.name)}: ${n} Questions Answered`,
     description,
     alternates: { canonical: `/resources/questions-and-answers/${t.slug}` },
   };
@@ -70,7 +73,7 @@ export default async function FaqTopicPage({ params }: { params: Promise<{ topic
               items={[
                 { label: "Home", href: "/" },
                 { label: "Questions & Answers", href: "/resources/questions-and-answers" },
-                { label: t.name },
+                { label: faqTopicName(t.name) },
               ]}
             />
           </Reveal>
@@ -85,9 +88,12 @@ export default async function FaqTopicPage({ params }: { params: Promise<{ topic
 
       <SiteStats />
 
+      <ContentSections content={hubContent[`/resources/questions-and-answers/${t.slug}`]} ground="canvas" />
+
       <Band ground="surface" size="lg">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] lg:gap-14">
           <div className="min-w-0">
+            <h2 className="sr-only">{t.name} questions and answers</h2>
             {questions.length ? (
               <Accordion
                 items={questions.map((q) => ({
@@ -141,7 +147,7 @@ export default async function FaqTopicPage({ params }: { params: Promise<{ topic
                       href={`/resources/questions-and-answers/${o.slug}`}
                       className="flex min-h-[40px] items-center justify-between gap-3 rounded-lg px-2 text-[14px] text-body hover:bg-surface-sunken hover:text-accent"
                     >
-                      {o.name}
+                      {faqTopicName(o.name)}
                       <span className="text-[12px] tabular-nums text-subtle">{byTopic[o.slug].length}</span>
                     </Link>
                   </li>

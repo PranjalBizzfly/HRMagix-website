@@ -102,7 +102,7 @@ export const marketingFaqs: Record<string, PageFaq[]> = {
       a: "The employee record, because the entity structure has to be right before payroll can be.",
     },
     {
-      q: "What if my company does not fit any of the six industries?",
+      q: "What if my company does not fit any of the industries listed?",
       a: "The sensible order is almost always the record first, then whichever of attendance or payroll is currently costing you the most time. A short conversation with the team usually settles it.",
     },
     {

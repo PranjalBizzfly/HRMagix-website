@@ -183,7 +183,7 @@ export default function ContactPage() {
                   </p>
                   <Link
                     href="https://app.hrmagix.com/login"
-                    className="group mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-white"
+                    className="group mt-5 inline-flex min-h-[40px] items-center gap-2 text-[14px] font-semibold text-white"
                   >
                     Sign in to the workspace <Arrow />
                   </Link>

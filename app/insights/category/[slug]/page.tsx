@@ -9,6 +9,9 @@ import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { titleCase } from "@/lib/names";
+import ContentSections from "@/components/ContentSections";
+import { hubContent } from "@/lib/pageContent";
 
 /** One blog category: its articles, newest first, and where to read further. */
 
@@ -29,7 +32,7 @@ export async function generateMetadata({
   const c = bySlug(slug);
   if (!c) return {};
   return {
-    title: `${c.name}: HRMagix Blog`,
+    title: `${titleCase(c.name)}: HRMagix Blog`,
     description: c.blurb,
     alternates: { canonical: `/insights/category/${slug}` },
   };
@@ -52,7 +55,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
         <div className="shell">
           <Reveal y={8}>
             <Breadcrumbs
-              items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/insights" }, { label: c.name }]}
+              items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/insights" }, { label: titleCase(c.name) }]}
             />
           </Reveal>
           <span className="eyebrow mt-8">
@@ -79,7 +82,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
                   : "bg-surface-sunken text-body ring-1 ring-line hover:text-accent hover:ring-line-accent"
               }`}
             >
-              {o.name}
+              {titleCase(o.name)}
             </Link>
           ))}
           <Link
@@ -98,7 +101,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
                   For {a.reader}
                 </span>
                 <span className="mt-3 font-display text-[20px] font-bold leading-snug text-heading group-hover:text-accent">
-                  {a.title}
+                  {titleCase(a.title)}
                 </span>
                 <span className="mt-3 flex-1 text-[15px] leading-[1.65] text-muted">{a.standfirst}</span>
                 <span className="mt-5 inline-flex items-center gap-2 text-[13.5px] font-semibold text-accent">
@@ -109,6 +112,8 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
           ))}
         </ul>
       </Block>
+
+      <ContentSections content={hubContent[`/insights/category/${slug}`]} ground="canvas" />
 
       {categoryFaqs[slug] && (
         <FaqSection title={`${c.name}: common questions`} items={categoryFaqs[slug]} ground="sunken" />
@@ -121,9 +126,9 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
               <li key={p.href}>
                 <Link href={p.href} className="card card-hover group flex h-full flex-col p-5">
                   <span className="text-[12px] text-subtle">{p.kind}</span>
-                  <span className="mt-1 font-display text-[16px] font-bold text-heading group-hover:text-accent">
+                  <strong className="mt-1 font-display text-[16px] font-bold text-heading group-hover:text-accent">
                     {p.title}
-                  </span>
+                  </strong>
                 </Link>
               </li>
             ))}
@@ -134,7 +139,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
       <Onward
         links={[
           { label: "Insights", href: "/insights", note: "Every post, across all four categories." },
-          { label: "HR guides", href: "/resources/hr-guides", note: "Longer, chaptered treatments with a checklist." },
+          { label: "HR Guides", href: "/resources/hr-guides", note: "Longer, chaptered treatments with a checklist." },
           { label: "HR & Payroll Glossary", href: "/resources/hr-and-payroll-glossary", note: "The terms these articles use, defined." },
         ]}
       />

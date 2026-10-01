@@ -53,17 +53,17 @@ const sections: {
     lead: "Each calculator runs in your browser on numbers you type in. Nothing is submitted, and the working is shown beneath every result so the arithmetic can be checked by hand.",
     items: [
       {
-        label: "Salary breakup calculator",
+        label: "Salary Calculator",
         href: "/calculators/salary",
         note: "One monthly gross in; basic, statutory deductions on both sides, take-home before income tax, and cost to company out.",
       },
       {
-        label: "PF Calculator",
+        label: "Provident Fund (PF) Calculator",
         href: "/calculators/pf",
         note: "The provident fund wage base first, then the employee's 12%, the employer's 12%, and the 8.33% pension split within it.",
       },
       {
-        label: "ESI Calculator",
+        label: "Employees' State Insurance (ESI) Calculator",
         href: "/calculators/esi",
         note: "The eligibility test against the ₹21,000 gross threshold, then the 0.75% and 3.25% contributions.",
       },
@@ -89,37 +89,37 @@ const sections: {
     lead: "Short diagnostic pieces. Each takes one mechanism that routinely produces a surprising figure and works through what actually happened.",
     items: [
       {
-        label: "Why payroll takes four days",
+        label: "Your Payroll Does Not Take Four Days. Your Reconciliation Does.",
         href: "/insights/why-payroll-takes-four-days",
         note: "The four days go on establishing what happened, not on calculating it. Where they actually go.",
       },
       {
-        label: "Reading an Indian payslip",
+        label: "Reading an Indian Payslip, Line by Line",
         href: "/insights/reading-an-indian-payslip",
         note: "Line by line, and which components sit inside which statutory base.",
       },
       {
-        label: "The ESI wage threshold mid-year",
+        label: "The ESI Threshold Is Not a Monthly Test, and Treating It as One Costs Money",
         href: "/insights/esi-threshold-moving-wage-base",
         note: "Why eligibility is fixed for the contribution period rather than retested every month.",
       },
       {
-        label: "Professional tax in February",
+        label: "One Company, Several Compliance Positions: Professional Tax Across States",
         href: "/insights/professional-tax-february",
         note: "The state where one month's deduction differs from the other eleven.",
       },
       {
-        label: "Old regime or new",
+        label: "The Declaration That Decides Twelve Months of TDS",
         href: "/insights/old-vs-new-regime",
         note: "Why the answer differs between two people on identical salaries.",
       },
       {
-        label: "Full and final settlement",
+        label: "What a Full-and-Final Settlement Actually Has to Include",
         href: "/insights/full-and-final-settlement",
         note: "The one payroll event that reads from every other module at once.",
       },
       {
-        label: "Shifts that cross midnight",
+        label: "A Punch at 22:40 Belongs to Yesterday's Shift",
         href: "/insights/shift-detection-across-midnight",
         note: "The most common reason an attendance report and a payroll run disagree.",
       },
@@ -130,12 +130,12 @@ const sections: {
     lead: "Longer and instructional. These are written for somebody who has been handed the work rather than the topic.",
     items: [
       {
-        label: "Guide 01, Running your first payroll in a new system",
+        label: "Running Your First Payroll in a New System",
         href: "/resources/hr-guides/first-payroll-run",
         note: "Switch timing, the data that must be right first, carrying year-to-date figures, and running a parallel month.",
       },
       {
-        label: "Guide 03, Attendance for a workforce that is not at a desk",
+        label: "Setting Up Attendance for a Workforce That Is Not at a Desk",
         href: "/resources/hr-guides/attendance-for-shift-workforces",
         note: "Paid days are decided upstream of payroll. This is where they are decided.",
       },
@@ -145,7 +145,7 @@ const sections: {
         note: "The sequence end to end, including which parts of the work are yours.",
       },
       {
-        label: "Spreadsheets, point tools or one system",
+        label: "HRMS Comparison",
         href: "/resources/hrms-comparison",
         note: "If you are still deciding on the approach rather than the implementation.",
       },
@@ -156,22 +156,22 @@ const sections: {
     lead: "Reference. Rates appear only where central statute fixes them; state heads are described as varying rather than given a number.",
     items: [
       {
-        label: "The statutory engine",
+        label: "Compliance",
         href: "/solutions/compliance",
         note: "EPF, ESI, PT, LWF and TDS: what applies when, the basis each is computed on, and the file the run produces.",
       },
       {
-        label: "Payroll module",
+        label: "Payroll",
         href: "/solutions/payroll",
         note: "How a payroll month runs in order, and what leaves the building at the end of it.",
       },
       {
-        label: "HR and payroll glossary",
+        label: "HR & Payroll Glossary",
         href: "/resources/hr-and-payroll-glossary",
         note: "PF wage, contribution period, arrears, LOP, CTC, defined plainly, with the distinctions people get wrong.",
       },
       {
-        label: "Gratuity policy",
+        label: "Gratuity Policy (Indian Labour Law)",
         href: "/policy-centre/workplace-policy-library/gratuity",
         note: "The approved policy document, alongside the statutory position.",
       },
@@ -182,22 +182,22 @@ const sections: {
     lead: "For a board pack, a policy note, or a conversation with a finance lead who wants the reasoning rather than the output.",
     items: [
       {
-        label: "The chain of custody from punch to payslip",
+        label: "Payroll as a Chain of Custody",
         href: "/resources/white-papers/chain-of-custody",
         note: "Why the handovers between systems, not the arithmetic, are where payroll goes wrong.",
       },
       {
-        label: "The exceptions engine",
+        label: "The Shop Floor Is an Exceptions Engine",
         href: "/resources/white-papers/exceptions-engine",
         note: "Attendance systems are judged on their exceptions rather than their happy path.",
       },
       {
-        label: "State by state",
+        label: "One Company, Several Compliance Positions",
         href: "/resources/white-papers/state-by-state",
         note: "What multi-state employment actually costs administratively.",
       },
       {
-        label: "Questions and answers",
+        label: "Questions & Answers",
         href: "/resources/questions-and-answers",
         note: "Every question on the site in one place, including the payroll ones.",
       },

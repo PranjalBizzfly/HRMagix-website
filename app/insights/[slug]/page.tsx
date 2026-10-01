@@ -11,6 +11,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Photo from "@/components/Photo";
 import Prose, { Contents, type ProseBlock } from "@/components/Prose";
 import { site } from "@/lib/content";
+import { titleCase } from "@/lib/names";
+import { slugify } from "@/lib/related";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -79,7 +81,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 items={[
                   { label: "Home", href: "/" },
                   { label: "Insights", href: "/insights" },
-                  { label: article.category },
+                  { label: titleCase(article.category), href: `/insights/category/${slugify(article.category)}` },
+                  { label: titleCase(article.title) },
                 ]}
               />
             </Reveal>
@@ -179,7 +182,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <Onward
           title="Related reading"
           links={related.map((r) => ({
-            label: r.title,
+            label: titleCase(r.title),
             href: `/insights/${r.slug}`,
             note: r.standfirst,
           }))}

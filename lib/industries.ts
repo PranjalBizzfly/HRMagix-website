@@ -1,5 +1,6 @@
+import { industriesMore } from "./industriesMore";
 /**
- * The six industry pages.
+ * The industry pages.
  *
  * These are not six versions of one page with the noun swapped. Each one is
  * organised around the specific operational problem that kind of company has —
@@ -22,7 +23,8 @@ export type Industry = {
   audience: string;
   title: string;
   standfirst: string;
-  image: string;
+  /** Media slot. Optional: industries added later have no unused photograph. */
+  image?: string;
   seo: { title: string; description: string; keywords: string[]; focus?: string };
   /** The situation, in that reader's own terms. */
   situation: string[];
@@ -47,7 +49,7 @@ export type Industry = {
   questions: IndustryQuestion[];
 };
 
-export const industries: Industry[] = [
+export const baseIndustries: Industry[] = [
   {
     slug: "startups",
     href: "/industries/startups",
@@ -324,7 +326,7 @@ export const industries: Industry[] = [
   {
     slug: "smes",
     href: "/industries/smes",
-    name: "SMEs",
+    name: "Small & Medium Enterprises (SMEs)",
     audience: "Multi-branch, multi-state businesses, roughly 100 to 1,000 people",
     title: "One company on the letterhead. Several under the law.",
     standfirst:
@@ -865,5 +867,7 @@ export const industries: Industry[] = [
     ],
   },
 ];
+
+export const industries: Industry[] = [...baseIndustries, ...industriesMore];
 
 export const industryBySlug = (slug: string) => industries.find((i) => i.slug === slug);

@@ -280,7 +280,7 @@ export default function ComparisonPage() {
                   >
                     <a
                       href={`#row-${i + 1}`}
-                      className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                      className="inline-flex min-h-[24px] items-center transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                     >
                       {row.criterion}
                     </a>
@@ -449,12 +449,12 @@ export default function ComparisonPage() {
       <Onward
         links={[
           {
-            label: "HRMS",
+            label: "Human Resource Management System (HRMS)",
             href: "/solutions/hrms",
             note: "What the single-record approach looks like in practice.",
           },
           {
-            label: "First payroll run",
+            label: "Running Your First Payroll in a New System",
             href: "/resources/hr-guides/first-payroll-run",
             note: "The guide for actually making the move, including the parallel month.",
           },

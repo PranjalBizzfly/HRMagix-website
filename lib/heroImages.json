@@ -1,0 +1,93 @@
+[
+ {
+  "slot": "glossary-hris",
+  "src": "/media/hero-glossary-hris.webp",
+  "alt": "Five colleagues around a long table of laptops in a glass-walled open office, one standing as they talk through HR records",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-hcm",
+  "src": "/media/hero-glossary-hcm.webp",
+  "alt": "Four professionals, one woman in a sari mid-sentence, meet around a glass conference table overlooking a green Bangalore skyline",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-peo",
+  "src": "/media/hero-glossary-peo.webp",
+  "alt": "Two executives in dark suits shake hands across a boardroom table as city lights come on outside at dusk",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-ats",
+  "src": "/media/hero-glossary-ats.webp",
+  "alt": "A young recruit and a smiling HR manager in a navy blazer talk across a desk inside a glass meeting cabin",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-hra",
+  "src": "/media/hero-glossary-hra.webp",
+  "alt": "A man in a checked shirt points at salary figures on a laptop while a colleague in a mustard kurta reviews the papers",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-lta",
+  "src": "/media/hero-glossary-lta.webp",
+  "alt": "An executive in a navy suit holds a passport and travel tickets at a desk overlooking the Mumbai seafront",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-special-allowance",
+  "src": "/media/hero-glossary-special-allowance.webp",
+  "alt": "A finance head in a grey suit and a colleague taking notes discuss salary components at a long table beside floor-to-ceiling glass",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-variable-pay",
+  "src": "/media/hero-glossary-variable-pay.webp",
+  "alt": "Two managers review bonus and performance spreadsheets at a conference table with office towers beyond the window",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-reimbursements",
+  "src": "/media/hero-glossary-reimbursements.webp",
+  "alt": "Two employees with ID lanyards sort expense receipts with a calculator and laptop at a desk in a plant-filled office",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-perquisites",
+  "src": "/media/hero-glossary-perquisites.webp",
+  "alt": "A woman in a black blazer and sari and a grey-haired executive discuss terms at a walnut table beside a city-view window",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-form-12bb",
+  "src": "/media/hero-glossary-form-12bb.webp",
+  "alt": "Two women at a row of desks review printed declaration forms beside a laptop, with green treetops outside the window",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-tan",
+  "src": "/media/hero-glossary-tan.webp",
+  "alt": "A woman in a grey sari and a bearded man in a blazer go through tax and payroll binders at a desk by the window",
+  "width": 2560,
+  "height": 1440
+ },
+ {
+  "slot": "glossary-standard-deduction",
+  "src": "/media/hero-glossary-standard-deduction.webp",
+  "alt": "A man in a black shirt explains tax figures to a colleague in a blue kurta at a long desk in a bright high-rise office",
+  "width": 2560,
+  "height": 1440
+ }
+]

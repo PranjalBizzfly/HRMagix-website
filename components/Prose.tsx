@@ -132,7 +132,7 @@ function Block({ block }: { block: ProseBlock }) {
        */
       return (
         <Reveal y={12} as="figure" className="my-9 min-w-0">
-          <div className="overflow-hidden rounded-2xl ring-1 ring-line sm:overflow-x-auto">
+          <div tabIndex={0} role="region" aria-label="Table" className="overflow-hidden rounded-2xl ring-1 ring-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand sm:overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <caption className="sr-only">{block.caption}</caption>
               <thead className="hidden sm:table-header-group">

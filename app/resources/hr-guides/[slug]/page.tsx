@@ -8,6 +8,9 @@ import { Onward } from "@/components/editorial";
 import { Button } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Photo from "@/components/Photo";
+import { bySlot } from "@/lib/media";
+import { titleCase } from "@/lib/names";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -52,19 +55,36 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const guide = guideBySlug(slug);
   if (!guide) notFound();
 
-  const others = guides.filter((g) => g.slug !== guide.slug);
+  // Six neighbours, following this guide in order, so every guide links onward.
+  const at = guides.findIndex((g) => g.slug === guide.slug);
+  const others = [...guides.slice(at + 1), ...guides.slice(0, at)].slice(0, 6);
 
   return (
     <>
-      <header className="page-hero border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
-        <div className="shell">
+      <header className="page-hero relative isolate overflow-hidden border-b border-line bg-surface-sunken pb-12 pt-[104px] sm:pb-14 sm:pt-[128px]">
+        {/* Hero photo: expansion guides only (original guides have none). */}
+        {bySlot(`guide-${guide.slug}`) && (
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <Photo slot={`guide-${guide.slug}`} cover rounded="rounded-none" hover={false} sizes="100vw" />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-panel/96 via-panel/88 to-panel/65"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-panel/90 to-transparent"
+              aria-hidden="true"
+            />
+          </div>
+        )}
+
+        <div className="shell relative">
           <Reveal y={8}>
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
                 { label: "Resources", href: "/resources" },
                 { label: "HR Guides", href: "/resources/hr-guides" },
-                { label: `Guide ${guide.number}` },
+                { label: titleCase(guide.title) },
               ]}
             />
           </Reveal>
@@ -205,7 +225,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
       <FaqSection
         title="Questions about this guide"
-        items={guideFaqs[guide.slug] ?? []}
+        items={guideFaqs[guide.slug] ?? guide.faqs ?? []}
         ground="canvas"
       />
 
@@ -236,7 +256,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   {o.number}
                 </span>
                 <span className="flex-1 font-display text-[16.5px] font-bold text-heading transition-colors group-hover:text-accent">
-                  {o.title}
+                  {titleCase(o.title)}
                 </span>              </Link>
             </Reveal>
           ))}

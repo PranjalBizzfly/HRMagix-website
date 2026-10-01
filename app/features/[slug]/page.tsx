@@ -8,11 +8,14 @@ import { Band, Onward } from "@/components/editorial";
 import { Button, Arrow } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { featureName } from "@/lib/names";
 import { StatsStrip, FaqSection } from "@/components/sky9";
 import { featureFaqs } from "@/lib/pageFaqs/features";
 import { Icon } from "@/components/icons";
 import FeatureMap from "@/components/FeatureMap";
 import Photo from "@/components/Photo";
+import ContentSections from "@/components/ContentSections";
+import { featureDetail } from "@/lib/pageContent";
 
 /**
  * One module of the platform.
@@ -38,7 +41,7 @@ export async function generateMetadata({
   const m = modules.find((x) => x.slug === slug);
   if (!m) return {};
   return {
-    title: `${m.name}: HRMagix Feature`,
+    title: `${featureName(m.name)}: HRMagix Feature`,
     description: m.desc,
     alternates: { canonical: `/features/${m.slug}` },
   };
@@ -76,7 +79,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
               items={[
                 { label: "Home", href: "/" },
                 { label: "Features", href: "/features" },
-                { label: m.name },
+                { label: featureName(m.name) },
               ]}
             />
           </Reveal>
@@ -158,6 +161,8 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
         <FeatureMap areas={[link.area]} />
       </Band>
 
+      <ContentSections content={featureDetail[m.slug]} ground="canvas" />
+
       <FaqSection
         title={`${m.name}: frequently asked questions`}
         items={featureFaqs[m.slug] ?? []}
@@ -212,9 +217,9 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
                         className="group flex min-h-[44px] items-center justify-between gap-3 rounded-lg px-2 py-1.5 hover:bg-surface-sunken"
                       >
                         <span className="min-w-0">
-                          <span className="block truncate text-[14px] font-semibold text-heading group-hover:text-accent">
+                          <strong className="block truncate text-[14px] font-semibold text-heading group-hover:text-accent">
                             {p.title}
-                          </span>
+                          </strong>
                           <span className="block text-[12px] text-subtle">{p.kind}</span>
                         </span>
                         <Icon name="arrowRight" className="h-3.5 w-3.5 shrink-0 text-accent" />
@@ -241,7 +246,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
                   </span>
                   <span>
                     <span className="block font-display text-[16px] font-bold text-heading group-hover:text-accent">
-                      {s.name}
+                      {featureName(s.name)}
                     </span>
                     <span className="mt-1 block text-[13.5px] leading-snug text-muted">{s.desc}</span>
                   </span>

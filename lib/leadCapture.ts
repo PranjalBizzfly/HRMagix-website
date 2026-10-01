@@ -41,7 +41,7 @@ export function validateLead(l: Lead): LeadErrors {
   const digits = l.phone.replace(/[\s()+-]/g, "");
   if (!l.phone.trim()) e.phone = "Enter your phone number.";
   else if (!/^[\d\s()+-]+$/.test(l.phone) || digits.length < 10 || digits.length > 15)
-    e.phone = "Enter a valid phone number (10–15 digits).";
+    e.phone = "Enter a valid phone number (10 to 15 digits).";
 
   return e;
 }

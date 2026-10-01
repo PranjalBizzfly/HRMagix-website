@@ -8,11 +8,16 @@ import { policyDetails } from "@/lib/policyDetail";
 import { calculators } from "@/lib/calculators";
 import { guides } from "@/lib/guides";
 import { modules } from "@/lib/content";
-import { glossary } from "@/lib/glossary";
+import { glossary, termSlug } from "@/lib/glossary";
 import { categories } from "@/lib/blog";
 import { topics } from "@/lib/topics";
 import { faqTopics } from "@/lib/faqTopics";
 import { slugify } from "@/lib/related";
+import { compareCollection } from "@/lib/library/compare";
+import { lettersCollection } from "@/lib/library/letters";
+import { jobDescriptionsCollection } from "@/lib/library/jobDescriptions";
+import { labourLawCollection } from "@/lib/library/labourLaw";
+import { personaPages } from "@/lib/library/personas";
 
 const BASE = "https://hrmagix.com";
 
@@ -127,7 +132,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     })),
     ...glossary.map((g) => ({
-      url: `${BASE}/resources/hr-and-payroll-glossary/${slugify(g.term)}`,
+      url: `${BASE}/resources/hr-and-payroll-glossary/${termSlug(g)}`,
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.4,
@@ -138,6 +143,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
+    ...personaPages.map((p) => ({
+      url: `${BASE}/solutions/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...[compareCollection, lettersCollection, jobDescriptionsCollection, labourLawCollection].flatMap((c) => [
+      { url: `${BASE}${c.base}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.6 },
+      ...c.pages.map((p) => ({
+        url: `${BASE}${c.base}/${p.slug}`,
+        lastModified: now,
+        changeFrequency: "yearly" as const,
+        priority: 0.5,
+      })),
+    ]),
     ...legalPages.map((p) => ({
       url: `${BASE}${p.href}`,
       lastModified: now,

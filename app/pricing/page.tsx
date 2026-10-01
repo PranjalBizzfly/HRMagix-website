@@ -112,7 +112,8 @@ export default function PricingPage() {
         intro="Exactly what each published plan lists, no asterisks, and nothing that appears only after a sales call."
         ground="sunken"
       >
-        <Reveal delay={140} className="overflow-x-auto rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
+        <Reveal delay={140} className="rounded-[24px] bg-surface p-1 shadow-soft ring-1 ring-line">
+          <div tabIndex={0} role="region" aria-label="Plan comparison table" className="overflow-x-auto rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand">
           <table className="w-full min-w-[580px] border-collapse text-left">
             <caption className="sr-only">HRMagix plan comparison</caption>
             <thead>
@@ -148,12 +149,13 @@ export default function PricingPage() {
                   {row.plans.map((on, i) => (
                     <td key={i} className="px-5 py-4">
                       {on ? (
-                        <span className="grid h-5 w-5 place-items-center rounded-full bg-brand text-white">
+                        <span role="img" aria-label="Included" className="grid h-5 w-5 place-items-center rounded-full bg-brand text-white">
                           <Check className="h-3 w-3" />
                         </span>
                       ) : (
                         <span
                           className="block h-px w-4 bg-surface-strong"
+                          role="img"
                           aria-label="Not included"
                         />
                       )}
@@ -163,6 +165,7 @@ export default function PricingPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </Reveal>
 
         <Reveal delay={180} className="mt-6">
@@ -355,7 +358,7 @@ export default function PricingPage() {
       <Onward
         links={[
           {
-            label: "Salary & compliance calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "The other half of the cost question: statutory contributions.",
           },

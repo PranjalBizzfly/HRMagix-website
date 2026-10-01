@@ -46,9 +46,9 @@ export const topicsTime: Topic[] = [
     software:
       "Software changes attendance in two ways. It puts every capture method into one ledger, so a biometric punch, a mobile check-in and a kiosk entry are the same kind of record. And it turns the rules into configuration, so a grace period or half-day threshold is applied the same way to everyone, with exceptions routed to the right approver instead of discovered by payroll.",
     inHRMagix: [
-      { label: "Attendance & Shifts", href: "/features/attendance", note: "Biometric sync, geo-fenced mobile punch with selfie validation, shift rotation and grace periods." },
-      { label: "Attendance in the app", href: "/solutions/attendance-and-shifts", note: "Clock in and clock out, each session recorded, time worked shown on the dashboard." },
-      { label: "Payroll", href: "/features/payroll", note: "Loss-of-pay days calculated from attendance and fed into the monthly run." },
+      { label: "Attendance & Shifts Module", href: "/features/attendance", note: "Biometric sync, geo-fenced mobile punch with selfie validation, shift rotation and grace periods." },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "Clock in and clock out, each session recorded, time worked shown on the dashboard." },
+      { label: "Payroll Module", href: "/features/payroll", note: "Loss-of-pay days calculated from attendance and fed into the monthly run." },
     ],
     faqs: [
       { q: "What is the difference between attendance and time tracking?", a: "Attendance establishes whether and when someone worked, which decides payable days. Time tracking records what the time was spent on, usually for billing or project costing. Many companies need the first; fewer need the second." },
@@ -109,8 +109,8 @@ export const topicsTime: Topic[] = [
     software:
       "Shift software earns its keep on the edge cases: auto-detecting which shift a set of punches belongs to, keeping a night shift whole across midnight, and turning a rotation into a rule instead of a grid. The roster then becomes an input attendance and payroll can trust.",
     inHRMagix: [
-      { label: "Attendance & Shifts", href: "/features/attendance", note: "Automated shift rotation, night shift differential and late grace periods." },
-      { label: "Attendance & Shifts solution", href: "/solutions/attendance-and-shifts", note: "How capture, shifts and exceptions fit together." },
+      { label: "Attendance & Shifts Module", href: "/features/attendance", note: "Automated shift rotation, night shift differential and late grace periods." },
+      { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts", note: "How capture, shifts and exceptions fit together." },
     ],
     faqs: [
       { q: "How should a shift that crosses midnight be counted?", a: "As one shift belonging to the working day it started on. The punches are matched to the shift, not grouped by calendar date, so a 10 pm to 6 am shift is one day of attendance rather than two halves." },
@@ -171,9 +171,9 @@ export const topicsTime: Topic[] = [
     software:
       "Leave software removes the arithmetic from the argument. Accrual, carry-forward and the sandwich rule are applied by configuration, balances are visible before a request is made, and an approved leave day is already a payroll input rather than something re-keyed at month end.",
     inHRMagix: [
-      { label: "Leaves & Holidays", href: "/features/leaves", note: "Custom leave categories, multi-level approvals, accruals, sandwich-rule enforcement and carry-over." },
+      { label: "Leaves & Holidays Module", href: "/features/leaves", note: "Custom leave categories, multi-level approvals, accruals, sandwich-rule enforcement and carry-over." },
       { label: "Leave Management", href: "/solutions/leave-management", note: "Accruals, approvals and a calendar people trust." },
-      { label: "Leave balance on the dashboard", href: "/solutions/employee-self-service", note: "Balance by leave type, used against total, on every employee's dashboard." },
+      { label: "Employee Self-Service", href: "/solutions/employee-self-service", note: "Balance by leave type, used against total, on every employee's dashboard." },
     ],
     faqs: [
       { q: "What is the sandwich rule?", a: "A policy under which a weekend or holiday that falls between two days of leave is itself counted as leave. It is an employer's choice, not a legal requirement, which is exactly why it must be written down and applied consistently." },
@@ -234,9 +234,9 @@ export const topicsTime: Topic[] = [
     software:
       "Software makes overtime visible while it is happening. Worked hours are compared with the shift automatically, extra time is flagged for approval, and approved overtime flows into payroll at the configured rate, so the monthly figure is a sum of decisions rather than a surprise.",
     inHRMagix: [
-      { label: "Attendance & Shifts", href: "/features/attendance", note: "Automated shift and overtime calculation from punches." },
-      { label: "HR Analytics", href: "/features/analytics", note: "Overtime expenses alongside leave utilisation and payroll budget variance." },
-      { label: "Overtime calculator", href: "/calculators/overtime", note: "Twice the ordinary rate, on your own hourly basis." },
+      { label: "Attendance & Shifts Module", href: "/features/attendance", note: "Automated shift and overtime calculation from punches." },
+      { label: "Analytics Module", href: "/features/analytics", note: "Overtime expenses alongside leave utilisation and payroll budget variance." },
+      { label: "Overtime Calculator", href: "/calculators/overtime", note: "Twice the ordinary rate, on your own hourly basis." },
     ],
     faqs: [
       { q: "When is overtime payable under the Factories Act?", a: "For work beyond nine hours in a day or forty-eight hours in a week, at twice the ordinary rate of wages." },
@@ -295,7 +295,7 @@ export const topicsTime: Topic[] = [
     software:
       "Software supports remote work by offering capture methods that fit it, by routing remote-day requests through the same approvals as other requests, and by keeping one attendance ledger whether the day was worked at a desk or at home.",
     inHRMagix: [
-      { label: "Attendance & Shifts", href: "/features/attendance", note: "Mobile check-in, with geo-fencing where a location matters." },
+      { label: "Attendance & Shifts Module", href: "/features/attendance", note: "Mobile check-in, with geo-fencing where a location matters." },
       { label: "Assets", href: "/solutions#app-features", note: "Company assets recorded in the People area of the app." },
       { label: "All Policies", href: "/solutions#app-features", note: "Every company policy in one list in the app." },
     ],
@@ -353,7 +353,7 @@ export const topicsTime: Topic[] = [
     software:
       "Holiday software attaches the right calendar to each employee automatically, and makes that calendar an input to leave, attendance and overtime rules rather than a document people consult.",
     inHRMagix: [
-      { label: "Leaves & Holidays", href: "/features/leaves", note: "Unified holiday calendars across Indian states." },
+      { label: "Leaves & Holidays Module", href: "/features/leaves", note: "Unified holiday calendars across Indian states." },
       { label: "Holidays", href: "/solutions#app-features", note: "The company holiday list, in the Time & Work area of the app." },
     ],
     faqs: [

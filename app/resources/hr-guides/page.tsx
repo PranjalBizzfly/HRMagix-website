@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteStats, Block, FaqSection } from "@/components/sky9";
 import { resourcesFaqs } from "@/lib/pageFaqs/resources";
 import Link from "next/link";
+import { titleCase } from "@/lib/names";
 import { guides } from "@/lib/guides";
 import { Onward } from "@/components/editorial";
 import { Arrow } from "@/components/ui";
@@ -100,7 +101,7 @@ export default function GuidesPage() {
                       href={`/resources/hr-guides/${g.slug}`}
                       className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                     >
-                      {g.title}
+                      {titleCase(g.title)}
                     </Link>
                   </h3>
 
@@ -186,7 +187,7 @@ export default function GuidesPage() {
             note: "Everything payroll-specific, indexed by what you are trying to do.",
           },
           {
-            label: "Calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "Run the statutory formulas on your own numbers.",
           },

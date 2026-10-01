@@ -78,7 +78,7 @@ export const solutions: Solution[] = [
   {
     slug: "hrms",
     href: "/solutions/hrms",
-    name: "HRMS",
+    name: "Human Resource Management System (HRMS)",
     kicker: "The system of record",
     title: "One employee record, and twelve workflows that read from it",
     standfirst:
@@ -568,7 +568,7 @@ export const solutions: Solution[] = [
         note: "Where the payable-days figure comes from",
       },
       {
-        label: "Salary & compliance calculators",
+        label: "Calculator",
         href: "/resources/calculator",
         note: "Work a CTC breakup or a gratuity figure yourself",
       },
@@ -771,7 +771,7 @@ export const solutions: Solution[] = [
     onward: [
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "How a record begins" },
       { label: "Workplace Policy Library", href: "/policy-centre/workplace-policy-library", note: "The policies these acknowledgements are for" },
-      { label: "HRMS", href: "/solutions/hrms", note: "The record everything else reads" },
+      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The record everything else reads" },
     ],
   },
 
@@ -1585,7 +1585,7 @@ export const solutions: Solution[] = [
       {
         heading: "Why a reporting tool bolted on afterwards behaves differently",
         body: [
-          "The usual approach to HR reporting software is to add a dashboard on top of whatever systems already exist and feed it by export. That works until two exports disagree, which they eventually do \u2014 because they were taken at different moments, or because a leave application was regularised after the first one ran.",
+          "The usual approach to HR reporting software is to add a dashboard on top of whatever systems already exist and feed it by export. That works until two exports disagree, which they eventually do, because they were taken at different moments, or because a leave application was regularised after the first one ran.",
           "Analytics inside an HR management system has no import step to go stale. The headcount on a chart is the count of active employee records at the instant you looked; the overtime figure is the sum of the same approved hours the payroll run will pay. A number can still be wrong, but it can only be wrong in one place, and correcting it corrects every view of it.",
         ],
       },
@@ -1594,7 +1594,7 @@ export const solutions: Solution[] = [
         body: [
           "Workforce analytics tools are at their most useful when they are treated as a way of forming better questions rather than as a source of answers. A rise in leave utilisation in one team may be a burnout signal, or it may be that the team took a long-planned holiday together. The dashboard cannot tell you which; it can tell you where to look.",
           "The indicators worth acting on are usually the ones that move together. Overtime climbing while attrition-risk indicators climb in the same department, over the same two months, is a pattern. Either one alone is noise. Reporting that draws both from the same employee record is what makes the comparison honest.",
-          "For that reason the platform reports what it can observe \u2014 hours, absences, tenure, cost, goal completion \u2014 and stops there. It does not score engagement from data it does not hold, or predict a resignation date.",
+          "For that reason the platform reports what it can observe (hours, absences, tenure, cost and goal completion) and stops there. It does not score engagement from data it does not hold, or predict a resignation date.",
         ],
       },
       {
@@ -1653,7 +1653,7 @@ export const solutions: Solution[] = [
         {
           term: "Attrition risk indicator",
           detail:
-            "An early-warning flag assembled from signals the platform already holds \u2014 tenure, leave pattern, goal completion, time since the last review. It marks a record as worth a conversation. It is not a prediction.",
+            "An early-warning flag assembled from signals the platform already holds: tenure, leave pattern, goal completion and time since the last review. It marks a record as worth a conversation. It is not a prediction.",
           note: "A prompt to ask, not an answer",
         },
         {
@@ -1669,7 +1669,7 @@ export const solutions: Solution[] = [
         {
           term: "Payroll budget variance",
           detail:
-            "Actual payroll cost for the month against budget, by entity. Movement is attributable to its cause \u2014 joiners, exits, revisions, arrears, overtime \u2014 because each is a separate component of the run.",
+            "Actual payroll cost for the month against budget, by entity. Movement is attributable to its cause (joiners, exits, revisions, arrears or overtime), because each is a separate component of the run.",
         },
         {
           term: "Statutory contribution totals",
@@ -1688,7 +1688,7 @@ export const solutions: Solution[] = [
           situation:
             "The feeling that people are leaving faster than they used to, with no way to tell whether that is true or whether three memorable exits are colouring the impression.",
           resolution:
-            "Headcount growth, tenure distribution and exits over time, read directly from the employee record. The answer is often that attrition is concentrated in one team or one tenure band \u2014 a different problem from a company-wide one, and a far more tractable one.",
+            "Headcount growth, tenure distribution and exits over time, read directly from the employee record. The answer is often that attrition is concentrated in one team or one tenure band, which is a different problem from a company-wide one, and a far more tractable one.",
         },
         {
           role: "Finance lead",
@@ -1737,11 +1737,11 @@ export const solutions: Solution[] = [
       },
       {
         q: "What does the attrition risk indicator actually use?",
-        a: "Signals the platform already holds: tenure, leave pattern, goal completion and time since the last review. It is deliberately an early-warning flag rather than a score \u2014 it tells you which records are worth a conversation, and does not claim to predict who will resign.",
+        a: "Signals the platform already holds: tenure, leave pattern, goal completion and time since the last review. It is deliberately an early-warning flag rather than a score: it tells you which records are worth a conversation, and does not claim to predict who will resign.",
       },
       {
         q: "Can a report be exported for a board pack or an auditor?",
-        a: "Yes. Reports export with the period and the filters they were run under recorded alongside them, which matters when a figure has to be defended later \u2014 an auditor's question is usually about what was included, not about the arithmetic.",
+        a: "Yes. Reports export with the period and the filters they were run under recorded alongside them, which matters when a figure has to be defended later: an auditor's question is usually about what was included, not about the arithmetic.",
       },
       {
         q: "Does analytics expose data a manager should not see?",
@@ -1753,7 +1753,7 @@ export const solutions: Solution[] = [
       },
     ],
     onward: [
-      { label: "HRMS", href: "/solutions/hrms", note: "The record these reports read" },
+      { label: "Human Resource Management System (HRMS)", href: "/solutions/hrms", note: "The record these reports read" },
       { label: "Payroll", href: "/solutions/payroll", note: "Where the cost figures originate" },
       { label: "Pricing", href: "/pricing", note: "Which plan analytics sits on" },
     ],

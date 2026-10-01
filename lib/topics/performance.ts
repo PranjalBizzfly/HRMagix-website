@@ -45,7 +45,7 @@ export const topicsPerformance: Topic[] = [
       "Performance software keeps goals, check-ins, feedback and reviews in one record, so the review draws on the whole year rather than memory, and calibration compares like with like.",
     inHRMagix: [
       { label: "Performance & OKRs", href: "/solutions/performance-and-okrs", note: "Objectives, KRAs, 9-box, PIPs, 1-on-1s and recognition on one record." },
-      { label: "Objectives & OKRs", href: "/features/okrs", note: "Cascading OKRs with progress and check-in reminders." },
+      { label: "Objectives & OKRs Module", href: "/features/okrs", note: "Cascading OKRs with progress and check-in reminders." },
       { label: "Reviews", href: "/solutions#app-features", note: "Performance reviews, in the Performance area of the app." },
     ],
     faqs: [
@@ -103,7 +103,7 @@ export const topicsPerformance: Topic[] = [
       "Review software gathers self, manager and peer input in one place, shows the year's goals and notes beside the form, and holds calibration and the final outcome on the employee's record.",
     inHRMagix: [
       { label: "Reviews", href: "/solutions#app-features", note: "Performance reviews in the Performance area of the app." },
-      { label: "KRA & 9-Box", href: "/features/kra-9box", note: "Multi-rater evaluations and calibration dashboards." },
+      { label: "Key Result Areas (KRA) & 9-Box Module", href: "/features/kra-9box", note: "Multi-rater evaluations and calibration dashboards." },
     ],
     faqs: [
       { q: "What should a self-assessment include?", a: "What the employee achieved against their goals, with evidence, what got in the way, and what they want to develop next. It is most useful when written before the manager's assessment." },
@@ -159,7 +159,7 @@ export const topicsPerformance: Topic[] = [
     software:
       "OKR software keeps the cascade visible, who contributes to what, and prompts regular check-ins with progress and confidence, so the quarter's goals stay in front of people rather than in a document.",
     inHRMagix: [
-      { label: "Objectives & OKRs", href: "/features/okrs", note: "Quarterly and annual cascading, progress sliders, confidence scores and check-in reminders." },
+      { label: "Objectives & OKRs Module", href: "/features/okrs", note: "Quarterly and annual cascading, progress sliders, confidence scores and check-in reminders." },
       { label: "Performance & OKRs", href: "/solutions/performance-and-okrs", note: "OKRs alongside KRAs, reviews and 1-on-1s." },
     ],
     faqs: [
@@ -217,8 +217,8 @@ export const topicsPerformance: Topic[] = [
     software:
       "Software holds role-based KRAs with their weights, scores them in the review cycle, and plots the resulting performance and potential on a 9-box that leadership can calibrate together.",
     inHRMagix: [
-      { label: "KRA & 9-Box", href: "/features/kra-9box", note: "Role-based scoring, multi-rater evaluations and an interactive 9-box." },
-      { label: "Succession", href: "/features/succession", note: "Talent bench readiness for critical roles." },
+      { label: "Key Result Areas (KRA) & 9-Box Module", href: "/features/kra-9box", note: "Role-based scoring, multi-rater evaluations and an interactive 9-box." },
+      { label: "Succession Module", href: "/features/succession", note: "Talent bench readiness for critical roles." },
       { label: "KRA", href: "/solutions#app-features", note: "Key result areas, in the Performance area of the app." },
     ],
     faqs: [
@@ -276,7 +276,7 @@ export const topicsPerformance: Topic[] = [
     software:
       "Software gives PIPs a consistent structure, milestones, check-ins, a confidential journal and sign-offs, so each plan is run the same way and its outcome is fully recorded.",
     inHRMagix: [
-      { label: "PIPs & Growth", href: "/features/pips", note: "30/60/90-day plans with milestone checkpoints, a confidential journal and sign-offs." },
+      { label: "Performance Improvement Plans (PIPs) & Growth Module", href: "/features/pips", note: "30/60/90-day plans with milestone checkpoints, a confidential journal and sign-offs." },
       { label: "PIPs", href: "/solutions#app-features", note: "Performance improvement plans, in the Performance area of the app." },
     ],
     faqs: [
@@ -332,7 +332,7 @@ export const topicsPerformance: Topic[] = [
     software:
       "Meeting software keeps a shared agenda between meetings, tracks action items with reminders, and preserves the history of the conversation so each 1-on-1 builds on the last.",
     inHRMagix: [
-      { label: "1-on-1s & Meetings", href: "/features/meetings", note: "Shared agendas, action items with reminders and private manager notes." },
+      { label: "1-on-1s & Meetings Module", href: "/features/meetings", note: "Shared agendas, action items with reminders and private manager notes." },
       { label: "Meetings", href: "/solutions#app-features", note: "Meetings, in the Engagement area of the app." },
     ],
     faqs: [

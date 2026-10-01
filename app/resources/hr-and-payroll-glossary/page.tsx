@@ -102,12 +102,12 @@ export default function GlossaryPage() {
       <Onward
         links={[
           {
-            label: "HR guides",
+            label: "HR Guides",
             href: "/resources/hr-guides",
             note: "Where several of these terms are worked through end to end.",
           },
           {
-            label: "Calculators",
+            label: "Calculator",
             href: "/resources/calculator",
             note: "Run the statutory formulas defined above on your own figures.",
           },
