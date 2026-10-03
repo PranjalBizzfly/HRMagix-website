@@ -33,7 +33,7 @@ export const glossaryPracticeA: Record<string, string[]> = {
   "basic-pay": [
     "Basic pay is fixed when the offer is drafted, and most companies set it as a share of CTC that is applied to every grade, so one decision drives cost across the whole structure. HR and finance revisit that share when the PF ceiling policy, gratuity exposure or the labour code wage definition is reviewed.",
     "As an example, on a monthly CTC of ₹60,000, setting basic at 40% gives ₹24,000; at 50% it is ₹30,000. The higher basic raises gratuity accruals and, if PF is paid on actual basic rather than the ₹15,000 ceiling, raises employer PF as well.",
-    "The mistake to avoid is keeping basic very low and loading allowances. Under the Code on Wages, as notified, allowances above 50% of total remuneration are added back to wages for statutory calculations, so a low basic no longer reduces those costs and can create back-dated liabilities when audited.",
+    "The mistake to avoid is keeping basic very low and loading allowances. Under the Code on Wages, in force since 21 November 2025, allowances above 50% of total remuneration are added back to wages for statutory calculations, so a low basic no longer reduces those costs and can create back-dated liabilities when audited.",
   ],
   "bell-curve": [
     "Where a bell curve is used, HR circulates the target distribution before managers rate, often something like 15% at the top, 70% in the middle and 15% at the bottom as an illustration. Ratings are then gathered at department level, because the shares only make sense in a group large enough to have a spread.",

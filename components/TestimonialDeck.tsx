@@ -199,10 +199,12 @@ function Card({
       <Stars className="mt-6" />
       <figcaption className="mt-4 flex items-center gap-3.5 border-t border-line pt-5">
         {t.avatar ? (
-          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-line-strong shadow-sm">
+          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-line-strong shadow-sm" aria-hidden="true">
+            {/* Decorative: the name and role are printed beside it, and the
+                portrait is a stock photo, not a picture of the person quoted. */}
             <Image
               src={t.avatar}
-              alt={`Headshot of ${t.name}, ${t.role}, an HRMagix customer`}
+              alt=""
               width={48}
               height={48}
               quality={85}

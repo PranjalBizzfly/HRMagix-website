@@ -105,7 +105,7 @@ export const guidesMoreD: Guide[] = [
     ],
     related: [
       {
-        label: "Calibration (Glossary)",
+        label: "Calibration",
         href: "/resources/hr-and-payroll-glossary/calibration",
         note: "The definition of rating calibration.",
       },

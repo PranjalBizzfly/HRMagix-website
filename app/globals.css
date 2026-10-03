@@ -1373,14 +1373,6 @@ h2.display-md {
   line-height: 1.1;
 }
 
-/* Two consecutive sections on the same ground read as one: drop the doubled
-   padding between them instead of leaving an empty band. */
-section.bg-canvas + section.bg-canvas,
-section.bg-surface-sunken + section.bg-surface-sunken,
-section.bg-surface + section.bg-surface {
-  padding-top: 0;
-}
-
 /* Failsafe: a heading waiting to type is never left hidden. If the typing
    never starts, it simply appears after a short delay. */
 @keyframes heading-failsafe {
@@ -1843,9 +1835,9 @@ a[href^="mailto:"], a[href^="tel:"] { text-transform: none; }
    paddings stack into a double gap. Keep one: the second band drops its top
    padding. Heroes and bordered/tinted bands of a different ground are not
    affected, so section rhythm between distinct surfaces stays. */
-main section.bg-canvas:not(.page-hero) + section.bg-canvas:not(.page-hero),
-main section.bg-surface-sunken:not(.page-hero):not(.border-y) + section.bg-surface-sunken:not(.page-hero):not(.border-y),
-main section.wash:not(.page-hero) + section.wash:not(.page-hero) {
+main section.bg-canvas:not(.page-hero):not(.border-y):not(.border-t) + section.bg-canvas:not(.page-hero):not(.border-y):not(.border-t),
+main section.bg-surface-sunken:not(.page-hero):not(.border-y):not(.border-t) + section.bg-surface-sunken:not(.page-hero):not(.border-y):not(.border-t),
+main section.wash:not(.page-hero):not(.border-y):not(.border-t) + section.wash:not(.page-hero):not(.border-y):not(.border-t) {
   padding-top: 0;
 }
 

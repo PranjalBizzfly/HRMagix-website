@@ -804,7 +804,7 @@ const pages: LibPage[] = [
       { label: "EPF vs EPS (Provident Fund vs Pension Scheme)", href: "/resources/compare/epf-vs-eps", note: "How the employer's PF share is split." },
     ],
     verify:
-      "Check the current gratuity maximum (₹20,00,000), the 15/26 formula and five-year rule under the Payment of Gratuity Act 1972 and any labour code changes, the EPF ₹15,000 wage ceiling and rates, and the current Income-tax exemption limit for gratuity.",
+      "Check the current gratuity maximum (₹20,00,000), the 15/26 formula and eligibility rules under the Code on Social Security 2020 (in force from 21 November 2025, which replaced the Payment of Gratuity Act 1972 and lets fixed-term employees qualify after one year), the EPF ₹15,000 wage ceiling and rates, and the current Income-tax exemption limit for gratuity.",
   },
   {
     slug: "annual-vs-continuous-performance-reviews",

@@ -4,7 +4,7 @@ const G = "/resources/hr-and-payroll-glossary";
 const L = "/resources/labour-law";
 
 const CODES_STATUS =
-  "The four labour codes were passed by Parliament in 2019 and 2020, and the Government announced their implementation in late 2025. How each provision applies in practice depends on central and state rules and on transition provisions, so check the current status for your establishment.";
+  "The four labour codes, passed by Parliament in 2019 and 2020, came into force on 21 November 2025. Final central rules under all four codes were notified on 8 May 2026, and each state frames its own rules, some of which are still in draft. During the transition, the relevant provisions of the earlier Acts and their rules continue to apply, so check which rules govern your establishment in each state.";
 
 const pages: LibPage[] = [
   {
@@ -39,7 +39,7 @@ const pages: LibPage[] = [
           "The Code defines wages to include basic pay, dearness allowance and retaining allowance, and lists components that are excluded, such as certain allowances, the employer's contributions to PF and pension, gratuity and bonus. It then limits how much of total remuneration can sit in the excluded components: amounts above the limit are added back into wages.",
           "Because PF, gratuity and other contributions follow the definition of wages, a salary structure with a very low basic and large allowances may produce a higher wage base under the Code than under the old laws.",
         ],
-        note: "The exact add-back limit, and how it interacts with each statute's own wage base, should be checked against the Code as notified and the rules in force before restructuring salaries.",
+        note: "The Code sets the add-back at half of total remuneration (s.2(y)). How it interacts with each statute's own wage base should be checked against the rules in force before restructuring salaries.",
       },
       {
         heading: "What it asks of records and payroll",
@@ -74,7 +74,7 @@ const pages: LibPage[] = [
     faqs: [
       { q: "Does the Code on Wages change PF contributions?", a: "Not directly; PF is governed by social security law. But the Code's definition of wages is used across the codes, so a structure with a low basic may face a higher base for contributions. Check the current position before changing structures." },
       { q: "Does the Code fix one national minimum wage?", a: "It provides for a floor wage set by the central government. Actual minimum wages are fixed by the appropriate government and vary by state, employment and skill level." },
-      { q: "Is the Payment of Bonus Act still relevant?", a: "Its substance carries into the Code. Whether you apply the old Act or the Code's provisions depends on the implementation status and rules where you operate." },
+      { q: "Is the Payment of Bonus Act still relevant?", a: "Its substance carries into the Code, in force since 21 November 2025. Where the rules a provision needs are not yet final in your state, the earlier Act's rules continue during the transition." },
     ],
     related: [
       { label: "Salary Structure Guide", href: "/hr/topics/salary-structure", note: "How basic and allowances are designed." },
@@ -151,7 +151,7 @@ const pages: LibPage[] = [
     ],
     faqs: [
       { q: "Does the Code replace the EPF and ESI schemes?", a: "It consolidates the Acts, but the schemes and the bodies that run them continue. Contribution rates and wage limits are set by the Code and notifications under it." },
-      { q: "Does the Code change gratuity eligibility?", a: "It contains provisions on gratuity for fixed-term employees that differ from the five-year rule in the 1972 Act. Check the provision as notified and its effective position for your establishment." },
+      { q: "Does the Code change gratuity eligibility?", a: "Yes. Under the Code, in force since 21 November 2025, fixed-term employees qualify for gratuity pro rata after one year of service, instead of the five-year rule in the 1972 Act. The five-year rule still applies to other employees." },
       { q: "Do employers contribute for gig workers?", a: "The Code provides for schemes for gig and platform workers funded in part by aggregators. Whether and how this affects your organisation depends on the notified schemes." },
     ],
     related: [
@@ -862,7 +862,7 @@ export const labourLawCollection: LibCollection = {
     standfirst: "What each central labour law and code covers, who it applies to, and what it asks of an employer's records and payroll.",
     intro: [
       "These explainers describe what the laws provide in plain language, for HR and payroll teams who need to know which obligations touch their work.",
-      "They are not legal advice. Labour law in India is being consolidated into four codes, many rules are framed by individual states, and figures change by notification. Check the current position with the official source or your legal adviser before acting on any of it.",
+      "They are not legal advice. Labour law in India has been consolidated into four codes, in force since 21 November 2025, many rules are framed by individual states, and figures change by notification. Check the current position with the official source or your legal adviser before acting on any of it.",
     ],
     seo: {
       title: "Indian Labour Laws for Employers: HR & Payroll Explainers",

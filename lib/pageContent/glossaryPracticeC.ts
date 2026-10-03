@@ -103,7 +103,7 @@ export const glossaryPracticeC: Record<string, string[]> = {
   "pf-wage": [
     "PF wage is the base on which the 12% employee and 12% employer contributions are worked out, and payroll fixes it when the salary structure is designed. Which components go into it decides both the employee's take-home and the employer's cost.",
     "Example: an employee has basic of ₹25,000 within a total salary of ₹50,000. If the company restricts contributions to the ₹15,000 wage ceiling, the employee contribution is ₹1,800. If it contributes on the actual basic, the figure is ₹3,000. Either choice must be applied consistently and stated in the offer.",
-    "The common mistake is keeping basic very low and loading allowances to cut PF. Allowances paid uniformly to all employees can be treated as wages, and the Code on Social Security brings in a wage definition with a floor as notified. Check the current position before restructuring.",
+    "The common mistake is keeping basic very low and loading allowances to cut PF. Allowances paid uniformly to all employees can be treated as wages, and the Code on Social Security, in force since 21 November 2025, adds back allowances above 50% of total pay to the wage definition. Check the current position before restructuring.",
   ],
   "pf-withdrawal": [
     "HR is usually involved in PF withdrawal at exit, or when an employee asks for a partial advance for a house, medical treatment or a wedding. The employee applies online; the employer's role is to have marked the date of exit correctly and to resolve any KYC mismatches.",

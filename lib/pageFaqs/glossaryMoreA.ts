@@ -42,12 +42,12 @@ export const glossaryMoreFaqsA: Record<string, PageFaq[]> = {
     { q: "Why do salary structures have a special allowance?", a: "It usually absorbs the difference between the agreed CTC and the sum of the named components. That makes it easy to hit a CTC figure, but it can hide how the package was built." },
     { q: "Is special allowance taxable?", a: "Yes, a general special allowance is fully taxable as salary. It is different from specific allowances that have their own exemptions under the old regime." },
     { q: "Does PF apply to special allowance?", a: "PF wages are defined as basic plus DA, but allowances paid universally to all employees can be treated as part of basic for PF purposes under case law. Splitting pay to keep the PF wage artificially low is a known area of inspection, so take advice on your structure." },
-    { q: "How does the labour codes' wage definition affect special allowance?", a: "The Code on Wages defines wages so that excluded allowances above a set share of total pay are added back. If and as notified, a large special allowance may increase the wage used for PF and gratuity; check the current status before restructuring." },
+    { q: "How does the labour codes' wage definition affect special allowance?", a: "The Code on Wages defines wages so that excluded allowances above a set share of total pay are added back. Since the Code came into force on 21 November 2025, a large special allowance can increase the wage used for PF and gratuity; check the rules in force before restructuring." },
   ],
   "variable-pay": [
     { q: "How is variable pay shown in a CTC?", a: "Usually as a target amount, with a note that the actual payout depends on individual, team or company performance. Offer letters should state clearly that it is not guaranteed, to avoid disputes later." },
     { q: "When is variable pay taxed?", a: "In the year it is actually paid, not the year it relates to. TDS is deducted in the month of payout, which often pushes that month's deduction up." },
-    { q: "Is variable pay counted for PF?", a: "Generally no, because PF wages are basic plus DA and performance incentives sit outside them. Check whether the structure meets the wage definition under the labour codes if they apply." },
+    { q: "Is variable pay counted for PF?", a: "Generally no, because PF wages are basic plus DA and performance incentives sit outside them. Check whether the structure meets the wage definition under the labour codes, in force since 21 November 2025." },
     { q: "What happens to variable pay when an employee resigns?", a: "It depends on the plan document. Many plans require the employee to be on the rolls on the payout date, while others pay pro-rata; the rule should be written down before the year starts." },
   ],
   reimbursements: [

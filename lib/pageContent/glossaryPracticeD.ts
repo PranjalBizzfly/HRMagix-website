@@ -63,7 +63,7 @@ export const glossaryPracticeD: Record<string, string[]> = {
   "special-allowance": [
     "Special allowance shows up most during offer and increment work. When HR fixes basic, HRA and named allowances first, special allowance becomes whatever is needed to reach the gross, and it absorbs every later tweak, so in older structures it can grow to be the largest single component.",
     "As an example, for a gross of ₹50,000 with basic at ₹20,000, HRA at ₹10,000 and conveyance plus other named allowances at ₹4,000, special allowance is ₹16,000. Raise gross to ₹55,000 at increment without touching the other components and special allowance alone rises to ₹21,000.",
-    "Each increment cycle is a good point to check the ratio of basic to gross, since a structure in which special allowance keeps growing may move further from wage definitions under PF and, if notified, the labour codes. Document the structure rule rather than adjusting individual cases.",
+    "Each increment cycle is a good point to check the ratio of basic to gross, since a structure in which special allowance keeps growing may move further from wage definitions under PF and the labour codes, in force since 21 November 2025. Document the structure rule rather than adjusting individual cases.",
   ],
   "standard-deduction": [
     "In payroll the standard deduction is a single setting applied in the annual tax projection, not a monthly line on the payslip. It reduces projected taxable salary for every employee and so lowers the TDS spread across the months.",

@@ -238,7 +238,7 @@ export const guidesMoreA: Guide[] = [
           ],
         },
         watch:
-          "Payment timelines for final dues are set by the applicable wage law and, where the labour codes are in force, by the Code on Wages. Check the rule that applies to your establishment rather than assuming one.",
+          "Payment timelines for final dues are set by the Code on Wages, in force since 21 November 2025, which requires wages due on removal, dismissal, retrenchment or resignation to be paid within two working days (s.17(2)). Check any state rule that also applies to your establishment.",
       },
       {
         title: "Close statutory records and issue the letters",
@@ -647,7 +647,7 @@ export const guidesMoreA: Guide[] = [
         note: "How to hold the review conversation itself.",
       },
       {
-        label: "Calibration (Glossary)",
+        label: "Calibration",
         href: "/resources/hr-and-payroll-glossary/calibration",
         note: "What calibration means and what it produces.",
       },
@@ -920,7 +920,7 @@ export const guidesMoreA: Guide[] = [
         note: "Why reconciliation, not calculation, takes the time.",
       },
       {
-        label: "Electronic Challan Cum Return (ECR) (Glossary)",
+        label: "Electronic Challan Cum Return (ECR)",
         href: "/resources/hr-and-payroll-glossary/ecr",
         note: "The EPF return the register is matched against.",
       },
@@ -1042,12 +1042,12 @@ export const guidesMoreA: Guide[] = [
     ],
     related: [
       {
-        label: "Form 16 (TDS Certificate for Salary) (Glossary)",
+        label: "Form 16 (TDS Certificate for Salary)",
         href: "/resources/hr-and-payroll-glossary/form-16",
         note: "What the certificate contains.",
       },
       {
-        label: "Form 24Q (Quarterly TDS Return on Salary) (Glossary)",
+        label: "Form 24Q (Quarterly TDS Return on Salary)",
         href: "/resources/hr-and-payroll-glossary/form-24q",
         note: "The quarterly return Form 16 is reconciled to.",
       },
@@ -1181,7 +1181,7 @@ export const guidesMoreA: Guide[] = [
         note: "How the regime choice drives twelve months of TDS.",
       },
       {
-        label: "Form 12BB (Investment Declaration) (Glossary)",
+        label: "Form 12BB (Investment Declaration)",
         href: "/resources/hr-and-payroll-glossary/form-12bb",
         note: "The declaration format.",
       },
@@ -1418,7 +1418,7 @@ export const guidesMoreA: Guide[] = [
         title: "Set up before you cross",
         body: [
           "The practical risk is not the obligation itself but noticing it late, since most contributions are due from the date coverage began. Track headcount by establishment monthly against each threshold.",
-          "When a threshold approaches, prepare in advance: registration documents for EPF and ESI, payroll configured for the contributions, a POSH policy and Internal Committee, a bonus provision in the accounts. The labour codes, where notified and in force, restate several of these thresholds, so check the current position for your establishment.",
+          "When a threshold approaches, prepare in advance: registration documents for EPF and ESI, payroll configured for the contributions, a POSH policy and Internal Committee, a bonus provision in the accounts. The labour codes, in force since 21 November 2025, restate several of these thresholds and state rules under them may still be in draft, so check the current position for your establishment.",
         ],
       },
     ],
@@ -1473,7 +1473,7 @@ export const guidesMoreA: Guide[] = [
       },
       {
         q: "Do the labour codes change these thresholds?",
-        a: "The codes restate many thresholds, sometimes with changes. Their effect depends on notification and state rules, so check the current status for your establishment.",
+        a: "The codes, in force since 21 November 2025, restate many thresholds, sometimes with changes. Some details depend on state rules, which differ and may still be in draft, so check the current position for your establishment.",
       },
     ],
   },
@@ -1511,7 +1511,7 @@ export const guidesMoreA: Guide[] = [
           "Identify which law covers each of your locations before writing anything. A company with a factory in one state and offices in two others may need the policy to state different rules for each.",
         ],
         watch:
-          "The labour codes, where notified and in force, restate overtime rules. Check the current position for your establishment rather than assuming the older Acts still govern.",
+          "The labour codes, in force since 21 November 2025, restate overtime rules: the Code on Wages (s.14) sets overtime at not less than twice the normal rate. Check the hours limits in your state's rules rather than assuming the older Acts still govern.",
       },
       {
         title: "Decide who is eligible",

@@ -633,9 +633,6 @@ export default function HomePage() {
               <Button href="/how-setup-works" variant="primary" size="sm">
                 Explore setup workflow
               </Button>
-              <span className="text-xs font-semibold text-muted">
-                Average go-live: 2 to 3 business days
-              </span>
             </div>
           </div>
           <Reveal y={16} className="relative lg:col-span-5">

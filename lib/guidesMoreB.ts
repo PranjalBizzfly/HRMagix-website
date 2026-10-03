@@ -838,7 +838,7 @@ export const guidesMoreB: Guide[] = [
     ],
     related: [
       {
-        label: "Attrition (Glossary)",
+        label: "Attrition",
         href: "/resources/hr-and-payroll-glossary/attrition",
         note: "The term and its common definitions.",
       },
@@ -966,7 +966,7 @@ export const guidesMoreB: Guide[] = [
     ],
     related: [
       {
-        label: "Arrears (Glossary)",
+        label: "Arrears",
         href: "/resources/hr-and-payroll-glossary/arrears",
         note: "What arrears are and how they are paid.",
       },

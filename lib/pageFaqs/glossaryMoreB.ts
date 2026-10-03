@@ -75,7 +75,7 @@ export const glossaryMoreFaqsB: Record<string, PageFaq[]> = {
   ],
   "payroll-cycle": [
     { q: "What dates make up a payroll cycle?", a: "The attendance and input cut-off, the payroll run, review and approval, salary payment, and the statutory payment and filing dates that follow. Each should be a fixed day of the month known to everyone who sends inputs." },
-    { q: "Is there a legal deadline for paying monthly salary?", a: "The Payment of Wages Act 1936, s.5, sets deadlines for paying wages after the wage period ends for the employees it covers, and the labour codes carry similar provisions as notified. Check which rule currently applies to your establishment." },
+    { q: "Is there a legal deadline for paying monthly salary?", a: "The Payment of Wages Act 1936, s.5, sets deadlines for paying wages after the wage period ends for the employees it covers, and the Code on Wages, in force since 21 November 2025, replaced that Act with its own payment deadlines (s.17). Check which rule currently applies to your establishment." },
     { q: "What happens to inputs that arrive after the cut-off?", a: "They are carried into the next cycle and paid as arrears or recovered there, rather than reopening a run that has been approved. This keeps payslips and bank files stable." },
     { q: "Why should the attendance cut-off fall before month end?", a: "It gives time to process and approve the run before payday. Days after the cut-off are treated as present and corrected in the next cycle if they turn out otherwise." },
   ],
@@ -172,7 +172,7 @@ export const glossaryMoreFaqsB: Record<string, PageFaq[]> = {
   "conveyance-allowance": [
     { q: "Is conveyance allowance taxable?", a: "A fixed conveyance allowance for commuting is generally taxable as salary under current rules. Amounts for official travel reimbursed against actuals are treated differently, so check the current position." },
     { q: "How is conveyance allowance different from reimbursement?", a: "An allowance is a fixed sum paid every month regardless of spend. A reimbursement pays back actual costs incurred on official work, against bills or claims." },
-    { q: "Does conveyance allowance count for PF?", a: "As an allowance outside basic and dearness allowance it is generally excluded from the PF wage. Under the labour codes, as notified, allowances above a set share of total pay may be added back to wages, so review the structure." },
+    { q: "Does conveyance allowance count for PF?", a: "As an allowance outside basic and dearness allowance it is generally excluded from the PF wage. Under the labour codes, in force since 21 November 2025, allowances above 50% of total pay are added back to wages, so review the structure." },
     { q: "Should conveyance allowance be pro-rated for LOP?", a: "If it is a fixed monthly allowance, it is usually reduced in proportion to loss-of-pay days, like other fixed components. The policy should state this." },
   ],
   "payroll-audit": [
@@ -219,7 +219,7 @@ export const glossaryMoreFaqsB: Record<string, PageFaq[]> = {
   ],
   "gig-workers": [
     { q: "Are gig workers employees?", a: "Generally no. They work on tasks or engagements outside a traditional employment relationship, so employee statutes such as EPF and ESI do not usually apply to them in the same way." },
-    { q: "How does the Code on Social Security treat gig workers?", a: "It recognises gig and platform workers and provides for social security schemes for them, with aggregators contributing as notified. Check the current status of the code and its rules before relying on any obligation." },
+    { q: "How does the Code on Social Security treat gig workers?", a: "It recognises gig and platform workers and provides for social security schemes for them, with aggregators contributing under schemes notified under the Code, which has been in force since 21 November 2025. Check the current schemes and rules before relying on any obligation." },
     { q: "How are gig workers paid?", a: "Usually through accounts payable against invoices or task records, not through payroll. Tax deduction at source on such payments follows the rules for contract or professional payments." },
     { q: "What is the risk of misclassifying gig workers?", a: "If the engagement looks like employment, with fixed hours, control and integration, the worker may be treated as an employee, bringing back statutory dues and benefits." },
   ],

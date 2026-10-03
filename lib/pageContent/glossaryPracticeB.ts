@@ -58,7 +58,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
   "full-and-final-settlement": [
     "Settlement starts when resignation is accepted, not on the last day. HR collects clearances from IT, finance and the manager, payroll works out salary for days worked, leave encashment, any notice pay recovery, pending reimbursements, and gratuity if the person is eligible, and the final TDS is recalculated on the full year to date.",
     "Example with illustrative figures: an employee leaving on 20 June with 12 days of encashable leave and a ₹15,000 laptop recovery receives 20 days' salary plus 12 days' encashment, minus the recovery and the tax due. Gratuity, where payable, is a separate line with its own rules on timing.",
-    "The common failure is letting settlement drift for months while clearances sit with one department. Wage rules for timely payment on separation apply, and the labour codes as notified may tighten the timeline, so check the current requirement. Share a written settlement statement so the employee can see every line.",
+    "The common failure is letting settlement drift for months while clearances sit with one department. The Code on Wages, in force since 21 November 2025, requires wages due on separation to be paid within two working days (s.17(2)), so check the current requirement in your state as well. Share a written settlement statement so the employee can see every line.",
   ],
   "garden-leave": [
     "Garden leave is decided at the resignation meeting, usually for sales, client-facing or senior roles. HR issues a short letter stating the start date, that salary and benefits continue, that the employee must stay reachable and must not contact clients, and that system access is being withdrawn.",
@@ -83,7 +83,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
   gratuity: [
     "Payroll handles gratuity twice. Each month, finance sets aside a provision for it, typically 15/26 of monthly basic and DA over 12 months, about 4.81%. At exit, HR checks eligibility under the Payment of Gratuity Act 1972: at least five years of continuous service, with exceptions such as death or disablement.",
     "Example with illustrative figures: an employee leaving after 7 years and 8 months on last drawn basic and DA of ₹40,000 is credited with 8 years, because the part year exceeds six months. Gratuity is ₹40,000 × 15 ÷ 26 × 8, about ₹1,84,615, within the ₹20,00,000 statutory ceiling.",
-    "Under the labour codes as notified, fixed-term employees may qualify after one year, and wage definitions may change what counts. Check the current position before settlement. The usual error is counting the part year wrongly or using gross instead of basic plus DA.",
+    "Under the Code on Social Security, in force since 21 November 2025, fixed-term employees qualify after one year, pro rata, and allowances above 50% of total pay are added back to the wage used. Check the current position before settlement. The usual error is counting the part year wrongly or using gross instead of basic plus DA.",
   ],
   "gross-salary": [
     "Gross salary is the figure payroll works out first each month, before any deduction: earned basic, HRA, allowances, overtime, arrears and variable pay paid that month, after reducing for loss of pay days. Every statutory test then reads from some version of it.",
@@ -143,7 +143,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
   "leave-carry-forward": [
     "Carry forward happens once a year at the close of the leave year, usually 31 December or 31 March. HR runs the year-end process: unused balances are moved to the new year up to the cap in the policy, anything above the cap lapses or is encashed, and employees are told their opening balance.",
     "Example with illustrative figures: a policy allows earned leave to carry forward up to 45 days. An employee with 38 days carried in and 12 days unused this year would reach 50, so 45 move forward and 5 lapse or are paid, depending on the policy.",
-    "Caps and accumulation limits under the Factories Act and state Shops and Establishments Acts vary, and the labour codes as notified may change them, so check the rule that applies to each site. The common mistake is letting casual or sick leave carry forward by default when the policy intends them to lapse.",
+    "Caps and accumulation limits under the Factories Act and state Shops and Establishments Acts vary, and the labour codes, in force since 21 November 2025, and the state rules under them may change them, so check the rule that applies to each site. The common mistake is letting casual or sick leave carry forward by default when the policy intends them to lapse.",
   ],
   "leave-encashment": [
     "Encashment comes up in two situations. Some companies allow employees to encash part of their earned leave balance once a year, often in a fixed month, and nearly all pay out the unused encashable balance at exit as part of full and final settlement.",

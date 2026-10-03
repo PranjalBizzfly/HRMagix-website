@@ -471,7 +471,7 @@ export const industriesMore: Industry[] = [
         heading: "Contracted loaders, agency drivers and your own payroll",
         body: [
           "Logistics businesses commonly use contract labour for loading, packing and peak capacity, sometimes alongside their own employees doing similar work. Under the Contract Labour (Regulation and Abolition) Act 1970, a principal employer has responsibilities that include ensuring contract workers are paid, and the Act and the state rules under it set the detail.",
-          "The labour codes, as notified, restate parts of this framework, and their commencement and state rules should be checked before relying on any specific threshold or obligation.",
+          "The labour codes, in force since 21 November 2025, restate parts of this framework, and state rules under them should be checked before relying on any specific threshold or obligation.",
           "The administrative point is to keep employees and contract workers clearly distinct on the record, and to be able to produce the contractor's wage and statutory payment evidence when asked. Treating a contract worker as an employee, or the other way round, causes statutory problems in both directions.",
         ],
       },
@@ -596,7 +596,7 @@ export const industriesMore: Industry[] = [
         heading: "Contract labour law from the supplier's side",
         body: [
           "Where a staffing firm supplies workers to a client's establishment, the arrangement commonly falls within the Contract Labour (Regulation and Abolition) Act 1970, under which the contractor may need a licence and the client, as principal employer, has its own registration and responsibilities. State rules made under the Act set much of the detail.",
-          "The labour codes, as notified, revise parts of this framework. Licensing thresholds and obligations should be checked against the current notified position for each state before being relied on.",
+          "The labour codes, in force since 21 November 2025, revise parts of this framework. Licensing thresholds and obligations should be checked against the current notified position for each state before being relied on.",
           "The administrative consequence is that the firm must be able to show, per client, that associates were paid and statutory dues deposited. A payroll that can report by client site produces that evidence without anyone rebuilding it from bank statements.",
         ],
       },
@@ -842,7 +842,7 @@ export const industriesMore: Industry[] = [
         heading: "Building workers and the BOCW framework",
         body: [
           "Building and other construction work is governed by the Building and Other Construction Workers (Regulation of Employment and Conditions of Service) Act 1996, together with the related cess Act, under which establishments register, construction workers may register with the state welfare board, and a cess is levied on the cost of construction. States make their own rules and run their own boards.",
-          "The labour codes, as notified, fold much of this into the Occupational Safety, Health and Working Conditions Code and the Code on Social Security. Commencement, thresholds and state rules should be checked for the current position before any of it is relied on.",
+          "The labour codes, in force since 21 November 2025, fold much of this into the Occupational Safety, Health and Working Conditions Code and the Code on Social Security. Thresholds and state rules should be checked for the current position before any of it is relied on.",
           "None of this is calculated by an HR platform, and HRMagix does not claim to. What the record can do is hold each worker's category and registration details, and keep the evidence the business is asked to produce.",
         ],
       },
@@ -877,7 +877,7 @@ export const industriesMore: Industry[] = [
       },
       {
         q: "Does HRMagix calculate BOCW cess?",
-        a: "No. BOCW cess is levied on construction cost under the cess Act and state rules, not calculated in payroll. Confirm the current position with your advisers, particularly as the labour codes are notified and brought into force.",
+        a: "No. BOCW cess is levied on construction cost under the cess Act and state rules, not calculated in payroll. Confirm the current position with your advisers, particularly now that the labour codes are in force and state rules are being finalised.",
       },
       {
         q: "Can we track safety and operator certificates?",

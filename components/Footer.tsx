@@ -51,14 +51,14 @@ export default function Footer() {
 
       {/* Tagline tab */}
       <div className="relative flex justify-center px-4">
-        <div className="w-full max-w-2xl rounded-b-[40px] bg-gradient-to-r from-violet-600 via-violet-500 to-violet-700 px-6 py-4 text-center shadow-float">
-          <p className="text-[22px] font-bold italic tracking-tight text-white sm:text-[30px]">
+        <div className="w-full max-w-2xl rounded-b-[40px] bg-gradient-to-r from-violet-600 via-violet-500 to-violet-700 px-6 py-4 text-center shadow-float ring-1 ring-inset ring-white/15">
+          <p className="text-[17px] font-bold italic tracking-tight text-white drop-shadow-sm sm:text-[28px]">
             Payroll, without the month-end panic…
           </p>
         </div>
       </div>
 
-      <div className="shell relative pb-8 pt-12 lg:pt-14">
+      <div className="shell relative pb-8 pt-12 lg:pt-16">
         <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16">
           {/* Brand column */}
           <div className="flex flex-col gap-6">
@@ -66,7 +66,7 @@ export default function Footer() {
               <Logo light priority={false} />
             </Link>
 
-            <p className="max-w-xs text-[14px] leading-relaxed text-white/70">
+            <p className="max-w-xs text-[14px] leading-[1.7] text-white/65">
               HRMS and payroll for Indian companies, with statutory compliance built into the run.
             </p>
 
@@ -79,7 +79,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={`HRMagix on ${s.label}`}
                     title={s.label}
-                    className="grid h-9 w-9 place-items-center rounded-full bg-white text-black transition-colors hover:bg-violet-500 hover:text-white"
+                    className="grid h-9 w-9 place-items-center rounded-full bg-white/[0.08] text-white/85 ring-1 ring-inset ring-white/15 transition-all duration-200 hover:-translate-y-0.5 hover:bg-violet-600 hover:text-white hover:ring-violet-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   >
                     <SocialMark name={s.name} className="h-4 w-4" />
                   </a>
@@ -87,13 +87,13 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="flex flex-col gap-1.5 text-[14px] text-white/80">
-              <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-violet-300">
+            <div className="flex flex-col items-start gap-0 text-[14px] lg:gap-1.5 text-white/80">
+              <a href={`mailto:${site.contact.email}`} className={"rounded transition-colors hover:text-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"}>
                 {site.contact.email}
               </a>
               <a
                 href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                className="transition-colors hover:text-violet-300"
+                className={"rounded transition-colors hover:text-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"}
               >
                 {site.contact.phone}
               </a>
@@ -102,13 +102,13 @@ export default function Footer() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/company/contact-hrmagix"
-                className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-600 px-5 text-[14px] font-semibold text-white transition-colors hover:bg-violet-700"
+                className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-violet-600 px-5 text-[14px] font-semibold text-white transition-colors shadow-[0_6px_20px_-6px_rgba(139,92,246,0.7)] hover:bg-violet-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 Book a Demo
               </Link>
               <Link
                 href="/company/careers"
-                className="inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[14px] font-medium text-white ring-1 ring-inset ring-white/25 transition-colors hover:bg-white/10"
+                className="inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[14px] font-medium text-white ring-1 ring-inset ring-white/25 transition-colors hover:bg-white/10 hover:ring-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 We&apos;re Hiring <Arrow />
               </Link>
@@ -116,16 +116,17 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:gap-x-8 lg:grid-cols-5">
             {groups.map((g) => (
               <nav key={g.title} aria-label={g.title}>
-                <h3 className="text-[15px] font-bold text-violet-400">{g.title}</h3>
-                <ul className="mt-4 space-y-2.5">
+                <h3 className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-violet-300">{g.title}</h3>
+                <span className="mt-3 block h-px w-8 bg-gradient-to-r from-violet-500 to-transparent" aria-hidden="true" />
+                <ul className="mt-2 space-y-0 text-[14px] leading-snug lg:mt-4 lg:space-y-3">
                   {g.links.map((l) => (
                     <li key={l.href}>
                       <Link
                         href={l.href}
-                        className="text-[14px] leading-snug text-white/85 transition-colors hover:text-white"
+                        className={"rounded text-[14px] leading-snug text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"}
                       >
                         {l.label}
                       </Link>
@@ -138,17 +139,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 flex flex-col items-center gap-5 border-t border-white/10 pt-6 md:flex-row md:justify-between">
-          <p className="text-center text-[13px] text-white/70 md:text-left">
-            Copyright © {new Date().getFullYear()} HRMagix Technologies Pvt Ltd (India) &amp; HRMagix
-            Inc (USA)
+        <div className="mt-12 flex flex-col items-center gap-5 border-t border-white/10 pt-6 md:flex-row md:justify-between">
+          <p className="text-center text-[13px] text-white/55 md:text-left">
+            © {new Date().getFullYear()} HRMagix. All rights reserved.
           </p>
           <ul className="flex flex-wrap justify-center gap-2">
             {payments.map((p) => (
               <li
                 key={p.name}
                 title={p.label}
-                className="grid h-[30px] w-[46px] place-items-center rounded bg-white px-1.5"
+                className="grid h-[30px] w-[46px] place-items-center rounded-md bg-white px-1.5 opacity-90 transition-opacity hover:opacity-100"
               >
                 <PaymentMark name={p.name} className="h-full w-full" />
               </li>

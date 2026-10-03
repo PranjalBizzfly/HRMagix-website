@@ -134,7 +134,7 @@ export const hubContent: Record<string, PageContent> = {
       {
         heading: "Three layers to keep in view",
         body: [
-          "Central Acts passed by Parliament set the framework for wages, bonus, social security, industrial relations and working conditions. Parliament has passed four labour codes intended to consolidate many of these Acts, and their operation depends on notification and on the rules framed under them. States frame their own rules under central law and also legislate on subjects such as shops and establishments, professional tax and labour welfare funds.",
+          "Central Acts passed by Parliament set the framework for wages, bonus, social security, industrial relations and working conditions. Four labour codes, passed in 2019 and 2020, came into force on 21 November 2025 and consolidate 29 of these Acts; how each provision operates depends on the central and state rules framed under them. States frame their own rules under central law and also legislate on subjects such as shops and establishments, professional tax and labour welfare funds.",
           "For an HR team, the practical point is that one obligation can have a central source, a state rule and a local registration, and all three may need to line up.",
         ],
       },

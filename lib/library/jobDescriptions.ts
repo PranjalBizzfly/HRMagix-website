@@ -659,7 +659,7 @@ Send your CV to [Email] with the subject line "Recruiter: [Location]".`,
     ],
     related: [
       { label: "Running Employee Background Verification With Consent and Proportion", href: "/resources/hr-guides/background-verification", note: "The step between offer and joining." },
-      { label: "Time to Hire (Glossary)", href: "/resources/hr-and-payroll-glossary/time-to-hire", note: "A core recruiting metric." },
+      { label: "Time to Hire", href: "/resources/hr-and-payroll-glossary/time-to-hire", note: "A core recruiting metric." },
       { label: "Onboarding & Lifecycle", href: "/solutions/onboarding-and-lifecycle", note: "What happens after the offer is accepted." },
     ],
   },
@@ -739,7 +739,7 @@ Send your CV to [Email] with the subject line "HR Compliance Officer: [Location]
       },
       {
         q: "Do the labour codes change this role?",
-        a: "They change the laws the role works from, as and when the codes and state rules take effect. Check the current implementation status rather than relying on a fixed date.",
+        a: "Yes. The codes came into force on 21 November 2025 and change the laws the role works from. State rules under them differ and some are still in draft, so check the position in each state you operate in.",
       },
       {
         q: "When does a company need a dedicated compliance officer?",
@@ -930,7 +930,7 @@ Send your CV to [Email] with the subject line "C&B Manager: [Location]".`,
       { label: "CTC (Cost to Company) vs Gross vs Net Salary", href: "/resources/compare/ctc-vs-gross-vs-net-salary", note: "The pay terms the role defines." },
       { label: "Payroll Manager Job Description", href: "/resources/job-description-templates/payroll-manager", note: "The role that implements pay decisions." },
     ],
-    verify: "The definition of wages under the Code on Wages may affect how CTC components are split. Check the current implementation status before restructuring pay.",
+    verify: "The definition of wages under the Code on Wages, in force since 21 November 2025, adds back allowances above half of total remuneration, which may affect how CTC components are split. Check the rules in force before restructuring pay.",
   },
   {
     slug: "hris-analyst",
@@ -1019,7 +1019,7 @@ Send your CV to [Email] with the subject line "HRIS Analyst: [Location]".`,
     related: [
       { label: "Deciding Who Can See Which Employee Data", href: "/resources/hr-guides/hr-data-access-control", note: "Setting role-based access." },
       { label: "Cleaning and Importing the Employee Master", href: "/resources/hr-guides/importing-employee-data", note: "Bulk data loads and validation." },
-      { label: "Human Resource Information System (HRIS) (Glossary)", href: "/resources/hr-and-payroll-glossary/hris", note: "What an HR information system covers." },
+      { label: "Human Resource Information System (HRIS)", href: "/resources/hr-and-payroll-glossary/hris", note: "What an HR information system covers." },
     ],
   },
 ];

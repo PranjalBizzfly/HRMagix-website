@@ -932,7 +932,7 @@ Date: [DD Month YYYY]`,
       faqs: [
         { q: "Can an employer terminate without giving reasons?", a: "Appointment letters often allow termination with notice. Whether that is enough depends on whether the person is a workman under industrial law, the standing orders that apply and the circumstances. Take legal advice before relying on it." },
         { q: "Is pay in lieu of notice always allowed?", a: "Only if the appointment terms or applicable rules permit it. Check both." },
-        { q: "When must final dues be paid after termination?", a: "Timelines vary by law and state, and the Code on Wages, as notified, sets a time limit for paying wages on separation. Check the current rule for your location." },
+        { q: "When must final dues be paid after termination?", a: "The Code on Wages, in force since 21 November 2025, requires wages due on separation to be paid within two working days (s.17(2)). Check any state rule for your location as well." },
       ],
       related: [
         { label: "Employee termination policy", href: `${P}/employee-termination`, note: "The process this letter concludes." },
@@ -940,7 +940,7 @@ Date: [DD Month YYYY]`,
         { label: "Full and Final Settlement Statement Template", href: "/resources/hr-letter-templates/full-and-final-statement", note: "Dues and recoveries after exit." },
         { label: "Notice Pay Calculator", href: "/calculators/notice-pay", note: "Work out pay in lieu of notice." },
       ],
-      verify: "Before issuing, check: whether the employee is a workman and the establishment size, which decide whether retrenchment conditions (notice, compensation, government permission) apply under the Industrial Disputes Act 1947 or the Industrial Relations Code 2020 as notified; the certified or model standing orders; the appointment terms on notice and pay in lieu; state Shops and Establishments rules; and the time limit for paying final dues. Have every termination letter reviewed by a legal adviser.",
+      verify: "Before issuing, check: whether the employee is a workman and the establishment size, which decide whether retrenchment conditions (notice, compensation, government permission) apply under the Industrial Relations Code 2020, in force from 21 November 2025 (formerly the Industrial Disputes Act 1947); the certified or model standing orders; the appointment terms on notice and pay in lieu; state Shops and Establishments rules; and the time limit for paying final dues. Have every termination letter reviewed by a legal adviser.",
     },
     // 11. Salary certificate
     {
@@ -1578,7 +1578,7 @@ Signature: ____________________
 Name: [Employee full name]
 Date: [DD Month YYYY]`,
       faqs: [
-        { q: "How soon must the full and final settlement be paid?", a: "It depends on the applicable law and state. The Code on Wages, as notified, sets a time limit for wages on separation, and gratuity has its own timeline under the Payment of Gratuity Act. Check the current rules for your location." },
+        { q: "How soon must the full and final settlement be paid?", a: "It depends on the applicable law and state. The Code on Wages, in force since 21 November 2025, requires wages due on separation to be paid within two working days (s.17(2)), and gratuity has its own payment timeline. Check the current rules for your location." },
         { q: "Is leave encashment taxable at exit?", a: "Leave encashment at retirement or resignation has a capped exemption for non-government employees under section 10(10AA) of the Income-tax Act. Check the current limit." },
         { q: "Should the employee sign a release with the settlement?", a: "Many employers take an acknowledgement of receipt. Wording that waives future claims should be reviewed by a legal adviser before use." },
       ],
@@ -1588,7 +1588,7 @@ Date: [DD Month YYYY]`,
         { label: "Gratuity Calculator", href: "/calculators/gratuity", note: "For eligible employees." },
         { label: "An Employee Exit Checklist, From Resignation to Full and Final", href: "/resources/hr-guides/employee-exit-checklist", note: "Steps before the statement." },
       ],
-      verify: "Check the time limit for paying final dues under the Code on Wages 2019 as notified and any state rule; gratuity eligibility and the payment timeline under the Payment of Gratuity Act 1972; the current tax exemption limits for leave encashment and gratuity; whether notice recovery uses basic or gross under the appointment terms; and that each recovery is a permitted deduction. Have any waiver or release wording reviewed by a legal adviser.",
+      verify: "Check the two-working-day limit for paying final dues under the Code on Wages 2019, s.17(2), and any state rule; gratuity eligibility and the payment timeline under the Payment of Gratuity Act 1972; the current tax exemption limits for leave encashment and gratuity; whether notice recovery uses basic or gross under the appointment terms; and that each recovery is a permitted deduction. Have any waiver or release wording reviewed by a legal adviser.",
     },
   ],
 };

@@ -345,7 +345,7 @@ export const glossaryMore: Term[] = [
       "A rating approach that requires a fixed share of employees in each rating band, so that most fall in the middle and fewer at the top and bottom. It controls rating inflation but can force distinctions in small teams where none exist.",
     confusedWith:
       "Not the same as calibration. Calibration compares ratings across managers; a bell curve imposes the proportions.",
-    see: { label: "Calibration (Glossary)", href: "/resources/hr-and-payroll-glossary/calibration" },
+    see: { label: "Calibration", href: "/resources/hr-and-payroll-glossary/calibration" },
   },
   {
     term: "Span of control",
@@ -396,7 +396,7 @@ export const glossaryMore: Term[] = [
     slug: "epf-kyc",
     definition:
       "Linking an EPF member's Aadhaar, PAN and bank account to their UAN, with the employer approving the details on the EPFO portal. Complete KYC is what allows online transfer and withdrawal claims, so missing KYC is a common reason claims are rejected.",
-    see: { label: "Universal Account Number (UAN) (Glossary)", href: "/resources/hr-and-payroll-glossary/uan" },
+    see: { label: "Universal Account Number (UAN)", href: "/resources/hr-and-payroll-glossary/uan" },
   },
   {
     term: "PF transfer",
@@ -426,7 +426,7 @@ export const glossaryMore: Term[] = [
     expands: "Employee stock option plan",
     definition:
       "A right granted to an employee to buy company shares at a set price after a vesting period. Under Section 17(2) of the Income-tax Act, the difference between fair market value on exercise and the price paid is a perquisite taxed through payroll, and a further capital gain arises on sale.",
-    see: { label: "Perquisites (Glossary)", href: "/resources/hr-and-payroll-glossary/perquisites" },
+    see: { label: "Perquisites", href: "/resources/hr-and-payroll-glossary/perquisites" },
   },
   {
     term: "Joining bonus",

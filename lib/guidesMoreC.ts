@@ -534,7 +534,7 @@ export const guidesMoreC: Guide[] = [
     },
     opening: [
       "Labour laws require employers to keep registers: of employees, wages, attendance, leave, overtime, deductions, fines, advances, accidents and more. Which ones apply depends on the laws your establishment falls under, the state it is in, and the number and type of workers.",
-      "This is an area in transition. The four labour codes consolidate many older Acts and, as notified and implemented, change the registers and formats required, with states framing their own rules. Treat any list here as a starting point to check, not a definitive statement of what you must keep. Confirm with your advisers and the current state rules.",
+      "This is an area in transition. The four labour codes, in force since 21 November 2025, consolidate many older Acts and, through central and state rules, change the registers and formats required, with states framing their own rules. Treat any list here as a starting point to check, not a definitive statement of what you must keep. Confirm with your advisers and the current state rules.",
     ],
     chapters: [
       {
@@ -547,7 +547,7 @@ export const guidesMoreC: Guide[] = [
           style: "bullet",
           items: [
             "Shops and establishments or factories legislation, depending on the premises",
-            "Wages: payment of wages and minimum wages, or the Code on Wages as implemented",
+            "Wages: the Code on Wages (in force from 21 November 2025), with registers under the earlier wage Acts' rules where state rules are not yet final",
             "Social security: EPF, ESI, gratuity, maternity benefit, bonus",
             "Contract labour, where contractors' workers are engaged",
             "State-level laws such as professional tax and labour welfare fund, where the state operates them",
@@ -603,7 +603,7 @@ export const guidesMoreC: Guide[] = [
       "Annual review of the register list scheduled",
     ],
     related: [
-      { label: "Wage Register (Glossary)", href: "/resources/hr-and-payroll-glossary/wage-register", note: "What the wage register records." },
+      { label: "Wage Register", href: "/resources/hr-and-payroll-glossary/wage-register", note: "What the wage register records." },
       { label: "Preparing for a Labour Inspection Before the Notice Arrives", href: "/resources/hr-guides/labour-inspection-preparation", note: "Where registers are tested." },
       { label: "Shops and Establishments Acts", href: "/resources/labour-law/shops-and-establishments-act", note: "The state law behind many office registers." },
       { label: "Compliance", href: "/solutions/compliance", note: "How statutory heads are derived in payroll." },
@@ -611,7 +611,7 @@ export const guidesMoreC: Guide[] = [
     faqs: [
       { q: "Which statutory registers does every employer need?", a: "There is no single list. It depends on the laws that apply to each establishment, its state and its workforce. Map each establishment first, then check the current state rules." },
       { q: "Can registers be kept electronically?", a: "Many states and laws now permit electronic registers, but the conditions vary. Check the current rules for each establishment and make sure you can produce them on site if asked." },
-      { q: "Do the labour codes change the registers?", a: "As notified and implemented, the labour codes and their rules consolidate and change several registers and formats. Implementation depends on central and state rules, so check the current position." },
+      { q: "Do the labour codes change the registers?", a: "Yes. The labour codes came into force on 21 November 2025, and their rules consolidate and change several registers and formats. State rules differ and some are still in draft, so check the current position for each state." },
       { q: "How long should registers be kept?", a: "Each law sets its own retention period. Keep each register for the longest period that applies, and longer if a dispute is open." },
     ],
   },
@@ -839,7 +839,7 @@ export const guidesMoreC: Guide[] = [
       keywords: ["salary on hold", "salary hold process", "withholding salary employee", "release held salary"],
     },
     opening: [
-      "'Put their salary on hold' is one of the most common instructions payroll receives, and one of the riskiest. Wages earned for work done are protected by law: the payment of wages legislation, and the Code on Wages as implemented, set when wages must be paid and limit what may be deducted.",
+      "'Put their salary on hold' is one of the most common instructions payroll receives, and one of the riskiest. Wages earned for work done are protected by law: the Code on Wages, in force since 21 November 2025, sets when wages must be paid and limit what may be deducted.",
       "A hold is usually meant as a short, documented pause while something is resolved, not as a deduction or a penalty. This guide covers how to keep it that way. It is not legal advice; check the current rules and take advice before holding any wages already due.",
     ],
     chapters: [

@@ -5,7 +5,7 @@
  * and what every name-style link to it says. Names are Title Case; secondary
  * collections carry a type suffix so no two pages share a name:
  *
- *   glossary terms   "<Term> (Glossary)"
+ *   glossary terms   "<Term>"
  *   feature modules  "<Name> Module"
  *   HR topics        "<Name> Guide"
  *   FAQ topics       "<Topic> FAQs"
@@ -61,7 +61,7 @@ export function titleCase(s: string): string {
     .join(" ");
 }
 
-export const glossaryName = (label: string) => `${titleCase(label)} (Glossary)`;
+export const glossaryName = (label: string) => titleCase(label);
 export const featureName = (name: string) => `${titleCase(name)} Module`;
 export const topicName = (name: string) => `${titleCase(name)} Guide`;
 export const faqTopicName = (name: string) => `${titleCase(name)} FAQs`;
