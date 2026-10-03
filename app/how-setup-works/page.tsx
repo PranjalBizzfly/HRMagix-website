@@ -90,7 +90,7 @@ export default function HowItWorksPage() {
       <Block
         eyebrow="Process"
         title="The three steps"
-        intro="Published as three because that is genuinely how many decisions there are. Everything below the surface is configuration, not development."
+        intro="Published as three because that is how many decisions there are. Everything below the surface is configuration, not development."
         ground="canvas"
       >
         <ProcessTimeline steps={steps.map((s) => ({ title: s.title, body: s.copy }))} />
@@ -199,7 +199,7 @@ export default function HowItWorksPage() {
               Validation happens on import rather than at the first payroll run. Records that
               fail, a malformed identifier, a missing date of joining, a salary structure that
               does not add up, are reported individually, because the failure mode to avoid is
-              somebody being quietly absent from the first run.
+              somebody being left out of the first run.
             </p>
             <p className="mt-4 text-[16px] leading-[1.72] text-muted">
               Two things reliably surface here, and neither is caused by the migration: duplicate

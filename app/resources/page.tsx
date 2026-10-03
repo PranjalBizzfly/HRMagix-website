@@ -51,7 +51,7 @@ const moments: { icon: IconName; title: string; paras: string[] }[] = [
     title: "The policy library, when you need the document itself",
     paras: [
       "Twenty-five workplace policy documents as issued, each available to view or download as a PDF, alongside a page explaining what the policy is for and what the platform records against it.",
-      "Those explanatory pages deliberately state no rules. A notice period or a leave quota written there would be an invented figure attributed to a real employer's document, so the questions are set out instead of the answers.",
+      "Those explanatory pages state no rules. A notice period or a leave quota written there would be an invented figure attributed to a real employer's document, so the questions are set out instead of the answers.",
     ],
   },
 ];
@@ -136,7 +136,7 @@ export default function ResourcesHub() {
           <Opening
             label="On format"
             paragraphs={[
-              "These briefings are published as web pages rather than PDFs. That is a considered choice: a PDF behind a form is a lead-generation artefact wearing the clothes of a research paper, and the reader can usually tell.",
+              "These briefings are published as web pages rather than PDFs. That is a considered choice: a PDF behind a form is a lead-generation tool wearing the clothes of a research paper, and the reader can usually tell.",
               "Each one is written for a specific person doing a specific job, a payroll lead closing a cutoff, a founder with no HR function, a plant head with three shift patterns, and says plainly what is a provision of law, what is a product capability, and what is an opinion.",
             ]}
           />

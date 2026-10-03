@@ -238,7 +238,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
       <EnquirySection topic={`HRMagix for ${industry.name}`} />
 
-      <CtaBand title={<>Run HRMagix the way <strong>{industry.name.toLowerCase()}</strong> actually work</>} />
+      <CtaBand title={<>Run HRMagix the way <strong>{industry.name.toLowerCase()}</strong> teams work</>} />
 
       <RelatedCards
         title="Other kinds of company"

@@ -24,7 +24,7 @@ const framing: Record<
 > = {
   "Conduct and the working relationship": {
     defines:
-      "A conduct policy is only as good as its specifics. The template sets out the structure and the reporting route; what constitutes a breach here, and what follows one, is yours to state.",
+      "A conduct policy is only as good as its specifics. The template sets out the structure and the reporting route; what counts as a breach here, and what follows one, is yours to state.",
     evidence:
       "Conduct cases turn on what was communicated and when. These are the records that establish it.",
     ctaTitle: "A conduct policy nobody can prove they received is not a policy",

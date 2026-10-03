@@ -87,7 +87,7 @@ export default function PressKitPage() {
       <Block
         eyebrow="Copy"
         title="Boilerplate"
-        intro="Copy either of these verbatim. Both are accurate as written; the difference is length, not emphasis."
+        intro="Copy either of these word for word. Both are accurate as written; the difference is length, not emphasis."
         ground="canvas"
       >
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">

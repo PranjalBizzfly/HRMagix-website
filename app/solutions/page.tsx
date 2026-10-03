@@ -192,7 +192,7 @@ export default function SolutionsHub() {
         id="modules"
         eyebrow="Complete module reference"
         title="All twelve, and what each one does"
-        intro="Eight of these have a page of their own. The remaining four, performance, recognition, meetings and succession, are described in full here rather than given a page each, because four near-identical pages would tell you less than one honest list."
+        intro="Eight of these have a page of their own. The remaining four, performance, recognition, meetings and succession, are described in full here rather than given a page each, because four near-identical pages would tell you less than one complete list."
         ground="sunken"
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">

@@ -231,7 +231,7 @@ export default function CompliancePage() {
       <Block
         eyebrow="Reference"
         title="The register of heads"
-        intro="Each head with the condition that brings it into play, the basis it is computed on, and the artefact the run produces. Rates are stated only where central statute fixes them."
+        intro="Each head with the condition that brings it into play, the basis it is computed on, and the output the run produces. Rates are stated only where central statute fixes them."
         ground="canvas"
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">

@@ -398,7 +398,7 @@ export default function HomePage() {
               Where high-growth teams start their rollout
             </h3>
             <p className="mt-4 text-[16px] leading-[1.7] text-muted">
-              Most companies don&rsquo;t switch everything on day one. They begin with the workflow causing the most friction, usually attendance disputes or a delayed monthly payroll run, and expand into performance, OKRs, and employee self-service as their team scales.
+              Most companies don&rsquo;t switch everything on day one. They begin with the workflow causing the most trouble, usually attendance disputes or a delayed monthly payroll run, and expand into performance, OKRs, and employee self-service as their team scales.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/solutions/payroll" size="sm">Explore Payroll</Button>

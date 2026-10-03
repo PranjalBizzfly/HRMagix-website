@@ -170,7 +170,7 @@ export default function CalculatorHub() {
         <Opening
           label="Not offered"
           paragraphs={[
-            "Three calculations people look for are missing from the list above, and they are missing deliberately rather than by omission.",
+            "Three calculations people look for are missing from the list above, and they are left out on purpose, not by mistake.",
             "Each depends on figures that change by statute every year, or that differ by state, and that HRMagix does not publish. A calculator built on a guessed slab produces a confident wrong number, which is worse than no calculator, because someone will act on it.",
           ]}
         />

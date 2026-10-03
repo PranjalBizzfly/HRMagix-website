@@ -206,7 +206,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           </div>
           <dl className="grid grid-cols-3 gap-3">
             {[
-              ["100% Unified", "Single system of record"],
+              ["One record", "Single system of record"],
               ["Continuous", "Audit trail"],
               ["Native", "Statutory compliance"],
             ].map(([v, l]) => (

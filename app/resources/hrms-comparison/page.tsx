@@ -99,8 +99,8 @@ const rows: {
       { verdict: "good", note: "Created once" },
     ],
     explain: [
-      "This is the row where point tools do worst and it is worth being explicit about why: each system needs the person, and the person is only genuinely onboarded when the slowest of them has them.",
-      "It is also the row that scales most brutally. The work per joiner is constant, so it grows exactly in step with hiring.",
+      "This is the row where point tools do worst and it is worth being explicit about why: each system needs the person, and the person is only onboarded when the slowest of them has them.",
+      "It is also the row that grows fastest. The work per joiner is constant, so it grows exactly in step with hiring.",
     ],
   },
   {
@@ -136,7 +136,7 @@ const rows: {
     ],
     explain: [
       "The questions leadership asks tend to cross domains: overtime cost against attrition risk in the same department, payroll variance attributable to joiners versus revisions.",
-      "Those are straightforward when both figures come from one record and genuinely hard when they arrive as two exports taken at different moments.",
+      "Those are straightforward when both figures come from one record and hard when they arrive as two exports taken at different moments.",
     ],
   },
   {
@@ -147,7 +147,7 @@ const rows: {
       { verdict: "mixed", note: "One configuration exercise" },
     ],
     explain: [
-      "This is the row where spreadsheets genuinely win, and it is why almost every company starts there. There is no procurement, no configuration and no licence.",
+      "This is the row where spreadsheets win, and it is why almost every company starts there. There is no procurement, no configuration and no licence.",
       "It is a real advantage for a real period. The question is not whether spreadsheets are wrong in principle, it is when the cost of the reconciliation exceeds the cost of the system.",
     ],
   },
@@ -219,7 +219,7 @@ export default function ComparisonPage() {
             <p className="mt-7 text-[17.5px] leading-[1.65] text-body sm:text-[19px]">
               Three ways of running HR, compared on the structural properties that decide how each
               behaves, not on feature counts. Spreadsheets win a row outright and are the right
-              answer for a genuinely small team; the comparison says so, because one that found
+              answer for a small team; the comparison says so, because one that found
               against them everywhere would not be a comparison.
             </p>
           </Reveal>
@@ -367,7 +367,7 @@ export default function ComparisonPage() {
               </h3>
               <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Specifically: what was this person&rsquo;s salary structure, reporting line and leave
-                balance on a named date. If the honest answer is &ldquo;whatever the file says now&rdquo;,
+                balance on a named date. If the true answer is &ldquo;whatever the file says now&rdquo;,
                 the records are not effective-dated, and a diligence exercise will find that out
                 before you do.
               </p>
@@ -378,7 +378,7 @@ export default function ComparisonPage() {
                 Ask what an employee does to get a payslip from two years ago
               </h3>
               <p className="mt-3 text-[15px] leading-[1.72] text-muted">
-                If the answer involves asking a person, the self-service is nominal. This is the
+                If the answer involves asking a person, the self-service exists in name only. This is the
                 cheapest of the four questions to fix and the one that most reliably indicates how
                 the rest of the estate is arranged.
               </p>
@@ -390,7 +390,7 @@ export default function ComparisonPage() {
               </h3>
               <p className="mt-3 text-[15px] leading-[1.72] text-muted">
                 Under about ten people, with no statutory registrations yet and everyone visible to
-                everyone, the reconciliation cost is genuinely lower than the cost of running a
+                everyone, the reconciliation cost is lower than the cost of running a
                 system. Move when obligations with fixed dates arrive, not because a spreadsheet is
                 embarrassing.
               </p>
@@ -426,8 +426,8 @@ export default function ComparisonPage() {
             ["“Too complicated”", "It was configured by one person, alone, without guidance.", "Plan setup with the vendor, and work through it in order."],
             ["“It’s missing a feature”", "Sometimes true, often the feature exists and was never found.", "Ask the vendor directly before deciding it is missing."],
             ["“Our HR person left”", "Only one administrator ever knew how it worked.", "Name at least two administrators from the start."],
-            ["“We went back to spreadsheets”", "Employees never adopted self-service, so HR kept doing it by hand.", "Launch self-service to employees deliberately, with managers on board."],
-            ["It quietly lapsed", "Nobody noticed the account had stopped being used.", "Check usage in the first months, not at renewal."],
+            ["“We went back to spreadsheets”", "Employees never adopted self-service, so HR kept doing it by hand.", "Plan the self-service launch, with managers on board."],
+            ["It lapsed unnoticed", "Nobody noticed the account had stopped being used.", "Check usage in the first months, not at renewal."],
           ].map(([reason, cause, fix], i) => (
             <Reveal key={reason} delay={i * 60} y={12} className="card card-hover flex flex-col p-6">
               <h3 className="font-display text-[17px] font-bold text-heading">{reason}</h3>

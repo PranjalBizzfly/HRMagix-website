@@ -81,14 +81,14 @@ const cycle = [
     title: "A PIP is a structured plan, not a warning letter",
     body: [
       "A Performance Improvement Plan in HRMagix is a 30/60/90-day structure with milestones and a manager coaching log. The milestones are the substance: a plan with an end date and no interim checkpoints is a countdown, not an improvement plan.",
-      "The coaching log matters for two separate reasons. It is what makes the support offered demonstrable if the outcome is later disputed, and it is what makes the plan genuinely developmental rather than procedural.",
+      "The coaching log matters for two separate reasons. It is what makes the support offered easy to show if the outcome is later disputed, and it is what makes the plan developmental rather than procedural.",
     ],
   },
   {
     marker: "Continuously, not annually",
     title: "Recognition runs on its own clock",
     body: [
-      "Peer spot awards, value-based badges and a live culture wall are deliberately outside the review cycle. Recognition that waits for an appraisal is not recognition; it is a rating.",
+      "Peer spot awards, value-based badges and a live culture wall are kept outside the review cycle. Recognition that waits for an appraisal is not recognition; it is a rating.",
       "Because badges are tied to stated company values, the wall also becomes a quiet record of which values the organisation actually rewards, which is not always the list on the careers page.",
     ],
   },
@@ -143,7 +143,7 @@ const faqs = [
     a: "An OKR is time-bound and ambitious: it describes what you are trying to change this quarter. A KRA is continuous and role-bound: it describes what you are accountable for as long as you hold the job. Most appraisal disputes we hear about trace back to an organisation using one of the two where it needed both, measuring only the projects, or measuring only the routine.",
   },
   {
-    q: "Does HRMagix force a particular review cadence?",
+    q: "Does HRMagix force a particular review schedule?",
     a: "No. The cycle length, the review windows, who participates in an assessment and how ratings are calibrated are the employer's decisions, configured as policy. The page above describes the rhythm a performance year commonly takes, not a schedule the platform imposes.",
   },
   {
@@ -291,7 +291,7 @@ export default function PerformancePage() {
           <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
             Nor does it score anybody automatically. Performance and potential are both human
             assessments recorded during a cycle. A talent matrix generated from data nobody
-            deliberately assessed would look authoritative and mean nothing, which is a worse outcome
+            assessed would look authoritative and mean nothing, which is a worse outcome
             than having no matrix at all.
           </p>
         </Reveal>

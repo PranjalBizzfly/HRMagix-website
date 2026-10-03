@@ -254,7 +254,7 @@ export default function MediaPage() {
           {
             label: "About HRMagix",
             href: "/company/about-hrmagix",
-            note: "What the company is, and what it deliberately is not.",
+            note: "What the company is, and what it is not.",
           },
           {
             label: "Contact HRMagix",

@@ -80,7 +80,7 @@ const sections: {
       {
         label: "All six calculators",
         href: "/resources/calculator",
-        note: "The directory, including plan cost and a note on which calculators deliberately do not exist.",
+        note: "The directory, including plan cost and a note on which calculators are not offered.",
       },
     ],
   },
@@ -279,7 +279,7 @@ export default function PayrollResourcesPage() {
         </Block>
       ))}
 
-      <Block eyebrow="Scope" title="What is deliberately not here" ground="sunken">
+      <Block eyebrow="Scope" title="What is not here" ground="sunken">
         <Reveal y={12} className="card mx-auto max-w-3xl p-6 sm:p-8">
           <p className="text-[16.5px] leading-[1.72] text-muted">
             There is no TDS, professional tax or labour welfare fund calculator, and their absence is

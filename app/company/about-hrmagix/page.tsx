@@ -112,7 +112,7 @@ export default function AboutPage() {
       <Block
         eyebrow="Scope"
         title="What HRMagix is not"
-        intro="Usually the fastest way to tell whether something fits. None of the following is a roadmap item being coyly deferred, they are things this product deliberately does not do."
+        intro="Usually the fastest way to tell whether something fits. None of the following is a roadmap item being put off, they are things this product chooses not to do."
         ground="canvas"
       >
         <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -169,7 +169,7 @@ export default function AboutPage() {
               PF, ESI, professional tax and TDS are derived from the salary structure on the record and the registrations you hold, and every figure can be traced back to the component and the rule that produced it.
             </p>
             <p className="mt-4 text-[16px] leading-[1.72] text-muted">
-              The alternative, a number that appears correct and cannot be explained, is worse than a manual calculation, because it fails silently. A payroll figure that nobody can defend is a liability rather than an output.
+              The alternative, a number that appears correct and cannot be explained, is worse than a manual calculation, because it fails without warning. A payroll figure that nobody can defend is a liability rather than an output.
             </p>
           </section>
           <section className="card card-hover p-6">
@@ -180,7 +180,7 @@ export default function AboutPage() {
               A regularised attendance record sits alongside the original punch rather than replacing it. A backdated increment produces an arrear in the current month rather than a restatement of payslips already issued. A revised policy re-opens acknowledgement rather than assuming the earlier one still covers it.
             </p>
             <p className="mt-4 text-[16px] leading-[1.72] text-muted">
-              Each of these makes the current view slightly messier and the historical record defensible. That trade is the right way round, and it is the one most often made the wrong way.
+              Each of these makes the current view slightly messier and the historical record reliable. That trade is the right way round, and it is the one most often made the wrong way.
             </p>
           </section>
           <section className="card card-hover p-6">

@@ -82,7 +82,7 @@ export default function IndustriesHub() {
           <Opening
             paragraphs={[
               "Software companies usually publish industry pages to widen a keyword net, and the pages end up identical apart from a noun. That is not useful to anybody choosing a system.",
-              `So each of the ${industries.length} below is written to answer one question honestly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are genuinely different problems.`,
+              `So each of the ${industries.length} below is written to answer one question plainly: if you are this kind of company, what is actually going to be hard, and what should you configure first? A startup's difficulty is that no policy exists yet. A manufacturer's is that the shop floor and the office are paid on different logic. A mid-market business discovers that its three branches are one company operationally and three compliance positions statutorily. Those are different problems.`,
             ]}
           />
         </div>

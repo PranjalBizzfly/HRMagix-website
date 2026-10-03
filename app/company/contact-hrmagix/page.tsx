@@ -252,7 +252,7 @@ export default function ContactPage() {
                 The rates are published, the calculators run on your own figures without an email
                 address, and the module pages describe what each part of the platform does in
                 plain language. The trial gives full access to every module for fourteen days
-                without a credit card, which is a more honest evaluation than any call.
+                without a credit card, which tells you more than any call.
               </p>
             </section>
           </div>
@@ -261,7 +261,7 @@ export default function ContactPage() {
       <Block
         eyebrow="Reasons"
         title="Four reasons people write"
-        intro="And what makes a message about each one genuinely useful to answer."
+        intro="And what makes a message about each one useful to answer."
         ground="canvas"
       >
         <dl className="grid gap-4 sm:grid-cols-2 lg:gap-5">

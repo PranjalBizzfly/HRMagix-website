@@ -106,7 +106,7 @@ export default function PolicyHub() {
           <Opening
             paragraphs={[
               `HRMagix ships ${policyCount} workplace policy templates inside the Documents module, a code of conduct and ${policyCount - 1} policies covering conduct, attendance, leave, performance, pay and separation.`,
-              "These are your policies, not ours. You write your own rules into them, issue them to the employees each one applies to, and the platform records acknowledgement per employee per policy version, so that when a policy is revised, an earlier acceptance does not silently stand in for the new wording.",
+              "These are your policies, not ours. You write your own rules into them, issue them to the employees each one applies to, and the platform records acknowledgement per employee per policy version, so that when a policy is revised, an earlier acceptance does not automatically stand in for the new wording.",
             ]}
           />
         </div>

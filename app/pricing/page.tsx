@@ -217,7 +217,7 @@ export default function PricingPage() {
               <p className="mt-4 text-[16.5px] leading-[1.72] text-muted">
                 Most companies move here for one of two reasons: statutory filing has become a
                 monthly event they cannot afford to get wrong, or the appraisal cycle has outgrown
-                the spreadsheet it was run on. Either alone is sufficient.
+                the spreadsheet it was run on. Either one is enough.
               </p>
             </section>
 
@@ -282,7 +282,7 @@ export default function PricingPage() {
           label="On the price"
           paragraphs={[
             "There is no setup fee and no implementation charge. The two-to-three-day setup, the Excel import templates, the policy validation and the dry-run payroll are part of getting started, not a separately priced professional-services engagement.",
-            "The fourteen-day trial gives full access to every module rather than a restricted version, because a payroll product cannot honestly be evaluated with payroll switched off. Cancellation is available at any point; if you do cancel, export your data while you can still log in.",
+            "The fourteen-day trial gives full access to every module rather than a restricted version, because a payroll product cannot be evaluated properly with payroll switched off. Cancellation is available at any point; if you do cancel, export your data while you can still log in.",
           ]}
         />
         <Reveal delay={200} className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
@@ -330,7 +330,7 @@ export default function PricingPage() {
               },
               {
                 q: "What does the free trial include?",
-                a: "Full access to every module for fourteen days, with no credit card required. It is deliberately not a restricted version, because a payroll product cannot be evaluated honestly with payroll switched off.",
+                a: "Full access to every module for fourteen days, with no credit card required. It is not a restricted version, because a payroll product cannot be evaluated properly with payroll switched off.",
               },
               {
                 q: "Can we cancel, and what happens to our data?",
