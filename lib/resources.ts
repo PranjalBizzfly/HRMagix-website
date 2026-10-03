@@ -35,7 +35,7 @@
  */
 export const careers = {
   standfirst:
-    "HRMagix does not currently publish a list of open roles. What follows is an honest account of what the company builds, where it builds it, and how to approach us, rather than a vacancy page with nothing behind it.",
+    "HRMagix does not currently publish a list of open roles. What follows is a plain account of what the company builds, where it builds it, and how to approach us, rather than a vacancy page with nothing behind it.",
   situation: [
     "HRMagix builds people-operations software for Indian companies, from Pune and Mumbai. The product is a single platform of twelve modules, attendance, leave, payroll, OKRs, KRAs and the 9-box, PIPs, recognition, 1-on-1s, onboarding, documents, succession and analytics, sitting on one employee record.",
     "That description matters for anyone considering working here, because it determines the nature of the work. Building payroll for India is not a design problem with a compliance appendix. It is a compliance problem that has to be expressed as software: the EPF wage ceiling, the ESI contribution period, seven states' Professional Tax slabs, the February treatment in Maharashtra, the Payment of Gratuity Act formula. Correctness is not a quality attribute here. It is the product.",
@@ -81,7 +81,7 @@ export const careers = {
     looking: string[];
   }[],
   honesty: {
-    heading: "What this page deliberately does not claim",
+    heading: "What this page does not claim",
     points: [
       "No open positions are listed, because none have been published.",
       "No headcount, funding stage, growth figure or hiring target is stated, because HRMagix has not published one.",
@@ -205,7 +205,7 @@ export const mediaRoom = {
  */
 export const vendor = {
   standfirst:
-    "HRMagix does not operate a published partner programme with tiers, badges or commission schedules. It does work with implementation consultants, accounting firms and suppliers, and this page explains how, honestly.",
+    "HRMagix does not operate a published partner programme with tiers, badges or commission schedules. It does work with implementation consultants, accounting firms and suppliers, and this page explains how.",
   position: [
     "It is common for a software company of this kind to publish a partner programme long before it has one. We would rather describe the relationships that actually exist.",
     "There are three of them, and each is arranged individually rather than through a portal. If one of them describes you, the fastest route is a direct conversation with the team in Pune.",
@@ -239,7 +239,7 @@ export const vendor = {
     "Supplier with a proposal for HRMagix itself",
   ],
   honesty: {
-    heading: "What is deliberately absent from this page",
+    heading: "What this page leaves out",
     points: [
       "No partner tiers, levels or badges, because none exist.",
       "No commission, margin or revenue-share schedule, because none is published.",

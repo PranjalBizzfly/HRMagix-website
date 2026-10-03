@@ -149,7 +149,7 @@ export const MEDIA: Record<string, MediaAsset> = {
     key: "solutions-ess",
     src: "/media/remote-laptop.webp",
     alt: "Four colleagues talking around a long table with laptops and notebooks beside tall windows in an open office",
-    caption: "Empower employees with instant mobile access to payslips, leave requests, and tax declarations.",
+    caption: "Give employees mobile access to payslips, leave requests and tax declarations.",
     position: "center 40%",
   },
   "solutions-onboarding": {
@@ -163,7 +163,7 @@ export const MEDIA: Record<string, MediaAsset> = {
     key: "solutions-hr-analytics",
     src: "/media/analytics-huddle.webp",
     alt: "Close-up of a laptop screen showing an analytics dashboard with bar charts, line graphs and weekly figures",
-    caption: "Actionable executive reporting on headcount growth, attrition, and statutory liabilities.",
+    caption: "Clear leadership reporting on headcount growth, attrition, and statutory liabilities.",
     position: "center 35%",
   },
   "solutions-performance-bg": {

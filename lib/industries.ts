@@ -71,7 +71,7 @@ export const baseIndustries: Industry[] = [
       focus: "HR software for startups",
     },
     situation: [
-      "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives quietly at around forty, when the first person asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
+      "HR software for startups is bought later than it should be, and for a predictable reason. At fifteen people, HR is a founder answering questions in a chat window. It works, and it works precisely because everyone can see everyone. The failure mode arrives at around forty, when the first person asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
       "By then the decision has already been made, badly, several times. Founders usually reach for HR software at this point believing they need a tool. What they actually need is for the rules to exist somewhere other than in their head, applied identically to everyone, from the day they are written.",
     ],
     pressures: [
@@ -97,7 +97,7 @@ export const baseIndustries: Industry[] = [
         order: "First",
         module: "Payroll",
         href: "/solutions/payroll",
-        why: "Because the statutory position compounds. Getting EPF, ESI, PT and TDS right from employee one avoids the only genuinely expensive mistake on this list.",
+        why: "Because the statutory position compounds. Getting EPF, ESI, PT and TDS right from employee one avoids the one mistake on this list that really costs money.",
       },
       {
         order: "Then",
@@ -122,7 +122,7 @@ export const baseIndustries: Industry[] = [
       {
         heading: "The five decisions to make before the tenth hire",
         body: [
-          "Almost every HR problem a young company hits in its second year traces back to a decision that was never made in its first. Five are worth settling deliberately, because each becomes a precedent the moment somebody asks.",
+          "Almost every HR problem a young company hits in its second year traces back to a decision that was never made in its first. Five are worth settling early, because each becomes a precedent the moment somebody asks.",
           "How much leave, of which kinds, accruing on what basis. What the notice period is, and whether it differs by seniority. How long probation runs, and what confirmation requires. Whether work from home is a right, an arrangement or an exception. And what the salary structure looks like, specifically the split between basic and allowances, because that decides the PF cost of every offer you make afterwards.",
           "None of these needs to be generous or elaborate. They need to exist in writing and be applied identically, which is exactly what founders find hardest when the person asking is sitting three feet away.",
         ],
@@ -150,7 +150,7 @@ export const baseIndustries: Industry[] = [
       "The first engineer's salary crosses the income-tax exemption limit and TDS becomes a monthly obligation.",
     ],
     closing:
-      "The Starter plan is deliberately narrow, attendance, leaves, directory and documents, because a fifteen-person company genuinely does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
+      "The Starter plan is kept narrow, attendance, leaves, directory and documents, because a fifteen-person company does not need succession planning. Payroll and performance arrive with Growth, and switching them on is a setting rather than a migration, because they read the same record you have been building since your first hire.",
     questions: [
       {
         q: "We have twelve people. Is this too early?",
@@ -208,7 +208,7 @@ export const baseIndustries: Industry[] = [
     },
     situation: [
       "In an owner-managed business the payroll is usually run by the person who also handles purchases, banking and the accountant relationship. It is not a specialism; it is one of eleven things on a list, and it comes due on a fixed date whether or not the rest of the list is finished.",
-      "The failure mode here is not fraud or chaos. It is small, repeated friction: a half-day that was not recorded, a Professional Tax slab that changed in February and was missed, a payslip that has to be reconstructed because someone needs it for a loan application. Individually trivial. Collectively, they are why month end takes three days.",
+      "The failure mode here is not fraud or chaos. It is small, repeated problems: a half-day that was not recorded, a Professional Tax slab that changed in February and was missed, a payslip that has to be reconstructed because someone needs it for a loan application. Individually trivial. Collectively, they are why month end takes three days.",
     ],
     pressures: [
       {
@@ -490,7 +490,7 @@ export const baseIndustries: Industry[] = [
       },
       {
         title: "Overtime and night differentials are money, not metadata",
-        body: "These are contested figures. Calculating them from the shift definition and the employee's eligibility on the record, rather than from a supervisor's tally, is what makes them defensible.",
+        body: "These are contested figures. Calculating them from the shift definition and the employee's eligibility on the record, rather than from a supervisor's tally, is what makes them easy to defend.",
       },
       {
         title: "ESI moves with the wage base",
@@ -619,17 +619,17 @@ export const baseIndustries: Industry[] = [
       ],
     },
     situation: [
-      "A technology company's HR problem is rarely capture and almost always alignment. Everyone has a laptop, everyone is reachable, and nobody is confused about whether their colleague is working. What is genuinely unclear is whether the work being done this sprint is the work that matters this quarter.",
+      "A technology company's HR problem is rarely capture and almost always alignment. Everyone has a laptop, everyone is reachable, and nobody is confused about whether their colleague is working. What is unclear is whether the work being done this sprint is the work that matters this quarter.",
       "Meanwhile the statutory obligations are exactly as heavy as they are in a factory, and the shift complexity can be worse, a delivery centre supporting a client in another timezone runs rosters a plant would recognise.",
     ],
     pressures: [
       {
         title: "Attendance has to mean something without meaning surveillance",
-        body: "For hybrid teams the point of capture is establishing payable days and leave, not monitoring keystrokes. Browser and mobile check-in, with a geofence only where it genuinely applies, client sites, secure floors, keeps the input honest without turning it into a control mechanism.",
+        body: "For hybrid teams the point of capture is establishing payable days and leave, not monitoring keystrokes. Browser and mobile check-in, with a geofence only where it applies, client sites, secure floors, keeps the input accurate without turning it into a control mechanism.",
       },
       {
         title: "Annual appraisals do not describe quarterly work",
-        body: "In a company shipping every two weeks, an annual review is a document about a year nobody remembers. Quarterly OKRs cascading from leadership to individual contributors, with live progress and confidence scores, describe the work at the cadence it actually happens.",
+        body: "In a company shipping every two weeks, an annual review is a document about a year nobody remembers. Quarterly OKRs cascading from leadership to individual contributors, with live progress and confidence scores, describe the work at the pace it actually happens.",
       },
       {
         title: "Delivery centres run genuine rosters",
@@ -672,15 +672,15 @@ export const baseIndustries: Industry[] = [
         body: [
           "Services companies run two clocks. One records effort against a client, a project and a rate; the other records presence against an employment contract. They are frequently confused, and they answer different questions.",
           "Timesheet data tells you what a project cost and what can be invoiced. Attendance data tells you whether somebody was at work, whether they were late, whether they took leave, and what they should be paid. An employee can bill six hours on a day they were present for nine, and both figures are correct.",
-          "The mistake worth avoiding is deriving payroll from timesheets. Payroll obligations are contractual and statutory, and they follow presence and approved leave rather than utilisation. What is genuinely useful is having both readable against the same employee record, so a utilisation question and a leave question can be asked of the same person without exporting anything.",
+          "The mistake worth avoiding is deriving payroll from timesheets. Payroll obligations are contractual and statutory, and they follow presence and approved leave rather than utilisation. What is useful is having both readable against the same employee record, so a utilisation question and a leave question can be asked of the same person without exporting anything.",
         ],
       },
       {
         heading: "Distributed teams, and what attendance means without an office",
         body: [
           "For an IT services company the workforce is frequently split across a home office, a client site and a company floor, sometimes within the same week. Presence stops being a building and becomes a claim, which changes what an attendance management system is actually for.",
-          "The useful design is to record the claim honestly rather than to police it. A geo-fenced mobile punch establishes that somebody was at the client site when they said they were, which matters for a billing dispute. A home-working day is recorded as a home-working day rather than as an absence, so it is visible in the ledger without being penalised.",
-          "What this buys is a defensible record for the two moments that matter: the client asking who was on site, and the exit interview where somebody disputes their leave balance.",
+          "The useful design is to record the claim accurately rather than to police it. A geo-fenced mobile punch establishes that somebody was at the client site when they said they were, which matters for a billing dispute. A home-working day is recorded as a home-working day rather than as an absence, so it is visible in the ledger without being penalised.",
+          "What this buys is a record that holds up for the two moments that matter: the client asking who was on site, and the exit interview where somebody disputes their leave balance.",
         ],
       },
       {
@@ -701,7 +701,7 @@ export const baseIndustries: Industry[] = [
     questions: [
       {
         q: "Our team is fully remote. How does attendance work?",
-        a: "Through browser or mobile check-in without a geofence, unless one genuinely applies. The purpose is to establish payable days and reconcile leave, not to monitor activity.",
+        a: "Through browser or mobile check-in without a geofence, unless one applies. The purpose is to establish payable days and reconcile leave, not to monitor activity.",
       },
       {
         q: "How do OKRs connect to reviews?",
@@ -753,7 +753,7 @@ export const baseIndustries: Industry[] = [
     },
     situation: [
       "A consulting or agency workforce is rarely in the office, and that is the point. People are at client sites, between them, or working from wherever the engagement requires. The office is an address, not a place of work.",
-      "This makes the ordinary assumptions of attendance software useless. A biometric reader at reception measures nothing meaningful. At the same time, the firm genuinely needs to know where hours went, not to police anyone, but because those hours are the thing being sold.",
+      "This makes the ordinary assumptions of attendance software useless. A biometric reader at reception measures nothing meaningful. At the same time, the firm needs to know where hours went, not to police anyone, but because those hours are the thing being sold.",
     ],
     pressures: [
       {
@@ -804,7 +804,7 @@ export const baseIndustries: Industry[] = [
         heading: "A firm where the partners are also the employer",
         body: [
           "Professional firms have an organisational shape that HR software rarely anticipates. Partners are owners rather than employees, and are usually paid through drawings rather than payroll. Associates and staff are employees in the ordinary sense. Articled clerks, trainees and interns are a third category with their own stipend and statutory treatment.",
-          "The consequence is that a single payroll run has to accommodate populations whose relationship to the firm is legally different, and a single employee record has to be honest about which is which, because it determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual.",
+          "The consequence is that a single payroll run has to accommodate populations whose relationship to the firm is legally different, and a single employee record has to be clear about which is which, because it determines PF applicability, ESI eligibility, TDS treatment and gratuity accrual.",
           "The point is not that the software decides these questions. It is that the category has to be a field on the record rather than an understanding held by the person who runs payroll, because that person eventually goes on leave.",
         ],
       },
@@ -813,7 +813,7 @@ export const baseIndustries: Industry[] = [
         body: [
           "Accounting, audit, legal and consulting firms have compressed periods where the ordinary rules of working time stop applying: statutory audit season, tax filing deadlines, a case going to hearing, a transaction closing.",
           "Two administrative facts follow. Overtime and late working concentrate into a few weeks, which makes the overtime and comp-off policy far more consequential than its usage across the year suggests. And leave becomes contested, applications cluster immediately after the peak, and a team calendar showing the overlap at the point of approval is worth more than a policy document.",
-          "Where the firm compensates the peak with time off rather than payment, the comp-off entitlement and its expiry are the mechanism that decides whether that promise is honoured or quietly forgotten.",
+          "Where the firm compensates the peak with time off rather than payment, the comp-off entitlement and its expiry are the mechanism that decides whether that promise is honoured or forgotten.",
         ],
       },
       {

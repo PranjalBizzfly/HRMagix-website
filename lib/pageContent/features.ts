@@ -140,7 +140,7 @@ export const featureDetail: Record<string, PageContent> = {
       {
         heading: "What the OKR module is for",
         body: [
-          "OKRs fail quietly when they are set at the start of a quarter and opened again at the end. The module is built to keep them in view in between: each objective has measurable key results, progress is updated as work moves, and check-ins happen on a cadence rather than at review time.",
+          "OKRs fail without anyone noticing when they are set at the start of a quarter and opened again at the end. The module is built to keep them in view in between: each objective has measurable key results, progress is updated as work moves, and check-ins happen on a schedule rather than at review time.",
         ],
       },
       {
@@ -354,7 +354,7 @@ export const featureDetail: Record<string, PageContent> = {
       {
         heading: "What onboarding covers",
         body: [
-          "Most first-day friction comes from work that could have been done earlier: documents not collected, a letter not signed, a laptop not ordered. The onboarding module moves that work to the days between offer acceptance and joining, and gives each department a set sequence to follow.",
+          "Most first-day problems comes from work that could have been done earlier: documents not collected, a letter not signed, a laptop not ordered. The onboarding module moves that work to the days between offer acceptance and joining, and gives each department a set sequence to follow.",
         ],
       },
       {

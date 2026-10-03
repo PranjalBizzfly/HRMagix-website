@@ -97,7 +97,7 @@ export const solutions: Solution[] = [
     },
     opening: [
       "Most companies do not buy an HRMS system because they want one. They buy one because the fourth spreadsheet has stopped agreeing with the third, and nobody can say which is right.",
-      "The fragmentation is rarely dramatic. It starts with a biometric machine that exports a CSV, a leave tracker somebody built in Excel, a payroll package that lives on one finance laptop, and appraisal forms circulated as PDFs once a year. Each is defensible on its own. Together they mean that the answer to a question as simple as \"how many days was this person actually present in March\" depends on who you ask.",
+      "The fragmentation is rarely dramatic. It starts with a biometric machine that exports a CSV, a leave tracker somebody built in Excel, a payroll package that lives on one finance laptop, and appraisal forms circulated as PDFs once a year. Each holds up on its own. Together they mean that the answer to a question as simple as \"how many days was this person actually present in March\" depends on who you ask.",
       "An HRMS is the decision to stop asking. One record per employee, one place it is edited, and every downstream workflow reading from it rather than from its own private copy.",
     ],
     passages: [
@@ -134,7 +134,7 @@ export const solutions: Solution[] = [
         heading: "Running the old and the new system in the same month",
         body: [
           "The safest cutover for payroll is a parallel run: process one month in both the outgoing system and the new one, and compare the results head by head before switching over.",
-          "That comparison is worth doing properly rather than in aggregate. A total that matches to the rupee can still conceal two offsetting errors, and the differences that matter are usually in the same few places, a rounding convention on PF, an allowance treated as part of the gross in one system and outside it in the other, an employee whose ESI eligibility changed mid-year.",
+          "That comparison is worth doing properly rather than as a total. A total that matches to the rupee can still conceal two offsetting errors, and the differences that matter are usually in the same few places, a rounding convention on PF, an allowance treated as part of the gross in one system and outside it in the other, an employee whose ESI eligibility changed mid-year.",
           "Once the two agree line by line for one month, the historical figures can be carried in with confidence, because the thing that had to be trusted was the calculation rather than the import.",
         ],
       },
@@ -143,7 +143,7 @@ export const solutions: Solution[] = [
         body: [
           "A single record read by twelve workflows raises an obvious question: who is allowed to read which part of it. The answer in an HR platform for companies of any size has to be structural rather than conventional.",
           "Access is granted by role against the record, not by trust. A reporting manager sees their team's attendance, leave and goals. Finance roles see salary components and the payroll run. HR administrators see the whole record. An employee sees themselves. Nobody sees a part of the system because they have been there a long time.",
-          "Underneath that, the record keeps its own history. Every change to a salary component, a reporting line, a leave balance or a document carries who made it and when. That is what makes a figure defensible six months later, when the question is not what the number is but how it came to be that number.",
+          "Underneath that, the record keeps its own history. Every change to a salary component, a reporting line, a leave balance or a document carries who made it and when. That is what makes a figure easy to defend six months later, when the question is not what the number is but how it came to be that number.",
         ],
       },
     ],
@@ -206,7 +206,7 @@ export const solutions: Solution[] = [
       {
         group: "Control",
         items: [
-          "Granular role-based permissions per module",
+          "Role-based permissions for each module",
           "Multi-factor authentication",
           "Single sign-on on the Enterprise plan",
           "Approvals, documents and payroll runs all leave a trail",
@@ -216,7 +216,7 @@ export const solutions: Solution[] = [
     useCases: {
       title: "The point at which companies stop coping",
       intro:
-        "Nobody adopts an HR management system on a quiet week. There is almost always a specific event that makes the spreadsheets untenable.",
+        "Nobody adopts an HR management system on a quiet week. There is almost always a specific event that makes the spreadsheets unworkable.",
       items: [
         {
           role: "Crossing twenty employees",
@@ -244,7 +244,7 @@ export const solutions: Solution[] = [
           situation:
             "In most companies under a hundred people, HR is part of a finance or operations role, and the administrative load is the part that crowds out the rest of the job.",
           resolution:
-            "The recurring work, payslips, balances, letters, reminders, approvals, either automates or moves to self-service. What is left is the part that genuinely needed a person.",
+            "The recurring work, payslips, balances, letters, reminders, approvals, either automates or moves to self-service. What is left is the part that needed a person.",
         },
       ],
     },
@@ -257,7 +257,7 @@ export const solutions: Solution[] = [
       role: "HR managers and heads of people",
       reality: "Several disconnected tools, a monthly headcount report built by hand, and a leadership team asking questions the data cannot answer.",
       signals: [
-        "The incumbent system's renewal date is approaching.",
+        "The current system's renewal date is approaching.",
         "Leadership asks for a number, headcount, attrition, cost, and producing it takes days.",
         "A new entity or acquisition doubles the records that have to be reconciled.",
       ],
@@ -617,7 +617,7 @@ export const solutions: Solution[] = [
       {
         heading: "Documents that expire on their own schedule",
         body: [
-          "A personnel file is a mixture of documents that never change and documents that quietly stop being valid. Offer and appointment letters are permanent. Visas, driving licences, professional certifications and contractor agreements are not.",
+          "A personnel file is a mixture of documents that never change and documents that stop being valid. Offer and appointment letters are permanent. Visas, driving licences, professional certifications and contractor agreements are not.",
           "HRMagix holds both kinds in an encrypted vault with role-based access, and treats expiry as a property of the document rather than something a person has to remember. Alerts fire ahead of the date, to the employee and to whoever is accountable, which turns an expired certificate from an incident into an errand.",
         ],
       },
@@ -625,7 +625,7 @@ export const solutions: Solution[] = [
         heading: "Proving that a policy was read",
         body: [
           "Handbook acknowledgements, non-disclosure agreements and compliance policies all share the same weakness: circulating them is easy, and proving each person received and accepted them is not.",
-          "Acknowledgement is tracked per employee per policy version in HRMagix, so a change to a policy re-opens the acknowledgement rather than silently applying to people who accepted an earlier text. The workplace policy library shipped with the platform is designed to be issued this way.",
+          "Acknowledgement is tracked per employee per policy version in HRMagix, so a change to a policy re-opens the acknowledgement rather than automatically applying to people who accepted an earlier text. The workplace policy library shipped with the platform is designed to be issued this way.",
         ],
       },
       {
@@ -659,7 +659,7 @@ export const solutions: Solution[] = [
         "Each of these is an alert rather than a report somebody has to remember to run.",
       rows: [
         { term: "Document expiry", detail: "Visas, driving licences, professional certificates and agreements, with lead time before the date." },
-        { term: "Probation and confirmation", detail: "Confirmation dates surfaced to the reporting manager ahead of time, not after." },
+        { term: "Probation and confirmation", detail: "Confirmation dates flagged to the reporting manager ahead of time, not after." },
         { term: "Policy acknowledgement", detail: "Per employee, per policy version, re-opened when the policy text changes." },
         { term: "Statutory identifiers", detail: "Missing PAN, UAN, ESIC IP number or bank details flagged before they block a payroll run." },
         { term: "Asset handover", detail: "Hardware and workspace assets tracked against the person they were issued to." },
@@ -678,7 +678,7 @@ export const solutions: Solution[] = [
       {
         group: "The vault",
         items: [
-          "Encrypted digital personnel files with granular access control",
+          "Encrypted personnel files, with access set by role",
           "Company handbook, NDA and compliance policy sign-off tracking",
           "Automated alerts for visa, licence and certificate expiry",
           "Letters and payslips filed against the person automatically",
@@ -753,7 +753,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "Can employees update their own details?",
-        a: "Yes, through the employee self service portal. Changes with a downstream consequence, a bank account before a payroll run, for example, are routed for confirmation rather than applied silently. Everything else takes effect immediately and is recorded in the audit trail.",
+        a: "Yes, through the employee self service portal. Changes with a downstream consequence, a bank account before a payroll run, for example, are routed for confirmation rather than applied automatically. Everything else takes effect immediately and is recorded in the audit trail.",
       },
       {
         q: "Does the org chart have to be maintained separately?",
@@ -761,7 +761,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "How are employees imported when moving from spreadsheets?",
-        a: "Through a bulk import of the fields you already hold, with validation on the ones that have to be well formed, identifiers, dates of joining, salary components. Records that fail validation are reported individually rather than silently skipped, so nobody is quietly missing from the first payroll run.",
+        a: "Through a bulk import of the fields you already hold, with validation on the ones that have to be well formed, identifiers, dates of joining, salary components. Records that fail validation are reported individually rather than skipped, so nobody is missing from the first payroll run.",
       },
       {
         q: "What happens to a record when someone leaves?",
@@ -831,7 +831,7 @@ export const solutions: Solution[] = [
         body: [
           "Every attendance management system can total the hours between a punch-in and a punch-out. The harder question is which of those hours the employer has agreed to pay at a premium, and that is a policy question rather than a measurement one.",
           "Time beyond the shift is not automatically overtime. It becomes overtime when it was authorised, or when it crosses a threshold the policy defines, and the rate depends on whether the day was a working day, a weekly off or a public holiday. Some employers compensate with a day off rather than a payment, which turns the same hours into a comp-off entitlement with an expiry date instead of a line on a payslip.",
-          "Holding those rules in the system rather than in a supervisor's judgement is what makes the overtime figure reproducible. It is also what makes it defensible, because the record shows the hours, the rule applied to them and the person who authorised the exception.",
+          "Holding those rules in the system rather than in a supervisor's judgement is what makes the overtime figure reproducible. It is also what makes it easy to defend, because the record shows the hours, the rule applied to them and the person who authorised the exception.",
         ],
       },
       {
@@ -972,7 +972,7 @@ export const solutions: Solution[] = [
       focus: "Leave management system",
     },
     opening: [
-      "Leave is the only part of HR that every single employee interacts with, which is why a bad leave process does disproportionate damage. It is not the policy that irritates people. It is the uncertainty: not knowing the balance, not knowing whether the request was seen, not knowing whether a Friday and a Monday will cost two days or four.",
+      "Leave is the only part of HR that every single employee interacts with, which is why a bad leave process does far more damage. It is not the policy that irritates people. It is the uncertainty: not knowing the balance, not knowing whether the request was seen, not knowing whether a Friday and a Monday will cost two days or four.",
       "The sandwich rule is the clearest example. It is a perfectly reasonable policy that becomes a source of resentment purely because it is applied inconsistently and explained after the fact.",
     ],
     passages: [
@@ -1190,7 +1190,7 @@ export const solutions: Solution[] = [
       {
         heading: "On the phone, because that is where the workforce is",
         body: [
-          "For a large part of an Indian workforce, field staff, plant operators, drivers, site engineers, the phone is not a secondary channel. It is the only one. The HRMagix iOS and Android app carries punch-in with GPS and selfie validation, leave application and balances, payslips and the company holiday calendar, so the portal is genuinely available to everyone rather than to the people with desks.",
+          "For a large part of an Indian workforce, field staff, plant operators, drivers, site engineers, the phone is not a secondary channel. It is the only one. The HRMagix iOS and Android app carries punch-in with GPS and selfie validation, leave application and balances, payslips and the company holiday calendar, so the portal is available to everyone rather than to the people with desks.",
         ],
       },
       {
@@ -1202,7 +1202,7 @@ export const solutions: Solution[] = [
         ],
       },
       {
-        heading: "What the portal deliberately does not let an employee do",
+        heading: "What the portal does not let an employee do",
         body: [
           "Self-service is only trustworthy if its limits are as clear as its capabilities. An employee can read their own record and everything derived from it. They cannot read anyone else's, beyond the open directory their colleagues share.",
           "They can apply, declare and request, leave, regularisation, reimbursement, an investment declaration, but applying is not approving. Anything with a financial or policy consequence routes to whoever the record says is responsible for it, and the outcome is written back with its approver and timestamp attached.",
@@ -1266,7 +1266,7 @@ export const solutions: Solution[] = [
         {
           term: "Regularise attendance",
           detail:
-            "Raised against a specific day with a reason attached, and routed for approval. The original record is not overwritten, the correction sits alongside it, which is what makes the ledger defensible later.",
+            "Raised against a specific day with a reason attached, and routed for approval. The original record is not overwritten, the correction sits alongside it, which is what makes the ledger easy to defend later.",
         },
         {
           term: "Update personal details",
@@ -1307,7 +1307,7 @@ export const solutions: Solution[] = [
     },
     capabilitiesTitle: "What employees and managers can do for themselves",
     capabilitiesIntro:
-      "Deliberately a short list. Self-service works because its scope is narrow and predictable, not because it does everything.",
+      "A short list, on purpose. Self-service works because its scope is narrow and predictable, not because it does everything.",
     questionsIntro:
       "Usually asked by HR teams weighing how much they can hand over without losing control of the record.",
     questions: [
@@ -1333,7 +1333,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "Is there anything an employee still has to email HR about?",
-        a: "Yes, anything requiring judgement rather than access. A grievance, a policy exception, a request to change a leave rule. The portal is deliberately for the requests that are lookups in disguise, which is most of them by volume and few of them by importance.",
+        a: "Yes, anything requiring judgement rather than access. A grievance, a policy exception, a request to change a leave rule. The portal is meant for the requests that are lookups in disguise, which is most of them by volume and few of them by importance.",
       },
       {
         q: "What happens when an employee leaves, do they lose access to their payslips?",
@@ -1398,7 +1398,7 @@ export const solutions: Solution[] = [
         heading: "The stages nobody builds a page for",
         body: [
           "Confirmation after probation, an internal transfer between locations, a promotion, a change of reporting line: each is a lifecycle event with statutory and payroll consequences, and each is usually handled by email.",
-          "In HRMagix these are effective-dated changes on the same record, which means the consequence is automatic. A transfer to a different state changes Professional Tax applicability. A confirmation date reached without action surfaces to the reporting manager. A promotion reaches the next payroll run without a second entry.",
+          "In HRMagix these are effective-dated changes on the same record, which means the consequence is automatic. A transfer to a different state changes Professional Tax applicability. A confirmation date reached without action is flagged to the reporting manager. A promotion reaches the next payroll run without a second entry.",
         ],
       },
       {
@@ -1451,7 +1451,7 @@ export const solutions: Solution[] = [
         {
           step: "03",
           title: "Confirmation",
-          body: "Probation end date surfaces to the reporting manager ahead of time; confirmation is an effective-dated change with its own consequences.",
+          body: "Probation end date is flagged to the reporting manager ahead of time; confirmation is an effective-dated change with its own consequences.",
         },
         {
           step: "04",
@@ -1593,7 +1593,7 @@ export const solutions: Solution[] = [
         heading: "Reading a trend without over-reading it",
         body: [
           "Workforce analytics tools are at their most useful when they are treated as a way of forming better questions rather than as a source of answers. A rise in leave utilisation in one team may be a burnout signal, or it may be that the team took a long-planned holiday together. The dashboard cannot tell you which; it can tell you where to look.",
-          "The indicators worth acting on are usually the ones that move together. Overtime climbing while attrition-risk indicators climb in the same department, over the same two months, is a pattern. Either one alone is noise. Reporting that draws both from the same employee record is what makes the comparison honest.",
+          "The indicators worth acting on are usually the ones that move together. Overtime climbing while attrition-risk indicators climb in the same department, over the same two months, is a pattern. Either one alone is noise. Reporting that draws both from the same employee record is what makes the comparison fair.",
           "For that reason the platform reports what it can observe (hours, absences, tenure, cost and goal completion) and stops there. It does not score engagement from data it does not hold, or predict a resignation date.",
         ],
       },
@@ -1700,14 +1700,14 @@ export const solutions: Solution[] = [
         {
           role: "HR manager",
           situation:
-            "Being asked in a leadership meeting for figures that live in four places, and having a day to assemble something defensible.",
+            "Being asked in a leadership meeting for figures that live in four places, and having a day to assemble something that holds up.",
           resolution:
             "The collation step does not exist. Department distribution, leave utilisation, overtime and goal-completion trends are a read on data already captured, so the question can be asked and answered in the same meeting.",
         },
         {
           role: "Operations or plant head",
           situation:
-            "Overtime is rising on one shift, and it is unclear whether that is demand, understaffing, or a rota that has quietly stopped working.",
+            "Overtime is rising on one shift, and it is unclear whether that is demand, understaffing, or a rota that has stopped working.",
           resolution:
             "Overtime expense by department and shift, alongside the attendance records it was calculated from, so the hours can be traced back to the days and the people they came from.",
         },
@@ -1737,7 +1737,7 @@ export const solutions: Solution[] = [
       },
       {
         q: "What does the attrition risk indicator actually use?",
-        a: "Signals the platform already holds: tenure, leave pattern, goal completion and time since the last review. It is deliberately an early-warning flag rather than a score: it tells you which records are worth a conversation, and does not claim to predict who will resign.",
+        a: "Signals the platform already holds: tenure, leave pattern, goal completion and time since the last review. It is an early-warning flag rather than a score: it tells you which records are worth a conversation, and does not claim to predict who will resign.",
       },
       {
         q: "Can a report be exported for a board pack or an auditor?",

@@ -183,7 +183,7 @@ export const policyDetails: PolicyDetail[] = [
       "Every employee whose pay depends on days present, in practice, everyone, since loss of pay applies at every grade.",
     defines: [
       "Which capture methods are valid for which population, biometric, mobile, browser",
-      "What constitutes a full working day and a half day",
+      "What counts as a full working day and a half day",
       "How a missed or disputed punch is regularised, and who approves it",
       "By what date in the month regularisations must be raised",
     ],
@@ -450,7 +450,7 @@ export const policyDetails: PolicyDetail[] = [
     slug: "gratuity",
     purpose: [
       "This policy sets out gratuity eligibility and computation, and how it is settled on separation.",
-      "Because gratuity is a statutory entitlement with a fixed formula, the employer's policy is largely a restatement of the law plus the organisation's own administrative process. The provisioning question, recognising the liability before it falls due, is the part that is genuinely the employer's.",
+      "Because gratuity is a statutory entitlement with a fixed formula, the employer's policy is largely a restatement of the law plus the organisation's own administrative process. The provisioning question, recognising the liability before it falls due, is the part that is the employer's.",
     ],
     appliesTo: "Employees completing the qualifying period of continuous service.",
     statute:

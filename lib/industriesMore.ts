@@ -338,7 +338,7 @@ export const industriesMore: Industry[] = [
         heading: "Meals, accommodation and service charge in the salary structure",
         body: [
           "Many hospitality employers provide meals on duty and, at resorts and remote properties, accommodation. These are part of what the employee receives, and how they are treated, as a benefit, as a deduction, or as neither, has consequences for the wage base and for tax. That treatment should be decided once and recorded in the salary structure rather than handled case by case.",
-          "Service charge raises a separate question. Where an establishment collects one and shares it with staff, the basis of distribution, by points, by grade, by department or equally, is a policy decision that staff will scrutinise. Published consumer guidance on whether and how service charge may be levied has also changed over time, so check the current position before relying on it.",
+          "Service charge raises a separate question. Where an establishment collects one and shares it with staff, the basis of distribution, by points, by grade, by department or equally, is a policy decision that staff will check closely. Published consumer guidance on whether and how service charge may be levied has also changed over time, so check the current position before relying on it.",
           "Whatever the policy, the useful discipline is that the distribution is calculated from a written rule and appears on the payslip as its own line, so that a waiter can see how their share was reached.",
         ],
       },
@@ -587,9 +587,9 @@ export const industriesMore: Industry[] = [
       {
         heading: "Deployment changes without breaking continuity",
         body: [
-          "An associate who finishes one assignment and starts another the following week has not left the firm. Recording the move as a new joining, as is common when each client is run on a separate sheet, quietly resets their service.",
+          "An associate who finishes one assignment and starts another the following week has not left the firm. Recording the move as a new joining, as is common when each client is run on a separate sheet, resets their service.",
           "Continuity matters concretely. Gratuity eligibility under the Payment of Gratuity Act 1972, s.4, is based on continuous service, and leave accrual is computed from the date of joining. A redeployment should be a dated change on the existing record.",
-          "Where an assignment ends and the associate genuinely leaves, the exit should be recorded with its date and the full-and-final settlement assembled from the ledger, so that a later rehire starts from an honest history.",
+          "Where an assignment ends and the associate leaves, the exit should be recorded with its date and the full-and-final settlement assembled from the ledger, so that a later rehire starts from an accurate history.",
         ],
       },
       {
@@ -725,7 +725,7 @@ export const industriesMore: Industry[] = [
         heading: "Visiting faculty and the per-session payment",
         body: [
           "Guest and visiting faculty are often paid a fee per lecture, per course or per term. Depending on the terms, that may be a professional fee rather than salary, with tax deducted under a different section and no PF or ESI, or it may be employment. The distinction depends on the arrangement, not on the label.",
-          "Recording each person's category on their record, and paying them in the way that category requires, avoids the two common errors: running a visiting lecturer through salary payroll by default, or leaving a de facto employee outside it.",
+          "Recording each person's category on their record, and paying them in the way that category requires, avoids the two common errors: running a visiting lecturer through salary payroll by default, or leaving someone who is in effect an employee outside it.",
           "Where the arrangement is unclear, take advice before the first payment rather than after the year's TDS returns are filed.",
         ],
       },
@@ -921,7 +921,7 @@ export const industriesMore: Industry[] = [
       },
       {
         title: "Field staff need attendance that travels",
-        body: "Programme staff working across districts rarely pass an office. Mobile check-in with location tagging records their working days honestly and simply.",
+        body: "Programme staff working across districts rarely pass an office. Mobile check-in with location tagging records their working days accurately.",
       },
       {
         title: "Statutory rules apply to nonprofits too",

@@ -75,11 +75,11 @@ export const workplacePolicyFaqs: Record<string, PageFaq[]> = {
     { q: "How is a missed punch regularised?", a: "The policy sets how a missed or disputed punch is regularised, who approves it, and by what date in the month requests must be raised. In HRMagix each request carries an approver and a timestamp." },
     { q: "Do biometric, mobile and browser punches end up in one record?", a: "Yes. They settle into one attendance ledger." },
     { q: "How is loss of pay calculated from attendance?", a: "The loss-of-pay register is derived from the same ledger the presence board is drawn from." },
-    { q: "Does the template set what counts as a half day?", a: "No. What constitutes a full and a half working day is a threshold the employer sets, and the attendance module then applies it consistently to everyone." },
+    { q: "Does the template set what counts as a half day?", a: "No. What counts as a full and a half working day is a threshold the employer sets, and the attendance module then applies it consistently to everyone." },
   ],
   "late-coming": [
     { q: "What does a late coming policy define?", a: "How late arrival is measured against the shift start, how a grace allowance operates where the employer grants one, and what follows from repeated lateness." },
-    { q: "Is a late coming policy meant to be punitive?", a: "Its purpose is consistency rather than punishment. A written rule applies identically to everyone, while a manager's judgement does not." },
+    { q: "Is a late coming policy meant to punish people?", a: "Its purpose is consistency rather than punishment. A written rule applies identically to everyone, while a manager's judgement does not." },
     { q: "Who does the late coming policy apply to?", a: "Employees working to a defined shift or start time." },
     { q: "Is a grace period mandatory in the late coming policy?", a: "No. Whether a grace allowance is granted, and of what length, is the employer's decision." },
     { q: "How are late marks counted?", a: "The employer sets over what period late marks accumulate and what consequence attaches at each threshold. HRMagix accumulates them against the configured rule rather than a manager's recollection." },

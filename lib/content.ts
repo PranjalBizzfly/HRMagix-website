@@ -52,7 +52,7 @@ export const manifesto = {
   paragraphs: [
     "When your attendance data is locked in a local biometric machine, your payroll team spends 4 days every month manually reconciling half-days, loss of pay (LOP), and overtime. A single formula error in an Excel sheet leads to delayed salary credits, statutory non-compliance, and frustrated employees.",
     "Meanwhile, performance reviews become an annual box-checking ritual disconnected from day-to-day sprint outcomes. High performers feel unrecognised, and managers lack the continuous 1-on-1 frameworks needed to nurture leadership talent.",
-    "HRMagix replaces this broken sprawl with a single source of truth. One platform where biometric punches flow straight into salary computation, statutory deductions (EPF, ESI, PT, TDS) are calculated with zero manual intervention, and goals connect directly to daily recognition.",
+    "HRMagix brings these into one record. Attendance flows straight into salary, statutory deductions (EPF, ESI, PT, TDS) are calculated from the salary structure without re-keying, and goals connect to everyday recognition.",
   ],
   pillars: [
     {
@@ -71,7 +71,7 @@ export const manifesto = {
 };
 
 export const indianCompliance = {
-  eyebrow: "Statutory Compliance by Design",
+  eyebrow: "Statutory Compliance Built In",
   title: "Engineered specifically for Indian labor laws & multi-state tax rules",
   sub: "Handle multi-entity statutory filings with 100% precision, no consultants or manual tax calculations required.",
   aspects: [
@@ -265,7 +265,7 @@ export const modules: Module[] = [
     href: "/features/recognition",
     icon: "trophy",
     group: "Engagement",
-    desc: "Foster a continuous culture of appreciation with peer spot awards, value-based badges, and a live company culture wall.",
+    desc: "Recognise good work all year round with peer spot awards, value-based badges and a live company culture wall.",
     features: [
       "Peer-to-peer kudos with customized company core values badges",
       "Live interactive culture feed embedded directly in employee home dashboards",
@@ -278,7 +278,7 @@ export const modules: Module[] = [
     href: "/features/meetings",
     icon: "chat",
     group: "Engagement",
-    desc: "Empower managers to hold meaningful recurring coaching conversations with shared agendas and action item tracking.",
+    desc: "Give managers a shared agenda and action items for regular 1-on-1 conversations.",
     features: [
       "Collaborative pre-meeting agendas with continuous talking points",
       "Action item assignment with automated due-date reminders",
@@ -291,7 +291,7 @@ export const modules: Module[] = [
     href: "/features/onboarding",
     icon: "rocket",
     group: "People",
-    desc: "Delight new hires before day one with paperless digital document collection and structured department welcome workflows.",
+    desc: "Collect new hires' documents online before day one, with a welcome checklist for each department.",
     features: [
       "Self-service pre-boarding portal for PAN, Aadhaar, and bank document uploads",
       "Automated appointment letter generation with digital signature capability",
@@ -306,7 +306,7 @@ export const modules: Module[] = [
     group: "People",
     desc: "Centralized, secure employee document repository with automated expiry alerts and policy acknowledgment tracking.",
     features: [
-      "Encrypted digital personnel files with granular role-based access control",
+      "Encrypted personnel files, with access set by role",
       "Company handbook, NDA, and compliance policy sign-off tracking",
       "Automated alerts for visa, driving license, and certificate expiration",
     ],
@@ -317,7 +317,7 @@ export const modules: Module[] = [
     href: "/features/succession",
     icon: "compass",
     group: "People",
-    desc: "Identify critical single-point-of-failure roles and build robust internal leadership candidate benches for future growth.",
+    desc: "Find roles that depend on one person and name likely successors for them.",
     features: [
       "Key position vulnerability index and role criticality assessment",
       "Talent bench readiness ratings (Ready now, 1-2 years, 3+ years)",
@@ -330,7 +330,7 @@ export const modules: Module[] = [
     href: "/features/analytics",
     icon: "chart",
     group: "System",
-    desc: "Transform people data into actionable executive insights with real-time workforce trends, attrition metrics, and payroll costs.",
+    desc: "Turn people data into clear reports for leadership: workforce trends, attrition and payroll costs, kept up to date.",
     features: [
       "Real-time headcount growth, department distributions, and gender diversity",
       "Early warning attrition risk indicators and tenure analysis",
@@ -487,7 +487,7 @@ export const faqs = [
   },
   {
     q: "Can we integrate our existing biometric fingerprint or facial recognition machines?",
-    a: "Yes. HRMagix seamlessly integrates with leading biometric hardware (eSSL, Matrix, Realtime, ZKTeco) via secure API push or local sync service. Punches flow in real time to the cloud presence board and automatically reflect in shift calculations, late mark deductions, and monthly payroll loss of pay (LOP) registers.",
+    a: "Yes. HRMagix integrates with biometric hardware (eSSL, Matrix, Realtime, ZKTeco) via secure API push or local sync service. Punches flow in real time to the cloud presence board and automatically reflect in shift calculations, late mark deductions, and monthly payroll loss of pay (LOP) registers.",
   },
   {
     q: "How does employee mobile punch-in with geo-fencing work for hybrid & field teams?",
@@ -503,7 +503,7 @@ export const faqs = [
   },
   {
     q: "Where is our employee and payroll data hosted, and how secure is it?",
-    a: "Platform data is hosted in Indian cloud data centres, encrypted in transit between your browser or app and the platform, and encrypted at rest in storage. Access is governed by role-based permissions, with multi-factor authentication available and single sign-on on the Enterprise plan, and automated backups run daily. HRMagix does not claim ISO, SOC or comparable certification of its own, certifications held by the underlying infrastructure providers belong to those providers and should be attributed to them. If a procurement process needs specific assurance documentation, ask the team and you will get an honest answer about what exists.",
+    a: "Platform data is hosted in Indian cloud data centres, encrypted in transit between your browser or app and the platform, and encrypted at rest in storage. Access is governed by role-based permissions, with multi-factor authentication available and single sign-on on the Enterprise plan, and automated backups run daily. HRMagix does not claim ISO, SOC or comparable certification of its own, certifications held by the underlying infrastructure providers belong to those providers and should be attributed to them. If a procurement process needs specific assurance documentation, ask the team and you will get a straight answer about what exists.",
   },
   {
     q: "How are complex shift rotations, night allowances, and comp-offs managed?",
@@ -551,7 +551,7 @@ export const faqs = [
   },
   {
     q: "Is there a free trial, and does it include payroll?",
-    a: "Fourteen days with full access to every module and no credit card required. Payroll is included deliberately: a payroll product cannot be evaluated honestly with payroll switched off, and the questions worth asking, how a backdated increment is treated, how a mid-year migration handles year-to-date figures, only surface when you run one.",
+    a: "Fourteen days with full access to every module and no credit card required. Payroll is included on purpose: a payroll product cannot be evaluated properly with payroll switched off, and the questions worth asking, how a backdated increment is treated, how a mid-year migration handles year-to-date figures, only surface when you run one.",
   },
   {
     q: "How should we judge which is the best HRMS software for our company?",

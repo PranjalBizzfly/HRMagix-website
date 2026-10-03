@@ -99,7 +99,7 @@ export const policyRegister: PolicyGroup[] = [
         code: "HRMAGIX002",
         name: "Attendance Policy",
         covers:
-          "How presence is recorded, what constitutes a full and a half working day, and the process for regularising a missed or disputed record.",
+          "How presence is recorded, what counts as a full and a half working day, and the process for regularising a missed or disputed record.",
         enforcedBy: { label: "Attendance & Shifts", href: "/solutions/attendance-and-shifts" },
       },
       {
@@ -253,7 +253,7 @@ export const registerNotes = {
   how: [
     {
       step: "Adopt",
-      body: "Take the templates you need. A fifty-person company genuinely does not need all twenty-five on day one; conduct, attendance, leave and separation are the usual starting set.",
+      body: "Take the templates you need. A fifty-person company does not need all twenty-five on day one; conduct, attendance, leave and separation are the usual starting set.",
     },
     {
       step: "Write in your rules",
@@ -314,7 +314,7 @@ export const legalPages: LegalPage[] = [
         ],
         list: [
           "Contact details you provide in an enquiry or demo request",
-          "The content of your message and any subsequent correspondence",
+          "The content of your message and any later messages",
           "Basic technical information your browser sends with any web request",
         ],
       },
@@ -349,7 +349,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "Changes",
         body: [
-          "Where this policy changes materially, the change will be reflected here. It is worth reading it again if you are about to submit something you would not want kept.",
+          "Where this policy changes significantly, the change will be reflected here. It is worth reading it again if you are about to submit something you would not want kept.",
         ],
       },
     ],
@@ -469,7 +469,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "What is not claimed here",
         body: [
-          "HRMagix does not claim its own ISO, SOC or comparable certification on this page, and does not publish a penetration-test report or a bug-bounty programme. If a procurement process requires specific assurance documentation, ask the team directly and you will get an honest answer about what exists.",
+          "HRMagix does not claim its own ISO, SOC or comparable certification on this page, and does not publish a penetration-test report or a bug-bounty programme. If a procurement process requires specific assurance documentation, ask the team directly and you will get a straight answer about what exists.",
         ],
       },
     ],
@@ -490,7 +490,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: "Cookies, and why this page is not really about them",
         body: [
-          "A cookie is data a site asks your browser to store and then sends back to the server with every subsequent request. That last part is what makes cookies useful for tracking, and it is also what this website does not do.",
+          "A cookie is data a site asks your browser to store and then sends back to the server with every later request. That last part is what makes cookies useful for tracking, and it is also what this website does not do.",
           "The three things this site stores are held in your browser's local and session storage instead. The distinction matters: local and session storage are readable only by pages from this same origin, and are never attached to a network request. Nothing stored here is transmitted to us, and nothing is available to another website.",
           "This page names all three, because a policy that says \"we use cookies to improve your experience\" tells you nothing you could verify.",
         ],
@@ -504,7 +504,7 @@ export const legalPages: LegalPage[] = [
         ],
       },
       {
-        heading: "What is deliberately absent",
+        heading: "What is left out",
         body: [
           "There are no advertising cookies, no cross-site tracking, no third-party analytics or tag-manager scripts, no social media pixels, and no fingerprinting. No profile of you is built, and nothing about your visit is shared with another party.",
           "This is a matter of what the site loads rather than a promise about how data is handled afterwards. You can confirm it: open your browser's developer tools, look at the network requests this page makes and the storage it holds, and compare them against the three entries named above.",

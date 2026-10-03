@@ -25,7 +25,7 @@ export const marketingFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "What happens to records that fail validation on import?",
-      a: "Validation happens on import rather than at the first payroll run, and records that fail, such as a malformed identifier or a missing date of joining, are reported individually so nobody is quietly absent from the first run.",
+      a: "Validation happens on import rather than at the first payroll run, and records that fail, such as a malformed identifier or a missing date of joining, are reported individually so nobody is left out of the first run.",
     },
     {
       q: "Can we switch to HRMagix in the middle of a financial year?",
@@ -158,7 +158,7 @@ export const marketingFaqs: Record<string, PageFaq[]> = {
   "/solutions/performance-and-okrs": [
     {
       q: "Does HRMagix score employees automatically?",
-      a: "No. Performance and potential are both human assessments recorded during a review cycle; the platform does not generate ratings from data nobody deliberately assessed.",
+      a: "No. Performance and potential are both human assessments recorded during a review cycle; the platform does not generate ratings from data nobody assessed.",
     },
   ],
 
@@ -313,7 +313,7 @@ export const marketingFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Is there approved boilerplate I can use?",
-      a: "Yes. A one-sentence and a one-paragraph description are published on this page and can be copied verbatim.",
+      a: "Yes. A one-sentence and a one-paragraph description are published on this page and can be copied word for word.",
     },
     {
       q: "Where can I download the HRMagix logo?",

@@ -52,7 +52,7 @@ export const featureFaqs: Record<string, PageFaq[]> = {
     { q: "How does calibration work?", a: "Transparent calibration dashboards support executive leadership reviews." },
     { q: "Can the 9-box help identify future leaders?", a: "Yes. It is designed to visualise high-potential future leadership on an interactive talent matrix." },
     { q: "Where are KRAs found in the app?", a: "KRA sits in the Performance area of the app, alongside OKRs, Reviews, Skills and PIPs." },
-    { q: "How does the 9-box connect to succession planning?", a: "The 9-box surfaces high-potential employees, and the Succession module builds benches of successors with readiness ratings and development plans." },
+    { q: "How does the 9-box connect to succession planning?", a: "The 9-box highlights high-potential employees, and the Succession module builds benches of successors with readiness ratings and development plans." },
     { q: "Does HRMagix also run performance reviews?", a: "Yes. Reviews sit in the Performance area of the app, alongside KRA, OKRs, Skills and PIPs." },
   ],
   pips: [
@@ -96,7 +96,7 @@ export const featureFaqs: Record<string, PageFaq[]> = {
     { q: "Which module group does Onboarding belong to?", a: "Onboarding is part of the People group, alongside Documents and Succession." },
   ],
   documents: [
-    { q: "How are employee documents secured in HRMagix?", a: "Personnel files are encrypted and protected with granular role-based access control." },
+    { q: "How are employee documents secured in HRMagix?", a: "Personnel files are encrypted, and access is set by role." },
     { q: "Can I track who has signed the handbook or an NDA?", a: "Yes. The module tracks sign-off on the company handbook, NDAs and compliance policies." },
     { q: "Does HRMagix alert me before documents expire?", a: "Yes. Automated alerts cover visa, driving licence and certificate expiry." },
     { q: "Are all documents kept in one place?", a: "Yes. It is a centralised repository for employee and company documents." },
@@ -122,7 +122,7 @@ export const featureFaqs: Record<string, PageFaq[]> = {
     { q: "Does it show leave utilisation?", a: "Yes. Leave utilisation rates are included." },
     { q: "Can I compare payroll against budget?", a: "Yes. Analytics tracks payroll budget variance." },
     { q: "Is the data real-time?", a: "Yes. Workforce trends are shown in real time." },
-    { q: "Who is Analytics designed for?", a: "It turns people data into actionable executive insights on workforce trends, attrition and payroll costs." },
+    { q: "Who is Analytics designed for?", a: "It turns people data into clear reports for leadership on workforce trends, attrition and payroll costs." },
     { q: "Does Analytics report on gender diversity?", a: "Yes. Gender diversity is shown in real time alongside headcount growth and department distributions." },
   ],
 };
