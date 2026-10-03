@@ -14,7 +14,7 @@ export const topicsPerformance: Topic[] = [
     ],
     whyItMatters: [
       "When the only performance conversation is the annual review, the review contains surprises, and a review with surprises in it is one that failed months earlier.",
-      "Performance data also feeds decisions with lasting consequences: increments, promotions, succession and, sometimes, exits. Those decisions are only defensible if the record behind them was kept through the year.",
+      "Performance data also feeds decisions with lasting consequences: increments, promotions, succession and, sometimes, exits. Those decisions only hold up if the record behind them was kept through the year.",
     ],
     challenges: [
       { title: "Goals set and forgotten", body: "Goals written in April and next opened in March describe a different year from the one that happened." },
@@ -165,7 +165,7 @@ export const topicsPerformance: Topic[] = [
     faqs: [
       { q: "What is the difference between an OKR and a KPI?", a: "A KPI is an ongoing measure of health, a number you watch continuously. An OKR is a time-bound goal to change something, with key results that show whether the change happened." },
       { q: "How many OKRs should a team have?", a: "Few enough that they are genuine priorities. Most teams find a small handful of objectives, each with a few key results, is the limit of what they can focus on in a quarter." },
-      { q: "Should OKRs be linked to bonuses?", a: "Many organisations deliberately avoid a direct link, because it encourages people to set goals they know they can hit rather than ambitious ones." },
+      { q: "Should OKRs be linked to bonuses?", a: "Many organisations avoid a direct link, because it encourages people to set goals they know they can hit rather than ambitious ones." },
       { q: "What is the difference between an objective and a key result?", a: "An objective is a qualitative statement of what to achieve. A key result is a measurable outcome that shows progress towards that objective." },
       { q: "How often are OKRs set?", a: "Usually quarterly, with scoring at the end of the cycle. Some organisations also set annual OKRs that quarterly ones contribute to." },
       { q: "What does it mean to cascade OKRs?", a: "Company objectives are set first, and teams and individuals then set OKRs that contribute to those above them, so everyone can see how their goals connect to the company's." },
@@ -249,7 +249,7 @@ export const topicsPerformance: Topic[] = [
       "PIPs are commonly 30, 60 or 90 days, with milestone reviews along the way.",
     ],
     whyItMatters: [
-      "A fair PIP gives an employee a genuine chance to improve and gives the employer a documented, consistent process. If the plan later leads to an exit, the record of what was agreed, what support was given and what happened is what makes the decision defensible.",
+      "A fair PIP gives an employee a genuine chance to improve and gives the employer a documented, consistent process. If the plan later leads to an exit, the record of what was agreed, what support was given and what happened is what makes the decision easy to defend.",
     ],
     challenges: [
       { title: "Vague targets", body: "'Improve communication' cannot be met or missed." },
@@ -314,7 +314,7 @@ export const topicsPerformance: Topic[] = [
       { title: "No continuity", body: "Without notes and action items, each meeting starts from zero." },
     ],
     process: [
-      { step: "Set a cadence", body: "Weekly or fortnightly, at a protected time." },
+      { step: "Set a schedule", body: "Weekly or fortnightly, at a protected time." },
       { step: "Share an agenda", body: "Both sides add topics beforehand, with the employee's first." },
       { step: "Agree actions", body: "Capture action items with owners and dates." },
       { step: "Carry forward", body: "Open each meeting with the last meeting's actions." },
@@ -348,7 +348,7 @@ export const topicsPerformance: Topic[] = [
     phrases: ["1-on-1", "1-on-1s", "one-on-one"],
     seo: {
       title: "1-on-1 Meetings: Running Effective One-to-Ones",
-      description: "Why 1-on-1 meetings matter, setting a cadence, shared agendas, action items and continuity, and the mistakes that turn them into status updates.",
+      description: "Why 1-on-1 meetings matter, setting a schedule, shared agendas, action items and continuity, and the mistakes that turn them into status updates.",
     },
   },
 ];

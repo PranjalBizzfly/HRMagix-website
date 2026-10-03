@@ -23,7 +23,7 @@ export const topicsPay: Topic[] = [
       { title: "UAN for joiners", body: "New joiners with previous employment need their existing UAN linked, not a new one created." },
     ],
     process: [
-      { step: "Register the establishment", body: "Obtain PF registration where the Act applies." },
+      { step: "Register the establishment", body: "Get PF registration where the Act applies." },
       { step: "Capture the UAN", body: "Collect each joiner's existing UAN or generate one." },
       { step: "Calculate in payroll", body: "Apply 12% employee and employer contributions on the PF wage, with the ceiling rule chosen." },
       { step: "File the ECR and pay", body: "Upload the electronic challan cum return and deposit contributions by the due date." },
@@ -82,7 +82,7 @@ export const topicsPay: Topic[] = [
       { title: "Gross, not basic", body: "Teams used to PF calculations apply the wrong base." },
     ],
     process: [
-      { step: "Register where covered", body: "Obtain ESI registration for covered establishments." },
+      { step: "Register where covered", body: "Get ESI registration for covered establishments." },
       { step: "Test coverage", body: "Check gross wages against the threshold, respecting the contribution period." },
       { step: "Calculate in payroll", body: "0.75% employee and 3.25% employer on gross wages." },
       { step: "File and pay", body: "Deposit contributions and file returns by the due date." },
@@ -265,7 +265,7 @@ export const topicsPay: Topic[] = [
       { title: "Returns that must reconcile", body: "Each filing must match the payroll it came from, and TDS returns must reconcile to annual certificates." },
     ],
     process: [
-      { step: "Register", body: "Obtain the registrations each head requires for each establishment and state." },
+      { step: "Register", body: "Get the registrations each head requires for each establishment and state." },
       { step: "Configure the rules", body: "Rates, wage ceilings, thresholds and state slabs set once in the payroll system." },
       { step: "Deduct through payroll", body: "Calculate each head from the salary structure as part of the monthly run." },
       { step: "Deposit and file", body: "Pay each amount and file each return by its own due date." },
@@ -319,7 +319,7 @@ export const topicsPay: Topic[] = [
     ],
     whyItMatters: [
       "Provident fund and gratuity are calculated on basic pay, so the split between basic and allowances is a cost decision, not a formatting one. It also affects the employee: some components have tax treatment that others do not.",
-      "Structures designed ad hoc for each offer drift into a set of individual deals that are hard to explain, compare or change.",
+      "Structures designed separately for each offer drift into a set of individual deals that are hard to explain, compare or change.",
     ],
     challenges: [
       { title: "CTC confusion", body: "Candidates compare CTC figures that include different things, then discover the take-home differs." },

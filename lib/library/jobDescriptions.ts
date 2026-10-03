@@ -227,7 +227,7 @@ Send your CV to [Email] with the subject line "HR Manager: [Location]".`,
         "Translate the unit's annual plan into a headcount and capability plan.",
         "Advise on organisation design: spans of control, reporting lines and new roles.",
         "Use attrition, engagement and performance data to identify risks and propose actions.",
-        "Facilitate calibration in the appraisal cycle and challenge rating inconsistencies across teams.",
+        "Run calibration in the appraisal cycle and challenge rating inconsistencies across teams.",
         "Identify critical roles and successors, and work with L&D on development plans.",
         "Coach managers on handling underperformance, conflict and team changes.",
         "Lead the people side of restructures, transfers and role changes, including consultation and communication.",
@@ -261,7 +261,7 @@ As HR business partner for [Business unit] ([number] employees), you will work w
 What you will do
 - Advise unit leaders on headcount, organisation design and capability
 - Analyse attrition, engagement and performance data and recommend actions
-- Facilitate appraisal calibration and succession discussions
+- Run appraisal calibration and succession discussions
 - Coach managers on performance, conflict and change
 - Lead the people side of restructures and role changes
 - Bring in specialist HR teams when needed
@@ -914,7 +914,7 @@ Send your CV to [Email] with the subject line "C&B Manager: [Location]".`,
     faqs: [
       {
         q: "When does a company need a dedicated C&B manager?",
-        a: "Usually once there are enough grades, locations or incentive plans that ad hoc pay decisions start creating inconsistencies. Smaller companies often split the work between the HR manager and finance.",
+        a: "Usually once there are enough grades, locations or incentive plans that one-off pay decisions start creating inconsistencies. Smaller companies often split the work between the HR manager and finance.",
       },
       {
         q: "What experience is typical?",

@@ -1070,7 +1070,7 @@ export const baseCalculators: Calculator[] = [
   {
     slug: "plan-cost",
     methodIntro:
-      "Published rate times headcount, and nothing else. No modelled savings, no projected return, the arithmetic is deliberately trivial so the number is checkable.",
+      "Published rate times headcount, and nothing else. No modelled savings, no projected return, the arithmetic is kept simple so the number is checkable.",
     name: "HRMagix Plan Cost",
     title: "HRMagix subscription cost calculator",
     standfirst:
@@ -1354,7 +1354,7 @@ export const baseCalculators: Calculator[] = [
       },
       {
         q: "Why does the calculator ask for working days and hours?",
-        a: "Because the Act fixes the multiplier, but a single divisor for converting a monthly wage into an hourly one is not something this calculator can assume for every establishment. Entering your own basis keeps the arithmetic honest and checkable.",
+        a: "Because the Act fixes the multiplier, but a single divisor for converting a monthly wage into an hourly one is not something this calculator can assume for every establishment. Entering your own basis keeps the arithmetic accurate and checkable.",
       },
       {
         q: "Does this apply to office staff?",

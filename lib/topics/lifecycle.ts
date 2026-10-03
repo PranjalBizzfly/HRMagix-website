@@ -145,7 +145,7 @@ export const topicsLifecycle: Topic[] = [
       { step: "Effective-date changes", body: "Store each change with the date it applies from." },
       { step: "Control access by role", body: "Grant visibility to fields based on role, not seniority." },
       { step: "Track document expiry", body: "Alert before visas, licences and certificates expire." },
-      { step: "Retain and dispose", body: "Keep records for the required periods and dispose of them deliberately." },
+      { step: "Retain and dispose", body: "Keep records for the required periods and dispose of them on a schedule." },
     ],
     practices: [
       "Never overwrite, add a dated change.",

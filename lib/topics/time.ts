@@ -154,7 +154,7 @@ export const topicsTime: Topic[] = [
       { step: "Decide the edge-case rules", body: "Sandwich rule, half days, backdated requests, leave during notice period and probation." },
       { step: "Set approval routes", body: "Who approves which leave type, and who approves when the manager is away." },
       { step: "Make balances visible", body: "Employees see their own balance before they apply, so requests are made against the real number." },
-      { step: "Close the year deliberately", body: "Apply carry-forward and lapse on a fixed date, and communicate the result." },
+      { step: "Close the year properly", body: "Apply carry-forward and lapse on a fixed date, and communicate the result." },
     ],
     practices: [
       "Publish the leave policy and the balance in the same place employees apply for leave.",
@@ -178,7 +178,7 @@ export const topicsTime: Topic[] = [
     faqs: [
       { q: "What is the sandwich rule?", a: "A policy under which a weekend or holiday that falls between two days of leave is itself counted as leave. It is an employer's choice, not a legal requirement, which is exactly why it must be written down and applied consistently." },
       { q: "What is compensatory off?", a: "Leave granted in return for working on a weekly off or a holiday. Policies usually set how soon it must be claimed and whether it lapses." },
-      { q: "Can leave rules change during the year?", a: "They can, but the change should state the date from which it applies, and balances already earned under the old rule should be handled explicitly rather than recalculated silently." },
+      { q: "Can leave rules change during the year?", a: "They can, but the change should state the date from which it applies, and balances already earned under the old rule should be handled explicitly rather than recalculated without notice." },
       { q: "What leave types do employers in India typically offer?", a: "Common types include earned or privilege leave, sick leave, casual leave, maternity and paternity leave, compensatory off and loss-of-pay leave. Each has its own accrual basis, limits and approval route." },
       { q: "Is there a statutory minimum for leave?", a: "For some establishments, yes. Maternity benefit is governed by the Maternity Benefit Act, and the Factories Act and state Shops and Establishments Acts set minimum leave entitlements for the establishments they cover." },
       { q: "How should leave carry-forward and lapse be handled at year end?", a: "Apply the carry-forward limits and lapse rules on a fixed date and communicate the result to employees. Rules applied late, or not at all, are a common source of disputes over balances." },

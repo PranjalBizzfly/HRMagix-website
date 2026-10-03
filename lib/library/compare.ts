@@ -195,7 +195,7 @@ const pages: LibPage[] = [
     faqs: [
       { q: "Can mobile attendance be faked?", a: "Location can be spoofed on some phones, and someone else can carry a phone. Photo capture, location limits and manager review reduce this. Where proof of identity at a gate matters most, a device is stronger." },
       { q: "Do we need a biometric device for statutory registers?", a: "The law asks for accurate attendance and wage records, not a particular capture method. Whatever you use must produce reliable registers." },
-      { q: "What happens when a punch is missed?", a: "It should go through a regularisation request with approval, so the correction is recorded rather than edited silently." },
+      { q: "What happens when a punch is missed?", a: "It should go through a regularisation request with approval, so the correction is recorded rather than overwritten." },
     ],
     related: [
       { label: "Biometric attendance (glossary)", href: `${G}/biometric-attendance`, note: "A definition of device-based attendance." },
@@ -857,10 +857,10 @@ const pages: LibPage[] = [
         list: {
           style: "bullet",
           items: [
-            "Continuous review only works if managers actually hold the check-ins. Set a minimum cadence and track whether it happens.",
+            "Continuous review only works if managers actually hold the check-ins. Set a minimum schedule and track whether it happens.",
             "Frequent conversations without notes leave no evidence at year end. Keep a short written record of each check-in.",
             "Annual review rewards whoever was most visible in the last quarter. If you keep it, ask managers to cite examples from across the year.",
-            "Changing cadence changes the appraisal policy. Update the written policy so employees know how ratings are reached.",
+            "Changing the schedule changes the appraisal policy. Update the written policy so employees know how ratings are reached.",
           ],
         },
       },

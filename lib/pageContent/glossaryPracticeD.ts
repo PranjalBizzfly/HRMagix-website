@@ -1,7 +1,7 @@
 /** "In practice" paragraphs for glossary terms, keyed by term slug. */
 export const glossaryPracticeD: Record<string, string[]> = {
   "retention-rate": [
-    "HR usually produces retention once a year for the management review, with a quarterly cut by department or manager. The work is in freezing the starting list: export the employee master as it stood on day one of the period and keep that file, because later corrections to joining or exit dates quietly change the answer.",
+    "HR usually produces retention once a year for the management review, with a quarterly cut by department or manager. The work is in freezing the starting list: export the employee master as it stood on day one of the period and keep that file, because later corrections to joining or exit dates change the answer.",
     "As an example, a plant starts April with 240 people. By March, 204 of those same 240 are still on the rolls, so retention is 204 / 240, or 85%. Forty people hired during the year and fifteen of them leaving does not move that figure at all.",
     "The common mistake is treating transfers between group entities as exits. If one legal entity's master shows the person leaving and another shows a new joiner, retention drops for no real reason. Agree in advance whether retention is measured per entity or per group, and tag inter-company moves so they can be filtered out.",
   ],

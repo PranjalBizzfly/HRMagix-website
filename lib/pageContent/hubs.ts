@@ -74,7 +74,7 @@ export const hubContent: Record<string, PageContent> = {
         heading: "Issuing and keeping letters",
         body: [
           "Keep proof of delivery: an acknowledged copy, an email with the attachment, or a signed register. Store the final signed version, not the draft, against the employee's record so that anyone handling an exit or dispute later finds the full history in one place.",
-          "Retention periods depend on the law and the kind of record, so set a policy with your adviser rather than deleting old files ad hoc.",
+          "Retention periods depend on the law and the kind of record, so set a policy with your adviser rather than deleting old files case by case.",
         ],
         note: "Letters that change pay should be issued only after the payroll change is approved, so the letter and the next payslip agree.",
       },
@@ -88,7 +88,7 @@ export const hubContent: Record<string, PageContent> = {
       {
         heading: "Small teams: one person, many hats",
         body: [
-          "In a company of a few dozen people, one HR executive or generalist often handles hiring paperwork, attendance, leave, payroll inputs and statutory filings, with an external accountant or consultant checking the numbers. The job description should be honest about that breadth and say which tasks are shared with outside advisers.",
+          "In a company of a few dozen people, one HR executive or generalist often handles hiring paperwork, attendance, leave, payroll inputs and statutory filings, with an external accountant or consultant checking the numbers. The job description should be clear about that breadth and say which tasks are shared with outside advisers.",
         ],
       },
       {

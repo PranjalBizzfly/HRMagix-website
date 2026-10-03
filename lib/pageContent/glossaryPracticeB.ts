@@ -63,7 +63,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
   "garden-leave": [
     "Garden leave is decided at the resignation meeting, usually for sales, client-facing or senior roles. HR issues a short letter stating the start date, that salary and benefits continue, that the employee must stay reachable and must not contact clients, and that system access is being withdrawn.",
     "Payroll treats the period as ordinary paid service: salary, PF, ESI where applicable, and leave accrual if the policy says so. The person is still an employee, so service for gratuity continues to count up to the last working day, which can matter when someone is close to completing a year that counts.",
-    "The mistake is calling it garden leave while quietly stopping pay or treating it as an early exit date. That converts it into something else and invites a dispute. Also ensure IT revokes access on the first day, since the whole point is to keep the person away from data and customers.",
+    "The mistake is calling it garden leave while stopping pay or treating it as an early exit date. That converts it into something else and invites a dispute. Also ensure IT revokes access on the first day, since the whole point is to keep the person away from data and customers.",
   ],
   "geo-fencing": [
     "Setting up geo-fencing is a one-time exercise per location: HR or the admin team pins the coordinates of each office, branch, warehouse or client site and picks a radius. A small radius suits a single building; a large campus or a site with weak GPS needs more room, or genuine punches get flagged.",
@@ -76,7 +76,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
     "The real risk is misclassification. A gig worker given fixed shifts, a reporting manager and a monthly retainer for years starts to look like an employee, with PF, ESI and leave obligations attached. Review long-running arrangements once a year and move them onto proper employment terms where the reality has changed.",
   ],
   "grace-period": [
-    "The grace period is configured once in the attendance policy, often 10 or 15 minutes after shift start as an example, and then applied silently every day. Its real effect shows up at month end, when late marks are counted and converted into deductions or half-days under the policy.",
+    "The grace period is configured once in the attendance policy, often 10 or 15 minutes after shift start as an example, and then applied automatically every day. Its real effect shows up at month end, when late marks are counted and converted into deductions or half-days under the policy.",
     "Example with illustrative figures: a policy allows 15 minutes of grace and treats three late marks beyond grace in a month as half a day of leave. An employee who arrives at 9:20 four times sees one late mark rolled into a half-day debit, and the fourth noted for review.",
     "The mistake is applying grace unevenly: allowing it on the morning punch but not on the return from a break, or exempting one team by habit rather than by written rule. Shift workers also need the grace tied to their own shift start, not to a general office time.",
   ],
@@ -117,7 +117,7 @@ export const glossaryPracticeB: Record<string, string[]> = {
   ],
   hris: [
     "An HRIS earns its keep on ordinary days: an employee updates their bank account, a manager asks for a reporting line change, payroll needs the list of joiners since the last run. All of that reads from one employee record instead of email threads and separate spreadsheets.",
-    "The work HR does inside it is mostly data stewardship. Somebody has to own field definitions, who can edit what, and the effective date of each change, so that a designation change on the 18th of the month does not quietly rewrite last month's history or the payroll already processed.",
+    "The work HR does inside it is mostly data stewardship. Somebody has to own field definitions, who can edit what, and the effective date of each change, so that a designation change on the 18th of the month does not rewrite last month's history or the payroll already processed.",
     "The common mistake is migrating old spreadsheets in without cleaning them, which loads duplicate employees, blank PANs and wrong joining dates into the new system. Clean the core fields first: identity numbers, dates, bank details and statutory numbers such as UAN and IP number. Everything downstream trusts those values.",
   ],
   hrms: [

@@ -1012,7 +1012,7 @@ Net monthly salary: Rs. [Amount]
 
 [Annual cost to company: Rs. [Amount].]
 
-This certificate is issued at the request of the employee for the purpose of [purpose, for example: applying for a home loan] and does not constitute a guarantee by the company.
+This certificate is issued at the request of the employee for the purpose of [purpose, for example: applying for a home loan] and is not a guarantee by the company.
 
 For [COMPANY NAME]
 
@@ -1330,7 +1330,7 @@ Date: [DD Month YYYY]`,
         {
           heading: "Extension, confirmation or separation",
           body: [
-            "A confirmation letter records that the standard was met. An extension says it has not yet been met but could be. If the gaps are serious and unlikely to close, an extension only delays a decision; consider whether separation during probation, as per the appointment terms, is the honest course.",
+            "A confirmation letter records that the standard was met. An extension says it has not yet been met but could be. If the gaps are serious and unlikely to close, an extension only delays a decision; consider whether separation during probation, as per the appointment terms, is the right course.",
           ],
           note: "Issuing the extension after the original end date is a common mistake. Depending on the appointment wording, the employee may already be treated as confirmed.",
         },

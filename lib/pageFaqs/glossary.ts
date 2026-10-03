@@ -342,7 +342,7 @@ export const glossaryFaqs: Record<string, PageFaq[]> = {
     { q: "How does probation end?", a: "In confirmation, extension or separation." },
     { q: "Can probation be extended?", a: "Yes, extension is one of the outcomes." },
     { q: "What is the biggest risk in probation?", a: "No decision: the period lapses and nothing is recorded." },
-    { q: "When does an unrecorded probation cause problems?", a: "At an increment or an exit, when the ambiguity surfaces." },
+    { q: "When does an unrecorded probation cause problems?", a: "At an increment or an exit, when the ambiguity shows up." },
     { q: "Should a probation decision be recorded?", a: "Yes. Recording confirmation, extension or separation avoids later ambiguity." },
     { q: "Is probation the same as a PIP?", a: "No. A PIP is a structured improvement plan; probation is an initial suitability period." },
     { q: "Is failing probation always a harsh decision?", a: "The glossary notes the failure mode is not a harsh decision but no decision." },
@@ -394,7 +394,7 @@ export const glossaryFaqs: Record<string, PageFaq[]> = {
     { q: "Can employees apply for leave via ESS?", a: "Yes, and see balances." },
     { q: "Can employees approve their own requests?", a: "No. Applying is not approving." },
     { q: "Can investment declarations be submitted via ESS?", a: "Yes." },
-    { q: "Why is ESS scope narrow?", a: "Deliberately, to separate applying from approving." },
+    { q: "Why is ESS scope narrow?", a: "To keep applying separate from approving." },
     { q: "Where is ESS in HRMagix?", a: "The Employee Self-Service solution." },
   ],
   shift: [

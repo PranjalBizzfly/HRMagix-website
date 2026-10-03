@@ -12,7 +12,7 @@ export const topicsPeople: Topic[] = [
       "Employee engagement describes how committed people are to their work and their organisation, the discretionary effort they give, and their intention to stay. It is shaped by clarity of role, recognition, growth, fairness and the relationship with their manager.",
     ],
     whyItMatters: [
-      "Engagement shows up in the work itself: in effort, quality, and whether problems are raised or quietly worked around. It is also closely linked to retention, because people rarely leave organisations they are engaged with for small reasons.",
+      "Engagement shows up in the work itself: in effort, quality, and whether problems are raised or worked around. It is also closely linked to retention, because people rarely leave organisations they are engaged with for small reasons.",
     ],
     challenges: [
       { title: "Measuring without acting", body: "Surveys that produce reports but no visible changes reduce engagement." },
@@ -37,7 +37,7 @@ export const topicsPeople: Topic[] = [
       "Ignoring team-level differences behind a company average.",
     ],
     software:
-      "Software helps engagement mostly by removing friction, fast answers to routine questions, visible recognition, regular 1-on-1s, and by giving employees a place to be heard.",
+      "Software helps engagement mostly by removing small obstacles, fast answers to routine questions, visible recognition, regular 1-on-1s, and by giving employees a place to be heard.",
     inHRMagix: [
       { label: "Recognition Module", href: "/features/recognition", note: "Peer kudos, value badges and a live culture feed." },
       { label: "1-on-1s & Meetings Module", href: "/features/meetings", note: "Recurring coaching conversations with shared agendas." },
@@ -47,7 +47,7 @@ export const topicsPeople: Topic[] = [
       { q: "How is employee engagement measured?", a: "Commonly through regular surveys, alongside signals such as participation, retention and what comes up in 1-on-1s. Measurement is only useful if it leads to visible action." },
       { q: "What drives engagement most?", a: "Clarity about the role, recognition for good work, opportunities to grow, a good relationship with the manager, and confidence that rules are applied fairly." },
       { q: "Is engagement the same as satisfaction?", a: "No. Satisfaction is whether people are content; engagement is whether they are committed and give discretionary effort. People can be satisfied without being engaged." },
-      { q: "Why does employee engagement matter?", a: "It shows up in effort, quality and whether problems are raised or quietly worked around. It is also closely linked to retention." },
+      { q: "Why does employee engagement matter?", a: "It shows up in effort, quality and whether problems are raised or worked around. It is also closely linked to retention." },
       { q: "What role do managers play in engagement?", a: "A large one. Engagement differs most by team because the manager relationship differs most, which is why investing in managers' regular conversations with their teams matters." },
       { q: "Why do engagement surveys sometimes backfire?", a: "Surveys that produce reports but no visible changes reduce engagement. Closing the loop, saying what was heard and what will change, is what makes listening worthwhile." },
       { q: "How does fairness affect employee engagement?", a: "Inconsistently applied rules on leave, pay or promotion undermine engagement faster than any programme builds it. Applying policies consistently is the foundation." },
@@ -300,7 +300,7 @@ export const topicsPeople: Topic[] = [
       "Certain complaints have their own statutory process, for example, complaints of sexual harassment are handled under the Sexual Harassment of Women at Workplace Act through an Internal Committee where one is required.",
     ],
     whyItMatters: [
-      "Concerns that have no route stay unspoken until they become resignations, disputes or worse. A trusted process surfaces problems early, and a consistent one protects both the employee and the employer.",
+      "Concerns that have no route stay unspoken until they become resignations, disputes or worse. A trusted process brings problems to light early, and a consistent one protects both the employee and the employer.",
     ],
     challenges: [
       { title: "Fear of consequences", body: "People do not raise concerns if they expect to be penalised for it." },

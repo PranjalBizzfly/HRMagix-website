@@ -21,7 +21,7 @@ export const glossaryPracticeC: Record<string, string[]> = {
     "Common mistakes include stopping salary and treating the period as unpaid, leaving her out of an increment cycle she would otherwise have been part of, and overlooking the creche or work-from-home provisions where applicable. Check the current provisions before finalising the policy.",
   ],
   moonlighting: [
-    "Moonlighting usually surfaces in one of two ways: a background check or PF service history shows an overlapping employer, or a colleague reports a second job. HR's first step is to read the employment contract and code of conduct, because the response depends almost entirely on what the employee agreed to.",
+    "Moonlighting usually comes to light in one of two ways: a background check or PF service history shows an overlapping employer, or a colleague reports a second job. HR's first step is to read the employment contract and code of conduct, because the response depends almost entirely on what the employee agreed to.",
     "A workable policy separates three cases: a second full-time job, paid freelance work for a competitor or client, and unrelated side activity such as teaching or writing. Many companies allow the last with prior written disclosure and prohibit the first two.",
     "The mistake to avoid is acting on suspicion alone. Collect the evidence, give the employee a chance to explain in writing, and follow the disciplinary process in the standing orders or policy. A dual PF contribution record is a signal worth discussing, not proof of misconduct on its own.",
   ],
@@ -56,7 +56,7 @@ export const glossaryPracticeC: Record<string, string[]> = {
     "A frequent mistake is counting an accepted offer as success even if the candidate never joins. Track joining separately, because an acceptance followed by a no-show inflates the rate and hides a different problem.",
   ],
   okr: [
-    "OKRs appear in the HR calendar at the start of each quarter, when teams draft objectives and key results, and again at quarter end, when progress is scored. HR's role is to keep the cadence running, check that key results are measurable, and spot teams whose OKRs simply restate their job descriptions.",
+    "OKRs appear in the HR calendar at the start of each quarter, when teams draft objectives and key results, and again at quarter end, when progress is scored. HR's role is to keep the schedule running, check that key results are measurable, and spot teams whose OKRs simply restate their job descriptions.",
     "Example: an objective of improving payroll accuracy could carry key results such as cutting post-payroll corrections from twelve a month to three, and closing every attendance dispute before cut-off.",
     "The most common mistake is tying OKR scores directly to bonus, which pushes people to set easy targets. Many companies keep OKRs for direction and use separate KRAs for the appraisal. HRMagix includes objectives and OKRs as a module alongside KRA and 9-box.",
   ],

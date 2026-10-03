@@ -203,7 +203,7 @@ export const glossaryMoreFaqsB: Record<string, PageFaq[]> = {
     { q: "What does an HR audit cover?", a: "Statutory compliance such as registers, returns and registrations, employee files and documents, policies and how they are applied, and HR processes such as hiring and exit." },
     { q: "How is an HR audit different from a payroll audit?", a: "A payroll audit checks pay and deductions; an HR audit is wider, covering employment documents, policies, registers and practices as well as payroll compliance." },
     { q: "How often should an HR audit be done?", a: "Commonly once a year, and before events such as fundraising, an acquisition or a major inspection." },
-    { q: "What are common HR audit gaps?", a: "Missing appointment letters, unsigned policies, outdated registers, registrations not obtained in a new state, and exits without a documented settlement." },
+    { q: "What are common HR audit gaps?", a: "Missing appointment letters, unsigned policies, outdated registers, registrations not done in a new state, and exits without a documented settlement." },
   ],
   "employee-lifecycle": [
     { q: "What are the stages of the employee lifecycle?", a: "Usually recruitment, onboarding, development, performance and retention, and separation. Some models add alumni relations after exit." },
@@ -213,7 +213,7 @@ export const glossaryMoreFaqsB: Record<string, PageFaq[]> = {
   ],
   "workforce-planning": [
     { q: "What are the steps in workforce planning?", a: "Understand the current workforce, forecast what the business will need, identify the gap, and plan how to close it through hiring, development, redeployment or restructuring." },
-    { q: "How is workforce planning different from headcount budgeting?", a: "Budgeting fixes how many people and how much cost for the year. Workforce planning also asks which skills are needed and how to obtain them over a longer horizon." },
+    { q: "How is workforce planning different from headcount budgeting?", a: "Budgeting fixes how many people and how much cost for the year. Workforce planning also asks which skills are needed and how to get them over a longer horizon." },
     { q: "What data does workforce planning need?", a: "Headcount by role and location, attrition and retirement patterns, time to hire, and the business plan the forecast is based on." },
     { q: "How far ahead should workforce planning look?", a: "Typically one year in detail and two to three years at a high level, reviewed whenever the business plan changes." },
   ],

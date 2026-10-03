@@ -251,7 +251,7 @@ const baseGlossary: Term[] = [
   {
     term: "Probation",
     definition:
-      "An initial period during which suitability is assessed, ending in confirmation, extension or separation. The failure mode is not a harsh decision but no decision, the period lapses, nothing is recorded, and the ambiguity surfaces at an increment or an exit.",
+      "An initial period during which suitability is assessed, ending in confirmation, extension or separation. The failure mode is not a harsh decision but no decision, the period lapses, nothing is recorded, and the ambiguity shows up at an increment or an exit.",
   },
   {
     term: "Professional tax",
@@ -280,7 +280,7 @@ const baseGlossary: Term[] = [
     term: "Self-service",
     expands: "ESS, employee self service portal",
     definition:
-      "The employee's own access to their record: payslips, Form 16, leave balances and applications, attendance regularisation, personal detail updates and investment declarations. Its scope is deliberately narrow, applying is not approving.",
+      "The employee's own access to their record: payslips, Form 16, leave balances and applications, attendance regularisation, personal detail updates and investment declarations. Its scope is kept narrow, applying is not approving.",
     see: { label: "Employee Self-Service", href: "/solutions/employee-self-service" },
   },
   {
