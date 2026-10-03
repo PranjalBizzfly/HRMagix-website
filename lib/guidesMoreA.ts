@@ -98,7 +98,7 @@ export const guidesMoreA: Guide[] = [
           "Ask new joiners to choose their tax regime and submit a declaration in the first week. Without it, TDS for their first months is computed on the default regime, and switching later changes every remaining month's deduction.",
       },
       {
-        title: "Day thirty: close onboarding deliberately",
+        title: "Day thirty: close onboarding properly",
         body: [
           "Onboarding should end on a date, with a short conversation between the manager and the employee and a check that every task on the list is done. Open items left after a month tend to stay open.",
           "Use the check-in to ask two things: what was missing that the person needed, and what in the process was confusing. Those answers improve the checklist for the next joiner, which is the only way it gets better.",
@@ -153,7 +153,7 @@ export const guidesMoreA: Guide[] = [
       },
       {
         q: "Why does a new joiner need the previous employer's tax details?",
-        a: "Tax under Section 192 is computed on the whole financial year's income. Without the earlier salary and TDS, the new employer under-projects income and the shortfall surfaces later in the year.",
+        a: "Tax under Section 192 is computed on the whole financial year's income. Without the earlier salary and TDS, the new employer under-projects income and the shortfall shows up later in the year.",
       },
       {
         q: "When does onboarding end?",
@@ -217,7 +217,7 @@ export const guidesMoreA: Guide[] = [
         title: "Hold the exit interview while it is still useful",
         body: [
           "Conduct the exit interview during the notice period, not on the last afternoon. Ask a small set of consistent questions so answers can be compared across exits, and keep notes separate from the personnel file if you want honest answers.",
-          "Exit interviews are useful only in aggregate. One person's reasons are anecdote; the same reason given by several people in one team is a finding.",
+          "Exit interviews are useful only when read together. One person's reasons are anecdote; the same reason given by several people in one team is a finding.",
         ],
       },
       {
@@ -364,7 +364,7 @@ export const guidesMoreA: Guide[] = [
         title: "Review at each milestone, briefly and in writing",
         body: [
           "Hold a short review at days 30, 60 and 90. Go through each outcome: met, partly met or not met, with a sentence of evidence. Adjust the next phase if the first one showed the plan was unrealistic.",
-          "Record the reviews. If the role has a probation period, these notes become the evidence for the confirmation decision, which is far more defensible than a manager's recollection at the end of six months.",
+          "Record the reviews. If the role has a probation period, these notes become the evidence for the confirmation decision, which is far easier to defend than a manager's recollection at the end of six months.",
         ],
       },
       {
@@ -1286,7 +1286,7 @@ export const guidesMoreA: Guide[] = [
       {
         title: "Start contributing from the first month",
         body: [
-          "After registration, add each employee: generate or link a UAN for EPF, and register each covered employee on the ESIC portal to obtain an insurance number. Collect Form 11 and nominations.",
+          "After registration, add each employee: generate or link a UAN for EPF, and register each covered employee on the ESIC portal to get an insurance number. Collect Form 11 and nominations.",
           "Then build the contributions into payroll. EPF is 12% from the employee and 12% from the employer on PF wages, with the employer share split between EPF and EPS, plus EDLI and administration charges. ESI is 0.75% from the employee and 3.25% from the employer on wages for covered employees. Deposit monthly through the ECR and the ESIC portal.",
         ],
       },
@@ -1296,9 +1296,9 @@ export const guidesMoreA: Guide[] = [
       "ESI applicability checked for your state, area and type of establishment",
       "Date coverage began identified",
       "Constitution, PAN, address, signatory and bank documents ready",
-      "EPF establishment code obtained",
-      "ESI employer code obtained, with branch sub-codes where needed",
-      "UANs generated or linked and ESI numbers obtained for covered employees",
+      "EPF establishment code received",
+      "ESI employer code received, with branch sub-codes where needed",
+      "UANs generated or linked and ESI numbers received for covered employees",
       "Contributions set up in payroll and first deposits made by the due dates",
     ],
     related: [

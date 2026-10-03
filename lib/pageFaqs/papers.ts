@@ -20,7 +20,7 @@ export const paperFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Why is typing payable days into a payroll sheet a problem?",
-      a: "Once payable days becomes a typed value, its provenance is lost. A query raised six months later can then only be answered by re-deriving it from records that have since moved on.",
+      a: "Once payable days becomes a typed value, its source is lost. A query raised six months later can then only be answered by re-deriving it from records that have since moved on.",
     },
     {
       q: "What does each statutory head need beyond a rate?",
@@ -62,7 +62,7 @@ export const paperFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "How do you get a consolidated view without merging statutory filings?",
-      a: "Keep payroll runs distinct at entity level, because filing is per entity, and let reporting aggregate across them. Multi-entity structures sit under one login, with role-based permissions deciding who sees which entity.",
+      a: "Keep payroll runs distinct at entity level, because filing is per entity, and let reporting combine them. Multi-entity structures sit under one login, with role-based permissions deciding who sees which entity.",
     },
     {
       q: "Why is Labour Welfare Fund so often missed?",
@@ -126,7 +126,7 @@ export const paperFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "What HR processes can a fifty-person company skip?",
-      a: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopted early, they produce ceremony rather than clarity.",
+      a: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopted early, they produce box-ticking rather than clarity.",
     },
     {
       q: "How should leave balances be maintained?",
@@ -134,7 +134,7 @@ export const paperFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Why does policy acknowledgement need to be versioned?",
-      a: "Because an acceptance of an earlier version should not silently stand in for new wording. Publishing a new version should re-open acknowledgement for everyone it applies to.",
+      a: "Because an acceptance of an earlier version should not automatically stand in for new wording. Publishing a new version should re-open acknowledgement for everyone it applies to.",
     },
     {
       q: "Does HRMagix provide workplace policy templates?",

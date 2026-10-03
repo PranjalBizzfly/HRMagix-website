@@ -19,7 +19,7 @@ export const guidesMoreB: Guide[] = [
     },
     opening: [
       "Every HRMS demo looks good, because a demo is built around the vendor's cleanest data and most common case. Your company is not the common case. It has the employee who rejoined, the allowance nobody can explain, the two states with different professional tax schedules and the manager who approves everything at eleven at night.",
-      "This checklist is vendor-neutral and deliberately so. It does not tell you which product to buy; it tells you how to find out whether a product handles your situation, and what to get in writing before you sign. If you are still deciding which category of system you need at all, read the HRMS comparison first and come back here with a shortlist.",
+      "This checklist is vendor-neutral on purpose. It does not tell you which product to buy; it tells you how to find out whether a product handles your situation, and what to get in writing before you sign. If you are still deciding which category of system you need at all, read the HRMS comparison first and come back here with a shortlist.",
     ],
     chapters: [
       {
@@ -205,7 +205,7 @@ export const guidesMoreB: Guide[] = [
         ],
       },
       {
-        title: "Bring managers and employees across deliberately",
+        title: "Bring managers and employees across with a plan",
         body: [
           "The system replaces the spreadsheets only when people stop sending requests by chat and email. Announce a date after which leave is applied for only in the system, and hold to it. A manager who keeps approving on chat keeps the old process alive for their whole team.",
           "Show managers the two or three things they will do every week, not the full product. Show employees how to apply for leave and download a payslip. Everything else can be learned when it is needed.",
@@ -442,7 +442,7 @@ export const guidesMoreB: Guide[] = [
           "Keep the number of roles small enough to explain. If every new request produces a new role, the role list stops meaning anything and nobody can say with confidence who sees what.",
         ],
         watch:
-          "Be careful with the super-admin role. It is convenient during implementation and dangerous afterwards. Limit it to the smallest number of people who genuinely need it, and do not use it for daily work.",
+          "Be careful with the super-admin role. It is convenient during implementation and dangerous afterwards. Limit it to the smallest number of people who need it, and do not use it for daily work.",
       },
       {
         title: "Scope access by entity, location and reporting line",
@@ -549,7 +549,7 @@ export const guidesMoreB: Guide[] = [
       {
         title: "Agree the definitions before you agree the format",
         body: [
-          "The single biggest source of friction in HR reporting is that two people mean different things by the same word. Does headcount include interns and contractors? Is someone serving notice still in it? Is attrition counted on resignation date or last working day?",
+          "The single biggest source of problems in HR reporting is that two people mean different things by the same word. Does headcount include interns and contractors? Is someone serving notice still in it? Is attrition counted on resignation date or last working day?",
           "Write a one-page definitions sheet and get it signed off by whoever chairs the leadership meeting. Then every report uses it, and a disagreement about a number becomes a discussion about a definition, which can be settled once.",
         ],
       },
@@ -583,7 +583,7 @@ export const guidesMoreB: Guide[] = [
         title: "Keep the pack short and the detail available",
         body: [
           "A leadership pack should fit on a few pages. Put the summary first, the movement explained second, and keep the employee-level detail in an appendix or in the system, available when somebody asks.",
-          "Be careful about what goes into a pack that circulates widely. Department-level salary totals can identify individuals in a small team. Aggregate where the group is small, and keep individual compensation out of anything that gets forwarded.",
+          "Be careful about what goes into a pack that circulates widely. Department-level salary totals can identify individuals in a small team. Combine figures where the group is small, and keep individual compensation out of anything that gets forwarded.",
         ],
       },
       {
@@ -599,7 +599,7 @@ export const guidesMoreB: Guide[] = [
       "Headcount, hiring, attrition, payroll cost, leave and compliance reports defined",
       "Every movement explained with a bridge from last month",
       "Summary first, detail in an appendix or the system",
-      "Small groups aggregated so individual pay is not exposed",
+      "Small groups combined so individual pay is not exposed",
       "A fixed production day after payroll close",
       "All reports produced from the same source each month",
     ],
@@ -636,7 +636,7 @@ export const guidesMoreB: Guide[] = [
       },
       {
         q: "Should salary data appear in leadership reports?",
-        a: "Aggregate payroll cost, yes. Individual compensation, generally not in a pack that circulates. Watch out for small departments, where a total can reveal one person's salary.",
+        a: "Total payroll cost, yes. Individual compensation, generally not in a pack that circulates. Watch out for small departments, where a total can reveal one person's salary.",
       },
       {
         q: "How long should a monthly HR report be?",
@@ -912,7 +912,7 @@ export const guidesMoreB: Guide[] = [
         title: "Write the guidelines managers will use",
         body: [
           "Guidelines turn a budget into decisions that are consistent across teams. The most common approach links the increase to performance rating and to where the person sits in their pay band, so a strong performer low in the band gets more than one already near the top.",
-          "Separate the ordinary increment from promotions and market corrections. Each needs its own budget line, otherwise promotions quietly consume the pool meant for everyone else.",
+          "Separate the ordinary increment from promotions and market corrections. Each needs its own budget line, otherwise promotions consume the pool meant for everyone else.",
         ],
       },
       {
@@ -1054,7 +1054,7 @@ export const guidesMoreB: Guide[] = [
       {
         title: "Pay through payroll, not around it",
         body: [
-          "Put interns and trainees in the HRMS as a distinct employment type, and pay them through the payroll run rather than by ad hoc transfer. That gives them a payslip, gives you a record of what was paid and when, and keeps them visible in headcount where you have decided they belong.",
+          "Put interns and trainees in the HRMS as a distinct employment type, and pay them through the payroll run rather than by one-off transfer. That gives them a payslip, gives you a record of what was paid and when, and keeps them visible in headcount where you have decided they belong.",
           "Use a simple structure: a stipend component, with any reimbursements shown separately. Attendance and leave still matter, because a stipend for a month with unapproved absence raises the same question as salary.",
         ],
       },
@@ -1279,7 +1279,7 @@ export const guidesMoreB: Guide[] = [
       {
         title: "Write the policy before the first request",
         body: [
-          "Ad hoc decisions about who gets an advance create questions of fairness quickly. A short policy answers them in advance and lets HR say yes or no without escalating every request.",
+          "One-off decisions about who gets an advance create questions of fairness quickly. A short policy answers them in advance and lets HR say yes or no without escalating every request.",
         ],
         list: {
           style: "bullet",
@@ -1307,7 +1307,7 @@ export const guidesMoreB: Guide[] = [
         title: "Record it in the system, not on the side",
         body: [
           "Record each advance or loan against the employee's record with the amount, disbursement date, schedule and outstanding balance. The monthly deduction should be generated from that record by the payroll run, not typed in each month.",
-          "That way the balance reduces automatically, the payslip shows the deduction and the remaining balance, and the deduction does not silently stop because someone forgot to enter it.",
+          "That way the balance reduces automatically, the payslip shows the deduction and the remaining balance, and the deduction does not stop because someone forgot to enter it.",
         ],
       },
       {

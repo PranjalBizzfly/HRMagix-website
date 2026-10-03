@@ -18,7 +18,7 @@ export const guidesMoreC: Guide[] = [
       keywords: ["exit interview questions", "exit interview process", "how to conduct an exit interview", "exit interview form"],
     },
     opening: [
-      "Most exit interviews fail quietly. The leaver is polite, says the opportunity was too good to refuse, the notes go into a folder, and nobody reads them again. The interview happened; nothing was learned.",
+      "Most exit interviews fail without anyone noticing. The leaver is polite, says the opportunity was too good to refuse, the notes go into a folder, and nobody reads them again. The interview happened; nothing was learned.",
       "The fix is not a longer questionnaire. It is deciding who asks, when, what is recorded in a form that can be compared across people, and who is responsible for reading the results. This guide covers the conversation itself and the work around it that makes it worth having.",
     ],
     chapters: [
@@ -76,7 +76,7 @@ export const guidesMoreC: Guide[] = [
       {
         title: "Read them in batches, and report the pattern",
         body: [
-          "A single exit interview is an anecdote. Twenty, grouped by team, manager, tenure band and reason code, are evidence. Review them on a fixed cadence, quarterly is common, alongside attrition numbers for the same period.",
+          "A single exit interview is an anecdote. Twenty, grouped by team, manager, tenure band and reason code, are evidence. Review them on a fixed schedule, quarterly is common, alongside attrition numbers for the same period.",
           "Report the patterns, not the individuals. 'Four of six leavers from one team in the last two quarters cited unclear role changes' is something a leadership team can act on. A list of quotes attributed to named people is not, and it will not stay confidential.",
         ],
       },
@@ -130,7 +130,7 @@ export const guidesMoreC: Guide[] = [
         title: "Version every policy before you issue it",
         body: [
           "An acknowledgement means nothing unless you can say which text was acknowledged. Give each policy a version number and an effective date, and keep every superseded version rather than overwriting it.",
-          "When a policy changes materially, issue the new version and collect a fresh acknowledgement. A typo correction does not need one; a change to a rule, an entitlement or a consequence does.",
+          "When a policy changes significantly, issue the new version and collect a fresh acknowledgement. A typo correction does not need one; a change to a rule, an entitlement or a consequence does.",
         ],
         watch:
           "Changes to terms of employment, as opposed to workplace rules, may need more than acknowledgement, and in some establishments standing orders have their own certification procedure. Take advice before treating a policy update as a change to contract terms.",
@@ -300,7 +300,7 @@ export const guidesMoreC: Guide[] = [
     ],
     faqs: [
       { q: "Is background verification mandatory in India?", a: "For most private employers there is no general legal requirement to verify every employee, though some regulated sectors and clients impose their own requirements. Most employers do it as a matter of risk management." },
-      { q: "Do we need the candidate's consent?", a: "You should obtain informed consent before running checks, particularly because personal data is shared with third parties. Confirm the current requirements under the data protection law with your advisers." },
+      { q: "Do we need the candidate's consent?", a: "You should get informed consent before running checks, particularly because personal data is shared with third parties. Confirm the current requirements under the data protection law with your advisers." },
       { q: "Can we withdraw an offer because of a verification discrepancy?", a: "If the offer was clearly conditional on verification, a material discrepancy can justify withdrawal. Give the candidate a chance to explain first, and take advice in unclear or senior cases." },
       { q: "How long should we keep verification data?", a: "Only as long as you need it for a stated purpose. Set a retention period for joiners and a shorter one for candidates who did not join, and confirm both against current data protection rules." },
     ],
@@ -405,7 +405,7 @@ export const guidesMoreC: Guide[] = [
       { q: "Who should investigate a workplace complaint?", a: "Someone with no involvement in the matter, outside the reporting line of both parties, and not the person who will decide the outcome. Small organisations often use an external investigator." },
       { q: "Can we suspend an employee during an investigation?", a: "Suspension pending enquiry is used in serious cases, but it may carry obligations under standing orders or applicable law, including subsistence allowance. Check what applies to you and state that the suspension is not a finding." },
       { q: "What standard of proof applies?", a: "Workplace investigations generally decide on the balance of probabilities, meaning whether something is more likely than not to have happened, rather than proof beyond reasonable doubt." },
-      { q: "Should the investigator recommend a penalty?", a: "Usually not. The investigator establishes facts; the decision-maker decides consequences. Keeping these separate makes the outcome more defensible." },
+      { q: "Should the investigator recommend a penalty?", a: "Usually not. The investigator establishes facts; the decision-maker decides consequences. Keeping these separate makes the outcome easier to defend." },
       { q: "Is a sexual harassment complaint handled the same way?", a: "No. Complaints of sexual harassment at the workplace go through the Internal Committee under the POSH Act 2013, which sets its own procedure and timelines." },
     ],
   },
@@ -1064,7 +1064,7 @@ export const guidesMoreC: Guide[] = [
         title: "Set delegation and escalation rules",
         body: [
           "Managers take leave too. Define who approves when the manager is away, and how a delegate is named. Approval routing should follow the current reporting line, so a request does not wait for someone who has moved team.",
-          "Decide what happens to a request still pending at the cut-off: escalated to the manager's manager, or to HR, with a clear rule rather than ad hoc chasing.",
+          "Decide what happens to a request still pending at the cut-off: escalated to the manager's manager, or to HR, with a clear rule rather than one-off chasing.",
         ],
         watch:
           "Avoid auto-approving everything pending at the cut-off. It removes the reason to look at requests at all, and approves the ones that should have been questioned.",

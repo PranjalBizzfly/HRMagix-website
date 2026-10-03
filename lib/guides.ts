@@ -91,7 +91,7 @@ export const baseGuides: Guide[] = [
       {
         title: "Get the employee master right first",
         body: [
-          "Everything downstream references the employee record, so it goes in first. This is also the point at which you discover what your spreadsheets have quietly disagreed about for two years.",
+          "Everything downstream references the employee record, so it goes in first. This is also the point at which you discover what your spreadsheets have disagreed about for two years.",
           "Two problems surface almost every time, and neither is caused by the migration. Duplicate records for the same person, usually created when somebody was rehired or moved between entities. And salary structures that were described one way in an offer letter and calculated another way in practice.",
         ],
         list: {
@@ -150,10 +150,10 @@ export const baseGuides: Guide[] = [
         },
       },
       {
-        title: "Close the first real run deliberately",
+        title: "Close the first real run carefully",
         body: [
           "Once the parallel month agrees line by line, the first live run should be unremarkable. Two habits are worth forming on that first close, because they are much harder to introduce later.",
-          "Lock the period once it is processed, and make corrections as identified adjustments in a later run rather than by editing a closed month. The closed month has already been filed against; editing it silently makes the filing and the ledger disagree. And keep the payslip as issued rather than regenerating it, so a reprint two years from now is the original document.",
+          "Lock the period once it is processed, and make corrections as identified adjustments in a later run rather than by editing a closed month. The closed month has already been filed against; editing it without a record makes the filing and the ledger disagree. And keep the payslip as issued rather than regenerating it, so a reprint two years from now is the original document.",
         ],
       },
     ],
@@ -200,7 +200,7 @@ export const baseGuides: Guide[] = [
     },
     opening: [
       "A leave policy is not a document. It is a set of decisions that a document records, and most policies that cause trouble were never actually decided, they were improvised consistently enough to feel settled, and then written down afterwards in language vague enough to keep everyone comfortable.",
-      "The vagueness is the problem. A leave management system applies whatever you write, identically, to everyone, on the same night. Ambiguity that a manager was quietly resolving becomes visible the moment a system enforces it.",
+      "The vagueness is the problem. A leave management system applies whatever you write, identically, to everyone, on the same night. Ambiguity that a manager was resolving becomes visible the moment a system enforces it.",
     ],
     chapters: [
       {
@@ -211,13 +211,13 @@ export const baseGuides: Guide[] = [
         ],
       },
       {
-        title: "Decide the accrual basis before the quantum",
+        title: "Decide the accrual basis before the amount",
         body: [
           "How much leave is the question everybody starts with. How it accrues is the question that determines every balance you will ever be asked about.",
           "Monthly accrual, a fixed fraction credited each month, handles mid-year joiners without anybody doing arithmetic, because a person who joined in August simply has fewer accruals. Annual crediting is simpler to explain and immediately raises the question of what a joiner in August is entitled to, which you then have to answer with a pro-rata rule anyway.",
         ],
         watch:
-          "Whichever you choose, decide explicitly whether probationers accrue. This single omission generates more leave disputes than any other, because it only surfaces when a probationer asks for leave.",
+          "Whichever you choose, decide explicitly whether probationers accrue. This single omission generates more leave disputes than any other, because it only shows up when a probationer asks for leave.",
       },
       {
         title: "Write the approval routing, not just the approver",
@@ -227,10 +227,10 @@ export const baseGuides: Guide[] = [
         ],
       },
       {
-        title: "The sandwich rule is a choice, and you should make it deliberately",
+        title: "The sandwich rule is a choice, and you should make it on purpose",
         body: [
           "If somebody takes Friday and Monday off, is the weekend leave? There is no statutory answer; it is entirely your decision. What is not optional is deciding it, because the alternative is that the answer varies by manager until the first person notices.",
-          "Both positions are defensible. Counting the intervening days protects against a pattern of long weekends taken cheaply; not counting them is simpler to administer and easier to explain to a new joiner. What you should not do is apply it to some leave types and not others without saying which.",
+          "Both positions are reasonable. Counting the intervening days protects against a pattern of long weekends taken cheaply; not counting them is simpler to administer and easier to explain to a new joiner. What you should not do is apply it to some leave types and not others without saying which.",
         ],
       },
       {
@@ -255,7 +255,7 @@ export const baseGuides: Guide[] = [
         title: "Handle comp-off as an entitlement with an expiry",
         body: [
           "Compensatory off is earned by working a day that was not a working day. Because it is earned rather than granted, it comes out of the attendance record, and because it is usually promised informally, it is the entitlement most often forgotten.",
-          "Give it an expiry, and make the expiry a date rather than a vague intention. An entitlement with no expiry accumulates invisibly and surfaces at an exit, when the employee is entitled to be paid for it and nobody has been tracking it.",
+          "Give it an expiry, and make the expiry a date rather than a vague intention. An entitlement with no expiry accumulates invisibly and shows up at an exit, when the employee is entitled to be paid for it and nobody has been tracking it.",
         ],
       },
       {
@@ -320,7 +320,7 @@ export const baseGuides: Guide[] = [
     },
     opening: [
       "Attendance software written for an office assumes a desk, a device and a network. A large part of the Indian workforce has none of the three, and configuring a system as though they do is the reason attendance projects fail on the shop floor while working perfectly in head office.",
-      "This guide works outward from the capture point, because everything else, overtime, payroll, the wage register, is downstream of whether the record was captured honestly in the first place.",
+      "This guide works outward from the capture point, because everything else, overtime, payroll, the wage register, is downstream of whether the record was captured accurately in the first place.",
     ],
     chapters: [
       {
@@ -388,7 +388,7 @@ export const baseGuides: Guide[] = [
         title: "Close the loop into payroll",
         body: [
           "Attendance exists, in the end, to decide paid days. Approved leave, loss-of-pay days and authorised overtime are the three outputs the payroll run reads, and each should arrive as a record rather than as a monthly file somebody prepares under time pressure.",
-          "Fix the cut-off deliberately. An application approved after the run has closed should be visible as an arrear against a specific date rather than absorbed quietly into next month.",
+          "Set a fixed cut-off. An application approved after the run has closed should be visible as an arrear against a specific date rather than absorbed into next month.",
         ],
       },
     ],

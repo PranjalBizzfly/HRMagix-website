@@ -81,7 +81,7 @@ export const whitePapers: WhitePaper[] = [
     sections: [
       {
         heading: "The problem is establishment, not calculation",
-        summary: "Why four defensible records cannot be reconciled without a person.",
+        summary: "Why four reasonable records cannot be reconciled without a person.",
         blocks: [
           {
             kind: "para",
@@ -98,7 +98,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "The fourth is the significant one. Once payable days becomes a typed value, its provenance is destroyed. A query raised six months later cannot be answered by inspection; it can only be answered by re-derivation from records that have since moved on.",
+            text: "The fourth is the significant one. Once payable days becomes a typed value, its source is destroyed. A query raised six months later cannot be answered by inspection; it can only be answered by re-derivation from records that have since moved on.",
           },
         ],
       },
@@ -225,7 +225,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "The property that separates an auditable payroll from a defensible one is versioning. When a March run is questioned in September, the system must answer with the structure that was in force in March, not the one in force today, and not a reconstruction.",
+            text: "The property that separates an auditable payroll from one that is easy to defend is versioning. When a March run is questioned in September, the system must answer with the structure that was in force in March, not the one in force today, and not a reconstruction.",
           },
           {
             kind: "para",
@@ -315,7 +315,7 @@ export const whitePapers: WhitePaper[] = [
               "Slabs differ, so the same salary produces a different deduction in two offices of one company.",
               "Periodicity differs, and due dates follow the state rather than your payroll calendar.",
               "Several states provide specific exemptions, including gender-based ones, which a single national rule set cannot express.",
-              "Maharashtra deducts a different amount in one month of the year, which a flat monthly configuration will miss annually and quietly.",
+              "Maharashtra deducts a different amount in one month of the year, which a flat monthly configuration will miss every year.",
             ],
           },
           {
@@ -357,7 +357,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "The resolution is to keep runs distinct at the entity level, because filing is per entity, while allowing reporting to aggregate across them. Multi-entity structures sit under a single login, with role-based permissions determining who can see which entity.",
+            text: "The resolution is to keep runs distinct at the entity level, because filing is per entity, while allowing reporting to combine them. Multi-entity structures sit under a single login, with role-based permissions determining who can see which entity.",
           },
           {
             kind: "list",
@@ -456,7 +456,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "Deriving them from the shift definition and the employee's eligibility on the record, against the same attendance ledger everything else reads, makes them defensible. The figure the operator disputes is the figure the system can show the working for, rather than a number transcribed from a register.",
+            text: "Deriving them from the shift definition and the employee's eligibility on the record, against the same attendance ledger everything else reads, makes them easy to defend. The figure the operator disputes is the figure the system can show the working for, rather than a number transcribed from a register.",
           },
         ],
       },
@@ -536,7 +536,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "At fifteen people, HR is a founder answering questions in a chat window. It works precisely because everyone can see everyone. The failure arrives quietly at around forty, when someone asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
+            text: "At fifteen people, HR is a founder answering questions in a chat window. It works precisely because everyone can see everyone. The failure arrives at around forty, when someone asks a question whose answer was previously improvised, how much notice do I owe, does a Friday off cost me two days, when does my leave reset, and discovers that the answer depends on who they asked and when.",
           },
           {
             kind: "para",
@@ -572,7 +572,7 @@ export const whitePapers: WhitePaper[] = [
             caption: "Sequence for a company between ten and a hundred people",
             head: ["Order", "Position", "Why here"],
             rows: [
-              ["1", "Statutory registrations and identifiers", "Compounds. The only genuinely expensive mistake on this list."],
+              ["1", "Statutory registrations and identifiers", "Compounds. The one mistake on this list that really costs money."],
               ["2", "Leave scheme, categories, accrual, carry-forward, sandwich rule", "Where improvised precedent does most damage and written policy is felt fastest."],
               ["3", "Notice period and probation", "Needed the first time someone resigns, which is always sooner than expected."],
               ["4", "Remote working and its obligations", "Cheap to write now, contentious to write during a dispute."],
@@ -582,7 +582,7 @@ export const whitePapers: WhitePaper[] = [
           {
             kind: "callout",
             title: "What a fifty-person company does not need",
-            text: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopting them early produces ceremony rather than clarity. The Starter plan is deliberately narrow, attendance, leaves, directory and documents, for this reason.",
+            text: "Succession planning, a nine-box talent matrix, a formal performance improvement process and a structured career framework. Adopting them early produces box-ticking rather than clarity. The Starter plan is kept narrow, attendance, leaves, directory and documents, for this reason.",
           },
         ],
       },
@@ -592,7 +592,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "Leave is the only policy every employee interacts with, which is why a bad one does disproportionate damage. The irritant is rarely the policy itself; it is uncertainty about the balance, about whether a request was seen, and about what a Friday-and-Monday will actually cost.",
+            text: "Leave is the only policy every employee interacts with, which is why a bad one does far more damage. The irritant is rarely the policy itself; it is uncertainty about the balance, about whether a request was seen, and about what a Friday-and-Monday will actually cost.",
           },
           {
             kind: "para",
@@ -614,7 +614,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "Versioning is the part usually omitted. When a policy is revised, an earlier acceptance should not silently stand in for the new wording, publishing a new version should re-open acknowledgement for everyone it applies to. HRMagix ships twenty-five workplace policy templates in the Documents module on exactly this basis: the employer writes their own rules into them, issues them, and the platform records who accepted which version and when.",
+            text: "Versioning is the part usually omitted. When a policy is revised, an earlier acceptance should not automatically stand in for the new wording, publishing a new version should re-open acknowledgement for everyone it applies to. HRMagix ships twenty-five workplace policy templates in the Documents module on exactly this basis: the employer writes their own rules into them, issues them, and the platform records who accepted which version and when.",
           },
         ],
       },
@@ -636,7 +636,7 @@ export const whitePapers: WhitePaper[] = [
     minutes: 10,
     abstract: [
       "Most of what an HR team is asked in a week requires access rather than judgement: a balance, a payslip, a UAN, the status of a regularisation. Each is a two-minute answer, which is exactly why the cost of answering them is invisible.",
-      "This briefing separates the HR requests that are genuinely lookups from the ones that need a person, and works through what changes when the first category moves behind the employee's own login, on a desktop for office staff and on a phone for everybody else.",
+      "This briefing separates the HR requests that are lookups from the ones that need a person, and works through what changes when the first category moves behind the employee's own login, on a desktop for office staff and on a phone for everybody else.",
     ],
     seo: {
       title: "The Arithmetic of Employee Self-Service: White Paper",

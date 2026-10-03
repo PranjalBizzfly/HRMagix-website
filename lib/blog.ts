@@ -119,7 +119,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "The four sources, and why they disagree" },
       {
         kind: "para",
-        text: "Most companies of any size have four independent records of the same month. Each is defensible on its own terms. Together they cannot be reconciled without a person.",
+        text: "Most companies of any size have four independent records of the same month. Each holds up on its own terms. Together they cannot be reconciled without a person.",
       },
       {
         kind: "table",
@@ -150,7 +150,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "The last row is the important one. The moment payable days becomes a typed number in a payroll sheet, its provenance is gone. Six months later, when the figure is questioned, nobody can reconstruct which record it came from, only re-derive it, from records that have since moved on.",
+        text: "The last row is the important one. The moment payable days becomes a typed number in a payroll sheet, where it came from is lost. Six months later, when the figure is questioned, nobody can reconstruct which record it came from, only re-derive it, from records that have since moved on.",
       },
       { kind: "h2", text: "Why an overnight sync does not solve it" },
       {
@@ -266,7 +266,7 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Under-deduction, the employee is dropped mid-period after a heavy overtime month, so contributions that were due are never made. This surfaces at inspection, with interest.",
+          "Under-deduction, the employee is dropped mid-period after a heavy overtime month, so contributions that were due are never made. This shows up at inspection, with interest.",
           "Over-deduction, the employee is re-added the following month when overtime falls back, producing contributions where the position had already been settled.",
           "Benefit disruption, coverage that flickers is worse for the employee than either error is for the employer, because entitlement depends on it.",
         ],
@@ -321,7 +321,7 @@ export const articles: Article[] = [
     },
     title: "One company, several compliance positions: Professional Tax across states",
     standfirst:
-      "A business with offices in three states experiences itself as one organisation. Professional Tax does not. This is where multi-state payroll quietly goes wrong.",
+      "A business with offices in three states experiences itself as one organisation. Professional Tax does not. This is where multi-state payroll goes wrong.",
     category: "Payroll & statutory",
     reader: "HR and finance leads in multi-branch, multi-state businesses",
     minutes: 7,
@@ -353,7 +353,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "There is also a timing quirk that catches out companies operating in Maharashtra: the amount deducted in one month of the year differs from the other eleven. A payroll configured with a flat monthly figure will be short by the difference, once a year, quietly.",
+        text: "There is also a timing quirk that catches out companies operating in Maharashtra: the amount deducted in one month of the year differs from the other eleven. A payroll configured with a flat monthly figure will be short by the difference, once a year, without anyone noticing.",
       },
       { kind: "h2", text: "Why software usually forces a bad choice here" },
       {
@@ -581,7 +581,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "The comparison employees actually need" },
       {
         kind: "para",
-        text: "The choice is not abstract. It depends on what an individual can genuinely claim, which is why a generic explainer does not settle it and a personal comparison does.",
+        text: "The choice is not abstract. It depends on what an individual can claim, which is why a generic explainer does not settle it and a personal comparison does.",
       },
       {
         kind: "list",
@@ -645,7 +645,7 @@ export const articles: Article[] = [
     closing: {
       title: "Look at how your comp-offs would expire",
       body:
-        "Compensatory off is usually promised informally and tracked nowhere, which is how it quietly lapses. Bring your policy and we will walk through how the entitlement, the approval and the expiry are recorded.",
+        "Compensatory off is usually promised informally and tracked nowhere, which is how it lapses. Bring your policy and we will walk through how the entitlement, the approval and the expiry are recorded.",
     },
     title: "Compensatory off is an entitlement. Most companies track it like a favour.",
     standfirst:
@@ -710,13 +710,13 @@ export const articles: Article[] = [
         rows: [
           ["Cost", "Time, taken later", "Cash, in the next payroll run"],
           ["Where it appears", "Leave balance", "Earnings line on the payslip"],
-          ["Liability if untracked", "Grows silently and indefinitely", "Surfaces immediately as a payroll dispute"],
+          ["Liability if untracked", "Grows unnoticed and indefinitely", "Shows up immediately as a payroll dispute"],
           ["Who usually prefers it", "Employees wanting flexibility", "Employees wanting the money"],
         ],
       },
       {
         kind: "para",
-        text: "The failure mode to avoid is leaving the choice to whoever is in the room. A policy that states which applies, in which circumstances, and who may vary it, is worth more than either option chosen well ad hoc.",
+        text: "The failure mode to avoid is leaving the choice to whoever is in the room. A policy that states which applies, in which circumstances, and who may vary it, is worth more than either option chosen well case by case.",
       },
       { kind: "h2", text: "What to check this month" },
       {
@@ -838,7 +838,7 @@ export const articles: Article[] = [
   {
     slug: "sandwich-rule",
     closing: {
-      title: "Decide your sandwich rule deliberately, not by precedent",
+      title: "Decide your sandwich rule on purpose, not by precedent",
       body:
         "Most companies discover their sandwich rule when somebody disputes it. Bring your leave policy as it stands and we will show you what the system would do with it.",
     },
@@ -863,7 +863,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "Employers adopt it for a straightforward reason: without it, an employee can convert two days of leave into a four-day absence, repeatedly, and a team that needs coverage cannot plan around it. That is a defensible position.",
+        text: "Employers adopt it for a straightforward reason: without it, an employee can convert two days of leave into a four-day absence, repeatedly, and a team that needs coverage cannot plan around it. That is a reasonable position.",
       },
       { kind: "h2", text: "So why does it produce so much bad feeling?" },
       {
@@ -991,7 +991,7 @@ export const articles: Article[] = [
       },
       {
         kind: "para",
-        text: "Every recovery needs a documented basis that existed before the exit. A recovery invented at settlement time is the fastest route to a dispute, and it is also the least defensible.",
+        text: "Every recovery needs a documented basis that existed before the exit. A recovery invented at settlement time is the fastest route to a dispute, and it is also the hardest to defend.",
       },
       { kind: "h2", text: "Statutory treatment of the final payment" },
       {
@@ -1005,7 +1005,7 @@ export const articles: Article[] = [
           "Relieving letter and experience certificate.",
           "Form 16 for the year, covering the period of employment.",
           "The full-and-final settlement statement itself, showing the working rather than only the net figure.",
-          "Provident fund details sufficient for the employee to transfer or withdraw against their UAN.",
+          "Provident fund details enough for the employee to transfer or withdraw against their UAN.",
         ],
       },
       { kind: "h2", text: "The clause everyone forgets: retention" },

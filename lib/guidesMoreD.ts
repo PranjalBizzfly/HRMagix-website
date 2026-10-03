@@ -88,7 +88,7 @@ export const guidesMoreD: Guide[] = [
       {
         title: "Record, communicate and close",
         body: [
-          "Every rating that changes in the room needs a recorded reason in one or two lines. That record protects the decision if it is questioned later and lets the manager explain it honestly. Ratings that did not change need no note.",
+          "Every rating that changes in the room needs a recorded reason in one or two lines. That record protects the decision if it is questioned later and lets the manager explain it clearly. Ratings that did not change need no note.",
           "After the meeting, the manager, not HR, tells each employee their final rating in the appraisal conversation. A manager whose provisional rating was moved down must be able to explain why in terms of the person's work, never as \"calibration lowered it\". Close the loop by reviewing, at the end of the cycle, whether the definitions or the evidence notes need changing for next time.",
         ],
       },
@@ -181,7 +181,7 @@ export const guidesMoreD: Guide[] = [
         title: "Let teams draft upward, not copy downward",
         body: [
           "Share the company OKRs and ask each team to draft its own: which company objective does the team move, and what result in the team's own work would show it. A team's key result is often a lever under a company key result, not a slice of it. If the company key result is about customer retention, the support team's key result might be about first-response quality, which is theirs to move.",
-          "Not every team OKR has to link to a company objective. Some work keeps the lights on or builds capability for later. Allow a small amount of unlinked work and label it honestly, rather than forcing a tenuous link.",
+          "Not every team OKR has to link to a company objective. Some work keeps the lights on or builds capability for later. Allow a small amount of unlinked work and label it clearly, rather than forcing a weak link.",
         ],
         list: {
           style: "bullet",
@@ -222,7 +222,7 @@ export const guidesMoreD: Guide[] = [
       {
         title: "Check alignment during the quarter, not only at the end",
         body: [
-          "Set a regular check-in cadence where each owner updates progress and confidence on their key results. The useful question in a check-in is not the number but whether the team is still working on the right thing given what has changed.",
+          "Set a regular check-in schedule where each owner updates progress and confidence on their key results. The useful question in a check-in is not the number but whether the team is still working on the right thing given what has changed.",
           "If a company objective changes mid-quarter, re-run a short version of the alignment review for the affected teams rather than leaving their OKRs pointing at something that no longer matters. At the end of the quarter, score key results, write down what was learned, and carry that into the next set. HRMagix includes an OKRs module for setting and tracking objectives and key results, if you want them in the same system as the rest of performance.",
         ],
       },
@@ -235,7 +235,7 @@ export const guidesMoreD: Guide[] = [
       "Alignment review held for gaps, overlaps and dependencies",
       "Cross-team dependencies agreed by both teams",
       "Decision made on individual OKRs, kept separate from appraisal ratings",
-      "Check-in cadence set and end-of-quarter scoring planned",
+      "Check-in schedule set and end-of-quarter scoring planned",
     ],
     related: [
       {
@@ -278,16 +278,16 @@ export const guidesMoreD: Guide[] = [
   {
     slug: "designing-a-recognition-programme",
     number: "40",
-    title: "Designing an employee recognition programme: criteria, cadence and ownership",
+    title: "Designing an employee recognition programme: criteria, schedule and ownership",
     audience:
       "HR managers and culture leads building a recognition programme from scratch, or replacing an awards scheme that people have stopped taking seriously.",
     outcome:
-      "Decide what the programme recognises, set the channels and cadence, write criteria people can apply, give it an owner and a budget line, and review it so it stays credible.",
+      "Decide what the programme recognises, set the channels and schedule, write criteria people can apply, give it an owner and a budget line, and review it so it stays credible.",
     minutes: 10,
     seo: {
       title: "Employee Recognition Program: How to Design One Step by Step",
       description:
-        "How to design an employee recognition program: choosing what to recognise, peer and manager channels, award criteria, cadence, rewards, budget and review.",
+        "How to design an employee recognition program: choosing what to recognise, peer and manager channels, award criteria, schedule, rewards, budget and review.",
       keywords: [
         "employee recognition program",
         "employee recognition programme",
@@ -296,7 +296,7 @@ export const guidesMoreD: Guide[] = [
       ],
     },
     opening: [
-      "Most recognition schemes fail quietly. The monthly award goes to the same few people, the nominations dry up, and within a year the email announcing the winner is ignored. The cause is usually design, not intent: nobody decided what was being recognised, the criteria were vague, and the programme had no owner after launch.",
+      "Most recognition schemes fail without anyone noticing. The monthly award goes to the same few people, the nominations dry up, and within a year the email announcing the winner is ignored. The cause is usually design, not intent: nobody decided what was being recognised, the criteria were vague, and the programme had no owner after launch.",
       "This guide walks through building an employee recognition program as a set of decisions, in order. For why recognition matters and what makes it feel genuine, see the employee recognition topic page; this is the build.",
     ],
     chapters: [
@@ -324,10 +324,10 @@ export const guidesMoreD: Guide[] = [
         },
       },
       {
-        title: "Write criteria and set the cadence",
+        title: "Write criteria and set the schedule",
         body: [
           "For any award with a winner, write criteria a panel can apply and a nominee can understand: what qualifies, what evidence a nomination must include, and who is eligible. Rotate the panel so the same people are not choosing every time, and record why each winner was chosen.",
-          "Set a cadence that you can sustain. A quarterly award that always happens is worth more than a monthly one that slips. For peer recognition there is no cadence; the job is to make it easy enough that people use it during an ordinary week.",
+          "Set a schedule that you can sustain. A quarterly award that always happens is worth more than a monthly one that slips. For peer recognition there is no fixed schedule; the job is to make it easy enough that people use it during an ordinary week.",
         ],
         watch:
           "Look at who receives recognition by team, location and shift. Back-office, field and night-shift staff are easy to miss when recognition depends on being seen. If a group is consistently absent, the design is the problem, not the group.",
@@ -354,7 +354,7 @@ export const guidesMoreD: Guide[] = [
       "Recognition kept separate from appraisal-linked pay decisions",
       "Peer, manager and organisation channels decided, and which launch first",
       "Written criteria, eligibility and a rotating panel for any award",
-      "A cadence the team can sustain",
+      "A schedule the team can sustain",
       "Reward values fixed by level and tax treatment agreed with payroll",
       "Named owner in HR and managers briefed before launch",
       "Periodic review of who is recognised across teams, locations and shifts",
@@ -379,7 +379,7 @@ export const guidesMoreD: Guide[] = [
     faqs: [
       {
         q: "What should an employee recognition program include?",
-        a: "A clear statement of what is recognised, channels for peer, manager and organisation-level recognition, written criteria for any award, a sustainable cadence, a reward budget, a named owner and a regular review.",
+        a: "A clear statement of what is recognised, channels for peer, manager and organisation-level recognition, written criteria for any award, a sustainable schedule, a reward budget, a named owner and a regular review.",
       },
       {
         q: "How is recognition different from rewards linked to performance?",

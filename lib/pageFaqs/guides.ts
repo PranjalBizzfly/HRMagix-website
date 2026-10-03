@@ -46,11 +46,11 @@ export const guideFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Is monthly or annual leave accrual better?",
-      a: "Both are workable. Monthly accrual handles mid-year joiners automatically; annual crediting is simpler to explain but forces a pro-rata rule for joiners anyway. Decide the accrual basis before the quantum.",
+      a: "Both are workable. Monthly accrual handles mid-year joiners automatically; annual crediting is simpler to explain but forces a pro-rata rule for joiners anyway. Decide the accrual basis before the amount.",
     },
     {
       q: "Do employees on probation accrue leave?",
-      a: "That is your decision, but the guide stresses deciding it explicitly. Leaving it unstated generates more leave disputes than any other omission, because it only surfaces when a probationer asks for leave.",
+      a: "That is your decision, but the guide stresses deciding it explicitly. Leaving it unstated generates more leave disputes than any other omission, because it only shows up when a probationer asks for leave.",
     },
     {
       q: "How should leave approval routing be written?",
@@ -66,7 +66,7 @@ export const guideFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Should compensatory off expire?",
-      a: "Yes. Give comp-off an expiry date rather than a vague intention. Without one it accumulates invisibly and surfaces at exit, when the employee is entitled to be paid for it.",
+      a: "Yes. Give comp-off an expiry date rather than a vague intention. Without one it accumulates invisibly and shows up at exit, when the employee is entitled to be paid for it.",
     },
     {
       q: "What happens when an employee takes leave with no balance?",

@@ -9,11 +9,11 @@ export const articleFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Which records usually disagree before a payroll run?",
-      a: "Four: the biometric device log, the leave tracker, the manager's recollection and the payroll sheet. Each is defensible alone, but together they cannot be reconciled without a person.",
+      a: "Four: the biometric device log, the leave tracker, the manager's recollection and the payroll sheet. Each holds up alone, but together they cannot be reconciled without a person.",
     },
     {
       q: "Why is a typed payable-days figure in a payroll sheet a problem?",
-      a: "Once it is typed, its provenance is gone. Months later nobody can say which record it came from, only re-derive it from records that have since changed.",
+      a: "Once it is typed, where it came from is lost. Months later nobody can say which record it came from, only re-derive it from records that have since changed.",
     },
     {
       q: "Does an overnight sync between attendance and payroll fix reconciliation?",
@@ -199,7 +199,7 @@ export const articleFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "What is the risk of leaving comp-off untracked?",
-      a: "The liability grows silently and indefinitely, whereas unpaid overtime surfaces immediately as a payroll dispute.",
+      a: "The liability grows unnoticed and indefinitely, whereas unpaid overtime shows up immediately as a payroll dispute.",
     },
     {
       q: "How can I audit comp-off this month?",
@@ -387,7 +387,7 @@ export const categoryFaqs: Record<string, PageFaq[]> = {
     },
     {
       q: "Is the sandwich rule unfair to employees?",
-      a: "The article argues the rule is defensible; the grievance comes from inconsistent application and employees discovering the cost only after applying.",
+      a: "The article argues the rule is reasonable; the grievance comes from inconsistent application and employees discovering the cost only after applying.",
     },
     {
       q: "What should a written leave policy state about the sandwich rule?",
