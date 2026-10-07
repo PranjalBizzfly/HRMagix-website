@@ -63,19 +63,108 @@ export const careers = {
     "If there is a fit, the conversation continues with the people you would actually work with. If there is not, we will say so rather than leave it open.",
   ],
   /**
-   * Verified open roles. HRMagix publishes no vacancy list, so this is empty
-   * and the page renders its empty state rather than inventing positions.
-   *
-   * To publish a role, add an entry here — the listing, the detail page at
-   * /company/careers/<slug> and the application form all follow automatically.
-   * Every field must come from a real, approved requisition.
+   * Open roles, as supplied by the client. Each card on the careers page shows
+   * the summary, responsibilities and skills, and its Apply button leads to the
+   * introduction form on the same page. Team, location and type are optional
+   * and shown only when the client has provided them; never fill them in.
    */
-  openings: [] as {
+  openings: [
+    {
+      slug: "sales-executive",
+      title: "Sales Executive",
+      summary:
+        "Bring our HR and payroll software to companies that need it, from the first conversation through to a signed customer.",
+      responsibilities: [
+        "Respond to enquiries and demo requests, and qualify what each prospect needs",
+        "Run product demos focused on the prospect's own HR and payroll workflow",
+        "Follow up, prepare proposals and keep each deal moving to a decision",
+        "Keep pipeline and customer records up to date in the CRM",
+      ],
+      looking: [
+        "Clear spoken and written communication",
+        "Comfort explaining software to non-technical buyers",
+        "Organised follow-up across several deals at once",
+        "Interest in HR, payroll or business software",
+      ],
+    },
+    {
+      slug: "software-developer-coordinator",
+      title: "Software Developer Coordinator",
+      summary:
+        "Keep development work organised and on schedule, so the engineering team, product decisions and releases stay in step.",
+      responsibilities: [
+        "Plan and track development tasks and release schedules",
+        "Coordinate between developers, testing and product to unblock work",
+        "Turn feature requests and bug reports into clear, prioritised tasks",
+        "Run regular stand-ups and report progress and risks",
+      ],
+      looking: [
+        "Understanding of how software is built, tested and released",
+        "Experience with task trackers such as Jira, Trello or similar",
+        "Strong planning and follow-through",
+        "Clear communication with technical and non-technical people",
+      ],
+    },
+    {
+      slug: "email-marketing-executive",
+      title: "Email Marketing Executive",
+      summary:
+        "Plan, write and send the emails that keep prospects and customers informed, and measure what works.",
+      responsibilities: [
+        "Plan and schedule email campaigns, newsletters and follow-up sequences",
+        "Write and proofread email copy and subject lines",
+        "Manage contact lists and segments, keeping them clean and consented",
+        "Track opens, clicks and conversions, and test improvements",
+      ],
+      looking: [
+        "Strong written English",
+        "Experience with an email marketing tool",
+        "Comfort reading campaign data and drawing conclusions",
+        "Attention to detail before anything is sent",
+      ],
+    },
+    {
+      slug: "business-development-executive",
+      title: "Business Development Executive",
+      summary:
+        "Find and open new business opportunities through outreach and partnerships, and hand qualified leads to the sales team.",
+      responsibilities: [
+        "Research target companies and the right people to approach",
+        "Reach out by email, phone and LinkedIn to start conversations",
+        "Qualify interest and book meetings or demos for the sales team",
+        "Explore and follow up on partnership opportunities",
+      ],
+      looking: [
+        "Confident, professional outreach",
+        "Research skills and persistence",
+        "Clear spoken and written communication",
+        "Interest in B2B software",
+      ],
+    },
+    {
+      slug: "prompt-engineer",
+      title: "Prompt Engineer",
+      summary:
+        "Design, test and improve the prompts and instructions the team uses with AI tools, so the results are accurate and dependable.",
+      responsibilities: [
+        "Write, test and refine prompts for specific tasks",
+        "Build test cases and check outputs for accuracy and consistency",
+        "Document what works, with reusable prompt templates",
+        "Work with the team to identify where AI tools can help",
+      ],
+      looking: [
+        "Hands-on experience with large language models",
+        "Clear, precise writing",
+        "A structured approach to testing and evaluation",
+        "Basic scripting, for example Python, is useful",
+      ],
+    },
+  ] as {
     slug: string;
     title: string;
-    team: string;
-    location: string;
-    type: string;
+    team?: string;
+    location?: string;
+    type?: string;
     summary: string;
     responsibilities: string[];
     looking: string[];
@@ -83,7 +172,7 @@ export const careers = {
   honesty: {
     heading: "What this page does not claim",
     points: [
-      "No open positions are listed, because none have been published.",
+      "Salary, location and experience details for the open roles are discussed in the conversation itself, not published here.",
       "No headcount, funding stage, growth figure or hiring target is stated, because HRMagix has not published one.",
       "No awards, rankings or workplace certifications are claimed.",
       "Compensation bands and benefit lists are not published here; they are discussed in the conversation itself.",

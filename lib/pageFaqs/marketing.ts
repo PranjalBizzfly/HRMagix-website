@@ -235,7 +235,7 @@ export const marketingFaqs: Record<string, PageFaq[]> = {
   "/company/careers": [
     {
       q: "Is HRMagix hiring?",
-      a: "No open roles are published right now. You can still send an introduction through the form on this page.",
+      a: "Yes. The open roles are listed on this page: Sales Executive, Software Developer Coordinator, Email Marketing Executive, Business Development Executive and Prompt Engineer. Apply through the form on this page.",
     },
     {
       q: "How do I apply to HRMagix?",

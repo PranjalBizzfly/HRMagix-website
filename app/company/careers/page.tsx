@@ -110,31 +110,65 @@ export default function CareersPage() {
             />
           </Reveal>
         ) : (
-          <ul className="grid gap-4 lg:gap-5">
-            {careers.openings.map((role) => (
-              <Reveal as="li" key={role.slug} y={12}>
-                <Link
-                  href={`/company/careers/${role.slug}`}
-                  className="card card-hover group grid gap-2 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,16rem)_auto] lg:items-baseline lg:gap-8"
+          <ul className="grid gap-5 md:grid-cols-2">
+            {careers.openings.map((role, i) => {
+              const meta = [role.team, role.location, role.type].filter(Boolean);
+              return (
+                <Reveal
+                  as="li"
+                  key={role.slug}
+                  id={role.slug}
+                  delay={(i % 2) * 60}
+                  y={12}
+                  className="card card-hover flex h-full flex-col p-6 sm:p-7"
                 >
-                  <span className="font-display text-[18px] font-bold text-heading transition-colors group-hover:text-accent">
-                    {role.title}
-                  </span>
-                  <span className="text-[14.5px] text-muted">
-                    {role.team} · {role.location} · {role.type}
-                  </span>
-                  <span className="text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                    <Arrow />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+                  <h3 className="font-display text-[19px] font-bold leading-snug text-heading">{role.title}</h3>
+                  {meta.length > 0 && <p className="mt-1 text-[14px] text-subtle">{meta.join(" · ")}</p>}
+                  <p className="mt-3 text-[15px] leading-[1.65] text-muted">{role.summary}</p>
+
+                  <h4 className="mt-5 text-[12px] font-bold uppercase tracking-[0.12em] text-label">
+                    Key responsibilities
+                  </h4>
+                  <ul className="mt-2.5 space-y-2">
+                    {role.responsibilities.map((r) => (
+                      <li key={r} className="flex gap-3 text-[14.5px] leading-[1.6] text-body">
+                        <span aria-hidden="true" className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <h4 className="mt-5 text-[12px] font-bold uppercase tracking-[0.12em] text-label">Skills</h4>
+                  <ul className="mt-2.5 flex flex-wrap gap-2">
+                    {role.looking.map((s) => (
+                      <li
+                        key={s}
+                        className="rounded-full bg-surface-sunken px-3 py-1.5 text-[13px] leading-snug text-body ring-1 ring-inset ring-line"
+                      >
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* mt-auto keeps the button on the card's bottom edge, so cards in a row line up. */}
+                  <div className="mt-auto pt-6">
+                    <a
+                      href="#apply"
+                      aria-label={`Apply now for ${role.title}`}
+                      className="inline-flex h-11 items-center gap-2 rounded-full bg-brand px-5 text-[14px] font-semibold text-white shadow-soft transition-colors hover:bg-accent-strong"
+                    >
+                      Apply Now <Arrow />
+                    </a>
+                  </div>
+                </Reveal>
+              );
+            })}
           </ul>
         )}
       </Block>
 
       {/* ---- How to apply ---- */}
-      <Block eyebrow="Apply" title="How to approach us" ground="sunken">
+      <Block id="apply" eyebrow="Apply" title="How to approach us" ground="sunken">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           {careers.howToApply.map((p, i) => (
             <Reveal key={i} delay={i * 80} y={12}>
@@ -240,7 +274,7 @@ export default function CareersPage() {
           </ul>
           <p className="mt-7 text-[15px] leading-[1.7] text-subtle">
             A careers page that invents roles wastes the time of the people it most wants to reach.
-            If that changes and there are positions to publish, they will appear here.
+            Only roles that are actually open are listed above.
           </p>
         </Reveal>
       </Block>
